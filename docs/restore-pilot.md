@@ -1,10 +1,19 @@
-# Restaurar el piloto publicado
+# Restaurar una copia completa del piloto
 
-La [versión v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) incluye un snapshot experimental de los tres puertos. Contiene catálogo, 22 observaciones de zonas, evidencia numérica y cuatro detectores: dos públicos y dos derivados de pruebas supervisadas con muestras públicas. No incluye el histórico completo ni modelos locales validados.
+El snapshot experimental de los tres puertos está completo en el equipo de construcción, en `dist/satelite-portuario-pilot-v0.1.0.tar.xz`. Contiene catálogo, 22 observaciones de zonas, evidencia numérica y cuatro detectores: dos públicos y dos derivados de pruebas supervisadas con muestras públicas. No incluye el histórico completo ni modelos locales validados.
 
-El snapshot ocupa 836,751,228 bytes comprimidos y se distribuye en 34 partes de hasta 25 MB para permitir reintentos de transferencia. La extracción requiere aproximadamente 513 MiB de RAM. El contenido ocupa unos 1.69 GB por copia; considera también la copia restaurada y la reserva de disco configurada para el trabajador.
+La transferencia a GitHub quedó detenida por fallos TCP/TLS: solo 11 de las 34 partes del snapshot tienen recepción verificada. La versión `v0.1.0` sigue como borrador; sus archivos parciales no permiten restaurar el piloto y no están disponibles como descarga pública. El [estado de transferencia](../reports/pilot/release-upload-status.json) registra lo confirmado y lo pendiente. El código puede instalarse desde este repositorio y los scripts del [piloto](../reports/pilot/inference.md) documentan cómo obtener las entradas públicas.
 
-En una carpeta nueva, descarga `chunk000` a `chunk033`, `CHUNKS.sha256` y `BUNDLE.sha256` desde la versión. Conserva los nombres originales y ejecuta:
+El snapshot ocupa 836,751,228 bytes comprimidos. La extracción requiere aproximadamente 513 MiB de RAM. El contenido ocupa unos 1.69 GB por copia; considera también la copia restaurada y la reserva de disco configurada para el trabajador.
+
+Si recibes el archivo completo, cópialo junto con `BUNDLE.sha256` a una carpeta nueva y ejecuta:
+
+```sh
+shasum -a 256 -c BUNDLE.sha256
+tar -xJf satelite-portuario-pilot-v0.1.0.tar.xz
+```
+
+También se prepararon 34 partes de hasta 25 MB para reanudar la transferencia. Solo cuando dispongas de todas (`chunk000` a `chunk033`), `CHUNKS.sha256` y `BUNDLE.sha256`, conserva los nombres originales y ejecuta:
 
 ```sh
 shasum -a 256 -c CHUNKS.sha256

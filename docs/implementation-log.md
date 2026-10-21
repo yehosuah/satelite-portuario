@@ -154,3 +154,7 @@ El lint estructural pasó antes de ejecutar. Al cerrar, ese lint rechaza las cas
 La verificación de instalación detectó y corrigió rutas de modelos y bandas preparadas al montar un volumen en `/data` desde otro directorio de trabajo. Las regresiones observaron el fallo antes del cambio; la suite instalada posterior pasó 99 pruebas.
 
 La CI posterior encontró sensibilidad del cálculo de cobertura a bordes sobre centros de píxel. Se reprodujeron dos fallos antes de cambiar el worker a intersección geométrica, incluida una huella inclinada. La suite instalada final pasó 101 pruebas; CI en Linux y macOS pasó 94 con siete omisiones de ML opcional. El impacto sobre el piloto se midió sin alterar su catálogo y se conserva en [coverage-correction.json](../reports/pilot/coverage-correction.json).
+
+## Estado de publicación del paquete portable
+
+El código y la documentación están en el repositorio público. La carga del bundle de 836,751,228 bytes quedó detenida por fallos TCP/TLS repetidos desde macOS y Docker/Linux. Se verificaron 11 de 34 segmentos (275 MB), wheel, sdist y los tres checksums. Faltan 23 segmentos; no se publicó el release incompleto y no quedan transferencias en segundo plano. El archivo completo permanece verificado en `dist/`. `reports/pilot/release-upload-status.json` registra el estado y las condiciones para reanudar, sin credenciales. README y guía de restauración distinguen explícitamente la copia local de la descarga pública pendiente.

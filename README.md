@@ -6,7 +6,7 @@ Observatorio local de Puerto Quetzal, Santo Tomás de Castilla y Puerto Barrios.
 
 ## Paquete experimental
 
-La [versión v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) distribuye el instalador y una copia portable del piloto con imágenes, catálogo y cuatro modelos. Sus 270 archivos fueron verificados y restaurados en otra carpeta; el histórico sigue incompleto. Consulta los SHA256 y las [instrucciones de restauración](docs/restore-pilot.md).
+El código está publicado en este repositorio. Se generó una copia portable local del piloto con imágenes, catálogo y cuatro modelos: sus 270 archivos fueron verificados y restaurados en otra carpeta. La carga de ese paquete a GitHub quedó incompleta por fallos de conexión TCP/TLS; `v0.1.0` permanece como borrador y todavía no ofrece una descarga pública del piloto. Consulta el [estado de transferencia](reports/pilot/release-upload-status.json) y las [instrucciones para restaurar una copia completa](docs/restore-pilot.md). El histórico sigue incompleto.
 
 ## Arranque local
 

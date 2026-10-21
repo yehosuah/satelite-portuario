@@ -2,6 +2,8 @@
 
 Esta versión entrega el servicio local y una base reproducible para desarrollar los modelos del [plan aprobado](superpowers/plans/2026-10-20-observatorio-satelital.md). La entrega científica completa sigue pendiente. La publicación del repositorio no declara cumplida la meta de precisión ni transforma las propuestas en un histórico validado.
 
+El repositorio es público. El paquete portable está completo y verificado localmente, pero su transferencia a GitHub quedó incompleta por fallos TCP/TLS: 11 de 34 partes confirmadas. El release `v0.1.0` permanece como borrador y no se presenta como una descarga pública disponible. [Estado de transferencia](../reports/pilot/release-upload-status.json).
+
 | Parte del plan | Implementado y comprobado | Evidencia pendiente |
 |---|---|---|
 | T1: inventario y geometrías | 81 páginas, 1,267 productos, 863 adquisiciones únicas; 828 del período y 35 de contexto. Doce zonas con procedencia. | Confirmar límites operativos de las zonas provisionales. |
