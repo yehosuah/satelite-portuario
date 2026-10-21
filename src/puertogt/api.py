@@ -44,6 +44,7 @@ class AdditionInput(BaseModel):
     observation_id: str
     geometry: dict
     author: str = Field(min_length=1, max_length=120)
+    provenance: dict = Field(default_factory=dict)
 
 
 def create_app(
@@ -364,7 +365,7 @@ def create_app(
         try:
             return {
                 "detection_id": add_detection(
-                    store, body.observation_id, body.geometry, body.author
+                    store, body.observation_id, body.geometry, body.author, provenance=body.provenance
                 )
             }
         except KeyError as exc:

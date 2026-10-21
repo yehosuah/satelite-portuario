@@ -1,0 +1,82 @@
+{
+  "created_at": "2026-10-21T15:56:37.818254Z",
+  "reviewer": "Codex AI, inline without clean context; authored fixes explicitly coordinated with root",
+  "base": "38271ba5ebb1256d6f8aab70a1bdb9e3e6053378",
+  "head": "df75855d0a4c406348ec4c3302f10205992abbdc",
+  "includes_working_tree": true,
+  "spec": {
+    "path": "reports/local-review/phase2/protocol.md",
+    "sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c"
+  },
+  "reviewed_file_sha256": {
+    "src/puertogt/review.py": "c9fe1b118f43e119ea07df5dcaf99a7a848c87f709153325c9820a9f4fc9841b",
+    "src/puertogt/ml/dataset_crops.py": "fb4e07fbe6be7e5878efdecff6a8b520c37eda10ca494228e21a1d6765936710",
+    "scripts/consolidate_phase2_review.py": "545716a351d900fcb5238a2e5991e4967fa879a6147f1ea44bb014424a1ebb79",
+    "src/puertogt/ml/workflows.py": "bc530c256ca610dca18354e893234619b426a6ad45f01c4a9bfefbe389441ce9",
+    "scripts/train_phase2.py": "502cb08209fcb83acbb6fcaeda46fa334eddd88bf58476b596f61783296ad889",
+    "src/puertogt/ml/detection.py": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25",
+    "tests/test_reviewed_loss.py": "589fca30100c439b103c6f9f9a3ed7645e1501856c53a9f943a4770e2d50a4a7",
+    "tests/test_workflows.py": "88c65a541e6b50dce86e2d3efb4e84f22f2f3bb385dd9ca11e6895d25bb93068",
+    "tests/test_phase2_consolidation.py": "22882b8115e733da1c5ae91bdbdbc4772d6f233eac515124afc0c299401fe811"
+  },
+  "fixed": [
+    {
+      "id": "unknown_negatives",
+      "source": "src/puertogt/ml/detection.py:22",
+      "evidence": "Real torchvision RPN/RoI assign unknown/straddling negatives -1; gradients zero, positive boundary retained; full tiny-network step verified; no samples skips optimizer and no all-skipped artifact."
+    },
+    {
+      "id": "contradictory_actions",
+      "source": "scripts/consolidate_phase2_review.py:212",
+      "evidence": "Before: 2 opposite actions produced 1 revision reused twice and a successful receipt. Now preflight fails before mutation; competing review after preflight is also rejected."
+    },
+    {
+      "id": "mutable_execution_order",
+      "source": "scripts/consolidate_phase2_review.py:67",
+      "evidence": "Explicit order_path / --execution-order; default v1 preserved. Replay v1 passes after v2 exists, without another revision."
+    }
+  ],
+  "pending_findings": [
+    {
+      "id": "empty_raster_false_split_leakage",
+      "source": "scripts/train_phase2.py:139",
+      "spec_line": 15,
+      "evidence": "Three all-zero, nodata0 S1 band rasters shared among independent train/calibration/test acquisitions generate 9 pairwise hash collisions; numeric_hashes intersection rejects them although no signal is shared. All byte hashes must remain verified."
+    }
+  ],
+  "consider": [
+    {
+      "id": "activation_freeze",
+      "source": "scripts/train_phase2.py:281",
+      "detail": "Freeze allows all reserves in fixed slots while explicit activation gate lives in adjudication. Pin an immutable activation order/provenance in the experiment if freezing datasets from other paths."
+    },
+    {
+      "id": "coverage_report",
+      "source": "src/puertogt/ml/workflows.py:518",
+      "spec_lines": [
+        33,
+        51
+      ],
+      "detail": "Detection metrics report support and per-pass counts; coverage/abstention and excluded area should accompany the final accuracy claim from the separate selection/quality audit."
+    }
+  ],
+  "validated": {
+    "tests": 40,
+    "test_command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=src .venv/bin/python -m pytest tests/test_reviewed_loss.py tests/test_workflows.py tests/test_phase2_consolidation.py tests/test_dataset_crops.py tests/test_phase2_runner.py tests/test_phase2_workflows.py tests/test_review_scope.py -q --disable-warnings",
+    "lint": "ruff check passed for changed implementation/tests",
+    "previous_consolidated_sources_verified": 3,
+    "v1_order_sha256": "d9eaa2f2008ddc5f6b44acee32dbb58ece17ee7043c1177e3b975d5ac2723d70",
+    "v2_order_sha256": "2e1095ff54aea6d43122a7d41a4e29dbe392ee9fd7bf2e08953c9b8f40c96ef0"
+  },
+  "not_judged": [
+    "Accuracy >=90%: no new training or held-out inference was run.",
+    "MPS and container execution of training hooks: tests used CPU.",
+    "Unreviewed files outside explicit scope."
+  ],
+  "campaign_states_at_audit": {
+    "complete": 53,
+    "pending": 770,
+    "running": 1
+  },
+  "catalog_mutated_by_audit": false
+}

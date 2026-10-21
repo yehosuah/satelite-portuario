@@ -1,0 +1,290 @@
+{
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "created_at": "2026-10-21T15:25:45.778181+00:00",
+  "stage": "first_pass_before_model_proposals",
+  "exposure": "Queried scene metadata, observability and raw asset paths only; no detector geometries, scores or counts queried for this acquisition. Raw full previews, zone-only crops and closeups inspected. 2026 image used for contextual comparison only.",
+  "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+  "observations": [
+    {
+      "observation_id": "78e1ccc2-cb86-4338-95ce-51ff2ac29d03",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/78e1ccc2-cb86-4338-95ce-51ff2ac29d03/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        327040.0,
+        0.0,
+        -10.0,
+        1747200.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        30,
+        73,
+        157,
+        690
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_canal-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_canal-zone.png",
+      "positive_candidates": [],
+      "unknown": []
+    },
+    {
+      "observation_id": "853d4a63-7b38-4b2e-bad3-d9ae173aef67",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/853d4a63-7b38-4b2e-bad3-d9ae173aef67/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        327040.0,
+        0.0,
+        -10.0,
+        1747200.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        69,
+        339,
+        177,
+        560
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_fondeo-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_fondeo-zone.png",
+      "positive_candidates": [],
+      "unknown": []
+    },
+    {
+      "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/521bdbf5-50f6-410a-94d2-f7d7357e3f4e/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        327040.0,
+        0.0,
+        -10.0,
+        1742720.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        30,
+        221,
+        108,
+        274
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_muelles-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_muelles-zone.png",
+      "positive_candidates": [
+        {
+          "key": "pbr-20250118-red-berthed-vessel",
+          "pixel_box": [
+            65,
+            241,
+            87,
+            248
+          ],
+          "decision": "accept_presence_proposed",
+          "reason": "Continuous red elongated body on water side of the pier, distinct white superstructure at western end. Separation from gray linear quay is visible; one vessel, not multiple deck blocks."
+        }
+      ],
+      "unknown": [
+        "Remaining pier-water contact strip; no extra confirmed vessel."
+      ]
+    },
+    {
+      "observation_id": "56d3772c-9a57-4248-806c-f38fc97a0abd",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/56d3772c-9a57-4248-806c-f38fc97a0abd/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        327040.0,
+        0.0,
+        -10.0,
+        1742720.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        87,
+        219,
+        162,
+        274
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_patios-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/pbr_patios-zone.png",
+      "positive_candidates": [],
+      "unknown": []
+    },
+    {
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 0.9999999999999996,
+      "preview": "data/assets/230de383-0bf2-41d4-85bd-29fd838f1ff8/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        322560.0,
+        0.0,
+        -10.0,
+        1747200.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        405,
+        7,
+        542,
+        1078
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_canal-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_canal-zone.png",
+      "positive_candidates": [],
+      "unknown": [
+        "Tiny isolated points must not be given inferred classes; no unambiguous vessel identified in the narrow corridor."
+      ]
+    },
+    {
+      "observation_id": "d012f5a4-f580-4650-9654-b5566616603b",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "partial",
+      "observable_fraction": 0.9917907039383541,
+      "preview": "data/assets/d012f5a4-f580-4650-9654-b5566616603b/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        322560.0,
+        0.0,
+        -10.0,
+        1747200.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        86,
+        402,
+        367,
+        757
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_fondeo-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_fondeo-zone.png",
+      "positive_candidates": [],
+      "unknown": [
+        "Configured anchorage is predominantly peninsula/land; not representative anchorage coverage. Only visually clear open water inside the fixed polygon can be marine negative. Coastline and land excluded."
+      ]
+    },
+    {
+      "observation_id": "53a1f203-5cac-4424-930a-5e2413b7b2d1",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        322560.0,
+        0.0,
+        -10.0,
+        1738240.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        358,
+        170,
+        472,
+        254
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_muelles-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_muelles-zone.png",
+      "positive_candidates": [
+        {
+          "key": "stc-20250118-white-berthed-vessel",
+          "pixel_box": [
+            441,
+            201,
+            462,
+            214
+          ],
+          "decision": "accept_presence_proposed_pending_second_review",
+          "reason": "Discrete elongated bright body parallel to quay with narrowed northeastern end and water-side edge. Same georeferenced wharf in 2026 lacks this bright body; temporal comparison is context, not reference identity. Contact with quay makes the transverse extent uncertain by about one pixel."
+        }
+      ],
+      "unknown": [
+        "Other waterfront contact strips and compact reddish quay signatures."
+      ]
+    },
+    {
+      "observation_id": "2ef24623-5eef-4cbb-ae40-6cfd1347b200",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "preview": "data/assets/2ef24623-5eef-4cbb-ae40-6cfd1347b200/preview.png",
+      "affine": [
+        10.0,
+        0.0,
+        322560.0,
+        0.0,
+        -10.0,
+        1738240.0
+      ],
+      "crs": "EPSG:32616",
+      "zone_crop": [
+        368,
+        192,
+        485,
+        282
+      ],
+      "raw_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_patios-raw.png",
+      "zone_render": "tmp/local-review/phase2/caribe-20250118-s2/stc_patios-zone.png",
+      "positive_candidates": [],
+      "unknown": [
+        "Quay edge possibly overlaps the white vessel; object must be assigned by actual centroid geometry, not zone name. Exclude unresolved waterfront strip."
+      ]
+    }
+  ],
+  "status": "pending_second_review_and_scope_geometry",
+  "known_limitations": [
+    "Provisional geography; STC anchorage lies mostly over land.",
+    "Visual pixel boxes do not supply family, length or width."
+  ]
+}

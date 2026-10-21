@@ -2,18 +2,18 @@
 
 Esta versión entrega el servicio local y una base reproducible para desarrollar los modelos del [plan aprobado](superpowers/plans/2026-10-20-observatorio-satelital.md). La entrega científica completa sigue pendiente. La publicación del repositorio no declara cumplida la meta de precisión ni transforma las propuestas en un histórico validado.
 
-El repositorio es público. El paquete portable está completo y verificado localmente, pero su transferencia a GitHub quedó incompleta por fallos TCP/TLS: 11 de 34 partes confirmadas. El release `v0.1.0` permanece como borrador y no se presenta como una descarga pública disponible. [Estado de transferencia](../reports/pilot/release-upload-status.json).
+El repositorio y el [piloto portable v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) son públicos. La transferencia quedó completada: 34 partes del snapshot y cinco archivos de software y checksums, verificados por tamaño y SHA256. La descarga anónima de ambos manifiestos de hashes también se comprobó. El snapshot conserva el piloto inicial; las revisiones posteriores y la campaña histórica se documentan por separado. [Verificación de publicación](../reports/pilot/release-upload-status.json).
 
 | Parte del plan | Implementado y comprobado | Evidencia pendiente |
 |---|---|---|
 | T1: inventario y geometrías | 81 páginas, 1,267 productos, 863 adquisiciones únicas; 828 del período y 35 de contexto. Doce zonas con procedencia. | Confirmar límites operativos de las zonas provisionales. |
 | T2: pilotos y recetas | Inferencia real S1/S2 en los tres puertos, nubes/sombras ópticas, contexto radar compatible, pasos supervisados públicos, pesos/hashes fijados, CPU y MPS. | Calidad representativa por tamaño, muelle/fondeo, nubosidad y geometría radar. |
 | T3: persistencia | SQLite, cola idempotente por adquisición/zona/modelos, leases, reintentos, pausas y archivos atómicos. | Operación prolongada en el equipo de destino. |
-| T4: revisión | Visor probado con imágenes reales; revisión auditada, omitidos, procedencia, grupos de split y exportación de área revisada. | Revisión humana local completa y conjuntos train/calibration/test congelados. |
-| T5: buques y atributos | Entrenamiento/exportación/restauración de detectores; dos pesos propios de prueba derivados de muestras públicas. Cabezas por sensor, caché de características, evaluación independiente, abstención por campo y estrato. | Detectores y cabezas entrenados con referencias locales; precisión ≥90%, recall, errores de dimensiones y clasificación por estrato. |
+| T4: revisión | 22 observaciones inspeccionadas en el visor y contrastadas por IA; 27 revisiones auditadas, 19 áreas congeladas, procedencia explícita y exclusiones de incertidumbre. | Revisión humana independiente y muestra temporal más amplia con calibración separada. |
+| T5: buques y atributos | Primer ajuste local real por sensor y evaluación sobre adquisiciones separadas; pesos nuevos experimentales y métricas conservadas. Cabezas de atributos, caché, evaluación y abstención implementadas. | Entrenamiento local con positivos suficientes; precisión ≥90% no demostrada. Faltan referencias y evaluación de dimensiones y familias. |
 | T6: cambios | Encoder Satlas real verificado, decoder siamés, entrenamiento con pares revisados, comparación en zona estática, evaluación de pares test congelados y estados t0/t1/t2/reversión auditados. | Pares locales positivos/negativos, pesos propios del decoder y evaluación independiente. No se han publicado eventos físicos reales. |
 | T7: servicio | API localhost y visor; fechas UTC, filtros, paginación, activos, cobertura, modelos, trabajos y revisiones protegidas. | Ningún servicio remoto de producción desplegado. |
-| T8: histórico y continuidad | Inventario completo al corte, actualización solapada, lotes acotados y conciliación de cada adquisición/zona. Se procesaron 22 observaciones de zona de cuatro adquisiciones. | 824 adquisiciones del período siguen sin programar. También faltan las áreas no cubiertas de los recortes piloto. No se interpolaron esos huecos. |
+| T8: histórico y continuidad | Campaña reanudable de 824 adquisiciones programada con 4.907 teselas de zonas completas, presupuestos persistentes, reintentos y preservación del piloto. Prototipos de ambos sensores publicados. | Campaña aún en ejecución. Seis S1 carecen de contexto compatible confirmado en CDSE/ASF; se registran como excepciones. También faltan las áreas no cubiertas de las cuatro capturas piloto. |
 | T9: portabilidad | Wheel/instalación aislada, Docker y exportación/restauración. El snapshot real verifica 270 archivos y reproduce inferencia de ambos detectores desde el volumen restaurado. | Validación científica y carga histórica completas antes de declarar una entrega operativa validada. |
 
 ## Hallazgos del piloto
@@ -24,13 +24,17 @@ El snapshot conserva los resultados de la ejecución inicial: 10 zonas utilizabl
 
 Los entrenamientos públicos fueron pruebas de una sola muestra: un positivo óptico y un negativo radar con cobertura de anotación verificada. Los pesos propios permiten comprobar el ciclo de entrenamiento, guardado y restauración. No constituyen entrenamiento ni evaluación local suficientes.
 
-La proyección de recursos en [el piloto](../reports/pilot/inference.md) corresponde a un recorte de 512 píxeles por puerto/adquisición. Estima 14.29–20.24 GB de transferencia y 21.9–28.8 horas seriales; no cubre todas las zonas ni incluye el trabajo de etiquetado. Por eso no se convirtió en una autorización técnica de carga completa.
+La [ronda local posterior](../reports/local-review/README.md) ya revisó las 22 observaciones y entrenó ambos sensores sobre negativos locales. S1 acertó los dos objetos de su pequeña prueba, con intervalo del 95 % de precisión de 34,2–100 %. S2 no alcanzó IoU 0,5: las cajas fueron demasiado amplias. Las métricas base y ajustado no cambiaron. No se eligió un ganador ni se modificó el criterio después de la prueba.
+
+La ampliación de fase 2 ya congeló 31 positivos ópticos de los tres puertos y 30 positivos radar de Quetzal. Se conservan áreas negativas y exclusiones explícitas. El [informe de integridad y soporte](../reports/local-review/phase2/runner-validation-20261021-update.json) distingue escenas, recortes y pasadas; los recortes solapados no aumentan soporte independiente. La [corrección del entrenador](../reports/local-review/phase2/review-supervision-correction.md) impide usar como negativos los lugares sin revisar. Calibración, test y positivos radar del Caribe siguen pendientes de soporte suficiente.
+
+La proyección inicial del [piloto](../reports/pilot/inference.md) correspondía a recortes parciales. La campaña de zonas completas tiene [mediciones propias y límites](../reports/history/processing-plan.md); su tiempo total sigue siendo una proyección hasta terminar. El inventario y las propuestas procesadas no se presentan como un histórico validado.
 
 ## Para cerrar la entrega científica
 
-El siguiente trabajo necesario es revisar escenas locales completas con el visor y aportar referencias independientes para familias y dimensiones. El [protocolo](labeling-protocol.md) fija separación entre entrenamiento, calibración y prueba, e incluye negativos y omisiones. La falta de una referencia conserva campos nulos.
+El siguiente trabajo necesario es ampliar los positivos revisados de los tres puertos y ambas fuentes, mantener un test temporal reservado y aportar referencias independientes para familias y dimensiones. El [protocolo](labeling-protocol.md) incluye negativos y omisiones. La falta de una referencia conserva campos nulos.
 
-Después se ejecutan las rutas de entrenamiento y evaluación ya implementadas, se fijan políticas por estrato y se dimensiona el procesamiento de zonas completas. Solo entonces corresponde completar el histórico y volver a comprobar su cobertura. `puertogt doctor --check-release` mantiene este estado pendiente de forma explícita.
+La campaña histórica continúa con propuestas explícitamente experimentales mientras se completa esa validación. Se conciliará su cobertura y cada excepción al terminar. `puertogt doctor --check-release` mantiene este estado pendiente de forma explícita.
 
 ## Archivos de evidencia
 

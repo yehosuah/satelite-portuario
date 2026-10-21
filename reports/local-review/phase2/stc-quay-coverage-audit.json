@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-10-21T16:01:23.340570+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "kind": "read_only_geometric_coverage_audit",
+  "status": "complete",
+  "purpose": "Compare fixed STC geometry, the February TRAIN contextual vessel and independent OSM/raw optical references without changing AOIs or adding outside labels.",
+  "config": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+    "version": "2026-10-20-provisional-v1"
+  },
+  "sources": {
+    "osm": {
+      "way_id": 715624206,
+      "version": 5,
+      "timestamp": "2025-12-08T23:21:43Z",
+      "way_url": "https://www.openstreetmap.org/way/715624206",
+      "api_url": "https://api.openstreetmap.org/api/0.6/way/715624206/full.json",
+      "http_status": 200,
+      "retrieved_at": "2026-10-21T15:56:40.704580+00:00",
+      "cached_path": "tmp/local-review/phase2/stc-quay-geometry-audit/osm-way-715624206-full.json",
+      "sha256": "06ece0c08307aa8ef55bbd8c83a454373d0baec55a546f044755c184a3cc98af",
+      "tags": {
+        "landuse": "industrial",
+        "name": "Portuaria Santo Tomás de Castilla"
+      },
+      "interpreted_edge_node_ids": [
+        693597128,
+        693597114
+      ],
+      "caution": "This is an industrial land-use polygon, not a surveyed quay or official navigation boundary. Its northwest edge is the proxy referenced by the existing configuration; OSM version timestamp follows January 2025."
+    },
+    "s1": {
+      "report": "reports/local-review/phase2/stc-20250202-s1-review.json",
+      "sha256": "fbda73ba7fdb2a3f479b0e6c9c27c32ed6b3e18b2bc2eccd0139ee0dd8fdeac4",
+      "observation_id": "202cc671-c20b-4476-85ad-f70e4aa39b19",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11",
+      "context_acquisition_key": "S1A:IW:GRDH:1SDV:20241204T000651:20241204T000716:056835:06FA6F"
+    },
+    "s2": {
+      "report": "reports/local-review/phase2/caribe-20250118-s2-review.json",
+      "sha256": "d19e1caf66f2464b56303f1157a083e1488b332f368c275cf646be088aa98eb4",
+      "observation_id": "53a1f203-5cac-4424-930a-5e2413b7b2d1",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "use": "Raw RGB infrastructure comparison only; not synchronous evidence of the February vessel."
+    },
+    "assets": [
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/historical_vh.tif",
+        "sha256": "8345e495fea816ab1e04da798d97acf5a493cf6727b52af0368c79c0c970f723",
+        "size_bytes": 589994
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/historical_vv.tif",
+        "sha256": "b6062210b22d6b9b175f4e8a601a0d81bd7bee10f0383d5b494d9a901b6c6f1e",
+        "size_bytes": 686751
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/vh.tif",
+        "sha256": "4ec35114c73315cb0d892f42cfeaa9abc95d49d644f46b91c754d3ddf328c405",
+        "size_bytes": 584961
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/vv.tif",
+        "sha256": "a2f0775789c1205832d0b50707ba60dce35914d6213750daa09e2bb2233a6c61",
+        "size_bytes": 681452
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/observable.tif",
+        "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+        "size_bytes": 2321
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/valid.tif",
+        "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+        "size_bytes": 2321
+      },
+      {
+        "path": "data/assets/202cc671-c20b-4476-85ad-f70e4aa39b19/preview.png",
+        "sha256": "e4ae1fe0910c5063906c1f088d3c45f757a810d8f24fddc3d235cee2dd9d9373",
+        "size_bytes": 396404
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/B02.tif",
+        "sha256": "7a9f02e79f10ffe8f544215256a451f84e55fecca2596baa735eee396e2794ad",
+        "size_bytes": 713685
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/B03.tif",
+        "sha256": "77aa59b63f4dd34862cbbb75da73d74a76997ea85282274dcaa73f0145f28e01",
+        "size_bytes": 754503
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/B04.tif",
+        "sha256": "5df35f3cb7c3f824473efeda2e2591ad3ac71e1770ab66c91a95b01522e56f6d",
+        "size_bytes": 754463
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/observable.tif",
+        "sha256": "ef0422c773d5208e34a34caba7d5952776626b099ea235fde287a337809da908",
+        "size_bytes": 3024
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/valid.tif",
+        "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+        "size_bytes": 2321
+      },
+      {
+        "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/preview.png",
+        "sha256": "2b2b8b84e3c6e257c3699d297426945e902a392fa017ce81f08d776a10d7a580",
+        "size_bytes": 669991
+      }
+    ]
+  },
+  "canonical_grid": {
+    "crs": "EPSG:32616",
+    "affine": [
+      10.0,
+      0.0,
+      322560.0,
+      0.0,
+      -10.0,
+      1747200.0
+    ],
+    "pixel_size_m": 10
+  },
+  "contextual_object": {
+    "key": "stc-20250202-outside-north-vessel",
+    "canonical_pixel_box": [
+      404,
+      1075,
+      420,
+      1093
+    ],
+    "geometry_wgs84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -88.61662087888178,
+            15.70033450021828
+          ],
+          [
+            -88.6166080548932,
+            15.698707832428312
+          ],
+          [
+            -88.61810068433444,
+            15.698696785547424
+          ],
+          [
+            -88.61811352015091,
+            15.700323452135553
+          ],
+          [
+            -88.61662087888178,
+            15.70033450021828
+          ]
+        ]
+      ]
+    },
+    "center_wgs84": {
+      "type": "Point",
+      "coordinates": [
+        -88.61736078448835,
+        15.699515643657987
+      ]
+    },
+    "presence": "Confirmed as a visual SAR vessel proposal in the frozen raw review, outside all configured zone centers.",
+    "no_physical_dimensions_inferred": true,
+    "no_label_created": true
+  },
+  "osm_edge_geometry_wgs84": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        -88.6127773,
+        15.6982163
+      ],
+      [
+        -88.620394,
+        15.6944446
+      ]
+    ]
+  },
+  "measurements": {
+    "osm_nw_edge_length_m": 916.93064,
+    "configured_muelles_area_m2": 225418.368434,
+    "configured_muelles_mean_width_area_divided_by_frontage_m": 245.840153,
+    "described_buffer_approximate_m": 200,
+    "muelles_to_canal_minimum_gap_m": 136.867073,
+    "vessel_center_to_osm_edge_m": 351.637593,
+    "vessel_center_outside_muelles_distance_m": 105.796689,
+    "vessel_center_outside_canal_distance_m": 168.739004,
+    "visual_window_muelles_intersection_area_m2": 137.914009,
+    "visual_window_muelles_intersection_fraction": 0.004789,
+    "osm_edge_config_shared_boundary_hausdorff_distance_m": 0.0
+  },
+  "findings": [
+    {
+      "id": "coverage-discontinuity",
+      "finding": "The quay edge is correctly reproduced from the referenced OSM northwest segment. It also follows the visible January RGB quay at this image resolution. The vessel lies beyond the fixed water-side observation strip, in an uncovered area near the channel/quay transition.",
+      "evidence": "Center lies 351.64 m from the OSM edge, 105.80 m beyond muelles and 168.74 m outside canal. The two AOIs are separated by 136.87 m.",
+      "interpretation": "This is a limited coverage footprint, not evidence requiring translation of the quay boundary. It becomes a product scope defect if v1 results are presented as complete port or maneuvering-basin coverage."
+    },
+    {
+      "id": "width-description",
+      "finding": "The configured strip mean width is 245.84 m while its method text describes an approximate 200 m observation buffer.",
+      "interpretation": "Describe the actual geometry consistently in a later documented revision. Do not tune its width to one observed vessel."
+    },
+    {
+      "id": "outside-window-overlap",
+      "finding": "Only 137.91 m², about 0.48%, of the visual localization window intersects muelles; its center is outside every current zone.",
+      "interpretation": "Keep the object contextual under v1, and keep its overlap/neighborhood outside negatives. This audit does not create an omitted in-zone label or alter metrics."
+    }
+  ],
+  "visual_findings": {
+    "rgb_alignment": "The OSM/config common edge tracks the January RGB water/port interface; no gross displacement of that edge is visible. This is a qualitative image comparison, not a measured coregistration residual.",
+    "sar_alignment": "Quay and terrestrial structures occupy the expected side of the OSM edge in VV/VH; bright waterfront returns and sidelobes have sensor-dependent extent. The offshore compact body is separated by water and exceeds one-pixel boundary uncertainty.",
+    "no_synchronous_optical_truth": "January RGB does not establish presence or identity of a February vessel."
+  },
+  "recommendation": {
+    "next_action": "Define and independently review the desired operational coverage for an AOI v2 using external geography and the fixed TRAIN imagery, including transitions between observation windows; version and freeze it before producing new comparable cohorts. Continue the next predeclared training acquisitions without replacing empty dates.",
+    "prohibited_shortcut": "No union with the observed vessel box, no translation to capture it, no calibration/test-driven geographic tuning.",
+    "v1_scope_statement": "Existing labels and metrics apply only to explicit reviewed v1 areas; they cannot certify full-port coverage."
+  },
+  "renders": [
+    "tmp/local-review/phase2/stc-quay-geometry-audit/s2-20250118-rgb-overlay.png",
+    "tmp/local-review/phase2/stc-quay-geometry-audit/s1-20250202-vv-overlay.png",
+    "tmp/local-review/phase2/stc-quay-geometry-audit/s1-20250202-vh-overlay.png",
+    "tmp/local-review/phase2/stc-quay-geometry-audit/s1-20241204-context-vv-overlay.png"
+  ],
+  "verification": {
+    "official_osm_api_http_200": true,
+    "osm_config_shared_edge_equality_verified": true,
+    "source_asset_hashes_verified": 13,
+    "both_grids_epsg_32616_10m_and_exact_canonical_alignment": true,
+    "all_current_stc_and_pbr_zones_checked_for_center_membership": true,
+    "config_sha256_unchanged_from_frozen_review": true,
+    "database_opened_read_only_in_visual_review": true,
+    "no_config_database_or_existing_labels_modified": true,
+    "no_calibration_test_imagery_opened": true
+  }
+}

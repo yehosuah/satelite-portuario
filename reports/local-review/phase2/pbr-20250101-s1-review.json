@@ -1,0 +1,1893 @@
+{
+  "schema_version": "1.1",
+  "coordinate_convention": "Pixel boxes are [xmin,ymin,xmax,ymax] at native pixel edges, upper-left origin, half-open. RGB dimensions are recorded per observation. GeoJSON uses WGS84 longitude, latitude. WGS84 vertices are the exact transform of the chosen pixel-edge corners, not an assertion of subpixel annotation accuracy.",
+  "created_at": "2026-10-21T15:29:38.500328+00:00",
+  "status": "complete_pending_consolidation",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "purpose": "Independent SAR visual reference proposals for the two prespecified TRAIN acquisitions per port; no accuracy or human-ground-truth claim.",
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "ui_access": "Registered numeric rasters and read-only SQLite; no review action saved.",
+  "selection": {
+    "split": "train",
+    "primary_ordinal_in_stratum": 1,
+    "acquisition_key": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+    "sampling_plan": "reports/local-review/phase2/sampling-plan.json",
+    "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+    "execution_order": "reports/local-review/phase2/execution-order.json",
+    "uses_predictions": false
+  },
+  "first_pass_before_proposal_geometry": {
+    "recorded_at": "2026-10-21T15:19:47.935184+00:00",
+    "canonical_render_group": "caribe-20250101-s1",
+    "canonical_grid_affine": [
+      10,
+      0,
+      322560,
+      0,
+      -10,
+      1747200
+    ],
+    "canonical_grid_dimensions": [
+      896,
+      1344
+    ],
+    "native_visible_vessel_centers_before_proposals": [],
+    "raw_panels_inspected": [
+      "tmp/local-review/phase2/caribe-20250101-s1/raw-quad-x448-y000.png"
+    ],
+    "notes": [
+      "No proposal count, geometry or score has been queried for this SAR first pass.",
+      "All nonzero target/context VV and VH cells were inspected in native 448-pixel panels, along with full zone/observable overlays. Pure nodata panels in Caribe 2025-01-01 were numerically verified all-zero rather than interpreted as sea.",
+      "Display is fixed logarithmic amplitude DN, identical across target/context for each polarization; it is not radiometrically calibrated dB.",
+      "Only a limited northeastern slice of the configured zones contains data. No unequivocal in-zone vessel found. A VV-only elongated return near the north PBR canal edge and weaker return clusters elsewhere are not enough for a firm dual-polarization vessel reference."
+    ]
+  },
+  "method": [
+    "Inspected all nonzero target VV/VH and historical VV/VH areas at native resolution before querying detections; corresponding masks and configured zones were inspected separately.",
+    "Exact grid overlaps were verified when compositing observation crops for inspection. Canonical display coordinates are transformed back to each registered observation grid for labels.",
+    "SAR renders use fixed logarithmic amplitude-DN display bounds: VV 20..1000 and VH 10..300, identical between target and context; not calibrated backscatter dB.",
+    "Accepted signatures are compact and elongated in both target polarizations over water, with coherent spatial support separated from land. Historical context supports interpretation but does not establish identity or vessel absence.",
+    "Visual boxes enclose the compact SAR response with one pixel added after focal inspection; long sidelobes are not hull extent. These are approximate localization windows, not hull segmentation or physical dimensions.",
+    "No family, length or width inferred. Ambiguous returns, berth interfaces and unresolved clutter remain outside negative scope.",
+    "Only TRAIN targets and their prespecified earlier contexts were inspected; no calibration/test imagery or predictions read."
+  ],
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+    "version": "2026-10-20-provisional-v1"
+  },
+  "context_reference": {
+    "acquisition_key": "S1A:IW:GRDH:1SDV:20241102T114558:20241102T114623:056375:06E828",
+    "captured_at": "2024-11-02T11:45:58.495704Z",
+    "days_before": 59.999948594525456,
+    "relative_orbit": 128,
+    "orbit_direction": "DESCENDING"
+  },
+  "canonical_review_grid": {
+    "crs": "EPSG:32616",
+    "affine": [
+      10.0,
+      0.0,
+      322560.0,
+      0.0,
+      -10.0,
+      1747200.0
+    ],
+    "width_px": 896,
+    "height_px": 1344,
+    "render_group": "tmp/local-review/phase2/caribe-20250101-s1",
+    "observation_pixel_transform": "Apply inverse observation affine to canonical affine pixel coordinates; do not copy canonical pixels into differently offset observation crops."
+  },
+  "consolidation_notes": [
+    "AI visual reference only; root adjudication required.",
+    "Acquisition_key is the split group shared by all zones; a duplicate physical object across zones must retain its common physical key.",
+    "Observation coverage is limited to the published valid and observable footprint; missing zones and no-data cells are not empty observations.",
+    "The registered historical context is approximately 60 days earlier with the same relative orbit and direction; target vessel identities are not transferred from it."
+  ],
+  "observations": [
+    {
+      "observation_id": "1d2b47a4-f42b-4b23-97af-a3cf3c571824",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-01-01T11:45:54.054271Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.4425326909841707,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "author": "codex-ai-reviewer-s1",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_target_context_sar_then_proposal_match",
+      "summary": "0 firmas de buque inequívocas por presencia; 0 propuesta indeterminada. Las demás regiones dudosas quedan fuera de negativos.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_pending_consolidation",
+      "source_preview": {
+        "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/preview.png",
+        "sha256": "00e520e950c187b83808c730f071e1f818f6ef5e8e4d4569f472178f9ad4a35e",
+        "width_px": 448,
+        "height_px": 896,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/historical_vh.tif",
+          "sha256": "a731679983a480b41399f161db5579a778d2eb3e7dd07a2d84ca6b079ab5a661",
+          "size_bytes": 187720
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/historical_vv.tif",
+          "sha256": "36bd03e0e9f6e411097e65a1895f8d2ca5e98c641c9fd64b80a119bfe7459a9f",
+          "size_bytes": 241520
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/vh.tif",
+          "sha256": "c25f0353344f84be0eeb7fcc2b6b6c3a975acb8bc614329668c33cb098058814",
+          "size_bytes": 185622
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/vv.tif",
+          "sha256": "2823b0b9dab9dad3bec7c2cfa3550b908791e1f0434102bc1c50394701005acb",
+          "size_bytes": 205875
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/observable.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/potentially_observable.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/valid.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/preview.png",
+          "sha256": "00e520e950c187b83808c730f071e1f818f6ef5e8e4d4569f472178f9ad4a35e",
+          "size_bytes": 99999
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/phase2/caribe-20250101-s1/zone-mask-full.png",
+      "inspection_renders": [
+        "tmp/local-review/phase2/caribe-20250101-s1/raw-quad-x448-y000.png"
+      ],
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60500772332475,
+              15.766033004532071
+            ],
+            [
+              -88.60500843380872,
+              15.766123374932375
+            ],
+            [
+              -88.60547503698079,
+              15.766119934308309
+            ],
+            [
+              -88.6054757476757,
+              15.76621030468712
+            ],
+            [
+              -88.60594235093912,
+              15.766206863043218
+            ],
+            [
+              -88.60594306184495,
+              15.766297233400527
+            ],
+            [
+              -88.60640966519969,
+              15.766293790736777
+            ],
+            [
+              -88.60641037631646,
+              15.76638416107258
+            ],
+            [
+              -88.60656714232611,
+              15.766383004088972
+            ],
+            [
+              -88.6035,
+              15.79
+            ],
+            [
+              -88.601,
+              15.79
+            ],
+            [
+              -88.60412348750867,
+              15.76594914618323
+            ],
+            [
+              -88.60454040997102,
+              15.765946073714519
+            ],
+            [
+              -88.60454112024406,
+              15.766036444136311
+            ],
+            [
+              -88.60500772332475,
+              15.766033004532071
+            ]
+          ]
+        ]
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60500772332475,
+              15.766033004532071
+            ],
+            [
+              -88.60500843380872,
+              15.766123374932375
+            ],
+            [
+              -88.60547503698079,
+              15.766119934308309
+            ],
+            [
+              -88.6054757476757,
+              15.76621030468712
+            ],
+            [
+              -88.60594235093912,
+              15.766206863043218
+            ],
+            [
+              -88.60594306184495,
+              15.766297233400527
+            ],
+            [
+              -88.60640966519969,
+              15.766293790736777
+            ],
+            [
+              -88.60641037631646,
+              15.76638416107258
+            ],
+            [
+              -88.60656714232611,
+              15.766383004088972
+            ],
+            [
+              -88.6035,
+              15.79
+            ],
+            [
+              -88.601,
+              15.79
+            ],
+            [
+              -88.60412348750867,
+              15.76594914618323
+            ],
+            [
+              -88.60454040997102,
+              15.765946073714519
+            ],
+            [
+              -88.60454112024406,
+              15.766036444136311
+            ],
+            [
+              -88.60500772332475,
+              15.766033004532071
+            ]
+          ]
+        ]
+      },
+      "visual_mask_disagreement_extensions": [],
+      "confirmed_additional_vessels": [],
+      "ui_actions_saved": false,
+      "training_split_group": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+      "sar_evidence": {
+        "units": {
+          "historical_vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "vv": "amplitude_dn"
+        },
+        "target_relative_orbit": 128,
+        "target_orbit_direction": "DESCENDING",
+        "historical_relative_orbit": 128,
+        "historical_orbit_direction": "DESCENDING",
+        "historical_captured_at": "2024-11-02T11:45:58.495704+00:00",
+        "historical_scene_id": "scene_c898baa70a9d5564278d640c",
+        "historical_acquisition_key": "S1A:IW:GRDH:1SDV:20241102T114558:20241102T114623:056375:06E828",
+        "context_days_before": 59.999948594525456,
+        "target_context_grid_aligned": true,
+        "source_products": [
+          "S1A_IW_GRDH_1SDV_20250101T114554_20250101T114619_057250_070AE5_C2B8",
+          "S1A_IW_GRDH_1SDV_20241102T114558_20241102T114623_056375_06E828_3339"
+        ],
+        "display_transform": {
+          "kind": "log_amplitude_dn",
+          "vv_bounds": [
+            20,
+            1000
+          ],
+          "vh_bounds": [
+            10,
+            300
+          ],
+          "same_target_context_scale": true,
+          "calibrated_db": false
+        }
+      },
+      "existing_detections": [],
+      "marine_scope_constraints": [],
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "pbr-20250101-s1-north-channel-edge-return",
+          "decision": "indeterminada",
+          "reason": "Retorno alargado principalmente en VV junto al extremo norte del canal de PBR; no se distingue cuerpo inequívoco en VH. Su centro queda fuera de la zona; conservar desconocida la pequeña intersección de su vecindad con el alcance.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/phase2/caribe-20250101-s1/pbr-north-edge-detail.png",
+          "pixel_box": [
+            104,
+            44,
+            141,
+            104
+          ],
+          "pixel_polygon": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  140.99999999993452,
+                  104.0
+                ],
+                [
+                  104.00000000005821,
+                  103.9999999999709
+                ],
+                [
+                  103.99999999997817,
+                  43.99999999991269
+                ],
+                [
+                  140.9999999999054,
+                  43.999999999970896
+                ],
+                [
+                  140.99999999993452,
+                  104.0
+                ]
+              ]
+            ]
+          },
+          "canonical_pixel_box": [
+            552,
+            44,
+            589,
+            104
+          ],
+          "coordinate_convention": "[xmin,ymin,xmax,ymax], native pixel edges, upper-left origin, half-open",
+          "image_path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/preview.png",
+          "numeric_vv_path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/vv.tif",
+          "numeric_vh_path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/vh.tif",
+          "image_width_px": 448,
+          "image_height_px": 896,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.60154202766304,
+                  15.788200571236395
+                ],
+                [
+                  -88.60499526789974,
+                  15.788175107270826
+                ],
+                [
+                  -88.60503796772791,
+                  15.793597318928539
+                ],
+                [
+                  -88.60158463571588,
+                  15.79362279208155
+                ],
+                [
+                  -88.60154202766304,
+                  15.788200571236395
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.60503796772791,
+            15.788175107270826,
+            -88.60154202766304,
+            15.79362279208155
+          ],
+          "overlap_automatic_observable_zone_area_m2": 44321.903,
+          "geometry_note": "The box is a localization envelope; effective exclusion geometry removes any reviewed positive neighborhoods."
+        },
+        {
+          "candidate_id": "pbr-20250101-s1-slice-edge-guard",
+          "decision": "indeterminada",
+          "reason": "Margen de dos píxeles junto al límite interno sin datos; no permite descartar objetos parcialmente recortados.",
+          "possible_omission": false,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.60454040997102,
+                  15.765946073714519
+                ],
+                [
+                  -88.60454112024406,
+                  15.766036444136311
+                ],
+                [
+                  -88.60500772332475,
+                  15.766033004532071
+                ],
+                [
+                  -88.60500843380872,
+                  15.766123374932375
+                ],
+                [
+                  -88.60547503698079,
+                  15.766119934308309
+                ],
+                [
+                  -88.6054757476757,
+                  15.76621030468712
+                ],
+                [
+                  -88.60594235093912,
+                  15.766206863043218
+                ],
+                [
+                  -88.60594306184495,
+                  15.766297233400527
+                ],
+                [
+                  -88.60640966519969,
+                  15.766293790736777
+                ],
+                [
+                  -88.60641037631646,
+                  15.76638416107258
+                ],
+                [
+                  -88.60656714232611,
+                  15.766383004088972
+                ],
+                [
+                  -88.60654364562984,
+                  15.76656392865023
+                ],
+                [
+                  -88.60622515698813,
+                  15.766566278952114
+                ],
+                [
+                  -88.60622444594469,
+                  15.766475908609582
+                ],
+                [
+                  -88.60575784213125,
+                  15.766479350915132
+                ],
+                [
+                  -88.60575713129876,
+                  15.766388980551088
+                ],
+                [
+                  -88.60529052757666,
+                  15.766392421836784
+                ],
+                [
+                  -88.60528981695509,
+                  15.766302051451243
+                ],
+                [
+                  -88.60482321332437,
+                  15.766305491717091
+                ],
+                [
+                  -88.60482250291373,
+                  15.766215121310058
+                ],
+                [
+                  -88.60435589937441,
+                  15.766218560556077
+                ],
+                [
+                  -88.60435518917471,
+                  15.766128190127555
+                ],
+                [
+                  -88.60409999083265,
+                  15.766130070588636
+                ],
+                [
+                  -88.60412348750867,
+                  15.76594914618323
+                ],
+                [
+                  -88.60454040997102,
+                  15.765946073714519
+                ]
+              ]
+            ]
+          },
+          "pixel_box": null,
+          "pixel_polygon": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  106.99999999995634,
+                  349.9999999999709
+                ],
+                [
+                  106.99999999999272,
+                  349.0000000000291
+                ],
+                [
+                  102.00000000002183,
+                  348.9999999999418
+                ],
+                [
+                  102.00000000000728,
+                  347.9999999999709
+                ],
+                [
+                  96.99999999989814,
+                  348.0
+                ],
+                [
+                  96.99999999987631,
+                  347.0000000000291
+                ],
+                [
+                  91.99999999996362,
+                  347.0
+                ],
+                [
+                  91.99999999994179,
+                  345.9999999999418
+                ],
+                [
+                  87.00000000002183,
+                  345.9999999999418
+                ],
+                [
+                  87.00000000003638,
+                  344.9999999999709
+                ],
+                [
+                  85.32013673462643,
+                  345.00000123423524
+                ],
+                [
+                  85.58716282826208,
+                  343.00000119872857
+                ],
+                [
+                  88.99999999998545,
+                  343.0
+                ],
+                [
+                  88.99999999983993,
+                  344.0
+                ],
+                [
+                  94.00000000004366,
+                  343.9999999999709
+                ],
+                [
+                  93.99999999995634,
+                  345.0
+                ],
+                [
+                  99.00000000003638,
+                  344.9999999999709
+                ],
+                [
+                  98.99999999999272,
+                  346.0
+                ],
+                [
+                  104.00000000002183,
+                  346.0
+                ],
+                [
+                  103.99999999997817,
+                  347.0000000000291
+                ],
+                [
+                  109.00000000005093,
+                  346.9999999999709
+                ],
+                [
+                  108.99999999999272,
+                  348.0
+                ],
+                [
+                  111.73463855095906,
+                  348.0000013708486
+                ],
+                [
+                  111.46763605286105,
+                  350.0000005263719
+                ],
+                [
+                  106.99999999995634,
+                  349.9999999999709
+                ]
+              ]
+            ]
+          },
+          "image_path": "data/assets/1d2b47a4-f42b-4b23-97af-a3cf3c571824/preview.png",
+          "image_width_px": 448,
+          "image_height_px": 896,
+          "evidence_render": "tmp/local-review/phase2/caribe-20250101-s1/zone-mask-full.png"
+        }
+      ],
+      "possible_omissions_indeterminate": [
+        "pbr-20250101-s1-north-channel-edge-return"
+      ],
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60373579291478,
+              15.78818439455623
+            ],
+            [
+              -88.60154202766304,
+              15.788200571236395
+            ],
+            [
+              -88.6015561676544,
+              15.79
+            ],
+            [
+              -88.601,
+              15.79
+            ],
+            [
+              -88.60412348750867,
+              15.76594914618323
+            ],
+            [
+              -88.60409999083265,
+              15.766130070588636
+            ],
+            [
+              -88.60435518917471,
+              15.766128190127555
+            ],
+            [
+              -88.60435589937441,
+              15.766218560556077
+            ],
+            [
+              -88.60482250291373,
+              15.766215121310058
+            ],
+            [
+              -88.60482321332437,
+              15.766305491717091
+            ],
+            [
+              -88.60528981695509,
+              15.766302051451243
+            ],
+            [
+              -88.60529052757666,
+              15.766392421836784
+            ],
+            [
+              -88.60575713129876,
+              15.766388980551088
+            ],
+            [
+              -88.60575784213125,
+              15.766479350915132
+            ],
+            [
+              -88.60622444594469,
+              15.766475908609582
+            ],
+            [
+              -88.60622515698813,
+              15.766566278952114
+            ],
+            [
+              -88.60654364562984,
+              15.76656392865023
+            ],
+            [
+              -88.60656714232611,
+              15.766383004088972
+            ],
+            [
+              -88.60373579291478,
+              15.78818439455623
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60154202766304,
+              15.788200571236395
+            ],
+            [
+              -88.6015561676544,
+              15.79
+            ],
+            [
+              -88.601,
+              15.79
+            ],
+            [
+              -88.60412348750867,
+              15.76594914618323
+            ],
+            [
+              -88.60409999083265,
+              15.766130070588636
+            ],
+            [
+              -88.60435518917471,
+              15.766128190127555
+            ],
+            [
+              -88.60435589937441,
+              15.766218560556077
+            ],
+            [
+              -88.60482250291373,
+              15.766215121310058
+            ],
+            [
+              -88.60482321332437,
+              15.766305491717091
+            ],
+            [
+              -88.60528981695509,
+              15.766302051451243
+            ],
+            [
+              -88.60529052757666,
+              15.766392421836784
+            ],
+            [
+              -88.60575713129876,
+              15.766388980551088
+            ],
+            [
+              -88.60575784213125,
+              15.766479350915132
+            ],
+            [
+              -88.60622444594469,
+              15.766475908609582
+            ],
+            [
+              -88.60622515698813,
+              15.766566278952114
+            ],
+            [
+              -88.60654364562984,
+              15.76656392865023
+            ],
+            [
+              -88.60656714232611,
+              15.766383004088972
+            ],
+            [
+              -88.60373579291478,
+              15.78818439455623
+            ],
+            [
+              -88.60154202766304,
+              15.788200571236395
+            ]
+          ]
+        ]
+      },
+      "coverage": {
+        "zone_area_m2": 1597740.819,
+        "zone_crop_intersection_area_m2": 1597740.819,
+        "geometric_crop_coverage_fraction": 1.0000000000000002,
+        "automatic_observable_intersection_area_m2": 707145.6,
+        "automatic_observable_zone_fraction_geometric": 0.44259093356690427,
+        "zone_center_pixels_in_crop": 15983,
+        "zone_center_pixels_automatic_observable": 7073,
+        "visually_reviewed_extension_area_m2": 0,
+        "visually_reviewed_extension_center_pixels": 0,
+        "proposed_training_scope_center_pixels": 6567,
+        "candidate_negative_center_pixels": 6567,
+        "final_training_scope_area_m2": 656591.94,
+        "final_negative_scope_area_m2": 656591.94,
+        "mask_definition": "observable.tif > 0 intersected with zone, valid.tif > 0 and raster footprint; no SAR mask override applied. STC fondeo additionally restricted to explicit verified marine scope.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ at boundaries. Catalog status and observable_fraction are retained unchanged.",
+        "geometry_note": "Final serialized WGS84 scopes share the same clipping space for exclusions and positive margins.",
+        "scope_pixel_count_method": "Final WGS84 geometry reprojected to registered native grid, center-pixel rasterization, intersected with valid pixels."
+      },
+      "negative_recommendation": {
+        "claim": "No additional unequivocal vessel found in the proposed limited negative scope; unresolved returns, shore interfaces and positive windows are excluded. Not proof of absence of small or low-contrast vessels.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true,
+        "positive_exclusion_margin_pixels": 4,
+        "representative_of_marine_anchorage": null
+      },
+      "uncertainties": [
+        "SAR speckle, sidelobes and land double-bounce can resemble targets; grayscale amplification adds no spatial information.",
+        "Amplitude DN is not calibrated backscatter; no physical interpretation of brightness or vessel dimensions.",
+        "Port polygons are provisional; full-zone count and independent scene completeness are not established.",
+        "AI reference proposals require adjudication; no human label or model-accuracy claim."
+      ],
+      "proposed_scope_render": "tmp/local-review/phase2/caribe-20250101-s1/pbr_canal-proposed-scope.png"
+    },
+    {
+      "observation_id": "51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-01-01T11:45:54.054271Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.01943566327127971,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "author": "codex-ai-reviewer-s1",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_target_context_sar_then_proposal_match",
+      "summary": "0 firmas de buque inequívocas por presencia; 0 propuesta indeterminada. Las demás regiones dudosas quedan fuera de negativos.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_pending_consolidation",
+      "source_preview": {
+        "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/preview.png",
+        "sha256": "00e520e950c187b83808c730f071e1f818f6ef5e8e4d4569f472178f9ad4a35e",
+        "width_px": 448,
+        "height_px": 896,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/historical_vh.tif",
+          "sha256": "a731679983a480b41399f161db5579a778d2eb3e7dd07a2d84ca6b079ab5a661",
+          "size_bytes": 187720
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/historical_vv.tif",
+          "sha256": "36bd03e0e9f6e411097e65a1895f8d2ca5e98c641c9fd64b80a119bfe7459a9f",
+          "size_bytes": 241520
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/vh.tif",
+          "sha256": "c25f0353344f84be0eeb7fcc2b6b6c3a975acb8bc614329668c33cb098058814",
+          "size_bytes": 185622
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/vv.tif",
+          "sha256": "2823b0b9dab9dad3bec7c2cfa3550b908791e1f0434102bc1c50394701005acb",
+          "size_bytes": 205875
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/observable.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/potentially_observable.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/valid.tif",
+          "sha256": "51fb02982682426c0805236503b369bbf4aeaa993b98707635028e85ee9c8d11",
+          "size_bytes": 2732
+        },
+        {
+          "path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/preview.png",
+          "sha256": "00e520e950c187b83808c730f071e1f818f6ef5e8e4d4569f472178f9ad4a35e",
+          "size_bytes": 99999
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/phase2/caribe-20250101-s1/zone-mask-full.png",
+      "inspection_renders": [
+        "tmp/local-review/phase2/caribe-20250101-s1/raw-quad-x448-y000.png"
+      ],
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.59986729306766,
+              15.765076708270474
+            ],
+            [
+              -88.59986800123153,
+              15.765167078906831
+            ],
+            [
+              -88.60033460339659,
+              15.765163649500229
+            ],
+            [
+              -88.60033531177136,
+              15.765254020115156
+            ],
+            [
+              -88.60080191402814,
+              15.765250589688844
+            ],
+            [
+              -88.60080262261383,
+              15.765340960282336
+            ],
+            [
+              -88.60126922496227,
+              15.765337528836293
+            ],
+            [
+              -88.60126993375886,
+              15.765427899408346
+            ],
+            [
+              -88.60173653619896,
+              15.765424466942566
+            ],
+            [
+              -88.60173724520646,
+              15.765514837493171
+            ],
+            [
+              -88.60220384773815,
+              15.765511404007645
+            ],
+            [
+              -88.60220455695658,
+              15.765601774536792
+            ],
+            [
+              -88.60267115957987,
+              15.765598340031504
+            ],
+            [
+              -88.6026718690092,
+              15.765688710539205
+            ],
+            [
+              -88.60313847172404,
+              15.765685275014146
+            ],
+            [
+              -88.6031391813643,
+              15.765775645500376
+            ],
+            [
+              -88.60360578417063,
+              15.76577220895554
+            ],
+            [
+              -88.60360649402183,
+              15.765862579420295
+            ],
+            [
+              -88.60407309691963,
+              15.76585914185567
+            ],
+            [
+              -88.60407380698176,
+              15.765949512298944
+            ],
+            [
+              -88.60454040997102,
+              15.765946073714519
+            ],
+            [
+              -88.60454083380867,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.764992704025602
+            ],
+            [
+              -88.59939998304138,
+              15.764989765999589
+            ],
+            [
+              -88.59940069099434,
+              15.765080136657376
+            ],
+            [
+              -88.59986729306766,
+              15.765076708270474
+            ]
+          ]
+        ]
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.59986729306766,
+              15.765076708270474
+            ],
+            [
+              -88.59986800123153,
+              15.765167078906831
+            ],
+            [
+              -88.60033460339659,
+              15.765163649500229
+            ],
+            [
+              -88.60033531177136,
+              15.765254020115156
+            ],
+            [
+              -88.60080191402814,
+              15.765250589688844
+            ],
+            [
+              -88.60080262261383,
+              15.765340960282336
+            ],
+            [
+              -88.60126922496227,
+              15.765337528836293
+            ],
+            [
+              -88.60126993375886,
+              15.765427899408346
+            ],
+            [
+              -88.60173653619896,
+              15.765424466942566
+            ],
+            [
+              -88.60173724520646,
+              15.765514837493171
+            ],
+            [
+              -88.60220384773815,
+              15.765511404007645
+            ],
+            [
+              -88.60220455695658,
+              15.765601774536792
+            ],
+            [
+              -88.60267115957987,
+              15.765598340031504
+            ],
+            [
+              -88.6026718690092,
+              15.765688710539205
+            ],
+            [
+              -88.60313847172404,
+              15.765685275014146
+            ],
+            [
+              -88.6031391813643,
+              15.765775645500376
+            ],
+            [
+              -88.60360578417063,
+              15.76577220895554
+            ],
+            [
+              -88.60360649402183,
+              15.765862579420295
+            ],
+            [
+              -88.60407309691963,
+              15.76585914185567
+            ],
+            [
+              -88.60407380698176,
+              15.765949512298944
+            ],
+            [
+              -88.60454040997102,
+              15.765946073714519
+            ],
+            [
+              -88.60454083380867,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.764992704025602
+            ],
+            [
+              -88.59939998304138,
+              15.764989765999589
+            ],
+            [
+              -88.59940069099434,
+              15.765080136657376
+            ],
+            [
+              -88.59986729306766,
+              15.765076708270474
+            ]
+          ]
+        ]
+      },
+      "visual_mask_disagreement_extensions": [],
+      "confirmed_additional_vessels": [],
+      "ui_actions_saved": false,
+      "training_split_group": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+      "sar_evidence": {
+        "units": {
+          "historical_vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "vv": "amplitude_dn"
+        },
+        "target_relative_orbit": 128,
+        "target_orbit_direction": "DESCENDING",
+        "historical_relative_orbit": 128,
+        "historical_orbit_direction": "DESCENDING",
+        "historical_captured_at": "2024-11-02T11:45:58.495704+00:00",
+        "historical_scene_id": "scene_c898baa70a9d5564278d640c",
+        "historical_acquisition_key": "S1A:IW:GRDH:1SDV:20241102T114558:20241102T114623:056375:06E828",
+        "context_days_before": 59.999948594525456,
+        "target_context_grid_aligned": true,
+        "source_products": [
+          "S1A_IW_GRDH_1SDV_20250101T114554_20250101T114619_057250_070AE5_C2B8",
+          "S1A_IW_GRDH_1SDV_20241102T114558_20241102T114623_056375_06E828_3339"
+        ],
+        "display_transform": {
+          "kind": "log_amplitude_dn",
+          "vv_bounds": [
+            20,
+            1000
+          ],
+          "vh_bounds": [
+            10,
+            300
+          ],
+          "same_target_context_scale": true,
+          "calibrated_db": false
+        }
+      },
+      "existing_detections": [],
+      "marine_scope_constraints": [],
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "pbr-20250101-s1-slice-edge-guard",
+          "decision": "indeterminada",
+          "reason": "Margen de dos píxeles junto al límite interno sin datos; no permite descartar objetos parcialmente recortados.",
+          "possible_omission": false,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.59939998304138,
+                  15.764989765999589
+                ],
+                [
+                  -88.59940069099434,
+                  15.765080136657376
+                ],
+                [
+                  -88.59986729306766,
+                  15.765076708270474
+                ],
+                [
+                  -88.59986800123153,
+                  15.765167078906831
+                ],
+                [
+                  -88.60033460339659,
+                  15.765163649500229
+                ],
+                [
+                  -88.60033531177136,
+                  15.765254020115156
+                ],
+                [
+                  -88.60080191402814,
+                  15.765250589688844
+                ],
+                [
+                  -88.60080262261383,
+                  15.765340960282336
+                ],
+                [
+                  -88.60126922496227,
+                  15.765337528836293
+                ],
+                [
+                  -88.60126993375886,
+                  15.765427899408346
+                ],
+                [
+                  -88.60173653619896,
+                  15.765424466942566
+                ],
+                [
+                  -88.60173724520646,
+                  15.765514837493171
+                ],
+                [
+                  -88.60220384773815,
+                  15.765511404007645
+                ],
+                [
+                  -88.60220455695658,
+                  15.765601774536792
+                ],
+                [
+                  -88.60267115957987,
+                  15.765598340031504
+                ],
+                [
+                  -88.6026718690092,
+                  15.765688710539205
+                ],
+                [
+                  -88.60313847172404,
+                  15.765685275014146
+                ],
+                [
+                  -88.6031391813643,
+                  15.765775645500376
+                ],
+                [
+                  -88.60360578417063,
+                  15.76577220895554
+                ],
+                [
+                  -88.60360649402183,
+                  15.765862579420295
+                ],
+                [
+                  -88.60407309691963,
+                  15.76585914185567
+                ],
+                [
+                  -88.60407380698176,
+                  15.765949512298944
+                ],
+                [
+                  -88.60454040997102,
+                  15.765946073714519
+                ],
+                [
+                  -88.60454083380867,
+                  15.766
+                ],
+                [
+                  -88.60342092134219,
+                  15.766
+                ],
+                [
+                  -88.60342056260379,
+                  15.765954324638646
+                ],
+                [
+                  -88.60295395933885,
+                  15.765957760825225
+                ],
+                [
+                  -88.60295324977193,
+                  15.76586739033228
+                ],
+                [
+                  -88.60248664659854,
+                  15.765870825499066
+                ],
+                [
+                  -88.60248593724253,
+                  15.765780454984668
+                ],
+                [
+                  -88.6020193341607,
+                  15.765783889131669
+                ],
+                [
+                  -88.60201862501562,
+                  15.765693518595805
+                ],
+                [
+                  -88.60155202202539,
+                  15.765696951723038
+                ],
+                [
+                  -88.60155131309122,
+                  15.765606581165732
+                ],
+                [
+                  -88.60108471019261,
+                  15.765610013273209
+                ],
+                [
+                  -88.60108400146936,
+                  15.765519642694452
+                ],
+                [
+                  -88.60061739866241,
+                  15.76552307378218
+                ],
+                [
+                  -88.60061669015008,
+                  15.765432703181983
+                ],
+                [
+                  -88.60015008743481,
+                  15.76543613324998
+                ],
+                [
+                  -88.6001493791334,
+                  15.765345762628353
+                ],
+                [
+                  -88.59968277650985,
+                  15.765349191676625
+                ],
+                [
+                  -88.59968206841934,
+                  15.765258821033564
+                ],
+                [
+                  -88.59921546588755,
+                  15.765262249062124
+                ],
+                [
+                  -88.59921475800795,
+                  15.765171878397648
+                ],
+                [
+                  -88.599,
+                  15.765173455709578
+                ],
+                [
+                  -88.599,
+                  15.764992704025602
+                ],
+                [
+                  -88.59939998304138,
+                  15.764989765999589
+                ]
+              ]
+            ]
+          },
+          "pixel_box": null,
+          "pixel_polygon": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  162.0,
+                  361.0000000000291
+                ],
+                [
+                  161.9999999999054,
+                  359.9999999999709
+                ],
+                [
+                  156.99999999997817,
+                  360.0
+                ],
+                [
+                  156.9999999999709,
+                  359.0000000000582
+                ],
+                [
+                  152.0000000000582,
+                  359.0
+                ],
+                [
+                  152.00000000001455,
+                  358.0
+                ],
+                [
+                  146.99999999991996,
+                  357.9999999999709
+                ],
+                [
+                  146.9999999998763,
+                  357.0
+                ],
+                [
+                  142.00000000003638,
+                  357.0
+                ],
+                [
+                  142.0,
+                  356.0
+                ],
+                [
+                  136.99999999996362,
+                  356.0
+                ],
+                [
+                  136.99999999997817,
+                  355.0000000000291
+                ],
+                [
+                  132.0000000000582,
+                  355.0
+                ],
+                [
+                  132.00000000001455,
+                  354.0
+                ],
+                [
+                  126.99999999986176,
+                  354.0
+                ],
+                [
+                  127.00000000005093,
+                  352.9999999999709
+                ],
+                [
+                  121.99999999987631,
+                  353.0
+                ],
+                [
+                  121.99999999991996,
+                  352.0
+                ],
+                [
+                  117.00000000003638,
+                  352.0
+                ],
+                [
+                  116.99999999982538,
+                  351.0
+                ],
+                [
+                  112.00000000005093,
+                  351.0
+                ],
+                [
+                  111.99999999986903,
+                  349.9999999999709
+                ],
+                [
+                  106.99999999995634,
+                  349.9999999999709
+                ],
+                [
+                  106.9999999940992,
+                  349.4032750503393
+                ],
+                [
+                  118.99999999377178,
+                  349.494576485944
+                ],
+                [
+                  118.99999999996362,
+                  350.0000000000291
+                ],
+                [
+                  124.0000000000291,
+                  350.0
+                ],
+                [
+                  124.00000000002183,
+                  351.0
+                ],
+                [
+                  128.99999999988358,
+                  351.0
+                ],
+                [
+                  129.00000000003638,
+                  352.0
+                ],
+                [
+                  133.99999999989814,
+                  352.0000000000291
+                ],
+                [
+                  134.00000000002183,
+                  353.0
+                ],
+                [
+                  138.99999999982538,
+                  353.0
+                ],
+                [
+                  139.00000000005093,
+                  354.0
+                ],
+                [
+                  143.9999999998763,
+                  354.0
+                ],
+                [
+                  144.00000000003638,
+                  354.9999999999709
+                ],
+                [
+                  148.99999999995634,
+                  355.0
+                ],
+                [
+                  149.00000000002183,
+                  356.0
+                ],
+                [
+                  153.99999999996362,
+                  355.9999999999709
+                ],
+                [
+                  153.99999999991996,
+                  357.0
+                ],
+                [
+                  158.99999999996362,
+                  356.9999999999418
+                ],
+                [
+                  159.00000000005093,
+                  358.0000000000291
+                ],
+                [
+                  164.00000000001455,
+                  358.0
+                ],
+                [
+                  164.0000000000582,
+                  359.0000000000582
+                ],
+                [
+                  166.301295522695,
+                  359.00000137425377
+                ],
+                [
+                  166.28612676032208,
+                  361.0000006769842
+                ],
+                [
+                  162.0,
+                  361.0000000000291
+                ]
+              ]
+            ]
+          },
+          "image_path": "data/assets/51ac65dd-5880-4d0b-8bc1-b3f7c96ddf44/preview.png",
+          "image_width_px": 448,
+          "image_height_px": 896,
+          "evidence_render": "tmp/local-review/phase2/caribe-20250101-s1/zone-mask-full.png"
+        }
+      ],
+      "possible_omissions_indeterminate": [],
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.765173455709578
+            ],
+            [
+              -88.59921475800795,
+              15.765171878397648
+            ],
+            [
+              -88.59921546588755,
+              15.765262249062124
+            ],
+            [
+              -88.59968206841934,
+              15.765258821033564
+            ],
+            [
+              -88.59968277650985,
+              15.765349191676625
+            ],
+            [
+              -88.6001493791334,
+              15.765345762628353
+            ],
+            [
+              -88.60015008743481,
+              15.76543613324998
+            ],
+            [
+              -88.60061669015008,
+              15.765432703181983
+            ],
+            [
+              -88.60061739866241,
+              15.76552307378218
+            ],
+            [
+              -88.60108400146936,
+              15.765519642694452
+            ],
+            [
+              -88.60108471019261,
+              15.765610013273209
+            ],
+            [
+              -88.60155131309122,
+              15.765606581165732
+            ],
+            [
+              -88.60155202202539,
+              15.765696951723038
+            ],
+            [
+              -88.60201862501562,
+              15.765693518595805
+            ],
+            [
+              -88.6020193341607,
+              15.765783889131669
+            ],
+            [
+              -88.60248593724253,
+              15.765780454984668
+            ],
+            [
+              -88.60248664659854,
+              15.765870825499066
+            ],
+            [
+              -88.60295324977193,
+              15.76586739033228
+            ],
+            [
+              -88.60295395933885,
+              15.765957760825225
+            ],
+            [
+              -88.60342056260379,
+              15.765954324638646
+            ],
+            [
+              -88.60342092134219,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.599,
+              15.765173455709578
+            ],
+            [
+              -88.59921475800795,
+              15.765171878397648
+            ],
+            [
+              -88.59921546588755,
+              15.765262249062124
+            ],
+            [
+              -88.59968206841934,
+              15.765258821033564
+            ],
+            [
+              -88.59968277650985,
+              15.765349191676625
+            ],
+            [
+              -88.6001493791334,
+              15.765345762628353
+            ],
+            [
+              -88.60015008743481,
+              15.76543613324998
+            ],
+            [
+              -88.60061669015008,
+              15.765432703181983
+            ],
+            [
+              -88.60061739866241,
+              15.76552307378218
+            ],
+            [
+              -88.60108400146936,
+              15.765519642694452
+            ],
+            [
+              -88.60108471019261,
+              15.765610013273209
+            ],
+            [
+              -88.60155131309122,
+              15.765606581165732
+            ],
+            [
+              -88.60155202202539,
+              15.765696951723038
+            ],
+            [
+              -88.60201862501562,
+              15.765693518595805
+            ],
+            [
+              -88.6020193341607,
+              15.765783889131669
+            ],
+            [
+              -88.60248593724253,
+              15.765780454984668
+            ],
+            [
+              -88.60248664659854,
+              15.765870825499066
+            ],
+            [
+              -88.60295324977193,
+              15.76586739033228
+            ],
+            [
+              -88.60295395933885,
+              15.765957760825225
+            ],
+            [
+              -88.60342056260379,
+              15.765954324638646
+            ],
+            [
+              -88.60342092134219,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.765173455709578
+            ]
+          ]
+        ]
+      },
+      "coverage": {
+        "zone_area_m2": 1707464.345,
+        "zone_crop_intersection_area_m2": 1707464.345,
+        "geometric_crop_coverage_fraction": 1.0,
+        "automatic_observable_intersection_area_m2": 34464.32,
+        "automatic_observable_zone_fraction_geometric": 0.020184503611710296,
+        "zone_center_pixels_in_crop": 17082,
+        "zone_center_pixels_automatic_observable": 332,
+        "visually_reviewed_extension_area_m2": 0,
+        "visually_reviewed_extension_center_pixels": 0,
+        "proposed_training_scope_center_pixels": 199,
+        "candidate_negative_center_pixels": 199,
+        "final_training_scope_area_m2": 21643.915,
+        "final_negative_scope_area_m2": 21643.915,
+        "mask_definition": "observable.tif > 0 intersected with zone, valid.tif > 0 and raster footprint; no SAR mask override applied. STC fondeo additionally restricted to explicit verified marine scope.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ at boundaries. Catalog status and observable_fraction are retained unchanged.",
+        "geometry_note": "Final serialized WGS84 scopes share the same clipping space for exclusions and positive margins.",
+        "scope_pixel_count_method": "Final WGS84 geometry reprojected to registered native grid, center-pixel rasterization, intersected with valid pixels."
+      },
+      "negative_recommendation": {
+        "claim": "No additional unequivocal vessel found in the proposed limited negative scope; unresolved returns, shore interfaces and positive windows are excluded. Not proof of absence of small or low-contrast vessels.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true,
+        "positive_exclusion_margin_pixels": 4,
+        "representative_of_marine_anchorage": null
+      },
+      "uncertainties": [
+        "SAR speckle, sidelobes and land double-bounce can resemble targets; grayscale amplification adds no spatial information.",
+        "Amplitude DN is not calibrated backscatter; no physical interpretation of brightness or vessel dimensions.",
+        "Port polygons are provisional; full-zone count and independent scene completeness are not established.",
+        "AI reference proposals require adjudication; no human label or model-accuracy claim."
+      ],
+      "proposed_scope_render": "tmp/local-review/phase2/caribe-20250101-s1/pbr_fondeo-proposed-scope.png"
+    }
+  ],
+  "context_only_objects_outside_observation_zones": [],
+  "summary": {
+    "observations_reviewed": 2,
+    "unique_acquisitions": 1,
+    "existing_detections_proposed_accept": 0,
+    "existing_detections_proposed_reject": 0,
+    "existing_detections_indeterminate": 0,
+    "unique_physical_vessels_corresponding_to_accepts": 0,
+    "confirmed_additional_in_zone_vessels": 0,
+    "possible_omissions_must_remain_unknown": true,
+    "mask_disagreement_windows": 0,
+    "no_validation_or_accuracy_claim": true,
+    "published_zones_only": true,
+    "not_a_full_port_empty_reference": true
+  },
+  "verification": {
+    "registered_asset_hashes_verified": 16,
+    "raster_grids_and_preview_dimensions_verified": true,
+    "target_context_orbit_and_direction_match_verified": true,
+    "geometries_valid": true,
+    "scope_containment_and_exclusions_verified": true,
+    "positive_scope_coverage_verified": true,
+    "no_database_writes": true,
+    "all_physical_attributes_null": true,
+    "no_model_scores_used_for_visual_decisions": true,
+    "all_positive_native_windows_visually_inspected": true
+  }
+}

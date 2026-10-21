@@ -1,0 +1,65 @@
+{
+  "checks": "metadata and integrity only; no model inference or training",
+  "primary_counts": {
+    "train": 48,
+    "calibration": 48,
+    "test": 56
+  },
+  "prioritized_acquisitions": 153,
+  "cross_split_target_context_intersections": [],
+  "first_three_stages": [
+    {
+      "round": 1,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+        "S1A:IW:GRDH:1SDV:20250102T001418:20250102T001443:057258:070B29",
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+        "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+        "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250118T115449:20250118T115511:057498:0714B3",
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+        "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F"
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 1,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251003T115326:20251003T115402:004397:008B68",
+        "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1",
+        "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20251009T115446:20251009T115508:061348:07A7B0",
+        "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+        "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928"
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 1,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A",
+        "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260407T115437:20260407T115459:063973:080C45",
+        "S1C:IW:GRDH:1SDV:20260413T115323:20260413T115359:007197:00E961",
+        "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C"
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    }
+  ],
+  "protocol1_sha256": "003623ec7d2b352a21a418c1c1338183985895ddffb63b6652e242cafb755d8d",
+  "script1_sha256": "91ddef3f0e721eb5b37d1323ef34279daf2ea517072cfe45b443d0b66fe9918b",
+  "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+  "phase2_protocol_sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c",
+  "priority_file_sha256": "0d2cd5f5b02121e62808abe1ec9525cc17075b9da41e2d90248c2b73711ee319",
+  "initial_proposed_protocol_sha256": "6aa650ac7033f35d2d7e47bce4f646e64a1a36c48876cb3a809c9d121ebf2a9c",
+  "protocol_status": "accepted_by_coordinator_before_phase2_training_calibration_or_test"
+}

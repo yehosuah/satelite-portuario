@@ -1,0 +1,343 @@
+{
+  "kind": "reserve_activation",
+  "author": "Codex (AI)",
+  "created_at": "2026-10-21T15:58:12.753768Z",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_versions_preserved": {
+    "reports/local-review/phase2/execution-order.json": "d9eaa2f2008ddc5f6b44acee32dbb58ece17ee7043c1177e3b975d5ac2723d70",
+    "reports/local-review/phase2/execution-order-v2.json": "2e1095ff54aea6d43122a7d41a4e29dbe392ee9fd7bf2e08953c9b8f40c96ef0",
+    "reports/local-review/phase2/reserve-caribe-20250108-activation.json": "8eeacb35bdb152c3cc441d486bebfe94b0b22efd5f88d157ab75a8bfaaa9e655"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v3.json",
+    "sha256": "b66266ac36197fbb04d19feeeb31af12c34674ae2c026b6039fffe64b89c1d14"
+  },
+  "activation": {
+    "split": "train",
+    "port_ids": [
+      "stc",
+      "pbr"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+    "failed_prior_reserve_acquisition_keys": [
+      "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "S2B:MSIL1C:20250108T162549:R040:T16PCC"
+    ],
+    "reserve_acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+    "reserve_rank": 4,
+    "reason": "All three earlier chronological candidates have zero observable area in all eight zones each. Jan 8 completed its recoverable retry before this activation; no earlier candidate was skipped.",
+    "evidence": "reports/local-review/phase2/reserve-caribe-20250110-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "quality_evidence": [
+    {
+      "observation_id": "89a52dec-339c-4fc4-9491-d6b35ebdf7c6",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "0e179f52-c22e-409a-8eea-2e2e67821bc5",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "4ad1eafd-8b4a-400e-a089-826325c363e0",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "cc9d18f4-1a83-4c29-affb-23d3f229cb65",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "08ac02ac-08a9-4364-be6c-0d525e88a4b9",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "420c3b5b-3f11-4ba7-929c-084a3fd50793",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "f9c15ebd-00d3-49ea-8477-f446ea915494",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "b6e2d66a-8676-473f-8682-affac5e84692",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-03T16:27:01.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "b4cf7e0a-0a43-4b15-9b32-7eb649be43b1",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "4fcd5340-b78e-4fc6-b802-0104bd28e795",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "3e3d7fa5-a578-441e-ad0e-b70ecbafbbe0",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "5a07b79a-26cd-4483-95f9-d43728993c0d",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "a2e39519-6b49-4d54-9dd5-9e20f29a0416",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "42803c1b-4957-4ceb-88aa-2799bbf07715",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "9cf4dbd7-f9e2-4ff4-b894-8b0b04a29a03",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "a889342d-f9c2-43d8-9cc3-a4dbbd8157d9",
+      "acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-05T16:15:59.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "94c54e53-755b-458a-8199-ca43fc1a18f8",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "1e76008c-4316-4722-85ab-f94dfef806f6",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "d646df0f-579e-4a19-8ac3-63f55ef93681",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "76038a2e-719e-4db9-91fd-3ce56fdb3a37",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "7b1b0246-471b-4685-ab78-9a42a3e771ba",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "651cd0d1-1b13-4cc3-b713-cb927af5ce0e",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "8c408d23-ee20-43cf-94cb-4bf901251852",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "68890c53-ddfa-4639-9170-10b40e73588c",
+      "acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-08T16:25:49.024000Z",
+      "recipe_version": "ai2-s2-v1:07ecebb841a960fb",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    }
+  ],
+  "candidate_processing_state_before_activation": {
+    "acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+    "status": "pending",
+    "attempts": 0,
+    "error_code": null,
+    "error_message": null,
+    "not_before": "2026-10-21T14:33:56.387095Z"
+  },
+  "earlier_consolidated_plans": {
+    "reports/local-review/phase2/prq-20250103-s2-consolidated.json": "96a01749a85b5ff17aee157b76c80def4640ec8d2b5b67f7d156a1c861c16cc6",
+    "reports/local-review/phase2/caribe-20250118-s2-consolidated.json": "57e83e7072b671b6a4c70f47761a2de2300ddf9b29c1117f0b1bc7732514b1e2",
+    "reports/local-review/phase2/s1-january-consolidated.json": "a22d23946f04e0cdcd3adbe2c27f7d11ae1747b7bb3cbe1e2773c20c0242d3fb"
+  },
+  "priorities_before_sha256": "6d784ef950f092d9957fb3ccc921a5d294e8ba45c327b3ef0045a5a90709d19a",
+  "priorities_after_sha256": "d6ca3e2e311eacce27871d889eeca8a35d99d38598b43c71f69c9dab7845a9fe",
+  "used_predictions_or_scores": false,
+  "changes": "Immutable order v3 plus operational priority only; no catalog, review, frozen dataset, earlier order, sampling protocol or ledger writes."
+}

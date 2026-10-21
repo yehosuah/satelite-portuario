@@ -20,13 +20,17 @@ Las fechas se muestran en UTC. Radar y óptico se evalúan por separado. No extr
 
 La interfaz permite seleccionar, añadir, mover y redibujar geometrías sobre imágenes con referencia WGS84. Los atajos son `j`/`k` para navegar, `a` para aceptar, `r` para rechazar y `Esc` para salir de la herramienta. Cada acción se guarda con autor y fecha. Una revisión obsoleta recibe 409; actualiza y compara antes de aplicar una nueva corrección.
 
-El estado «Revisado» registra una decisión humana. No certifica identidad, tipo comercial o dimensiones. El score es una salida del modelo y una anotación manual carece de score. Conserva rechazos para analizar el error, aunque se oculten de las consultas ordinarias.
+El estado «Revisado» registra una decisión atribuida al autor del historial. Antes de guardar, selecciona «Persona» o «Asistente de IA»; la procedencia conserva `human_visual_review` o `ai_visual_review` y el visor identifica las observaciones revisadas por IA. La revisión de IA debe declararse como tal en los datasets y las métricas; no acredita una revisión humana independiente. Ninguno de estos estados certifica identidad, tipo comercial o dimensiones. El score es una salida del modelo y una anotación manual carece de score. Conserva rechazos para analizar el error, aunque se oculten de las consultas ordinarias.
 
 Eslora y manga físicas requieren una referencia verificable y correspondencia con el objeto observado. El tamaño de la caja de píxeles no basta. Familia admite carga, tanquero, pasajeros, remolcador, pesquero y otros; usa indeterminado fuera del alcance. Registra procedencia por cada campo, con clase de fuente, referencia y fecha cuando corresponda. Solo los campos respaldados contribuyen al entrenamiento de atributos.
 
 ## Cerrar y separar escenas
 
-Registra «escena revisada» después de buscar omisiones en toda el área observable y resolver todas las propuestas provisionales. La exportación del dataset exige esa marca; aceptar únicamente lo que detectó el modelo no permite medir recall. Escenas sin buques también son ejemplos negativos útiles si están completas y observables.
+Delimita el área que permite decidir usando `reviewed_area` en la revisión de observación de la [API](api.md). Debe ser un polígono o multipolígono WGS84 dentro de la zona configurada; puede excluir sectores dudosos mediante huecos. El visor muestra esta área en verde y la zona configurada en amarillo. Los sectores excluidos no se etiquetan como ausencia de buques. Si no se especifica un área, el exportador usa la zona configurada completa; no uses ese valor por defecto cuando solo hayas revisado un recorte.
+
+Registra «escena revisada» (`scene_complete: true`) después de buscar omisiones en toda el área declarada y resolver las propuestas provisionales que contiene. Cuando existe `reviewed_area`, la completitud se refiere a esa área, no a toda la zona portuaria. La exportación bloquea también un objeto provisional cuyo centroide quede fuera pero cuya geometría invada el área con superficie positiva; resuélvelo o excluye toda su huella dudosa. Un contacto de borde sin superficie no bloquea si el centroide queda fuera. Para objetos resueltos, la pertenencia al área se determina por el centroide.
+
+La exportación exige esa marca de completitud; aceptar únicamente lo que detectó el modelo no permite medir recall. Un área sin buques es un ejemplo negativo útil solo si se revisó completa y era observable. Conserva el resto de la escena como no etiquetado.
 
 Asigna las particiones `train`, `calibration` y `test` mediante revisión de observación en la [API](api.md), indicando `dataset_split` y `split_groups`. Planifica las particiones antes del entrenamiento. Mantén una misma adquisición y sus representaciones, recortes relacionados, pares temporales y eventos correlacionados en una sola partición. Usa `split_groups` para expresar relaciones adicionales que la clave de adquisición no detecta.
 
@@ -40,7 +44,7 @@ Usa pares ópticos comparables, corregistrados y con observabilidad suficiente, 
 
 Un candidato necesita una referencia sin cambio y una observación posterior con cambio. La persistencia exige otra adquisición óptica distinta y válida con el cambio presente. Nubes, datos inválidos o radar no confirman ni revierten el evento. Una observación óptica válida posterior sin el cambio puede registrar reversión. Persistente no significa permanente y el sistema no atribuye la causa.
 
-La interfaz muestra antes/después solo cuando existen activos explícitamente vinculados. Aceptar una propuesta registra revisión humana; la persistencia se calcula con la evidencia temporal. Conserva eventos relacionados en la misma partición.
+La interfaz muestra antes/después solo cuando existen activos explícitamente vinculados. Aceptar una propuesta registra una revisión con autor y tipo de revisor; la persistencia se calcula con la evidencia temporal. Conserva eventos relacionados en la misma partición.
 
 ## Criterio de publicación
 

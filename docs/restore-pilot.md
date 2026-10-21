@@ -1,8 +1,8 @@
 # Restaurar una copia completa del piloto
 
-El snapshot experimental de los tres puertos está completo en el equipo de construcción, en `dist/satelite-portuario-pilot-v0.1.0.tar.xz`. Contiene catálogo, 22 observaciones de zonas, evidencia numérica y cuatro detectores: dos públicos y dos derivados de pruebas supervisadas con muestras públicas. No incluye el histórico completo ni modelos locales validados.
+El [snapshot experimental de los tres puertos](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) está publicado y también se conserva en el equipo de construcción, en `dist/satelite-portuario-pilot-v0.1.0.tar.xz`. Contiene catálogo, 22 observaciones de zonas, evidencia numérica y cuatro detectores: dos públicos y dos derivados de pruebas supervisadas con muestras públicas. No incluye las revisiones de IA posteriores, el histórico completo ni modelos locales validados.
 
-La transferencia a GitHub quedó detenida por fallos TCP/TLS: solo 11 de las 34 partes del snapshot tienen recepción verificada. La versión `v0.1.0` sigue como borrador; sus archivos parciales no permiten restaurar el piloto y no están disponibles como descarga pública. El [estado de transferencia](../reports/pilot/release-upload-status.json) registra lo confirmado y lo pendiente. El código puede instalarse desde este repositorio y los scripts del [piloto](../reports/pilot/inference.md) documentan cómo obtener las entradas públicas.
+La transferencia a GitHub se completó el 21 de octubre de 2026. Se verificaron las 34 partes y los cinco archivos de software y checksums por tamaño y SHA256; la descarga anónima de los manifiestos de hashes también pasó. La [verificación de publicación](../reports/pilot/release-upload-status.json) conserva los detalles y enlaza el registro de la interrupción anterior. El código puede instalarse desde este repositorio y los scripts del [piloto](../reports/pilot/inference.md) documentan cómo obtener las entradas públicas.
 
 El snapshot ocupa 836,751,228 bytes comprimidos. La extracción requiere aproximadamente 513 MiB de RAM. El contenido ocupa unos 1.69 GB por copia; considera también la copia restaurada y la reserva de disco configurada para el trabajador.
 
@@ -13,7 +13,7 @@ shasum -a 256 -c BUNDLE.sha256
 tar -xJf satelite-portuario-pilot-v0.1.0.tar.xz
 ```
 
-También se prepararon 34 partes de hasta 25 MB para reanudar la transferencia. Solo cuando dispongas de todas (`chunk000` a `chunk033`), `CHUNKS.sha256` y `BUNDLE.sha256`, conserva los nombres originales y ejecuta:
+La versión pública distribuye 34 partes de hasta 25 MB. Descarga todas (`chunk000` a `chunk033`), `CHUNKS.sha256` y `BUNDLE.sha256`, conserva los nombres originales y ejecuta:
 
 ```sh
 shasum -a 256 -c CHUNKS.sha256

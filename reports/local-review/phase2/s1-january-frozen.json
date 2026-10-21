@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-10-21T15:44:02.646605Z",
+  "scope": "Training shard, not a full frozen phase2 experiment; no unambiguous S1 positives in STC/PBR yet.",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "source": {
+    "path": "data/datasets/phase2-reviews/s1-january-v1/source",
+    "sha256": "51c521ac34073207657892e20e580ec4a160307c62f6f887a3ec32e226b27147",
+    "samples": 18
+  },
+  "train_crops": {
+    "path": "data/datasets/phase2-reviews/s1-january-v1/train-crops",
+    "sha256": "41d7f64a9531be73d0e4400d8e0087270957b2b1531d6d9b1480ec25e3063a46",
+    "samples": 42
+  },
+  "unique_objects": 30,
+  "zone_label_instances": 31,
+  "target_acquisitions": 4,
+  "applied_review_sha256": "d6d849a60c157c6e56aa30a27f1c303262cd4893cc436eb74015a02c78af1184",
+  "derivation_repair": "Initial attempt rejected a GeometryCollection from WGS84 round-trip boundary contacts. Regression reproduces real partial-swath scope; fix retains polygonal area without widening or resampling. Source immutable and no failed crop published."
+}

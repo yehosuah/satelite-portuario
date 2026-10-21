@@ -1,0 +1,186 @@
+{
+  "batch": "ai-visual-20261021-v1",
+  "protocol_sha256": "003623ec7d2b352a21a418c1c1338183985895ddffb63b6652e242cafb755d8d",
+  "script_sha256": "91ddef3f0e721eb5b37d1323ef34279daf2ea517072cfe45b443d0b66fe9918b",
+  "reference_kind": "ai_visual_review",
+  "human_review": false,
+  "blind_to_detector": false,
+  "training_run_count_per_sensor": 1,
+  "evaluation_runs_per_model_per_sensor": 1,
+  "test_reused_for_tuning": false,
+  "scientific_status": "experimental",
+  "automatic_publication": false,
+  "sensor_results": {
+    "s1": {
+      "sensor": "sentinel-1",
+      "train_zone_observations": 5,
+      "train_positive_references": 0,
+      "test_zone_observations": 3,
+      "test_target_acquisitions": 1,
+      "zone_reference_instances": 2,
+      "unique_physical_object_observations": 2,
+      "score_threshold": 0.7,
+      "iou_threshold": 0.5,
+      "base_zone_metrics": {
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "recall_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "adjusted_zone_metrics": {
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "recall_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "unique_object_accounting": {
+        "base": {
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "prediction_count": 2,
+          "reference_count": 2,
+          "precision": 1.0,
+          "recall": 1.0,
+          "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+        },
+        "adjusted": {
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "prediction_count": 2,
+          "reference_count": 2,
+          "precision": 1.0,
+          "recall": 1.0,
+          "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+        }
+      },
+      "training_steps": 15,
+      "all_steps_updated": true,
+      "seconds": 18.798528541999985,
+      "peak_rss_bytes": 1805697024,
+      "base_weights_sha256": "35645431fb58c410603ea3e4af4c7654218389fc8bf953fe3d7f83e5629b5d2a",
+      "adjusted_weights_sha256": "33cf36f1a5a482914bd63e2c957f64b0dc221206f1f3bb44a8afd62910ccc439",
+      "eligible_strata_for_90_percent_ai_reference": [],
+      "publication_reasons": [
+        "independent_reference_required",
+        "insufficient_support",
+        "missing_stratum",
+        "precision_below_target"
+      ]
+    },
+    "s2": {
+      "sensor": "sentinel-2",
+      "train_zone_observations": 7,
+      "train_positive_references": 0,
+      "test_zone_observations": 4,
+      "test_target_acquisitions": 1,
+      "zone_reference_instances": 3,
+      "unique_physical_object_observations": 2,
+      "score_threshold": 0.8,
+      "iou_threshold": 0.5,
+      "base_zone_metrics": {
+        "true_positives": 0,
+        "false_positives": 3,
+        "false_negatives": 3,
+        "prediction_count": 3,
+        "reference_count": 3,
+        "scene_count": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ],
+        "recall_interval": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ],
+        "false_positives_per_scene": 0.75
+      },
+      "adjusted_zone_metrics": {
+        "true_positives": 0,
+        "false_positives": 3,
+        "false_negatives": 3,
+        "prediction_count": 3,
+        "reference_count": 3,
+        "scene_count": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ],
+        "recall_interval": [
+          5.551115123125783e-17,
+          0.5614970317550454
+        ],
+        "false_positives_per_scene": 0.75
+      },
+      "unique_object_accounting": {
+        "base": {
+          "true_positives": 0,
+          "false_positives": 2,
+          "false_negatives": 2,
+          "prediction_count": 2,
+          "reference_count": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+        },
+        "adjusted": {
+          "true_positives": 0,
+          "false_positives": 2,
+          "false_negatives": 2,
+          "prediction_count": 2,
+          "reference_count": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+        }
+      },
+      "training_steps": 21,
+      "all_steps_updated": true,
+      "seconds": 16.380783083004644,
+      "peak_rss_bytes": 1368326144,
+      "base_weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+      "adjusted_weights_sha256": "889d07a67b8ff304516f103fdd29fc5675412c0c9d95a16a655f3ba542d62d83",
+      "eligible_strata_for_90_percent_ai_reference": [],
+      "publication_reasons": [
+        "independent_reference_required",
+        "insufficient_support",
+        "precision_below_target"
+      ]
+    }
+  },
+  "counting_units_note": "Five zone-reference instances are four physical-object observations across two target dates, not five independent objects or dates.",
+  "total_unique_physical_object_observations": 4,
+  "total_zone_reference_instances": 5,
+  "objective_90_percent_status": "Not demonstrated with preregistered support. S1 point estimate 100% on two references; S2 0% at IoU0.5; neither sensor has eligible strata with minimum30 predictions and30 references."
+}

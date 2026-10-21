@@ -62,14 +62,14 @@ def test_evaluation_excludes_predictions_outside_frozen_reviewed_area(tmp_path):
     assert [item["prediction_id"] for item in records[0]["predictions"]] == ["0"]
 
 
-def test_training_masks_pixels_outside_reviewed_area(tmp_path):
+def test_training_preserves_context_and_masks_supervision_and_padding(tmp_path):
     root = tmp_path / "train"
     dataset(root)
     captured = []
     detector = SimpleNamespace(
         model=object(),
         make_optimizer=lambda **kw: object(),
-        frozen_train_step=lambda image, boxes, **kw: captured.append(image.copy()) or {},
+        frozen_train_step=lambda image, boxes, **kw: captured.append((image.copy(), kw)) or {},
     )
     bundle = SimpleNamespace(crs="EPSG:4326", transform=tuple(from_origin(0, 4, 1, 1))[:6])
     with (
@@ -82,8 +82,31 @@ def test_training_masks_pixels_outside_reviewed_area(tmp_path):
         patch("puertogt.ml.training.export_training_artifact", return_value=model()),
     ):
         train_detector(root, model(), tmp_path / "out")
-    assert np.all(captured[0][:, :4, :2] == 1)
-    assert np.all(captured[0][:, :4, 2:4] == 0)
+    image, kwargs = captured[0]
+    assert np.all(image[:, :4, :4] == 1)
+    mask = kwargs["reviewed_mask"]
+    assert mask.dtype == bool and mask.shape == image.shape[-2:] == (32, 32)
+    assert np.all(mask[:4, :2])
+    assert not mask[:, 2:].any() and not mask[4:].any()
+
+
+def test_training_without_any_supervised_step_does_not_export_weights(tmp_path):
+    root = tmp_path / "train"
+    dataset(root)
+    detector = SimpleNamespace(
+        model=object(), make_optimizer=lambda **kw: object(),
+        frozen_train_step=lambda *args, **kw: {"skipped": "No supervised anchors or proposals"},
+    )
+    bundle = SimpleNamespace(crs="EPSG:4326", transform=tuple(from_origin(0, 4, 1, 1))[:6])
+    with (
+        patch("puertogt.ml.detection.load_detector", return_value=detector),
+        patch("puertogt.ml.workflows.bundle_from_evidence", return_value=bundle),
+        patch("puertogt.preprocess.read_model_input", return_value=np.ones((9, 4, 4), dtype=np.float32)),
+        patch("puertogt.ml.training.export_training_artifact") as export,
+    ):
+        with pytest.raises(ValueError, match="training artifact was not created"):
+            train_detector(root, model(), tmp_path / "out")
+    export.assert_not_called()
 
 
 def test_label_outside_reviewed_area_is_rejected(tmp_path):

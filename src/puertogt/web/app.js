@@ -8,9 +8,9 @@ const labels = {
   rejected: "Rechazado", candidate: "Candidato", persistent: "Persistente", reverted: "Revertido",
 };
 const state = {
-  ports: new Map(), observations: [], observation: null, cursor: null, proposals: [], changes: [],
+  ports: new Map(), zones: new Map(), observations: [], observation: null, cursor: null, proposals: [], changes: [],
   selected: null, mode: "detections", tool: "select", token: "", author: "", busy: false,
-  asset: null, bounds: null, drag: null, generation: 0, loading: false,
+  asset: null, bounds: null, drag: null, generation: 0, loading: false, reviewerKind: "human_visual_review",
 };
 
 function node(tag, text, className) {
@@ -146,6 +146,9 @@ function clearObservation() {
   $("scene-meta").textContent = "El inventario de catálogo se consulta por separado.";
   $("scene-status").hidden = true;
   $("model-notice").hidden = true;
+  $("scene-review-note").textContent = "";
+  $("scene-review-note").hidden = true;
+  $("scope-caption").textContent = "";
   for (const id of ["model-count", "observable-fraction", "review-label"]) $(id).textContent = "—";
   emptyEvidence("Sin imágenes para revisar", "No hay observaciones registradas que coincidan con estos filtros. La disponibilidad de catálogo no acredita procesamiento ni visibilidad.");
   renderProposals(); updateControls();
@@ -183,7 +186,13 @@ async function selectObservation(id, preferredProposal = null) {
     const observable = ["usable", "partial"].includes(observation.status);
     $("model-count").textContent = observable && observation.detection_count !== null ? String(observation.detection_count) : "No disponible";
     $("observable-fraction").textContent = observation.observable_fraction === null || observation.observable_fraction === undefined ? "Sin medir" : `${(observation.observable_fraction * 100).toFixed(1)} %`;
-    $("review-label").textContent = labels[observation.review_status] || "Provisional";
+    const aiReview = observation.provenance?.kind === "ai_visual_review";
+    $("review-label").textContent = observation.review_status === "reviewed" && aiReview ? "Revisado por IA" : labels[observation.review_status] || "Provisional";
+    $("scene-review-note").textContent = observation.note || "";
+    $("scene-review-note").hidden = !observation.note;
+    $("scope-caption").textContent = observation.reviewed_area
+      ? "Amarillo: zona provisional. Verde: área etiquetada; el resto no se usa como negativo."
+      : "Amarillo: límite de la zona provisional. La imagen puede cubrir solo una parte.";
     renderSceneList();
     if (state.mode === "changes") await loadChanges(generation);
     else {
@@ -321,6 +330,18 @@ function project(coordinate) {
 function drawOverlay() {
   $("overlay").replaceChildren();
   if (!state.bounds || state.mode !== "detections") return;
+  for (const [geometry, className] of [
+    [state.zones.get(state.observation?.zone_id), "zone-boundary"],
+    [state.observation?.reviewed_area, "reviewed-boundary"],
+  ]) {
+    if (!geometry) continue;
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
+    const boundary = document.createElementNS(NS, "path");
+    boundary.setAttribute("d", polygons.map((rings) => rings.map((ring) => ring.map((point, index) => `${index ? "L" : "M"}${project(point).join(",")}`).join(" ") + " Z").join(" ")).join(" "));
+    boundary.setAttribute("fill-rule", "evenodd");
+    boundary.classList.add(className);
+    $("overlay").append(boundary);
+  }
   for (const proposal of state.proposals) {
     const geometry = proposal.geometry;
     let element;
@@ -448,6 +469,7 @@ async function saveReview(correction, entityType = state.mode === "changes" ? "c
   const entityId = entityType === "observation" ? observationId : state.selected;
   if (!entityId || !selected) return;
   const previous = selected.latest_revision_id || selected.metadata?.latest_revision_id || null;
+  correction.provenance = { kind: state.reviewerKind, reviewer: state.author, ...correction.provenance };
   state.busy = true; updateControls();
   try {
     await api("/v1/reviews", { method: "POST", body: JSON.stringify({ entity_type: entityType, entity_id: entityId, correction, author: state.author, previous_revision_id: previous }) });
@@ -462,7 +484,7 @@ async function addOmitted(geometry) {
   if (!observationId || !state.token || state.busy) return;
   state.busy = true; updateControls();
   try {
-    const result = await api("/v1/reviews/detections", { method: "POST", body: JSON.stringify({ observation_id: observationId, geometry, author: state.author }) });
+    const result = await api("/v1/reviews/detections", { method: "POST", body: JSON.stringify({ observation_id: observationId, geometry, author: state.author, provenance: { kind: state.reviewerKind, reviewer: state.author } }) });
     notify("Buque omitido registrado como anotación manual, sin inventar un score del modelo.");
     if (state.observation?.observation_id === observationId) await selectObservation(observationId, result.detection_id);
   } catch (error) { notify(explain(error), true); }
@@ -513,6 +535,7 @@ async function showComparison(change) {
 $("auth-toggle").addEventListener("click", () => { $("auth-panel").hidden = !$("auth-panel").hidden; if (!$("auth-panel").hidden) $("author").focus(); });
 $("auth-form").addEventListener("submit", (event) => {
   event.preventDefault(); state.author = $("author").value.trim(); state.token = $("token").value;
+  state.reviewerKind = $("reviewer-kind").value;
   $("token").value = ""; $("auth-panel").hidden = true;
   notify("Credencial guardada en memoria. Se verificará al guardar una corrección."); updateControls();
 });
@@ -573,7 +596,10 @@ async function init() {
   try {
     const [, ports] = await Promise.all([api("/health"), api("/v1/ports")]);
     $("connection").textContent = "Servicio local conectado"; $("connection").classList.add("online");
-    for (const feature of ports.features || []) state.ports.set(feature.properties.port_id, feature.properties.port_name || feature.properties.port_id);
+    for (const feature of ports.features || []) {
+      state.ports.set(feature.properties.port_id, feature.properties.port_name || feature.properties.port_id);
+      state.zones.set(feature.properties.zone_id, feature.geometry);
+    }
     for (const [id, name] of state.ports) { const option = node("option", name); option.value = id; $("port-filter").append(option); }
     const previous = savedState();
     $("port-filter").value = previous.port || ""; $("sensor-filter").value = previous.sensor || "";

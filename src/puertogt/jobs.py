@@ -239,7 +239,10 @@ class JobQueue:
             return "quota_exhausted"
         return None
 
-    def claim(self, worker_id: str, *, recipe_version: str | None = None) -> dict[str, Any] | None:
+    def claim(
+        self, worker_id: str, *, recipe_version: str | None = None,
+        acquisition_key: str | None = None,
+    ) -> dict[str, Any] | None:
         if not worker_id:
             raise ValueError("Worker ID is required")
         if not self._acquire_lock():
@@ -255,8 +258,9 @@ class JobQueue:
                 candidates = connection.execute(
                     """SELECT jobs.* FROM jobs JOIN observations USING(observation_id)
                     WHERE jobs.status IN ('pending','retry','paused') AND not_before <= ?
-                    AND (? IS NULL OR observations.recipe_version=?) ORDER BY queued_at, job_id""",
-                    (stamp, recipe_version, recipe_version),
+                    AND (? IS NULL OR observations.recipe_version=?)
+                    AND (? IS NULL OR observations.acquisition_key=?) ORDER BY queued_at, job_id""",
+                    (stamp, recipe_version, recipe_version, acquisition_key, acquisition_key),
                 ).fetchall()
                 for row in candidates:
                     reason = self._storage_reason(row["estimated_bytes"]) or self._quota_reason(

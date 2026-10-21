@@ -59,6 +59,7 @@ def process_once(
     predictor=None,
     prepare_fn=None,
     attribute_model: ModelManifest | None = None,
+    acquisition_key: str | None = None,
 ):
     if model.task != "detection":
         raise ValueError("The scene worker requires a detection model")
@@ -74,7 +75,8 @@ def process_once(
         prepare_fn = prepare
     queue = JobQueue(store, runtime=runtime)
     job = queue.claim(
-        f"local-{uuid.uuid4()}", recipe_version=processing_recipe(model, attribute_model)
+        f"local-{uuid.uuid4()}", recipe_version=processing_recipe(model, attribute_model),
+        acquisition_key=acquisition_key,
     )
     if job is None:
         return None

@@ -1,0 +1,4829 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-10-21T14:31:11.746044+00:00",
+  "author": "codex-ai-reviewer-s2",
+  "is_human_review": false,
+  "purpose": "Independent AI visual second opinion on all eleven optical observations, for root consolidation of proposed labels with explicit scope and uncertainty. Not human ground truth or independent model validation.",
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "ui_access": {
+    "requested": "own IAB tab at http://127.0.0.1:8000/",
+    "result": "IAB unavailable in this subagent context; browser inventory empty",
+    "error": "Browser is not available: iab",
+    "fallback": "Read-only SQLite and registered PNG/GeoTIFF assets; no other browser or user tab touched."
+  },
+  "method": [
+    "Read the three distinct registered 512 x 512 RGB previews and all twelve 256 x 256 quadrant enlargements.",
+    "Inspected all eleven zone overlays and automatic observable masks, plus detailed port and open-water crops.",
+    "Recorded visible objects and uncertain regions without using model proposal boxes as truth; a PRQ pilot preview with boxes was viewed once before identifying and switching to raw registered previews, so this pass is not fully blinded to proposal existence.",
+    "Queried exact proposal geometries after the raw-image pass to match the two clear isolated PRQ vessels.",
+    "Represented inspected scope as observable pixel cells intersected with zone and raster footprint; subtracted ambiguous regions from proposed training scope and both positive windows from proposed negative scope.",
+    "No family or physical dimensions inferred; no review action persisted."
+  ],
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+    "version": "2026-10-20-provisional-v1"
+  },
+  "coordinate_convention": "Native preview pixels match the registered 512 x 512 RGB grid. Pixel boxes are [xmin,ymin,xmax,ymax] at pixel edges, origin upper-left, half-open; GeoJSON coordinates are WGS84 longitude, latitude. Visual windows are approximate localization, never physical dimensions.",
+  "summary": {
+    "observations_reviewed": 11,
+    "unique_current_crops": 3,
+    "unique_acquisitions": 2,
+    "existing_detections_proposed_accept": 3,
+    "existing_detections_proposed_reject": 0,
+    "existing_detections_indeterminate": 0,
+    "unique_physical_vessels_corresponding_to_accepts": 2,
+    "confirmed_additional_vessels": 0,
+    "possible_omissions_must_remain_unknown": true,
+    "no_validation_or_accuracy_claim": true
+  },
+  "consolidation_notes": [
+    "These labels are AI proposals. Record reviewer_kind=ai_visual_review and this report as provenance; never convert them to human-reviewed labels.",
+    "Scene completeness applies only to proposed_training_reviewed_area_wgs84, not the whole configured zone. Exclude all ambiguous, unobservable and out-of-crop regions.",
+    "Do not interpret model count zero as an empty port. All three dock scenes contain unresolved candidate structures/vessels.",
+    "PRQ canal and fondeo contain duplicate evidence of the eastern vessel. Deduplicate physical counts and keep observations from one acquisition in the same split.",
+    "PBR and STC share one Sentinel-2 acquisition; their crops must remain in the same split to avoid scene leakage.",
+    "Accept/reject recommendations concern presence only. Keep family, length_m and width_m null.",
+    "No precision, recall or historical change conclusion can be estimated from this same AI visual review."
+  ],
+  "ui_limitations_at_source_read": [
+    {
+      "path": "src/puertogt/web/index.html",
+      "line": 63,
+      "finding": "Presence review offers accept/reject. The indeterminate button concerns family only, so it cannot record uncertainty about whether an object is a vessel."
+    },
+    {
+      "path": "src/puertogt/web/app.js",
+      "line": 545,
+      "finding": "The family-indeterminate action saves family:null; it is not a detection abstention or an unknown mask."
+    },
+    {
+      "path": "src/puertogt/web/app.js",
+      "line": 547,
+      "finding": "The complete-scene action sends scene_complete:true without user-drawn review scope or exclusion geometry. The current UI shows reviewed_area/provenance but the visible drawing tools select/add/move/redraw detections, not explicit unknown-region masks. Root is updating scope support; this observation is time-specific."
+    }
+  ],
+  "crops": [
+    {
+      "port_id": "pbr",
+      "reference_observation_id": "fb8950f3-af93-45b3-92cb-4b7e1288df63",
+      "preview_path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/preview.png",
+      "preview_sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+      "width_px": 512,
+      "height_px": 512,
+      "crs": "EPSG:32616",
+      "affine": [
+        10.0,
+        0.0,
+        325150.0,
+        0.0,
+        -10.0,
+        1742820.0
+      ],
+      "display": "B04/B03/B02 RGB; registered preview, not a proposal overlay; nearest-neighbor zoom does not add information.",
+      "all_pixels_visually_scanned": true,
+      "full_render": "tmp/local-review/s2/pbr-full-rgb.png",
+      "quadrants": [
+        "tmp/local-review/s2/pbr-tile-x000-y000.png",
+        "tmp/local-review/s2/pbr-tile-x256-y000.png",
+        "tmp/local-review/s2/pbr-tile-x000-y256.png",
+        "tmp/local-review/s2/pbr-tile-x256-y256.png"
+      ],
+      "detail_renders": [
+        "tmp/local-review/s2/pbr-harbor-detail.png"
+      ],
+      "candidate_map": "tmp/local-review/s2/pbr-candidate-locations.png"
+    },
+    {
+      "port_id": "prq",
+      "reference_observation_id": "af873b8e-e92e-485c-9720-302724dc9f5c",
+      "preview_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+      "preview_sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+      "width_px": 512,
+      "height_px": 512,
+      "crs": "EPSG:32615",
+      "affine": [
+        10.0,
+        0.0,
+        736550.0,
+        0.0,
+        -10.0,
+        1543330.0
+      ],
+      "display": "B04/B03/B02 RGB; registered preview, not a proposal overlay; nearest-neighbor zoom does not add information.",
+      "all_pixels_visually_scanned": true,
+      "full_render": "tmp/local-review/s2/prq-full-rgb.png",
+      "quadrants": [
+        "tmp/local-review/s2/prq-tile-x000-y000.png",
+        "tmp/local-review/s2/prq-tile-x256-y000.png",
+        "tmp/local-review/s2/prq-tile-x000-y256.png",
+        "tmp/local-review/s2/prq-tile-x256-y256.png"
+      ],
+      "detail_renders": [
+        "tmp/local-review/s2/prq-harbor-detail.png"
+      ],
+      "candidate_map": "tmp/local-review/s2/prq-candidate-locations.png"
+    },
+    {
+      "port_id": "stc",
+      "reference_observation_id": "2113236d-2246-4978-ad84-43ae106d5dca",
+      "preview_path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/preview.png",
+      "preview_sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+      "width_px": 512,
+      "height_px": 512,
+      "crs": "EPSG:32616",
+      "affine": [
+        10.0,
+        0.0,
+        324260.0,
+        0.0,
+        -10.0,
+        1738650.0
+      ],
+      "display": "B04/B03/B02 RGB; registered preview, not a proposal overlay; nearest-neighbor zoom does not add information.",
+      "all_pixels_visually_scanned": true,
+      "full_render": "tmp/local-review/s2/stc-full-rgb.png",
+      "quadrants": [
+        "tmp/local-review/s2/stc-tile-x000-y000.png",
+        "tmp/local-review/s2/stc-tile-x256-y000.png",
+        "tmp/local-review/s2/stc-tile-x000-y256.png",
+        "tmp/local-review/s2/stc-tile-x256-y256.png"
+      ],
+      "detail_renders": [
+        "tmp/local-review/s2/stc-harbor-detail.png"
+      ],
+      "candidate_map": "tmp/local-review/s2/stc-candidate-locations.png"
+    }
+  ],
+  "context_only_ambiguous_objects_outside_observation_zones": [
+    {
+      "port_id": "stc",
+      "pixel_box": [
+        325,
+        214,
+        355,
+        235
+      ],
+      "reason": "Pequeñas formas claras en el entrante oriental, fuera de las tres zonas STC observadas. Barcos pequeños frente a estructura fija sin resolver.",
+      "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png"
+    },
+    {
+      "port_id": "pbr",
+      "pixel_box": [
+        104,
+        105,
+        112,
+        114
+      ],
+      "reason": "Punto claro aislado demasiado pequeño para clasificar. Fuera de las cuatro zonas PBR observadas.",
+      "evidence_render": "tmp/local-review/s2/pbr-tile-x000-y000.png"
+    },
+    {
+      "port_id": "pbr",
+      "pixel_box": [
+        176,
+        150,
+        184,
+        158
+      ],
+      "reason": "Punto claro de pocos píxeles; posible pequeña embarcación o brillo, indeterminado. Fuera de las cuatro zonas PBR observadas.",
+      "evidence_render": "tmp/local-review/s2/pbr-tile-x000-y000.png"
+    },
+    {
+      "port_id": "prq",
+      "pixel_box": [
+        438,
+        276,
+        483,
+        294
+      ],
+      "reason": "Formas claras en el litoral oriental, fuera de las cuatro zonas PRQ observadas. No se distinguen barcos amarrados de cubiertas fijas.",
+      "evidence_render": "tmp/local-review/s2/prq-tile-x256-y256.png"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "fb8950f3-af93-45b3-92cb-4b7e1288df63",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.4063237243974545,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "No se identificó un casco inequívoco en el tramo visible del corredor. Las líneas oscuras largas continúan como patrones del agua y no se convierten en objetos. El tramo fuera del recorte no fue revisado.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/preview.png",
+        "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/preview.png",
+          "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+          "size_bytes": 418890
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/B02.tif",
+          "sha256": "774c9f13c6c7b0924a60f16b31a7509c3f71067d96a162771e4d08c0926accdf",
+          "size_bytes": 449684
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/B03.tif",
+          "sha256": "a6032167606ea5145a72a8bc58356a40e5e092e2e85fa1b2f34b4da87ab4ca15",
+          "size_bytes": 464753
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/B04.tif",
+          "sha256": "c2df2005bf991e0f138bc00058dc033144c9a086f998c8d38d3a8d7469fd9c1a",
+          "size_bytes": 478731
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/observable.tif",
+          "sha256": "d0af82fb1f7412d61fae146b843114cb4c58e4979499a66a9b585116a67fd289",
+          "size_bytes": 4436
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/cloud.tif",
+          "sha256": "f450ac1579beeb192c70ad3d7073439b7cbea8811958ac97b2ccc11822ca8209",
+          "size_bytes": 4234
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/shadow.tif",
+          "sha256": "01e290fb46a7e977e6f7f6039afa062bccebfa2c14d9e9ce3d4981320ba223c3",
+          "size_bytes": 4333
+        },
+        {
+          "path": "data/assets/fb8950f3-af93-45b3-92cb-4b7e1288df63/valid.tif",
+          "sha256": "9cf3b42be829a61bee78460db68aaef68b0aff81540490d91be202b83f0fa9b4",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/pbr_canal-scope.png",
+      "coverage": {
+        "zone_area_m2": 1597740.819,
+        "zone_crop_intersection_area_m2": 648610.555,
+        "geometric_crop_coverage_fraction": 0.4059548,
+        "observable_intersection_area_m2": 648610.555,
+        "observable_zone_fraction_geometric": 0.4059548,
+        "zone_center_pixels_in_crop": 6492,
+        "zone_center_pixels_observable": 6492,
+        "proposed_training_scope_center_pixels": 6492,
+        "candidate_negative_center_pixels": 6492,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 648610.555,
+        "final_negative_scope_area_m2": 648610.555,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.60766001925909,
+              15.75797000826825
+            ],
+            [
+              -88.60515762259374,
+              15.757988465240969
+            ],
+            [
+              -88.608,
+              15.736099999999997
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.60766001925909,
+              15.75797000826825
+            ],
+            [
+              -88.60515762259374,
+              15.757988465240969
+            ],
+            [
+              -88.608,
+              15.736099999999997
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.60766001925909,
+              15.75797000826825
+            ],
+            [
+              -88.60515762259374,
+              15.757988465240969
+            ],
+            [
+              -88.608,
+              15.736099999999997
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos.",
+        "La zona no está contenida por completo en el recorte; su parte exterior no fue revisada."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/pbr_canal-proposed-scope.png"
+    },
+    {
+      "observation_id": "fda5b83e-5c57-469f-b3cb-752453a87023",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.5560291803256837,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "No se identificó un casco inequívoco en el área observable dentro del recorte. La zona continúa hacia el norte fuera de la imagen y no se etiqueta su parte faltante.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/preview.png",
+        "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/preview.png",
+          "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+          "size_bytes": 418890
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/B02.tif",
+          "sha256": "774c9f13c6c7b0924a60f16b31a7509c3f71067d96a162771e4d08c0926accdf",
+          "size_bytes": 449684
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/B03.tif",
+          "sha256": "a6032167606ea5145a72a8bc58356a40e5e092e2e85fa1b2f34b4da87ab4ca15",
+          "size_bytes": 464753
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/B04.tif",
+          "sha256": "c2df2005bf991e0f138bc00058dc033144c9a086f998c8d38d3a8d7469fd9c1a",
+          "size_bytes": 478731
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/observable.tif",
+          "sha256": "d0af82fb1f7412d61fae146b843114cb4c58e4979499a66a9b585116a67fd289",
+          "size_bytes": 4436
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/cloud.tif",
+          "sha256": "f450ac1579beeb192c70ad3d7073439b7cbea8811958ac97b2ccc11822ca8209",
+          "size_bytes": 4234
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/shadow.tif",
+          "sha256": "01e290fb46a7e977e6f7f6039afa062bccebfa2c14d9e9ce3d4981320ba223c3",
+          "size_bytes": 4333
+        },
+        {
+          "path": "data/assets/fda5b83e-5c57-469f-b3cb-752453a87023/valid.tif",
+          "sha256": "9cf3b42be829a61bee78460db68aaef68b0aff81540490d91be202b83f0fa9b4",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/pbr_fondeo-scope.png",
+      "coverage": {
+        "zone_area_m2": 1707464.345,
+        "zone_crop_intersection_area_m2": 949019.298,
+        "geometric_crop_coverage_fraction": 0.55580622,
+        "observable_intersection_area_m2": 949019.298,
+        "observable_zone_fraction_geometric": 0.55580622,
+        "zone_center_pixels_in_crop": 9494,
+        "zone_center_pixels_observable": 9494,
+        "proposed_training_scope_center_pixels": 9494,
+        "candidate_negative_center_pixels": 9494,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 949019.298,
+        "final_negative_scope_area_m2": 949019.298,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.747999999999996
+            ],
+            [
+              -88.6069999805245,
+              15.757974879319242
+            ],
+            [
+              -88.59899998065012,
+              15.758033759870026
+            ],
+            [
+              -88.599,
+              15.747999999999996
+            ],
+            [
+              -88.607,
+              15.747999999999996
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.747999999999996
+            ],
+            [
+              -88.6069999805245,
+              15.757974879319242
+            ],
+            [
+              -88.59899998065012,
+              15.758033759870026
+            ],
+            [
+              -88.599,
+              15.747999999999996
+            ],
+            [
+              -88.607,
+              15.747999999999996
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.747999999999996
+            ],
+            [
+              -88.6069999805245,
+              15.757974879319242
+            ],
+            [
+              -88.59899998065012,
+              15.758033759870026
+            ],
+            [
+              -88.599,
+              15.747999999999996
+            ],
+            [
+              -88.607,
+              15.747999999999996
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos.",
+        "La zona no está contenida por completo en el recorte; su parte exterior no fue revisada."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/pbr_fondeo-proposed-scope.png"
+    },
+    {
+      "observation_id": "2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.9949806218751718,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Dos formas alargadas, roja y clara, son compatibles con barco o estructura de muelle. Quedan indeterminadas con cajas explícitas; esta observación de cero detecciones no se considera un negativo completo.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+        "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+          "size_bytes": 418890
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/B02.tif",
+          "sha256": "774c9f13c6c7b0924a60f16b31a7509c3f71067d96a162771e4d08c0926accdf",
+          "size_bytes": 449684
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/B03.tif",
+          "sha256": "a6032167606ea5145a72a8bc58356a40e5e092e2e85fa1b2f34b4da87ab4ca15",
+          "size_bytes": 464753
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/B04.tif",
+          "sha256": "c2df2005bf991e0f138bc00058dc033144c9a086f998c8d38d3a8d7469fd9c1a",
+          "size_bytes": 478731
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/observable.tif",
+          "sha256": "d0af82fb1f7412d61fae146b843114cb4c58e4979499a66a9b585116a67fd289",
+          "size_bytes": 4436
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/cloud.tif",
+          "sha256": "f450ac1579beeb192c70ad3d7073439b7cbea8811958ac97b2ccc11822ca8209",
+          "size_bytes": 4234
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/shadow.tif",
+          "sha256": "01e290fb46a7e977e6f7f6039afa062bccebfa2c14d9e9ce3d4981320ba223c3",
+          "size_bytes": 4333
+        },
+        {
+          "path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/valid.tif",
+          "sha256": "9cf3b42be829a61bee78460db68aaef68b0aff81540490d91be202b83f0fa9b4",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/pbr_muelles-scope.png",
+      "coverage": {
+        "zone_area_m2": 175983.327,
+        "zone_crop_intersection_area_m2": 175983.327,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 175983.327,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 1751,
+        "zone_center_pixels_observable": 1751,
+        "proposed_training_scope_center_pixels": 280,
+        "candidate_negative_center_pixels": 280,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 29482.415,
+        "final_negative_scope_area_m2": 29482.415,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6052,
+              15.736100000000002
+            ],
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6105,
+              15.733299999999993
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.6052,
+              15.736100000000002
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.60731110384873,
+              15.733299999999996
+            ],
+            [
+              -88.60521735851466,
+              15.733315435291273
+            ],
+            [
+              -88.60523579468362,
+              15.735665072243341
+            ],
+            [
+              -88.6105,
+              15.735626258375973
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.6052,
+              15.736100000000002
+            ],
+            [
+              -88.6052,
+              15.7333
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.60731110384873,
+              15.733299999999996
+            ],
+            [
+              -88.60521735851466,
+              15.733315435291273
+            ],
+            [
+              -88.60523579468362,
+              15.735665072243341
+            ],
+            [
+              -88.6105,
+              15.735626258375973
+            ],
+            [
+              -88.6105,
+              15.736099999999999
+            ],
+            [
+              -88.6052,
+              15.736100000000002
+            ],
+            [
+              -88.6052,
+              15.7333
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "pbr-red-pier-end-object",
+          "decision": "indeterminada",
+          "reason": "Forma roja alargada en el extremo del muelle. Puede ser casco amarrado o estructura del terminal; la textura y los bordes del RGB no resuelven la alternativa. Se conserva como posible omisión indeterminada.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/pbr-harbor-detail.png",
+          "pixel_box": [
+            231,
+            249,
+            255,
+            267
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61036623513186,
+                  15.735446495522687
+                ],
+                [
+                  -88.60812688030974,
+                  15.735463020367225
+                ],
+                [
+                  -88.60811409366774,
+                  15.733836350972762
+                ],
+                [
+                  -88.61035343070292,
+                  15.733819827922222
+                ],
+                [
+                  -88.61036623513186,
+                  15.735446495522687
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.61036623513186,
+            15.733819827922222,
+            -88.60811409366774,
+            15.735463020367225
+          ],
+          "overlap_observable_zone_area_m2": 43200.0
+        },
+        {
+          "candidate_id": "pbr-white-pier-object",
+          "decision": "indeterminada",
+          "reason": "Forma clara alargada junto al mismo muelle. No hay evidencia independiente para decidir cubierta de barco frente a techo de una estructura fija. No se registra como buque ni como negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/pbr-harbor-detail.png",
+          "pixel_box": [
+            254,
+            253,
+            280,
+            270
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.60821734504403,
+                  15.735100850241436
+                ],
+                [
+                  -88.60579137872921,
+                  15.735118726838227
+                ],
+                [
+                  -88.60577932022862,
+                  15.733582426156916
+                ],
+                [
+                  -88.60820526834503,
+                  15.733564551393094
+                ],
+                [
+                  -88.60821734504403,
+                  15.735100850241436
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.60821734504403,
+            15.733564551393094,
+            -88.60577932022862,
+            15.735118726838227
+          ],
+          "overlap_observable_zone_area_m2": 44200.0
+        },
+        {
+          "candidate_id": "pbr-pier-interface",
+          "decision": "indeterminada",
+          "reason": "Se excluye también el entorno inmediato del muelle, sus sombras y píxeles mixtos; los dos candidatos anteriores no pueden tratarse como fondo.",
+          "possible_omission": false,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/pbr-harbor-detail.png",
+          "pixel_box": [
+            229,
+            247,
+            286,
+            273
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61055427088512,
+                  15.735625858227648
+                ],
+                [
+                  -88.60523579468362,
+                  15.735665072243341
+                ],
+                [
+                  -88.60521735851466,
+                  15.733315435291273
+                ],
+                [
+                  -88.6105357736976,
+                  15.733276227424806
+                ],
+                [
+                  -88.61055427088512,
+                  15.735625858227648
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.61055427088512,
+            15.733276227424806,
+            -88.60521735851466,
+            15.735665072243341
+          ],
+          "overlap_observable_zone_area_m2": 146500.935
+        }
+      ],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "pbr-red-pier-end-object",
+          "decision": "indeterminada",
+          "reason": "Forma roja alargada en el extremo del muelle. Puede ser casco amarrado o estructura del terminal; la textura y los bordes del RGB no resuelven la alternativa. Se conserva como posible omisión indeterminada.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/pbr-harbor-detail.png",
+          "pixel_box": [
+            231,
+            249,
+            255,
+            267
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61036623513186,
+                  15.735446495522687
+                ],
+                [
+                  -88.60812688030974,
+                  15.735463020367225
+                ],
+                [
+                  -88.60811409366774,
+                  15.733836350972762
+                ],
+                [
+                  -88.61035343070292,
+                  15.733819827922222
+                ],
+                [
+                  -88.61036623513186,
+                  15.735446495522687
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.61036623513186,
+            15.733819827922222,
+            -88.60811409366774,
+            15.735463020367225
+          ],
+          "overlap_observable_zone_area_m2": 43200.0
+        },
+        {
+          "candidate_id": "pbr-white-pier-object",
+          "decision": "indeterminada",
+          "reason": "Forma clara alargada junto al mismo muelle. No hay evidencia independiente para decidir cubierta de barco frente a techo de una estructura fija. No se registra como buque ni como negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/pbr-harbor-detail.png",
+          "pixel_box": [
+            254,
+            253,
+            280,
+            270
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.60821734504403,
+                  15.735100850241436
+                ],
+                [
+                  -88.60579137872921,
+                  15.735118726838227
+                ],
+                [
+                  -88.60577932022862,
+                  15.733582426156916
+                ],
+                [
+                  -88.60820526834503,
+                  15.733564551393094
+                ],
+                [
+                  -88.60821734504403,
+                  15.735100850241436
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.60821734504403,
+            15.733564551393094,
+            -88.60577932022862,
+            15.735118726838227
+          ],
+          "overlap_observable_zone_area_m2": 44200.0
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/pbr_muelles-proposed-scope.png"
+    },
+    {
+      "observation_id": "d55276ea-b804-4133-80a2-1c5244a92e54",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "El área visible corresponde a infraestructura y manzanas terrestres. No hay un casco inequívoco dentro de este polígono. Las formas ambiguas del extremo del muelle están al oeste, fuera de esta zona.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/preview.png",
+        "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/preview.png",
+          "sha256": "61c23c8600233b54bfe5c311ea270bf7971a726b08d6e8d3b8dab901e0be6ad5",
+          "size_bytes": 418890
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/B02.tif",
+          "sha256": "774c9f13c6c7b0924a60f16b31a7509c3f71067d96a162771e4d08c0926accdf",
+          "size_bytes": 449684
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/B03.tif",
+          "sha256": "a6032167606ea5145a72a8bc58356a40e5e092e2e85fa1b2f34b4da87ab4ca15",
+          "size_bytes": 464753
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/B04.tif",
+          "sha256": "c2df2005bf991e0f138bc00058dc033144c9a086f998c8d38d3a8d7469fd9c1a",
+          "size_bytes": 478731
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/observable.tif",
+          "sha256": "d0af82fb1f7412d61fae146b843114cb4c58e4979499a66a9b585116a67fd289",
+          "size_bytes": 4436
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/cloud.tif",
+          "sha256": "f450ac1579beeb192c70ad3d7073439b7cbea8811958ac97b2ccc11822ca8209",
+          "size_bytes": 4234
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/shadow.tif",
+          "sha256": "01e290fb46a7e977e6f7f6039afa062bccebfa2c14d9e9ce3d4981320ba223c3",
+          "size_bytes": 4333
+        },
+        {
+          "path": "data/assets/d55276ea-b804-4133-80a2-1c5244a92e54/valid.tif",
+          "sha256": "9cf3b42be829a61bee78460db68aaef68b0aff81540490d91be202b83f0fa9b4",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/pbr_patios-scope.png",
+      "coverage": {
+        "zone_area_m2": 177879.8,
+        "zone_crop_intersection_area_m2": 177879.8,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 177879.8,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 1793,
+        "zone_center_pixels_observable": 1793,
+        "proposed_training_scope_center_pixels": 1793,
+        "candidate_negative_center_pixels": 1793,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 177879.8,
+        "final_negative_scope_area_m2": 177879.8,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6002,
+              15.736300000000002
+            ],
+            [
+              -88.6002,
+              15.733299999999993
+            ],
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6052,
+              15.736299999999995
+            ],
+            [
+              -88.6002,
+              15.736300000000002
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6002,
+              15.736300000000002
+            ],
+            [
+              -88.6002,
+              15.733299999999993
+            ],
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6052,
+              15.736299999999995
+            ],
+            [
+              -88.6002,
+              15.736300000000002
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6002,
+              15.736300000000002
+            ],
+            [
+              -88.6002,
+              15.733299999999993
+            ],
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6052,
+              15.736299999999995
+            ],
+            [
+              -88.6002,
+              15.736300000000002
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/pbr_patios-proposed-scope.png"
+    },
+    {
+      "observation_id": "af873b8e-e92e-485c-9720-302724dc9f5c",
+      "acquisition_key": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "zone_id": "prq_canal",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-10T16:18:59.024000Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "detection_count": 1,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Un buque inequívoco en el extremo sur corresponde a la propuesta existente y al mismo objeto de fondeo. Un punto de pocos píxeles y el borde del muelle quedan indeterminados. La extensión completa del casco oriental supera el límite de esta zona.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+        "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+          "size_bytes": 379482
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/B02.tif",
+          "sha256": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+          "size_bytes": 417315
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/B03.tif",
+          "sha256": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+          "size_bytes": 431516
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/B04.tif",
+          "sha256": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+          "size_bytes": 442088
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/observable.tif",
+          "sha256": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+          "size_bytes": 5235
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/cloud.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/shadow.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/valid.tif",
+          "sha256": "f22654d155cd1532ffe0ef48926b9ba2948f8ff0d043ad2d01d75a3a36fa0bb4",
+          "size_bytes": 2655
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/prq_canal-scope.png",
+      "coverage": {
+        "zone_area_m2": 1286177.835,
+        "zone_crop_intersection_area_m2": 1286177.835,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 1286177.835,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 12870,
+        "zone_center_pixels_observable": 12870,
+        "proposed_training_scope_center_pixels": 9766,
+        "candidate_negative_center_pixels": 9623,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 975539.703,
+        "final_negative_scope_area_m2": 961347.483,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79000000000002,
+              13.926000000000002
+            ],
+            [
+              -90.786,
+              13.927
+            ],
+            [
+              -90.782,
+              13.918499999999998
+            ],
+            [
+              -90.782,
+              13.904999999999998
+            ],
+            [
+              -90.787,
+              13.904999999999998
+            ],
+            [
+              -90.787,
+              13.916999999999996
+            ],
+            [
+              -90.79000000000002,
+              13.926000000000002
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -90.78878059045954,
+                13.92630485238512
+              ],
+              [
+                -90.78881724565322,
+                13.922451736959617
+              ],
+              [
+                -90.78998650582369,
+                13.925959517471014
+              ],
+              [
+                -90.78998608778699,
+                13.92600347805326
+              ],
+              [
+                -90.78878059045954,
+                13.92630485238512
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -90.782,
+                13.918499999999998
+              ],
+              [
+                -90.782,
+                13.904999999999998
+              ],
+              [
+                -90.787,
+                13.904999999999998
+              ],
+              [
+                -90.787,
+                13.916999999999996
+              ],
+              [
+                -90.7880632964105,
+                13.920189889231452
+              ],
+              [
+                -90.78430623506695,
+                13.92015582331286
+              ],
+              [
+                -90.78428729236106,
+                13.922143579416394
+              ],
+              [
+                -90.78465728744315,
+                13.922146934694252
+              ],
+              [
+                -90.78463860564737,
+                13.924107037000677
+              ],
+              [
+                -90.782,
+                13.918499999999998
+              ]
+            ],
+            [
+              [
+                -90.78533187426683,
+                13.909592970556606
+              ],
+              [
+                -90.78616432837431,
+                13.909600528887035
+              ],
+              [
+                -90.78617206420523,
+                13.908787354107208
+              ],
+              [
+                -90.7853396130008,
+                13.908779796235828
+              ],
+              [
+                -90.78533187426683,
+                13.909592970556606
+              ]
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -90.78881724565322,
+                13.922451736959617
+              ],
+              [
+                -90.78998650582369,
+                13.925959517471014
+              ],
+              [
+                -90.78998608778699,
+                13.92600347805326
+              ],
+              [
+                -90.78878059045954,
+                13.92630485238512
+              ],
+              [
+                -90.78881724565322,
+                13.922451736959617
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -90.782,
+                13.905948274788635
+              ],
+              [
+                -90.78323891734263,
+                13.905959538616596
+              ],
+              [
+                -90.78324805497058,
+                13.904999999999998
+              ],
+              [
+                -90.787,
+                13.904999999999998
+              ],
+              [
+                -90.787,
+                13.916999999999996
+              ],
+              [
+                -90.7880632964105,
+                13.920189889231452
+              ],
+              [
+                -90.78430623506695,
+                13.92015582331286
+              ],
+              [
+                -90.78428729236106,
+                13.922143579416394
+              ],
+              [
+                -90.78465728744315,
+                13.922146934694252
+              ],
+              [
+                -90.78463860564737,
+                13.924107037000677
+              ],
+              [
+                -90.782,
+                13.918499999999998
+              ],
+              [
+                -90.782,
+                13.905948274788635
+              ]
+            ],
+            [
+              [
+                -90.78616432837431,
+                13.909600528887035
+              ],
+              [
+                -90.78617206420523,
+                13.908787354107208
+              ],
+              [
+                -90.7853396130008,
+                13.908779796235828
+              ],
+              [
+                -90.78533187426683,
+                13.909592970556606
+              ],
+              [
+                -90.78616432837431,
+                13.909600528887035
+              ]
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "prq-east-berths",
+          "decision": "indeterminada",
+          "reason": "Varias formas estrechas rojas y claras paralelas al borde del muelle. Son compatibles con buques amarrados, pero el contacto con el muelle y los techos impide delimitar de forma independiente cada casco. No etiquetar esta franja como fondo negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-east-quay.png",
+          "pixel_box": [
+            237,
+            229,
+            282,
+            327
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ],
+                [
+                  -90.78458753398041,
+                  13.929465498971426
+                ],
+                [
+                  -90.78467192696208,
+                  13.920610949870186
+                ],
+                [
+                  -90.78883439766992,
+                  13.92064875371383
+                ],
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78883439766992,
+            13.920610949870186,
+            -90.78458753398041,
+            13.929503327798546
+          ],
+          "overlap_observable_zone_area_m2": 275004.513
+        },
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 3.649
+        },
+        {
+          "candidate_id": "prq-south-basin-edge",
+          "decision": "indeterminada",
+          "reason": "Objetos de pocos píxeles y líneas claras junto al borde sur de la dársena y al espigón. Su origen es ambiguo; la exclusión evita convertirlos en negativos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            156,
+            310,
+            286,
+            332
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ],
+                [
+                  -90.78428729236106,
+                  13.922143579416394
+                ],
+                [
+                  -90.78430623506695,
+                  13.92015582331286
+                ],
+                [
+                  -90.79633115781326,
+                  13.920264855346643
+                ],
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79633115781326,
+            13.92015582331286,
+            -90.78428729236106,
+            13.922252627626078
+          ],
+          "overlap_observable_zone_area_m2": 97486.837
+        },
+        {
+          "candidate_id": "prq-tiny-open-water-point",
+          "decision": "indeterminada",
+          "reason": "Punto claro de aproximadamente dos o tres píxeles útiles en el canal. No hay forma suficiente para decidir entre embarcación pequeña, boya, brillo o ruido.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-small-spot.png",
+          "pixel_box": [
+            267,
+            449,
+            276,
+            458
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78616432837431,
+                  13.909600528887035
+                ],
+                [
+                  -90.78533187426683,
+                  13.909592970556606
+                ],
+                [
+                  -90.7853396130008,
+                  13.908779796235828
+                ],
+                [
+                  -90.78617206420523,
+                  13.908787354107208
+                ],
+                [
+                  -90.78616432837431,
+                  13.909600528887035
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78617206420523,
+            13.908779796235828,
+            -90.78533187426683,
+            13.909600528887035
+          ],
+          "overlap_observable_zone_area_m2": 8100.0
+        }
+      ],
+      "existing_detections": [
+        {
+          "detection_id": "313f5898fc88d0851ffeb937",
+          "review_status_at_read": "provisional",
+          "proposed_decision": "aceptar",
+          "decision_applies_to": "vessel_presence_only",
+          "reason": "Objeto claro y alargado en agua abierta, separado de estructuras terrestres. La forma es consistente con un casco; el mismo objeto aparece en las propuestas de canal y fondeo.",
+          "unique_physical_object_key": "prq-east-isolated-vessel",
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "original_model_pixel_box": [
+            296.25375366202206,
+            482.00909423825215,
+            326.2698669433448,
+            511.58587646487285
+          ],
+          "suggested_visual_localization": {
+            "pixel_box": [
+              299,
+              489,
+              320,
+              503
+            ],
+            "pixel_polygon": null,
+            "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+            "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+            "image_width_px": 512,
+            "image_height_px": 512,
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -90.78323891734263,
+                    13.905959538616596
+                  ],
+                  [
+                    -90.78129655943223,
+                    13.905941879338945
+                  ],
+                  [
+                    -90.78130861587876,
+                    13.904676944573039
+                  ],
+                  [
+                    -90.78325096325545,
+                    13.904694602181916
+                  ],
+                  [
+                    -90.78323891734263,
+                    13.905959538616596
+                  ]
+                ]
+              ]
+            },
+            "wgs84_bbox": [
+              -90.78325096325545,
+              13.904676944573039,
+              -90.78129655943223,
+              13.905959538616596
+            ],
+            "overlap_observable_zone_area_m2": 14192.75
+          },
+          "evidence_render": "tmp/local-review/s2/prq-two-hulls.png",
+          "cautions": [
+            "La caja es una localización visual aproximada, no una máscara de casco ni una medida física.",
+            "Mantener ambos registros de zona enlazados por unique_physical_object_key; no contarlos como dos buques distintos.",
+            "La caja modelo y parte del casco salen del polígono canal; preferir el registro de fondeo para el ejemplo positivo completo."
+          ]
+        }
+      ],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "prq-east-berths",
+          "decision": "indeterminada",
+          "reason": "Varias formas estrechas rojas y claras paralelas al borde del muelle. Son compatibles con buques amarrados, pero el contacto con el muelle y los techos impide delimitar de forma independiente cada casco. No etiquetar esta franja como fondo negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-east-quay.png",
+          "pixel_box": [
+            237,
+            229,
+            282,
+            327
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ],
+                [
+                  -90.78458753398041,
+                  13.929465498971426
+                ],
+                [
+                  -90.78467192696208,
+                  13.920610949870186
+                ],
+                [
+                  -90.78883439766992,
+                  13.92064875371383
+                ],
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78883439766992,
+            13.920610949870186,
+            -90.78458753398041,
+            13.929503327798546
+          ],
+          "overlap_observable_zone_area_m2": 275004.513
+        },
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 3.649
+        },
+        {
+          "candidate_id": "prq-south-basin-edge",
+          "decision": "indeterminada",
+          "reason": "Objetos de pocos píxeles y líneas claras junto al borde sur de la dársena y al espigón. Su origen es ambiguo; la exclusión evita convertirlos en negativos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            156,
+            310,
+            286,
+            332
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ],
+                [
+                  -90.78428729236106,
+                  13.922143579416394
+                ],
+                [
+                  -90.78430623506695,
+                  13.92015582331286
+                ],
+                [
+                  -90.79633115781326,
+                  13.920264855346643
+                ],
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79633115781326,
+            13.92015582331286,
+            -90.78428729236106,
+            13.922252627626078
+          ],
+          "overlap_observable_zone_area_m2": 97486.837
+        },
+        {
+          "candidate_id": "prq-tiny-open-water-point",
+          "decision": "indeterminada",
+          "reason": "Punto claro de aproximadamente dos o tres píxeles útiles en el canal. No hay forma suficiente para decidir entre embarcación pequeña, boya, brillo o ruido.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-small-spot.png",
+          "pixel_box": [
+            267,
+            449,
+            276,
+            458
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/af873b8e-e92e-485c-9720-302724dc9f5c/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78616432837431,
+                  13.909600528887035
+                ],
+                [
+                  -90.78533187426683,
+                  13.909592970556606
+                ],
+                [
+                  -90.7853396130008,
+                  13.908779796235828
+                ],
+                [
+                  -90.78617206420523,
+                  13.908787354107208
+                ],
+                [
+                  -90.78616432837431,
+                  13.909600528887035
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78617206420523,
+            13.908779796235828,
+            -90.78533187426683,
+            13.909600528887035
+          ],
+          "overlap_observable_zone_area_m2": 8100.0
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/prq_canal-proposed-scope.png"
+    },
+    {
+      "observation_id": "d6e2fe5b-458e-414f-8dd4-532484e6570d",
+      "acquisition_key": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "zone_id": "prq_fondeo",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-10T16:18:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.13692293064755862,
+      "detection_count": 2,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "La porción visible contiene dos buques inequívocos, correspondientes a las dos propuestas existentes. La mayor parte del fondeo queda fuera del recorte; no fue observada ni se etiqueta negativa.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/preview.png",
+        "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/preview.png",
+          "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+          "size_bytes": 379482
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/B02.tif",
+          "sha256": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+          "size_bytes": 417315
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/B03.tif",
+          "sha256": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+          "size_bytes": 431516
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/B04.tif",
+          "sha256": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+          "size_bytes": 442088
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/observable.tif",
+          "sha256": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+          "size_bytes": 5235
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/cloud.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/shadow.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/valid.tif",
+          "sha256": "f22654d155cd1532ffe0ef48926b9ba2948f8ff0d043ad2d01d75a3a36fa0bb4",
+          "size_bytes": 2655
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/prq_fondeo-scope.png",
+      "coverage": {
+        "zone_area_m2": 13937767.699,
+        "zone_crop_intersection_area_m2": 1964591.209,
+        "geometric_crop_coverage_fraction": 0.14095451,
+        "observable_intersection_area_m2": 1927843.803,
+        "observable_zone_fraction_geometric": 0.13831797,
+        "zone_center_pixels_in_crop": 19451,
+        "zone_center_pixels_observable": 19084,
+        "proposed_training_scope_center_pixels": 19084,
+        "candidate_negative_center_pixels": 18467,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 1927843.803,
+        "final_negative_scope_area_m2": 1866143.803,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.776924523173,
+              13.903914151897498
+            ],
+            [
+              -90.81091338031737,
+              13.904221504018238
+            ],
+            [
+              -90.81086879936643,
+              13.908961664109176
+            ],
+            [
+              -90.77687925,
+              13.908654222199997
+            ],
+            [
+              -90.776924523173,
+              13.903914151897498
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.776924523173,
+              13.903914151897498
+            ],
+            [
+              -90.81091338031737,
+              13.904221504018238
+            ],
+            [
+              -90.81086879936643,
+              13.908961664109176
+            ],
+            [
+              -90.77687925,
+              13.908654222199997
+            ],
+            [
+              -90.776924523173,
+              13.903914151897498
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.81091338031737,
+              13.904221504018238
+            ],
+            [
+              -90.81086879936643,
+              13.908961664109176
+            ],
+            [
+              -90.77687925,
+              13.908654222199997
+            ],
+            [
+              -90.776924523173,
+              13.903914151897498
+            ],
+            [
+              -90.81091338031737,
+              13.904221504018238
+            ]
+          ],
+          [
+            [
+              -90.78323891734263,
+              13.905959538616596
+            ],
+            [
+              -90.78325096325545,
+              13.904694602181916
+            ],
+            [
+              -90.78130861587876,
+              13.904676944573039
+            ],
+            [
+              -90.78129655943223,
+              13.905941879338945
+            ],
+            [
+              -90.78323891734263,
+              13.905959538616596
+            ]
+          ],
+          [
+            [
+              -90.8015484436838,
+              13.906577050000061
+            ],
+            [
+              -90.80156295062217,
+              13.905041036782135
+            ],
+            [
+              -90.79980556418859,
+              13.905025192979997
+            ],
+            [
+              -90.79979104567649,
+              13.906561204379727
+            ],
+            [
+              -90.8015484436838,
+              13.906577050000061
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "existing_detections": [
+        {
+          "detection_id": "66bb166a2a86f790a1c76460",
+          "review_status_at_read": "provisional",
+          "proposed_decision": "aceptar",
+          "decision_applies_to": "vessel_presence_only",
+          "reason": "Objeto claro y alargado en agua abierta, separado de estructuras terrestres. La forma es consistente con un casco; el mismo objeto aparece en las propuestas de canal y fondeo.",
+          "unique_physical_object_key": "prq-east-isolated-vessel",
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "original_model_pixel_box": [
+            296.25375366202206,
+            482.00909423825215,
+            326.2698669433448,
+            511.58587646487285
+          ],
+          "suggested_visual_localization": {
+            "pixel_box": [
+              299,
+              489,
+              320,
+              503
+            ],
+            "pixel_polygon": null,
+            "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+            "image_path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/preview.png",
+            "image_width_px": 512,
+            "image_height_px": 512,
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -90.78323891734263,
+                    13.905959538616596
+                  ],
+                  [
+                    -90.78129655943223,
+                    13.905941879338945
+                  ],
+                  [
+                    -90.78130861587876,
+                    13.904676944573039
+                  ],
+                  [
+                    -90.78325096325545,
+                    13.904694602181916
+                  ],
+                  [
+                    -90.78323891734263,
+                    13.905959538616596
+                  ]
+                ]
+              ]
+            },
+            "wgs84_bbox": [
+              -90.78325096325545,
+              13.904676944573039,
+              -90.78129655943223,
+              13.905959538616596
+            ],
+            "overlap_observable_zone_area_m2": 29400.0
+          },
+          "evidence_render": "tmp/local-review/s2/prq-two-hulls.png",
+          "cautions": [
+            "La caja es una localización visual aproximada, no una máscara de casco ni una medida física.",
+            "Mantener ambos registros de zona enlazados por unique_physical_object_key; no contarlos como dos buques distintos."
+          ]
+        },
+        {
+          "detection_id": "d4d860bcb1a5fecb9f89ff55",
+          "review_status_at_read": "provisional",
+          "proposed_decision": "aceptar",
+          "decision_applies_to": "vessel_presence_only",
+          "reason": "Objeto claro, aislado del litoral y rodeado de agua, con forma alargada de casco y extremos diferenciados. Su presencia como buque es inequívoca en este RGB; la identidad, familia y dimensiones no se pueden establecer.",
+          "unique_physical_object_key": "prq-west-isolated-vessel",
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "original_model_pixel_box": [
+            94.57009887693857,
+            478.5006103515334,
+            124.53659057621553,
+            508.2020263672166
+          ],
+          "suggested_visual_localization": {
+            "pixel_box": [
+              101,
+              484,
+              120,
+              501
+            ],
+            "pixel_polygon": null,
+            "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+            "image_path": "data/assets/d6e2fe5b-458e-414f-8dd4-532484e6570d/preview.png",
+            "image_width_px": 512,
+            "image_height_px": 512,
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -90.8015484436838,
+                    13.906577050000061
+                  ],
+                  [
+                    -90.79979104567649,
+                    13.906561204379727
+                  ],
+                  [
+                    -90.79980556418859,
+                    13.905025192979997
+                  ],
+                  [
+                    -90.80156295062217,
+                    13.905041036782135
+                  ],
+                  [
+                    -90.8015484436838,
+                    13.906577050000061
+                  ]
+                ]
+              ]
+            },
+            "wgs84_bbox": [
+              -90.80156295062217,
+              13.905025192979997,
+              -90.79979104567649,
+              13.906577050000061
+            ],
+            "overlap_observable_zone_area_m2": 32300.0
+          },
+          "evidence_render": "tmp/local-review/s2/prq-two-hulls.png",
+          "cautions": [
+            "La caja es una localización visual aproximada, no una máscara de casco ni una medida física.",
+            "No se cuenta como otro barco una duplicación de este recorte."
+          ]
+        }
+      ],
+      "possible_omissions_indeterminate": [],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos.",
+        "La zona no está contenida por completo en el recorte; su parte exterior no fue revisada."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/prq_fondeo-proposed-scope.png"
+    },
+    {
+      "observation_id": "74129106-de30-4a34-9986-acb5648c1f0b",
+      "acquisition_key": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "zone_id": "prq_muelles",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-10T16:18:59.024000Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 0.9998864865109398,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Se inspeccionó toda la dársena y el área terrestre incluida en la zona. Hay formas compatibles con buques amarrados en varios frentes; quedan indeterminadas y excluidas de negativos. El cero del modelo no es ausencia de buques.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+        "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+          "size_bytes": 379482
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/B02.tif",
+          "sha256": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+          "size_bytes": 417315
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/B03.tif",
+          "sha256": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+          "size_bytes": 431516
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/B04.tif",
+          "sha256": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+          "size_bytes": 442088
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/observable.tif",
+          "sha256": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+          "size_bytes": 5235
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/cloud.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/shadow.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/valid.tif",
+          "sha256": "f22654d155cd1532ffe0ef48926b9ba2948f8ff0d043ad2d01d75a3a36fa0bb4",
+          "size_bytes": 2655
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/prq_muelles-scope.png",
+      "coverage": {
+        "zone_area_m2": 1944120.684,
+        "zone_crop_intersection_area_m2": 1944120.684,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 1944120.684,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 19439,
+        "zone_center_pixels_observable": 19439,
+        "proposed_training_scope_center_pixels": 11647,
+        "candidate_negative_center_pixels": 11647,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 1165046.806,
+        "final_negative_scope_area_m2": 1165046.806,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.783,
+              13.932999999999998
+            ],
+            [
+              -90.783,
+              13.920499999999999
+            ],
+            [
+              -90.796,
+              13.920499999999999
+            ],
+            [
+              -90.796,
+              13.933000000000002
+            ],
+            [
+              -90.783,
+              13.932999999999998
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.783,
+              13.920499999999999
+            ],
+            [
+              -90.7843029551687,
+              13.920499999999999
+            ],
+            [
+              -90.78428729236106,
+              13.922143579416394
+            ],
+            [
+              -90.78465728744315,
+              13.922146934694252
+            ],
+            [
+              -90.78458753398041,
+              13.929465498971426
+            ],
+            [
+              -90.78875016294236,
+              13.929503327798546
+            ],
+            [
+              -90.78881978618159,
+              13.922184682060442
+            ],
+            [
+              -90.796,
+              13.922249795391963
+            ],
+            [
+              -90.796,
+              13.923514847320135
+            ],
+            [
+              -90.79361779781607,
+              13.923493296337659
+            ],
+            [
+              -90.79359378368655,
+              13.926023182960138
+            ],
+            [
+              -90.796,
+              13.92604495506329
+            ],
+            [
+              -90.796,
+              13.933000000000002
+            ],
+            [
+              -90.783,
+              13.932999999999998
+            ],
+            [
+              -90.783,
+              13.920499999999999
+            ]
+          ],
+          [
+            [
+              -90.78995356188099,
+              13.92942389007088
+            ],
+            [
+              -90.79171112089557,
+              13.929439832152854
+            ],
+            [
+              -90.79175833923635,
+              13.924470419187463
+            ],
+            [
+              -90.79000081772793,
+              13.924454483014589
+            ],
+            [
+              -90.78995356188099,
+              13.92942389007088
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.783,
+              13.920499999999999
+            ],
+            [
+              -90.7843029551687,
+              13.920499999999999
+            ],
+            [
+              -90.78428729236106,
+              13.922143579416394
+            ],
+            [
+              -90.78465728744315,
+              13.922146934694252
+            ],
+            [
+              -90.78458753398041,
+              13.929465498971426
+            ],
+            [
+              -90.78875016294236,
+              13.929503327798546
+            ],
+            [
+              -90.78881978618159,
+              13.922184682060442
+            ],
+            [
+              -90.796,
+              13.922249795391963
+            ],
+            [
+              -90.796,
+              13.923514847320135
+            ],
+            [
+              -90.79361779781607,
+              13.923493296337659
+            ],
+            [
+              -90.79359378368655,
+              13.926023182960138
+            ],
+            [
+              -90.796,
+              13.92604495506329
+            ],
+            [
+              -90.796,
+              13.933000000000002
+            ],
+            [
+              -90.783,
+              13.932999999999998
+            ],
+            [
+              -90.783,
+              13.920499999999999
+            ]
+          ],
+          [
+            [
+              -90.78995356188099,
+              13.92942389007088
+            ],
+            [
+              -90.79171112089557,
+              13.929439832152854
+            ],
+            [
+              -90.79175833923635,
+              13.924470419187463
+            ],
+            [
+              -90.79000081772793,
+              13.924454483014589
+            ],
+            [
+              -90.78995356188099,
+              13.92942389007088
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "prq-west-berth",
+          "decision": "indeterminada",
+          "reason": "Franja roja horizontal y objetos claros junto al muelle occidental; a 10 m no separo con seguridad barcos amarrados, equipos y cubiertas fijas. Hay candidatos de omisión, pero no positivos inequívocos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            138,
+            268,
+            185,
+            296
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79794138081446,
+                  13.926062521207744
+                ],
+                [
+                  -90.79359378368655,
+                  13.926023182960138
+                ],
+                [
+                  -90.79361779781607,
+                  13.923493296337659
+                ],
+                [
+                  -90.79796534771884,
+                  13.923532627160373
+                ],
+                [
+                  -90.79794138081446,
+                  13.926062521207744
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79796534771884,
+            13.923493296337659,
+            -90.79359378368655,
+            13.926062521207744
+          ],
+          "overlap_observable_zone_area_m2": 72472.523
+        },
+        {
+          "candidate_id": "prq-east-berths",
+          "decision": "indeterminada",
+          "reason": "Varias formas estrechas rojas y claras paralelas al borde del muelle. Son compatibles con buques amarrados, pero el contacto con el muelle y los techos impide delimitar de forma independiente cada casco. No etiquetar esta franja como fondo negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-east-quay.png",
+          "pixel_box": [
+            237,
+            229,
+            282,
+            327
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ],
+                [
+                  -90.78458753398041,
+                  13.929465498971426
+                ],
+                [
+                  -90.78467192696208,
+                  13.920610949870186
+                ],
+                [
+                  -90.78883439766992,
+                  13.92064875371383
+                ],
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78883439766992,
+            13.920610949870186,
+            -90.78458753398041,
+            13.929503327798546
+          ],
+          "overlap_observable_zone_area_m2": 441000.0
+        },
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 104500.0
+        },
+        {
+          "candidate_id": "prq-south-basin-edge",
+          "decision": "indeterminada",
+          "reason": "Objetos de pocos píxeles y líneas claras junto al borde sur de la dársena y al espigón. Su origen es ambiguo; la exclusión evita convertirlos en negativos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            156,
+            310,
+            286,
+            332
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ],
+                [
+                  -90.78428729236106,
+                  13.922143579416394
+                ],
+                [
+                  -90.78430623506695,
+                  13.92015582331286
+                ],
+                [
+                  -90.79633115781326,
+                  13.920264855346643
+                ],
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79633115781326,
+            13.92015582331286,
+            -90.78428729236106,
+            13.922252627626078
+          ],
+          "overlap_observable_zone_area_m2": 237604.276
+        }
+      ],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "prq-west-berth",
+          "decision": "indeterminada",
+          "reason": "Franja roja horizontal y objetos claros junto al muelle occidental; a 10 m no separo con seguridad barcos amarrados, equipos y cubiertas fijas. Hay candidatos de omisión, pero no positivos inequívocos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            138,
+            268,
+            185,
+            296
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79794138081446,
+                  13.926062521207744
+                ],
+                [
+                  -90.79359378368655,
+                  13.926023182960138
+                ],
+                [
+                  -90.79361779781607,
+                  13.923493296337659
+                ],
+                [
+                  -90.79796534771884,
+                  13.923532627160373
+                ],
+                [
+                  -90.79794138081446,
+                  13.926062521207744
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79796534771884,
+            13.923493296337659,
+            -90.79359378368655,
+            13.926062521207744
+          ],
+          "overlap_observable_zone_area_m2": 72472.523
+        },
+        {
+          "candidate_id": "prq-east-berths",
+          "decision": "indeterminada",
+          "reason": "Varias formas estrechas rojas y claras paralelas al borde del muelle. Son compatibles con buques amarrados, pero el contacto con el muelle y los techos impide delimitar de forma independiente cada casco. No etiquetar esta franja como fondo negativo.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-east-quay.png",
+          "pixel_box": [
+            237,
+            229,
+            282,
+            327
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ],
+                [
+                  -90.78458753398041,
+                  13.929465498971426
+                ],
+                [
+                  -90.78467192696208,
+                  13.920610949870186
+                ],
+                [
+                  -90.78883439766992,
+                  13.92064875371383
+                ],
+                [
+                  -90.78875016294236,
+                  13.929503327798546
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.78883439766992,
+            13.920610949870186,
+            -90.78458753398041,
+            13.929503327798546
+          ],
+          "overlap_observable_zone_area_m2": 441000.0
+        },
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 104500.0
+        },
+        {
+          "candidate_id": "prq-south-basin-edge",
+          "decision": "indeterminada",
+          "reason": "Objetos de pocos píxeles y líneas claras junto al borde sur de la dársena y al espigón. Su origen es ambiguo; la exclusión evita convertirlos en negativos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            156,
+            310,
+            286,
+            332
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/74129106-de30-4a34-9986-acb5648c1f0b/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ],
+                [
+                  -90.78428729236106,
+                  13.922143579416394
+                ],
+                [
+                  -90.78430623506695,
+                  13.92015582331286
+                ],
+                [
+                  -90.79633115781326,
+                  13.920264855346643
+                ],
+                [
+                  -90.79631231770904,
+                  13.922252627626078
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79633115781326,
+            13.92015582331286,
+            -90.78428729236106,
+            13.922252627626078
+          ],
+          "overlap_observable_zone_area_m2": 237604.276
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/prq_muelles-proposed-scope.png"
+    },
+    {
+      "observation_id": "91fcbf04-58e8-43a7-9ac3-d3dec584e948",
+      "acquisition_key": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "zone_id": "prq_patios",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-10T16:18:59.024000Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Se observan filas de contenedores, superficies y equipos de terminal. No se identifica un buque inequívoco dentro de la zona; se excluye el margen oriental donde se mezclan muelle, equipos y agua.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/preview.png",
+        "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/preview.png",
+          "sha256": "61abc47075ffc5955da55b85f5264c181453deb017ff4c69295b970889534dae",
+          "size_bytes": 379482
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/B02.tif",
+          "sha256": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+          "size_bytes": 417315
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/B03.tif",
+          "sha256": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+          "size_bytes": 431516
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/B04.tif",
+          "sha256": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+          "size_bytes": 442088
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/observable.tif",
+          "sha256": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+          "size_bytes": 5235
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/cloud.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/shadow.tif",
+          "sha256": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+          "size_bytes": 4084
+        },
+        {
+          "path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/valid.tif",
+          "sha256": "f22654d155cd1532ffe0ef48926b9ba2948f8ff0d043ad2d01d75a3a36fa0bb4",
+          "size_bytes": 2655
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/prq_patios-scope.png",
+      "coverage": {
+        "zone_area_m2": 95560.773,
+        "zone_crop_intersection_area_m2": 95560.773,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 95560.773,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 957,
+        "zone_center_pixels_observable": 957,
+        "proposed_training_scope_center_pixels": 590,
+        "candidate_negative_center_pixels": 590,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 58944.99,
+        "final_negative_scope_area_m2": 58944.99,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79172030000001,
+              13.928588500000002
+            ],
+            [
+              -90.7913465,
+              13.928709
+            ],
+            [
+              -90.7904599,
+              13.925648799999996
+            ],
+            [
+              -90.7908466,
+              13.9254961
+            ],
+            [
+              -90.7917535,
+              13.924661699999998
+            ],
+            [
+              -90.7922073,
+              13.924684099999999
+            ],
+            [
+              -90.7933533,
+              13.928640600000001
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928886999999998
+            ],
+            [
+              -90.7919612,
+              13.929319999999997
+            ],
+            [
+              -90.79172030000001,
+              13.928588500000002
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79171920673001,
+              13.92858885243188
+            ],
+            [
+              -90.79175652030881,
+              13.924661849085316
+            ],
+            [
+              -90.7922073,
+              13.924684099999999
+            ],
+            [
+              -90.7933533,
+              13.928640600000001
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928886999999998
+            ],
+            [
+              -90.7919612,
+              13.929319999999997
+            ],
+            [
+              -90.79172030000001,
+              13.928588500000002
+            ],
+            [
+              -90.79171920673001,
+              13.92858885243188
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79171920673001,
+              13.92858885243188
+            ],
+            [
+              -90.79175652030881,
+              13.924661849085316
+            ],
+            [
+              -90.7922073,
+              13.924684099999999
+            ],
+            [
+              -90.7933533,
+              13.928640600000001
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928886999999998
+            ],
+            [
+              -90.7919612,
+              13.929319999999997
+            ],
+            [
+              -90.79172030000001,
+              13.928588500000002
+            ],
+            [
+              -90.79171920673001,
+              13.92858885243188
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 36615.822
+        }
+      ],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "prq-central-terminal-edge",
+          "decision": "indeterminada",
+          "reason": "Borde del terminal con pequeños objetos claros y textura de contenedores; no se distingue completamente barco pequeño de equipo o infraestructura. Se excluye la interfaz agua-muelle y el margen de píxeles mixtos.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/prq-harbor-detail.png",
+          "pixel_box": [
+            205,
+            230,
+            224,
+            285
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/91fcbf04-58e8-43a7-9ac3-d3dec584e948/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ],
+                [
+                  -90.78995356188099,
+                  13.92942389007088
+                ],
+                [
+                  -90.79000081772793,
+                  13.924454483014589
+                ],
+                [
+                  -90.79175833923635,
+                  13.924470419187463
+                ],
+                [
+                  -90.79171112089557,
+                  13.929439832152854
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -90.79175833923635,
+            13.924454483014589,
+            -90.78995356188099,
+            13.929439832152854
+          ],
+          "overlap_observable_zone_area_m2": 36615.822
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/prq_patios-proposed-scope.png"
+    },
+    {
+      "observation_id": "2113236d-2246-4978-ad84-43ae106d5dca",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.2028393789164803,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Se recorrió el corredor visible en el agua, con trazas extensas de turbidez/corriente y sin un casco inequívoco. El tramo mayoritario fuera del recorte no fue revisado ni constituye un negativo.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/preview.png",
+        "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          324260.0,
+          0.0,
+          -10.0,
+          1738650.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/preview.png",
+          "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+          "size_bytes": 440141
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/B02.tif",
+          "sha256": "069d4f41adc4bc24945c9f4b9f17509130b816703acd97e403eb5a0bde623777",
+          "size_bytes": 473115
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/B03.tif",
+          "sha256": "f98b6ff5d15d4d09036bbf6dd01317f22680d3109dd92fe29e063c4d95332c9b",
+          "size_bytes": 495946
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/B04.tif",
+          "sha256": "8af5c4453507a74ebb19c07c3b97f773b447973b231b3ded354202f7b2e38116",
+          "size_bytes": 507908
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/observable.tif",
+          "sha256": "7348c1c5a9757bde7f7c65b1426b02abb41354d039ff15d3642b02086525629c",
+          "size_bytes": 5939
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/cloud.tif",
+          "sha256": "b6a54340c85e91d9f6003f035a495d3a77282de1c0596afa936ceb062bebe3f7",
+          "size_bytes": 4991
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/shadow.tif",
+          "sha256": "45c33f22a5fa7faf5086a3afccac79cb5efa0c9adad2981792807a907dff1db4",
+          "size_bytes": 5322
+        },
+        {
+          "path": "data/assets/2113236d-2246-4978-ad84-43ae106d5dca/valid.tif",
+          "sha256": "62cb7d774c61e63dc9d1de03c846f7c9032af622b7ae3b482501ff9fbfb8b984",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/stc_canal-scope.png",
+      "coverage": {
+        "zone_area_m2": 2253014.195,
+        "zone_crop_intersection_area_m2": 456230.044,
+        "geometric_crop_coverage_fraction": 0.20249763,
+        "observable_intersection_area_m2": 456230.044,
+        "observable_zone_fraction_geometric": 0.20249763,
+        "zone_center_pixels_in_crop": 4570,
+        "zone_center_pixels_observable": 4570,
+        "proposed_training_scope_center_pixels": 4570,
+        "candidate_negative_center_pixels": 4570,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 456230.044,
+        "final_negative_scope_area_m2": 456230.044,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.61538119106753,
+              15.720226315381469
+            ],
+            [
+              -88.61337994516546,
+              15.720241117443013
+            ],
+            [
+              -88.615,
+              15.700999999999993
+            ],
+            [
+              -88.617,
+              15.701
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.61538119106753,
+              15.720226315381469
+            ],
+            [
+              -88.61337994516546,
+              15.720241117443013
+            ],
+            [
+              -88.615,
+              15.700999999999993
+            ],
+            [
+              -88.617,
+              15.701
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.61538119106753,
+              15.720226315381469
+            ],
+            [
+              -88.61337994516546,
+              15.720241117443013
+            ],
+            [
+              -88.615,
+              15.700999999999993
+            ],
+            [
+              -88.617,
+              15.701
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos.",
+        "La zona no está contenida por completo en el recorte; su parte exterior no fue revisada."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/stc_canal-proposed-scope.png"
+    },
+    {
+      "observation_id": "6dbea85d-b1b0-46fc-9931-4d0dc0e174b0",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "La forma roja alargada frente al muelle podría ser un buque omitido. Se mantiene indeterminada y se excluye la interfaz del muelle; el resto visible es agua con variaciones de turbidez, sin otro casco inequívoco.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/preview.png",
+        "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          324260.0,
+          0.0,
+          -10.0,
+          1738650.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/preview.png",
+          "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+          "size_bytes": 440141
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/B02.tif",
+          "sha256": "069d4f41adc4bc24945c9f4b9f17509130b816703acd97e403eb5a0bde623777",
+          "size_bytes": 473115
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/B03.tif",
+          "sha256": "f98b6ff5d15d4d09036bbf6dd01317f22680d3109dd92fe29e063c4d95332c9b",
+          "size_bytes": 495946
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/B04.tif",
+          "sha256": "8af5c4453507a74ebb19c07c3b97f773b447973b231b3ded354202f7b2e38116",
+          "size_bytes": 507908
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/observable.tif",
+          "sha256": "7348c1c5a9757bde7f7c65b1426b02abb41354d039ff15d3642b02086525629c",
+          "size_bytes": 5939
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/cloud.tif",
+          "sha256": "b6a54340c85e91d9f6003f035a495d3a77282de1c0596afa936ceb062bebe3f7",
+          "size_bytes": 4991
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/shadow.tif",
+          "sha256": "45c33f22a5fa7faf5086a3afccac79cb5efa0c9adad2981792807a907dff1db4",
+          "size_bytes": 5322
+        },
+        {
+          "path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/valid.tif",
+          "sha256": "62cb7d774c61e63dc9d1de03c846f7c9032af622b7ae3b482501ff9fbfb8b984",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/stc_muelles-scope.png",
+      "coverage": {
+        "zone_area_m2": 225418.368,
+        "zone_crop_intersection_area_m2": 225418.368,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 225418.368,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 2255,
+        "zone_center_pixels_observable": 2255,
+        "proposed_training_scope_center_pixels": 1683,
+        "candidate_negative_center_pixels": 1683,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 169859.478,
+        "final_negative_scope_area_m2": 169859.478,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6137773,
+              15.700216300000001
+            ],
+            [
+              -88.6127773,
+              15.698216300000004
+            ],
+            [
+              -88.620394,
+              15.694444599999999
+            ],
+            [
+              -88.621394,
+              15.696444599999998
+            ],
+            [
+              -88.6137773,
+              15.700216300000001
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61296850964939,
+              15.69859871929878
+            ],
+            [
+              -88.61636591186036,
+              15.696902105511732
+            ],
+            [
+              -88.6185528664264,
+              15.69688592411039
+            ],
+            [
+              -88.61854440925958,
+              15.695814195251753
+            ],
+            [
+              -88.62057241834528,
+              15.694801436690538
+            ],
+            [
+              -88.621394,
+              15.696444599999998
+            ],
+            [
+              -88.6137773,
+              15.700216300000001
+            ],
+            [
+              -88.61296850964939,
+              15.69859871929878
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61296850964939,
+              15.69859871929878
+            ],
+            [
+              -88.61636591186036,
+              15.696902105511732
+            ],
+            [
+              -88.6185528664264,
+              15.69688592411039
+            ],
+            [
+              -88.61854440925958,
+              15.695814195251753
+            ],
+            [
+              -88.62057241834528,
+              15.694801436690538
+            ],
+            [
+              -88.621394,
+              15.696444599999998
+            ],
+            [
+              -88.6137773,
+              15.700216300000001
+            ],
+            [
+              -88.61296850964939,
+              15.69859871929878
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "stc-red-quayside-object",
+          "decision": "indeterminada",
+          "reason": "Objeto rojo alargado pegado al frente del muelle; es compatible con un buque amarrado omitido, pero no queda separado de la infraestructura de forma suficiente para una etiqueta positiva independiente a 10 m.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            229,
+            258,
+            260,
+            278
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ],
+                [
+                  -88.61566092198541,
+                  15.696907321771953
+                ],
+                [
+                  -88.61564668492885,
+                  15.695099911676007
+                ],
+                [
+                  -88.61853860391336,
+                  15.69507851660128
+                ],
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.6185528664264,
+            15.69507851660128,
+            -88.61564668492885,
+            15.696907321771953
+          ],
+          "overlap_observable_zone_area_m2": 28164.299
+        },
+        {
+          "candidate_id": "stc-quayside-mixed-pixels",
+          "decision": "indeterminada",
+          "reason": "Franja de contacto agua-muelle con píxeles mixtos y posibles buques amarrados. Se excluye de negativos aunque la máscara automática la considere observable.",
+          "possible_omission": false,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            205,
+            239,
+            295,
+            295
+          ],
+          "pixel_polygon": [
+            [
+              205,
+              282
+            ],
+            [
+              290,
+              239
+            ],
+            [
+              295,
+              251
+            ],
+            [
+              211,
+              295
+            ],
+            [
+              205,
+              282
+            ]
+          ],
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62077464965613,
+                  15.69470044528332
+                ],
+                [
+                  -88.61287576535474,
+                  15.69864503446525
+                ],
+                [
+                  -88.61240079143049,
+                  15.697564028957098
+                ],
+                [
+                  -88.62020564639482,
+                  15.693529780765347
+                ],
+                [
+                  -88.62077464965613,
+                  15.69470044528332
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.62077464965613,
+            15.693529780765347,
+            -88.61240079143049,
+            15.69864503446525
+          ],
+          "overlap_observable_zone_area_m2": 41660.96
+        }
+      ],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "stc-red-quayside-object",
+          "decision": "indeterminada",
+          "reason": "Objeto rojo alargado pegado al frente del muelle; es compatible con un buque amarrado omitido, pero no queda separado de la infraestructura de forma suficiente para una etiqueta positiva independiente a 10 m.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            229,
+            258,
+            260,
+            278
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/6dbea85d-b1b0-46fc-9931-4d0dc0e174b0/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ],
+                [
+                  -88.61566092198541,
+                  15.696907321771953
+                ],
+                [
+                  -88.61564668492885,
+                  15.695099911676007
+                ],
+                [
+                  -88.61853860391336,
+                  15.69507851660128
+                ],
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.6185528664264,
+            15.69507851660128,
+            -88.61564668492885,
+            15.696907321771953
+          ],
+          "overlap_observable_zone_area_m2": 28164.299
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/stc_muelles-proposed-scope.png"
+    },
+    {
+      "observation_id": "e8d0be39-b8eb-455f-b88b-2713e38a491f",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2026-09-30T16:20:59.024000Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.9963683584445303,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel2-vessels",
+      "author": "codex-ai-reviewer-s2",
+      "is_human_review": false,
+      "review_type": "ai_visual_independent_second_pass",
+      "summary": "Se observan techos, patios, accesos y equipos terrestres. El borde noroeste del polígono toca el frente de atraque ambiguo; esa franja se excluye. No se infiere familia o tamaño de buques.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "proposed_ai_labels_for_consolidation_not_saved",
+      "source_preview": {
+        "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/preview.png",
+        "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+        "width_px": 512,
+        "height_px": 512,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          324260.0,
+          0.0,
+          -10.0,
+          1738650.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/preview.png",
+          "sha256": "2b0a6c1676aefb38ecc6405c73cbd78b18b2e28f0c8bf0b17099dbc5e1e9000a",
+          "size_bytes": 440141
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/B02.tif",
+          "sha256": "069d4f41adc4bc24945c9f4b9f17509130b816703acd97e403eb5a0bde623777",
+          "size_bytes": 473115
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/B03.tif",
+          "sha256": "f98b6ff5d15d4d09036bbf6dd01317f22680d3109dd92fe29e063c4d95332c9b",
+          "size_bytes": 495946
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/B04.tif",
+          "sha256": "8af5c4453507a74ebb19c07c3b97f773b447973b231b3ded354202f7b2e38116",
+          "size_bytes": 507908
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/observable.tif",
+          "sha256": "7348c1c5a9757bde7f7c65b1426b02abb41354d039ff15d3642b02086525629c",
+          "size_bytes": 5939
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/cloud.tif",
+          "sha256": "b6a54340c85e91d9f6003f035a495d3a77282de1c0596afa936ceb062bebe3f7",
+          "size_bytes": 4991
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/shadow.tif",
+          "sha256": "45c33f22a5fa7faf5086a3afccac79cb5efa0c9adad2981792807a907dff1db4",
+          "size_bytes": 5322
+        },
+        {
+          "path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/valid.tif",
+          "sha256": "62cb7d774c61e63dc9d1de03c846f7c9032af622b7ae3b482501ff9fbfb8b984",
+          "size_bytes": 1632
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/s2/stc_patios-scope.png",
+      "coverage": {
+        "zone_area_m2": 329295.885,
+        "zone_crop_intersection_area_m2": 329295.885,
+        "geometric_crop_coverage_fraction": 1.0,
+        "observable_intersection_area_m2": 329295.885,
+        "observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 3281,
+        "zone_center_pixels_observable": 3281,
+        "proposed_training_scope_center_pixels": 2376,
+        "candidate_negative_center_pixels": 2376,
+        "mask_definition": "observable.tif > 0; polygonized exact pixel cells; then intersected with the configured zone and actual raster footprint. Cloud/shadow/no-data cells are excluded.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ near polygon boundaries. Stored observable_fraction/status is preserved as historical catalog data; this report does not overwrite it.",
+        "geometry_note": "Areas are measured in the native projected CRS. Final WGS84 proposed scopes are clipped again against visible scope and explicit exclusions after reprojection to prevent subpixel slivers from independently transformed polygon edges.",
+        "final_training_scope_area_m2": 237509.559,
+        "final_negative_scope_area_m2": 237509.559,
+        "scope_pixel_count_method": "Final serialized WGS84 scope reprojected to the native grid, rasterized with center-pixel inclusion, then intersected with observable.tif > 0. Boundary-center ties can differ by a few cells from clipping directly in projected coordinates."
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.620394,
+              15.694444599999999
+            ],
+            [
+              -88.6127773,
+              15.698216300000004
+            ],
+            [
+              -88.6126648,
+              15.698023799999996
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.695410600000002
+            ],
+            [
+              -88.613991,
+              15.694187900000001
+            ],
+            [
+              -88.6136091,
+              15.693476300000002
+            ],
+            [
+              -88.61418400000001,
+              15.693196800000003
+            ],
+            [
+              -88.6150469,
+              15.692777200000004
+            ],
+            [
+              -88.6166798,
+              15.691983199999994
+            ],
+            [
+              -88.6171964,
+              15.693022499999996
+            ],
+            [
+              -88.6187536,
+              15.692261400000001
+            ],
+            [
+              -88.6190534,
+              15.692851399999999
+            ],
+            [
+              -88.6195376,
+              15.692608900000003
+            ],
+            [
+              -88.6204882,
+              15.694280299999999
+            ],
+            [
+              -88.6203434,
+              15.6943503
+            ],
+            [
+              -88.620394,
+              15.694444599999999
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.695410600000002
+            ],
+            [
+              -88.613991,
+              15.694187900000001
+            ],
+            [
+              -88.6136091,
+              15.693476300000002
+            ],
+            [
+              -88.61418400000001,
+              15.693196800000003
+            ],
+            [
+              -88.6150469,
+              15.692777200000004
+            ],
+            [
+              -88.6166798,
+              15.691983199999994
+            ],
+            [
+              -88.6171964,
+              15.693022499999996
+            ],
+            [
+              -88.6187536,
+              15.692261400000001
+            ],
+            [
+              -88.6190534,
+              15.692851399999999
+            ],
+            [
+              -88.6195376,
+              15.692608900000003
+            ],
+            [
+              -88.6200941296198,
+              15.69358742262417
+            ],
+            [
+              -88.61719008455289,
+              15.695088493254374
+            ],
+            [
+              -88.61564668492885,
+              15.695099911676007
+            ],
+            [
+              -88.61565285391855,
+              15.695883071748817
+            ],
+            [
+              -88.61243638893018,
+              15.697545628980494
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.695410600000002
+            ],
+            [
+              -88.613991,
+              15.694187900000001
+            ],
+            [
+              -88.6136091,
+              15.693476300000002
+            ],
+            [
+              -88.61418400000001,
+              15.693196800000003
+            ],
+            [
+              -88.6150469,
+              15.692777200000004
+            ],
+            [
+              -88.6166798,
+              15.691983199999994
+            ],
+            [
+              -88.6171964,
+              15.693022499999996
+            ],
+            [
+              -88.6187536,
+              15.692261400000001
+            ],
+            [
+              -88.6190534,
+              15.692851399999999
+            ],
+            [
+              -88.6195376,
+              15.692608900000003
+            ],
+            [
+              -88.6200941296198,
+              15.69358742262417
+            ],
+            [
+              -88.61719008455289,
+              15.695088493254374
+            ],
+            [
+              -88.61564668492885,
+              15.695099911676007
+            ],
+            [
+              -88.61565285391855,
+              15.695883071748817
+            ],
+            [
+              -88.61243638893018,
+              15.697545628980494
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "stc-red-quayside-object",
+          "decision": "indeterminada",
+          "reason": "Objeto rojo alargado pegado al frente del muelle; es compatible con un buque amarrado omitido, pero no queda separado de la infraestructura de forma suficiente para una etiqueta positiva independiente a 10 m.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            229,
+            258,
+            260,
+            278
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ],
+                [
+                  -88.61566092198541,
+                  15.696907321771953
+                ],
+                [
+                  -88.61564668492885,
+                  15.695099911676007
+                ],
+                [
+                  -88.61853860391336,
+                  15.69507851660128
+                ],
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.6185528664264,
+            15.69507851660128,
+            -88.61564668492885,
+            15.696907321771953
+          ],
+          "overlap_observable_zone_area_m2": 33835.701
+        },
+        {
+          "candidate_id": "stc-quayside-mixed-pixels",
+          "decision": "indeterminada",
+          "reason": "Franja de contacto agua-muelle con píxeles mixtos y posibles buques amarrados. Se excluye de negativos aunque la máscara automática la considere observable.",
+          "possible_omission": false,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            205,
+            239,
+            295,
+            295
+          ],
+          "pixel_polygon": [
+            [
+              205,
+              282
+            ],
+            [
+              290,
+              239
+            ],
+            [
+              295,
+              251
+            ],
+            [
+              211,
+              295
+            ],
+            [
+              205,
+              282
+            ]
+          ],
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62077464965613,
+                  15.69470044528332
+                ],
+                [
+                  -88.61287576535474,
+                  15.69864503446525
+                ],
+                [
+                  -88.61240079143049,
+                  15.697564028957098
+                ],
+                [
+                  -88.62020564639482,
+                  15.693529780765347
+                ],
+                [
+                  -88.62077464965613,
+                  15.69470044528332
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.62077464965613,
+            15.693529780765347,
+            -88.61240079143049,
+            15.69864503446525
+          ],
+          "overlap_observable_zone_area_m2": 84614.689
+        }
+      ],
+      "existing_detections": [],
+      "possible_omissions_indeterminate": [
+        {
+          "candidate_id": "stc-red-quayside-object",
+          "decision": "indeterminada",
+          "reason": "Objeto rojo alargado pegado al frente del muelle; es compatible con un buque amarrado omitido, pero no queda separado de la infraestructura de forma suficiente para una etiqueta positiva independiente a 10 m.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/s2/stc-harbor-detail.png",
+          "pixel_box": [
+            229,
+            258,
+            260,
+            278
+          ],
+          "pixel_polygon": null,
+          "coordinate_convention": "[xmin, ymin, xmax, ymax], native pixel edges; upper-left origin; half-open box",
+          "image_path": "data/assets/e8d0be39-b8eb-455f-b88b-2713e38a491f/preview.png",
+          "image_width_px": 512,
+          "image_height_px": 512,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ],
+                [
+                  -88.61566092198541,
+                  15.696907321771953
+                ],
+                [
+                  -88.61564668492885,
+                  15.695099911676007
+                ],
+                [
+                  -88.61853860391336,
+                  15.69507851660128
+                ],
+                [
+                  -88.6185528664264,
+                  15.69688592411039
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.6185528664264,
+            15.69507851660128,
+            -88.61564668492885,
+            15.696907321771953
+          ],
+          "overlap_observable_zone_area_m2": 33835.701
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "negative_recommendation": {
+        "claim": "No additional unequivocal large vessel was found in the proposed negative area after excluding visible positives and the listed ambiguous regions. This is an AI visual assessment, not proof of vessel absence.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true
+      },
+      "training_split_group": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "uncertainties": [
+        "Las zonas son provisionales y no equivalen a una demarcación portuaria verificada.",
+        "Resolución de 10 m: no hay garantía de detectar embarcaciones pequeñas, cascos pegados al muelle o blancos con bajo contraste.",
+        "Las exclusiones son conservadoras; la ampliación por vecino más cercano no añade detalle.",
+        "No hay referencia independiente que sustente familia, eslora o manga; todos esos atributos permanecen nulos."
+      ],
+      "ui_actions_saved": false,
+      "proposed_scope_render": "tmp/local-review/s2/stc_patios-proposed-scope.png"
+    }
+  ],
+  "verification": {
+    "json_parsed": true,
+    "unique_observation_count": 11,
+    "all_evidence_hashes_match": true,
+    "all_pixel_boxes_bounded": true,
+    "all_scope_geometries_valid": true,
+    "training_scopes_inside_visible_scopes": true,
+    "training_scopes_exclude_ambiguity": true,
+    "negative_scopes_exclude_positives": true,
+    "scope_pixel_counts_derived_from_final_wgs84_geometries": true,
+    "database_mutated_by_this_reviewer": false
+  }
+}

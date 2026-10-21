@@ -8,6 +8,7 @@ import os
 import shutil
 import tempfile
 import uuid
+from collections.abc import Collection
 from contextlib import closing
 from pathlib import Path
 from typing import Any
@@ -49,6 +50,7 @@ def record_review(
             "dataset_split",
             "split_groups",
             "scene_complete",
+            "reviewed_area",
         }
     else:
         allowed |= {"geometry", "status"}
@@ -90,6 +92,10 @@ def record_review(
             ):
                 raise ValueError("dimensions must be positive finite metres")
     if entity_type == "observation":
+        if "reviewed_area" in correction:
+            validate_geometry(correction["reviewed_area"])
+            if shape(correction["reviewed_area"]).geom_type not in {"Polygon", "MultiPolygon"}:
+                raise ValueError("reviewed_area must be a Polygon or MultiPolygon")
         if "status" in correction and correction["status"] != "unusable":
             raise ValueError("review can mark unusable; processing states belong to the worker")
         fraction = correction.get("observable_fraction")
@@ -153,7 +159,7 @@ def record_review(
             {
                 k: v
                 for k, v in correction.items()
-                if k in {"note", "provenance", "dataset_split", "split_groups", "scene_complete"}
+                if k in {"note", "provenance", "dataset_split", "split_groups", "scene_complete", "reviewed_area"}
             }
         )
         if provenance:
@@ -171,7 +177,9 @@ def record_review(
     return revision_id
 
 
-def add_detection(store: Store, observation_id: str, geometry: dict, author: str) -> str:
+def add_detection(
+    store: Store, observation_id: str, geometry: dict, author: str, *, provenance: dict | None = None
+) -> str:
     """Record an omitted object as an audited manual annotation, with no invented model score."""
     validate_geometry(geometry)
     if not author.strip():
@@ -192,7 +200,7 @@ def add_detection(store: Store, observation_id: str, geometry: dict, author: str
                 observation_id,
                 json_text(geometry),
                 utc_text(),
-                json_text({"origin": "manual", "latest_revision_id": revision_id}),
+                json_text({"origin": "manual", "latest_revision_id": revision_id, "provenance": provenance or {}}),
             ),
         )
         tx.execute(
@@ -202,7 +210,7 @@ def add_detection(store: Store, observation_id: str, geometry: dict, author: str
                 "detection",
                 detection_id,
                 "null",
-                json_text({"action": "add", "geometry": geometry}),
+                json_text({"action": "add", "geometry": geometry, "provenance": provenance or {}}),
                 author.strip(),
                 utc_text(),
             ),
@@ -210,7 +218,9 @@ def add_detection(store: Store, observation_id: str, geometry: dict, author: str
     return detection_id
 
 
-def export_dataset(store: Store, destination: Path, *, split: str, version: str) -> dict[str, Any]:
+def export_dataset(store: Store, destination: Path, *, split: str, version: str,
+                   observation_ids: Collection[str] | None = None,
+                   include_history: bool = False) -> dict[str, Any]:
     """Publish a complete immutable dataset or leave its destination untouched."""
     destination = Path(destination).expanduser().absolute()
     if destination.exists() or destination.is_symlink():
@@ -219,7 +229,8 @@ def export_dataset(store: Store, destination: Path, *, split: str, version: str)
     stage = Path(tempfile.mkdtemp(prefix=f".{destination.name}.pending-", dir=destination.parent))
     try:
         staged_dataset = stage / "dataset"
-        manifest = _export_dataset(store, staged_dataset, split=split, version=version)
+        manifest = _export_dataset(store, staged_dataset, split=split, version=version,
+                                   observation_ids=observation_ids, include_history=include_history)
         if destination.exists() or destination.is_symlink():
             raise FileExistsError("dataset versions are immutable")
         staged_dataset.rename(destination)
@@ -228,10 +239,15 @@ def export_dataset(store: Store, destination: Path, *, split: str, version: str)
         shutil.rmtree(stage, ignore_errors=True)
 
 
-def _export_dataset(store: Store, destination: Path, *, split: str, version: str) -> dict[str, Any]:
+def _export_dataset(store: Store, destination: Path, *, split: str, version: str,
+                    observation_ids: Collection[str] | None = None,
+                    include_history: bool = False) -> dict[str, Any]:
     """Freeze reviewed full-scene labels, checking leakage across all assigned splits."""
     if split not in {"train", "calibration", "test"}:
         raise ValueError("invalid split")
+    requested = None if observation_ids is None else frozenset(observation_ids)
+    if requested is not None and (not requested or not all(isinstance(i, str) and i for i in requested)):
+        raise ValueError("An explicit cohort must contain observation identifiers")
     if destination.exists():
         raise FileExistsError("dataset versions are immutable")
     from puertogt.catalog import DEFAULT_PORTS_PATH
@@ -262,6 +278,7 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                 memberships[group] = assigned
             if (
                 assigned != split
+                or (requested is not None and row["observation_id"] not in requested)
                 or row["review_status"] != "reviewed"
                 or row["status"] not in {"usable", "partial"}
             ):
@@ -275,17 +292,34 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                 or zones[row["zone_id"]]["properties"]["port_id"] != row["port_id"]
             ):
                 raise ValueError("Reviewed observation has no matching configured zone")
-            if tx.execute(
-                "SELECT 1 FROM detections WHERE observation_id=? AND review_status='provisional' LIMIT 1",
-                (row["observation_id"],),
-            ).fetchone():
-                raise ValueError(
-                    "resolve all provisional detections before freezing a complete scene"
-                )
-            detections = tx.execute(
-                "SELECT * FROM detections WHERE observation_id=? AND review_status='reviewed'",
+            zone = shape(zones[row["zone_id"]]["geometry"])
+            area = shape(details.get("reviewed_area", zones[row["zone_id"]]["geometry"]))
+            if area.geom_type not in {"Polygon", "MultiPolygon"} or area.is_empty or not area.is_valid:
+                raise ValueError("reviewed_area must be a valid nonempty Polygon or MultiPolygon")
+            if not zone.buffer(1e-10).covers(area):
+                raise ValueError("reviewed_area must remain inside the configured zone")
+            all_detections = tx.execute(
+                "SELECT * FROM detections WHERE observation_id=? ORDER BY detection_id",
                 (row["observation_id"],),
             ).fetchall()
+            in_scope = [
+                d for d in all_detections
+                if "reviewed_area" not in details
+                or area.covers(shape(json.loads(d["geometry_json"])).centroid)
+            ]
+            excluded = [d["detection_id"] for d in all_detections if d not in in_scope]
+            if any(
+                d["review_status"] == "provisional"
+                and (
+                    d in in_scope
+                    or area.intersection(shape(json.loads(d["geometry_json"]))).area > 0
+                )
+                for d in all_detections
+            ):
+                raise ValueError(
+                    "resolve all provisional detections inside or overlapping the reviewed area before freezing it"
+                )
+            detections = [d for d in in_scope if d["review_status"] == "reviewed"]
             features = [
                 {
                     "type": "Feature",
@@ -307,7 +341,9 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                     (row["observation_id"],),
                 )
             ]
-            chosen.append((dict(row), features, groups, assets))
+            chosen.append((dict(row), features, groups, assets, excluded))
+    if requested is not None and requested != {row["observation_id"] for row, *_ in chosen}:
+        raise ValueError("Explicit cohort contains absent or ineligible reviewed observations")
     if not chosen:
         raise ValueError("no reviewed complete scenes in this split")
     destination.mkdir(parents=True)
@@ -318,7 +354,7 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
         "format": "puertogt-reviewed-geojson-v1",
         "samples": [],
     }
-    for row, features, groups, assets in chosen:
+    for row, features, groups, assets, excluded in chosen:
         path = destination / f"{row['observation_id']}.geojson"
         path.write_text(json_text({"type": "FeatureCollection", "features": features}) + "\n")
         evidence = []
@@ -347,7 +383,7 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                 "port_id": row["port_id"],
                 "zone_id": row["zone_id"],
                 "sensor": row["sensor"],
-                "reviewed_area": zones[row["zone_id"]]["geometry"],
+                "reviewed_area": json.loads(row["data_json"]).get("reviewed_area", zones[row["zone_id"]]["geometry"]),
                 "reviewed_area_scope": "frozen_area",
                 "reviewed_area_source": {
                     "zone_id": row["zone_id"],
@@ -356,7 +392,9 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                     "ports_config_sha256": config_hash,
                     "ports_config_version": ports.get("version"),
                     "object_membership": "centroid_covered_by_reviewed_area",
+                    "scope_origin": "explicit_review" if "reviewed_area" in json.loads(row["data_json"]) else "configured_zone",
                 },
+                "excluded_detection_ids": excluded,
                 "reference_provenance": json.loads(row["data_json"]).get("provenance", {}),
                 "split_groups": groups,
                 "labels": path.name,
@@ -364,6 +402,18 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
                 "evidence_assets": evidence,
             }
         )
+    if include_history:
+        from puertogt.ml.history_evidence import freeze_history_evidence
+
+        history = freeze_history_evidence(store, destination, manifest["samples"])
+        if not history or not history.get("acquisitions"):
+            raise ValueError("Historical inference evidence is required for this cohort")
+        manifest["history_inference"] = history
+        acquisition_details = {item["acquisition_key"]: item for item in history["acquisitions"]}
+        for sample in manifest["samples"]:
+            item = acquisition_details[sample["acquisition_key"]]
+            sample["pass_id"] = item["pass_id"]
+            sample["context_acquisition_key"] = item["context_acquisition_key"]
     (destination / "manifest.json").write_text(json_text(manifest) + "\n")
     return manifest
 

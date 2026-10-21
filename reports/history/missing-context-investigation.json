@@ -1,0 +1,1055 @@
+{
+  "schema_version": "1.0",
+  "investigated_at_utc": "2026-10-21T14:49:27.745546+00:00",
+  "author": "codex-independent-context-investigation",
+  "purpose": "Determinar si las seis adquisiciones S1D bloqueadas tienen contexto público compatible de 30–90 días o metadatos orbitales mal atribuidos. Investigación de metadatos; no descarga de píxeles.",
+  "read_only_scope": {
+    "plan_modified": false,
+    "database_modified": false,
+    "source_code_modified": false,
+    "own_outputs": [
+      "reports/history/missing-context-investigation.json",
+      "tmp/missing-context-investigation/"
+    ]
+  },
+  "inputs": {
+    "plan_path": "data/history/full-v1/plan.json",
+    "plan_sha256": "28095b6d61477bff3147ac5ec3a72d9397f97b1c117beab480c78113ae3a56ae",
+    "plan_id": "history-full-v1-3e4733ed6e0e7481",
+    "planned_acquisitions": 824,
+    "missing_context_acquisitions": 6,
+    "inventory_path": "reports/pilot/inventory.json",
+    "inventory_sha256": "9f301f47ced709ee57dd1289242fd268e0a7097e5f291cf4304ce4f9901f79c3",
+    "inventory_status": "complete",
+    "inventory_cutoff": "2026-10-21T01:40:47.815329Z",
+    "inventory_acquisitions": 863
+  },
+  "conclusion": {
+    "compatible_public_context_found": false,
+    "attribution_error_found": false,
+    "number_of_targets": 6,
+    "classification": "Unavailable in the independently searched CDSE and ASF public catalogues for the required local coverage and temporal windows.",
+    "evidence_summary": [
+      "CDSE consultado sin filtro de plataforma, órbita, polarización o nivel IW para la ventana ampliada 15 mayo–15 agosto: 40 productos, total anunciado 40, ninguna página pendiente; todos son órbita 63 ascendente.",
+      "ASF consultado en la misma área y ventana, sin filtro de órbita/modo/polarización: 60 entradas, todas órbita 63 ascendente. Los ocho registros GRD_HD se reducen a siete adquisiciones por un producto reprocesado duplicado.",
+      "ASF consultado como control en órbita 128 descendente del 1 mayo al 14 septiembre: ocho productos GRD_HD; dos del 8 mayo y las seis adquisiciones objetivo, sin escena intermedia que cubra los puertos.",
+      "CDSE ampliado a -91/13/-86/19 para buscar órbita 128 fuera del inventario: 12 representaciones de seis adquisiciones vecinas. Ninguna huella intersecta las zonas; la más cercana queda a aproximadamente 164 km.",
+      "CDSE por UUID confirma la primera escena S1D como IW, VV/VH, órbita relativa 128 y descendente; ASF confirma las seis identidades y atributos orbitales."
+    ],
+    "not_established": "No se ha demostrado la causa operativa exacta de la ausencia local. La transición de la constelación de junio es contexto publicado, no evidencia causal de este vacío concreto."
+  },
+  "local_code_review": {
+    "catalog_query": {
+      "path": "src/puertogt/catalog.py",
+      "lines": [
+        124,
+        140
+      ],
+      "behavior": "Inventory filters Sentinel-1 IW GRDH 1SDV, exact UTC interval and AOI, with complete pagination. Fresh searches broadened modes/products/platforms and removed the publication cutoff to test missed products."
+    },
+    "context_selection": {
+      "path": "src/puertogt/history.py",
+      "lines": [
+        106,
+        121
+      ],
+      "behavior": "Requires Sentinel-1, age 30–90 days, equal relative orbit and direction, target ports contained by candidate membership, and intersecting acquisition footprints. It does not require the same platform; S1A/C are not excluded merely because target is S1D.",
+      "finding": "No code attribution or same-platform rejection explains these six failures; all six windows have zero local same-track acquisitions."
+    },
+    "inventory_completeness": [
+      {
+        "port_id": "pbr",
+        "purpose": "auxiliary_context",
+        "complete": true,
+        "retrieved_products": 44,
+        "reported_products": 44,
+        "pages": 1
+      },
+      {
+        "port_id": "stc",
+        "purpose": "auxiliary_context",
+        "complete": true,
+        "retrieved_products": 44,
+        "reported_products": 44,
+        "pages": 1
+      },
+      {
+        "port_id": "pbr",
+        "purpose": "public_history",
+        "complete": true,
+        "retrieved_products": 340,
+        "reported_products": 340,
+        "pages": 4
+      },
+      {
+        "port_id": "stc",
+        "purpose": "public_history",
+        "complete": true,
+        "retrieved_products": 340,
+        "reported_products": 340,
+        "pages": 4
+      }
+    ]
+  },
+  "search_scope": {
+    "port_ids": [
+      "pbr",
+      "stc"
+    ],
+    "aoi_wgs84_bbox": [
+      -88.66,
+      15.68,
+      -88.58,
+      15.81
+    ],
+    "all_caribbean_zones_inside_search_aoi": true,
+    "broadened_window_start": "2026-05-15T00:00:00Z",
+    "broadened_window_end_exclusive": "2026-08-15T00:00:00Z",
+    "expanded_neighbor_aoi_wgs84_bbox": [
+      -91,
+      13,
+      -86,
+      19
+    ]
+  },
+  "provider_results": {
+    "cdse_wide_iw": {
+      "rows": 40,
+      "reported_count": 40,
+      "pagination_complete": true,
+      "orbit_direction_counts": [
+        {
+          "relative_orbit": 63,
+          "direction": "ASCENDING",
+          "products": 40
+        }
+      ]
+    },
+    "asf_wide_all": {
+      "rows": 60,
+      "requested_max_results": 5000,
+      "rows_below_limit": true,
+      "orbit_direction_counts": [
+        {
+          "relative_orbit": 63,
+          "direction": "ASCENDING",
+          "products_and_metadata": 60
+        }
+      ]
+    },
+    "asf_same_track_control": {
+      "rows": 8,
+      "verified_target_acquisitions": 6,
+      "preceding_covering_acquisition_day": "2026-05-08",
+      "next_covering_acquisition_day": "2026-08-19"
+    }
+  },
+  "targets": [
+    {
+      "target": {
+        "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+        "captured_at": "2026-08-19T11:44:59.975584Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "534d78d1-4be5-4bba-9ff6-1c813be12971",
+          "name": "S1D_IW_GRDH_1SDV_20260819T114459_20260819T114524_004194_007AF7_42D8.SAFE"
+        },
+        {
+          "product_id": "89718c70-9d42-483f-9fc6-5e5f3699cf27",
+          "name": "S1D_IW_GRDH_1SDV_20260819T114459_20260819T114524_004194_007AF7_1549_COG.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-05-21T11:44:59.975584Z",
+        "end_inclusive": "2026-07-20T11:44:59.975584Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 23,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260819T114459_20260819T114524_004194_007AF7_42D8",
+        "asf_start_time": "2026-08-19T11:44:59Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 102.999248,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    },
+    {
+      "target": {
+        "scene_id": "scene_80f9f9dfa365cfb674fb7fee",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+        "captured_at": "2026-08-19T11:45:24.976249Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "0718b083-3ae7-4645-aceb-28f5056493aa",
+          "name": "S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603.SAFE"
+        },
+        {
+          "product_id": "bd846cb4-5394-4689-a741-e4fd9a0a18d7",
+          "name": "S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_E746_COG.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-05-21T11:45:24.976249Z",
+        "end_inclusive": "2026-07-20T11:45:24.976249Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 23,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603",
+        "asf_start_time": "2026-08-19T11:45:24Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 102.999537,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [
+        {
+          "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+          "captured_at": "2026-08-19T11:44:59.975584Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 0.000289
+        }
+      ],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    },
+    {
+      "target": {
+        "scene_id": "scene_a4443f811014b2a3ff795fd6",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+        "captured_at": "2026-08-31T11:45:00.679249Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "cc2b89bf-a8a4-40c0-9ea9-e43e89d79662",
+          "name": "S1D_IW_GRDH_1SDV_20260831T114500_20260831T114525_004369_008126_2FC8_COG.SAFE"
+        },
+        {
+          "product_id": "e856dd87-4010-4712-ad40-0333fdd6ef90",
+          "name": "S1D_IW_GRDH_1SDV_20260831T114500_20260831T114525_004369_008126_2D8D.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-06-02T11:45:00.679249Z",
+        "end_inclusive": "2026-08-01T11:45:00.679249Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 23,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260831T114500_20260831T114525_004369_008126_2D8D",
+        "asf_start_time": "2026-08-31T11:45:00Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 114.999256,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [
+        {
+          "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+          "captured_at": "2026-08-19T11:44:59.975584Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000008
+        },
+        {
+          "scene_id": "scene_80f9f9dfa365cfb674fb7fee",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+          "captured_at": "2026-08-19T11:45:24.976249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 11.999719
+        }
+      ],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    },
+    {
+      "target": {
+        "scene_id": "scene_9c127e1d47804c4cdd99a769",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114525:20260831T114550:004369:008126",
+        "captured_at": "2026-08-31T11:45:25.679865Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "30269c14-326f-4201-9a97-16e8a71d7fc2",
+          "name": "S1D_IW_GRDH_1SDV_20260831T114525_20260831T114550_004369_008126_E460_COG.SAFE"
+        },
+        {
+          "product_id": "aa7ff3e6-61c9-489c-bb8d-4c69e42d8340",
+          "name": "S1D_IW_GRDH_1SDV_20260831T114525_20260831T114550_004369_008126_CF93.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-06-02T11:45:25.679865Z",
+        "end_inclusive": "2026-08-01T11:45:25.679865Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 23,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260831T114525_20260831T114550_004369_008126_CF93",
+        "asf_start_time": "2026-08-31T11:45:25Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 114.999545,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [
+        {
+          "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+          "captured_at": "2026-08-19T11:44:59.975584Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000298
+        },
+        {
+          "scene_id": "scene_80f9f9dfa365cfb674fb7fee",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+          "captured_at": "2026-08-19T11:45:24.976249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000008
+        },
+        {
+          "scene_id": "scene_a4443f811014b2a3ff795fd6",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+          "captured_at": "2026-08-31T11:45:00.679249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 0.000289
+        }
+      ],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    },
+    {
+      "target": {
+        "scene_id": "scene_69256f84f22c7a3f9e344779",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114501:20260912T114526:004544:00873E",
+        "captured_at": "2026-09-12T11:45:01.158719Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "dab6246a-6907-4838-aca5-36d77389e586",
+          "name": "S1D_IW_GRDH_1SDV_20260912T114501_20260912T114526_004544_00873E_BABB.SAFE"
+        },
+        {
+          "product_id": "f2fb2218-498f-4da2-8e0c-6e60e15c6514",
+          "name": "S1D_IW_GRDH_1SDV_20260912T114501_20260912T114526_004544_00873E_C7D2_COG.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-06-14T11:45:01.158719Z",
+        "end_inclusive": "2026-08-13T11:45:01.158719Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 20,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260912T114501_20260912T114526_004544_00873E_BABB",
+        "asf_start_time": "2026-09-12T11:45:01Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 126.999261,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [
+        {
+          "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+          "captured_at": "2026-08-19T11:44:59.975584Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 24.000014
+        },
+        {
+          "scene_id": "scene_80f9f9dfa365cfb674fb7fee",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+          "captured_at": "2026-08-19T11:45:24.976249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 23.999724
+        },
+        {
+          "scene_id": "scene_a4443f811014b2a3ff795fd6",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+          "captured_at": "2026-08-31T11:45:00.679249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000006
+        },
+        {
+          "scene_id": "scene_9c127e1d47804c4cdd99a769",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114525:20260831T114550:004369:008126",
+          "captured_at": "2026-08-31T11:45:25.679865Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 11.999716
+        }
+      ],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    },
+    {
+      "target": {
+        "scene_id": "scene_36de09542243d8f3e48a3193",
+        "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114526:20260912T114551:004544:00873E",
+        "captured_at": "2026-09-12T11:45:26.159363Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ]
+      },
+      "target_product_representations": [
+        {
+          "product_id": "83834b4a-5b15-4acd-bdd2-da998140b4d3",
+          "name": "S1D_IW_GRDH_1SDV_20260912T114526_20260912T114551_004544_00873E_0990.SAFE"
+        },
+        {
+          "product_id": "ef6c8e8d-ebf5-409f-827b-8db7abc36303",
+          "name": "S1D_IW_GRDH_1SDV_20260912T114526_20260912T114551_004544_00873E_EEBF_COG.SAFE"
+        }
+      ],
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "context_window": {
+        "start_inclusive": "2026-06-14T11:45:26.159363Z",
+        "end_inclusive": "2026-08-13T11:45:26.159363Z",
+        "required_days_before": [
+          30,
+          90
+        ]
+      },
+      "local_inventory_s1_acquisitions_in_window": 20,
+      "local_same_track_candidates": 0,
+      "fresh_cdse_compatible_candidates": [],
+      "fresh_asf_compatible_candidates": [],
+      "attribution_check": {
+        "asf_scene_name": "S1D_IW_GRDH_1SDV_20260912T114526_20260912T114551_004544_00873E_0990",
+        "asf_start_time": "2026-09-12T11:45:26Z",
+        "asf_relative_orbit": 128,
+        "asf_direction": "DESCENDING",
+        "asf_platform": "Sentinel-1D",
+        "asf_polarization": "VV+VH",
+        "asf_processing_level": "GRD_HD",
+        "matches_frozen_acquisition_key": true,
+        "result": "Confirmed independently in ASF; no attribution discrepancy found."
+      },
+      "nearest_too_old_available_context": {
+        "scene_id": "scene_cb77d678bc4eb15b9388c30b",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20260508T114604:20260508T114629:064425:081D1A",
+        "captured_at": "2026-05-08T11:46:04.982102Z",
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING",
+        "port_ids": [
+          "pbr",
+          "stc"
+        ],
+        "days_before_target": 126.999551,
+        "reason_rejected": "More than 90 days before target."
+      },
+      "same_track_prior_acquisitions_younger_than_30_days": [
+        {
+          "scene_id": "scene_3353f5ca08ef6b2a8349b267",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+          "captured_at": "2026-08-19T11:44:59.975584Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 24.000303
+        },
+        {
+          "scene_id": "scene_80f9f9dfa365cfb674fb7fee",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+          "captured_at": "2026-08-19T11:45:24.976249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 24.000014
+        },
+        {
+          "scene_id": "scene_a4443f811014b2a3ff795fd6",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+          "captured_at": "2026-08-31T11:45:00.679249Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000295
+        },
+        {
+          "scene_id": "scene_9c127e1d47804c4cdd99a769",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114525:20260831T114550:004369:008126",
+          "captured_at": "2026-08-31T11:45:25.679865Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 12.000006
+        },
+        {
+          "scene_id": "scene_69256f84f22c7a3f9e344779",
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114501:20260912T114526:004544:00873E",
+          "captured_at": "2026-09-12T11:45:01.158719Z",
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING",
+          "port_ids": [
+            "pbr",
+            "stc"
+          ],
+          "days_before_target": 0.000289
+        }
+      ],
+      "status": "public_context_not_found",
+      "recommendation": "Mantener excepción explícita de contexto temporal no disponible. No producir conteo cero ni sustituir por otra órbita, datos fuera de la zona o una fecha fuera de la receta."
+    }
+  ],
+  "nearby_same_orbit_candidates_rejected": [
+    {
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260520T114449:20260520T114517:064600:082331",
+      "captured_at": "2026-05-20T11:44:49.591650Z",
+      "representations": [
+        {
+          "product_id": "973efa2f-e055-4226-835a-0bba5e4b11b8",
+          "name": "S1A_IW_GRDH_1SDV_20260520T114449_20260520T114517_064600_082331_90BF.SAFE",
+          "published_at": "2026-05-20T13:40:31.248514Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/05/20/S1A_IW_GRDH_1SDV_20260520T114449_20260520T114517_064600_082331_90BF.SAFE"
+        },
+        {
+          "product_id": "da48b557-2b9d-48bd-a48d-5da316cc8e70",
+          "name": "S1A_IW_GRDH_1SDV_20260520T114449_20260520T114517_064600_082331_1D68_COG.SAFE",
+          "published_at": "2026-05-20T13:55:10.128167Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/05/20/S1A_IW_GRDH_1SDV_20260520T114449_20260520T114517_064600_082331_1D68_COG.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.195076,
+        18.362854,
+        -86.496185,
+        20.4993
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 314222.9,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260702T114407:20260702T114432:003494:0062E8",
+      "captured_at": "2026-07-02T11:44:07.557730Z",
+      "representations": [
+        {
+          "product_id": "36cc9308-4247-49f2-8787-89432e7276c6",
+          "name": "S1D_IW_GRDH_1SDV_20260702T114407_20260702T114432_003494_0062E8_A65E.SAFE",
+          "published_at": "2026-07-02T15:12:51.902061Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/07/02/S1D_IW_GRDH_1SDV_20260702T114407_20260702T114432_003494_0062E8_A65E.SAFE"
+        },
+        {
+          "product_id": "e3586f8c-92b3-4f78-8390-4946b3c87bf4",
+          "name": "S1D_IW_GRDH_1SDV_20260702T114407_20260702T114432_003494_0062E8_B377_COG.SAFE",
+          "published_at": "2026-07-02T15:30:55.824648Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/07/02/S1D_IW_GRDH_1SDV_20260702T114407_20260702T114432_003494_0062E8_B377_COG.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.157913,
+        18.550076,
+        -86.497292,
+        20.483822
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 335348.3,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260702T114432:20260702T114457:003494:0062E8",
+      "captured_at": "2026-07-02T11:44:32.557122Z",
+      "representations": [
+        {
+          "product_id": "5a8d9c35-30f9-4ea2-aadc-ccfcf1201579",
+          "name": "S1D_IW_GRDH_1SDV_20260702T114432_20260702T114457_003494_0062E8_0CDA_COG.SAFE",
+          "published_at": "2026-07-02T15:30:55.030971Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/07/02/S1D_IW_GRDH_1SDV_20260702T114432_20260702T114457_003494_0062E8_0CDA_COG.SAFE"
+        },
+        {
+          "product_id": "93e8bc1e-ce87-429f-8892-59bb727580ce",
+          "name": "S1D_IW_GRDH_1SDV_20260702T114432_20260702T114457_003494_0062E8_02B0.SAFE",
+          "published_at": "2026-07-02T15:11:15.536679Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/07/02/S1D_IW_GRDH_1SDV_20260702T114432_20260702T114457_003494_0062E8_02B0.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.452698,
+        17.029694,
+        -86.81266,
+        18.976482
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 164191.2,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260714T114408:20260714T114433:003669:0068DF",
+      "captured_at": "2026-07-14T11:44:08.343521Z",
+      "representations": [
+        {
+          "product_id": "186e0640-59fc-4dce-90a9-aebfd51e0e69",
+          "name": "S1D_IW_GRDH_1SDV_20260714T114408_20260714T114433_003669_0068DF_3883.SAFE",
+          "published_at": "2026-07-14T13:49:18.279235Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/07/14/S1D_IW_GRDH_1SDV_20260714T114408_20260714T114433_003669_0068DF_3883.SAFE"
+        },
+        {
+          "product_id": "5a6e7a46-4f3b-42e6-85c9-583dae77eeb7",
+          "name": "S1D_IW_GRDH_1SDV_20260714T114408_20260714T114433_003669_0068DF_212C_COG.SAFE",
+          "published_at": "2026-07-14T14:00:49.774849Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/07/14/S1D_IW_GRDH_1SDV_20260714T114408_20260714T114433_003669_0068DF_212C_COG.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.157692,
+        18.550085,
+        -86.497063,
+        20.483837
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 335354.1,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260714T114433:20260714T114458:003669:0068DF",
+      "captured_at": "2026-07-14T11:44:33.342859Z",
+      "representations": [
+        {
+          "product_id": "05d4c43c-aa30-4fed-afd7-905a58c8f88e",
+          "name": "S1D_IW_GRDH_1SDV_20260714T114433_20260714T114458_003669_0068DF_B6FA_COG.SAFE",
+          "published_at": "2026-07-14T13:58:58.724569Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/07/14/S1D_IW_GRDH_1SDV_20260714T114433_20260714T114458_003669_0068DF_B6FA_COG.SAFE"
+        },
+        {
+          "product_id": "c295913c-cef8-4129-9b93-f7f141c7fedc",
+          "name": "S1D_IW_GRDH_1SDV_20260714T114433_20260714T114458_003669_0068DF_A61D.SAFE",
+          "published_at": "2026-07-14T13:48:24.960565Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/07/14/S1D_IW_GRDH_1SDV_20260714T114433_20260714T114458_003669_0068DF_A61D.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.45253,
+        17.029434,
+        -86.812439,
+        18.976498
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 164166.7,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260726T114409:20260726T114437:003844:006ED8",
+      "captured_at": "2026-07-26T11:44:09.160086Z",
+      "representations": [
+        {
+          "product_id": "c015da07-c2b0-4648-aa52-85fadd2f0d91",
+          "name": "S1D_IW_GRDH_1SDV_20260726T114409_20260726T114437_003844_006ED8_EA67_COG.SAFE",
+          "published_at": "2026-07-26T14:02:42.079733Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S-COG/2026/07/26/S1D_IW_GRDH_1SDV_20260726T114409_20260726T114437_003844_006ED8_EA67_COG.SAFE"
+        },
+        {
+          "product_id": "dcc6a571-957f-417d-ada2-12cbdf9ce516",
+          "name": "S1D_IW_GRDH_1SDV_20260726T114409_20260726T114437_003844_006ED8_0997.SAFE",
+          "published_at": "2026-07-26T13:45:25.907811Z",
+          "online": true,
+          "s3_path": "/eodata/Sentinel-1/SAR/IW_GRDH_1S/2026/07/26/S1D_IW_GRDH_1SDV_20260726T114409_20260726T114437_003844_006ED8_0997.SAFE"
+        }
+      ],
+      "relative_orbit": 128,
+      "orbit_direction": "DESCENDING",
+      "footprint_bounds": [
+        -89.194481,
+        18.363419,
+        -86.498726,
+        20.483732
+      ],
+      "intersects_any_caribbean_zone": false,
+      "distance_to_caribbean_zones_m": 314306.5,
+      "admissible_as_context": false,
+      "rejection_reason": "No cubre ninguna de las zonas portuarias; mismo número de órbita no implica cobertura local."
+    }
+  ],
+  "queries": [
+    {
+      "query_name": "asf-track128-control",
+      "url": "https://api.daac.asf.alaska.edu/services/search/param?dataset=SENTINEL-1&intersectsWith=POLYGON%28%28-88.66+15.68%2C-88.58+15.68%2C-88.58+15.81%2C-88.66+15.81%2C-88.66+15.68%29%29&start=2026-05-01T00%3A00%3A00Z&end=2026-09-14T23%3A59%3A59Z&relativeOrbit=128&flightDirection=DESCENDING&processingLevel=GRD_HD&output=geojson&maxResults=5000",
+      "requested_at": "2026-10-21T14:46:28.288939+00:00",
+      "timeout_seconds": 35,
+      "http_status": 200,
+      "response_path": "tmp/missing-context-investigation/asf-track128-control.json",
+      "response_sha256": "17daefb88f83a8fbbd0ea120ff4c3f616cedc7e8bd5d7875431f5bfb798a3ac5",
+      "response_bytes": 20586,
+      "returned_rows": 8,
+      "reported_count": null,
+      "next_link": null,
+      "elapsed_seconds": 0.47
+    },
+    {
+      "query_name": "asf-wide-all",
+      "url": "https://api.daac.asf.alaska.edu/services/search/param?dataset=SENTINEL-1&intersectsWith=POLYGON%28%28-88.66+15.68%2C-88.58+15.68%2C-88.58+15.81%2C-88.66+15.81%2C-88.66+15.68%29%29&start=2026-05-15T00%3A00%3A00Z&end=2026-08-14T23%3A59%3A59Z&output=geojson&maxResults=5000",
+      "requested_at": "2026-10-21T14:45:05.841111+00:00",
+      "timeout_seconds": 35,
+      "http_status": 200,
+      "response_path": "tmp/missing-context-investigation/asf-wide-all.json",
+      "response_sha256": "4d8ad680be3898a04ab637c046e001502931f8420beba749df638f75f7fcca22",
+      "response_bytes": 146563,
+      "returned_rows": 60,
+      "reported_count": null,
+      "next_link": null,
+      "elapsed_seconds": 10.76
+    },
+    {
+      "query_name": "cdse-expanded-track128",
+      "url": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products?%24filter=Collection%2FName+eq+%27SENTINEL-1%27+and+contains%28Name%2C%27_GRD%27%29+and+OData.CSC.Intersects%28area%3Dgeography%27SRID%3D4326%3BPOLYGON%28%28-91+13%2C-86+13%2C-86+19%2C-91+19%2C-91+13%29%29%27%29+and+Attributes%2FOData.CSC.IntegerAttribute%2Fany%28a%3Aa%2FName+eq+%27relativeOrbitNumber%27+and+a%2FOData.CSC.IntegerAttribute%2FValue+eq+128%29+and+ContentDate%2FStart+ge+2026-05-15T00%3A00%3A00Z+and+ContentDate%2FStart+lt+2026-08-15T00%3A00%3A00Z&%24top=1000&%24count=true&%24expand=Attributes&%24orderby=ContentDate%2FStart+asc",
+      "requested_at": "2026-10-21T14:46:28.288645+00:00",
+      "timeout_seconds": 35,
+      "http_status": 200,
+      "response_path": "tmp/missing-context-investigation/cdse-expanded-track128.json",
+      "response_sha256": "3941d4e25a73839342ef70d3aec7a63eb964761ac08469e0191c5c503127e900",
+      "response_bytes": 54907,
+      "returned_rows": 12,
+      "reported_count": 12,
+      "next_link": null,
+      "elapsed_seconds": 13.58
+    },
+    {
+      "query_name": "cdse-target-control",
+      "url": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products(534d78d1-4be5-4bba-9ff6-1c813be12971)?%24expand=Attributes",
+      "requested_at": "2026-10-21T14:46:28.289042+00:00",
+      "timeout_seconds": 35,
+      "http_status": 200,
+      "response_path": "tmp/missing-context-investigation/cdse-target-control.json",
+      "response_sha256": "2ed6485215bee4f31dd5589b02d94f68a4cded9538245ca8f1237637861b206a",
+      "response_bytes": 4729,
+      "returned_rows": 1,
+      "reported_count": null,
+      "next_link": null,
+      "elapsed_seconds": 0.64
+    },
+    {
+      "query_name": "cdse-wide-iw",
+      "url": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products?%24filter=Collection%2FName+eq+%27SENTINEL-1%27+and+contains%28Name%2C%27_IW_%27%29+and+OData.CSC.Intersects%28area%3Dgeography%27SRID%3D4326%3BPOLYGON%28%28-88.66+15.68%2C-88.58+15.68%2C-88.58+15.81%2C-88.66+15.81%2C-88.66+15.68%29%29%27%29+and+ContentDate%2FStart+ge+2026-05-15T00%3A00%3A00Z+and+ContentDate%2FStart+lt+2026-08-15T00%3A00%3A00Z&%24top=1000&%24count=true&%24expand=Attributes&%24orderby=ContentDate%2FStart+asc",
+      "requested_at": "2026-10-21T14:45:05.840795+00:00",
+      "timeout_seconds": 35,
+      "http_status": 200,
+      "response_path": "tmp/missing-context-investigation/cdse-wide-iw.json",
+      "response_sha256": "206e9fca9161388880aa48f31ada3ce4ede536a96fbadf1e0a81305471d7197b",
+      "response_bytes": 178800,
+      "returned_rows": 40,
+      "reported_count": 40,
+      "next_link": null,
+      "elapsed_seconds": 9.04
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://documentation.dataspace.copernicus.eu/APIs/OData.html",
+      "role": "Official public catalogue query, attributes and pagination semantics."
+    },
+    {
+      "url": "https://docs.asf.alaska.edu/api/keywords/",
+      "role": "Official ASF public search API and orbit/direction/geospatial filters."
+    },
+    {
+      "url": "https://asf.alaska.edu/notices/sentinel-1d-data-are-available-for-download-at-asf-daac/",
+      "role": "Operational background only: published constellation transition; does not prove cause of local acquisition gap."
+    }
+  ],
+  "integration_handoff": {
+    "recipient": "persistence",
+    "valid_candidates_to_register": [],
+    "recommended_action": "Retain the six missing-context exceptions with this evidence. Continue the other 818 planned acquisitions, which are not blocked by this particular missing-context check; their processing success is a separate result. Do not present unavailable context as vessel absence.",
+    "forbidden_substitutions": [
+      "zero-valued historical raster",
+      "orbit 63 ASCENDING in place of 128 DESCENDING",
+      "nearby orbit-128 scene that does not cover the ports",
+      "May 8 older than 90 days or August observations younger than 30 days without a separately specified and validated recipe"
+    ]
+  },
+  "limitations": [
+    "Catalogue metadata establishes acquisition/coverage availability, not pixel usability. No new raster was downloaded or calibrated.",
+    "An absence result is bounded by the public CDSE and ASF catalogues at the recorded query times; it is not proof that no other restricted archive contains data.",
+    "No mission operations log was inspected to determine why the local acquisition segment was absent."
+  ],
+  "validation": {
+    "json_parsed": true,
+    "all_six_target_keys_independently_matched": true,
+    "search_aoi_contains_all_caribbean_zones": true,
+    "public_query_evidence_hashes_checked": true,
+    "frozen_plan_hash_unchanged": true,
+    "database_or_plan_writes_performed": false
+  }
+}

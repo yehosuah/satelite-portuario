@@ -1,0 +1,3460 @@
+{
+  "schema_version": "phase2-independent-raw-review-v1",
+  "created_at": "2026-10-21T15:40:48.507291+00:00",
+  "status": "raw_reference_locked_pending_model_correspondence_and_second_review",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "selection": {
+    "split": "train",
+    "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+    "basis": "Phase2 chronological selection fixed before image/model inspection."
+  },
+  "first_pass_before_proposals": {
+    "author": "codex-ai-model-pilot",
+    "is_human_review": false,
+    "proposals_queried": false,
+    "recorded_at": "2026-10-21T15:36:18.224533+00:00",
+    "observations_full_raw_viewed": [
+      "prq_fondeo",
+      "prq_muelles",
+      "prq_canal",
+      "prq_patios"
+    ],
+    "fondeo_native_candidate_centers": [
+      [
+        336,
+        263
+      ],
+      [
+        416,
+        284
+      ],
+      [
+        504,
+        262
+      ],
+      [
+        141,
+        367
+      ],
+      [
+        224,
+        362
+      ],
+      [
+        309,
+        390
+      ],
+      [
+        393,
+        375
+      ],
+      [
+        493,
+        355
+      ],
+      [
+        411,
+        451
+      ],
+      [
+        516,
+        452
+      ],
+      [
+        206,
+        476
+      ],
+      [
+        291,
+        493
+      ],
+      [
+        635,
+        495
+      ],
+      [
+        532,
+        566
+      ],
+      [
+        191,
+        592
+      ],
+      [
+        338,
+        601
+      ],
+      [
+        422,
+        642
+      ]
+    ],
+    "notes": [
+      "17 elongated bright or red vessel-like objects in the full fondeo image, pending exact zone membership and enlarged inspection.",
+      "Very small point near417,734 and partial image-edge feature near894,829 need context; not counted.",
+      "Harbor/berths require enlargement; no whole-zone absence conclusion.",
+      "No detection tables, proposal counts, geometry or scores queried for Jan18."
+    ]
+  },
+  "proposal_exposure": {
+    "detection_table_queried": false,
+    "model_counts_seen": false,
+    "model_scores_seen": false,
+    "model_geometry_seen": false
+  },
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589"
+  },
+  "coordinate_convention": "Native pixel edges [xmin,ymin,xmax,ymax], half-open; fondeo grid EPSG32615 affine [10,0,734720,0,-10,1541120]. Boxes localize vessel signals with about1pixel boundary uncertainty; no physical dimensions inferred. WGS84 precision reflects transformation, not subpixel annotation accuracy.",
+  "method": [
+    "Viewed all4raw RGB previews, the full4quadrants of fondeo and a detailed harbor crop before proposals.",
+    "Recorded17open-water vessel centers, then inspected individual enlarged raw crops and fixed pixel-edge boxes before reading detection records.",
+    "Intersected only catalog zone geometry and measured valid/observable masks; all in-zone pixels are valid and observable.",
+    "Excluded uncertain berth strips and a very small isolated signal; source masks unchanged.",
+    "Independent visual objects are not yet classified as accepted detections or additions: parent must match and adjudicate without creating duplicates.",
+    "No training, model inference, DB review writes or claim of accuracy."
+  ],
+  "summary": {
+    "observations": 4,
+    "unique_acquisitions": 1,
+    "unique_visible_large_vessels_in_full_fondeo_mosaic": 17,
+    "unique_visual_vessels_in_configured_zones": 14,
+    "zone_positive_instances": 14,
+    "clear_vessels_outside_all_zones": 3,
+    "human_ground_truth": false,
+    "all64asset_hashes_verified": true,
+    "metrics_not_estimated": true
+  },
+  "observations": [
+    {
+      "observation_id": "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "zone_id": "prq_canal",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 0.9999999999999998,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_rgb_no_model_proposals",
+      "label_status": "proposed_pending_independent_adjudication",
+      "source_preview": {
+        "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/preview.png",
+        "sha256": "f9b1dc20328e30e388c42fa6c085af47add3c9aace06466c1741166068761638",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "5940901139e81e0677690446e381009d",
+          "sha256": "919783ed2b2f4da2fcc1611a54b66d6f93fd3d4be574eda74127b757667fc625",
+          "size_bytes": 534680,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B02.tif"
+        },
+        {
+          "asset_id": "de6e99cc3bf148f03932f794e214a0b3",
+          "sha256": "a7005696c8c0e70c7e968993adb64f87faa3145cd4d5fef9a76f8238f3056463",
+          "size_bytes": 539361,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B03.tif"
+        },
+        {
+          "asset_id": "54bf59f05c9828abaeb01d6369fef9ff",
+          "sha256": "f92ec16f34c818cf59324d28ca00ec6d351a095f374d4582f8476c52a106fa39",
+          "size_bytes": 530677,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B04.tif"
+        },
+        {
+          "asset_id": "38806d34d29b383bd278685bcb431db0",
+          "sha256": "a5ce5c5648746c0a5f72f0fe3af6b6717d45654761bd3246f39c628a3fa79e3d",
+          "size_bytes": 174606,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B05.tif"
+        },
+        {
+          "asset_id": "711b8b4638be5f196965946d2573bc3e",
+          "sha256": "a2ae960e60d45165d34e9c2cc90426157588d422e6b7e636586fbb0e16cd9667",
+          "size_bytes": 171814,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B06.tif"
+        },
+        {
+          "asset_id": "ad7c748aefd647462b30f72257bdc956",
+          "sha256": "824dc6f2b8b05f9e88bb0fe3f82150ff63965f3a7947f7098b532d074a98b227",
+          "size_bytes": 173539,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B07.tif"
+        },
+        {
+          "asset_id": "e41909a7d5ba17db492df433de96babb",
+          "sha256": "a8c3ccd93e9f3f5e3d43ece06e9d258e2c88ea34b7aa59998f868acbfd00db7b",
+          "size_bytes": 500533,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B08.tif"
+        },
+        {
+          "asset_id": "52ea33dd5db72c68ef0e02c15ad30266",
+          "sha256": "f6b9933a24915fb0dafa8866f3979555ba6d363aa6beb847be7b53aab8cf8d39",
+          "size_bytes": 163000,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B11.tif"
+        },
+        {
+          "asset_id": "5f23377573b3a93a82d682f7d564c37b",
+          "sha256": "7fed83914e6d43bc724922b44a8d977d72b5d9086453b98b336afd99606bb2f6",
+          "size_bytes": 170457,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/B12.tif"
+        },
+        {
+          "asset_id": "daba63b017b09f945d4aece0fc6a21c9",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/cloud.tif"
+        },
+        {
+          "asset_id": "b744ce320604bd893c01ba7db67b10f6",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/cloud_classes.tif"
+        },
+        {
+          "asset_id": "8db2c872da64672107b8850e7ab10f7a",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/observable.tif"
+        },
+        {
+          "asset_id": "7b613bffb505f99944c53ea00f874ce2",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/potentially_observable.tif"
+        },
+        {
+          "asset_id": "c37628ecdf6d878217c98dad2f89c253",
+          "sha256": "f9b1dc20328e30e388c42fa6c085af47add3c9aace06466c1741166068761638",
+          "size_bytes": 441650,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/preview.png"
+        },
+        {
+          "asset_id": "7b3e34a0563b6636ab1e7277dc7ff333",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/shadow.tif"
+        },
+        {
+          "asset_id": "486289be3d4933354eeadb55460ca82f",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "path": "data/assets/e1f9c6b6-e9f0-4113-b447-3afd55d79f9b/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "whole_zone_scene_complete": false,
+      "model_proposals_queried": false,
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.787,
+              13.917
+            ],
+            [
+              -90.79,
+              13.926
+            ],
+            [
+              -90.786,
+              13.927
+            ],
+            [
+              -90.782,
+              13.9185
+            ],
+            [
+              -90.782,
+              13.905
+            ],
+            [
+              -90.787,
+              13.905
+            ],
+            [
+              -90.787,
+              13.917
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.78962308068425,
+              13.925264302063995
+            ],
+            [
+              -90.78989568965235,
+              13.926026077586913
+            ],
+            [
+              -90.786,
+              13.927
+            ],
+            [
+              -90.7836694569374,
+              13.922047595991994
+            ],
+            [
+              -90.7843153696396,
+              13.922053465998385
+            ],
+            [
+              -90.78604587284319,
+              13.926988531789203
+            ],
+            [
+              -90.78790941878685,
+              13.926522645303287
+            ],
+            [
+              -90.78676318273435,
+              13.922075711540948
+            ],
+            [
+              -90.78789564878072,
+              13.922086003307788
+            ],
+            [
+              -90.78814486880086,
+              13.920434606402551
+            ],
+            [
+              -90.78784250314571,
+              13.919527509437131
+            ],
+            [
+              -90.78569716251869,
+              13.919807023577913
+            ],
+            [
+              -90.78535211997598,
+              13.917183435168141
+            ],
+            [
+              -90.78275529027242,
+              13.917882709726069
+            ],
+            [
+              -90.78304338887112,
+              13.920717201351135
+            ],
+            [
+              -90.782,
+              13.9185
+            ],
+            [
+              -90.782,
+              13.905
+            ],
+            [
+              -90.787,
+              13.905
+            ],
+            [
+              -90.787,
+              13.917
+            ],
+            [
+              -90.7897331664134,
+              13.925199499240176
+            ],
+            [
+              -90.78962308068425,
+              13.925264302063995
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.78989568965235,
+              13.926026077586913
+            ],
+            [
+              -90.786,
+              13.927
+            ],
+            [
+              -90.7836694569374,
+              13.922047595991994
+            ],
+            [
+              -90.7843153696396,
+              13.922053465998385
+            ],
+            [
+              -90.78604587284319,
+              13.926988531789203
+            ],
+            [
+              -90.78790941878685,
+              13.926522645303287
+            ],
+            [
+              -90.78676318273435,
+              13.922075711540948
+            ],
+            [
+              -90.78789564878072,
+              13.922086003307788
+            ],
+            [
+              -90.78814486880086,
+              13.920434606402551
+            ],
+            [
+              -90.78784250314571,
+              13.919527509437131
+            ],
+            [
+              -90.78569716251869,
+              13.919807023577913
+            ],
+            [
+              -90.78535211997598,
+              13.917183435168141
+            ],
+            [
+              -90.78275529027242,
+              13.917882709726069
+            ],
+            [
+              -90.78304338887112,
+              13.920717201351135
+            ],
+            [
+              -90.782,
+              13.9185
+            ],
+            [
+              -90.782,
+              13.905
+            ],
+            [
+              -90.787,
+              13.905
+            ],
+            [
+              -90.787,
+              13.917
+            ],
+            [
+              -90.7897331664134,
+              13.925199499240176
+            ],
+            [
+              -90.78962308068425,
+              13.925264302063995
+            ],
+            [
+              -90.78989568965235,
+              13.926026077586913
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "quay-container-edge",
+          "reason": "Contenedores, equipos de muelle y posibles cascos adosados no separables con confianza a10m.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78962308068425,
+                  13.925264302063995
+                ],
+                [
+                  -90.7897331664134,
+                  13.925199499240176
+                ],
+                [
+                  -90.79,
+                  13.926
+                ],
+                [
+                  -90.78989568965235,
+                  13.926026077586913
+                ],
+                [
+                  -90.78962308068425,
+                  13.925264302063995
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              382,
+              7
+            ],
+            [
+              393,
+              5
+            ],
+            [
+              411,
+              55
+            ],
+            [
+              398,
+              63
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-east",
+          "reason": "Frente oriental de atraque: objetos claros pegados a muelle no permiten cajas de casco fiables.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78383857313554,
+                  13.920693733111722
+                ],
+                [
+                  -90.78624957577546,
+                  13.920083123608393
+                ],
+                [
+                  -90.78790941878685,
+                  13.926522645303287
+                ],
+                [
+                  -90.78604587284319,
+                  13.926988531789203
+                ],
+                [
+                  -90.78383857313554,
+                  13.920693733111722
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              420,
+              5
+            ],
+            [
+              438,
+              3
+            ],
+            [
+              474,
+              105
+            ],
+            [
+              448,
+              112
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "outer-jetties",
+          "reason": "Estructuras de espigón y posibles embarcaciones pegadas: mantener desconocido.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7836694569374,
+                  13.922047595991994
+                ],
+                [
+                  -90.78304338887112,
+                  13.920717201351147
+                ],
+                [
+                  -90.78275529027242,
+                  13.917882709726069
+                ],
+                [
+                  -90.78535211997598,
+                  13.917183435168141
+                ],
+                [
+                  -90.78569716251869,
+                  13.919807023577913
+                ],
+                [
+                  -90.78784250314571,
+                  13.919527509437131
+                ],
+                [
+                  -90.78814486880086,
+                  13.920434606402551
+                ],
+                [
+                  -90.78789564878072,
+                  13.922086003307788
+                ],
+                [
+                  -90.7836694569374,
+                  13.922047595991994
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              430,
+              90
+            ],
+            [
+              481,
+              90
+            ],
+            [
+              486,
+              136
+            ],
+            [
+              458,
+              144
+            ],
+            [
+              454,
+              115
+            ],
+            [
+              426,
+              119
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        }
+      ],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 buques visuales en la zona; 3 regiones ambiguas excluidas. Las referencias aún requieren correspondencia y adjudicación con el catálogo.",
+      "coverage": {
+        "zone_area_m2": 1286177.834852859,
+        "automatic_observable_area_m2": 1286177.8348528587,
+        "reviewed_area_m2": 952557.9096422913,
+        "zone_center_pixels": 12870,
+        "valid_zone_center_pixels": 12870,
+        "observable_zone_center_pixels": 12870,
+        "reviewed_zone_center_pixels": 9534,
+        "visual_mask_overrides": false
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "No otro buque inequívoco dentro del ámbito revisado; franjas ambiguas y señales pequeñas permanecen desconocidas. La resolución limita embarcaciones pequeñas."
+      },
+      "training_split_group": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "tmp/local-review/phase2/prq-20250118-s2/prq_canal-raw-reference-scope.png"
+    },
+    {
+      "observation_id": "1039f334-a235-473a-acb1-dba7600a2def",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "zone_id": "prq_fondeo",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_rgb_no_model_proposals",
+      "label_status": "proposed_pending_independent_adjudication",
+      "source_preview": {
+        "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/preview.png",
+        "sha256": "d6ae0ee8ff5b1e7336c070925a0196fc32a06d16c76c350e0a841be252c78610",
+        "width_px": 896,
+        "height_px": 896,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "450446a0ed52945c29b636fd3c08e14d",
+          "sha256": "4bccea386feb1b54038aca8062c6a8f8c31b5659c521b74c56d2022142bd9eb7",
+          "size_bytes": 959229,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B02.tif"
+        },
+        {
+          "asset_id": "3285f1be7ff0f48ba465c297f071b2eb",
+          "sha256": "d7fd78f304b8c2f97d1765f333e911be0b6d7db756b7ec303cb436cb080a4699",
+          "size_bytes": 931027,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B03.tif"
+        },
+        {
+          "asset_id": "f9426d5d1aa8a17d14ea0afce967fae9",
+          "sha256": "2a580e6a4b0ab5e35d99b73acca683e4517f79fdfbe1bf85048bf031f1bd7bc2",
+          "size_bytes": 915231,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B04.tif"
+        },
+        {
+          "asset_id": "7be88a40722d6acb8234561630303329",
+          "sha256": "953635caf25de72f9e94268deea60e291787afeb40755f39da773112e4893f3d",
+          "size_bytes": 314761,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B05.tif"
+        },
+        {
+          "asset_id": "628f54e50bc23727f772fd4db946b2ef",
+          "sha256": "ef43e55715521f5d9a2e967cc3b87e8a6d7e0ad763facf7562d209f7ae0edb61",
+          "size_bytes": 303992,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B06.tif"
+        },
+        {
+          "asset_id": "ae237292d1bb5711e3a52d472cacd382",
+          "sha256": "e3478e462495cbe89ce39834034798f7ee36f06e3532244c07037d32f2ee7f03",
+          "size_bytes": 307305,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B07.tif"
+        },
+        {
+          "asset_id": "575ad7180830c5e43c46dac93d98b515",
+          "sha256": "82378eec3c047c5d0e69bbd2da1ca50ed4f569c8406e1620bc9d49be1e997c47",
+          "size_bytes": 875290,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B08.tif"
+        },
+        {
+          "asset_id": "c9eaaae60729597eaed1a96b51de50ee",
+          "sha256": "63f47403e31c23cb8ef5c46d61b9b0845590f27a1628c8e35ab97e497a8c3820",
+          "size_bytes": 285576,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B11.tif"
+        },
+        {
+          "asset_id": "89235cf52086bfb278ff4b40fd872f37",
+          "sha256": "7dfae24748bff59aac49f450e80a45ba16164ba4b37b8a1e3cb398fb8ee1a0a5",
+          "size_bytes": 308940,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/B12.tif"
+        },
+        {
+          "asset_id": "a3c155eb1655220cd7e631aff84dc663",
+          "sha256": "0c09d08e1a42feeb4db852472b2e67f29a928dabbb7a2ce971c8891c6a290336",
+          "size_bytes": 4312,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/cloud.tif"
+        },
+        {
+          "asset_id": "d9f919781356e6b601ad365a910eb67c",
+          "sha256": "9664ae91b179842241ac40893d7c4bd7da6da4cfee5fb7ce96fab0c41cffd600",
+          "size_bytes": 4313,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/cloud_classes.tif"
+        },
+        {
+          "asset_id": "08923e0a385ab0da864c9542e35ce9a9",
+          "sha256": "e779c2bed609b692f4dd4d964db7de7c99da2015a397d8b718b2d9db21b42083",
+          "size_bytes": 4313,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/observable.tif"
+        },
+        {
+          "asset_id": "b7a434947cdbfcdab6f6543ade2432d5",
+          "sha256": "e779c2bed609b692f4dd4d964db7de7c99da2015a397d8b718b2d9db21b42083",
+          "size_bytes": 4313,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/potentially_observable.tif"
+        },
+        {
+          "asset_id": "a37bb5a7038ecf860e6563e10012ef6d",
+          "sha256": "d6ae0ee8ff5b1e7336c070925a0196fc32a06d16c76c350e0a841be252c78610",
+          "size_bytes": 752342,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/preview.png"
+        },
+        {
+          "asset_id": "4b2e9147306ff2ea117ce4057c7ac336",
+          "sha256": "40f7b5c666d504c4fa716e3c02cd4e43f4a28adc8c1b4346b17b89c42e99e71c",
+          "size_bytes": 4274,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/shadow.tif"
+        },
+        {
+          "asset_id": "eb4a80b6f8689a89ec78a71d96d4fb85",
+          "sha256": "46f2a0c6ffe8e4e68e9ef003508ed1cb5b72bd60af073b1f9db0db8346cf9e93",
+          "size_bytes": 4269,
+          "path": "data/assets/1039f334-a235-473a-acb1-dba7600a2def/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "whole_zone_scene_complete": false,
+      "model_proposals_queried": false,
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.77687925,
+              13.9086542222
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.9089665278
+            ],
+            [
+              -90.77687925,
+              13.9086542222
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.9089665278
+            ],
+            [
+              -90.77687925,
+              13.9086542222
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ]
+          ],
+          [
+            [
+              -90.80889057056267,
+              13.893088837306015
+            ],
+            [
+              -90.80805816267772,
+              13.89308136520944
+            ],
+            [
+              -90.8080488121265,
+              13.894075261454715
+            ],
+            [
+              -90.80888122355546,
+              13.894082734106574
+            ],
+            [
+              -90.80889057056267,
+              13.893088837306015
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.81141075,
+              13.9089665278
+            ],
+            [
+              -90.77687925,
+              13.9086542222
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.79629603034648,
+              13.875095000933857
+            ],
+            [
+              -90.79627650463219,
+              13.877162083439899
+            ],
+            [
+              -90.79757126290706,
+              13.877173754823641
+            ],
+            [
+              -90.79759077704195,
+              13.875106684286063
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.9089665278
+            ]
+          ],
+          [
+            [
+              -90.80805816267772,
+              13.89308136520944
+            ],
+            [
+              -90.8080488121265,
+              13.894075261454715
+            ],
+            [
+              -90.80888122355546,
+              13.894082734106574
+            ],
+            [
+              -90.80889057056267,
+              13.893088837306015
+            ],
+            [
+              -90.80805816267772,
+              13.89308136520944
+            ]
+          ],
+          [
+            [
+              -90.81115951424431,
+              13.878018727076926
+            ],
+            [
+              -90.81118070878878,
+              13.875759864169545
+            ],
+            [
+              -90.80970098054655,
+              13.875746608569091
+            ],
+            [
+              -90.80967977170165,
+              13.878005469235058
+            ],
+            [
+              -90.81115951424431,
+              13.878018727076926
+            ]
+          ],
+          [
+            [
+              -90.8018268271482,
+              13.886880755977279
+            ],
+            [
+              -90.8018464223722,
+              13.884802616664738
+            ],
+            [
+              -90.800274160108,
+              13.884788463253185
+            ],
+            [
+              -90.80025455089577,
+              13.886866600365304
+            ],
+            [
+              -90.8018268271482,
+              13.886880755977279
+            ]
+          ],
+          [
+            [
+              -90.80985877705514,
+              13.88848906533394
+            ],
+            [
+              -90.80987830306557,
+              13.886410915065676
+            ],
+            [
+              -90.8079360731039,
+              13.88639349182592
+            ],
+            [
+              -90.80791652981134,
+              13.888471639385674
+            ],
+            [
+              -90.80985877705514,
+              13.88848906533394
+            ]
+          ],
+          [
+            [
+              -90.79998256855531,
+              13.896081014929804
+            ],
+            [
+              -90.80000304691936,
+              13.893912526050682
+            ],
+            [
+              -90.79880068307908,
+              13.89390168773484
+            ],
+            [
+              -90.79878019354503,
+              13.896070174856748
+            ],
+            [
+              -90.79998256855531,
+              13.896081014929804
+            ]
+          ],
+          [
+            [
+              -90.80772712361137,
+              13.898771186503339
+            ],
+            [
+              -90.8077483843883,
+              13.896512332629394
+            ],
+            [
+              -90.80654600086382,
+              13.896501530463429
+            ],
+            [
+              -90.80652472844879,
+              13.898760382513345
+            ],
+            [
+              -90.80772712361137,
+              13.898771186503339
+            ]
+          ],
+          [
+            [
+              -90.79737336292324,
+              13.907894802225936
+            ],
+            [
+              -90.7973998682526,
+              13.90509384498145
+            ],
+            [
+              -90.7961974488236,
+              13.905082985299982
+            ],
+            [
+              -90.7961709290533,
+              13.907883940271939
+            ],
+            [
+              -90.79737336292324,
+              13.907894802225936
+            ]
+          ],
+          [
+            [
+              -90.77943701538761,
+              13.87782290561235
+            ],
+            [
+              -90.7782347512498,
+              13.877811978460366
+            ],
+            [
+              -90.77821237378552,
+              13.880161143150849
+            ],
+            [
+              -90.7794146500082,
+              13.88017207222412
+            ],
+            [
+              -90.77943701538761,
+              13.87782290561235
+            ]
+          ],
+          [
+            [
+              -90.78088967593351,
+              13.890396199951356
+            ],
+            [
+              -90.78091290379658,
+              13.88795668035427
+            ],
+            [
+              -90.7795256143824,
+              13.887944070941787
+            ],
+            [
+              -90.77950237202724,
+              13.890383588238068
+            ],
+            [
+              -90.78088967593351,
+              13.890396199951356
+            ]
+          ],
+          [
+            [
+              -90.79050664106232,
+              13.890664131119244
+            ],
+            [
+              -90.79052805576495,
+              13.888405301997382
+            ],
+            [
+              -90.78941821474119,
+              13.88839525845251
+            ],
+            [
+              -90.78939678930308,
+              13.890654085877552
+            ],
+            [
+              -90.79050664106232,
+              13.890664131119244
+            ]
+          ],
+          [
+            [
+              -90.79219969208047,
+              13.8974565185123
+            ],
+            [
+              -90.79222195755176,
+              13.895107334825898
+            ],
+            [
+              -90.79092710440051,
+              13.895095620311247
+            ],
+            [
+              -90.7909048258965,
+              13.897444801940267
+            ],
+            [
+              -90.79219969208047,
+              13.8974565185123
+            ]
+          ],
+          [
+            [
+              -90.7831184537438,
+              13.899181411464285
+            ],
+            [
+              -90.78313909379528,
+              13.89701294789515
+            ],
+            [
+              -90.78138178984311,
+              13.896996980465193
+            ],
+            [
+              -90.78136113346297,
+              13.899165441446081
+            ],
+            [
+              -90.7831184537438,
+              13.899181411464285
+            ]
+          ],
+          [
+            [
+              -90.78990188224113,
+              13.905658555488195
+            ],
+            [
+              -90.78992332685094,
+              13.903399730058194
+            ],
+            [
+              -90.78872092225073,
+              13.903388834842382
+            ],
+            [
+              -90.78869946599701,
+              13.905647658433503
+            ],
+            [
+              -90.78990188224113,
+              13.905658555488195
+            ]
+          ],
+          [
+            [
+              -90.78174180335138,
+              13.9077531353176
+            ],
+            [
+              -90.78176591346784,
+              13.90522326525297
+            ],
+            [
+              -90.78065599895052,
+              13.905213169951727
+            ],
+            [
+              -90.78063187679447,
+              13.907743038108258
+            ],
+            [
+              -90.78174180335138,
+              13.9077531353176
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "fondeo-tiny-unresolved",
+          "reason": "Señal aislada de muy pocos píxeles cerca x210,y407: no distingue embarcación pequeña, boya o reflejo.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.8080488121265,
+                  13.894075261454715
+                ],
+                [
+                  -90.80805816267772,
+                  13.89308136520944
+                ],
+                [
+                  -90.80889057056267,
+                  13.893088837306015
+                ],
+                [
+                  -90.80888122355546,
+                  13.894082734106574
+                ],
+                [
+                  -90.8080488121265,
+                  13.894075261454715
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              206,
+              402
+            ],
+            [
+              215,
+              402
+            ],
+            [
+              215,
+              413
+            ],
+            [
+              206,
+              413
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        }
+      ],
+      "independent_visual_vessels": [
+        {
+          "visual_id": "V01",
+          "unique_physical_object_key": "prq-20250118-s2-v01",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            332,
+            251,
+            339,
+            276
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79645098006442,
+                  13.907615387222748
+                ],
+                [
+                  -90.79647236428843,
+                  13.905356552144928
+                ],
+                [
+                  -90.7971198216565,
+                  13.905362399784135
+                ],
+                [
+                  -90.79709844370336,
+                  13.907621235848787
+                ],
+                [
+                  -90.79645098006442,
+                  13.907615387222748
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V02",
+          "unique_physical_object_key": "prq-20250118-s2-v02",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            413,
+            275,
+            420,
+            294
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78897952120712,
+                  13.905379114805381
+                ],
+                [
+                  -90.78899582591778,
+                  13.903662408553545
+                ],
+                [
+                  -90.78964327530099,
+                  13.903668275327036
+                ],
+                [
+                  -90.78962697535538,
+                  13.905384982331396
+                ],
+                [
+                  -90.78897952120712,
+                  13.905379114805381
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V03",
+          "unique_physical_object_key": "prq-20250118-s2-v03",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            501,
+            251,
+            507,
+            273
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78091194277566,
+                  13.907474505556616
+                ],
+                [
+                  -90.78093089353334,
+                  13.90548675163018
+                ],
+                [
+                  -90.78148585143693,
+                  13.90549179938302
+                ],
+                [
+                  -90.78146690540908,
+                  13.907479554059067
+                ],
+                [
+                  -90.78091194277566,
+                  13.907474505556616
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V05",
+          "unique_physical_object_key": "prq-20250118-s2-v05",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            221,
+            353,
+            228,
+            372
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80680475673255,
+                  13.898491813993825
+                ],
+                [
+                  -90.80682092172682,
+                  13.896775086115914
+                ],
+                [
+                  -90.80746835976119,
+                  13.896780902784677
+                ],
+                [
+                  -90.80745219952958,
+                  13.898497631409036
+                ],
+                [
+                  -90.80680475673255,
+                  13.898491813993825
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V06",
+          "unique_physical_object_key": "prq-20250118-s2-v06",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            305,
+            382,
+            312,
+            400
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79906022567151,
+                  13.895801616018476
+                ],
+                [
+                  -90.79907559088878,
+                  13.894175250372848
+                ],
+                [
+                  -90.79972301832377,
+                  13.894181086507345
+                ],
+                [
+                  -90.79970765761747,
+                  13.895807452862615
+                ],
+                [
+                  -90.79906022567151,
+                  13.895801616018476
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V07",
+          "unique_physical_object_key": "prq-20250118-s2-v07",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            389,
+            366,
+            397,
+            386
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79118486760629,
+                  13.897176253766693
+                ],
+                [
+                  -90.79120200276881,
+                  13.895369190635932
+                ],
+                [
+                  -90.79194191971447,
+                  13.895375884779957
+                ],
+                [
+                  -90.79192479028063,
+                  13.897182948815063
+                ],
+                [
+                  -90.79118486760629,
+                  13.897176253766693
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V08",
+          "unique_physical_object_key": "prq-20250118-s2-v08",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            487,
+            346,
+            500,
+            364
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78164118685767,
+                  13.898896906216546
+                ],
+                [
+                  -90.78165667720911,
+                  13.897270560174277
+                ],
+                [
+                  -90.78285904446757,
+                  13.89728148547929
+                ],
+                [
+                  -90.7828435624953,
+                  13.898907832849742
+                ],
+                [
+                  -90.78164118685767,
+                  13.898896906216546
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V09",
+          "unique_physical_object_key": "prq-20250118-s2-v09",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            408,
+            441,
+            414,
+            460
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78967682309292,
+                  13.89038553834181
+                ],
+                [
+                  -90.78969310438615,
+                  13.888668829176321
+                ],
+                [
+                  -90.79024802554211,
+                  13.888673851050568
+                ],
+                [
+                  -90.79023174832837,
+                  13.89039056086085
+                ],
+                [
+                  -90.78967682309292,
+                  13.89038553834181
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V10",
+          "unique_physical_object_key": "prq-20250118-s2-v10",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            512,
+            443,
+            521,
+            464
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77978241508117,
+                  13.890115053707463
+                ],
+                [
+                  -90.7798004902142,
+                  13.888217651007915
+                ],
+                [
+                  -90.78063286482877,
+                  13.888225216808792
+                ],
+                [
+                  -90.78061479645872,
+                  13.890122620582046
+                ],
+                [
+                  -90.77978241508117,
+                  13.890115053707463
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V11",
+          "unique_physical_object_key": "prq-20250118-s2-v11",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            199,
+            467,
+            214,
+            484
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80819654252466,
+                  13.888203066996674
+                ],
+                [
+                  -90.80821098574216,
+                  13.886667044601188
+                ],
+                [
+                  -90.8095982944677,
+                  13.88667949002479
+                ],
+                [
+                  -90.8095838603743,
+                  13.888215513850234
+                ],
+                [
+                  -90.80819654252466,
+                  13.888203066996674
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V12",
+          "unique_physical_object_key": "prq-20250118-s2-v12",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            286,
+            484,
+            297,
+            501
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80053456886716,
+                  13.88659803775699
+                ],
+                [
+                  -90.80054906080818,
+                  13.885062023082678
+                ],
+                [
+                  -90.80156640815964,
+                  13.885071181358219
+                ],
+                [
+                  -90.80155192290866,
+                  13.886607197084906
+                ],
+                [
+                  -90.80053456886716,
+                  13.88659803775699
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V14",
+          "unique_physical_object_key": "prq-20250118-s2-v14",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            529,
+            556,
+            536,
+            576
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77849240395803,
+                  13.879892608278082
+                ],
+                [
+                  -90.77850961524683,
+                  13.87808555817504
+                ],
+                [
+                  -90.77915698899491,
+                  13.878091442145479
+                ],
+                [
+                  -90.77913978271167,
+                  13.879898493044317
+                ],
+                [
+                  -90.77849240395803,
+                  13.879892608278082
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V15",
+          "unique_physical_object_key": "prq-20250118-s2-v15",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            186,
+            583,
+            196,
+            602
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80995976825001,
+                  13.877736892454935
+                ],
+                [
+                  -90.80997588493432,
+                  13.876020158029315
+                ],
+                [
+                  -90.81090071615817,
+                  13.876028442947701
+                ],
+                [
+                  -90.81088460626657,
+                  13.877745178437996
+                ],
+                [
+                  -90.80995976825001,
+                  13.877736892454935
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        },
+        {
+          "visual_id": "V16",
+          "unique_physical_object_key": "prq-20250118-s2-v16",
+          "visual_assessment": "clear_vessel",
+          "pixel_box": [
+            333,
+            591,
+            341,
+            612
+          ],
+          "reference_grid": "prq_fondeo",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79655651307911,
+                  13.87689352414865
+                ],
+                [
+                  -90.7965744339614,
+                  13.874996097818899
+                ],
+                [
+                  -90.79731428896923,
+                  13.875002766098547
+                ],
+                [
+                  -90.79729637409247,
+                  13.876900193375478
+                ],
+                [
+                  -90.79655651307911,
+                  13.87689352414865
+                ]
+              ]
+            ]
+          },
+          "zone_ids_by_centroid": [
+            "prq_fondeo"
+          ],
+          "included_in_training_reference_proposal": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+        }
+      ],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "14 buques visuales en la zona; 1 regiones ambiguas excluidas. Las referencias aún requieren correspondencia y adjudicación con el catálogo.",
+      "coverage": {
+        "zone_area_m2": 13937767.698766585,
+        "automatic_observable_area_m2": 13937767.698766587,
+        "reviewed_area_m2": 13927867.698766643,
+        "zone_center_pixels": 139129,
+        "valid_zone_center_pixels": 139129,
+        "observable_zone_center_pixels": 139129,
+        "reviewed_zone_center_pixels": 139030,
+        "visual_mask_overrides": false
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "No otro buque inequívoco dentro del ámbito revisado; franjas ambiguas y señales pequeñas permanecen desconocidas. La resolución limita embarcaciones pequeñas."
+      },
+      "training_split_group": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "tmp/local-review/phase2/prq-20250118-s2/prq_fondeo-raw-reference-scope.png"
+    },
+    {
+      "observation_id": "700e22d5-f4b7-4415-9ae5-de0c2f930344",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "zone_id": "prq_muelles",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_rgb_no_model_proposals",
+      "label_status": "proposed_pending_independent_adjudication",
+      "source_preview": {
+        "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/preview.png",
+        "sha256": "46d2cb2ec8c366eb19d29797d59b36ec618d77a18a7e9de5d88defcf551a3e46",
+        "width_px": 896,
+        "height_px": 896,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1545600.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "69dcae064f532d90a6f139a82790f441",
+          "sha256": "f1ba369e89c9a9f43dcf8e026379d666932750e9fa71dfa9c76f606a46ba1700",
+          "size_bytes": 1229653,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B02.tif"
+        },
+        {
+          "asset_id": "b5a7d95292107da67ace0a34943b1ff5",
+          "sha256": "8a44864f2b7bcfdd66e82090aaa837d253d4875bb3c831eb3fa657deea63b122",
+          "size_bytes": 1270596,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B03.tif"
+        },
+        {
+          "asset_id": "640f80233abde76622eeaed3cb1bcd7f",
+          "sha256": "f31442e0806d97a9dbcecf0455af75201deb7e95ba56c4a241a62e25ff129543",
+          "size_bytes": 1313032,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B04.tif"
+        },
+        {
+          "asset_id": "1e1a6ada21ebed3926a92413fd06156c",
+          "sha256": "5365f23095b28c0cf70fc25478aa7129549bfc744b30680653aa8129fd68a2f7",
+          "size_bytes": 406587,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B05.tif"
+        },
+        {
+          "asset_id": "5ba3ca35a7c80dabacf0a6b6a62876fa",
+          "sha256": "a033532d2d07366038c794ce350a156bcc74e4990a49ca298b402ddef8188e60",
+          "size_bytes": 428325,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B06.tif"
+        },
+        {
+          "asset_id": "a79a27d03d9792a76fa4470076ce15b5",
+          "sha256": "d4bb746ab8841b67ba3ff1996c76904085153c5be3d149937d3d7c3f88d39de3",
+          "size_bytes": 430571,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B07.tif"
+        },
+        {
+          "asset_id": "d5a20877f8f8b7985be468c5de6ad7aa",
+          "sha256": "80af88e63c20229f3f93d0aed5433d09a7475aefe15efe8b648b766d3d293e21",
+          "size_bytes": 1359530,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B08.tif"
+        },
+        {
+          "asset_id": "10a3ea2581f2d1931440f9f58d9a4484",
+          "sha256": "2f0ea115b91b8037d5dec8ab1095a36a474f82de2a20b8f0c6dd85e41dbe7c10",
+          "size_bytes": 415976,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B11.tif"
+        },
+        {
+          "asset_id": "dee17679c5a7558582e7e1284ecf38c9",
+          "sha256": "95f6224ea30e7e0a5ac0f03cf006069ea018490c4883dd3b8dac3ee95bd3750c",
+          "size_bytes": 410930,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/B12.tif"
+        },
+        {
+          "asset_id": "f67a1fb41f687878e5e7e806d08c9b45",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/cloud.tif"
+        },
+        {
+          "asset_id": "d680a830dde767d1b4e2476e8dfb82f8",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/cloud_classes.tif"
+        },
+        {
+          "asset_id": "adc5263bdfde11fe4c786c265022a4bd",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/observable.tif"
+        },
+        {
+          "asset_id": "1091789c6f6f70cea6067dfc157a5d88",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/potentially_observable.tif"
+        },
+        {
+          "asset_id": "62cadff9e8c4cd40acc335d78967bd1d",
+          "sha256": "46d2cb2ec8c366eb19d29797d59b36ec618d77a18a7e9de5d88defcf551a3e46",
+          "size_bytes": 1087944,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/preview.png"
+        },
+        {
+          "asset_id": "96134f432d56e18623b418f225357696",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/shadow.tif"
+        },
+        {
+          "asset_id": "126df0e58ddb0d454c72230df3b5d873",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "path": "data/assets/700e22d5-f4b7-4415-9ae5-de0c2f930344/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "whole_zone_scene_complete": false,
+      "model_proposals_queried": false,
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.796,
+              13.933
+            ],
+            [
+              -90.783,
+              13.933
+            ],
+            [
+              -90.783,
+              13.9205
+            ],
+            [
+              -90.796,
+              13.9205
+            ],
+            [
+              -90.796,
+              13.933
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -90.783,
+                13.9205
+              ],
+              [
+                -90.78302131245914,
+                13.9205
+              ],
+              [
+                -90.78317815677701,
+                13.922043131092835
+              ],
+              [
+                -90.7843153696396,
+                13.922053465998385
+              ],
+              [
+                -90.78708080736457,
+                13.929939968077582
+              ],
+              [
+                -90.78800429112218,
+                13.929848226726344
+              ],
+              [
+                -90.78800669855467,
+                13.92985801872252
+              ],
+              [
+                -90.79189183409984,
+                13.9298932742938
+              ],
+              [
+                -90.79185314556028,
+                13.92969476343993
+              ],
+              [
+                -90.79226442304234,
+                13.929625569817276
+              ],
+              [
+                -90.79103703207916,
+                13.925277120630787
+              ],
+              [
+                -90.796,
+                13.925322063257896
+              ],
+              [
+                -90.796,
+                13.933
+              ],
+              [
+                -90.783,
+                13.933
+              ],
+              [
+                -90.783,
+                13.9205
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -90.79094986912317,
+                13.921932989674575
+              ],
+              [
+                -90.796,
+                13.921978712780174
+              ],
+              [
+                -90.796,
+                13.923063037995867
+              ],
+              [
+                -90.79047706397574,
+                13.923013031420256
+              ],
+              [
+                -90.7905310302434,
+                13.92472983046832
+              ],
+              [
+                -90.78962308068425,
+                13.925264302063995
+              ],
+              [
+                -90.79050596895785,
+                13.927731435412422
+              ],
+              [
+                -90.78828237245568,
+                13.927969555176778
+              ],
+              [
+                -90.78676318273435,
+                13.922075711540948
+              ],
+              [
+                -90.78789564878072,
+                13.922086003307788
+              ],
+              [
+                -90.78813499994763,
+                13.9205
+              ],
+              [
+                -90.79006043258318,
+                13.9205
+              ],
+              [
+                -90.79094986912317,
+                13.921932989674575
+              ]
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -90.78302131245914,
+                13.9205
+              ],
+              [
+                -90.78317815677701,
+                13.922043131092835
+              ],
+              [
+                -90.7843153696396,
+                13.922053465998385
+              ],
+              [
+                -90.78708080736457,
+                13.929939968077582
+              ],
+              [
+                -90.78800429112218,
+                13.929848226726344
+              ],
+              [
+                -90.78800669855467,
+                13.92985801872252
+              ],
+              [
+                -90.79189183409984,
+                13.9298932742938
+              ],
+              [
+                -90.79185314556028,
+                13.92969476343993
+              ],
+              [
+                -90.79226442304234,
+                13.929625569817276
+              ],
+              [
+                -90.79103703207916,
+                13.925277120630787
+              ],
+              [
+                -90.796,
+                13.925322063257896
+              ],
+              [
+                -90.796,
+                13.933
+              ],
+              [
+                -90.783,
+                13.933
+              ],
+              [
+                -90.783,
+                13.9205
+              ],
+              [
+                -90.78302131245914,
+                13.9205
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -90.796,
+                13.921978712780174
+              ],
+              [
+                -90.796,
+                13.923063037995867
+              ],
+              [
+                -90.79047706397574,
+                13.923013031420256
+              ],
+              [
+                -90.7905310302434,
+                13.92472983046832
+              ],
+              [
+                -90.78962308068425,
+                13.925264302063995
+              ],
+              [
+                -90.79050596895785,
+                13.927731435412422
+              ],
+              [
+                -90.78828237245568,
+                13.927969555176778
+              ],
+              [
+                -90.78676318273435,
+                13.922075711540948
+              ],
+              [
+                -90.78789564878072,
+                13.922086003307788
+              ],
+              [
+                -90.78813499994763,
+                13.9205
+              ],
+              [
+                -90.79006043258318,
+                13.9205
+              ],
+              [
+                -90.79094986912317,
+                13.921932989674575
+              ],
+              [
+                -90.796,
+                13.921978712780174
+              ]
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "quay-container-edge",
+          "reason": "Contenedores, equipos de muelle y posibles cascos adosados no separables con confianza a10m.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7912451696488,
+                  13.929797049749386
+                ],
+                [
+                  -90.78962308068425,
+                  13.925264302063995
+                ],
+                [
+                  -90.79083246893161,
+                  13.9245523862314
+                ],
+                [
+                  -90.79226442304234,
+                  13.929625569817276
+                ],
+                [
+                  -90.7912451696488,
+                  13.929797049749386
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              382,
+              7
+            ],
+            [
+              393,
+              5
+            ],
+            [
+              411,
+              55
+            ],
+            [
+              398,
+              63
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-south-small-object",
+          "reason": "Franja de atraque y objeto blanco pequeño en x363,y70; podría ser embarcación, elemento flotante o infraestructura. Presencia y ausencia no resueltas.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7905480947131,
+                  13.925272693012056
+                ],
+                [
+                  -90.79047706397574,
+                  13.923013031420256
+                ],
+                [
+                  -90.796,
+                  13.923063037995867
+                ],
+                [
+                  -90.796,
+                  13.925322063257896
+                ],
+                [
+                  -90.7905480947131,
+                  13.925272693012056
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              329,
+              55
+            ],
+            [
+              401,
+              55
+            ],
+            [
+              402,
+              80
+            ],
+            [
+              329,
+              80
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-basin-head",
+          "reason": "Cabecera de dársena: mezcla de borde de tierra, estructuras y señales compactas.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78800669855467,
+                  13.92985801872252
+                ],
+                [
+                  -90.78756138850895,
+                  13.92804676366642
+                ],
+                [
+                  -90.79145078603425,
+                  13.927630257154867
+                ],
+                [
+                  -90.79189183409984,
+                  13.9298932742938
+                ],
+                [
+                  -90.78800669855467,
+                  13.92985801872252
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              386,
+              4
+            ],
+            [
+              428,
+              4
+            ],
+            [
+              433,
+              24
+            ],
+            [
+              391,
+              29
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-east",
+          "reason": "Frente oriental de atraque: objetos claros pegados a muelle no permiten cajas de casco fiables.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78708080736457,
+                  13.929939968077582
+                ],
+                [
+                  -90.78383857313554,
+                  13.920693733111722
+                ],
+                [
+                  -90.78460353182231,
+                  13.9205
+                ],
+                [
+                  -90.78635702930974,
+                  13.9205
+                ],
+                [
+                  -90.78874758339882,
+                  13.929774386079703
+                ],
+                [
+                  -90.78708080736457,
+                  13.929939968077582
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              420,
+              5
+            ],
+            [
+              438,
+              3
+            ],
+            [
+              474,
+              105
+            ],
+            [
+              448,
+              112
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-west-south",
+          "reason": "Pequeños muelles y señales compactas junto al límite sur de dársena.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79094986912317,
+                  13.921932989674575
+                ],
+                [
+                  -90.79006043258318,
+                  13.9205
+                ],
+                [
+                  -90.796,
+                  13.9205
+                ],
+                [
+                  -90.796,
+                  13.921978712780174
+                ],
+                [
+                  -90.79094986912317,
+                  13.921932989674575
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              335,
+              92
+            ],
+            [
+              397,
+              92
+            ],
+            [
+              410,
+              113
+            ],
+            [
+              338,
+              113
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "outer-jetties",
+          "reason": "Estructuras de espigón y posibles embarcaciones pegadas: mantener desconocido.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78317815677701,
+                  13.922043131092835
+                ],
+                [
+                  -90.78302131245914,
+                  13.9205
+                ],
+                [
+                  -90.78813499994763,
+                  13.9205
+                ],
+                [
+                  -90.78789564878072,
+                  13.922086003307788
+                ],
+                [
+                  -90.78317815677701,
+                  13.922043131092835
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              430,
+              90
+            ],
+            [
+              481,
+              90
+            ],
+            [
+              486,
+              136
+            ],
+            [
+              458,
+              144
+            ],
+            [
+              454,
+              115
+            ],
+            [
+              426,
+              119
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        }
+      ],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 buques visuales en la zona; 6 regiones ambiguas excluidas. Las referencias aún requieren correspondencia y adjudicación con el catálogo.",
+      "coverage": {
+        "zone_area_m2": 1944120.683921986,
+        "automatic_observable_area_m2": 1944120.683921986,
+        "reviewed_area_m2": 1285713.4058617677,
+        "zone_center_pixels": 19439,
+        "valid_zone_center_pixels": 19439,
+        "observable_zone_center_pixels": 19439,
+        "reviewed_zone_center_pixels": 12864,
+        "visual_mask_overrides": false
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "No otro buque inequívoco dentro del ámbito revisado; franjas ambiguas y señales pequeñas permanecen desconocidas. La resolución limita embarcaciones pequeñas."
+      },
+      "training_split_group": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "tmp/local-review/phase2/prq-20250118-s2/prq_muelles-raw-reference-scope.png"
+    },
+    {
+      "observation_id": "e812e31b-9dd3-4b32-9aee-c90c4007e91c",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "zone_id": "prq_patios",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-18T16:25:19.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_rgb_no_model_proposals",
+      "label_status": "proposed_pending_independent_adjudication",
+      "source_preview": {
+        "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/preview.png",
+        "sha256": "ea9873ef5a81079effa2f835c027052ed4f3f3ef920d234587a9c143b4681b93",
+        "width_px": 448,
+        "height_px": 448,
+        "crs": "EPSG:32615",
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "5dbc4d07257e00ef8298d4ffbb2e019e",
+          "sha256": "9d659dc65fb197f4cecaa5f1a14d45587ddc8475ebe230d045a2cda91909fa97",
+          "size_bytes": 272807,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B02.tif"
+        },
+        {
+          "asset_id": "9a540eaebc61b5f9619a9abe99774bf5",
+          "sha256": "c854d735b55d0a02f08546a387ae1ff41906a28a7b76188d75a28c882bbeff54",
+          "size_bytes": 273571,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B03.tif"
+        },
+        {
+          "asset_id": "81b9af75a1e153c329b16bb17aef59a2",
+          "sha256": "2430ade3b768323532c22e04635f66f91ef733163cf38fd148fcdd2a3a098377",
+          "size_bytes": 275802,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B04.tif"
+        },
+        {
+          "asset_id": "4fd30d3f0abd2d4e3f163a8419b7608a",
+          "sha256": "478f726b0ce7043c57e5f078a27df72592cb821df84b7200eadf68292ae4ebb7",
+          "size_bytes": 89020,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B05.tif"
+        },
+        {
+          "asset_id": "e830e3ff241a495425d76c2767187476",
+          "sha256": "3a19b36be37ddda5fc0b4eca515a40f2c6dd91c22bbc2d3578dce2de59e4bb1a",
+          "size_bytes": 89087,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B06.tif"
+        },
+        {
+          "asset_id": "1362ba8350f39bfac4920da30a308172",
+          "sha256": "9d521b4ba2121f402a72e55c5eed6a6a53a006391d113fdd580f81845bf80c65",
+          "size_bytes": 92686,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B07.tif"
+        },
+        {
+          "asset_id": "c4d96175992183ff855f58c0c20a9c21",
+          "sha256": "e731f38e7b20c0b381d7e88951f93dcfa79bbf3f54c89f839ddbc734d324b73a",
+          "size_bytes": 273432,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B08.tif"
+        },
+        {
+          "asset_id": "e220c4b44420c06855a36ae68e8183cb",
+          "sha256": "22ff7fd6e62659b2750878d502f2a9440a80f8006c22c2104bf604ddbc124cbf",
+          "size_bytes": 85472,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B11.tif"
+        },
+        {
+          "asset_id": "7a5b02884ef515d3e5cd17f49f6ef438",
+          "sha256": "072ebdb21c9f97ff48f7f38ca355a98f0b96e4987e50f817fb9b7f5ba55a5daa",
+          "size_bytes": 87982,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/B12.tif"
+        },
+        {
+          "asset_id": "5006efd989165b82a7d8f0bb2b53f2ee",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/cloud.tif"
+        },
+        {
+          "asset_id": "5ec4bc3cb0424ea8d07eee7dab6775d6",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/cloud_classes.tif"
+        },
+        {
+          "asset_id": "dbfca3419a8214ff5cfb877e7b087ede",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/observable.tif"
+        },
+        {
+          "asset_id": "b8099ed5b9c1c36af1a618821d76dba2",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/potentially_observable.tif"
+        },
+        {
+          "asset_id": "49c304d502bc7cc7a4b57cff778591cc",
+          "sha256": "ea9873ef5a81079effa2f835c027052ed4f3f3ef920d234587a9c143b4681b93",
+          "size_bytes": 243119,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/preview.png"
+        },
+        {
+          "asset_id": "7c3b3c7faee1bd6a95346634ef11bbea",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/shadow.tif"
+        },
+        {
+          "asset_id": "14a980c050bf8d6a1139d2b494c8f418",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "path": "data/assets/e812e31b-9dd3-4b32-9aee-c90c4007e91c/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "whole_zone_scene_complete": false,
+      "model_proposals_queried": false,
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.7919612,
+              13.92932
+            ],
+            [
+              -90.7917203,
+              13.9285885
+            ],
+            [
+              -90.7913465,
+              13.928709
+            ],
+            [
+              -90.7904599,
+              13.9256488
+            ],
+            [
+              -90.7908466,
+              13.9254961
+            ],
+            [
+              -90.7917535,
+              13.9246617
+            ],
+            [
+              -90.7922073,
+              13.9246841
+            ],
+            [
+              -90.7933533,
+              13.9286406
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928887
+            ],
+            [
+              -90.7919612,
+              13.92932
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79108414253882,
+              13.925277547244026
+            ],
+            [
+              -90.7923825977469,
+              13.925289305528416
+            ],
+            [
+              -90.7933533,
+              13.9286406
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928887
+            ],
+            [
+              -90.79216249319376,
+              13.929264448723458
+            ],
+            [
+              -90.7910468398204,
+              13.925311867883847
+            ],
+            [
+              -90.7908466,
+              13.9254961
+            ],
+            [
+              -90.7917535,
+              13.9246617
+            ],
+            [
+              -90.79108414253882,
+              13.925277547244026
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.7923825977469,
+              13.925289305528416
+            ],
+            [
+              -90.7933533,
+              13.9286406
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7935302,
+              13.928887
+            ],
+            [
+              -90.79216249319376,
+              13.929264448723458
+            ],
+            [
+              -90.7910468398204,
+              13.925311867883847
+            ],
+            [
+              -90.7908466,
+              13.9254961
+            ],
+            [
+              -90.7917535,
+              13.9246617
+            ],
+            [
+              -90.79108414253882,
+              13.925277547244026
+            ],
+            [
+              -90.7923825977469,
+              13.925289305528416
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "quay-container-edge",
+          "reason": "Contenedores, equipos de muelle y posibles cascos adosados no separables con confianza a10m.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79216249319376,
+                  13.929264448723458
+                ],
+                [
+                  -90.7919612,
+                  13.92932
+                ],
+                [
+                  -90.7917203,
+                  13.9285885
+                ],
+                [
+                  -90.7913465,
+                  13.928709
+                ],
+                [
+                  -90.7904599,
+                  13.9256488
+                ],
+                [
+                  -90.7908466,
+                  13.9254961
+                ],
+                [
+                  -90.7910468398204,
+                  13.925311867883847
+                ],
+                [
+                  -90.79216249319376,
+                  13.929264448723458
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              382,
+              7
+            ],
+            [
+              393,
+              5
+            ],
+            [
+              411,
+              55
+            ],
+            [
+              398,
+              63
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-south-small-object",
+          "reason": "Franja de atraque y objeto blanco pequeño en x363,y70; podría ser embarcación, elemento flotante o infraestructura. Presencia y ausencia no resueltas.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79108414253882,
+                  13.925277547244026
+                ],
+                [
+                  -90.7917535,
+                  13.9246617
+                ],
+                [
+                  -90.7922073,
+                  13.9246841
+                ],
+                [
+                  -90.7923825977469,
+                  13.925289305528416
+                ],
+                [
+                  -90.79108414253882,
+                  13.925277547244026
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              329,
+              55
+            ],
+            [
+              401,
+              55
+            ],
+            [
+              402,
+              80
+            ],
+            [
+              329,
+              80
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        },
+        {
+          "region_id": "quay-basin-head",
+          "reason": "Cabecera de dársena: mezcla de borde de tierra, estructuras y señales compactas.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79145078603425,
+                  13.927630257154867
+                ],
+                [
+                  -90.79164243374498,
+                  13.928613601347593
+                ],
+                [
+                  -90.7913465,
+                  13.928709
+                ],
+                [
+                  -90.79104650985599,
+                  13.927673550148091
+                ],
+                [
+                  -90.79145078603425,
+                  13.927630257154867
+                ]
+              ]
+            ]
+          },
+          "native_fondeo_polygon": [
+            [
+              386,
+              4
+            ],
+            [
+              428,
+              4
+            ],
+            [
+              433,
+              24
+            ],
+            [
+              391,
+              29
+            ]
+          ],
+          "label_status": "unknown_excluded",
+          "scope": "Neither positive nor negative"
+        }
+      ],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 buques visuales en la zona; 3 regiones ambiguas excluidas. Las referencias aún requieren correspondencia y adjudicación con el catálogo.",
+      "coverage": {
+        "zone_area_m2": 95560.77288288376,
+        "automatic_observable_area_m2": 95560.77288288377,
+        "reviewed_area_m2": 62105.84628694546,
+        "zone_center_pixels": 957,
+        "valid_zone_center_pixels": 957,
+        "observable_zone_center_pixels": 957,
+        "reviewed_zone_center_pixels": 621,
+        "visual_mask_overrides": false
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "No otro buque inequívoco dentro del ámbito revisado; franjas ambiguas y señales pequeñas permanecen desconocidas. La resolución limita embarcaciones pequeñas."
+      },
+      "training_split_group": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "tmp/local-review/phase2/prq-20250118-s2/prq_patios-raw-reference-scope.png"
+    }
+  ],
+  "context_only_vessels_outside_all_zones": [
+    {
+      "visual_id": "V04",
+      "unique_physical_object_key": "prq-20250118-s2-v04",
+      "visual_assessment": "clear_vessel",
+      "pixel_box": [
+        137,
+        358,
+        147,
+        377
+      ],
+      "reference_grid": "prq_fondeo",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.81430085267357,
+              13.898107252202163
+            ],
+            [
+              -90.81431696198047,
+              13.896390515632
+            ],
+            [
+              -90.81524187667601,
+              13.89639879601799
+            ],
+            [
+              -90.81522577417284,
+              13.898115533650804
+            ],
+            [
+              -90.81430085267357,
+              13.898107252202163
+            ]
+          ]
+        ]
+      },
+      "zone_ids_by_centroid": [],
+      "included_in_training_reference_proposal": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+    },
+    {
+      "visual_id": "V13",
+      "unique_physical_object_key": "prq-20250118-s2-v13",
+      "visual_assessment": "clear_vessel",
+      "pixel_box": [
+        631,
+        486,
+        638,
+        505
+      ],
+      "reference_grid": "prq_fondeo",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.7689986906996,
+              13.88613129703622
+            ],
+            [
+              -90.76901511899905,
+              13.884414611443237
+            ],
+            [
+              -90.76966250611365,
+              13.884420523191377
+            ],
+            [
+              -90.76964608257173,
+              13.88613720954362
+            ],
+            [
+              -90.7689986906996,
+              13.88613129703622
+            ]
+          ]
+        ]
+      },
+      "zone_ids_by_centroid": [],
+      "included_in_training_reference_proposal": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+    },
+    {
+      "visual_id": "V17",
+      "unique_physical_object_key": "prq-20250118-s2-v17",
+      "visual_assessment": "clear_vessel",
+      "pixel_box": [
+        418,
+        632,
+        425,
+        653
+      ],
+      "reference_grid": "prq_fondeo",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.78882310505452,
+              13.87311888243447
+            ],
+            [
+              -90.78884108371619,
+              13.87122146545088
+            ],
+            [
+              -90.78948844297236,
+              13.871227319229611
+            ],
+            [
+              -90.78947046956381,
+              13.87312473704489
+            ],
+            [
+              -90.78882310505452,
+              13.87311888243447
+            ]
+          ]
+        ]
+      },
+      "zone_ids_by_centroid": [],
+      "included_in_training_reference_proposal": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "reason": "Objeto alargado aislado en agua, con casco y superestructura distinguibles del fondo; caja ajustada visualmente a señal del buque."
+    }
+  ],
+  "unresolved_small_objects": [
+    {
+      "visual_id": "U01",
+      "pixel_box": [
+        358,
+        68,
+        368,
+        73
+      ],
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79361179473361,
+              13.924125768046231
+            ],
+            [
+              -90.79361608268024,
+              13.923674002543708
+            ],
+            [
+              -90.79454109288397,
+              13.923682377401343
+            ],
+            [
+              -90.79453680673146,
+              13.924134143186182
+            ],
+            [
+              -90.79361179473361,
+              13.924125768046231
+            ]
+          ]
+        ]
+      },
+      "reason": "Objeto blanco alargado de~7×3píxeles en dársena; apariencia insuficiente para separar barco pequeño de elemento flotante o infraestructura; cubierto por exclusión de franja sur."
+    },
+    {
+      "visual_id": "U02",
+      "pixel_box": [
+        206,
+        402,
+        215,
+        413
+      ],
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.8080488121265,
+              13.894075261454715
+            ],
+            [
+              -90.80805816267772,
+              13.89308136520944
+            ],
+            [
+              -90.80889057056267,
+              13.893088837306015
+            ],
+            [
+              -90.80888122355546,
+              13.894082734106574
+            ],
+            [
+              -90.8080488121265,
+              13.894075261454715
+            ]
+          ]
+        ]
+      },
+      "reason": "Señal muy pequeña en agua; excluir región en fondeo."
+    },
+    {
+      "visual_id": "U03",
+      "pixel_box": [
+        411,
+        731,
+        422,
+        738
+      ],
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.78918526922328,
+              13.86417642153033
+            ],
+            [
+              -90.78919125741355,
+              13.863543948621308
+            ],
+            [
+              -90.7902085031814,
+              13.863553140207472
+            ],
+            [
+              -90.79020251774098,
+              13.86418561355202
+            ],
+            [
+              -90.78918526922328,
+              13.86417642153033
+            ]
+          ]
+        ]
+      },
+      "reason": "Señal pequeña fuera de todas las zonas; contexto, no etiqueta."
+    }
+  ],
+  "limitations": [
+    "Revisión por IA, no humana; requiere segundo revisor.",
+    "Geometría de zonas provisional.",
+    "Cajas de señal visible a10m, no segmentación de casco ni tamaño real.",
+    "La incertidumbre de embarcaciones pequeñas y adosadas impide certificar la ausencia total.",
+    "14objetos no son14pasadas: una sola adquisición/fecha."
+  ]
+}

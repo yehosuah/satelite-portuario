@@ -1,0 +1,71 @@
+{
+  "batch": "phase2-prq-20250118-s2-v1",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "created_at": "2026-10-21T15:58:31.484835Z",
+  "blind_to_model": false,
+  "exposure": "The independent reviewer froze a native-RGB first pass before detector proposals. Root adjudication was not blind: it knew the reported candidate count and candidate coordinates and had seen the viewer model count15 and one displayed score before reviewing raw quadrants. Root then inspected all four raw quadrants, harbor detail, all19 candidate contact panels and all four reviewed-scope renders. AI cross-review is not human or independently sourced ground truth.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/prq-20250118-s2-review.json",
+      "sha256": "f43bd80d103ffeb02282517ab48bcaeb9ace5bd10b5c8f3fe81d75f99f3c5086"
+    }
+  ],
+  "accepted_observation_ids": [
+    "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b",
+    "1039f334-a235-473a-acb1-dba7600a2def",
+    "700e22d5-f4b7-4415-9ae5-de0c2f930344",
+    "e812e31b-9dd3-4b32-9aee-c90c4007e91c"
+  ],
+  "first_passes": [
+    {
+      "path": "reports/local-review/phase2/prq-20250118-s2-raw-first-pass.json",
+      "sha256": "4976e236e369833983dc8a10d6ab70cc1965a70f6fa504c4251d54805b236415"
+    }
+  ],
+  "supporting_renders": [
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/raw-candidate-sheet-1.png",
+      "sha256": "b7c80fa84ac7f5609d810af5b3a22efec9df073120fac829af2f664a21723709"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/raw-candidate-sheet-2.png",
+      "sha256": "02982a20da82f82531149abb545911d739f815b360b632b5debbf3d36085f32f"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/raw-candidate-sheet-3.png",
+      "sha256": "af61da1d9d7ea23c25a3072ed9c9b8ac20db22db010b1a528a1d42e1090c19f2"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/raw-candidate-sheet-4.png",
+      "sha256": "027c1ad9a954654d2a3a6682a38a8cff8f0da37435979fe361a3a4650cb4351b"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/prq_fondeo-final-review-scope.png",
+      "sha256": "852f40829454b628a8c22ddf34fdbe129bbe6d6e8d033e691a7b835f88d42bba"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/prq_muelles-final-review-scope.png",
+      "sha256": "0eafc1521951e84d1991f055be9e0e37eb413293fc723ffb43595a911a21839c"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/prq_canal-final-review-scope.png",
+      "sha256": "7090b21565c4508d06a480bb497178bc3d5eb08adec0687d83660e92b9cf8be9"
+    },
+    {
+      "path": "tmp/local-review/phase2/prq-20250118-s2/prq_patios-final-review-scope.png",
+      "sha256": "8bb2277320f75ac6ff7c3641c3d95f5847001d171cc500c22085ca65e9339c9c"
+    }
+  ],
+  "expected_unique_objects": 14,
+  "expected_zone_label_instances": 14,
+  "expected_reviewed_observations": 4,
+  "decisions": [
+    "Accept the14 clearly resolved in-zone hull responses and preserve native visual boxes independent of detector box size.",
+    "Three other clear vessels have centers outside all configured zones; they remain context and do not increase support.",
+    "Keep the small harbor white bar, isolated faint points and waterfront interfaces unknown; no family or physical dimensions can be established.",
+    "V16 retains its full visible box with centroid inside the southern anchorage boundary.",
+    "The raw-first-pass uncertain U02 region is enlarged solely to exclude the full unresolved provisional detection footprint from supervised negatives; this is disclosed in the source, not counted as a false positive or true negative."
+  ]
+}

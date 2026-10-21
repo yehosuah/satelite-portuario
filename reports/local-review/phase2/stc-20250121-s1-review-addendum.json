@@ -1,0 +1,341 @@
+{
+  "schema_version": "1.1",
+  "created_at": "2026-10-21T15:37:01.228294+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "status": "complete_pending_consolidation",
+  "provenance_kind": "ai_visual_review",
+  "base_report": "reports/local-review/phase2/stc-20250121-s1-review.json",
+  "base_report_sha256": "01ddd68815a893e8be29698469956e1358e47bda8f07b4bac262fca12b69da17",
+  "consolidation_rule": "Replace only observation 68623124-f473-4369-8380-aaac346efc6d by this complete record; preserve the original report and all other observation records. Null proposed scopes mean no training or negative area is accepted.",
+  "reason": "Second reviewer flagged the thin residual water scope. Geometric inspection confirms zero area after a 5 m inward buffer despite 33 center pixels; the sliver cannot support vessel-absence training.",
+  "observations": [
+    {
+      "observation_id": "68623124-f473-4369-8380-aaac346efc6d",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-01-21T00:06:46.876100Z",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "detection_count": 0,
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "author": "codex-ai-reviewer-s1",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_target_context_sar_then_proposal_match",
+      "summary": "Zona inspeccionada, pero sin positivos inequívocos y sin ámbito negativo fiable después de excluir la interfaz agua/muelle. No exportar negativos de esta observación.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "label_status": "unknown_no_reliable_training_scope",
+      "source_preview": {
+        "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/preview.png",
+        "sha256": "c50da1d652670cdf9c013d943f14786314934243fe133d79a0a4c5bb54c0101a",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/historical_vh.tif",
+          "sha256": "522dc64f26c4ea2a99e2264f32e941ca881fb3251182925bcf9a5e81efee1440",
+          "size_bytes": 582202
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/historical_vv.tif",
+          "sha256": "95daef6e7e8605570a7e674bf5e4086159c470b2003cb468940173610e72323e",
+          "size_bytes": 678263
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/vh.tif",
+          "sha256": "d52ce2b6d115b2ed57d71e6600f84cfe0f3072e4f517a37435e15a0ddfc36836",
+          "size_bytes": 583255
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/vv.tif",
+          "sha256": "0218ea93f9f450af068371dfb7c75371030ab93ab21735fca392f39c05d57db3",
+          "size_bytes": 674793
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/observable.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/potentially_observable.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321
+        },
+        {
+          "path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/preview.png",
+          "sha256": "c50da1d652670cdf9c013d943f14786314934243fe133d79a0a4c5bb54c0101a",
+          "size_bytes": 389414
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "zone_scope_render": "tmp/local-review/phase2/caribe-20250121-s1/zone-mask-full.png",
+      "inspection_renders": [
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x000-y000.png",
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x000-y448.png",
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x000-y896.png",
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x448-y000.png",
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x448-y448.png",
+        "tmp/local-review/phase2/caribe-20250121-s1/raw-quad-x448-y896.png"
+      ],
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ]
+          ]
+        ]
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ]
+          ]
+        ]
+      },
+      "visual_mask_disagreement_extensions": [],
+      "confirmed_additional_vessels": [],
+      "ui_actions_saved": false,
+      "training_split_group": "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F",
+      "sar_evidence": {
+        "units": {
+          "historical_vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "vv": "amplitude_dn"
+        },
+        "target_relative_orbit": 63,
+        "target_orbit_direction": "ASCENDING",
+        "historical_relative_orbit": 63,
+        "historical_orbit_direction": "ASCENDING",
+        "historical_captured_at": "2024-11-22T00:06:51.887960+00:00",
+        "historical_scene_id": "scene_81de2783bedac951a147c683",
+        "historical_acquisition_key": "S1A:IW:GRDH:1SDV:20241122T000651:20241122T000716:056660:06F381",
+        "context_days_before": 59.99994199236111,
+        "target_context_grid_aligned": true,
+        "source_products": [
+          "S1A_IW_GRDH_1SDV_20250121T000646_20250121T000711_057535_07161F_476E",
+          "S1A_IW_GRDH_1SDV_20241122T000651_20241122T000716_056660_06F381_7759"
+        ],
+        "display_transform": {
+          "kind": "log_amplitude_dn",
+          "vv_bounds": [
+            20,
+            1000
+          ],
+          "vh_bounds": [
+            10,
+            300
+          ],
+          "same_target_context_scale": true,
+          "calibrated_db": false
+        }
+      },
+      "existing_detections": [],
+      "marine_scope_constraints": [],
+      "excluded_ambiguous_regions": [
+        {
+          "candidate_id": "stc-20250121-s1-stc-waterfront-interface",
+          "decision": "indeterminada",
+          "reason": "Retornos intensos, edificios y ecos laterales junto a la línea de atraque. La comparación histórica cambia la intensidad, pero no delimita cascos individuales con independencia de las estructuras.",
+          "possible_omission": true,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "evidence_render": "tmp/local-review/phase2/caribe-20250121-s1/stc-quay-detail.png",
+          "pixel_box": [
+            355,
+            164,
+            501,
+            254
+          ],
+          "pixel_polygon": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  371.3426978737007,
+                  252.48079259030055
+                ],
+                [
+                  358.65730212616836,
+                  227.51920740967034
+                ],
+                [
+                  480.65730212618655,
+                  165.51920740969945
+                ],
+                [
+                  493.3426978738062,
+                  190.48079259030055
+                ],
+                [
+                  371.3426978737007,
+                  252.48079259030055
+                ]
+              ]
+            ]
+          },
+          "canonical_pixel_box": [
+            355,
+            1060,
+            501,
+            1150
+          ],
+          "coordinate_convention": "[xmin,ymin,xmax,ymax], native pixel edges, upper-left origin, half-open",
+          "image_path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/preview.png",
+          "numeric_vv_path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/vv.tif",
+          "numeric_vh_path": "data/assets/68623124-f473-4369-8380-aaac346efc6d/vh.tif",
+          "image_width_px": 896,
+          "image_height_px": 448,
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6211076304588,
+                  15.693660392809296
+                ],
+                [
+                  -88.62230885158387,
+                  15.695907397522738
+                ],
+                [
+                  -88.61097171531226,
+                  15.701594560194073
+                ],
+                [
+                  -88.6097705726308,
+                  15.699347485699032
+                ],
+                [
+                  -88.6211076304588,
+                  15.693660392809296
+                ]
+              ]
+            ]
+          },
+          "wgs84_bbox": [
+            -88.62269545450826,
+            15.69351179027094,
+            -88.60901119036029,
+            15.701745836182123
+          ],
+          "overlap_automatic_observable_zone_area_m2": 225418.368,
+          "geometry_note": "The box is a localization envelope; effective exclusion geometry removes any reviewed positive neighborhoods."
+        }
+      ],
+      "possible_omissions_indeterminate": [
+        "stc-20250121-s1-stc-waterfront-interface"
+      ],
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "coverage": {
+        "zone_area_m2": 225418.368,
+        "zone_crop_intersection_area_m2": 225418.368,
+        "geometric_crop_coverage_fraction": 1.0,
+        "automatic_observable_intersection_area_m2": 225418.368,
+        "automatic_observable_zone_fraction_geometric": 1.0,
+        "zone_center_pixels_in_crop": 2255,
+        "zone_center_pixels_automatic_observable": 2255,
+        "visually_reviewed_extension_area_m2": 0,
+        "visually_reviewed_extension_center_pixels": 0,
+        "proposed_training_scope_center_pixels": 0,
+        "candidate_negative_center_pixels": 0,
+        "final_training_scope_area_m2": 0,
+        "final_negative_scope_area_m2": 0,
+        "mask_definition": "observable.tif > 0 intersected with zone, valid.tif > 0 and raster footprint; no SAR mask override applied. STC fondeo additionally restricted to explicit verified marine scope.",
+        "statistic_caution": "Geometric areas and center-pixel counts differ at boundaries. Catalog status and observable_fraction are retained unchanged.",
+        "geometry_note": "Final serialized WGS84 scopes share the same clipping space for exclusions and positive margins.",
+        "scope_pixel_count_method": "Final WGS84 geometry reprojected to registered native grid, center-pixel rasterization, intersected with valid pixels.",
+        "superseded_residual_scope": {
+          "center_pixels": 33,
+          "area_m2": 4839.244720240513,
+          "interior_after_5m_erosion_area_m2": 0,
+          "reason": "La franja residual es más estrecha que un píxel de 10 m y está inmediatamente adyacente a retornos ambiguos. Tener centros de píxel no basta para constituir un ámbito revisable de buques."
+        }
+      },
+      "negative_recommendation": {
+        "claim": "No negative scope is recommended: the residual sliver has no 5 m interior and cannot support reliable vessel-absence labels.",
+        "ready_as_human_ground_truth": false,
+        "small_vessel_completeness_established": false,
+        "full_observation_negative": false,
+        "requires_consolidation": true,
+        "positive_exclusion_margin_pixels": 4,
+        "representative_of_marine_anchorage": null,
+        "export_negative_scope": false
+      },
+      "uncertainties": [
+        "SAR speckle, sidelobes and land double-bounce can resemble targets; grayscale amplification adds no spatial information.",
+        "Amplitude DN is not calibrated backscatter; no physical interpretation of brightness or vessel dimensions.",
+        "Port polygons are provisional; full-zone count and independent scene completeness are not established.",
+        "AI reference proposals require adjudication; no human label or model-accuracy claim.",
+        "El residuo de ámbito anterior tenía 33 centros de píxel, pero ninguna región sobrevive a una erosión de 5 m. Se retira por completo, sin modificar las evidencias ni el informe base."
+      ],
+      "proposed_scope_render": null
+    }
+  ],
+  "verification": {
+    "base_unchanged": true,
+    "other_18_sar_observations_scope_center_pixels_positive": true,
+    "no_database_writes": true
+  }
+}

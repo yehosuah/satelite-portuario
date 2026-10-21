@@ -1,0 +1,132 @@
+{
+  "created_at": "2026-10-21T15:56:32.641127+00:00",
+  "author": "codex-ai-model-pilot",
+  "split": "calibration",
+  "first_two_primary_assignments_per_port": true,
+  "selection_changes": false,
+  "model_detections_or_scores_queried": false,
+  "training_or_inference_performed": false,
+  "test_opened": false,
+  "reports": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "sha256": "80f1ddf1c620c2af0949e1964f69a40dc62023b1bc9488bf0ed2cfcefd33b1f1",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 0,
+      "positive_zone_instances": 0,
+      "reviewable_observations": 0,
+      "abstaining_observations": 4,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "sha256": "658ef68f92054ecc5113b316bea3ba76612558ee00bdbc06169747b79f877474",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 0,
+      "positive_zone_instances": 0,
+      "reviewable_observations": 0,
+      "abstaining_observations": 4,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "sha256": "f9818fb0ae839bc541dfb63409b0dfa973381205dcca22a5770f6ff77bb41ccc",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 0,
+      "positive_zone_instances": 0,
+      "reviewable_observations": 0,
+      "abstaining_observations": 4,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "sha256": "31ed7d29645f15269fe99ba1838c9d9d884bcd58d7ddd7ce03d05a542c328080",
+      "port_id": "pbr",
+      "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 3,
+      "positive_zone_instances": 3,
+      "reviewable_observations": 4,
+      "abstaining_observations": 0,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "sha256": "40c723671880fa754aef47715495f2ece9d2f7b48836f1b0d2965861f825498d",
+      "port_id": "stc",
+      "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 0,
+      "positive_zone_instances": 0,
+      "reviewable_observations": 2,
+      "abstaining_observations": 2,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "sha256": "4df201f73e50f38fa938fcd4d35d29b234308af978a248c77c9daded42f72bad",
+      "port_id": "prq",
+      "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+      "observations": 4,
+      "unique_acquisitions": 1,
+      "unique_proposed_visual_references": 18,
+      "positive_zone_instances": 18,
+      "reviewable_observations": 4,
+      "abstaining_observations": 0,
+      "independent_target_passes": 1,
+      "all_registered_asset_hashes_verified": true,
+      "human_ground_truth": false,
+      "model_performance_not_observed": true
+    }
+  ],
+  "support_by_port": {
+    "prq": {
+      "attempted_primary_assignments": 2,
+      "reviewable_acquisitions": 1,
+      "proposed_unique_reference_observations": 18,
+      "minimum30references_met": false
+    },
+    "stc": {
+      "attempted_primary_assignments": 2,
+      "reviewable_acquisitions": 1,
+      "proposed_unique_reference_observations": 0,
+      "minimum30references_met": false
+    },
+    "pbr": {
+      "attempted_primary_assignments": 2,
+      "reviewable_acquisitions": 1,
+      "proposed_unique_reference_observations": 3,
+      "minimum30references_met": false
+    }
+  },
+  "next_action": "Independent raw adjudication; preserve cloudy primaries and use only preregistered reserve/next-round rules. Do not inspect detector performance to select more dates. No training/calibration execution yet.",
+  "unique_acquisitions_attempted": 4,
+  "unique_acquisitions_with_reviewable_areas": 2,
+  "shared_passes_note": "STC and PBR share the same October2 and October9 acquisitions; six port assignments are four target acquisitions, not six independent passes."
+}

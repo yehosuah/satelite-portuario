@@ -2,6 +2,8 @@
 
 Los detectores públicos por sensor generan propuestas provisionales. Un score de 0.90 no acredita precisión de 90%. Las métricas locales definitivas y el alcance validado permanecen pendientes de una muestra humana independiente y congelada.
 
+Se ejecutó un primer ajuste local por sensor con [19 áreas revisadas por IA](../../reports/local-review/README.md), separando adquisiciones de train y test. Train contiene únicamente negativos confirmados. Base y ajuste dan los mismos conteos: S1 obtiene 2 TP / 0 FP / 0 FN con solo dos objetos de prueba; S2 obtiene 0 TP / 3 FP / 3 FN por zonas a IoU 0,5, equivalentes a dos objetos únicos. Los centros ópticos coinciden aproximadamente, pero sus cajas son demasiado grandes. Estos resultados no validan precisión ≥90%; los pesos de esa ronda son experimentales y no sustituyen las bases del histórico.
+
 Los atributos usan un encoder público congelado y cabezas propias por sensor: FPN de 128 canales para S2 y 256 para S1, pooling sobre la región detectada y una cabeza compartida con clasificación y regresión. El tamaño del recuadro se usa para seleccionar características, nunca como eslora o manga. El extractor actual requiere recortes de hasta 512 píxeles. La taxonomía es carga, tanquero, pasajeros, remolcador, pesquero y otros; fuera del alcance el resultado es nulo.
 
 Las recetas `config/models/attributes-s1.yaml` y `attributes-s2.yaml` están sin entrenar. No incluyen pesos propios fingidos ni métricas locales. La prueba automatizada entrena una cabeza pequeña sobre datos de prueba para verificar el guardado, los hashes y el enmascarado; no es un modelo entregable para los puertos.

@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-10-21T16:12:01.373229Z",
+  "python": "3.11.15",
+  "pytest": {
+    "command": "PYTHONPATH=src .venv/bin/pytest -q --disable-warnings",
+    "passed": 165,
+    "warnings": 506,
+    "seconds": 5.72
+  },
+  "ruff": "passed: src tests scripts",
+  "javascript_syntax": "passed: node --check src/puertogt/web/app.js",
+  "installation": "uv sync --frozen --no-editable --extra ml --extra quality --reinstall-package satelite-portuario succeeded",
+  "source_sha256": {
+    "scripts/train_phase2.py": "4837f940de88a79ee9f137e4a26ea8d80e0e47cf8db3a4f8c364bb2d678bbcc5",
+    "scripts/consolidate_phase2_review.py": "545716a351d900fcb5238a2e5991e4967fa879a6147f1ea44bb014424a1ebb79",
+    "src/puertogt/ml/detection.py": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25",
+    "src/puertogt/ml/workflows.py": "bc530c256ca610dca18354e893234619b426a6ad45f01c4a9bfefbe389441ce9",
+    "src/puertogt/ml/dataset_crops.py": "3813b7229eb590491ec8596fbe748093e1d65d8a0c395141c66f83adb883f257",
+    "src/puertogt/review.py": "c9fe1b118f43e119ea07df5dcaf99a7a848c87f709153325c9820a9f4fc9841b",
+    "src/puertogt/history.py": "568f1523e5acef70cf200b5a8c88131d145e028d65b93268c1457393102c7e63"
+  },
+  "scientific_validation": false,
+  "note": "Tests and real-data integrity checks establish software behavior; they do not establish90% precision."
+}

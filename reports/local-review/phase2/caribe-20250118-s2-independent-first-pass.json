@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-10-21T15:36:07.159431+00:00",
+  "author": "codex-ai-reviewer-s2",
+  "is_human_review": false,
+  "status": "raw_first_pass_frozen_before_other_reviewer_and_proposals",
+  "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+  "exposure": {
+    "root_first_pass_read": false,
+    "proposal_geometries_or_counts_read": false,
+    "other_reviewer_prior_messages": "Root mencionó firmas en muelles y defecto terrestre de stc_fondeo; no se consultaron sus cajas ni decisiones. Las imágenes raw y zone facilitadas por root no contienen detector.",
+    "cross_sensor": "Ya revisados S1 Caribe 2025-01-01 y 2025-01-21; no se transfieren etiquetas entre fechas."
+  },
+  "canonical_grid": {
+    "width": 896,
+    "height": 1344,
+    "affine": [
+      10,
+      0,
+      322560,
+      0,
+      -10,
+      1747200
+    ],
+    "crs": "EPSG:32616"
+  },
+  "raw_coverage": {
+    "all_eight_zone_crops_inspected": true,
+    "full_native_mosaic_panels_inspected": [
+      "raw-x000-y000.png",
+      "raw-x448-y000.png",
+      "raw-x000-y448.png",
+      "raw-x448-y448.png",
+      "raw-x000-y896.png",
+      "raw-x448-y896.png"
+    ],
+    "render_directory": "tmp/local-review/phase2/caribe-20250118-s2-independent"
+  },
+  "visual_findings": [
+    {
+      "id": "PBR-V01",
+      "canonical_pixel_bbox": [
+        513,
+        689,
+        535,
+        695
+      ],
+      "decision": "vessel_present",
+      "reason": "Casco rojo alargado con superestructura blanca, a lo largo del lado norte de la pasarela/muelle. Barco separado visualmente de la plataforma gris; la plataforma continúa al oeste y no se incorpora al casco."
+    },
+    {
+      "id": "STC-C01",
+      "canonical_pixel_bbox": [
+        442,
+        1097,
+        460,
+        1108
+      ],
+      "decision": "probable_vessel_needs_context",
+      "reason": "Cuerpo alargado claro en extremo noreste del muelle. Parece casco con proa/deck separados de almacenes interiores, pero se contrastará infraestructura permanente."
+    },
+    {
+      "id": "STC-C02",
+      "canonical_pixel_bbox": [
+        417,
+        1108,
+        438,
+        1122
+      ],
+      "decision": "indeterminate_berth_interface",
+      "reason": "Franja rojiza y oscuro alargado en interfaz agua/muelle; puede ser nave atracada, no se utilizará como negativo antes de revisión focal."
+    },
+    {
+      "id": "STC-C03",
+      "canonical_pixel_bbox": [
+        389,
+        1126,
+        418,
+        1140
+      ],
+      "decision": "indeterminate_berth_interface",
+      "reason": "Varias firmas claras/rojizas pequeñas mezcladas con muelle/maquinaria; no se afirma presencia ni ausencia."
+    },
+    {
+      "id": "STC-W01",
+      "canonical_pixel_bbox": [
+        354,
+        535,
+        367,
+        558
+      ],
+      "decision": "indeterminate_small_wake_or_vessel",
+      "reason": "Trazo claro diagonal junto a costa al este de la península, cerca del límite de fondeo; no hay casco resuelto."
+    },
+    {
+      "id": "CONTEXT-W02",
+      "canonical_pixel_bbox": [
+        615,
+        151,
+        627,
+        166
+      ],
+      "decision": "context_only_indeterminate",
+      "reason": "Trazo pequeño en agua fuera de zonas actuales; podría ser pequeña nave/estela, no incluido como positivo."
+    }
+  ],
+  "area_notes": [
+    "stc_fondeo cubre predominantemente tierra; limitar ámbito marino a agua inequívoca, no afirmar escena vacía representativa.",
+    "Sin firmas inequívocas de grandes buques en los demás ámbitos de agua de fondeo/canal; costa e interfaces ambiguas excluidas.",
+    "No se asignan familia, eslora ni manga."
+  ],
+  "no_database_writes": true
+}

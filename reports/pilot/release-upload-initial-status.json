@@ -1,0 +1,57 @@
+{
+  "observed_at": "2026-10-21T04:23:08.469658+00:00",
+  "repository": "https://github.com/yehosuah/satelite-portuario",
+  "code_commit_tested": "a49e8f1b9bcf2d43d1fbd90263d0096f8aee45b3",
+  "release_tag": "v0.1.0",
+  "release_draft": true,
+  "release_published": false,
+  "publication_blocker": "Repeated TCP/TLS connection and upload failures from macOS and Docker/Linux; retries stopped and successful remote assets preserved.",
+  "expected_assets": 39,
+  "verified_assets": 16,
+  "snapshot": {
+    "local_path": "dist/satelite-portuario-pilot-v0.1.0.tar.xz",
+    "bytes": 836751228,
+    "sha256": "e73e129c94082546594ecfb6bb5c02354d416d36e027765bfda7ba97571f2871",
+    "complete_locally": true,
+    "expected_chunks": 34,
+    "verified_remote_chunks": 11,
+    "verified_remote_bytes": 275000000,
+    "pending_bytes": 561751228,
+    "verified_range": "chunk000 through chunk010",
+    "pending_range": "chunk011 through chunk033"
+  },
+  "verified_software_assets": [
+    {
+      "name": "BUNDLE.sha256",
+      "size": 105,
+      "digest": "sha256:06119b3a9a0541754375849076f8122e60fd1b864f3312a146ac03087c853d7d"
+    },
+    {
+      "name": "CHUNKS.sha256",
+      "size": 3876,
+      "digest": "sha256:3fa63af6ba3dffc1754c4a3378aa2c68018b6045dd92810cef405464f75ecd0c"
+    },
+    {
+      "name": "satelite_portuario-0.1.0-py3-none-any.whl",
+      "size": 123005,
+      "digest": "sha256:d7d6762b6ac2e48374d6bfec985f62439daa137576031889473418016f64dfd7"
+    },
+    {
+      "name": "satelite_portuario-0.1.0.tar.gz",
+      "size": 1331543,
+      "digest": "sha256:e23754d6c187c7e5dd464333c69db0c992796bd2c0d78d4d3592b09ecce075ca"
+    },
+    {
+      "name": "SHA256SUMS",
+      "size": 206,
+      "digest": "sha256:d6313e06f4891794ad7933a45582399e6bbb0b91cfea64edd44f44be535a382c"
+    }
+  ],
+  "resume_requirements": [
+    "Reconcile assets against the current remote inventory and verify state, size and SHA256 before retrying.",
+    "Upload missing chunks and remove only incomplete attempts or superseded .part files and PARTS.sha256.",
+    "Verify all 39 intended assets and the complete reconstructed archive before publishing the release.",
+    "Update release notes and target commit; retain the scientific limitations."
+  ],
+  "background_uploads_running": false
+}

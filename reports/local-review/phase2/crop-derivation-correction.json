@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-10-21T16:07:17.921726Z",
+  "status": "corrected_before_training",
+  "source_unchanged_sha256": "51c521ac34073207657892e20e580ec4a160307c62f6f887a3ec32e226b27147",
+  "rejected_crop_manifest": {
+    "path": "data/datasets/phase2-reviews/s1-january-v1/train-crops/manifest.json",
+    "sha256": "41d7f64a9531be73d0e4400d8e0087270957b2b1531d6d9b1480ec25e3063a46",
+    "used_for_training": false
+  },
+  "replacement_crop_manifest": {
+    "path": "data/datasets/phase2-reviews/s1-january-v1/train-crops-v2/manifest.json",
+    "sha256": "71a83e7a4b5f9e4bf2a344264b3b56c3d5df9027c840309fc61a354d3a5feb7d",
+    "samples": 42
+  },
+  "cause": "A boundary-only contact became a4.190951585769653e-8 m2 native polygon after projection and collapsed to a zero-area invalid WGS84 triangle.",
+  "correction": "Discard projection contacts smaller than1e-8 native pixel area; validate every final label geometry before atomic publication. Preserve original frozen versions for audit.",
+  "unchanged_numeric_asset_count": 294,
+  "changed_label_samples": [
+    {
+      "sample_id": "abf9a927-14f3-447b-ac53-99f1a70c0c0f:crop:0:384:512:512",
+      "before_labels": 9,
+      "after_labels": 8,
+      "removed_label_ids": [
+        "f829a00cc464b13e6b489a35"
+      ]
+    }
+  ],
+  "source_file_sha256": "3813b7229eb590491ec8596fbe748093e1d65d8a0c395141c66f83adb883f257"
+}

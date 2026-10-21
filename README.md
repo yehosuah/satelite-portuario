@@ -6,7 +6,7 @@ Observatorio local de Puerto Quetzal, Santo Tomás de Castilla y Puerto Barrios.
 
 ## Paquete experimental
 
-El código está publicado en este repositorio. Se generó una copia portable local del piloto con imágenes, catálogo y cuatro modelos: sus 270 archivos fueron verificados y restaurados en otra carpeta. La carga de ese paquete a GitHub quedó incompleta por fallos de conexión TCP/TLS; `v0.1.0` permanece como borrador y todavía no ofrece una descarga pública del piloto. Consulta el [estado de transferencia](reports/pilot/release-upload-status.json) y las [instrucciones para restaurar una copia completa](docs/restore-pilot.md). El histórico sigue incompleto.
+El código y el [piloto portable v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) están publicados. El paquete contiene imágenes, catálogo y cuatro modelos del piloto inicial: sus 270 archivos fueron verificados y restaurados en otra carpeta. Se verificaron los 39 archivos de la versión pública, incluidas las 34 partes del snapshot. Consulta la [verificación de publicación](reports/pilot/release-upload-status.json) y las [instrucciones de restauración](docs/restore-pilot.md). El histórico sigue en procesamiento.
 
 ## Arranque local
 
@@ -46,6 +46,8 @@ El [protocolo de etiquetas](docs/labeling-protocol.md) y las [tarjetas de modelo
 El inventario al **21 de octubre de 2026, 01:40:47 UTC** reúne 1,267 productos en 81 páginas, agrupados en 863 adquisiciones: **828 desde enero de 2025 y 35 de contexto anterior**. Los puertos atlánticos comparten algunas adquisiciones; sus conteos no deben sumarse para obtener el total global.
 
 Hay pilotos numéricos reales en las seis combinaciones puerto/sensor, pruebas de entrenamiento con muestras públicas y 22 observaciones de zonas procesadas por el servicio. Son pruebas de operación; no constituyen una evaluación independiente de los puertos. [Mediciones](reports/pilot/inference-results.json), [servicio óptico](reports/pilot/service-validation.json), [servicio radar](reports/pilot/radar-service-validation.json).
+
+Las 22 observaciones ya tienen revisión visual de IA auditada, con 19 áreas etiquetadas y cinco cajas de zona que representan cuatro observaciones de buques. Se ejecutó un primer ajuste por sensor y prueba separada: la muestra radar es insuficiente y óptico falla el criterio de IoU. [Etiquetas, protocolo y resultados](reports/local-review/README.md). El procesamiento de las 824 adquisiciones restantes dispone de una campaña reanudable; [alcance, recursos y excepciones](reports/history/processing-plan.md).
 
 ## Verificación y documentación
 

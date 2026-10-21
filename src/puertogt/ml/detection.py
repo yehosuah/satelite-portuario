@@ -2,6 +2,7 @@
 
 import hashlib
 import time
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +18,113 @@ from puertogt.preprocess import read_model_input
 
 def load_manifest(path: Path) -> ModelManifest:
     return ModelManifest.model_validate(yaml.safe_load(Path(path).read_text()))
+
+
+@contextmanager
+def reviewed_loss_scope(head, reviewed_mask: np.ndarray):
+    """Ignore unknown negatives in this native-grid Faster R-CNN instance only.
+
+    A negative rectangle must lie wholly inside reviewed pixels, including all
+    fractional boundary pixels it touches. Positive matches remain supervised.
+    rslearn's NoopTransform pads without resizing, so these coordinates coincide
+    with the input image. The caller must use this instance exclusively while
+    training; every temporary method is restored even after an exception.
+    """
+    import torch
+
+    mask = np.asarray(reviewed_mask)
+    if mask.ndim != 2 or mask.dtype != np.bool_:
+        raise ValueError("reviewed_mask must be a two-dimensional boolean array")
+    if head.roi_heads.has_mask() or head.roi_heads.has_keypoint():
+        raise ValueError("Reviewed detection supervision supports boxes only")
+    height, width = mask.shape
+    if not height or not width:
+        raise ValueError("reviewed_mask cannot have empty dimensions")
+    integrals = {}
+    counts = {"rpn_supervised": 0, "roi_supervised": 0}
+
+    def wholly_reviewed(boxes):
+        if not torch.isfinite(boxes).all():
+            raise ValueError("Training boxes must have finite coordinates")
+        device = boxes.device
+        if device not in integrals:
+            # Float32 exactly represents every integer up to the 512² crop area,
+            # and supports cumsum on CPU as well as MPS.
+            unknown = torch.as_tensor(~mask, dtype=torch.float32, device=device)
+            integral = torch.zeros((height + 1, width + 1), device=device)
+            integral[1:, 1:] = unknown.cumsum(0).cumsum(1)
+            integrals[device] = integral
+        integral = integrals[device]
+        start, end = boxes[:, :2].floor(), boxes[:, 2:].ceil()
+        within = ((start[:, 0] >= 0) & (start[:, 1] >= 0)
+                  & (end[:, 0] <= width) & (end[:, 1] <= height)
+                  & (boxes[:, 2] > boxes[:, 0]) & (boxes[:, 3] > boxes[:, 1]))
+        x0 = start[:, 0].clamp(0, width).long()
+        y0 = start[:, 1].clamp(0, height).long()
+        x1 = end[:, 0].clamp(0, width).long()
+        y1 = end[:, 1].clamp(0, height).long()
+        unknown_pixels = integral[y1, x1] - integral[y0, x1] - integral[y1, x0] + integral[y0, x0]
+        return within & (unknown_pixels == 0)
+
+    rpn, roi = head.rpn, head.roi_heads
+    original_rpn_assign, original_rpn_loss = rpn.assign_targets_to_anchors, rpn.compute_loss
+    original_roi_assign = roi.assign_targets_to_proposals
+    original_roi_select, original_roi_forward = roi.select_training_samples, roi.forward
+
+    def rpn_assign(anchors, targets):
+        if len(anchors) != 1 or len(targets) != 1:
+            raise ValueError("Reviewed loss scope requires one crop per step")
+        labels, matched_boxes = original_rpn_assign(anchors, targets)
+        labels[0][(labels[0] == 0) & ~wholly_reviewed(anchors[0])] = -1
+        counts["rpn_supervised"] = int((labels[0] >= 0).sum())
+        return labels, matched_boxes
+
+    def rpn_loss(objectness, pred_bbox_deltas, labels, regression_targets):
+        if not any((label >= 0).any() for label in labels):
+            # Torchvision otherwise divides by zero when its sampler is empty.
+            return objectness.sum() * 0, pred_bbox_deltas.sum() * 0
+        return original_rpn_loss(objectness, pred_bbox_deltas, labels, regression_targets)
+
+    def roi_assign(proposals, gt_boxes, gt_labels):
+        if len(proposals) != 1:
+            raise ValueError("Reviewed loss scope requires one crop per step")
+        matches, labels = original_roi_assign(proposals, gt_boxes, gt_labels)
+        labels[0][(labels[0] == 0) & ~wholly_reviewed(proposals[0])] = -1
+        return matches, labels
+
+    class EmptyReviewedProposals(Exception):
+        pass
+
+    def roi_select(proposals, targets):
+        samples = original_roi_select(proposals, targets)
+        counts["roi_supervised"] = sum(len(labels) for labels in samples[2])
+        if not counts["roi_supervised"]:
+            # Stop before undefined cross entropy on an empty sampled batch.
+            raise EmptyReviewedProposals
+        return samples
+
+    def roi_forward(features, proposals, image_shapes, targets=None):
+        try:
+            return original_roi_forward(features, proposals, image_shapes, targets)
+        except EmptyReviewedProposals:
+            zero = sum(feature.sum() * 0 for feature in features.values())
+            return [], {"loss_classifier": zero, "loss_box_reg": zero}
+
+    hooks = [(rpn, "assign_targets_to_anchors", rpn_assign), (rpn, "compute_loss", rpn_loss),
+             (roi, "assign_targets_to_proposals", roi_assign),
+             (roi, "select_training_samples", roi_select), (roi, "forward", roi_forward)]
+    absent, originals = object(), []
+    try:
+        for module, name, replacement in hooks:
+            originals.append((module, name, module.__dict__.get(name, absent)))
+            setattr(module, name, replacement)
+        yield counts
+    finally:
+        for module, name, original in reversed(originals):
+            if original is absent:
+                delattr(module, name)
+            else:
+                setattr(module, name, original)
 
 
 class Detector:
@@ -70,7 +178,8 @@ class Detector:
         return torch.optim.AdamW((p for p in self.model.parameters() if p.requires_grad), lr=learning_rate)
 
     def frozen_train_step(
-        self, image: np.ndarray, boxes: np.ndarray, *, optimizer=None, learning_rate: float = 2e-5
+        self, image: np.ndarray, boxes: np.ndarray, *, optimizer=None,
+        learning_rate: float = 2e-5, reviewed_mask: np.ndarray | None = None,
     ) -> dict:
         """One measured supervised head/FPN step; caller supplies reference labels.
 
@@ -79,6 +188,8 @@ class Detector:
         """
         import torch
 
+        if reviewed_mask is not None and reviewed_mask.shape != image.shape[-2:]:
+            raise ValueError("reviewed_mask must match the input image grid, including padding")
         for parameter in self.model.encoder[0].parameters():
             parameter.requires_grad_(False)
         self.model.train()
@@ -94,14 +205,26 @@ class Detector:
                                                     device=self.device)}}]
         started = time.monotonic()
         optimizer.zero_grad(set_to_none=True)
-        output = self.model(self._context(image), targets)
-        loss = sum(output.loss_dict.values())
-        if not torch.isfinite(loss):
-            raise ValueError("non-finite supervised training loss")
-        loss.backward()
-        optimizer.step()
-        if self.device == "mps":
-            torch.mps.synchronize()
+        supervision = (reviewed_loss_scope(self.model.decoders["detect"][-1], reviewed_mask)
+                       if reviewed_mask is not None else nullcontext({}))
+        try:
+            with supervision as counts:
+                output = self.model(self._context(image), targets)
+            loss = sum(output.loss_dict.values())
+            if not torch.isfinite(loss):
+                raise ValueError("non-finite supervised training loss")
+            if reviewed_mask is not None and not any(counts.values()):
+                return {"loss": 0.0, "seconds": time.monotonic() - started,
+                        "encoder_frozen": True, "updated_parameters": False,
+                        "reference_boxes": len(boxes), "supervision": counts,
+                        "skipped": "No supervised anchors or proposals in reviewed area",
+                        "scope": "operability_only_not_local_validation"}
+            loss.backward()
+            optimizer.step()
+            if self.device == "mps":
+                torch.mps.synchronize()
+        finally:
+            self.model.eval()
         changed = not torch.equal(before, trainable[0].detach())
         if not changed:
             raise RuntimeError("training step did not update the detector")
@@ -113,6 +236,7 @@ class Detector:
             "encoder_frozen": all(not p.requires_grad for p in self.model.encoder[0].parameters()),
             "updated_parameters": changed,
             "reference_boxes": len(boxes),
+            "supervision": counts,
             "scope": "operability_only_not_local_validation",
         }
 

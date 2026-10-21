@@ -17,7 +17,8 @@
 
   <section id="auth-panel" class="auth-panel" aria-label="Credencial local" hidden>
     <form id="auth-form"><label>Nombre del revisor<input id="author" autocomplete="name" required maxlength="120" placeholder="Nombre o identificador"></label><label>Credencial local<input id="token" type="password" autocomplete="off" required placeholder="Token de revisión"></label><button type="submit">Usar credencial</button><button id="lock-review" type="button" class="secondary">Cerrar acceso</button></form>
-    <p>La credencial permanece en memoria hasta cerrar o recargar esta página. Cada corrección conserva autor e historial.</p>
+    <label>Tipo de revisor<select id="reviewer-kind"><option value="human_visual_review">Persona</option><option value="ai_visual_review">Asistente de IA</option></select></label>
+    <p>La credencial permanece en memoria hasta cerrar o recargar esta página. Cada corrección conserva autor, tipo de revisor e historial.</p>
   </section>
 
   <form id="filters" class="filters" aria-label="Filtros de observaciones">
@@ -49,6 +50,8 @@
         <div id="comparison" class="comparison" hidden><figure><figcaption>Referencia · t0</figcaption><img id="before-image" alt="Evidencia anterior al cambio"><p id="before-note"></p></figure><figure><figcaption>Cambio observado · t1</figcaption><img id="after-image" alt="Evidencia posterior al cambio"><p id="after-note"></p></figure></div>
       </div>
       <div class="evidence-caption"><span id="asset-caption">Solo se muestra evidencia registrada en el servicio.</span><a id="asset-download" target="_blank" rel="noreferrer" hidden>Abrir imagen ↗</a></div>
+      <p id="scope-caption" class="field-help"></p>
+      <p id="scene-review-note" class="model-notice" hidden></p>
       <div class="scene-summary"><div><span class="quiet">Conteo del modelo</span><strong id="model-count">—</strong></div><div><span class="quiet">Área observable</span><strong id="observable-fraction">—</strong></div><div><span class="quiet">Revisión</span><strong id="review-label">—</strong></div><p>Un conteo cero expresa el resultado del modelo. No acredita ausencia absoluta de buques.</p></div>
     </section>
 

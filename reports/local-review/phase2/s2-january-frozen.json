@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-10-21T15:59:11.231512Z",
+  "scope": "Frozen training cohort, not a complete phase2 experiment; no phase2 training or validation has run yet.",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "source": {
+    "path": "data/datasets/phase2-reviews/s2-january-v1/source",
+    "sha256": "e5d94fa2c59d786b4630f070a867dd62742cf93b13430448ffd7ded4047e7d5c",
+    "samples": 16
+  },
+  "train_crops": {
+    "path": "data/datasets/phase2-reviews/s2-january-v1/train-crops",
+    "sha256": "f0334c9d341f57624794d370a44091308a8f08ae31624f69a7c057ad4e0f8686",
+    "samples": 40
+  },
+  "unique_objects": 31,
+  "zone_label_instances": 32,
+  "objects_per_port": {
+    "prq": 29,
+    "pbr": 1,
+    "stc": 1
+  },
+  "target_acquisitions": 3,
+  "applied_reviews": [
+    {
+      "path": "reports/local-review/phase2/prq-20250103-s2-applied.json",
+      "sha256": "09a67934ece9a68b68e11069ab4ddde0f020967025d4963163877e582c173135"
+    },
+    {
+      "path": "reports/local-review/phase2/prq-20250118-s2-applied.json",
+      "sha256": "910496fd63eff2fc2828997441715cc2bf2043868748e86f5ab1837730bde139"
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-20250118-s2-applied.json",
+      "sha256": "8e8cb292eb547815e33e7dd67ae9c37d08904beadd1c0898bf0344fcc367b620"
+    }
+  ]
+}

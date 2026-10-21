@@ -1,0 +1,48 @@
+{
+  "author": "Codex (AI)",
+  "scope": "Runner implementation, synthetic contract tests and read-only numeric integrity check; no phase2 training/calibration/test inference executed",
+  "protocol_sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c",
+  "runner_sha256": "502cb08209fcb83acbb6fcaeda46fa334eddd88bf58476b596f61783296ad889",
+  "workflow_sha256": "da5199d1f440c622fa697168cfd0ab2fb09f41bb86b930bcbe043fbbb398f9df",
+  "phase1_protocol_sha256_unchanged": "003623ec7d2b352a21a418c1c1338183985895ddffb63b6652e242cafb755d8d",
+  "phase1_script_sha256_unchanged": "91ddef3f0e721eb5b37d1323ef34279daf2ea517072cfe45b443d0b66fe9918b",
+  "tests": {
+    "command": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_phase2_runner.py tests/test_phase2_workflows.py tests/test_phase2_consolidation.py tests/test_workflows.py tests/test_dataset_crops.py tests/test_review_scope.py -q --disable-warnings",
+    "passed": 31,
+    "seconds": 1.09,
+    "red_evidence": [
+      "Modified original halo was accepted before validation: DID NOT RAISE ValueError.",
+      "Empty history evaluator returned [] instead of two proposals in each overlapping zone.",
+      "Calibration/report stubs could not produce the specified .41 threshold or independent pass count.",
+      "Evaluation was allowed without a train receipt: DID NOT RAISE ValueError.",
+      "Existing omitted-object conflict left an earlier detection rejected instead of provisional."
+    ],
+    "green_evidence": "All 31 relevant tests pass after implementation; Ruff clean; CLI freeze --help works."
+  },
+  "real_train_shard_integrity": {
+    "receipt": "reports/local-review/phase2/prq-20250103-s2-frozen.json",
+    "source_sha256": "2a75cfa91a889102d9519c4c2294411f7b917d5215e0c2bce93b8c8c07dad024",
+    "derived_sha256": "bad00e5cda5b22c24db8e89c83042122ef50eb4ff61fe5ec3069275c94dd8a28",
+    "verified_with_explicit_train_source": true,
+    "derived_samples": 11,
+    "unique_objects": 15,
+    "target_passes": 1,
+    "ports": [
+      "prq"
+    ],
+    "inference_run": false,
+    "training_run": false
+  },
+  "review_findings": {
+    "consolidation": "Known conflicts in added omissions and duplicate omission actions now checked before any review action; actual live DB untouched.",
+    "cohort_and_history_export": "Explicit cohort rejects missing/ineligible observations and preserves global split leakage checks; complete original tiles exported through history evidence.",
+    "crop_derivation": "Train-only native pixel copies with parent SHA and split groups; partial visible positives retained; integrity tested and real shard validated.",
+    "limitation": "Multi-action review application remains individually audited, not a new all-actions database transaction; concurrent edits require normal conflict adjudication."
+  },
+  "remaining_before_experiment": [
+    "Complete three-port train/calibration/test datasets and cross-review references.",
+    "At least one positive per training port; calibration at least30 unique references/predictions per port.",
+    "Test at least30 unique references and10 passes per port before inference, then at least30 predictions for support.",
+    "Pause historical heavy work at a boundary; CLI shares heavy worker file lock."
+  ]
+}

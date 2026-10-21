@@ -1,0 +1,79 @@
+{
+  "batch": "phase2-caribe-20250118-s2-v1",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "created_at": "2026-10-21T15:47:41.156449Z",
+  "blind_to_model": false,
+  "exposure": "Root and second reviewer each independently inspected native RGB and froze first-pass notes before inspecting detector proposals for this acquisition. Adjudication then compared the two raw passes, native-pixel hull detail, 2026 infrastructure context, and all eight proposed scopes. Root later learned all model counts were zero. This is AI cross-review, not human or independently sourced ground truth.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/caribe-20250118-s2-review.json",
+      "sha256": "d19e1caf66f2464b56303f1157a083e1488b332f368c275cf646be088aa98eb4"
+    }
+  ],
+  "accepted_observation_ids": [
+    "78e1ccc2-cb86-4338-95ce-51ff2ac29d03",
+    "853d4a63-7b38-4b2e-bad3-d9ae173aef67",
+    "521bdbf5-50f6-410a-94d2-f7d7357e3f4e",
+    "56d3772c-9a57-4248-806c-f38fc97a0abd",
+    "230de383-0bf2-41d4-85bd-29fd838f1ff8",
+    "d012f5a4-f580-4650-9654-b5566616603b",
+    "53a1f203-5cac-4424-930a-5e2413b7b2d1",
+    "2ef24623-5eef-4cbb-ae40-6cfd1347b200"
+  ],
+  "first_passes": [
+    {
+      "path": "reports/local-review/phase2/caribe-20250118-s2-root-first-pass.json",
+      "sha256": "961eb0c002c049d33710014e8f4913fff95c5da5195ef435ad9afe69867aaf66"
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-20250118-s2-independent-first-pass.json",
+      "sha256": "384baf1c6d3ef51eec9b2472062dea71f90f2bf73f2487c47c83328cb4e6d44d"
+    }
+  ],
+  "supporting_renders": [
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/pbr_canal-proposed-scope.png",
+      "sha256": "553dd7f806bb4e25397de12544c7c79d32199f3f76108a2f49ad871945f0cd47"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/pbr_fondeo-proposed-scope.png",
+      "sha256": "bb453c3ff704939d28307ba11f44118f2f8f395af6854605bdcadd832763303f"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/pbr_muelles-proposed-scope.png",
+      "sha256": "d189680434be601d5fd2afa9ec0853284c3ca67ddf75f8106fa74d77218355d5"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/pbr_patios-proposed-scope.png",
+      "sha256": "60e7bf3ee20a8b7449cea2e24e0d4d94e9e107ee03473d2e3710d6f4ac570cd9"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/stc_canal-proposed-scope.png",
+      "sha256": "ccbd4038c4001fac3e803503419975bc227ec0e1d7a07040478648fc214d9fa8"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/stc_fondeo-proposed-scope.png",
+      "sha256": "85419bd3986d757292e3d4e85fb2938d8e24e5618ee5bb3f4821a72979707c66"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/stc_muelles-proposed-scope.png",
+      "sha256": "b0faa3562a61a64de006074871e6b0d030b6d28de9cf2d9ef553cf9b310ce833"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250118-s2-independent/stc_patios-proposed-scope.png",
+      "sha256": "6eb91e0e7a9ca594b889ee5ce4d1d67c384b4ef09e219310428d8adc8ba45dc5"
+    }
+  ],
+  "expected_unique_objects": 2,
+  "expected_zone_label_instances": 2,
+  "expected_reviewed_observations": 8,
+  "decisions": [
+    "Add the continuous red PBR berthed hull and the white STC northeastern berthed hull; both reviewers found them in raw RGB.",
+    "Retain the unmodified visual box for STC; its centroid is nominally in muelles, only0.238m from the patios border. This zone assignment is uncertain below image resolution. Exclude the entire hull neighborhood from patios negatives.",
+    "Preserve all unresolved waterfront interfaces as unknown; one visible hull does not establish completeness along every berth.",
+    "STC anchorage scope is restricted to 2400 reviewed water pixels; the provisional polygon mostly covers land and is not representative of marine anchorage.",
+    "Do not infer family or dimensions; the 2026 context only assists distinguishing infrastructure and is not a simultaneous ship reference."
+  ]
+}

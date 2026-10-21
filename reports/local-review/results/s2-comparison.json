@@ -1,0 +1,543 @@
+{
+  "preflight": {
+    "sensor": "sentinel-2",
+    "train_observations": 7,
+    "test_observations": 4,
+    "target_acquisitions_per_split": 1,
+    "train_manifest_sha256": "f9479b36c27a74bf43603ffc934050ffce46a44e50cef7b4775086cdf7cf5082",
+    "test_manifest_sha256": "4abf6c28c2ea5dc03b4226475c859d8e1283e65402bbc5762f9e5ad21c9b4cb9",
+    "protocol_sha256": "003623ec7d2b352a21a418c1c1338183985895ddffb63b6652e242cafb755d8d",
+    "author": "Codex (AI)"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "torch": "2.14.1",
+    "numpy": "2.4.6",
+    "device": "cpu",
+    "threads": 4,
+    "seed": 20261021,
+    "source_sha256": {
+      "detection": {
+        "sha256": "2707c191329203d6f1353d3f122c93072edcfcbf79509fac21b948b8b7c99550"
+      },
+      "training": {
+        "sha256": "3dfb36e825334528d0f0d866fdcd2f193306a9737289e4599e2fd58dc85ecc6e"
+      },
+      "workflows": {
+        "sha256": "6a8161c66d21881d4c9b21b78fc3aff5392f4c2610f7b397a48b0d4bb16b02d6"
+      },
+      "evaluation": {
+        "sha256": "4e0681ef1b526a327b31c7ffd6e7a5dd01de969efda71220874db3b3abfa8b29"
+      }
+    }
+  },
+  "base": {
+    "split": "test",
+    "dataset_hash": "4abf6c28c2ea5dc03b4226475c859d8e1283e65402bbc5762f9e5ad21c9b4cb9",
+    "independent_reference": false,
+    "test_frozen": true,
+    "interval_method": "Wilson 95%; clustered scene dependence not modeled",
+    "overall": {
+      "true_positives": 0,
+      "false_positives": 3,
+      "false_negatives": 3,
+      "prediction_count": 3,
+      "reference_count": 3,
+      "scene_count": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_interval": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ],
+      "recall_interval": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ],
+      "false_positives_per_scene": 0.75
+    },
+    "strata": {
+      "prq|sentinel-2|prq_canal": {
+        "true_positives": 0,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "prediction_count": 1,
+        "reference_count": 1,
+        "scene_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "recall_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "false_positives_per_scene": 1.0
+      },
+      "prq|sentinel-2|prq_fondeo": {
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.6576197724933469
+        ],
+        "recall_interval": [
+          0,
+          0.6576197724933469
+        ],
+        "false_positives_per_scene": 2.0
+      },
+      "prq|sentinel-2|prq_muelles": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 1,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "prq|sentinel-2|prq_patios": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 1,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      }
+    },
+    "model_id": "ai2-sentinel2-vessels",
+    "model_version": "data_20250213_02_all_bands",
+    "weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+    "score_threshold": 0.8,
+    "iou_threshold": 0.5,
+    "seconds": 2.26054145800299,
+    "reference_kind": "ai_visual_review",
+    "label_author": "AI; see per-observation provenance",
+    "independent_acquisition_count": 1,
+    "reviewed_area_scope": "only frozen observable reviewed polygons; exclusions are not negatives",
+    "publication_decision": {
+      "status": "experimental",
+      "automatic_publication": false,
+      "reasons": [
+        "independent_reference_required",
+        "insufficient_support",
+        "precision_below_target"
+      ],
+      "strata": {
+        "prq|sentinel-2|prq_canal": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 1,
+            "prediction_count": 1,
+            "reference_count": 1,
+            "scene_count": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "precision_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "recall_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "false_positives_per_scene": 1.0
+          }
+        },
+        "prq|sentinel-2|prq_fondeo": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 2,
+            "false_negatives": 2,
+            "prediction_count": 2,
+            "reference_count": 2,
+            "scene_count": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "precision_interval": [
+              0,
+              0.6576197724933469
+            ],
+            "recall_interval": [
+              0,
+              0.6576197724933469
+            ],
+            "false_positives_per_scene": 2.0
+          }
+        },
+        "prq|sentinel-2|prq_muelles": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 1,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0
+          }
+        },
+        "prq|sentinel-2|prq_patios": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 1,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0
+          }
+        }
+      },
+      "required_strata": [
+        "prq|sentinel-2|prq_canal",
+        "prq|sentinel-2|prq_fondeo",
+        "prq|sentinel-2|prq_muelles",
+        "prq|sentinel-2|prq_patios"
+      ],
+      "min_support": 30,
+      "target_precision": 0.9,
+      "minimum_lower_bound": null,
+      "scope": "detection_only; family, dimensions and changes require independent gates"
+    },
+    "scientific_status": "experimental; AI reference, one test acquisition; no human validation",
+    "ai_reference_precision_assessment": {
+      "target": 0.9,
+      "minimum_support_per_stratum": 30,
+      "eligible_strata": [],
+      "missing_strata": [],
+      "scope": "Precision against the frozen AI labels only; not independent accuracy"
+    }
+  },
+  "adjusted": {
+    "split": "test",
+    "dataset_hash": "4abf6c28c2ea5dc03b4226475c859d8e1283e65402bbc5762f9e5ad21c9b4cb9",
+    "independent_reference": false,
+    "test_frozen": true,
+    "interval_method": "Wilson 95%; clustered scene dependence not modeled",
+    "overall": {
+      "true_positives": 0,
+      "false_positives": 3,
+      "false_negatives": 3,
+      "prediction_count": 3,
+      "reference_count": 3,
+      "scene_count": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_interval": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ],
+      "recall_interval": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ],
+      "false_positives_per_scene": 0.75
+    },
+    "strata": {
+      "prq|sentinel-2|prq_canal": {
+        "true_positives": 0,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "prediction_count": 1,
+        "reference_count": 1,
+        "scene_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "recall_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "false_positives_per_scene": 1.0
+      },
+      "prq|sentinel-2|prq_fondeo": {
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.6576197724933469
+        ],
+        "recall_interval": [
+          0,
+          0.6576197724933469
+        ],
+        "false_positives_per_scene": 2.0
+      },
+      "prq|sentinel-2|prq_muelles": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 1,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "prq|sentinel-2|prq_patios": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 1,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      }
+    },
+    "model_id": "local-ai-review-s2",
+    "model_version": "20261021-v1",
+    "weights_sha256": "889d07a67b8ff304516f103fdd29fc5675412c0c9d95a16a655f3ba542d62d83",
+    "score_threshold": 0.8,
+    "iou_threshold": 0.5,
+    "seconds": 3.2792182080011116,
+    "reference_kind": "ai_visual_review",
+    "label_author": "AI; see per-observation provenance",
+    "independent_acquisition_count": 1,
+    "reviewed_area_scope": "only frozen observable reviewed polygons; exclusions are not negatives",
+    "publication_decision": {
+      "status": "experimental",
+      "automatic_publication": false,
+      "reasons": [
+        "independent_reference_required",
+        "insufficient_support",
+        "precision_below_target"
+      ],
+      "strata": {
+        "prq|sentinel-2|prq_canal": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 1,
+            "prediction_count": 1,
+            "reference_count": 1,
+            "scene_count": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "precision_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "recall_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "false_positives_per_scene": 1.0
+          }
+        },
+        "prq|sentinel-2|prq_fondeo": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 2,
+            "false_negatives": 2,
+            "prediction_count": 2,
+            "reference_count": 2,
+            "scene_count": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "precision_interval": [
+              0,
+              0.6576197724933469
+            ],
+            "recall_interval": [
+              0,
+              0.6576197724933469
+            ],
+            "false_positives_per_scene": 2.0
+          }
+        },
+        "prq|sentinel-2|prq_muelles": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 1,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0
+          }
+        },
+        "prq|sentinel-2|prq_patios": {
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target"
+          ],
+          "metrics": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 1,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0
+          }
+        }
+      },
+      "required_strata": [
+        "prq|sentinel-2|prq_canal",
+        "prq|sentinel-2|prq_fondeo",
+        "prq|sentinel-2|prq_muelles",
+        "prq|sentinel-2|prq_patios"
+      ],
+      "min_support": 30,
+      "target_precision": 0.9,
+      "minimum_lower_bound": null,
+      "scope": "detection_only; family, dimensions and changes require independent gates"
+    },
+    "scientific_status": "experimental; AI reference, one test acquisition; no human validation",
+    "ai_reference_precision_assessment": {
+      "target": 0.9,
+      "minimum_support_per_stratum": 30,
+      "eligible_strata": [],
+      "missing_strata": [],
+      "scope": "Precision against the frozen AI labels only; not independent accuracy"
+    }
+  },
+  "seconds": 16.380783083004644,
+  "peak_rss_bytes": 1368326144,
+  "training_reference_counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "training_without_positives": true,
+  "model_selection_performed": false,
+  "threshold_calibration_performed": false,
+  "automatic_publication": false,
+  "attributes_trained": false,
+  "changes_trained": false,
+  "limitations": [
+    "AI visual references, not human or independent ground truth",
+    "Only one target acquisition in each split per sensor",
+    "Multiple zones/crops do not increase independent acquisition support",
+    "Only frozen reviewed areas are evaluated; excluded regions remain unknown",
+    "No model/epoch/threshold selection from held-out outcomes"
+  ],
+  "counting_units": {
+    "zone_reference_instances": 3,
+    "unique_physical_object_observations": 2,
+    "target_acquisitions": 1,
+    "unique_object_accounting": {
+      "base": {
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+      },
+      "adjusted": {
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "method": "Descriptive accounting check: references grouped by frozen unique_physical_object_key; predictions deduplicated only when same acquisition and exactly equal geometry. No new inference or threshold change."
+      }
+    },
+    "primary_preregistered_metrics": "Base/adjusted metrics above retain the original zone-wise evaluation. Their object-level Wilson intervals do not establish independent scene generalization."
+  },
+  "training_verification": {
+    "steps": 21,
+    "all_steps_updated": true,
+    "all_backbones_frozen": true,
+    "first_loss": 0.00010056285827886313,
+    "last_loss": 3.4129795949411346e-06,
+    "weights_sha256": "889d07a67b8ff304516f103fdd29fc5675412c0c9d95a16a655f3ba542d62d83",
+    "weights_bytes": 386633857,
+    "source_comparison_sha256": "927ed4a5dfbf74d6a24928e94d04e3fe6b7bc2a55b92eddeb51b31b5bee2814c"
+  }
+}

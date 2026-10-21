@@ -1,0 +1,61 @@
+{
+  "batch": "phase2-prq-20250103-s2-v1",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "created_at": "2026-10-21T15:15:17.816998+00:00",
+  "blind_to_model": false,
+  "exposure": "Root inspected the viewer proposals and then native raw imagery, all 14 vessel cutouts, masks and proposed scopes. The second reviewer began with raw pixels but knew there were 14 proposals. The focal dock adjudication followed discussion between two AI reviewers. Neither review is human or fully blind.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/prq-20250103-s2-review.json",
+      "sha256": "ba178cfdb713fbc40ede9274c4ec2f371dd3fe9c4a1ee749e5b7dd164f8eb314"
+    },
+    {
+      "path": "reports/local-review/phase2/prq-20250103-s2-review-addendum.json",
+      "sha256": "1b6af70585b3c116304970b3e906545cf4422fef801fdce8f86be2f3f7c53316"
+    }
+  ],
+  "accepted_observation_ids": [
+    "b9376324-e854-46ac-b065-c78875a58dd3",
+    "8bd32264-0629-4560-ba09-8e24d875e6a4",
+    "556e10c1-71d5-4003-afc1-a1b1aeef81c8",
+    "52049cad-e7b9-4f92-875d-cb20c2ad2ad4"
+  ],
+  "decisions": [
+    "Accept fourteen unambiguous open-water hulls with their native-pixel visual boxes.",
+    "Retain V12/V13 despite cloud-mask disagreement; retain other positive windows touching automatic exclusions. Original quality masks remain unchanged.",
+    "Accept one continuous red berthed hull V15, omitted by the detector; use the same physical-object key in muelles and canal.",
+    "Western horizontal vessel center lies outside all configured zones; retain as context, not an in-zone reference.",
+    "Remaining unresolved berth strips and tiny signatures are unknown, excluded from negative scope.",
+    "Boxes are approximate visible localization, not family, length or width measurements."
+  ],
+  "expected_unique_objects": 15,
+  "expected_zone_label_instances": 16,
+  "viewer_inspections": [
+    {
+      "observation_id": "b9376324-e854-46ac-b065-c78875a58dd3",
+      "zone_id": "prq_muelles",
+      "screenshot": "tmp/local-review/phase2/prq-20250103-s2/viewer-muelles.png",
+      "sha256": "36f97907ec57213701777b1cedc320dd3c4f997ce87ce8a9a05513a02f355c42"
+    },
+    {
+      "observation_id": "8bd32264-0629-4560-ba09-8e24d875e6a4",
+      "zone_id": "prq_fondeo",
+      "screenshot": "tmp/local-review/phase2/prq-20250103-s2/viewer-fondeo.png",
+      "sha256": "02e0554ce1c4ff5c310231810dd77269b27fed3ee8c91242235b071d91b3012c"
+    },
+    {
+      "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8",
+      "zone_id": "prq_canal",
+      "screenshot": "tmp/local-review/phase2/prq-20250103-s2/viewer-canal.png",
+      "sha256": "d81d9b2aab3655918d7a5f99e6b3b10c4039e6346ac7f3ed3f21d9290546241c"
+    },
+    {
+      "observation_id": "52049cad-e7b9-4f92-875d-cb20c2ad2ad4",
+      "zone_id": "prq_patios",
+      "screenshot": "tmp/local-review/phase2/prq-20250103-s2/viewer-patios.png",
+      "sha256": "7e0b3676c5a8f5274a5e51b9b96e39569aa917ddcc4ad28e8a806ec45fdc07ef"
+    }
+  ]
+}
