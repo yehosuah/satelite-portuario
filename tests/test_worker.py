@@ -1,5 +1,6 @@
 import json
 from datetime import datetime, timezone
+from pathlib import Path
 
 import numpy as np
 import rasterio
@@ -9,7 +10,116 @@ from puertogt.contracts import ModelManifest, Prediction, RasterBundle, Scene
 from puertogt.jobs import JobQueue, RuntimeLimits
 from puertogt.models import processing_recipe
 from puertogt.store import Store
-from puertogt.worker import process_once
+from puertogt.worker import process_once, resolve_bundle_paths
+
+
+def test_bundle_resolution_keeps_existing_paths_and_bundle_file_precedence(tmp_path, monkeypatch):
+    bundle_dir, working, volume = (tmp_path / name for name in ("bundles", "working", "volume"))
+    relative = Path("data/pilot/band.tif")
+    for directory in (bundle_dir, working, volume):
+        (directory / relative).parent.mkdir(parents=True)
+        (directory / relative).write_bytes(directory.name.encode())
+    monkeypatch.chdir(working)
+    bundle = RasterBundle(
+        band_paths={"B04": relative},
+        crs="EPSG:4326",
+        transform=(1, 0, 0, 0, -1, 0),
+        units={"B04": "DN_harmonized"},
+        preprocessing_version="test-v1",
+        sensor="sentinel-2",
+        product_level="L1C",
+    )
+    from_file = resolve_bundle_paths(bundle, volume, relative_to=bundle_dir)
+    assert from_file.band_paths["B04"] == bundle_dir / relative
+    from_working = resolve_bundle_paths(bundle, volume)
+    assert from_working.band_paths["B04"] == working / relative
+    assert bundle.band_paths["B04"] == relative
+
+    bundle.band_paths["B04"] = volume / relative
+    absolute = resolve_bundle_paths(bundle, volume, relative_to=bundle_dir)
+    assert absolute.band_paths["B04"] == volume / relative
+
+
+def test_worker_reads_prepared_bundle_from_custom_volume_in_another_directory(
+    tmp_path, monkeypatch
+):
+    store = Store(tmp_path / "mounted-volume" / "catalog.sqlite")
+    prepared = store.data_dir / "pilot" / "prepared"
+    prepared.mkdir(parents=True)
+    affine = from_origin(-90.8, 13.94, 0.001, 0.001)
+    for name in ("B04", "B03", "B02", "observable", "valid"):
+        with rasterio.open(
+            prepared / f"{name}.tif",
+            "w",
+            driver="GTiff",
+            width=32,
+            height=32,
+            count=1,
+            dtype="uint16",
+            crs="EPSG:4326",
+            transform=affine,
+        ) as target:
+            target.write(
+                np.full((32, 32), 1 if name in {"observable", "valid"} else 1000, dtype="uint16"), 1
+            )
+    bundle = RasterBundle(
+        band_paths={
+            "B04": Path("data/pilot/prepared/B04.tif"),
+            "B03": Path("pilot/prepared/B03.tif"),
+            "B02": prepared / "B02.tif",
+        },
+        mask_paths={
+            "observable": Path("data/pilot/prepared/observable.tif"),
+            "valid": Path("pilot/prepared/valid.tif"),
+        },
+        crs="EPSG:4326",
+        transform=tuple(affine)[:6],
+        units={band: "DN_harmonized" for band in ("B04", "B03", "B02")},
+        preprocessing_version="test-v1",
+        sensor="sentinel-2",
+        product_level="L1C",
+    )
+    scene = Scene(
+        scene_id="prepared",
+        acquisition_key="prepared",
+        sensor="sentinel-2",
+        product_level="L1C",
+        captured_at=datetime(2025, 1, 1, tzinfo=timezone.utc),
+        footprint={"type": "Point", "coordinates": [-90.79, 13.925]},
+        port_ids=["prq"],
+        metadata={"prepared_bundle": bundle.model_dump(mode="json")},
+    )
+    model = ModelManifest(
+        model_id="test",
+        version="v1",
+        sensor="sentinel-2",
+        task="detection",
+        recipe_version="test-v1",
+    )
+    queue = JobQueue(store, runtime=RuntimeLimits(reserve_bytes=0))
+    job_id = queue.enqueue(scene, "prq_muelles", processing_recipe(model), port_id="prq")
+    working = tmp_path / "unrelated-working-directory"
+    working.mkdir()
+    monkeypatch.chdir(working)
+
+    def predict(resolved, _model):
+        for name, path in {**resolved.band_paths, **resolved.mask_paths}.items():
+            with rasterio.open(path) as source:
+                assert source.read(1)[0, 0] == (1 if name in {"observable", "valid"} else 1000)
+        return []
+
+    result = process_once(
+        store,
+        model,
+        runtime=RuntimeLimits(reserve_bytes=0),
+        predictor=predict,
+    )
+
+    assert result["status"] == "partial"
+    assert result["published_detections"] == 0
+    observation = store.get_observation(queue.get_job(job_id)["observation_id"])
+    assert observation["detection_count"] == 0
+    assert (store.data_dir / "assets" / result["observation_id"] / "observable.tif").is_file()
 
 
 def test_worker_with_unknown_observability_never_publishes_zero_or_detections(tmp_path):

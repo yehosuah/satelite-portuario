@@ -14,7 +14,11 @@ WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY src ./src
 COPY config ./config
-RUN --mount=type=cache,target=/root/.cache/uv if [ "$INSTALL_ML" = "true" ]; then uv sync --frozen --no-editable --no-dev --extra ml; else uv sync --frozen --no-editable --no-dev; fi
+# HTTP/2 fetches were reset by the Docker build network; this affects transport only.
+RUN --mount=type=cache,target=/root/.cache/uv if [ "$INSTALL_ML" = "true" ]; then \
+      GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.version GIT_CONFIG_VALUE_0=HTTP/1.1 \
+      uv sync --frozen --no-editable --no-dev --extra ml; \
+    else uv sync --frozen --no-editable --no-dev; fi
 RUN useradd --uid 10001 --create-home app && mkdir /data && chown app:app /data
 USER app
 ENV PATH="/app/.venv/bin:$PATH"

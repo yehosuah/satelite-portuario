@@ -1,15 +1,34 @@
 {
-  "verified_at": "2026-10-21T02:39:29.710801+00:00",
+  "verified_at": "2026-10-21T03:08:18.550933+00:00",
   "full_installed_suite": {
-    "passed": 95,
+    "passed": 99,
     "failed": 0,
     "command": "uv run --no-sync pytest -q --disable-warnings",
-    "duration_seconds": 2.83,
-    "warnings": 315,
+    "duration_seconds": 3.02,
+    "warnings": 318,
     "warning_scope": "upstream affine/shapely deprecations"
   },
   "ruff": "passed",
   "wheel_build": "passed",
   "isolated_wheel": "wheel-validation.json",
-  "scientific_validation": false
+  "scientific_validation": false,
+  "ci": {
+    "commit": "f0486852f75758d7b5aa2c58e8a1302f1495b4fb",
+    "run": "https://github.com/yehosuah/satelite-portuario/actions/runs/39534361158",
+    "ubuntu-latest": "success",
+    "macos-latest": "success",
+    "checks": [
+      "locked base install",
+      "ruff",
+      "pytest",
+      "wheel and source build"
+    ],
+    "scope": "Base service dependencies; local full suite includes optional ML",
+    "base_suite": {
+      "passed": 88,
+      "skipped_optional_ml": 7,
+      "failed": 0
+    }
+  },
+  "final_regression": "Resolve model/embedded-encoder and prepared numeric paths under a relocated data volume with a different working directory"
 }

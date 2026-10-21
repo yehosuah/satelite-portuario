@@ -8,6 +8,71 @@ from puertogt.models import processing_recipe, register_portable_model, validate
 from puertogt.store import Store, sha256_file
 
 
+def test_read_model_resolves_head_and_embedded_encoder_in_custom_volume(tmp_path, monkeypatch):
+    from puertogt.cli import read_model
+
+    volume = tmp_path / "mounted-volume"
+    weights = volume / "models"
+    weights.mkdir(parents=True)
+    (weights / "head.pt").write_bytes(b"head")
+    (weights / "encoder.pt").write_bytes(b"encoder")
+    manifests = tmp_path / "recipes"
+    manifests.mkdir()
+    working = tmp_path / "unrelated-working-directory"
+    working.mkdir()
+    monkeypatch.chdir(working)
+    encoder = ModelManifest(
+        model_id="encoder",
+        version="1",
+        sensor="sentinel-2",
+        task="detection",
+        recipe_version="r1",
+        weights_path="data/models/encoder.pt",
+    )
+    head = encoder.model_copy(
+        update={
+            "model_id": "head",
+            "task": "attributes",
+            "weights_path": "data/models/head.pt",
+            "metadata": {"encoder_manifest": encoder.model_dump(mode="json")},
+        }
+    )
+    path = manifests / "head.json"
+    path.write_text(head.model_dump_json())
+
+    loaded = read_model(path, volume)
+
+    assert loaded.weights_path == str(weights / "head.pt")
+    assert loaded.metadata["encoder_manifest"]["weights_path"] == str(weights / "encoder.pt")
+
+
+def test_read_model_keeps_manifest_relative_precedence_and_explicit_absolute_paths(
+    tmp_path, monkeypatch
+):
+    from puertogt.cli import read_model
+
+    recipe_dir, working, volume = (tmp_path / name for name in ("recipes", "working", "volume"))
+    for directory in (recipe_dir, working, volume):
+        directory.mkdir()
+        (directory / "weights.pt").write_bytes(directory.name.encode())
+    monkeypatch.chdir(working)
+    path = recipe_dir / "model.json"
+    model = ModelManifest(
+        model_id="test",
+        version="1",
+        sensor="sentinel-2",
+        task="detection",
+        recipe_version="r1",
+        weights_path="weights.pt",
+    )
+    path.write_text(model.model_dump_json())
+    assert read_model(path, volume).weights_path == str(recipe_dir / "weights.pt")
+
+    model.weights_path = str(working / "weights.pt")
+    path.write_text(model.model_dump_json())
+    assert read_model(path, volume).weights_path == str(working / "weights.pt")
+
+
 def test_weights_are_atomic_idempotent_and_keep_encoder_in_portable_volume(tmp_path):
     store = Store(tmp_path / "volume" / "catalog.sqlite")
     source = tmp_path / "encoder.pt"

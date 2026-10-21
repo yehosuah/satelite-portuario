@@ -7,7 +7,7 @@ Satélite Portuario separa el catálogo, el procesamiento y la revisión. La API
 - Python 3.11, recomendado y probado. El paquete admite Python 3.11 a 3.13.
 - `uv` y Git. Las dependencias opcionales incluyen repositorios fijados a commits concretos.
 - Espacio para el catálogo, recortes numéricos, evidencias y pesos. Dimensiona el volumen con el piloto antes del histórico.
-- Docker con Compose si se usa el contenedor. La imagen base se probó en ARM64; el procesamiento ML en contenedor requiere comprobación propia.
+- Docker con Compose si se usa el contenedor. Las imágenes base y ML se probaron en ARM64, con inferencia CPU real de ambos sensores. ML en x86_64 sigue sin comprobarse.
 
 Ejecuta desde la raíz del repositorio:
 
@@ -110,6 +110,15 @@ docker compose up --build api
 
 El puerto del host queda ligado a localhost y el volumen `observatorio` conserva `/data`. El perfil opcional `worker` instala ML y espera un manifiesto de modelo activo dentro del volumen. Su ejecución requiere pesos, entradas numéricas y máscaras de calidad válidas; no descarga ni entrena automáticamente al arrancar la API. No uses `docker compose down -v` si necesitas conservar el volumen.
 
+Los modelos incluidos en el piloto son experimentales. Con el manifiesto en `/data/active-model.yaml`, sus pesos, entradas y trabajos ya preparados en el volumen, ejecuta un trabajo de prueba con la habilitación explícita:
+
+```sh
+docker compose --profile worker run --rm worker puertogt worker \
+  --model /data/active-model.yaml --allow-experimental --max-jobs 1
+```
+
+Sin `--allow-experimental`, el worker conserva el bloqueo de modelos sin validar. Habilitarlo no cambia la política de publicación del modelo ni certifica las propuestas.
+
 Para construir explícitamente la imagen de consulta y la imagen CPU con ML en ARM64:
 
 ```sh
@@ -119,7 +128,11 @@ docker build --platform linux/arm64 --build-arg INSTALL_ML=true -t satelite-port
 
 Las imágenes base de Python y `uv` están fijadas por digest; la aplicación se instala sin modo editable y empaqueta su configuración e interfaz. La variante ML instala `build-essential` y `libgdal-dev`, porque Fiona puede necesitar compilar contra GDAL en Linux ARM64. Esos paquetes no se añaden a la variante de consulta. La instalación desde fuente requiere headers y `gdal-config`, según la [documentación de Fiona](https://fiona.readthedocs.io/en/stable/install.html).
 
-Los pesos y las imágenes satelitales permanecen fuera de la imagen Docker. Para recetas cuyos archivos relativos comienzan en `data/`, monta el volumen en `/app/data`; durante una prueba de inferencia puede montarse en solo lectura. El contenedor usa CPU y el usuario sin privilegios `app`. La compilación y las mediciones de inferencia verificadas se registran en `reports/pilot/docker-validation.json`; su alcance es operatividad, independiente de la precisión científica local.
+En la primera compilación ARM64 registrada, esa capa descargó 183 MB de paquetes e incorporó 883 MB de dependencias del sistema antes de instalar Python. Tardó 20,5 minutos con la red disponible; las recompilaciones posteriores reutilizan la caché. Los compiladores permanecen en la imagen ML, por lo que su espacio requerido es mayor que el de la imagen de consulta.
+
+La construcción ML verificada reutilizó la caché del commit público fijado de `rslearn`, después de dos cortes de transporte al descargarlo desde GitHub. Por tanto, la instalación desde una caché totalmente vacía no quedó comprobada en esta red. La imagen resultante sí pasó la prueba sin red con ambos modelos reales y las rutas de datos de Compose; pesa 2,63 GB, frente a 0,72 GB de la imagen de consulta.
+
+Los pesos y las imágenes satelitales permanecen fuera de la imagen Docker, en el volumen `/data`. La CLI y el worker resuelven sus rutas relativas en ese volumen, incluido el prefijo `data/` de las recetas originales. Durante una prueba de inferencia puede montarse en solo lectura. El contenedor usa CPU y el usuario sin privilegios `app`. La compilación y las mediciones de inferencia verificadas se registran en `reports/pilot/docker-validation.json`; su alcance es operatividad, independiente de la precisión científica local.
 
 El smoke reproducible usa la instalación empaquetada, una base temporal y la red deshabilitada. La segunda ejecución requiere los pesos y recortes del piloto en `data/models/` y `data/pilot/`:
 
@@ -129,10 +142,10 @@ docker run --rm --network none --platform linux/arm64 \
   satelite-portuario:local python /tmp/validate_container.py --api-only
 docker run --rm --network none --platform linux/arm64 \
   -v "$PWD/scripts/validate_container.py:/tmp/validate_container.py:ro" \
-  -v "$PWD/data:/app/data:ro" \
+  -v "$PWD/data:/data:ro" \
   satelite-portuario:ml python /tmp/validate_container.py
 ```
 
 ## Verificación realizada
 
-La importación del inventario, `init`, `doctor`, `history-report`, exportación GeoJSON/Parquet, bundle y restauración se ejecutaron en un volumen temporal. La restauración recuperó las 863 adquisiciones. La API y la interfaz se probaron con evidencia S2 real copiada a otro volumen temporal; aceptar, rechazar, añadir, mover, historial y recuperación de selección funcionaron. La imagen base Docker fue comprobada en ARM64. La validación local de modelos y el histórico procesado completo siguen siendo requisitos independientes.
+La importación del inventario, `init`, `doctor`, `history-report`, exportación GeoJSON/Parquet, bundle y restauración se ejecutaron en un volumen temporal. La restauración recuperó las 863 adquisiciones. La API y la interfaz se probaron con evidencia S2 real copiada a otro volumen temporal; aceptar, rechazar, añadir, mover, historial y recuperación de selección funcionaron. Las imágenes base y ML de Docker fueron comprobadas en ARM64, incluyendo inferencia CPU sin red. La validación local de modelos y el histórico procesado completo siguen siendo requisitos independientes.

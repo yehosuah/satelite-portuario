@@ -71,9 +71,11 @@ if not args.api_only:
     import rasterio
     import torch
 
+    from puertogt.cli import read_model
     from puertogt.contracts import RasterBundle
-    from puertogt.ml.detection import detect, load_detector, load_manifest
+    from puertogt.ml.detection import detect, load_detector
     from puertogt.preprocess import read_model_input
+    from puertogt.worker import resolve_bundle_paths
 
     torch.set_num_threads(4)
     report["versions"].update(
@@ -88,14 +90,22 @@ if not args.api_only:
         "rasterio": rasterio.__gdal_version__,
     }
     report["torch_threads"] = torch.get_num_threads()
+    data_dir = Path(os.environ.get("PUERTOGT_DATA_DIR", "/data"))
+    report["data_directory"] = str(data_dir)
+    report["path_resolution"] = "CLI read_model and worker resolve_bundle_paths"
     report["inference"] = []
     for sensor, recipe, bundle_name in (
         ("sentinel-1", "s1.yaml", "prq-s1-prepared"),
         ("sentinel-2", "s2.yaml", "prq-prepared"),
     ):
-        model = load_manifest(config_path() / "models" / recipe)
-        path = Path("data/pilot") / bundle_name / "bundle.json"
-        bundle = RasterBundle.model_validate_json(path.read_text())
+        model = read_model(config_path() / "models" / recipe, data_dir)
+        path = data_dir / "pilot" / bundle_name / "bundle.json"
+        bundle = resolve_bundle_paths(
+            RasterBundle.model_validate_json(path.read_text()), data_dir, relative_to=path.parent
+        )
+        input_paths = sorted(set((*bundle.band_paths.values(), *bundle.mask_paths.values())))
+        assert Path(model.weights_path).is_relative_to(data_dir)
+        assert all(Path(item).is_relative_to(data_dir) for item in input_paths)
         start = time.monotonic()
         detector = load_detector(model, device="cpu")
         load_seconds = time.monotonic() - start
@@ -108,20 +118,26 @@ if not args.api_only:
                 "sensor": sensor,
                 "model_id": model.model_id,
                 "weights_sha256": model.weights_sha256,
+                "resolved_weights_path": model.weights_path,
                 "model_manifest_sha256": sha256_file(config_path() / "models" / recipe),
                 "bundle_sha256": sha256_file(path),
+                "input_files_sha256": {
+                    str(Path(item).relative_to(data_dir)): sha256_file(item) for item in input_paths
+                },
                 "input_shape": list(input_array.shape),
                 "model_load_seconds": load_seconds,
                 "inference_seconds": elapsed,
                 "detections": len(predictions),
+                "scores": [prediction.detection_score for prediction in predictions],
                 "peak_process_rss_bytes": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024,
                 "scope": "CPU_runtime_operability_only_not_local_accuracy",
             }
         )
         del detector, input_array, predictions
         gc.collect()
+package_root = Path(puertogt.__file__).parent
 report["module_sha256"] = {
-    name: sha256_file(Path(puertogt.__file__).parent / name)
-    for name in ("api.py", "store.py", "ml/detection.py", "preprocess.py")
+    str(path.relative_to(package_root)): sha256_file(path)
+    for path in sorted(package_root.rglob("*.py"))
 }
 print("VALIDATION_JSON=" + json.dumps(report, sort_keys=True))

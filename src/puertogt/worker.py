@@ -24,6 +24,32 @@ from puertogt.models import processing_recipe, register_portable_model, validate
 from puertogt.store import Store
 
 
+def resolve_bundle_paths(
+    bundle: RasterBundle, data_dir: Path, *, relative_to: Path | None = None
+) -> RasterBundle:
+    """Resolve numeric inputs against their file, current directory and data volume."""
+    resolved = bundle.model_copy(deep=True)
+    data_dir = Path(data_dir)
+    for paths in (resolved.band_paths, resolved.mask_paths):
+        for name, supplied in paths.items():
+            supplied = Path(supplied)
+            candidates = [supplied]
+            if not supplied.is_absolute():
+                if relative_to is not None:
+                    candidates.insert(0, Path(relative_to) / supplied)
+                candidates.append(data_dir / supplied)
+                # Legacy repository bundles include the data directory itself.
+                if supplied.parts and supplied.parts[0] == "data":
+                    candidates.append(data_dir.joinpath(*supplied.parts[1:]))
+            found = next(
+                (candidate.resolve() for candidate in candidates if candidate.is_file()), None
+            )
+            if found is None:
+                raise FileNotFoundError(f"Raster input not found: {supplied}")
+            paths[name] = found
+    return resolved
+
+
 def process_once(
     store: Store,
     model: ModelManifest,
@@ -95,6 +121,7 @@ def process_once(
                 or bundle.preprocessing_version != model.recipe_version
             ):
                 raise ValueError("prepared input does not match the scheduled recipe")
+            bundle = resolve_bundle_paths(bundle, store.data_dir)
             bundle.observation_id = job["observation_id"]
             bundle.metadata["captured_at"] = scene.captured_at.isoformat()
             register_portable_model(store, model)
@@ -105,9 +132,14 @@ def process_once(
                 register_portable_model(store, attribute_model)
                 scoped_attributes = attribute_model
                 if not validated_scope(attribute_model, row["port_id"], row["zone_id"]):
-                    scoped_attributes = attribute_model.model_copy(update={
-                        "publication_policy": {**attribute_model.publication_policy, "fields": {}},
-                    })
+                    scoped_attributes = attribute_model.model_copy(
+                        update={
+                            "publication_policy": {
+                                **attribute_model.publication_policy,
+                                "fields": {},
+                            },
+                        }
+                    )
                 predictions = predict_attributes(bundle, predictions, scoped_attributes)
             # Evidence remains numeric and independent of this display rendering.
             root = f"assets/{job['observation_id']}"

@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T03:13:55.429026Z",
+  "status": "passed",
+  "scope": "Linux ARM64 installed runtime and real CPU inference operability; not local model accuracy",
+  "platform": "linux/arm64",
+  "docker_engine_version": "29.2.0",
+  "dockerfile_sha256": "f058d2ae58e2ebe29bb3aa42e400fb11573261df77e20b8915ae0455c8436889",
+  "uv_lock_sha256": "78af293abdb93a84cc90362eb05c5fa45c62c946c7f9cf1c193c8e48e26f7d14",
+  "validation_script": {
+    "path": "scripts/validate_container.py",
+    "sha256": "6e27824ea6df1ae05534c0e449bdb03facc38b84e72e7c24ddfab53ab4c288dd"
+  },
+  "base": {
+    "status": "passed",
+    "tag": "satelite-portuario:local",
+    "image": {
+      "Id": "sha256:43c057fa4743fa0141b2649e1b054b3cd4525a29786a66061d353b993f370e0f",
+      "Created": "2026-10-21T03:06:15.561993548Z",
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 720535300
+    },
+    "first_python_dependency_layer_seconds": 598.0,
+    "source_matches_current_checkout": true,
+    "smoke": {
+      "configuration_directory": "/app/.venv/lib/python3.11/site-packages/puertogt/config",
+      "installed_package": "/app/.venv/lib/python3.11/site-packages/puertogt/__init__.py",
+      "machine": "aarch64",
+      "module_sha256": {
+        "__init__.py": "a1571b2d405f6df6534f62a22a7e6de3a2311f0e185e3638c47558ad4b8d8038",
+        "api.py": "71afe9626350012b5c0589c338da967f26d87d1213450f776921d432fa83abf3",
+        "assets.py": "bc1fa159667caf1d502c4e5f6077cb02f2b610d1a006804db0d1961fe4d41834",
+        "catalog.py": "96bac2e948037a45bf3748cdd177dcd1934f8222729a0c6dfab83f0a6fc42c83",
+        "cli.py": "d20fd7c6bef0ffeea3c427c083addb35e2408a296700bb1f81c2fe7d6141d504",
+        "contracts.py": "e921e52b6db931d47da5fa6bb1c93d0fd0c2bc58937f4b0226f6edbcb7b31e7e",
+        "coverage.py": "e3c5c39cc5bc060cba70d6db0083fee8737da53c496dbc5157a42f194cccaa38",
+        "export.py": "fce6f3ac4bce7565bf711131f0bd63d0e89ff5f85b66004723c66ae38b5ad2e9",
+        "jobs.py": "e340e313387ff76618a4eaf0123faf512b215f729b596523a2103498c97f0263",
+        "ml/__init__.py": "07372dfeab2beabdd87128d9e6763855dad0b1719f70dc382190c4244b61be71",
+        "ml/attribute_workflows.py": "642c7f4f8031c076f85aaec7b5086b322be17e31d2835cf864ed32619d0e58b0",
+        "ml/attributes.py": "99beda899358ed886afa5dbfc97358afee1702d3bd8e32270beb8097c1345b9a",
+        "ml/change.py": "86d6c06e3c7f21d29bb831634c9f624f2d9f003f53e57cef0fd96faeed72d409",
+        "ml/change_evaluation.py": "4fa5d3fd5ef1d2e7677d84699006be5d6f70853f982db63c8bd2cf3d4d1ff505",
+        "ml/change_workflows.py": "d303a46ad75cfdf57da9768f4471b97eda987df45faaeb08a278e9a5d1c1e615",
+        "ml/detection.py": "2707c191329203d6f1353d3f122c93072edcfcbf79509fac21b948b8b7c99550",
+        "ml/evaluation.py": "4e0681ef1b526a327b31c7ffd6e7a5dd01de969efda71220874db3b3abfa8b29",
+        "ml/training.py": "3dfb36e825334528d0f0d866fdcd2f193306a9737289e4599e2fd58dc85ecc6e",
+        "ml/workflows.py": "6a8161c66d21881d4c9b21b78fc3aff5392f4c2610f7b397a48b0d4bb16b02d6",
+        "models.py": "be755d93b03d2ea7d8ffa76d7538250043396ecbaa95c1115479aeb4b4250b92",
+        "preprocess.py": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
+        "review.py": "3cc9093bb4fcd9fe6ad1cbdb1eb036c80191e8292a11501c136522e2a05dea72",
+        "store.py": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d",
+        "worker.py": "f08a466f2c4455e1e050766969ef9b6d4f883dc88dc43fc22336f915412c05f8"
+      },
+      "platform": "Linux-6.12.67-linuxkit-aarch64-with-glibc2.41",
+      "python": "3.11.17",
+      "service_smoke": {
+        "health": {
+          "inference_in_http": false,
+          "schema_version": 1,
+          "status": "ok"
+        },
+        "ports_features": 12,
+        "registered_asset_sha256": "20fdf371d5b9984c5f402626b13500aba813e0718ef9f4884db377cb55e009fa",
+        "registered_asset_status": 200,
+        "ui_status": 200
+      },
+      "uid": 10001,
+      "versions": {
+        "fastapi": "0.156.4",
+        "rasterio": "1.4.4",
+        "satelite-portuario": "0.1.0"
+      }
+    }
+  },
+  "ml": {
+    "status": "passed",
+    "tag": "satelite-portuario:ml",
+    "image": {
+      "Id": "sha256:0d33a71feddb2c57e7bf3630f05b8f13eefca0e4133d74c17d6f25d9af83ff6c",
+      "Created": "2026-10-21T03:10:19.787638384Z",
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 2632222913
+    },
+    "build_arguments": {
+      "INSTALL_ML": "true"
+    },
+    "source_matches_current_checkout": true,
+    "smoke": {
+      "configuration_directory": "/app/.venv/lib/python3.11/site-packages/puertogt/config",
+      "data_directory": "/data",
+      "device": "cpu",
+      "gdal_versions": {
+        "fiona": "3.10.3",
+        "rasterio": "3.10.3"
+      },
+      "inference": [
+        {
+          "bundle_sha256": "332b06b8828c459d230e796412ab11f72e6f68942d57ffee00fce6687323b66e",
+          "detections": 2,
+          "inference_seconds": 0.9533325420002257,
+          "input_files_sha256": {
+            "pilot/prq-s1-prepared/historical_vh.tif": "e444eebcda236c164380840d298ccdfb00aef090f0a8ff79a06a64052e68101c",
+            "pilot/prq-s1-prepared/historical_vv.tif": "9731999f4a3845e697cb69d8feecccc7398fe6d81cfd3df999fb47c4e79c8c16",
+            "pilot/prq-s1-prepared/observable.tif": "96cdd58669bdd91240785d8297b222a9b64a8fa1c560bedefde03e2a287bab9f",
+            "pilot/prq-s1-prepared/potentially_observable.tif": "96cdd58669bdd91240785d8297b222a9b64a8fa1c560bedefde03e2a287bab9f",
+            "pilot/prq-s1-prepared/valid.tif": "96cdd58669bdd91240785d8297b222a9b64a8fa1c560bedefde03e2a287bab9f",
+            "pilot/prq-s1-prepared/vh.tif": "6cd8cd633b27c3222c1fcee6e18d267c857e36803c4846c7921b2df0ddf8eeae",
+            "pilot/prq-s1-prepared/vv.tif": "f5c1a25aa451b41ae671950038890647ce607783eaf5d85bd0c7986c94ba7698"
+          },
+          "input_shape": [
+            4,
+            512,
+            512
+          ],
+          "model_id": "ai2-sentinel1-vessels",
+          "model_load_seconds": 2.0693850419997943,
+          "model_manifest_sha256": "eedfd5d555058ccd69bf983e1ac16cd4e54f7d9adc419aba3e2a40cd4218461b",
+          "peak_process_rss_bytes": 1479499776,
+          "resolved_weights_path": "/data/models/sentinel1-vessels.ckpt",
+          "scope": "CPU_runtime_operability_only_not_local_accuracy",
+          "scores": [
+            0.992598295211792,
+            0.9545809030532837
+          ],
+          "sensor": "sentinel-1",
+          "weights_sha256": "35645431fb58c410603ea3e4af4c7654218389fc8bf953fe3d7f83e5629b5d2a"
+        },
+        {
+          "bundle_sha256": "686974181a3b2e1248343e98d1145c59d58c9632254d578603f79e385916af00",
+          "detections": 2,
+          "inference_seconds": 0.47357358300041597,
+          "input_files_sha256": {
+            "pilot/prq-prepared/B02.tif": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+            "pilot/prq-prepared/B03.tif": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+            "pilot/prq-prepared/B04.tif": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+            "pilot/prq-prepared/B05.tif": "fb36ee4c29ef53b084defa6d6ea8364b06916d6c70545ff087e978aba3d93805",
+            "pilot/prq-prepared/B06.tif": "be3450ea3d36bbc5c174eaf0bab7aff6743141cfe677b87837ee8619cdc524db",
+            "pilot/prq-prepared/B07.tif": "1e25043377a639c390527d283d6a884ac64c6311f6a1794dbf1c47ffd08b36f1",
+            "pilot/prq-prepared/B08.tif": "da7bcd4a59132a1dd21964701af7be2d3726dccda1c206e63cabf12c97df1427",
+            "pilot/prq-prepared/B11.tif": "bbd147837cf2dcf9adac7b8aa54cce814955e3bcaf76db06738716cc5e541b4c",
+            "pilot/prq-prepared/B12.tif": "86c6bb100790ca586463982ea9a76ab253ef98cd1f0555d8070b993645504f3a",
+            "pilot/prq-prepared/cloud.tif": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+            "pilot/prq-prepared/cloud_classes.tif": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+            "pilot/prq-prepared/observable.tif": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+            "pilot/prq-prepared/potentially_observable.tif": "7db6a95acf16c91ea829c1acf9cd7e10ec645c3c6cd0a919fb55708efa36e931",
+            "pilot/prq-prepared/shadow.tif": "a9e125055a2b1a5f46c762cad949cab735d891d8e18b44bf2611a577a4a4f433",
+            "pilot/prq-prepared/valid.tif": "f22654d155cd1532ffe0ef48926b9ba2948f8ff0d043ad2d01d75a3a36fa0bb4"
+          },
+          "input_shape": [
+            9,
+            512,
+            512
+          ],
+          "model_id": "ai2-sentinel2-vessels",
+          "model_load_seconds": 1.1941314999999122,
+          "model_manifest_sha256": "cd0d6f1665b3018b8be2ebaed8bb638ba25a5e087264873672242ceb4d56744d",
+          "peak_process_rss_bytes": 1479499776,
+          "resolved_weights_path": "/data/models/sentinel2-vessels.ckpt",
+          "scope": "CPU_runtime_operability_only_not_local_accuracy",
+          "scores": [
+            0.9990348815917969,
+            0.9986600875854492
+          ],
+          "sensor": "sentinel-2",
+          "weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe"
+        }
+      ],
+      "installed_package": "/app/.venv/lib/python3.11/site-packages/puertogt/__init__.py",
+      "machine": "aarch64",
+      "module_sha256": {
+        "__init__.py": "a1571b2d405f6df6534f62a22a7e6de3a2311f0e185e3638c47558ad4b8d8038",
+        "api.py": "71afe9626350012b5c0589c338da967f26d87d1213450f776921d432fa83abf3",
+        "assets.py": "bc1fa159667caf1d502c4e5f6077cb02f2b610d1a006804db0d1961fe4d41834",
+        "catalog.py": "96bac2e948037a45bf3748cdd177dcd1934f8222729a0c6dfab83f0a6fc42c83",
+        "cli.py": "d20fd7c6bef0ffeea3c427c083addb35e2408a296700bb1f81c2fe7d6141d504",
+        "contracts.py": "e921e52b6db931d47da5fa6bb1c93d0fd0c2bc58937f4b0226f6edbcb7b31e7e",
+        "coverage.py": "e3c5c39cc5bc060cba70d6db0083fee8737da53c496dbc5157a42f194cccaa38",
+        "export.py": "fce6f3ac4bce7565bf711131f0bd63d0e89ff5f85b66004723c66ae38b5ad2e9",
+        "jobs.py": "e340e313387ff76618a4eaf0123faf512b215f729b596523a2103498c97f0263",
+        "ml/__init__.py": "07372dfeab2beabdd87128d9e6763855dad0b1719f70dc382190c4244b61be71",
+        "ml/attribute_workflows.py": "642c7f4f8031c076f85aaec7b5086b322be17e31d2835cf864ed32619d0e58b0",
+        "ml/attributes.py": "99beda899358ed886afa5dbfc97358afee1702d3bd8e32270beb8097c1345b9a",
+        "ml/change.py": "86d6c06e3c7f21d29bb831634c9f624f2d9f003f53e57cef0fd96faeed72d409",
+        "ml/change_evaluation.py": "4fa5d3fd5ef1d2e7677d84699006be5d6f70853f982db63c8bd2cf3d4d1ff505",
+        "ml/change_workflows.py": "d303a46ad75cfdf57da9768f4471b97eda987df45faaeb08a278e9a5d1c1e615",
+        "ml/detection.py": "2707c191329203d6f1353d3f122c93072edcfcbf79509fac21b948b8b7c99550",
+        "ml/evaluation.py": "4e0681ef1b526a327b31c7ffd6e7a5dd01de969efda71220874db3b3abfa8b29",
+        "ml/training.py": "3dfb36e825334528d0f0d866fdcd2f193306a9737289e4599e2fd58dc85ecc6e",
+        "ml/workflows.py": "6a8161c66d21881d4c9b21b78fc3aff5392f4c2610f7b397a48b0d4bb16b02d6",
+        "models.py": "be755d93b03d2ea7d8ffa76d7538250043396ecbaa95c1115479aeb4b4250b92",
+        "preprocess.py": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
+        "review.py": "3cc9093bb4fcd9fe6ad1cbdb1eb036c80191e8292a11501c136522e2a05dea72",
+        "store.py": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d",
+        "worker.py": "f08a466f2c4455e1e050766969ef9b6d4f883dc88dc43fc22336f915412c05f8"
+      },
+      "path_resolution": "CLI read_model and worker resolve_bundle_paths",
+      "platform": "Linux-6.12.67-linuxkit-aarch64-with-glibc2.41",
+      "python": "3.11.17",
+      "service_smoke": {
+        "health": {
+          "inference_in_http": false,
+          "schema_version": 1,
+          "status": "ok"
+        },
+        "ports_features": 12,
+        "registered_asset_sha256": "20fdf371d5b9984c5f402626b13500aba813e0718ef9f4884db377cb55e009fa",
+        "registered_asset_status": 200,
+        "ui_status": 200
+      },
+      "torch_threads": 4,
+      "uid": 10001,
+      "versions": {
+        "fastapi": "0.156.4",
+        "fiona": "1.10.1",
+        "rasterio": "1.4.4",
+        "rslearn": "0.1.18",
+        "satelite-portuario": "0.1.0",
+        "satlaspretrain-models": "0.3.1",
+        "torch": "2.14.1+cpu",
+        "torchvision": "0.29.1+cpu"
+      }
+    },
+    "build": {
+      "original_failure": "Fiona 1.10.1 source build: gdal-config missing",
+      "fix": "Install build-essential and libgdal-dev only when INSTALL_ML=true",
+      "apt_download_megabytes": 183,
+      "apt_additional_installed_megabytes": 883,
+      "first_apt_layer_seconds": 1231.2,
+      "fiona_built_after_uv_layer_seconds": 42.84,
+      "final_python_dependency_layer_seconds": 253.7,
+      "git_transport": "HTTP/1.1 during uv sync only",
+      "cold_network_build_completed": false,
+      "transport_failures": [
+        "GitHub HTTP/2 CANCEL / early EOF",
+        "GitHub HTTP/1.1 GnuTLS receive error / early EOF"
+      ],
+      "git_cache_reused": {
+        "repository": "https://github.com/allenai/rslearn.git",
+        "commit": "e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+        "source": "existing verified public repository in host uv cache",
+        "method": "Git fetched the exact commit locally into the BuildKit uv cache; no dependency version or source changes"
+      },
+      "dependency_sources_unchanged": true
+    }
+  },
+  "runtime_conditions": {
+    "network": "none",
+    "data_mount": "read-only at /data (ML)",
+    "path_resolution": "production CLI read_model and worker resolve_bundle_paths",
+    "temporary_service_database": true,
+    "containers_removed_on_exit": true,
+    "weights_baked_into_image": false,
+    "image_pushed": false
+  },
+  "limitations": [
+    "The successful ML build reused a preloaded rslearn Git cache after two network transport failures; an empty-cache network build was not completed.",
+    "The smoke uses ASGI TestClient, not a remote HTTP deployment.",
+    "Only the two Puerto Quetzal 512x512 pilot crops were executed in Docker; whole-scene processing and training were not measured.",
+    "Inference timing includes numeric input reading, tiling and output filtering.",
+    "Peak RSS is the Linux process high-water mark, cumulative across model runs.",
+    "No scientific validation, local-label training or calibration is implied.",
+    "Debian packages are resolved at build time; base image digests and the Python lockfile are pinned."
+  ]
+}

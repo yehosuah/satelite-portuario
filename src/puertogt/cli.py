@@ -45,6 +45,10 @@ def read_model(path: Path, data_dir: Path) -> ModelManifest:
                 data_dir / supplied,
                 data_dir / supplied.name,
             ]
+            # Repository recipes use data/models/...; a mounted data volume
+            # already represents that leading directory.
+            if supplied.parts and supplied.parts[0] == "data":
+                candidates.append(data_dir.joinpath(*supplied.parts[1:]))
             found = next((p.resolve() for p in candidates if p.is_file()), None)
             if found:
                 value["weights_path"] = str(found)
@@ -532,17 +536,11 @@ def execute(args):
     if args.command in {"compare-changes", "track-change"}:
         from puertogt.contracts import RasterBundle
         from puertogt.ml.change_workflows import compare_and_register, record_temporal_evidence
+        from puertogt.worker import resolve_bundle_paths
 
         def bundle_from_file(path):
             value = RasterBundle.model_validate_json(path.read_text())
-            for paths in (value.band_paths, value.mask_paths):
-                for name, candidate in paths.items():
-                    options = [path.parent / candidate, candidate, store.data_dir / candidate]
-                    found = next((p.resolve() for p in options if p.is_file()), None)
-                    if found is None:
-                        raise FileNotFoundError(candidate)
-                    paths[name] = found
-            return value
+            return resolve_bundle_paths(value, store.data_dir, relative_to=path.parent)
 
         if args.command == "compare-changes":
             events = compare_and_register(
