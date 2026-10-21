@@ -1,0 +1,427 @@
+{
+  "schema_version": "phase2-manual-raw-decisions-before-proposals-v1",
+  "created_at": "2026-10-21T16:45:15.853326Z",
+  "author": "codex-ai-persistence",
+  "is_human_review": false,
+  "model_proposals_read": false,
+  "scores_read": false,
+  "family_length_width_all_null": true,
+  "native_pixel_edges": true,
+  "box_uncertainty_pixels": [
+    1,
+    2
+  ],
+  "decisions": {
+    "prq-20250202": {
+      "reference_zone": "prq_fondeo",
+      "confident_boxes": [
+        [
+          94,
+          200,
+          99,
+          215
+        ],
+        [
+          319,
+          278,
+          334,
+          292
+        ],
+        [
+          420,
+          278,
+          434,
+          291
+        ],
+        [
+          520,
+          249,
+          531,
+          266
+        ],
+        [
+          148,
+          379,
+          167,
+          388
+        ],
+        [
+          325,
+          367,
+          344,
+          377
+        ],
+        [
+          418,
+          389,
+          433,
+          398
+        ],
+        [
+          511,
+          387,
+          530,
+          393
+        ],
+        [
+          653,
+          398,
+          671,
+          405
+        ],
+        [
+          145,
+          468,
+          166,
+          474
+        ],
+        [
+          227,
+          470,
+          248,
+          478
+        ],
+        [
+          326,
+          484,
+          347,
+          494
+        ],
+        [
+          426,
+          465,
+          438,
+          475
+        ],
+        [
+          519,
+          454,
+          540,
+          460
+        ],
+        [
+          7,
+          526,
+          24,
+          536
+        ],
+        [
+          127,
+          540,
+          147,
+          548
+        ],
+        [
+          441,
+          536,
+          462,
+          546
+        ],
+        [
+          537,
+          571,
+          556,
+          578
+        ],
+        [
+          244,
+          572,
+          259,
+          584
+        ],
+        [
+          335,
+          601,
+          353,
+          614
+        ],
+        [
+          196,
+          704,
+          230,
+          714
+        ],
+        [
+          651,
+          871,
+          669,
+          884
+        ],
+        [
+          355,
+          68,
+          374,
+          75
+        ]
+      ],
+      "notes": "V01\u2013V22 elongated isolated hulls; V23 coherent elongated white hull separated from shore in the inner basin, seen in RGB and B08. No physical dimensions or family assigned. Objects outside zone centroids remain context only.",
+      "unknown_boxes": [
+        {
+          "pixel_box": [
+            340,
+            51,
+            358,
+            66
+          ],
+          "reason": "Small bright service-craft/infrastructure cluster at inner quay: individual hulls and multiplicity unresolved at 10m."
+        },
+        {
+          "pixel_box": [
+            351,
+            88,
+            363,
+            100
+          ],
+          "reason": "Tiny bright inner-basin signal without a separable hull; remains unknown."
+        },
+        {
+          "pixel_box": [
+            433,
+            35,
+            451,
+            74
+          ],
+          "reason": "Red along-quay strip may mix cranes/quay and vessel; cannot independently separate a hull from infrastructure in current RGB/B08."
+        }
+      ],
+      "extra_quality_erosion_pixels": 0
+    },
+    "prq-20250217": {
+      "reference_zone": "prq_fondeo",
+      "confident_boxes": [
+        [
+          319,
+          291,
+          331,
+          307
+        ],
+        [
+          413,
+          290,
+          425,
+          306
+        ],
+        [
+          517,
+          268,
+          527,
+          284
+        ],
+        [
+          271,
+          368,
+          284,
+          384
+        ],
+        [
+          400,
+          388,
+          406,
+          406
+        ],
+        [
+          502,
+          387,
+          506,
+          405
+        ],
+        [
+          211,
+          459,
+          226,
+          475
+        ],
+        [
+          318,
+          454,
+          334,
+          477
+        ],
+        [
+          418,
+          473,
+          432,
+          477
+        ],
+        [
+          526,
+          506,
+          531,
+          530
+        ],
+        [
+          432,
+          545,
+          440,
+          565
+        ],
+        [
+          124,
+          545,
+          143,
+          550
+        ],
+        [
+          665,
+          880,
+          670,
+          896
+        ],
+        [
+          442,
+          54,
+          449,
+          70
+        ]
+      ],
+      "notes": "V01\u2013V12 are isolated elongated hull signals, some veiled by thin cloud; V13 cut by image edge and outside zones; V14 coherent teal/white elongated hull along eastern berth, distinct from the quayside in current RGB/B08. Quality-excluded visible hulls remain contextual references and are not reactivated. V09 is short but elongated with distinct bright bow/gray deck; no attributes beyond presence.",
+      "unknown_boxes": [
+        {
+          "pixel_box": [
+            339,
+            50,
+            358,
+            67
+          ],
+          "reason": "Small inner-quay white signatures unresolved from infrastructure; no forced count."
+        },
+        {
+          "pixel_box": [
+            355,
+            64,
+            373,
+            77
+          ],
+          "reason": "Short pale inner-basin signature only a few pixels wide; no unambiguous hull outline."
+        },
+        {
+          "pixel_box": [
+            427,
+            19,
+            444,
+            52
+          ],
+          "reason": "Upper along-quay red structures are mixed with land; unknown vessel support."
+        }
+      ],
+      "extra_quality_erosion_pixels": 1
+    },
+    "caribe-20250202": {
+      "reference_zone": "stc_canal",
+      "confident_boxes": [],
+      "notes": "Terminals and much of water are obscured by clouds/shadow. No confident hull reference. A negative claim is confined to explicitly inspected quality-supported water slivers; no terminal absence claim. STC fondeo uses its own valid native mosaic.",
+      "unknown_boxes": [],
+      "extra_quality_erosion_pixels": 2,
+      "abstain_zones": [
+        "pbr_fondeo",
+        "pbr_muelles",
+        "pbr_patios",
+        "stc_muelles",
+        "stc_patios"
+      ]
+    },
+    "caribe-20250217": {
+      "reference_zone": "stc_canal",
+      "confident_boxes": [
+        [
+          510,
+          688,
+          535,
+          695
+        ]
+      ],
+      "notes": "V01 is coherent red/white elongated vessel signature north of PBR pier, seen in native RGB and B08. The parallel white southern strip is not confidently separable from pier/infrastructure and remains unknown. Two tiny wake-head signatures are not forced into positive or negative classes. STC terminal quality is insufficient for a complete scene claim.",
+      "unknown_boxes": [
+        {
+          "pixel_box": [
+            514,
+            696,
+            539,
+            706
+          ],
+          "reason": "White southern parallel strip at PBR pier could be a vessel or fixed infrastructure; leave unknown independently of model."
+        },
+        {
+          "pixel_box": [
+            412,
+            610,
+            425,
+            634
+          ],
+          "reason": "Tiny white/blue head and curved wake west of PBR; native hull support only 1\u20132px, indeterminate."
+        },
+        {
+          "pixel_box": [
+            439,
+            670,
+            463,
+            697
+          ],
+          "reason": "Tiny wake-head signature in narrow STC channel; hull unresolved at 10m. Exclude head and wake from negatives."
+        },
+        {
+          "pixel_box": [
+            467,
+            692,
+            480,
+            706
+          ],
+          "reason": "Second tiny bright signal southeast of wake with no unequivocal hull; remain unknown."
+        }
+      ],
+      "extra_quality_erosion_pixels": 1,
+      "abstain_zones": [
+        "stc_muelles",
+        "stc_patios"
+      ]
+    }
+  },
+  "scope_policy": {
+    "quality": "Intersect registered observable AND valid masks; erode 1 native pixel for partial Feb17 scenes and 2 for cloudy Feb2 Caribe to avoid uncertain cloud rims. No source mask overrides.",
+    "unknown": "Subtract independently localized ambiguous boxes, even when only their footprint overlaps a zone; no detector geometry used.",
+    "stc_fondeo": "Restrict to conservative visible marine wedge along the north/east of this provisional zone; most configured polygon is land.",
+    "stc_fondeo_manual_water_pixel_polygon": [
+      [
+        185,
+        412
+      ],
+      [
+        357,
+        412
+      ],
+      [
+        357,
+        580
+      ],
+      [
+        344,
+        580
+      ],
+      [
+        344,
+        530
+      ],
+      [
+        334,
+        495
+      ],
+      [
+        321,
+        471
+      ],
+      [
+        292,
+        451
+      ],
+      [
+        260,
+        441
+      ],
+      [
+        225,
+        426
+      ]
+    ],
+    "prq_feb17_patios": "Abstain: isolated automatic quality fragment is too small and veiled to support an exhaustive reference."
+  }
+}

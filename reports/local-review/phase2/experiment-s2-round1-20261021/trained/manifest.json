@@ -1,0 +1,2290 @@
+{
+  "model_id": "ai2-sentinel2-vessels-phase2-36a53d3c0af7",
+  "version": "data_20250213_02_all_bands+phase2-36a53d3c0af7",
+  "sensor": "sentinel-2",
+  "task": "detection",
+  "recipe_version": "ai2-s2-v1",
+  "bands": [
+    "B04",
+    "B03",
+    "B02",
+    "B05",
+    "B06",
+    "B07",
+    "B08",
+    "B11",
+    "B12"
+  ],
+  "units": {
+    "B04": "DN_harmonized",
+    "B03": "DN_harmonized",
+    "B02": "DN_harmonized",
+    "B05": "DN_harmonized",
+    "B06": "DN_harmonized",
+    "B07": "DN_harmonized",
+    "B08": "DN_harmonized",
+    "B11": "DN_harmonized",
+    "B12": "DN_harmonized"
+  },
+  "weights_path": "weights.pt",
+  "weights_sha256": "9900d056dca159eb8f9acb27b92e9f74aed715780eabff30b056aad717058949",
+  "code_commit": "0bae49abb76d1deee9b6b6ca2a59212611ebc6fe",
+  "dataset_version": "phase2-s2-january-native512-v1",
+  "metrics": {},
+  "publication_policy": {
+    "status": "experimental",
+    "automatic_publication": false,
+    "local_validation": "not_evaluated",
+    "fields": {}
+  },
+  "licenses": [
+    {
+      "component": "rslearn_projects code and detector weights",
+      "license": "Apache-2.0",
+      "source": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md"
+    },
+    {
+      "component": "public vessel annotations",
+      "license": "CC-BY-4.0",
+      "source": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md"
+    }
+  ],
+  "metadata": {
+    "product_level": "L1C",
+    "architecture": "swin_v2_b_fpn_fasterrcnn",
+    "rslearn_commit": "e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+    "input_channels": 9,
+    "patch_size": 512,
+    "normalization_divisors": [
+      3000,
+      3000,
+      3000,
+      8160,
+      8160,
+      8160,
+      8160,
+      8160,
+      8160
+    ],
+    "clip_range": [
+      0,
+      1
+    ],
+    "harmonization": "Subtract 1000 DN for processing baseline >= 04.00; preserve nodata zero and clamp previously valid pixels to at least DN 1, as in pinned rslearn.",
+    "numerical_input": "GeoTIFF or JP2 numeric bands; RGB presentation images are forbidden.",
+    "infrastructure_filter": "disabled_for_proposals; validate near-dock performance separately",
+    "checkpoint_url": "https://storage.googleapis.com/ai2-rslearn-projects-data/projects/sentinel2_vessels/data_20250213_02_all_bands/checkpoints/best.ckpt?generation=1741285831820037",
+    "checkpoint_bytes": 1150160105,
+    "checkpoint_md5": "59ae055cf86119bafdeb09bd37e950b0",
+    "checkpoint_derivation": "Selected all 479 state_dict tensors from pinned upstream ZIP, verified per-member CRC32, omitted optimizer and loop states; tensor values unchanged.",
+    "inference_checkpoint_bytes": 386642035,
+    "infrastructure_filter_threshold_m": 50,
+    "serialization_archive_prefix": "sentinel2-vessels",
+    "training": {
+      "dataset_manifest_sha256": "f0334c9d341f57624794d370a44091308a8f08ae31624f69a7c057ad4e0f8686",
+      "reserved_manifest_hashes": [
+        "b0808f43132c868406fda649103c86a828c90e7f1430c4e11489b7e65fa2c652",
+        "f25fcf5b39f88dfd029e9f014d1794577016b2f87f497b6e57c099704bd11e1e"
+      ],
+      "split_groups": [
+        "S2A:20250103T162701:R040",
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+        "S2B:20250118T162519:R040",
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+        "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+        "observation:1039f334-a235-473a-acb1-dba7600a2def",
+        "observation:230de383-0bf2-41d4-85bd-29fd838f1ff8",
+        "observation:2ef24623-5eef-4cbb-ae40-6cfd1347b200",
+        "observation:52049cad-e7b9-4f92-875d-cb20c2ad2ad4",
+        "observation:521bdbf5-50f6-410a-94d2-f7d7357e3f4e",
+        "observation:53a1f203-5cac-4424-930a-5e2413b7b2d1",
+        "observation:556e10c1-71d5-4003-afc1-a1b1aeef81c8",
+        "observation:56d3772c-9a57-4248-806c-f38fc97a0abd",
+        "observation:700e22d5-f4b7-4415-9ae5-de0c2f930344",
+        "observation:78e1ccc2-cb86-4338-95ce-51ff2ac29d03",
+        "observation:853d4a63-7b38-4b2e-bad3-d9ae173aef67",
+        "observation:8bd32264-0629-4560-ba09-8e24d875e6a4",
+        "observation:b9376324-e854-46ac-b065-c78875a58dd3",
+        "observation:d012f5a4-f580-4650-9654-b5566616603b",
+        "observation:e1f9c6b6-e9f0-4113-b447-3afd55d79f9b",
+        "observation:e812e31b-9dd3-4b32-9aee-c90c4007e91c"
+      ],
+      "observation_ids": [
+        "52049cad-e7b9-4f92-875d-cb20c2ad2ad4:crop:0:0:448:448",
+        "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+        "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:384:0:512:448",
+        "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:0:0:512:512",
+        "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:384:0:512:512",
+        "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:0:384:512:512",
+        "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:384:384:512:512",
+        "b9376324-e854-46ac-b065-c78875a58dd3:crop:0:0:512:512",
+        "b9376324-e854-46ac-b065-c78875a58dd3:crop:384:0:512:512",
+        "b9376324-e854-46ac-b065-c78875a58dd3:crop:0:384:512:512",
+        "b9376324-e854-46ac-b065-c78875a58dd3:crop:384:384:512:512",
+        "1039f334-a235-473a-acb1-dba7600a2def:crop:0:0:512:512",
+        "1039f334-a235-473a-acb1-dba7600a2def:crop:384:0:512:512",
+        "1039f334-a235-473a-acb1-dba7600a2def:crop:0:384:512:512",
+        "1039f334-a235-473a-acb1-dba7600a2def:crop:384:384:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:0:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:0:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:448:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:448:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:832:512:512",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:832:512:512",
+        "2ef24623-5eef-4cbb-ae40-6cfd1347b200:crop:0:0:512:448",
+        "2ef24623-5eef-4cbb-ae40-6cfd1347b200:crop:384:0:512:448",
+        "521bdbf5-50f6-410a-94d2-f7d7357e3f4e:crop:0:0:448:448",
+        "53a1f203-5cac-4424-930a-5e2413b7b2d1:crop:0:0:512:448",
+        "53a1f203-5cac-4424-930a-5e2413b7b2d1:crop:384:0:512:448",
+        "56d3772c-9a57-4248-806c-f38fc97a0abd:crop:0:0:448:448",
+        "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:0:0:512:512",
+        "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:384:0:512:512",
+        "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:0:384:512:512",
+        "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:384:384:512:512",
+        "78e1ccc2-cb86-4338-95ce-51ff2ac29d03:crop:0:0:448:512",
+        "78e1ccc2-cb86-4338-95ce-51ff2ac29d03:crop:0:384:448:512",
+        "853d4a63-7b38-4b2e-bad3-d9ae173aef67:crop:0:0:448:512",
+        "853d4a63-7b38-4b2e-bad3-d9ae173aef67:crop:0:384:448:512",
+        "d012f5a4-f580-4650-9654-b5566616603b:crop:0:0:448:512",
+        "d012f5a4-f580-4650-9654-b5566616603b:crop:0:384:448:512",
+        "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b:crop:0:0:512:448",
+        "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b:crop:384:0:512:448",
+        "e812e31b-9dd3-4b32-9aee-c90c4007e91c:crop:0:0:448:448"
+      ],
+      "epochs": 3,
+      "steps": [
+        {
+          "loss": 0.0,
+          "seconds": 0.3012687080044998,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 21.667789459228516,
+          "losses": {
+            "detect_loss_objectness": 9.110602378845215,
+            "detect_loss_rpn_box_reg": 0.4051486849784851,
+            "detect_loss_classifier": 7.680838584899902,
+            "detect_loss_box_reg": 4.471198558807373
+          },
+          "seconds": 0.2845259169989731,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 20.55819320678711,
+          "losses": {
+            "detect_loss_objectness": 8.990981101989746,
+            "detect_loss_rpn_box_reg": 0.3879458010196686,
+            "detect_loss_classifier": 7.055699825286865,
+            "detect_loss_box_reg": 4.123565673828125
+          },
+          "seconds": 0.24156316599692218,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.7278218269348145,
+          "losses": {
+            "detect_loss_objectness": 2.196607828140259,
+            "detect_loss_rpn_box_reg": 0.43821704387664795,
+            "detect_loss_classifier": 0.8009744882583618,
+            "detect_loss_box_reg": 0.2920226752758026
+          },
+          "seconds": 0.35011870799644385,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 16482,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.074526071548462,
+          "losses": {
+            "detect_loss_objectness": 1.8898875713348389,
+            "detect_loss_rpn_box_reg": 0.42485418915748596,
+            "detect_loss_classifier": 0.5850464701652527,
+            "detect_loss_box_reg": 0.17473763227462769
+          },
+          "seconds": 0.33874825001112185,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 6324,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.081580877304077,
+          "losses": {
+            "detect_loss_objectness": 1.9929578304290771,
+            "detect_loss_rpn_box_reg": 0.47946253418922424,
+            "detect_loss_classifier": 0.4981478750705719,
+            "detect_loss_box_reg": 0.11101248115301132
+          },
+          "seconds": 0.33913429199310485,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 12784,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 2.857797384262085,
+          "losses": {
+            "detect_loss_objectness": 1.8008272647857666,
+            "detect_loss_rpn_box_reg": 0.4536813795566559,
+            "detect_loss_classifier": 0.5122503042221069,
+            "detect_loss_box_reg": 0.0910385400056839
+          },
+          "seconds": 0.3429004579957109,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5735,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.9571071863174438,
+          "losses": {
+            "detect_loss_objectness": 0.39891085028648376,
+            "detect_loss_rpn_box_reg": 0.060749441385269165,
+            "detect_loss_classifier": 0.16344907879829407,
+            "detect_loss_box_reg": 0.33399784564971924
+          },
+          "seconds": 0.27321937499800697,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 223,
+            "roi_supervised": 74
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.2512946128845215,
+          "losses": {
+            "detect_loss_objectness": 0.7009091377258301,
+            "detect_loss_rpn_box_reg": 0.10766176134347916,
+            "detect_loss_classifier": 0.12943202257156372,
+            "detect_loss_box_reg": 0.31329163908958435
+          },
+          "seconds": 0.27364625000336673,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 127,
+            "roi_supervised": 75
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 7.860495567321777,
+          "losses": {
+            "detect_loss_objectness": 0.43027010560035706,
+            "detect_loss_rpn_box_reg": 0.022590089589357376,
+            "detect_loss_classifier": 3.6484179496765137,
+            "detect_loss_box_reg": 3.7592175006866455
+          },
+          "seconds": 0.26083304100029636,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 220,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 8.675851821899414,
+          "losses": {
+            "detect_loss_objectness": 0.8049407601356506,
+            "detect_loss_rpn_box_reg": 0.03818081319332123,
+            "detect_loss_classifier": 3.634553909301758,
+            "detect_loss_box_reg": 4.198176383972168
+          },
+          "seconds": 0.2664707920048386,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 124,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.2027387619018555,
+          "losses": {
+            "detect_loss_objectness": 1.6995793581008911,
+            "detect_loss_rpn_box_reg": 0.6139634847640991,
+            "detect_loss_classifier": 0.7273901104927063,
+            "detect_loss_box_reg": 0.16180585324764252
+          },
+          "seconds": 0.3356954589980887,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 15966,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 2.7002768516540527,
+          "losses": {
+            "detect_loss_objectness": 1.4544143676757812,
+            "detect_loss_rpn_box_reg": 0.6254168748855591,
+            "detect_loss_classifier": 0.5332361459732056,
+            "detect_loss_box_reg": 0.08720970153808594
+          },
+          "seconds": 0.3346153750026133,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 7103,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.118143320083618,
+          "losses": {
+            "detect_loss_objectness": 1.6283926963806152,
+            "detect_loss_rpn_box_reg": 0.9140732288360596,
+            "detect_loss_classifier": 0.45404335856437683,
+            "detect_loss_box_reg": 0.12163393944501877
+          },
+          "seconds": 0.33729987499827985,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 7,
+          "supervision": {
+            "rpn_supervised": 13094,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 2.7076847553253174,
+          "losses": {
+            "detect_loss_objectness": 1.2347276210784912,
+            "detect_loss_rpn_box_reg": 1.0547916889190674,
+            "detect_loss_classifier": 0.3736460208892822,
+            "detect_loss_box_reg": 0.0445193387567997
+          },
+          "seconds": 0.3330314589984482,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5734,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.059637639855282e-7,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 1.059637639855282e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2596506669942755,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 9
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 8.940692168835085e-7,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 8.940692168835085e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2759219590079738,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000021934269170742482,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000021934269170742482,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.25877004099311307,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000011086402082582936,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000011086402082582936,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.25714425000478514,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000014543427823809907,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000014543427823809907,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2657538749917876,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 8.225400961237028e-6,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 8.225400961237028e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2688285000040196,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 3
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.19739354100602213,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.23294420799356885,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 23.25432586669922,
+          "losses": {
+            "detect_loss_objectness": 4.612746238708496,
+            "detect_loss_rpn_box_reg": 1.370373010635376,
+            "detect_loss_classifier": 12.826333045959473,
+            "detect_loss_box_reg": 4.4448747634887695
+          },
+          "seconds": 0.21271733300818596,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 38,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 21.03925323486328,
+          "losses": {
+            "detect_loss_objectness": 9.404863357543945,
+            "detect_loss_rpn_box_reg": 0.5982940793037415,
+            "detect_loss_classifier": 8.091426849365234,
+            "detect_loss_box_reg": 2.9446682929992676
+          },
+          "seconds": 0.23430908299633302,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 21.106706619262695,
+          "losses": {
+            "detect_loss_objectness": 8.986004829406738,
+            "detect_loss_rpn_box_reg": 0.6006967425346375,
+            "detect_loss_classifier": 7.753973484039307,
+            "detect_loss_box_reg": 3.766031265258789
+          },
+          "seconds": 0.23694812499161344,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.1829562079947209,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.9464255274215247e-6,
+          "losses": {
+            "detect_loss_objectness": 1.270015104637423e-6,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 6.764103659406828e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2801594579941593,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 89
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.7272009194566635e-6,
+          "losses": {
+            "detect_loss_objectness": 3.313280785732786e-6,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 4.1392010530216794e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.26627799999550916,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 36
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00003162011853419244,
+          "losses": {
+            "detect_loss_objectness": 0.00003162011853419244,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.24956883299455512,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00002022379521804396,
+          "losses": {
+            "detect_loss_objectness": 0.00002022379521804396,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.26943454101274256,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.24854816700099036,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0008392315357923508,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0008392315357923508,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.23236387499491684,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 6
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00013165283598937094,
+          "losses": {
+            "detect_loss_objectness": 0.0001281648874282837,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 3.4879531085607596e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3324873329984257,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1357,
+            "roi_supervised": 27
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0003180361236445606,
+          "losses": {
+            "detect_loss_objectness": 0.0003084801137447357,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 9.55601080931956e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.245064957998693,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1403,
+            "roi_supervised": 37
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0000591278076171875,
+          "losses": {
+            "detect_loss_objectness": 0.0000591278076171875,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2246481659967685,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00019711714412551373,
+          "losses": {
+            "detect_loss_objectness": 0.00019711714412551373,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.22539458399114665,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0019682697020471096,
+          "losses": {
+            "detect_loss_objectness": 0.0016923081129789352,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.000275961501756683,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.23453125001105946,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 10
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0020697754807770252,
+          "losses": {
+            "detect_loss_objectness": 0.0015607448294758797,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0005090307677164674,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3103679580090102,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 17
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.310401875001844,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.35860179099836387,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 8.586771011352539,
+          "losses": {
+            "detect_loss_objectness": 2.938037157058716,
+            "detect_loss_rpn_box_reg": 0.3700360059738159,
+            "detect_loss_classifier": 2.124083995819092,
+            "detect_loss_box_reg": 3.1546144485473633
+          },
+          "seconds": 0.5960252090007998,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 9.113761901855469,
+          "losses": {
+            "detect_loss_objectness": 3.3145666122436523,
+            "detect_loss_rpn_box_reg": 0.36618417501449585,
+            "detect_loss_classifier": 2.34417986869812,
+            "detect_loss_box_reg": 3.0888309478759766
+          },
+          "seconds": 0.400742124998942,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.843786597251892,
+          "losses": {
+            "detect_loss_objectness": 0.7099125385284424,
+            "detect_loss_rpn_box_reg": 0.4322669208049774,
+            "detect_loss_classifier": 0.473895788192749,
+            "detect_loss_box_reg": 0.22771134972572327
+          },
+          "seconds": 0.6144809999968857,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 16482,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.4966617822647095,
+          "losses": {
+            "detect_loss_objectness": 0.5918976068496704,
+            "detect_loss_rpn_box_reg": 0.41944271326065063,
+            "detect_loss_classifier": 0.3445350229740143,
+            "detect_loss_box_reg": 0.14078636467456818
+          },
+          "seconds": 0.4560994999919785,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 6324,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.4753010272979736,
+          "losses": {
+            "detect_loss_objectness": 0.6657410860061646,
+            "detect_loss_rpn_box_reg": 0.45198071002960205,
+            "detect_loss_classifier": 0.2562967836856842,
+            "detect_loss_box_reg": 0.1012825146317482
+          },
+          "seconds": 0.36951600000611506,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 12784,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.3914011716842651,
+          "losses": {
+            "detect_loss_objectness": 0.5710210800170898,
+            "detect_loss_rpn_box_reg": 0.43105122447013855,
+            "detect_loss_classifier": 0.3018643856048584,
+            "detect_loss_box_reg": 0.08746441453695297
+          },
+          "seconds": 0.36296562499774154,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5735,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.3645937740802765,
+          "losses": {
+            "detect_loss_objectness": 0.13776302337646484,
+            "detect_loss_rpn_box_reg": 0.057499803602695465,
+            "detect_loss_classifier": 0.031994495540857315,
+            "detect_loss_box_reg": 0.13733646273612976
+          },
+          "seconds": 0.3013437079935102,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 223,
+            "roi_supervised": 128
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.5792474150657654,
+          "losses": {
+            "detect_loss_objectness": 0.24901562929153442,
+            "detect_loss_rpn_box_reg": 0.10173164308071136,
+            "detect_loss_classifier": 0.03574522212147713,
+            "detect_loss_box_reg": 0.19275489449501038
+          },
+          "seconds": 0.3096688750083558,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 127,
+            "roi_supervised": 112
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 5.118659019470215,
+          "losses": {
+            "detect_loss_objectness": 0.14883793890476227,
+            "detect_loss_rpn_box_reg": 0.02427465282380581,
+            "detect_loss_classifier": 1.8469884395599365,
+            "detect_loss_box_reg": 3.098557949066162
+          },
+          "seconds": 0.2793957920075627,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 220,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 4.061551570892334,
+          "losses": {
+            "detect_loss_objectness": 0.31521931290626526,
+            "detect_loss_rpn_box_reg": 0.04187363013625145,
+            "detect_loss_classifier": 1.4412485361099243,
+            "detect_loss_box_reg": 2.2632100582122803
+          },
+          "seconds": 0.31408408300194424,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 124,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.8225406408309937,
+          "losses": {
+            "detect_loss_objectness": 0.6369501352310181,
+            "detect_loss_rpn_box_reg": 0.5860768556594849,
+            "detect_loss_classifier": 0.48616135120391846,
+            "detect_loss_box_reg": 0.11335226893424988
+          },
+          "seconds": 0.36631158299860545,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 15966,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.5603336095809937,
+          "losses": {
+            "detect_loss_objectness": 0.5444990396499634,
+            "detect_loss_rpn_box_reg": 0.5926529169082642,
+            "detect_loss_classifier": 0.3613796830177307,
+            "detect_loss_box_reg": 0.061801984906196594
+          },
+          "seconds": 0.3732012090040371,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 7103,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.8324191570281982,
+          "losses": {
+            "detect_loss_objectness": 0.5996370315551758,
+            "detect_loss_rpn_box_reg": 0.8199706077575684,
+            "detect_loss_classifier": 0.3147474229335785,
+            "detect_loss_box_reg": 0.09806405007839203
+          },
+          "seconds": 0.4955026250099763,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 7,
+          "supervision": {
+            "rpn_supervised": 13094,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.8610305786132812,
+          "losses": {
+            "detect_loss_objectness": 0.5737082958221436,
+            "detect_loss_rpn_box_reg": 1.0136675834655762,
+            "detect_loss_classifier": 0.24648188054561615,
+            "detect_loss_box_reg": 0.027172839269042015
+          },
+          "seconds": 0.3528294590068981,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5734,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3174862089945236,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 8
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3801953340007458,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00032883952371776104,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.00032883952371776104,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.29521287500392646,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0006563600618392229,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0006563600618392229,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2893550000007963,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00005215164856053889,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.00005215164856053889,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.36532554200675804,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000021767034922959283,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000021767034922959283,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.30648070899769664,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.22296337499574292,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 2.3841855067985307e-7,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 2.3841855067985307e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.26275729198823683,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 9.795400619506836,
+          "losses": {
+            "detect_loss_objectness": 2.0446832180023193,
+            "detect_loss_rpn_box_reg": 1.3531723022460938,
+            "detect_loss_classifier": 4.017213344573975,
+            "detect_loss_box_reg": 2.3803319931030273
+          },
+          "seconds": 0.27718658300000243,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 38,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 10.468315124511719,
+          "losses": {
+            "detect_loss_objectness": 4.349721431732178,
+            "detect_loss_rpn_box_reg": 0.5379759073257446,
+            "detect_loss_classifier": 3.2938520908355713,
+            "detect_loss_box_reg": 2.2867658138275146
+          },
+          "seconds": 0.27848883300612215,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 3
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 10.401729583740234,
+          "losses": {
+            "detect_loss_objectness": 4.121164798736572,
+            "detect_loss_rpn_box_reg": 0.5336981415748596,
+            "detect_loss_classifier": 3.4265308380126953,
+            "detect_loss_box_reg": 2.3203351497650146
+          },
+          "seconds": 0.24649104100535624,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 3
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00004494089080253616,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.00004494089080253616,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.21725166599208023,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00021603141794912517,
+          "losses": {
+            "detect_loss_objectness": 0.00020708223746623844,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 8.949182301876135e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.29213212500326335,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 164
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0007965961121954024,
+          "losses": {
+            "detect_loss_objectness": 0.0007772101671434939,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.000019385932318982668,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.31067308300407603,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 41
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.001568882609717548,
+          "losses": {
+            "detect_loss_objectness": 0.001568882609717548,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2662657909968402,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.002629876835271716,
+          "losses": {
+            "detect_loss_objectness": 0.0026263403706252575,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 3.53652580997732e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.30636362500081304,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 3
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000012635733583010733,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000012635733583010733,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.25300175001029857,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 6
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0005793564487248659,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0005793564487248659,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.279748083994491,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 9
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0017260746099054813,
+          "losses": {
+            "detect_loss_objectness": 0.0017231199890375137,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 2.9545863071689382e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2804964169918094,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1357,
+            "roi_supervised": 28
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.003674542298540473,
+          "losses": {
+            "detect_loss_objectness": 0.0036542946472764015,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.000020247542124707252,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.32891700000618584,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1403,
+            "roi_supervised": 48
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.001492867129854858,
+          "losses": {
+            "detect_loss_objectness": 0.001492867129854858,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.26887125000939704,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.004192645661532879,
+          "losses": {
+            "detect_loss_objectness": 0.004192645661532879,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2564293750037905,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.01760781928896904,
+          "losses": {
+            "detect_loss_objectness": 0.015934418886899948,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0016733997035771608,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2798575409979094,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 10
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.014606796205043793,
+          "losses": {
+            "detect_loss_objectness": 0.012769794091582298,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.001837002346292138,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.29477725000469945,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 17
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.23114645799796563,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.24840437500097323,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 4.83732795715332,
+          "losses": {
+            "detect_loss_objectness": 0.744580864906311,
+            "detect_loss_rpn_box_reg": 0.37216901779174805,
+            "detect_loss_classifier": 1.2912319898605347,
+            "detect_loss_box_reg": 2.4293458461761475
+          },
+          "seconds": 0.4956684999924619,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 5.124407768249512,
+          "losses": {
+            "detect_loss_objectness": 0.9219474792480469,
+            "detect_loss_rpn_box_reg": 0.375750333070755,
+            "detect_loss_classifier": 1.4029510021209717,
+            "detect_loss_box_reg": 2.4237592220306396
+          },
+          "seconds": 0.3696324159973301,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 15,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.317612648010254,
+          "losses": {
+            "detect_loss_objectness": 0.37155991792678833,
+            "detect_loss_rpn_box_reg": 0.3883945941925049,
+            "detect_loss_classifier": 0.2547106444835663,
+            "detect_loss_box_reg": 0.3029475212097168
+          },
+          "seconds": 0.5219884590042057,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 16482,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.108196496963501,
+          "losses": {
+            "detect_loss_objectness": 0.355349600315094,
+            "detect_loss_rpn_box_reg": 0.34194397926330566,
+            "detect_loss_classifier": 0.18964342772960663,
+            "detect_loss_box_reg": 0.2212594598531723
+          },
+          "seconds": 0.3711709159979364,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 6324,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.9505347609519958,
+          "losses": {
+            "detect_loss_objectness": 0.2785281538963318,
+            "detect_loss_rpn_box_reg": 0.39449793100357056,
+            "detect_loss_classifier": 0.12067563086748123,
+            "detect_loss_box_reg": 0.15683305263519287
+          },
+          "seconds": 0.3421247499936726,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 12784,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.9733043909072876,
+          "losses": {
+            "detect_loss_objectness": 0.3326483368873596,
+            "detect_loss_rpn_box_reg": 0.36886438727378845,
+            "detect_loss_classifier": 0.16837410628795624,
+            "detect_loss_box_reg": 0.10341756045818329
+          },
+          "seconds": 0.35421833299915306,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5735,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.1753358244895935,
+          "losses": {
+            "detect_loss_objectness": 0.051908254623413086,
+            "detect_loss_rpn_box_reg": 0.050971001386642456,
+            "detect_loss_classifier": 0.01093512773513794,
+            "detect_loss_box_reg": 0.061521437019109726
+          },
+          "seconds": 0.30720812499930616,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 223,
+            "roi_supervised": 181
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.3584308624267578,
+          "losses": {
+            "detect_loss_objectness": 0.09949224442243576,
+            "detect_loss_rpn_box_reg": 0.09004763513803482,
+            "detect_loss_classifier": 0.022503254935145378,
+            "detect_loss_box_reg": 0.1463877111673355
+          },
+          "seconds": 0.29249262499797624,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 127,
+            "roi_supervised": 147
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.5064542293548584,
+          "losses": {
+            "detect_loss_objectness": 0.04835997894406319,
+            "detect_loss_rpn_box_reg": 0.02303340658545494,
+            "detect_loss_classifier": 1.1364332437515259,
+            "detect_loss_box_reg": 2.2986276149749756
+          },
+          "seconds": 0.4565545419900445,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 220,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.867621660232544,
+          "losses": {
+            "detect_loss_objectness": 0.10409555584192276,
+            "detect_loss_rpn_box_reg": 0.04107559099793434,
+            "detect_loss_classifier": 0.5586905479431152,
+            "detect_loss_box_reg": 1.1637599468231201
+          },
+          "seconds": 0.29698562499834225,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 124,
+            "roi_supervised": 10
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.3570506572723389,
+          "losses": {
+            "detect_loss_objectness": 0.4062545895576477,
+            "detect_loss_rpn_box_reg": 0.537426233291626,
+            "detect_loss_classifier": 0.2774471044540405,
+            "detect_loss_box_reg": 0.13592271506786346
+          },
+          "seconds": 0.36728312500054017,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 10,
+          "supervision": {
+            "rpn_supervised": 15966,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.221117377281189,
+          "losses": {
+            "detect_loss_objectness": 0.36991944909095764,
+            "detect_loss_rpn_box_reg": 0.5409308671951294,
+            "detect_loss_classifier": 0.2216348797082901,
+            "detect_loss_box_reg": 0.0886322557926178
+          },
+          "seconds": 0.39493720800965093,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 6,
+          "supervision": {
+            "rpn_supervised": 7103,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.3916813135147095,
+          "losses": {
+            "detect_loss_objectness": 0.39766794443130493,
+            "detect_loss_rpn_box_reg": 0.7254897356033325,
+            "detect_loss_classifier": 0.18971070647239685,
+            "detect_loss_box_reg": 0.07881279289722443
+          },
+          "seconds": 0.3466445840022061,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 7,
+          "supervision": {
+            "rpn_supervised": 13094,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 1.4692643880844116,
+          "losses": {
+            "detect_loss_objectness": 0.37537333369255066,
+            "detect_loss_rpn_box_reg": 0.9438235759735107,
+            "detect_loss_classifier": 0.128991037607193,
+            "detect_loss_box_reg": 0.021076463162899017
+          },
+          "seconds": 0.3544082089938456,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 4,
+          "supervision": {
+            "rpn_supervised": 5734,
+            "roi_supervised": 512
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2724268340098206,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 8
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2791734170023119,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.000059519272326724604,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.000059519272326724604,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2733706250000978,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 6
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 5.9604641222676946e-8,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 5.9604641222676946e-8,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.29441804099769797,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00005429809243651107,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.00005429809243651107,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3326145409955643,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.933884272555588e-6,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 3.933884272555588e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.37653729200246744,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.27389054199738894,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 2
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 3.814693627646193e-7,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 3.814693627646193e-7,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.29002154200861696,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 5.49960470199585,
+          "losses": {
+            "detect_loss_objectness": 0.7941078543663025,
+            "detect_loss_rpn_box_reg": 1.3063143491744995,
+            "detect_loss_classifier": 1.3966805934906006,
+            "detect_loss_box_reg": 2.002501964569092
+          },
+          "seconds": 0.3458122500014724,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 38,
+            "roi_supervised": 1
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 6.206246376037598,
+          "losses": {
+            "detect_loss_objectness": 1.581634521484375,
+            "detect_loss_rpn_box_reg": 0.46285733580589294,
+            "detect_loss_classifier": 1.7467364072799683,
+            "detect_loss_box_reg": 2.415018081665039
+          },
+          "seconds": 0.28053420801006723,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 4
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 6.535892009735107,
+          "losses": {
+            "detect_loss_objectness": 1.5320976972579956,
+            "detect_loss_rpn_box_reg": 0.4426800310611725,
+            "detect_loss_classifier": 1.895042061805725,
+            "detect_loss_box_reg": 2.666072368621826
+          },
+          "seconds": 0.25902545799908694,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 1,
+          "supervision": {
+            "rpn_supervised": 30,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00047106080455705523,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.00047106080455705523,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2789827910019085,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 5
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.007810778450220823,
+          "losses": {
+            "detect_loss_objectness": 0.007807822432368994,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 2.9561633709818125e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.3310656669927994,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 182
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.026352660730481148,
+          "losses": {
+            "detect_loss_objectness": 0.026348108425736427,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 4.552015980152646e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.28110675000061747,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 80
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.025498634204268456,
+          "losses": {
+            "detect_loss_objectness": 0.025498634204268456,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2555667909909971,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 205,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.05227799341082573,
+          "losses": {
+            "detect_loss_objectness": 0.05226359888911247,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.00001439414972992381,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2636598329991102,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 97,
+            "roi_supervised": 8
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.2410341249924386,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 6
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0023288477677851915,
+          "losses": {
+            "detect_loss_objectness": -0.0,
+            "detect_loss_rpn_box_reg": -0.0,
+            "detect_loss_classifier": 0.0023288477677851915,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.36569737500394695,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 16
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00943833775818348,
+          "losses": {
+            "detect_loss_objectness": 0.00943716149777174,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 1.1761775340346503e-6,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.24063575000036508,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1357,
+            "roi_supervised": 30
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.019701914861798286,
+          "losses": {
+            "detect_loss_objectness": 0.019687620922923088,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.000014293939784693066,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.24472800000512507,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 1403,
+            "roi_supervised": 55
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.00882456824183464,
+          "losses": {
+            "detect_loss_objectness": 0.00882456824183464,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.22781162499450147,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.02320249192416668,
+          "losses": {
+            "detect_loss_objectness": 0.02320249192416668,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.22981337500095833,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 13,
+            "roi_supervised": 0
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.05748860910534859,
+          "losses": {
+            "detect_loss_objectness": 0.05460202321410179,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.002886584959924221,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.24662012499175034,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 10
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.03796619549393654,
+          "losses": {
+            "detect_loss_objectness": 0.03708403557538986,
+            "detect_loss_rpn_box_reg": 0.0,
+            "detect_loss_classifier": 0.0008821586961857975,
+            "detect_loss_box_reg": 0.0
+          },
+          "seconds": 0.243093625002075,
+          "encoder_frozen": true,
+          "updated_parameters": true,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 420,
+            "roi_supervised": 16
+          },
+          "scope": "operability_only_not_local_validation"
+        },
+        {
+          "loss": 0.0,
+          "seconds": 0.18527783299214207,
+          "encoder_frozen": true,
+          "updated_parameters": false,
+          "reference_boxes": 0,
+          "supervision": {
+            "rpn_supervised": 0,
+            "roi_supervised": 0
+          },
+          "skipped": "No supervised anchors or proposals in reviewed area",
+          "scope": "operability_only_not_local_validation"
+        }
+      ],
+      "learning_rate": 0.00002,
+      "supervision_policy": "reviewed_footprint_negatives_v1; known positive matches retained; native context preserved",
+      "seconds": 40.7474985000008,
+      "device": "cpu",
+      "encoder_frozen": true,
+      "reviewed_area_scopes": [
+        "frozen_area"
+      ],
+      "scope": "supervised_training; independent evaluation still required"
+    },
+    "created_at": "2026-10-21T16:43:50.357404Z",
+    "training_code_sha256": "3dfb36e825334528d0f0d866fdcd2f193306a9737289e4599e2fd58dc85ecc6e",
+    "recipe_sha256": "a9fe1c56f0709326765e16d0d22f09336d8b30dac17fafff73ee5e4e306ed3a7",
+    "runtime": {
+      "torch": "2.14.1",
+      "numpy": "2.4.6"
+    }
+  }
+}

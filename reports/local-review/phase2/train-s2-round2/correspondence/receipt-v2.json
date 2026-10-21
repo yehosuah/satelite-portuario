@@ -1,0 +1,97 @@
+{
+  "schema_version": "phase2-train-round2-correspondence-receipt-v2",
+  "created_at": "2026-10-21T16:53:25.399502Z",
+  "author": "codex-ai-persistence",
+  "is_human_review": false,
+  "status": "proposals_only_parent_adjudication_required",
+  "sources_in_order_for_consolidator": [
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/caribe-20250202-s2-correspondence.json",
+      "sha256": "1b936783419da5511acbca228cc917edb3c41a64262e728d028c22b22c173227"
+    },
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/caribe-20250217-s2-correspondence.json",
+      "sha256": "1c60db997b24d02e20af62a4da130b02fc265e371bcf0bf1026b418a91e9348a"
+    },
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/prq-20250202-s2-correspondence.json",
+      "sha256": "567afbc0b0bfb9818c3ce0d625bf65dc8a1ecfd11d3f7c1e0d477ee986a5996f"
+    },
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/prq-20250217-s2-correspondence.json",
+      "sha256": "eed546b695d7939526b582d5b9baf8e10127dfc7e67c0b35c22f96b78e1cc8cb"
+    },
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/scope-guard-addendum.json",
+      "sha256": "2b7a5454378ddde831c46a1e95fed97e8637bca7df52a9fcf4f57ba5e7f9c2f0"
+    },
+    {
+      "path": "reports/local-review/phase2/train-s2-round2/correspondence/scope-area-normalization-addendum.json",
+      "sha256": "efb7369b5f36d1165509d7d6a36aa6e118c37e33e18f11b329195bd358c97504"
+    }
+  ],
+  "accepted_observation_candidates": [
+    "70b1295f-6cbd-42af-bbb2-ab6adc64d9c1",
+    "d4817168-f757-4102-96e2-5912c7e086c5",
+    "825ee35e-4b6c-4082-a9c8-d6cbbcc2705c",
+    "8b5883df-48b5-46f0-9861-fbbe37b9d76f",
+    "085473ac-108a-45cf-aa31-165bf89c5ae2",
+    "5492bebb-74f7-4b37-95a7-ecbf9d9c4bc8",
+    "87dfa1eb-c920-4f98-ba05-0ec9fb4f2502",
+    "66bd22d1-a4c3-4b60-9ea1-620cde565848",
+    "598b66be-3025-4712-b75f-03b89281b7e8",
+    "43969e1b-1a19-48fb-b92e-83ddec3e9d92",
+    "85d0981c-6071-40aa-a5c6-f199be10afc5",
+    "cc40ce02-c4f1-4561-9e07-86e7324998dc",
+    "9ffd2f4a-aaf8-4bb3-885d-d7b21d534b03",
+    "6afa12c6-99dd-421c-94f1-35796570608c",
+    "68d1ee20-e2eb-4dce-b924-443e335b498f",
+    "1199164e-b975-4731-aa34-c6260656cee6"
+  ],
+  "abstention_observations": [
+    "148d0ebe-3ce3-4d3a-a8ad-7da720c44102",
+    "fe48500a-aaa2-4962-8a26-39a0eec99279",
+    "5edd3a5d-cca1-4fe9-ac37-5597c286e8c9",
+    "81d47feb-0d30-49b2-9c99-6974e2659e33",
+    "2f2441c9-2dff-4d29-baee-e28cb11fc8c5",
+    "59c6580c-c67c-44fa-982a-a4193de2b100",
+    "d8110df5-0b67-45b6-a2cb-b073b77ec9da",
+    "9ed689b3-6373-4d25-81ae-54064ae0131e"
+  ],
+  "raw_lock": {
+    "path": "reports/local-review/phase2/train-s2-round2/pre-correspondence-lock.json",
+    "sha256": "97e2b207845c2374b029b3319b1bcdd9c99b063aa9be5a59bdc33f331fb46016"
+  },
+  "source_assets": 384,
+  "source_mutations": false,
+  "database_writes": false,
+  "changes_january_experiment": false,
+  "hyperparameters_changed": false,
+  "performance_metrics_computed": false,
+  "scores_read": false,
+  "scope_conditioned_on_model_guard": true,
+  "prior_test_exposure": {
+    "test_raw_images_seen": true,
+    "test_acquisitions": [
+      "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "S2B:MSIL1C:20260413T161829:R040:T16PCC"
+    ],
+    "test_model_ids_and_geometry_seen_only_after_raw_lock": true,
+    "test_scores_or_performance_metrics_seen": false,
+    "training_report_schema_and_port_layout_seen": true,
+    "limitations": "Reviewer has seen held-out test imagery and geometry correspondence. This exposure is declared, not used to choose these fixed training dates, masks or labels. References must be justified only by current-date native evidence. January experiment and hyperparameters remain fixed."
+  },
+  "limitations": [
+    "AI visual proposals, not human ground truth.",
+    "Tiny craft cannot be exhaustively labeled at10m; ambiguous signatures unknown.",
+    "Models remain experimental; no validation gate granted.",
+    "Train-round2 references belong to a separately frozen later experiment, not the running January experiment."
+  ],
+  "supersedes_receipt": {
+    "path": "reports/local-review/phase2/train-s2-round2/correspondence/receipt.json",
+    "sha256": "29dc75dfb4c757b41ff99ede9c664ba05fd31b22691268b556dfaeab9c827061"
+  },
+  "technical_area_normalization_applied": true
+}

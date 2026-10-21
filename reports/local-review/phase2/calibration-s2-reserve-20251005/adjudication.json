@@ -1,0 +1,74 @@
+{
+  "batch": "phase2-calibration-s2-reserve-20251005-v1",
+  "created_at": "2026-10-21T16:55:11.926318+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "First reviewer fixed raw references before proposals; root viewed all raw contacts, native berth/water detail and manual scopes after initially seeing three manual-reference zooms. Root then inspected two proposal footprint conflicts and the two final guarded scopes. No reserve scores or reserve performance results were used. Root knows separate round1 calibration failed. Scope guards are explicitly conditioned on detector geometry, so metrics describe the final reviewed areas only and cannot establish unconditional port-wide precision.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/correspondence/pbr-20251005-s2-review.json",
+      "sha256": "581ccb20570cfdfce82e2c38bea34f9f7468499f888d18da0703e7f51d043c0f"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/correspondence/stc-20251005-s2-review.json",
+      "sha256": "2a39fca0a4658556d58556a1d97feb4565d764849182e34903f6e5c3040803f6"
+    }
+  ],
+  "accepted_observation_ids": [
+    "a182c9f4-9166-4c2e-b961-ea9243b9a76c",
+    "4613d900-42d1-4a10-bb27-ca131bed1cae",
+    "2946df55-6a36-4cfb-945f-5fe83bf281e5",
+    "a0bcfbd7-2103-4931-8bb4-3558ecf7f692",
+    "01a09841-444c-4996-83f1-15a70f4229ff",
+    "c13a5dd9-e54e-41f5-9de6-f0a65198896b",
+    "cf7eb9c9-b956-4a99-9514-4f471ff56499",
+    "597df2d2-a648-4107-831a-e6dd271fee68"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/root-raw-pass.json",
+      "sha256": "74384c2c7f85383dc72fcf01b680bc74f953f55f31ba53d2256559a12f2a8334"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/correspondence/verification.json",
+      "sha256": "5699d8608267f207c996ddbe1bb068d0e1ea6e378f1ec2ed020e600730259200"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/detector-conditioned-scope-addendum.json",
+      "sha256": "f8492d94d7685f7bdd9974b8d1207aabae88d0c162e460093dd2fcb88cf7d98c"
+    }
+  ],
+  "supporting_renders": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr_fondeo-correspondence-scope-conflict.png",
+      "sha256": "ad9035e35f27087b2a5604c8a12d01fa0a01c233fe0f952947449ed6c4dde634"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc_fondeo-correspondence-scope-conflict.png",
+      "sha256": "a8e09f57b5ed9492a7092057775cc3c38e188735317797ed2a5d888193b8b8af"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr_fondeo-conditioned-scope-final.png",
+      "sha256": "537f97fd565f170291648007b0f92cb21d1619b9a1542fd18032973ac5aeeb2e"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc_fondeo-conditioned-scope-final.png",
+      "sha256": "e89dde94f9c024402c84e8c419241a57f856d39e6c3a180a6fec8119061a64e3"
+    }
+  ],
+  "expected_reviewed_observations": 8,
+  "expected_unique_objects": 4,
+  "expected_existing_acceptances": 1,
+  "expected_additions": 3,
+  "expected_useful_scopes": 8,
+  "expected_abstentions": 0,
+  "decisions": [
+    "Confirm four raw vessel references without modifying visual boxes: PBR north pier, STC canal vessel west of PBR pier, and two STC quay hulls.",
+    "Two small coastal/water responses remain unknown. Remove complete proposal footprints with 10 m guard from reviewed scope; PBR fondeo loses 37905.54 m2 (2.306%), STC fondeo 6664.13 m2 (0.673%). Neither becomes a rejected proposal or a known negative.",
+    "Approve final two guard renders; masks and active AOI remain unchanged. Family, length and width remain null.",
+    "Reserve activated by zero observable marine area in its primary under the frozen chronological rule. Preserve primary abstentions and all original raw sources.",
+    "This new cohort does not retroactively change the completed round1 experiment or its calibration failure."
+  ]
+}

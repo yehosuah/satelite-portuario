@@ -1,0 +1,130 @@
+{
+  "kind": "reserve_activation",
+  "author": "codex-ai-root",
+  "is_human_review": false,
+  "created_at": "2026-10-21T16:53:31.675568+00:00",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v4.json",
+    "sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v5.json",
+    "sha256": "58d740da7dbb36ee18690fcec422709d126461c7d70c3348b5386c83a9df17ae"
+  },
+  "activation": {
+    "split": "calibration",
+    "port_ids": [
+      "stc",
+      "pbr"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+    "reserve_acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+    "reserve_rank": 2,
+    "reason": "Both ports have an entirely zero automatic observability mask and all eight primary observations are unusable. Four visually discernible berth hulls are retained only as raw quality-disagreement evidence; no reviewed operational area can be exported. Activate the first chronological reserve within the same Oct 17–25 slot, without consulting its predictions, scores or vessel counts.",
+    "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251020-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "raw_quality_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/pbr-20251017-s2-raw-review.json",
+      "sha256": "fee1a4d61c999a1d47300d913ba80b7af1c71fc2d1cc2239a93da0dce07ed8c0"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+      "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/caribe-20251017-operative-abstention-addendum.json",
+      "sha256": "04ba0fbb85383206b9c719e75c2aacce6e5b336f449c7d877394e916e6f5e753"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+      "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+    }
+  ],
+  "quality_evidence": [
+    {
+      "observation_id": "4267f3f4-f455-4504-85e8-d19fc6733c51",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "b0ff0e5a-4f50-40b2-bbc5-16834e0d023d",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "a0922735-93e3-4e8a-a9d6-8b5954c3b773",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "c5cd256d-177d-4f0e-bd69-7f8b7899956e",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "0a4e1d68-700f-4447-8f81-13782f5b68bf",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "8a70f109-f398-4db6-a0cc-a686ea2cce90",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "c6c470ad-d5c4-455b-9434-b80c5ebae8f7",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    },
+    {
+      "observation_id": "5bc4c339-2b00-4170-9717-6c2b5606939c",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0
+    }
+  ],
+  "candidate_processing_state_before_activation": {
+    "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+    "status": "pending"
+  },
+  "priorities_before_sha256": "5b69aab6824c47d07caec00e7ab071af483bbef6e39dc39f22dc0b445570eebc",
+  "priorities_after_sha256": "f32850e49ca5ad2c4933245db009ea23ec228da04c2e64e7037b42134da226f6",
+  "checks": {
+    "next_chronological_reserve_in_same_slot": true,
+    "primary_retained": true,
+    "primary_references_not_used_to_choose_reserve": true,
+    "current_experiment_keeps_v4": true
+  },
+  "used_predictions_or_scores": false,
+  "exposure_note": "Root knows the separate round1 calibration failed; this activation is mechanically required by the already frozen zero-observability rule and does not depend on that performance."
+}

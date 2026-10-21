@@ -1,0 +1,472 @@
+{
+  "schema_version": "official_navigation_source_investigation_v1",
+  "created_at": "2026-10-21T16:34:27.662764+00:00",
+  "author": "codex-ai-independent-reviewer",
+  "purpose": "Evidencia operacional independiente para estudiar una futura versión de las áreas de fondeo y canal de Santo Tomás de Castilla y Puerto Barrios.",
+  "status": "historical_geometry_verified_current_operational_limits_unconfirmed",
+  "scope": {
+    "read_only_of_operational_state": true,
+    "configuration_changed": false,
+    "database_changed": false,
+    "labels_changed": false,
+    "historical_plan_changed": false,
+    "ship_locations_used_to_choose_geometry": false,
+    "current_aoi_proposed": false
+  },
+  "findings": [
+    "Un aviso oficial publica cuatro vértices del fondeo exterior; es una corrección histórica de 2009, no una delimitación vigente verificada en 2026.",
+    "La carta oficial 28165 de 2011, en WGS84, dibuja un fondeo interior y el canal común con ramal a Puerto Barrios. El fondeo interior se digitalizó aquí como aproximación cartográfica reproducible.",
+    "El derrotero actualizado en 2026 aporta descripciones operativas, pero no vértices de polígonos actuales. No se verificó una asignación administrativa exclusiva de cada fondeo a un puerto.",
+    "No hay evidencia suficiente para sustituir la configuración activa por una AOI operacional actual. Las geometrías históricas sirven para una revisión independiente y para contrastar una delimitación oficial nueva."
+  ],
+  "sources": [
+    {
+      "source_id": "nga_chart_28164",
+      "title": "Approaches to Puerto Barrios and Puerto Santo Tomas de Castilla",
+      "publisher": "National Geospatial-Intelligence Agency, United States",
+      "official_url": "https://dnc.nga.mil/dncp/PCA.php?page=6",
+      "retrieved_date": "2026-10-21",
+      "local_file": "tmp/local-review/phase2/official-navigation-sources/28AHA28164_017.pdf",
+      "sha256": "b1a615681b875262b5cf41154546656ef5da3459aee2a2cae5cccab34022cc06",
+      "size_bytes": 2639998,
+      "chart_number": "28164",
+      "edition": 17,
+      "edition_date": "1995-11-04",
+      "printed_corrections_through": "NM 44/95",
+      "scale_denominator": 50010,
+      "projection": "Transverse Mercator",
+      "datum_printed": "World Geodetic System (WGS)",
+      "datum_note": "La nota permite representar directamente posiciones de navegación satelital WGS; la edición consultada no explicita WGS84 en el título. No se aplicó transformación de datum.",
+      "evidence_images": [
+        "28AHA28164_017-notes-left.png",
+        "28AHA28164_017-datum-note.png",
+        "28AHA28164_017-edition.png"
+      ],
+      "download_method": "Formulario público PCA completo con selección 28164; PDF extraído del ZIP oficial. No se presupone que la copia base incluya correcciones posteriores."
+    },
+    {
+      "source_id": "nga_chart_28165",
+      "title": "Puerto Santo Tomas de Castilla and Puerto Barrios",
+      "publisher": "National Geospatial-Intelligence Agency, United States",
+      "official_url": "https://dnc.nga.mil/dncp/PCA.php?page=6",
+      "retrieved_date": "2026-10-21",
+      "local_file": "tmp/local-review/phase2/official-navigation-sources/28AHA28165_022.pdf",
+      "sha256": "70431513a22c6403d791ebe3c0fe47aa475772f8579d2e53dc35658a90146c11",
+      "size_bytes": 16121102,
+      "chart_number": "28165",
+      "edition": 22,
+      "edition_date": "2011-04-16",
+      "printed_corrections_through": "NM 16/11",
+      "new_edition_announced_in": "NM 23/11, según Summary of Corrections 2013; esta referencia no significa que el PDF esté corregido hasta NM 23/11.",
+      "scale_denominator": 15000,
+      "projection": "Mercator",
+      "datum_printed": "World Geodetic System 1984 (WGS 84)",
+      "survey_dates_through": 2010,
+      "source_note": "La carta declara posicionamiento WGS84 mediante ortofoto rectificada de 2008 y fuentes hidrográficas de distintas fechas, incluidas Guatemala 2010 y 2003.",
+      "evidence_images": [
+        "28AHA28165_022-notes.png",
+        "28AHA28165_022-bottom-edition.png",
+        "28AHA28165_022-overview.png",
+        "28AHA28165_022-channel-and-branch.png"
+      ],
+      "download_method": "Formulario público PCA completo con selección 28165; PDF vectorial extraído del ZIP oficial."
+    },
+    {
+      "source_id": "nga_summary_2013",
+      "title": "Summary of Corrections, Volume 1, 2013",
+      "publisher": "National Geospatial-Intelligence Agency, United States",
+      "official_url": "https://msi.nga.mil/api/publications/download?key=16694412%2FSFH00000%2F2013%2FSummaryVolume1.pdf&type=view",
+      "retrieved_date": "2026-10-21",
+      "local_file": "tmp/local-review/phase2/official-navigation-sources/nga-summary-volume1-2013.pdf",
+      "sha256": "e7a7a8153e0ef5b028e81ec6e47adb7fdc63708cb9c0c90b95a6fcb9a0fba539",
+      "size_bytes": 30380045,
+      "publication_year": 2013,
+      "corrections_through": "NM 1/13, 2013-01-05",
+      "pdf_page": 577,
+      "printed_page": "28-12",
+      "relevant_notice": "48/09 para carta 28164, atribuido a Guatemala 3/09",
+      "evidence_images": [
+        "nga-summary-volume1-2013-page-577.png"
+      ]
+    },
+    {
+      "source_id": "nga_pub148",
+      "title": "Sailing Directions (Enroute), Caribbean Sea, Volume II",
+      "publisher": "National Geospatial-Intelligence Agency, United States",
+      "official_url": "https://msi.nga.mil/api/publications/download?key=16694491%2FSFH00000%2FPub148bk.pdf",
+      "retrieved_date": "2026-10-21",
+      "local_file": "tmp/local-review/phase2/official-navigation-sources/nga-pub148.pdf",
+      "sha256": "3190287d062844273953301c065555c2517c4951efd673bd2b0131d4fbba42be",
+      "size_bytes": 11119717,
+      "edition": 19,
+      "edition_year": 2025,
+      "base_corrections_date": "2025-03-15",
+      "subsequent_update_date": "2026-08-27",
+      "update_record_date": "2026-09-01",
+      "sections": {
+        "6.40": {
+          "port": "Puerto Barrios",
+          "pdf_page": 178,
+          "printed_page": 169
+        },
+        "6.41": {
+          "port": "Santo Tomás de Castilla",
+          "pdf_page": 179,
+          "printed_page": 170
+        }
+      },
+      "evidence_images": [
+        "nga-pub148-page-178.png",
+        "nga-pub148-page-179.png"
+      ]
+    },
+    {
+      "source_id": "nga_pub110",
+      "title": "List of Lights, Publication 110",
+      "publisher": "National Geospatial-Intelligence Agency, United States",
+      "official_url": "https://msi.nga.mil/api/publications/download?key=16694312%2FSFH00000%2FNIMA_LOL%2FPub110%2FPub110bk.pdf&type=download",
+      "retrieved_date": "2026-10-21",
+      "local_file": "tmp/local-review/phase2/official-navigation-sources/nga-pub110.pdf",
+      "sha256": "7a8895e449341f119917f163378d5e9ededea4b243764610d97b90f65948af54",
+      "size_bytes": 14046342,
+      "edition_year": 2024,
+      "relevant_pdf_pages": [
+        198,
+        199
+      ],
+      "role": "Referencia auxiliar de ayudas a la navegación. No se usan sus posiciones redondeadas a 0,1 minuto para construir un corredor estrecho."
+    }
+  ],
+  "geometries": [
+    {
+      "geometry_id": "exterior_anchorage_nga_48_09",
+      "kind": "official_numeric_vertices_historical",
+      "source_id": "nga_summary_2013",
+      "related_chart_source_id": "nga_chart_28164",
+      "operational_role": "Fondeo exterior para petroleros, portacontenedores y carga con calado de 6 a 11 m, según leyenda histórica.",
+      "source_notice_year": 2009,
+      "native_vertices_lat_lon_dms": [
+        [
+          "15°49′30″N",
+          "88°35′12″W"
+        ],
+        [
+          "15°48′43″N",
+          "88°35′48″W"
+        ],
+        [
+          "15°51′21″N",
+          "88°38′51″W"
+        ],
+        [
+          "15°52′10″N",
+          "88°38′10″W"
+        ]
+      ],
+      "coordinate_order": "longitude, latitude",
+      "datum": "WGS, según carta 28164; WGS84 no confirmado explícitamente en esta edición.",
+      "geometry_native_degrees": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.586666667,
+              15.825
+            ],
+            [
+              -88.596666667,
+              15.811944444
+            ],
+            [
+              -88.6475,
+              15.855833333
+            ],
+            [
+              -88.636111111,
+              15.869444444
+            ],
+            [
+              -88.586666667,
+              15.825
+            ]
+          ]
+        ]
+      },
+      "decimal_conversion_only": true,
+      "not_a_transformed_wgs84_dataset": true,
+      "legend_location_not_vertex": [
+        "15°50′24″N",
+        "88°36′56″W"
+      ],
+      "verification": "Cuatro pares y orden comprobados en el render de la página 577, impresa 28-12. El punto de colocación de la leyenda se excluyó del polígono.",
+      "current_validity": "No verificada; no se verificó el aviso guatemalteco 3/09 original ni toda la cadena posterior de modificaciones.",
+      "ports_administrative_assignment": "No determinada por este aviso; no duplicar como dos áreas portuarias independientes sin respaldo."
+    },
+    {
+      "geometry_id": "interior_anchorage_chart_28165_2011",
+      "kind": "digitized_chart_approximation_historical",
+      "source_id": "nga_chart_28165",
+      "operational_role": "Fondeo interior representado al oeste del canal, al sur de Puerto Barrios, para calados menores de 6 m.",
+      "datum": "WGS84, explícito en la carta",
+      "coordinate_order": "longitude, latitude",
+      "approximate_geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.627771,
+              15.720013
+            ],
+            [
+              -88.619166,
+              15.718335
+            ],
+            [
+              -88.620834,
+              15.707506
+            ],
+            [
+              -88.629459,
+              15.709181
+            ],
+            [
+              -88.627771,
+              15.720013
+            ]
+          ]
+        ]
+      },
+      "vertex_order": [
+        "NW",
+        "NE",
+        "SE",
+        "SW"
+      ],
+      "published_numeric_boundary_vertices": false,
+      "current_validity": "No verificada; no es una nueva delimitación operacional ni una autorización de uso.",
+      "digitization": {
+        "pdf_page": 1,
+        "pdf_size_points": [
+          2375.99999,
+          3168
+        ],
+        "pdf_origin": "top left",
+        "method": "Ajuste ortogonal de cuatro lados a segmentos vectoriales del límite magenta; intersección de lados. Georreferenciación por meridianos impresos y latitudes isométricas de Mercator elipsoidal WGS84.",
+        "side_pdfplumber_line_indices_0_based": {
+          "east": [
+            656,
+            657,
+            658,
+            659,
+            660,
+            661,
+            662,
+            663,
+            664,
+            665,
+            666
+          ],
+          "south": [
+            667,
+            668,
+            669,
+            670,
+            671,
+            672,
+            673,
+            674
+          ],
+          "west": [
+            675,
+            676,
+            677,
+            678,
+            679,
+            680,
+            681,
+            682,
+            683,
+            684
+          ],
+          "north": [
+            685,
+            686,
+            687,
+            688,
+            689,
+            690,
+            691,
+            692,
+            693
+          ]
+        },
+        "side_fit_rms_pdf_points": {
+          "east": 0.07035655016065591,
+          "south": 0.07446678232019915,
+          "west": 0.0634611743373801,
+          "north": 0.07646945838454594
+        },
+        "vertices_pdf_points": [
+          [
+            952.6002816628289,
+            2190.46210716793
+          ],
+          [
+            1126.8634312388267,
+            2225.534159758499
+          ],
+          [
+            1093.088856897316,
+            2451.911360273215
+          ],
+          [
+            918.4096485866046,
+            2416.8906981800465
+          ]
+        ],
+        "longitude_graticule_controls": [
+          {
+            "pdf_x": 839.981,
+            "longitude_deg": -88.63333333333334
+          },
+          {
+            "pdf_x": 1177.413,
+            "longitude_deg": -88.61666666666666
+          },
+          {
+            "pdf_x": 1515.085,
+            "longitude_deg": -88.6
+          },
+          {
+            "pdf_x": 1852.51701,
+            "longitude_deg": -88.58333333333333
+          }
+        ],
+        "latitude_graticule_controls": [
+          {
+            "pdf_y_from_top": 169.44093999999996,
+            "latitude_deg": 15.816666666666666
+          },
+          {
+            "pdf_y_from_top": 517.91995,
+            "latitude_deg": 15.8
+          },
+          {
+            "pdf_y_from_top": 866.3989499999998,
+            "latitude_deg": 15.783333333333333
+          },
+          {
+            "pdf_y_from_top": 1215.11794,
+            "latitude_deg": 15.766666666666667
+          },
+          {
+            "pdf_y_from_top": 1563.59695,
+            "latitude_deg": 15.75
+          },
+          {
+            "pdf_y_from_top": 1912.07595,
+            "latitude_deg": 15.733333333333333
+          },
+          {
+            "pdf_y_from_top": 2260.31497,
+            "latitude_deg": 15.716666666666667
+          },
+          {
+            "pdf_y_from_top": 2608.7939699999997,
+            "latitude_deg": 15.7
+          }
+        ],
+        "longitude_linear_coefficients": [
+          4.9378618015377535e-05,
+          -88.67480924858137
+        ],
+        "isometric_latitude_linear_coefficients": [
+          -8.619330592586286e-07,
+          0.27794842004157133
+        ],
+        "registration_max_abs_residual_pdf_points": {
+          "longitude_max_abs": 0.07199758730867918,
+          "latitude_max_abs": 0.12063464419063026
+        },
+        "coordinate_rounding_degrees": 1e-06,
+        "uncertainty": "El residual mide solamente el registro del dibujo. No mide exactitud geodésica, vigencia, precisión del levantamiento ni incertidumbre del límite operacional; esas magnitudes no se determinaron. Los decimales facilitan reproducción y no garantizan exactitud métrica.",
+        "overlay_image": "tmp/local-review/phase2/official-navigation-sources/28AHA28165_022-inner-anchorage-digitization-check.png",
+        "reproduction_script": "tmp/local-review/phase2/official-navigation-sources/derive_navigation_research.py"
+      }
+    },
+    {
+      "geometry_id": "channels_chart_28165_2011",
+      "kind": "official_chart_depiction_historical_not_digitized",
+      "source_id": "nga_chart_28165",
+      "datum": "WGS84",
+      "evidence_images": [
+        "tmp/local-review/phase2/official-navigation-sources/28AHA28165_022-overview.png",
+        "tmp/local-review/phase2/official-navigation-sources/28AHA28165_022-channel-and-branch.png"
+      ],
+      "geometry": null,
+      "finding": "La carta permite ver la traza del canal que llega a Santo Tomás y el ramal de acceso al muelle de Puerto Barrios, con sus bordes dibujados y ensanchamientos. Es geometría gráfica independiente, no un corredor desplazado a partir de barcos.",
+      "printed_historical_range_degrees": [
+        189.5,
+        9.5
+      ],
+      "limitation": "No se extrajo una AOI de canal actual. Una sola dirección o los puntos de prácticos no definen los bordes, ramales o dársenas; la fuente es histórica y el derrotero menciona problemas de enfilación."
+    }
+  ],
+  "current_narrative_evidence": [
+    {
+      "source_id": "nga_pub148",
+      "section": "6.40",
+      "port": "Puerto Barrios",
+      "statement": "Describe fondeo unos 1,5 millas náuticas al suroeste del muelle, sobre 6–7 m, y prohíbe fondear al norte del muelle por el tráfico de entrada.",
+      "geometry_limit": "Distancia y dirección narrativas; no publican un polígono. No se inventó un punto de referencia único del muelle ni un radio."
+    },
+    {
+      "source_id": "nga_pub148",
+      "section": "6.41",
+      "port": "Santo Tomás de Castilla",
+      "statement": "Indica fondeo al sur del muelle de Puerto Barrios, en el centro de la bahía y fuera del canal dragado. Para calados mayores de 7,2 m describe una ubicación aproximadamente una milla al norte de la luz Villedo.",
+      "geometry_limit": "No equivale automáticamente a los polígonos históricos ni fija vértices."
+    },
+    {
+      "source_id": "nga_pub148",
+      "section": "6.41",
+      "statement": "Conserva una advertencia reportada en 2010 sobre desalineación de la luz anterior de enfilación.",
+      "implication": "No convertir la enfilación impresa de la carta histórica en una línea operativa vigente sin confirmación."
+    }
+  ],
+  "other_official_leads_and_limits": [
+    {
+      "publisher": "Gobierno de Guatemala / MAGA",
+      "url": "https://guatemala.gob.gt/sabia-que-el-mar-tambien-se-mapea/",
+      "publication_date": "2025-05-27",
+      "finding": "Confirma la existencia de cartas náuticas digitales del IGN para Puerto Barrios y bahía de Amatique, entre otras.",
+      "limit": "La nota consultada no entrega vértices ni archivo geoespacial descargable."
+    },
+    {
+      "publisher": "Comisión Portuaria Nacional",
+      "url": "https://cpn.gob.gt/wp-content/uploads/2024/09/Manual-BOP.pdf",
+      "publication_year": 2024,
+      "lead": "El resultado de búsqueda oficial identifica la Figura 7, página 34, sobre fondeo y acceso de ambos puertos.",
+      "retrieval_status": "Contenido no recuperado: HTTP 403 o timeout.",
+      "limit": "No se vio la figura y no se extrajeron coordenadas ni conclusiones de su geometría."
+    },
+    {
+      "publisher": "DIGEMAR, catálogo oficial de datos abiertos de Guatemala",
+      "url": "https://catalogo.senacyt.gob.gt/he/dataset/hidrografia-y-oceanografia-digemar",
+      "metadata_updated": "2026-02-06",
+      "finding": "Los recursos abiertos C3 2025 examinados contienen recuentos mensuales de avisos y levantamientos.",
+      "limit": "No contienen geometría. Los recuentos no prueban ausencia de cartas, avisos o límites operativos."
+    }
+  ],
+  "recommended_next_action": "Obtener de IGN/DIGEMAR o la autoridad portuaria una carta o plano vigente con límites georreferenciados y su cadena de avisos. Contrastar después una AOI v2 contra costa, canales y fondeos de esa fuente, con fecha de vigencia y control de versión; conservar inmutable el plan y las etiquetas de v1. No se contactó a ninguna entidad.",
+  "validation": {
+    "primary_sources_only": true,
+    "numeric_notice_visually_verified": true,
+    "chart_title_datum_edition_visually_verified": true,
+    "digitized_polygon_overlay_visually_verified": true,
+    "current_authority_approval_obtained": false,
+    "operational_state_changes": 0,
+    "chart_printed_correction_date_checked_against_edition_margin": true
+  },
+  "evidence_root": "tmp/local-review/phase2/official-navigation-sources"
+}

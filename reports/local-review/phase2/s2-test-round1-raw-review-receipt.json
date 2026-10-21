@@ -1,0 +1,54 @@
+{
+  "schema_version": "phase2-s2-test-round1-raw-review-receipt-v1",
+  "created_at": "2026-10-21T16:21:48.385112Z",
+  "status": "proposed_only_pending_independent_adjudication_and_separate_test_freeze",
+  "author": "codex-ai-persistence",
+  "is_human_review": false,
+  "evidence_manifest": {
+    "path": "reports/local-review/phase2/s2-test-round1-evidence.json",
+    "sha256": "c16d309472256ab68933ceb7ad906c4d90ddb1eb746658aa7523580b8cfc8fde"
+  },
+  "initial_notes": {
+    "path": "reports/local-review/phase2/s2-test-round1-initial-raw-notes.json",
+    "sha256": "1ebb446af4d0fc5dc3df2a727fd6c2a2452f0a2b1fce6793a8b5eaa4bd651210"
+  },
+  "reports": [
+    {
+      "path": "reports/local-review/phase2/prq-20260403-s2-test-raw-first-pass.json",
+      "sha256": "97f052ff1d139e19e90d149d20b634434232ebd3abbe9d9c9f9f7c8454acd261",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "observations": 4,
+      "scope_abstentions": 0
+    },
+    {
+      "path": "reports/local-review/phase2/prq-20260413-s2-test-raw-first-pass.json",
+      "sha256": "87f587ca84f2d24ad7ddb9af46a1942c9faceac8fac30953ca7b662fa156eaf4",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "observations": 4,
+      "scope_abstentions": 0
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-20260403-s2-test-raw-first-pass.json",
+      "sha256": "6fcbed28f71152b48f03d580e9d18620d29999ace374dcfab92807f16e5f01ec",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "observations": 8,
+      "scope_abstentions": 0
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-20260413-s2-test-raw-first-pass.json",
+      "sha256": "f993afccf29a8cb075601b4b098613ee7b75f80651bd3fcaae7b9503a00deb3d",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "observations": 8,
+      "scope_abstentions": 3
+    }
+  ],
+  "source_assets_verified": 384,
+  "source_observations": 24,
+  "model_proposals_read": false,
+  "other_test_reviewer_labels_read": false,
+  "performance_metrics_computed": false,
+  "database_writes": false,
+  "source_edits": false,
+  "training_decisions_changed": false,
+  "next_step": "Independent raw-first adjudication, then catalog correspondence without duplicate physical labels; freeze TEST separately and keep it out of all training/calibration input."
+}

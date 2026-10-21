@@ -1,0 +1,111 @@
+{
+  "schema_version": "fixed-train-inference-runner-v1",
+  "created_at": "2026-10-21T17:11:42.066432Z",
+  "status": "prepared_not_executed",
+  "runner": {
+    "path": "reports/local-review/phase2/train-diagnostics/run_minimal_train_inference.py",
+    "sha256": "3a3b3f351095df6d181bd0adb47c3a5f13004c2f589ff209104c9ac34a042585"
+  },
+  "plan": {
+    "path": "reports/local-review/phase2/train-diagnostics/minimal-train-inference-plan.json",
+    "sha256": "42e1a38d925ab1def630164bf5f9dc2edc6bcf94768cd4aca4cdd375c7fb04a7"
+  },
+  "source_files": [
+    {
+      "path": "src/puertogt/cli.py",
+      "sha256": "d20fd7c6bef0ffeea3c427c083addb35e2408a296700bb1f81c2fe7d6141d504"
+    },
+    {
+      "path": "src/puertogt/contracts.py",
+      "sha256": "e921e52b6db931d47da5fa6bb1c93d0fd0c2bc58937f4b0226f6edbcb7b31e7e"
+    },
+    {
+      "path": "src/puertogt/history.py",
+      "sha256": "568f1523e5acef70cf200b5a8c88131d145e028d65b93268c1457393102c7e63"
+    },
+    {
+      "path": "src/puertogt/ml/detection.py",
+      "sha256": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25"
+    },
+    {
+      "path": "src/puertogt/ml/workflows.py",
+      "sha256": "bc530c256ca610dca18354e893234619b426a6ad45f01c4a9bfefbe389441ce9"
+    },
+    {
+      "path": "src/puertogt/preprocess.py",
+      "sha256": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd"
+    },
+    {
+      "path": "src/puertogt/review.py",
+      "sha256": "c9fe1b118f43e119ea07df5dcaf99a7a848c87f709153325c9820a9f4fc9841b"
+    },
+    {
+      "path": "src/puertogt/store.py",
+      "sha256": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/models/faster_rcnn.py",
+      "sha256": "1e577a0f0df3d9dbc7c6a13fd6fe246e5c2f3300aa350e203d15950a70b83998"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/models/multitask.py",
+      "sha256": "6e9171bed168c11c93fadbd149d63b00a6c4c7f8b5cbbb13a04cd981331c178b"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/models/swin.py",
+      "sha256": "5eaaf74acc1b1cfe888704f66ad64c00f1764d4cd0a9fc6f8a192c6fc592791a"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/models/fpn.py",
+      "sha256": "aa6ee728c82c66b0a801dcfc01298d294da7bd9e944a6e4279d31fcbfc3f8301"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/torchvision/models/detection/rpn.py",
+      "sha256": "17eb939224b28c435839b7958c6ab25765f041c151be1cf137507dd0e4d5ddd5"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/torchvision/models/detection/roi_heads.py",
+      "sha256": "ddf91a1c89603c86c0e7b30f3ad9f1613adf4623ed1c1688ed03e9af47579ff8"
+    }
+  ],
+  "packages": {
+    "torch": "2.14.1",
+    "torchvision": "0.29.1",
+    "rslearn": "0.1.18",
+    "numpy": "2.4.6",
+    "rasterio": "1.4.4",
+    "shapely": "2.2.0",
+    "pyproj": "3.7.2"
+  },
+  "invariants": {
+    "sample_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+    "forwards": 2,
+    "device": "cpu",
+    "threads": 4,
+    "head_score_floor": 0.05,
+    "secondary_thresholds": [],
+    "shared_nonblocking_lock": "data/.heavy-worker.lock",
+    "model_or_data_changes": false,
+    "calibration_or_test_access": false,
+    "input_array_sha256": "2aaa89710698e2e851269cbb130db73728f6ab299b357a04824f61ee682fc0e6",
+    "reference_visual_box": [
+      [
+        437.0,
+        45.0,
+        451.0,
+        74.0
+      ]
+    ],
+    "reviewed_pixels": 2421
+  },
+  "preflight": {
+    "syntax_checked": true,
+    "selected_evidence_checksums_verified": true,
+    "model_manifest_checksums_verified": true,
+    "model_input_identical": true,
+    "weights_loaded": false,
+    "model_forward_executed": false,
+    "database_opened": false
+  },
+  "command_after_coordinator_release": "PYTHONPATH=src .venv/bin/python reports/local-review/phase2/train-diagnostics/run_minimal_train_inference.py --output tmp/train-diagnostics/s2-round1-first-positive-v1 --coordinator-released-history"
+}

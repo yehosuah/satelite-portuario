@@ -12,6 +12,7 @@ from contextlib import closing
 from pathlib import Path
 
 from shapely.geometry import mapping, shape
+from shapely.ops import unary_union
 
 from puertogt.review import add_detection, record_review, validate_geometry
 from puertogt.store import Store, confined_path, json_text, sha256_file, utc_text
@@ -62,6 +63,16 @@ def pass_id(key):
     if parts[0].startswith("S2") and len(parts) == 5:
         return ":".join((parts[0], parts[2], parts[3]))
     raise ValueError("Unsupported acquisition identity")
+
+
+def polygonal_parts(geometry):
+    """Keep surface components without turning tangent lines or points into area."""
+    if geometry.geom_type == "Polygon":
+        if geometry.area > 0:
+            yield geometry
+    elif geometry.geom_type in {"MultiPolygon", "GeometryCollection"}:
+        for part in geometry.geoms:
+            yield from polygonal_parts(part)
 
 
 def prepare(store, adjudication_path, destination, *, order_path=None):
@@ -118,9 +129,12 @@ def prepare(store, adjudication_path, destination, *, order_path=None):
             if area:
                 validate_geometry(area)
                 proposed = shape(area)
-                clipped = proposed.intersection(zones[row["zone_id"]])
+                clipped = unary_union(list(polygonal_parts(
+                    proposed.intersection(zones[row["zone_id"]]))))
+                if clipped.is_empty or clipped.area <= 0:
+                    raise ValueError("Review area has no polygonal surface inside configured zone")
                 removed = 1 - clipped.area / proposed.area
-                if clipped.is_empty or removed > 0.001:
+                if removed > 0.001:
                     raise ValueError("Review area extends materially beyond configured zone")
                 area = mapping(clipped)
                 provenance["scope_clipped_to_configured_zone_fraction"] = max(0, removed)

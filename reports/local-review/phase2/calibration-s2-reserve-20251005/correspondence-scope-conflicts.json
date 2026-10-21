@@ -1,0 +1,187 @@
+{
+  "schema_version": "phase2-post-reference-scope-conflicts-v1",
+  "created_at": "2026-10-21T16:47:22.196339+00:00",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "split": "calibration",
+  "catalog_read": {
+    "path": "tmp/local-review/phase2/calibration-s2-reserve-20251005/catalog-correspondence-snapshot.json",
+    "sha256": "645cb3c0d4b95c89d7c858fe8e0c02b412a3d2dfeba77aafd26b804c81f6d0fb",
+    "scores_seen": false
+  },
+  "second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/root-raw-pass.json",
+    "sha256": "74384c2c7f85383dc72fcf01b680bc74f953f55f31ba53d2256559a12f2a8334"
+  },
+  "conflicts": [
+    {
+      "observation_id": "4613d900-42d1-4a10-bb27-ca131bed1cae",
+      "zone_id": "pbr_fondeo",
+      "detection_id": "a335e0bcf5edab19fc62921f",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr-20251005-s2-raw-review.json",
+        "sha256": "a384a72aedcaf87898e27b34a5a16883dbd738bfbe0a598a6e43496e3a6fab0f"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -88.60304571890221,
+              15.763960547906086
+            ],
+            [
+              -88.60024521592962,
+              15.763981149362092
+            ],
+            [
+              -88.60022413020558,
+              15.76129051577149
+            ],
+            [
+              -88.60302459631565,
+              15.761269918008896
+            ],
+            [
+              -88.60304571890221,
+              15.763960547906086
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60254450300327,
+              15.761351612076751
+            ],
+            [
+              -88.60049149316393,
+              15.761366711273658
+            ],
+            [
+              -88.60051196986281,
+              15.763979187029085
+            ],
+            [
+              -88.60024521592962,
+              15.763981149362092
+            ],
+            [
+              -88.60022413020558,
+              15.76129051577149
+            ],
+            [
+              -88.60302459631565,
+              15.761269918008896
+            ],
+            [
+              -88.60304571890221,
+              15.763960547906086
+            ],
+            [
+              -88.60256500593307,
+              15.76396408419481
+            ],
+            [
+              -88.60254450300327,
+              15.761351612076751
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 25750.270056391088,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "indeterminate_pending_explicit_scope_adjudication",
+      "reason": "Coincide espacialmente con firma pequeña U01 ya desconocida/excluida antes de propuestas; su caja de contexto excede el pequeño ámbito excluido raw.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr_fondeo-correspondence-scope-conflict.png",
+        "sha256": "ad9035e35f27087b2a5604c8a12d01fa0a01c233fe0f952947449ed6c4dde634"
+      }
+    },
+    {
+      "observation_id": "c13a5dd9-e54e-41f5-9de6-f0a65198896b",
+      "zone_id": "stc_fondeo",
+      "detection_id": "c933f4a17e24079169cc64f8",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc-20251005-s2-raw-review.json",
+        "sha256": "e658237eb0b2de0b9a567b12e93a000323244025d6470ee5eee3608cf808283b"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -88.62711797708056,
+              15.753503596364867
+            ],
+            [
+              -88.62432823574406,
+              15.753524414952402
+            ],
+            [
+              -88.62430678347762,
+              15.750825730261518
+            ],
+            [
+              -88.62709648801001,
+              15.75080491541972
+            ],
+            [
+              -88.62711797708056,
+              15.753503596364867
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ],
+            [
+              -88.62499687959115,
+              15.753519425163464
+            ],
+            [
+              -88.62432823574406,
+              15.753524414952402
+            ],
+            [
+              -88.62431917110158,
+              15.752384087333478
+            ],
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 4424.304188797144,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "indeterminate_pending_explicit_scope_adjudication",
+      "reason": "Firma clara oblicua sobre agua costera fuera del ámbito raw de fondeo, próxima a península; presencia de buque no adjudicada. La caja de contexto alcanza el ámbito de agua previamente revisada.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc_fondeo-correspondence-scope-conflict.png",
+        "sha256": "a8e09f57b5ed9492a7092057775cc3c38e188735317797ed2a5d888193b8b8af"
+      }
+    }
+  ],
+  "actions_performed": {
+    "db_writes": false,
+    "reference_changes": false,
+    "scope_changes": false,
+    "metric_or_threshold_computation": false
+  },
+  "guardrail": "No se rechaza una firma desconocida ni se amplía su exclusión automáticamente para permitir exportación. Cualquier cambio posterior deberá referenciar este registro, cuantificar superficie y ser adjudicado explícitamente."
+}

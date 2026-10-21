@@ -1,0 +1,681 @@
+{
+  "created_at": "2026-10-21T16:05:37.272556+00:00",
+  "query": "SELECT detection_id,geometry_json,review_status FROM detections WHERE observation_id=? ORDER BY detection_id",
+  "scores_queried": false,
+  "raw_sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "sha256": "80f1ddf1c620c2af0949e1964f69a40dc62023b1bc9488bf0ed2cfcefd33b1f1"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "sha256": "31ed7d29645f15269fe99ba1838c9d9d884bcd58d7ddd7ce03d05a542c328080"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "sha256": "f9818fb0ae839bc541dfb63409b0dfa973381205dcca22a5770f6ff77bb41ccc"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "sha256": "4df201f73e50f38fa938fcd4d35d29b234308af978a248c77c9daded42f72bad"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "sha256": "658ef68f92054ecc5113b316bea3ba76612558ee00bdbc06169747b79f877474"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "sha256": "40c723671880fa754aef47715495f2ece9d2f7b48836f1b0d2965861f825498d"
+    }
+  ],
+  "observations": {
+    "3a04cfcf-6847-48ed-ae4b-ef167fa42305": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "zone_id": "pbr_canal",
+      "detections": []
+    },
+    "3465c141-281b-4936-bf10-3cb4b7e8091a": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "zone_id": "pbr_fondeo",
+      "detections": []
+    },
+    "3e31a667-a48c-4320-ad80-c12de86e146f": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "zone_id": "pbr_muelles",
+      "detections": []
+    },
+    "701c690c-abd6-4720-9eba-e12eab478c11": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "zone_id": "pbr_patios",
+      "detections": []
+    },
+    "f1daf655-2050-4ee1-b80f-5d20db5014cc": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "zone_id": "pbr_canal",
+      "detections": []
+    },
+    "f4d9dfa8-7182-43c1-a30b-a8946fad00ce": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "zone_id": "pbr_fondeo",
+      "detections": []
+    },
+    "72dbadc4-c5cf-4fc1-a404-d339826a4f96": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "zone_id": "pbr_muelles",
+      "detections": []
+    },
+    "9c666768-c890-4a67-84b3-9a13997ad6d2": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/pbr-20251009-s2-raw-review.json",
+      "zone_id": "pbr_patios",
+      "detections": []
+    },
+    "78b11d22-b540-448e-b302-8db93bc7b33c": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "zone_id": "prq_canal",
+      "detections": []
+    },
+    "6c3fd3ce-d2bf-4eae-95eb-2f1cf4dcfdd9": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "zone_id": "prq_fondeo",
+      "detections": []
+    },
+    "f76789c5-ac56-4e01-b688-75a2be78d487": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "zone_id": "prq_muelles",
+      "detections": []
+    },
+    "7309e797-e534-4ad1-ac72-84ef10d8bb56": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "zone_id": "prq_patios",
+      "detections": []
+    },
+    "aae8fd10-8e55-46f6-8fe4-37b99620eb8b": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "zone_id": "prq_canal",
+      "detections": []
+    },
+    "da782680-1bfc-4f95-8c7f-673e822a67f9": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "zone_id": "prq_fondeo",
+      "detections": [
+        {
+          "detection_id": "0595c1f862fc495483e9a721",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.7921339874001,
+                  13.88032692782947
+                ],
+                [
+                  -90.78934427262261,
+                  13.88030170448117
+                ],
+                [
+                  -90.78936997053204,
+                  13.877590353807001
+                ],
+                [
+                  -90.79215965294458,
+                  13.877615572037541
+                ],
+                [
+                  -90.7921339874001,
+                  13.88032692782947
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "2083f5f0655ae2bf6c4ad661",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.81276657511224,
+                  13.90858444526801
+                ],
+                [
+                  -90.80999522073908,
+                  13.908559575810692
+                ],
+                [
+                  -90.8100205585906,
+                  13.905866690208333
+                ],
+                [
+                  -90.81279188096217,
+                  13.905891554663455
+                ],
+                [
+                  -90.81276657511224,
+                  13.90858444526801
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "3bd90be516bdb1898a890054",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.79104645015035,
+                  13.897979932206034
+                ],
+                [
+                  -90.788264689135,
+                  13.897954738993876
+                ],
+                [
+                  -90.78829042207644,
+                  13.895244607446907
+                ],
+                [
+                  -90.79107215079095,
+                  13.895269795555704
+                ],
+                [
+                  -90.79104645015035,
+                  13.897979932206034
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "4438a206b9390d7f10b74407",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.78310632052683,
+                  13.881629528234946
+                ],
+                [
+                  -90.78032821709185,
+                  13.881604305015344
+                ],
+                [
+                  -90.78035391500558,
+                  13.87890424325034
+                ],
+                [
+                  -90.78313198634174,
+                  13.878929461373957
+                ],
+                [
+                  -90.78310632052683,
+                  13.881629528234946
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "459c0f8074f885482fe54f29",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.80853321846554,
+                  13.891953075898263
+                ],
+                [
+                  -90.80575901580309,
+                  13.891928160090282
+                ],
+                [
+                  -90.80578437569207,
+                  13.88923478768115
+                ],
+                [
+                  -90.80855854635432,
+                  13.889259698471166
+                ],
+                [
+                  -90.80853321846554,
+                  13.891953075898263
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "5d9d0764f588f95d172b9ef8",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.8010506479085,
+                  13.890007685588419
+                ],
+                [
+                  -90.79827830571362,
+                  13.889982704670908
+                ],
+                [
+                  -90.79830380674386,
+                  13.887283159241175
+                ],
+                [
+                  -90.8010761168917,
+                  13.887308135115426
+                ],
+                [
+                  -90.8010506479085,
+                  13.890007685588419
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "6b6208e0c8e73c89b699a106",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.80144633943567,
+                  13.897946249541837
+                ],
+                [
+                  -90.79866123988077,
+                  13.897921144928699
+                ],
+                [
+                  -90.79868676550755,
+                  13.895220132249545
+                ],
+                [
+                  -90.80147183283128,
+                  13.89524523179437
+                ],
+                [
+                  -90.80144633943567,
+                  13.897946249541837
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "766f8f997beb089defe27dd8",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.79613534329526,
+                  13.906994281006568
+                ],
+                [
+                  -90.79335312632374,
+                  13.906969126740641
+                ],
+                [
+                  -90.79337883152446,
+                  13.904257498873749
+                ],
+                [
+                  -90.79616101615,
+                  13.904282648044445
+                ],
+                [
+                  -90.79613534329526,
+                  13.906994281006568
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "7a0808bb060a061e1da7b717",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.81078144661984,
+                  13.899654456003253
+                ],
+                [
+                  -90.80800934693076,
+                  13.899629571966829
+                ],
+                [
+                  -90.80803480218184,
+                  13.896924853270988
+                ],
+                [
+                  -90.81080686974167,
+                  13.896949732277308
+                ],
+                [
+                  -90.81078144661984,
+                  13.899654456003253
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "8901a60bdbc72cd8ffbd08e2",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.7834583154889,
+                  13.891124374237634
+                ],
+                [
+                  -90.7806915519379,
+                  13.891099242231821
+                ],
+                [
+                  -90.78071733092612,
+                  13.88839214515552
+                ],
+                [
+                  -90.78348406240319,
+                  13.888417272073756
+                ],
+                [
+                  -90.7834583154889,
+                  13.891124374237634
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "8cdc53e6fcaf3acfdaf45181",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.81076903334359,
+                  13.881596183506053
+                ],
+                [
+                  -90.80801446676605,
+                  13.881571486359976
+                ],
+                [
+                  -90.80803987206914,
+                  13.878868412589672
+                ],
+                [
+                  -90.8107944067832,
+                  13.878893104740467
+                ],
+                [
+                  -90.81076903334359,
+                  13.881596183506053
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "926eb3a14cb59bc20e338337",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.77959441568306,
+                  13.909004564444606
+                ],
+                [
+                  -90.7768170433194,
+                  13.908979262107326
+                ],
+                [
+                  -90.77684285003389,
+                  13.906277602553915
+                ],
+                [
+                  -90.77962019022243,
+                  13.906302899785487
+                ],
+                [
+                  -90.77959441568306,
+                  13.909004564444606
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "99d1fb1e1b20a1c8c78e0de2",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.7886188234879,
+                  13.906905441799974
+                ],
+                [
+                  -90.78585485630374,
+                  13.906880367521687
+                ],
+                [
+                  -90.78588049873842,
+                  13.904184514414217
+                ],
+                [
+                  -90.78864443397617,
+                  13.904209583642986
+                ],
+                [
+                  -90.7886188234879,
+                  13.906905441799974
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "a247f84649f7d34aa10cc0cd",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.80003359361275,
+                  13.881493739010093
+                ],
+                [
+                  -90.7972641430514,
+                  13.881468786692809
+                ],
+                [
+                  -90.79728958003864,
+                  13.878775543905412
+                ],
+                [
+                  -90.80005899868156,
+                  13.878800491194129
+                ],
+                [
+                  -90.80003359361275,
+                  13.881493739010093
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "a41c8f06123d054bda697c48",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.80337031604404,
+                  13.908084102903869
+                ],
+                [
+                  -90.80059138070274,
+                  13.908059059032738
+                ],
+                [
+                  -90.80061684297115,
+                  13.905364431154371
+                ],
+                [
+                  -90.8033957462042,
+                  13.905389469984796
+                ],
+                [
+                  -90.80337031604404,
+                  13.908084102903869
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "de6b38a4f903560e4c46daa2",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.78019650875694,
+                  13.899975276818322
+                ],
+                [
+                  -90.77741409946347,
+                  13.899949950567423
+                ],
+                [
+                  -90.77743981858004,
+                  13.8972549165513
+                ],
+                [
+                  -90.78022219574078,
+                  13.897280237701143
+                ],
+                [
+                  -90.78019650875694,
+                  13.899975276818322
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        },
+        {
+          "detection_id": "e2b5376ebaefe6cca74c08e8",
+          "review_status": "provisional",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -90.79133260994314,
+                  13.890821339486427
+                ],
+                [
+                  -90.78856313830241,
+                  13.890796272772878
+                ],
+                [
+                  -90.7885888979343,
+                  13.888081507423786
+                ],
+                [
+                  -90.7913583373792,
+                  13.8881065690485
+                ],
+                [
+                  -90.79133260994314,
+                  13.890821339486427
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          }
+        }
+      ]
+    },
+    "bbf28ddd-5f88-4c7b-8770-8cb4c6c52f49": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "zone_id": "prq_muelles",
+      "detections": []
+    },
+    "17714c75-349e-46eb-b4a7-786cd0ed9cf2": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/prq-20251010-s2-raw-review.json",
+      "zone_id": "prq_patios",
+      "detections": []
+    },
+    "ca64f305-a6f0-4045-b80b-3303ac5aa461": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "zone_id": "stc_canal",
+      "detections": []
+    },
+    "a69e926d-4579-4d64-9ddb-315379340def": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "zone_id": "stc_fondeo",
+      "detections": []
+    },
+    "8ab0970d-e0bc-4421-a98e-28c78e759f4d": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "zone_id": "stc_muelles",
+      "detections": []
+    },
+    "27b83010-3d8b-47e9-8618-b84300e1f70e": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "zone_id": "stc_patios",
+      "detections": []
+    },
+    "1746f4c7-ec29-47e3-8b91-e593d485c0d5": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "zone_id": "stc_canal",
+      "detections": []
+    },
+    "5f0775ea-5cb6-415b-958d-987f1eefc4bc": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "zone_id": "stc_fondeo",
+      "detections": []
+    },
+    "bed1ea22-45dd-4fb6-afdc-a3982ae39742": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "zone_id": "stc_muelles",
+      "detections": []
+    },
+    "6526e411-9265-4b5d-846a-190c871c632f": {
+      "raw_source": "reports/local-review/phase2/calibration-s2-round1/stc-20251009-s2-raw-review.json",
+      "zone_id": "stc_patios",
+      "detections": []
+    }
+  }
+}

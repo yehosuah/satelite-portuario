@@ -1,0 +1,68 @@
+{
+  "schema_version": "raw_first_pass_v1",
+  "frozen_at": "2026-10-21T16:51:58.424480+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24",
+  "captured_at": "2025-04-19T11:45:51.813014Z",
+  "raw_manifest_sha256": "81aaf975b307c6cf34c39a26a0ac4731277750f58c2bea2d77371966f368846b",
+  "selection_execution_order": "reports/local-review/phase2/execution-order-v4.json",
+  "split": "train",
+  "raw_panels_visually_inspected": [
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x448-y000.png"
+  ],
+  "zero_only_panels_verified_numerically": [
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x000-y000.png",
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x000-y448.png",
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x448-y448.png",
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x000-y896.png",
+    "tmp/local-review/phase2/train-s1-april/20250419/raw-quad-x448-y896.png"
+  ],
+  "masks_and_aoi_visually_inspected": true,
+  "scores_read": false,
+  "prediction_counts_read": false,
+  "prediction_geometries_read": false,
+  "detector_overlay_viewed": false,
+  "in_zone_confirmed_vessels": [],
+  "family": null,
+  "length_m": null,
+  "width_m": null,
+  "proposed_scope_policy": [
+    {
+      "zone_id": "pbr_canal",
+      "policy": "Restrict to observable water, eroded by two native pixels at internal nodata edge."
+    },
+    {
+      "zone_id": "stc_canal",
+      "policy": "Restrict to observable water, eroded by two native pixels at internal nodata edge."
+    },
+    {
+      "zone_id": "pbr_fondeo",
+      "policy": "Only a very small triangle is observed; inspect its size after two-pixel nodata guard and withdraw if no revisable interior remains."
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "slice-edge-and-uncovered-zones",
+      "decision": "not_observable",
+      "reason": "The scene contributes only the northeast retained core. All other retained core panels have zero target and context pixels; missing coverage is unknown, not a marine negative."
+    }
+  ],
+  "context_only_signatures": [
+    {
+      "id": "north-weak-return",
+      "canonical_pixel_bbox": [
+        597,
+        232,
+        619,
+        254
+      ],
+      "decision": "indeterminada",
+      "reason": "Weak paired VV contact also near a historical weak response; no resolved VH hull. It is east of the configured channels and north of the anchorage.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    }
+  ]
+}

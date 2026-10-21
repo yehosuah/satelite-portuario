@@ -1,0 +1,171 @@
+{
+  "captured_at": "2026-10-21T17:17:15.971740+00:00",
+  "purpose": "Stable checkpoint requested before reaching20% remaining weekly Codex usage. No new review rounds or training started for this close.",
+  "software": {
+    "pytest": "168 passed,506 deprecation warnings",
+    "ruff": "passed src tests scripts",
+    "javascript_syntax": "passed src/puertogt/web/app.js",
+    "git_diff_check": "passed",
+    "doctor": "operational",
+    "scientific_release_ready": false
+  },
+  "history": {
+    "states": {
+      "complete": 123,
+      "pending": 700,
+      "running": 1
+    },
+    "total_additional_acquisitions": 824,
+    "pid_at_capture": 95041,
+    "worker_alive": true,
+    "resume_command": ".venv/bin/python -u scripts/process_history.py run --max-acquisitions824 --threads4 --io-workers4 --priority-file data/history/full-v1/priorities.json",
+    "note": "Persistent local processing continues while this machine is available. Check worker/campaign lock before starting another worker. Models remain experimental."
+  },
+  "frozen_datasets": {
+    "s2_train": {
+      "created_at": "2026-10-21T17:09:48.754186Z",
+      "scope": "Immutable expanded TRAIN snapshot for a later experiment; no new performance claim. Original January experiment retained.",
+      "kind": "ai_visual_review",
+      "is_human_review": false,
+      "source": {
+        "path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+        "sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204",
+        "samples": 32
+      },
+      "train_crops": {
+        "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+        "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc",
+        "samples": 84
+      },
+      "unique_objects": 51,
+      "zone_label_instances": 53,
+      "objects_per_port": {
+        "prq": 48,
+        "pbr": 2,
+        "stc": 1
+      },
+      "target_acquisitions": 7,
+      "included_observations": [
+        "085473ac-108a-45cf-aa31-165bf89c5ae2",
+        "1039f334-a235-473a-acb1-dba7600a2def",
+        "1199164e-b975-4731-aa34-c6260656cee6",
+        "230de383-0bf2-41d4-85bd-29fd838f1ff8",
+        "2ef24623-5eef-4cbb-ae40-6cfd1347b200",
+        "43969e1b-1a19-48fb-b92e-83ddec3e9d92",
+        "52049cad-e7b9-4f92-875d-cb20c2ad2ad4",
+        "521bdbf5-50f6-410a-94d2-f7d7357e3f4e",
+        "53a1f203-5cac-4424-930a-5e2413b7b2d1",
+        "5492bebb-74f7-4b37-95a7-ecbf9d9c4bc8",
+        "556e10c1-71d5-4003-afc1-a1b1aeef81c8",
+        "56d3772c-9a57-4248-806c-f38fc97a0abd",
+        "598b66be-3025-4712-b75f-03b89281b7e8",
+        "66bd22d1-a4c3-4b60-9ea1-620cde565848",
+        "68d1ee20-e2eb-4dce-b924-443e335b498f",
+        "6afa12c6-99dd-421c-94f1-35796570608c",
+        "700e22d5-f4b7-4415-9ae5-de0c2f930344",
+        "70b1295f-6cbd-42af-bbb2-ab6adc64d9c1",
+        "78e1ccc2-cb86-4338-95ce-51ff2ac29d03",
+        "825ee35e-4b6c-4082-a9c8-d6cbbcc2705c",
+        "853d4a63-7b38-4b2e-bad3-d9ae173aef67",
+        "85d0981c-6071-40aa-a5c6-f199be10afc5",
+        "87dfa1eb-c920-4f98-ba05-0ec9fb4f2502",
+        "8b5883df-48b5-46f0-9861-fbbe37b9d76f",
+        "8bd32264-0629-4560-ba09-8e24d875e6a4",
+        "9ffd2f4a-aaf8-4bb3-885d-d7b21d534b03",
+        "b9376324-e854-46ac-b065-c78875a58dd3",
+        "cc40ce02-c4f1-4561-9e07-86e7324998dc",
+        "d012f5a4-f580-4650-9654-b5566616603b",
+        "d4817168-f757-4102-96e2-5912c7e086c5",
+        "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b",
+        "e812e31b-9dd3-4b32-9aee-c90c4007e91c"
+      ],
+      "applied_review": {
+        "path": "reports/local-review/phase2/train-s2-round2/applied.json",
+        "sha256": "61ffa3f9dcfecd4c82886164c9c354a8efbd61b59a654a4ad34cda3dd28a2265"
+      }
+    },
+    "s2_calibration": {
+      "created_at": "2026-10-21T17:14:14.379652Z",
+      "scope": "Frozen expanded calibration labels; reference support remains insufficient in Caribbean ports. ReserveOct20 and later dates are excluded pending adjudication. No new calibration metrics calculated.",
+      "kind": "ai_visual_review",
+      "is_human_review": false,
+      "source": {
+        "path": "data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source",
+        "sha256": "e73b528b7c662e3035c55556df75a8f179a081d48835db8f509971d4c1e6ace6",
+        "samples": 33
+      },
+      "unique_objects": 60,
+      "zone_label_instances": 61,
+      "objects_per_port": {
+        "prq": 50,
+        "pbr": 6,
+        "stc": 4
+      },
+      "target_acquisitions": 6,
+      "included_observations": [
+        "01a09841-444c-4996-83f1-15a70f4229ff",
+        "1746f4c7-ec29-47e3-8b91-e593d485c0d5",
+        "2125287f-8f9c-4c33-9b94-319e834e51c6",
+        "2946df55-6a36-4cfb-945f-5fe83bf281e5",
+        "3a68f587-e477-4ae7-81f4-e888afe66c35",
+        "45038680-fc4a-458e-9432-43d9191d8665",
+        "4613d900-42d1-4a10-bb27-ca131bed1cae",
+        "4e12d586-ee12-4039-8a57-1b5ca12aa9d4",
+        "505da65d-7352-4a0f-8ba0-e8ee410dbdcb",
+        "597df2d2-a648-4107-831a-e6dd271fee68",
+        "5f0775ea-5cb6-415b-958d-987f1eefc4bc",
+        "6fce416e-4d7d-4845-8512-eeac2d20d625",
+        "72dbadc4-c5cf-4fc1-a404-d339826a4f96",
+        "7bd90e3f-314a-4838-8968-df90ecaf15a6",
+        "7e392d25-b88f-4eba-87a9-2c0b5ce32324",
+        "9c666768-c890-4a67-84b3-9a13997ad6d2",
+        "a0bcfbd7-2103-4931-8bb4-3558ecf7f692",
+        "a182c9f4-9166-4c2e-b961-ea9243b9a76c",
+        "a9a38c23-6929-44ae-849e-7c2a1c85cfdd",
+        "aae8fd10-8e55-46f6-8fe4-37b99620eb8b",
+        "b0622ffc-1076-4e4d-a53d-b1b536817935",
+        "ba739d99-2f40-4e30-af5a-5a439fab1b44",
+        "bbf28ddd-5f88-4c7b-8770-8cb4c6c52f49",
+        "c13a5dd9-e54e-41f5-9de6-f0a65198896b",
+        "c8f3f36f-26e6-4311-954b-63a8e7998741",
+        "cf7eb9c9-b956-4a99-9514-4f471ff56499",
+        "d6d6b6f5-5964-41ba-939e-904c6cd80af3",
+        "da782680-1bfc-4f95-8c7f-673e822a67f9",
+        "dcda639a-e66a-4fdb-9ebd-5a9552408d73",
+        "e0bb7f17-65e6-4b87-a376-b56b2a7fc1e4",
+        "eed74307-2a65-44e1-95a8-3dabc30a83d0",
+        "f1daf655-2050-4ee1-b80f-5d20db5014cc",
+        "f4d9dfa8-7182-43c1-a30b-a8946fad00ce"
+      ],
+      "plans": [
+        {
+          "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/consolidated.json",
+          "sha256": "c8fe73c1f2caf6841cf623ee17aa26a3a34e2886065fb2ff5f01a1d79d0d71d5"
+        },
+        {
+          "path": "reports/local-review/phase2/calibration-s2-round2/consolidated-polygon-repair.json",
+          "sha256": "0fd79a138ef7078eea0fbdbbdb215c57c7707a6daf657226cba22b82c31989ec"
+        }
+      ]
+    }
+  },
+  "completed_experiment": "experiment-s2-round1-20261021/summary.json",
+  "calibration_result": "failed; no accepted threshold; test not opened",
+  "test_consumption_registry_exists": false,
+  "next_training_started": false,
+  "pending": [
+    "Train a new immutable experiment on expanded51-object set; January results must remain unchanged.",
+    "Finish root adjudication of reserveCaribe20; correspondence preserved pending.",
+    "S1 April/May1 proposals await root adjudication; later TRAIN dates retain fixed chronological order.",
+    "CAL round3 readiness only; temporary contacts were generated but not inspected.",
+    "Collect sufficient Caribbean positives and calibration/test support without changing fixed metrics.",
+    "Independent human validation and attribute/change references remain unavailable."
+  ],
+  "known_limitations": [
+    "AI visual labels are explicitly not human ground truth.",
+    "Some review scopes exclude unknown full detector footprints; claims apply only to retained reviewed scope.",
+    "Provisional AOIs do not cover all nearby marine activity; a future geography version must be independently defined.",
+    "Box-contract diagnostics identify upstream30px windows versus local visual hull boxes; IoU0.5 is unchanged.",
+    "Public experiment evidence omits large local weights and complete numeric datasets; frozen manifests retain original local paths and hashes."
+  ]
+}

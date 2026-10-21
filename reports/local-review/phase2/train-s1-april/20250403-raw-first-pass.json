@@ -1,0 +1,182 @@
+{
+  "schema_version": "raw_first_pass_v1",
+  "frozen_at": "2026-10-21T16:51:58.423857+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+  "captured_at": "2025-04-03T00:06:46.502996Z",
+  "raw_manifest_sha256": "56fd7830267bf3c8f99f87643ffcb15bb538690a63cc37cab1a55ebc82327cca",
+  "selection_execution_order": "reports/local-review/phase2/execution-order-v4.json",
+  "split": "train",
+  "raw_panels_visually_inspected": [
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x000-y000.png",
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x448-y000.png",
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x000-y448.png",
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x448-y448.png",
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x000-y896.png",
+    "tmp/local-review/phase2/train-s1-april/20250403/raw-quad-x448-y896.png"
+  ],
+  "zero_only_panels_verified_numerically": [],
+  "masks_and_aoi_visually_inspected": true,
+  "scores_read": false,
+  "prediction_counts_read": false,
+  "prediction_geometries_read": false,
+  "detector_overlay_viewed": false,
+  "in_zone_confirmed_vessels": [],
+  "family": null,
+  "length_m": null,
+  "width_m": null,
+  "proposed_scope_policy": [
+    {
+      "zone_id": "stc_fondeo",
+      "policy": "Only canonical pixel rectangle [250,416,350,440] is securely marine and visually reviewed. Preserve the rest as unknown; existing polygon mostly overlaps land."
+    },
+    {
+      "zone_id": "pbr_muelles",
+      "policy": "Exclude the whole waterfront footprint; unresolved mixed quay returns and sidelobes. Do not manufacture a thin negative remainder."
+    },
+    {
+      "zone_id": "pbr_canal",
+      "policy": "Preserve observable open-water area except terminal/interface uncertainty box [484,650,552,718]."
+    },
+    {
+      "zone_id": "pbr_patios",
+      "policy": "Retain terrestrial interior control, excluding interface uncertainty box [484,650,552,718]."
+    },
+    {
+      "zone_id": "stc_muelles",
+      "policy": "Exclude unresolved waterfront strip using the previously declared geometric line/buffer, independently rechecked in this capture; withdraw a remainder with no 5 m interior."
+    },
+    {
+      "zone_id": "stc_patios",
+      "policy": "Retain terrestrial interior control beyond the unresolved waterfront strip."
+    },
+    {
+      "zone_id": "stc_canal",
+      "policy": "No unequivocal vessel in the configured corridor; keep observable water scope."
+    },
+    {
+      "zone_id": "pbr_fondeo",
+      "policy": "No unequivocal vessel or ambiguous compact contact inside the inspected open-water box; retain observable scope."
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "pbr-pier-water-interface",
+      "canonical_pixel_bbox": [
+        484,
+        650,
+        552,
+        718
+      ],
+      "decision": "indeterminada",
+      "reason": "Mixed elongated target response and persistent pier returns, with vertical sidelobes. Target/context differences do not resolve a separate hull; no boat count or negative label in this footprint.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "stc-waterfront-interface",
+      "canonical_pixel_polygon": [
+        [
+          493.3426978737589,
+          1086.4807925903006
+        ],
+        [
+          480.65730212624476,
+          1061.5192074096994
+        ],
+        [
+          358.65730212624476,
+          1123.5192074096994
+        ],
+        [
+          371.3426978737589,
+          1148.4807925903006
+        ],
+        [
+          493.3426978737589,
+          1086.4807925903006
+        ]
+      ],
+      "decision": "indeterminada",
+      "reason": "Quay/land boundary and radar sidelobes overlap possible moored-vessel responses; no individual hull is distinguishable with sufficient confidence.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    }
+  ],
+  "context_only_signatures": [
+    {
+      "id": "north-west-return",
+      "canonical_pixel_bbox": [
+        326,
+        124,
+        343,
+        148
+      ],
+      "decision": "indeterminada",
+      "reason": "Compact VV response repeats near the same location in the historical image; VH does not distinguish a hull. Could be fixed or recurring maritime return; outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "north-centre-return",
+      "canonical_pixel_bbox": [
+        431,
+        211,
+        453,
+        239
+      ],
+      "decision": "indeterminada",
+      "reason": "Paired thin VV returns without corroborated hull in VH; possible vessel response and ambiguity lobe cannot be separated. Outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "west-channel-return",
+      "canonical_pixel_bbox": [
+        385,
+        389,
+        411,
+        414
+      ],
+      "decision": "indeterminada",
+      "reason": "Paired VV responses absent or weak in context; no resolved hull in VH and cannot decide one versus multiple objects. Outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "stc-offshore-response",
+      "canonical_pixel_bbox": [
+        409,
+        588,
+        426,
+        624
+      ],
+      "decision": "indeterminada",
+      "reason": "Strong VV point with long sidelobes and a nearby historical response; VH does not resolve the object. Outside configured zones; not counted as an in-zone positive.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "east-north-weak",
+      "canonical_pixel_bbox": [
+        711,
+        45,
+        727,
+        68
+      ],
+      "decision": "indeterminada",
+      "reason": "Weak VV streak with insufficient VH confirmation, outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    }
+  ]
+}

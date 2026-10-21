@@ -1,0 +1,1727 @@
+{
+  "schema_version": "phase2-raw-correspondence-review-v1",
+  "created_at": "2026-10-21T16:58:50.481140+00:00",
+  "status": "exhaustive_correspondence_pending_final_scope_adjudication",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "ready_for_consolidation": false,
+  "do_not_import_as_empty_labels": false,
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "selection": {
+    "split": "calibration",
+    "port_id": "stc",
+    "sensor": "sentinel-2",
+    "primary_ordinal_in_stratum": 3,
+    "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+    "changed_dates": false,
+    "selection_uses_predictions": false
+  },
+  "selection_sources": [
+    {
+      "path": "reports/local-review/phase2/sampling-plan.json",
+      "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+    },
+    {
+      "path": "reports/local-review/phase2/execution-order-v4.json",
+      "sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb"
+    },
+    {
+      "path": "reports/local-review/phase2/protocol.md",
+      "sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c"
+    }
+  ],
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589"
+  },
+  "proposal_exposure": {
+    "raw_reference_stage": {
+      "detection_table_queried": false,
+      "model_counts_seen": false,
+      "model_scores_seen": false,
+      "model_geometry_seen": false
+    },
+    "raw_references_frozen_before_catalog_read": true,
+    "catalog_read_at": "2026-10-21T16:54:17.865663+00:00",
+    "detection_table_queried": true,
+    "selected_columns": [
+      "detection_id",
+      "geometry_json",
+      "review_status"
+    ],
+    "model_scores_seen": false,
+    "model_geometry_seen": true,
+    "model_counts_seen_after_reference_freeze": true,
+    "performance_metrics_computed": false
+  },
+  "first_raw_notes": "Haze over bay/peninsula, terminal partly visible; enlarged all berths needed. Fondeo AOI land must be removed before negative scope.",
+  "first_raw_recorded_at": "2026-10-21T16:23:40.450481+00:00",
+  "reference_grid": {
+    "zone_id": "stc_canal",
+    "crs": "EPSG:32616",
+    "affine": [
+      10.0,
+      0.0,
+      322560.0,
+      0.0,
+      -10.0,
+      1747200.0
+    ]
+  },
+  "coordinate_convention": "Half-open pixel-edge boxes transformed to WGS84. No physical dimensions or subpixel accuracy asserted.",
+  "context_only_raw_assets": [
+    {
+      "path": "data/assets/cf7eb9c9-b956-4a99-9514-4f471ff56499/preview.png",
+      "sha256": "7697ab9b304140012fc06d8e1abd4572e2050501dab91fd18a092412607dd0d6",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+      "role": "Raw-only temporal context for quay structures; no labels, detector output, physical identity or measured change inferred."
+    },
+    {
+      "path": "data/assets/eed74307-2a65-44e1-95a8-3dabc30a83d0/preview.png",
+      "sha256": "f1e89a0706326634e37b0cc4d2acaa8cf99e20b415f0afe37b10b86f350a6b85",
+      "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+      "role": "Raw-only temporal context for quay structures; no labels, detector output, physical identity or measured change inferred."
+    },
+    {
+      "path": "data/assets/53a1f203-5cac-4424-930a-5e2413b7b2d1/preview.png",
+      "sha256": "2b2b8b84e3c6e257c3699d297426945e902a392fa017ce81f08d776a10d7a580",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "role": "Raw-only infrastructure context; not a calibration numeric input or a training label."
+    }
+  ],
+  "method": [
+    "All raw contacts inspected before model outputs; enlarged every explicit reviewable water/land scope and quay interface.",
+    "Only explicit manually authored boxes and exclusions. Original image bytes, masks and catalog status preserved.",
+    "Water-only polygons restrict maritime fondeo to independently inspected water; patios are separate terrestrial controls.",
+    "Cloud-mask disagreements are local visual positive windows requiring independent adjudication; no quiet status override.",
+    "Empty correspondence arrays are unclassified until later matching, never an empty-label dataset."
+  ],
+  "reference_objects": [],
+  "observations": [
+    {
+      "observation_id": "0a4e1d68-700f-4447-8f81-13782f5b68bf",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-17T16:13:01.025000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_final_scope_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/preview.png",
+        "sha256": "87721e649119f76a9371e028da21365f439d4f8fca777de05fdb62cb3775ccd5",
+        "width_px": 896,
+        "height_px": 1344,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "6ad9a0152a7e1464de527ba3a0ad4323",
+          "sha256": "040f7a9c781d3c5a9548d8e4b57b33d56b69f886bf4f94747b2e32d84977816b",
+          "size_bytes": 1675217,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B02.tif"
+        },
+        {
+          "asset_id": "26e05f407573e7a5f1f3faad77319f7d",
+          "sha256": "0ae5add835a74999c1332844a35a75a4e95f571e38226d3fe27c637a95727ecc",
+          "size_bytes": 1709188,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B03.tif"
+        },
+        {
+          "asset_id": "c159ae31ae878f9564c468a4f58cf407",
+          "sha256": "9bc26915d13a21322b9e34f4cb34cc19c229e5a70b046d3a35cb1bbe0495f35c",
+          "size_bytes": 1733716,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B04.tif"
+        },
+        {
+          "asset_id": "2eb35ee748c5420ef5a74a1ce3afbafd",
+          "sha256": "f2697aa9e37e4d3001bf84d9edd0708490901b4153be07edf6f5d990c5303ea6",
+          "size_bytes": 562342,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B05.tif"
+        },
+        {
+          "asset_id": "58d76354eba4fa3cb81f8d3cae93e509",
+          "sha256": "08744cc49c25bf684a4c5d1084145af4f6d9073b51c8085ba95f9b304120b203",
+          "size_bytes": 569348,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B06.tif"
+        },
+        {
+          "asset_id": "90721d072722469bae2c18796f203a9b",
+          "sha256": "13f3360b90101e9b5b66e53dd00b84fa83a97fd2971af2c1b901bf6b033935d8",
+          "size_bytes": 579788,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B07.tif"
+        },
+        {
+          "asset_id": "d3d162319ba424b15b9c424aa29a23b3",
+          "sha256": "031776680fb52706af598c25515efd8ca9ee9e15ad770d5eb152a9cf94a9df5e",
+          "size_bytes": 1917845,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B08.tif"
+        },
+        {
+          "asset_id": "faf23c9583ab1a70c9d0028b440d5da3",
+          "sha256": "4e321186db94bb2f32942fce4a7a6d9a72481aabdc0d7daa771f47471dd4678f",
+          "size_bytes": 580034,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B11.tif"
+        },
+        {
+          "asset_id": "281d797e41ec84130d8472a6304055dc",
+          "sha256": "2484c528d1768b72170a40f99a5708f37ae91186a0ac58ec54f259fdc8627490",
+          "size_bytes": 548861,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/B12.tif"
+        },
+        {
+          "asset_id": "c2be26dd449ce9b3fd083e09e521183e",
+          "sha256": "43ff99a801e8611c0cb567028a0413548fc6af525c675741d73fafae106d955c",
+          "size_bytes": 12965,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/cloud.tif"
+        },
+        {
+          "asset_id": "250f2a75a0aed222c813be7005a3afd7",
+          "sha256": "737cb9eb32a2146eb353838344d81280f031d8dc59021c596fe2e32839f2fd9b",
+          "size_bytes": 16413,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/cloud_classes.tif"
+        },
+        {
+          "asset_id": "00f59f27e440ad4bd2b68e793291f7a4",
+          "sha256": "24daa9d7105b0d09c68b6a91010b62ebaf34c59d4afbd68a976907b6cebd94fc",
+          "size_bytes": 10835,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/observable.tif"
+        },
+        {
+          "asset_id": "4967dd6198d4307622b9498eb853cb0f",
+          "sha256": "24daa9d7105b0d09c68b6a91010b62ebaf34c59d4afbd68a976907b6cebd94fc",
+          "size_bytes": 10835,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/potentially_observable.tif"
+        },
+        {
+          "asset_id": "8f1c96645ed4ba73ce938dc3515422c6",
+          "sha256": "87721e649119f76a9371e028da21365f439d4f8fca777de05fdb62cb3775ccd5",
+          "size_bytes": 1264850,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/preview.png"
+        },
+        {
+          "asset_id": "c03db46be3b99116a64c5ff7e9bceaf7",
+          "sha256": "7422aa60bff271e158e2ba9f5cf797f1b22e21ff40ccd1c821fd45c51776cad9",
+          "size_bytes": 7447,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/shadow.tif"
+        },
+        {
+          "asset_id": "174e1da0993f0c55924ce6466892f4e9",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+          "size_bytes": 8559,
+          "path": "data/assets/0a4e1d68-700f-4447-8f81-13782f5b68bf/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": null,
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "excluded_ambiguous_regions": [],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "Abstención operativa: ámbito nulo, sin etiquetas positivas ni negativas. Las referencias visibles de discrepancia de calidad, si existen, se preservan como no exportadas.",
+      "abstention_reason": "No hay ámbito marino/terrestre suficientemente observable para presencia o ausencia; no equivale a cero barcos.",
+      "coverage": {
+        "zone_center_pixels": 22543,
+        "automatic_observable_zone_center_pixels": 0,
+        "automatic_observable_area_m2": 0.0,
+        "reviewed_area_m2": 0.0,
+        "raw_visibility_reviewed_area_m2": 0.0,
+        "post_correspondence_removed_m2": 0.0
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-stc_canal-reference-scope.png",
+      "pre_correspondence_addenda": [],
+      "post_correspondence_scope_adjustments": [],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+        "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+        "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+      },
+      "correspondence_exhaustive_at": "2026-10-21T16:54:17.865663+00:00",
+      "raw_visual_summary": "Abstención completa; no es cero barcos.",
+      "scope_selection_conditioned_on_detector_geometry": false,
+      "conditioned_scope_limitation": null
+    },
+    {
+      "observation_id": "8a70f109-f398-4db6-a0cc-a686ea2cce90",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-17T16:13:01.025000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_final_scope_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/preview.png",
+        "sha256": "022dc24bc6fea236e0bbd039f428d4efb9dfce11a8a0c7621007c84e245737de",
+        "width_px": 448,
+        "height_px": 896,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "594147e2d20489d87d62015967e6380e",
+          "sha256": "8166e4dd83ab2607824209b1b65d4dfd098e60210e4c5c7f70ac624524ed2e18",
+          "size_bytes": 606926,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B02.tif"
+        },
+        {
+          "asset_id": "3e48c360260ce1ea0bb9415d79aa8b37",
+          "sha256": "6bebe47b7c123893f4243ec8ef050fcef4c444f5739cc13fe482ee17d8cbe0f6",
+          "size_bytes": 613660,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B03.tif"
+        },
+        {
+          "asset_id": "7754771405a2686473310b8b35bc84f1",
+          "sha256": "7df8e05867ac168edb7cf73bd3068c2fd6fa4022ac97500c9031deee139fe61c",
+          "size_bytes": 617676,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B04.tif"
+        },
+        {
+          "asset_id": "654402a4451b56d95a91b0ce3a0a373e",
+          "sha256": "92bfe950d588e1800d2b6bfdfdc51729604166cd7a161a91aee08db0d82b7c5e",
+          "size_bytes": 206152,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B05.tif"
+        },
+        {
+          "asset_id": "aec319e08b222b9a5990b4aff92ade15",
+          "sha256": "0d240ebae1d99948ff3d86ae96ef1365873aa8de966d81a85382a5460b5b9232",
+          "size_bytes": 216204,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B06.tif"
+        },
+        {
+          "asset_id": "6a5cb7dc732546863ada134d86f83cf0",
+          "sha256": "bd0b005e9e8abbc417d2d6327e6056bd9e250f057e5781c41148225c152ed33b",
+          "size_bytes": 219652,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B07.tif"
+        },
+        {
+          "asset_id": "67e24a201e22923ac85215af2faaa933",
+          "sha256": "2a9177f107ab636819611df2ba486d850b653c3e6a1e9bc3dd8dcee70c6231bf",
+          "size_bytes": 712944,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B08.tif"
+        },
+        {
+          "asset_id": "bba7c6acd18e965162a64fd6c320dc2b",
+          "sha256": "73d007a2a37d2464479de45780b9b2f84cf6a8f2336c2959510a215698661660",
+          "size_bytes": 210093,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B11.tif"
+        },
+        {
+          "asset_id": "9a3c3c946d97a262d0235ca410a32daa",
+          "sha256": "64c52db1954b534227b53e6c52817328b92609088fc146ce9aa6baa052aed16e",
+          "size_bytes": 199842,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/B12.tif"
+        },
+        {
+          "asset_id": "e1aba872096cef578fa501813dddbefc",
+          "sha256": "4731a88fcee9d5b65ea8ce713a777e5d10b0c8b68ed087b391e3b15ed13435ad",
+          "size_bytes": 2808,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/cloud.tif"
+        },
+        {
+          "asset_id": "9aec98e16df1fbf6562a5744d92d2cbc",
+          "sha256": "ec8a16c7602d0730ee3334cca529491a51879b82c5daf783b4680e627848a21e",
+          "size_bytes": 4351,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/cloud_classes.tif"
+        },
+        {
+          "asset_id": "f44c79114d6808052dae6d39c377f443",
+          "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec",
+          "size_bytes": 2320,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/observable.tif"
+        },
+        {
+          "asset_id": "2df9b55d53d262dd5ac6795d2515a151",
+          "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec",
+          "size_bytes": 2320,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/potentially_observable.tif"
+        },
+        {
+          "asset_id": "893b4542b7ea8dad321443862436fa63",
+          "sha256": "022dc24bc6fea236e0bbd039f428d4efb9dfce11a8a0c7621007c84e245737de",
+          "size_bytes": 409080,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/preview.png"
+        },
+        {
+          "asset_id": "3451c50359aaf73483f091b1c188ad81",
+          "sha256": "f0117502c00b0273521e1258b6d0f4f16d1891461154aae393abc48b307d1790",
+          "size_bytes": 2807,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/shadow.tif"
+        },
+        {
+          "asset_id": "dbbe037d00d285952f4eecadb8240611",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823",
+          "size_bytes": 2321,
+          "path": "data/assets/8a70f109-f398-4db6-a0cc-a686ea2cce90/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": null,
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "excluded_ambiguous_regions": [],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "Abstención operativa: ámbito nulo, sin etiquetas positivas ni negativas. Las referencias visibles de discrepancia de calidad, si existen, se preservan como no exportadas.",
+      "abstention_reason": "No hay ámbito marino/terrestre suficientemente observable para presencia o ausencia; no equivale a cero barcos.",
+      "coverage": {
+        "zone_center_pixels": 85391,
+        "automatic_observable_zone_center_pixels": 0,
+        "automatic_observable_area_m2": 0.0,
+        "reviewed_area_m2": 0.0,
+        "raw_visibility_reviewed_area_m2": 0.0,
+        "post_correspondence_removed_m2": 0.0
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-stc_fondeo-reference-scope.png",
+      "pre_correspondence_addenda": [],
+      "post_correspondence_scope_adjustments": [],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+        "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+        "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+      },
+      "correspondence_exhaustive_at": "2026-10-21T16:54:17.865663+00:00",
+      "raw_visual_summary": "Abstención completa; no es cero barcos.",
+      "scope_selection_conditioned_on_detector_geometry": false,
+      "conditioned_scope_limitation": null
+    },
+    {
+      "observation_id": "c6c470ad-d5c4-455b-9434-b80c5ebae8f7",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-17T16:13:01.025000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_final_scope_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/preview.png",
+        "sha256": "bedd175384e0fec744c742ebcc41408596765499105d106f3a7c4403902ff93b",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "35c8cf6f85c64227302f64de256cc3c0",
+          "sha256": "7394bc6dc5f20f9a28c703bcf31b4c69ce738f743923caed1887aaea10370506",
+          "size_bytes": 692657,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B02.tif"
+        },
+        {
+          "asset_id": "df205bee3110d8519389ab66a1af951d",
+          "sha256": "9b34ea46704691536fb9619baf95a23eda240f67da984240440a475aef9d8b81",
+          "size_bytes": 710938,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B03.tif"
+        },
+        {
+          "asset_id": "9f14336575c2ef31a88e2a9b982fad80",
+          "sha256": "945c9500d839e347b75582e2f9a0409dd529b654a5f4c503aa5030a42b54e615",
+          "size_bytes": 724564,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B04.tif"
+        },
+        {
+          "asset_id": "8ca70454920d40459cb82f078e7c05c7",
+          "sha256": "7fd5a91286dc263e028db104000c7a48297381226770343cd85b4a984ec18ef4",
+          "size_bytes": 230155,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B05.tif"
+        },
+        {
+          "asset_id": "f36f30b7cc7f3ca598543bbe456f56d9",
+          "sha256": "74e0bdf9c123764a1c08f00574cdefef18aac8caefc6c8aedf91faedb94ba98b",
+          "size_bytes": 227769,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B06.tif"
+        },
+        {
+          "asset_id": "f7807fb60dc24f638b26698123e39d1c",
+          "sha256": "a2337df184d113be1998024c5e4c642da5f0e086830b9744250a509888771b30",
+          "size_bytes": 231967,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B07.tif"
+        },
+        {
+          "asset_id": "2d73004b6760959a3edadc6757c9f1eb",
+          "sha256": "437fa82d544c23e668f59138e322e09a0d1fe8a13d07f5be1e1e14999dbb84c0",
+          "size_bytes": 793842,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B08.tif"
+        },
+        {
+          "asset_id": "09c0478f0b8dc5431c0a979b76b9b7ec",
+          "sha256": "fff242e5f3513a697d404b13271d1cda927f3dc1b363ac346f1a15a52df88685",
+          "size_bytes": 240803,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B11.tif"
+        },
+        {
+          "asset_id": "270f7ebaf50d3a25a2d30a036e70a8c0",
+          "sha256": "6d93da60f63124f4c53203145ae1c93e86c6a64ca7c78f296e79ff51e277c8fd",
+          "size_bytes": 226880,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/B12.tif"
+        },
+        {
+          "asset_id": "12a0197197dfc1a06cf9184cc292434e",
+          "sha256": "47d83909dcc6f0d0d3d8ad884d458aacdba27bb09b736c99bc63d767b2b013af",
+          "size_bytes": 5916,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/cloud.tif"
+        },
+        {
+          "asset_id": "f7a84d7a3ed2872da8c23c0d662751bb",
+          "sha256": "1e46c25f8b82e23df3544e703c4596bcc561bce24bb719c0e0c665d9fbc8a237",
+          "size_bytes": 6461,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/cloud_classes.tif"
+        },
+        {
+          "asset_id": "63962a63c07f956f7a662ff49ef854d2",
+          "sha256": "8d10ce433207fc6feebbda9bf52a04ca054d1181f327f25c2e394a2f14c11ddd",
+          "size_bytes": 6283,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/observable.tif"
+        },
+        {
+          "asset_id": "ff7ddf477278c29a8094b8bbc5fb27c2",
+          "sha256": "8d10ce433207fc6feebbda9bf52a04ca054d1181f327f25c2e394a2f14c11ddd",
+          "size_bytes": 6283,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/potentially_observable.tif"
+        },
+        {
+          "asset_id": "c46f6848edbadc3d7a07019fc524220d",
+          "sha256": "bedd175384e0fec744c742ebcc41408596765499105d106f3a7c4403902ff93b",
+          "size_bytes": 591760,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/preview.png"
+        },
+        {
+          "asset_id": "699bbd48ef7a41ec47d446c0da4bc304",
+          "sha256": "9f5628376a0f1a7de751a1458b8db08b20efad8fc10025dd7cf0f5f8e3bba05a",
+          "size_bytes": 2942,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/shadow.tif"
+        },
+        {
+          "asset_id": "ed85182ba0b1952080ceb64f65ef1236",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "path": "data/assets/c6c470ad-d5c4-455b-9434-b80c5ebae8f7/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": null,
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "commercial-quay-interface",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.620394,
+                  15.6944446
+                ],
+                [
+                  -88.6209721400158,
+                  15.69560088003159
+                ],
+                [
+                  -88.61650764188873,
+                  15.69780477459264
+                ],
+                [
+                  -88.61649767017917,
+                  15.696539631641587
+                ],
+                [
+                  -88.61615815379528,
+                  15.696542141078204
+                ],
+                [
+                  -88.61435894379183,
+                  15.697433088649994
+                ],
+                [
+                  -88.61436412870863,
+                  15.69809178985545
+                ],
+                [
+                  -88.61594997256984,
+                  15.698080067434928
+                ],
+                [
+                  -88.6140913740104,
+                  15.698997562557505
+                ],
+                [
+                  -88.61408283857328,
+                  15.697913115942772
+                ],
+                [
+                  -88.6133790694303,
+                  15.697918310876071
+                ],
+                [
+                  -88.620394,
+                  15.6944446
+                ]
+              ]
+            ]
+          },
+          "reason": "Interfaz de muelle, sombras y objetos pequeños no separables con certeza; se conservan solo ventanas de casco inequívoco.",
+          "label_status": "unknown_excluded"
+        }
+      ],
+      "visual_mask_disagreement_extensions": [
+        {
+          "visual_id": "V01",
+          "scope_extension_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61435894379183,
+                  15.697433088649994
+                ],
+                [
+                  -88.61615815379528,
+                  15.696542141078204
+                ],
+                [
+                  -88.61649767017917,
+                  15.696539631641587
+                ],
+                [
+                  -88.61650977909933,
+                  15.698075929393529
+                ],
+                [
+                  -88.61436412870863,
+                  15.69809178985545
+                ],
+                [
+                  -88.61435894379183,
+                  15.697433088649994
+                ]
+              ]
+            ]
+          },
+          "reason": "Casco visible revisado directamente antes de consultar propuestas; ventana local de un píxel. No altera máscara ni estado automático.",
+          "automatic_mask_disagreement": true,
+          "additional_area_m2": 29699.38618822337,
+          "requires_independent_adjudication": true
+        },
+        {
+          "visual_id": "V02",
+          "scope_extension_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61408283857328,
+                  15.697913115942772
+                ],
+                [
+                  -88.61409350786994,
+                  15.69926867424486
+                ],
+                [
+                  -88.6133063924472,
+                  15.699274484894408
+                ],
+                [
+                  -88.6127773,
+                  15.6982163
+                ],
+                [
+                  -88.6133790694303,
+                  15.697918310876071
+                ],
+                [
+                  -88.61408283857328,
+                  15.697913115942772
+                ]
+              ]
+            ]
+          },
+          "reason": "Casco visible revisado directamente antes de consultar propuestas; ventana local de un píxel. No altera máscara ni estado automático.",
+          "automatic_mask_disagreement": true,
+          "additional_area_m2": 16697.36322784847,
+          "requires_independent_adjudication": true
+        }
+      ],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "Abstención operativa: ámbito nulo, sin etiquetas positivas ni negativas. Las referencias visibles de discrepancia de calidad, si existen, se preservan como no exportadas.",
+      "abstention_reason": "Máscara de observabilidad automática completamente nula. Las firmas visibles se conservan como evidencia de discrepancia de calidad; no se fuerza estado usable ni se exportan etiquetas fuera del dominio operativo válido.",
+      "coverage": {
+        "zone_center_pixels": 2255,
+        "automatic_observable_zone_center_pixels": 0,
+        "automatic_observable_area_m2": 0.0,
+        "reviewed_area_m2": 0.0,
+        "raw_visibility_only_reviewed_area_m2": 46396.74941607184,
+        "raw_visibility_reviewed_area_m2": 46396.74046206889,
+        "post_correspondence_removed_m2": 0.0
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-stc_muelles-reference-scope.png",
+      "raw_visual_references_not_exported": [
+        {
+          "visual_id": "V01",
+          "unique_physical_object_key": "stc-20251017-s2-v01",
+          "visual_assessment": "vessel_presence_proposed",
+          "reason": "Casco blanco alargado en tramo central del atraque comercial, diferenciable de los techos terrestres aunque con velo.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61445670648388,
+                  15.698000730166289
+                ],
+                [
+                  -88.61444603569329,
+                  15.696645171950843
+                ],
+                [
+                  -88.61640509399203,
+                  15.696630692059983
+                ],
+                [
+                  -88.6164157777174,
+                  15.697986248962495
+                ],
+                [
+                  -88.61445670648388,
+                  15.698000730166289
+                ]
+              ]
+            ]
+          },
+          "suggested_visual_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61445670648388,
+                  15.698000730166289
+                ],
+                [
+                  -88.61444603569329,
+                  15.696645171950843
+                ],
+                [
+                  -88.61640509399203,
+                  15.696630692059983
+                ],
+                [
+                  -88.6164157777174,
+                  15.697986248962495
+                ],
+                [
+                  -88.61445670648388,
+                  15.698000730166289
+                ]
+              ]
+            ]
+          },
+          "suggested_visual_localization": {
+            "pixel_box": [
+              422,
+              1101,
+              443,
+              1116
+            ],
+            "reference_grid": "stc_canal",
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61445670648388,
+                    15.698000730166289
+                  ],
+                  [
+                    -88.61444603569329,
+                    15.696645171950843
+                  ],
+                  [
+                    -88.61640509399203,
+                    15.696630692059983
+                  ],
+                  [
+                    -88.6164157777174,
+                    15.697986248962495
+                  ],
+                  [
+                    -88.61445670648388,
+                    15.698000730166289
+                  ]
+                ]
+              ]
+            },
+            "boundary_uncertainty_pixels": 2
+          },
+          "zone_ids_by_centroid": [
+            "stc_muelles"
+          ],
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "model_score_used": false
+        },
+        {
+          "visual_id": "V02",
+          "unique_physical_object_key": "stc-20251017-s2-v02",
+          "visual_assessment": "vessel_presence_proposed",
+          "reason": "Casco rojizo continuo en atraque noreste con borde en agua, separado de la cubierta fija del terminal.",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61241358107321,
+                  15.699190700303209
+                ],
+                [
+                  -88.61240434395908,
+                  15.698015882134058
+                ],
+                [
+                  -88.61399026065173,
+                  15.698004175486089
+                ],
+                [
+                  -88.61399950684164,
+                  15.699178992735366
+                ],
+                [
+                  -88.61241358107321,
+                  15.699190700303209
+                ]
+              ]
+            ]
+          },
+          "suggested_visual_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61241358107321,
+                  15.699190700303209
+                ],
+                [
+                  -88.61240434395908,
+                  15.698015882134058
+                ],
+                [
+                  -88.61399026065173,
+                  15.698004175486089
+                ],
+                [
+                  -88.61399950684164,
+                  15.699178992735366
+                ],
+                [
+                  -88.61241358107321,
+                  15.699190700303209
+                ]
+              ]
+            ]
+          },
+          "suggested_visual_localization": {
+            "pixel_box": [
+              448,
+              1088,
+              465,
+              1101
+            ],
+            "reference_grid": "stc_canal",
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61241358107321,
+                    15.699190700303209
+                  ],
+                  [
+                    -88.61240434395908,
+                    15.698015882134058
+                  ],
+                  [
+                    -88.61399026065173,
+                    15.698004175486089
+                  ],
+                  [
+                    -88.61399950684164,
+                    15.699178992735366
+                  ],
+                  [
+                    -88.61241358107321,
+                    15.699190700303209
+                  ]
+                ]
+              ]
+            },
+            "boundary_uncertainty_pixels": 2
+          },
+          "zone_ids_by_centroid": [
+            "stc_muelles"
+          ],
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "model_score_used": false
+        }
+      ],
+      "raw_visibility_only_reviewed_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -88.61615815379528,
+                15.696542141078204
+              ],
+              [
+                -88.61649767017917,
+                15.696539631641587
+              ],
+              [
+                -88.61650977909933,
+                15.698075929393529
+              ],
+              [
+                -88.61436412870863,
+                15.69809178985545
+              ],
+              [
+                -88.61435894379183,
+                15.697433088649994
+              ],
+              [
+                -88.61615815379528,
+                15.696542141078204
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -88.61408283857328,
+                15.697913115942772
+              ],
+              [
+                -88.61409350786994,
+                15.69926867424486
+              ],
+              [
+                -88.6133063924472,
+                15.699274484894408
+              ],
+              [
+                -88.6127773,
+                15.6982163
+              ],
+              [
+                -88.6133790694303,
+                15.697918310876071
+              ],
+              [
+                -88.61408283857328,
+                15.697913115942772
+              ]
+            ]
+          ]
+        ]
+      },
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+        "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+      },
+      "automatic_status_preserved": true,
+      "operational_positive_labels": 0,
+      "operational_negative_labels": 0,
+      "pre_correspondence_addenda": [
+        {
+          "path": "reports/local-review/phase2/calibration-s2-round2/caribe-20251017-operative-abstention-addendum.json",
+          "sha256": "04ba0fbb85383206b9c719e75c2aacce6e5b336f449c7d877394e916e6f5e753"
+        }
+      ],
+      "post_correspondence_scope_adjustments": [],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+        "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+      },
+      "correspondence_exhaustive_at": "2026-10-21T16:54:17.865663+00:00",
+      "raw_visual_summary": "2 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas.",
+      "scope_selection_conditioned_on_detector_geometry": false,
+      "conditioned_scope_limitation": null
+    },
+    {
+      "observation_id": "5bc4c339-2b00-4170-9717-6c2b5606939c",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-17T16:13:01.025000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_final_scope_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/preview.png",
+        "sha256": "bedd175384e0fec744c742ebcc41408596765499105d106f3a7c4403902ff93b",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "fad31270e40fdf566193e1607190159f",
+          "sha256": "7394bc6dc5f20f9a28c703bcf31b4c69ce738f743923caed1887aaea10370506",
+          "size_bytes": 692657,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B02.tif"
+        },
+        {
+          "asset_id": "3c9a221171305ec9af7042d742a49af1",
+          "sha256": "9b34ea46704691536fb9619baf95a23eda240f67da984240440a475aef9d8b81",
+          "size_bytes": 710938,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B03.tif"
+        },
+        {
+          "asset_id": "bb742305bbf029380274a6ddb3029c38",
+          "sha256": "945c9500d839e347b75582e2f9a0409dd529b654a5f4c503aa5030a42b54e615",
+          "size_bytes": 724564,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B04.tif"
+        },
+        {
+          "asset_id": "dea03d084fba471e674599ff754d289e",
+          "sha256": "7fd5a91286dc263e028db104000c7a48297381226770343cd85b4a984ec18ef4",
+          "size_bytes": 230155,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B05.tif"
+        },
+        {
+          "asset_id": "1e8b7b7b677e784346ccbb2fad474ca5",
+          "sha256": "74e0bdf9c123764a1c08f00574cdefef18aac8caefc6c8aedf91faedb94ba98b",
+          "size_bytes": 227769,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B06.tif"
+        },
+        {
+          "asset_id": "5feb6eac02b21234325086bd3a2eaa6e",
+          "sha256": "a2337df184d113be1998024c5e4c642da5f0e086830b9744250a509888771b30",
+          "size_bytes": 231967,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B07.tif"
+        },
+        {
+          "asset_id": "26707a5478b9748a7d4a2595f564b44f",
+          "sha256": "437fa82d544c23e668f59138e322e09a0d1fe8a13d07f5be1e1e14999dbb84c0",
+          "size_bytes": 793842,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B08.tif"
+        },
+        {
+          "asset_id": "a5fb963df06d16f19f1c215d2929d2a8",
+          "sha256": "fff242e5f3513a697d404b13271d1cda927f3dc1b363ac346f1a15a52df88685",
+          "size_bytes": 240803,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B11.tif"
+        },
+        {
+          "asset_id": "653a414558052a536d8704742e39dbd7",
+          "sha256": "6d93da60f63124f4c53203145ae1c93e86c6a64ca7c78f296e79ff51e277c8fd",
+          "size_bytes": 226880,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/B12.tif"
+        },
+        {
+          "asset_id": "da0d58795b513d81a4e0629ae6b53c55",
+          "sha256": "47d83909dcc6f0d0d3d8ad884d458aacdba27bb09b736c99bc63d767b2b013af",
+          "size_bytes": 5916,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/cloud.tif"
+        },
+        {
+          "asset_id": "e54908275418256a58b5774e403a124d",
+          "sha256": "1e46c25f8b82e23df3544e703c4596bcc561bce24bb719c0e0c665d9fbc8a237",
+          "size_bytes": 6461,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/cloud_classes.tif"
+        },
+        {
+          "asset_id": "f9537c3272ea32a8e75a1f98d086dc00",
+          "sha256": "8d10ce433207fc6feebbda9bf52a04ca054d1181f327f25c2e394a2f14c11ddd",
+          "size_bytes": 6283,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/observable.tif"
+        },
+        {
+          "asset_id": "75d121548bfdd94e0cc6e4af0a90c5af",
+          "sha256": "8d10ce433207fc6feebbda9bf52a04ca054d1181f327f25c2e394a2f14c11ddd",
+          "size_bytes": 6283,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/potentially_observable.tif"
+        },
+        {
+          "asset_id": "b17cd7e83e8f3529849ad9eeefdf34c5",
+          "sha256": "bedd175384e0fec744c742ebcc41408596765499105d106f3a7c4403902ff93b",
+          "size_bytes": 591760,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/preview.png"
+        },
+        {
+          "asset_id": "11329b3fe13dc729354bf7727e51b062",
+          "sha256": "9f5628376a0f1a7de751a1458b8db08b20efad8fc10025dd7cf0f5f8e3bba05a",
+          "size_bytes": 2942,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/shadow.tif"
+        },
+        {
+          "asset_id": "96c1542f37b66a8dbe869aefd11091f8",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "path": "data/assets/5bc4c339-2b00-4170-9717-6c2b5606939c/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": null,
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "excluded_ambiguous_regions": [],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "Abstención operativa: ámbito nulo, sin etiquetas positivas ni negativas. Las referencias visibles de discrepancia de calidad, si existen, se preservan como no exportadas.",
+      "abstention_reason": "No hay ámbito marino/terrestre suficientemente observable para presencia o ausencia; no equivale a cero barcos.",
+      "coverage": {
+        "zone_center_pixels": 3281,
+        "automatic_observable_zone_center_pixels": 0,
+        "automatic_observable_area_m2": 0.0,
+        "reviewed_area_m2": 0.0,
+        "raw_visibility_reviewed_area_m2": 0.0,
+        "post_correspondence_removed_m2": 0.0
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-stc_patios-reference-scope.png",
+      "pre_correspondence_addenda": [],
+      "post_correspondence_scope_adjustments": [],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+        "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+        "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+      },
+      "correspondence_exhaustive_at": "2026-10-21T16:54:17.865663+00:00",
+      "raw_visual_summary": "Abstención completa; no es cero barcos.",
+      "scope_selection_conditioned_on_detector_geometry": false,
+      "conditioned_scope_limitation": null
+    }
+  ],
+  "unresolved_raw_objects": [],
+  "summary": {
+    "observations": 4,
+    "unique_acquisitions": 1,
+    "unique_proposed_visual_references": 0,
+    "positive_zone_instances": 0,
+    "reviewable_observations": 0,
+    "abstaining_observations": 4,
+    "independent_target_passes": 1,
+    "all_registered_asset_hashes_verified": true,
+    "human_ground_truth": false,
+    "existing_catalog_proposals": 0,
+    "proposed_acceptances": 0,
+    "proposed_additions": 0,
+    "rejected_proposals": 0,
+    "indeterminate_proposals": 0,
+    "performance_metrics_computed": false,
+    "raw_visual_reference_count_preserved": 2,
+    "nonexported_quality_disagreement_references": 2
+  },
+  "limitations": [
+    "AI raw review, pending independent second review/adjudication.",
+    "Unknown quay/shore/cloud regions are not negative labels.",
+    "Small-vessel completeness unestablished at 10 m; family and dimensions null.",
+    "Multiple zones from the same acquisition are not independent passes.",
+    "No training, inference, performance metrics or test inspection performed."
+  ],
+  "consolidation_schema_complete": true,
+  "requires_final_scope_adjudication": false,
+  "raw_reference_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+    "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35"
+  },
+  "raw_reference_created_at": "2026-10-21T16:42:16.491046+00:00",
+  "second_raw_review_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+    "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+  },
+  "catalog_correspondence_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/correspondence/catalog-correspondence-snapshot.json",
+    "sha256": "c0a1a92cf0e3a9759e8838000583cee075211672bfca4ba6cbe726bddae48106"
+  },
+  "post_correspondence_scope_adjustments": [],
+  "pre_correspondence_addenda": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/caribe-20251017-operative-abstention-addendum.json",
+      "sha256": "04ba0fbb85383206b9c719e75c2aacce6e5b336f449c7d877394e916e6f5e753"
+    }
+  ],
+  "scope_selection_conditioned_on_detector_geometry": false,
+  "conditioned_scope_limitation": null,
+  "raw_reference_objects": [
+    {
+      "visual_id": "V01",
+      "unique_physical_object_key": "stc-20251017-s2-v01",
+      "visual_assessment": "vessel_presence_proposed",
+      "reason": "Casco blanco alargado en tramo central del atraque comercial, diferenciable de los techos terrestres aunque con velo.",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ],
+            [
+              -88.61444603569329,
+              15.696645171950843
+            ],
+            [
+              -88.61640509399203,
+              15.696630692059983
+            ],
+            [
+              -88.6164157777174,
+              15.697986248962495
+            ],
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ],
+            [
+              -88.61444603569329,
+              15.696645171950843
+            ],
+            [
+              -88.61640509399203,
+              15.696630692059983
+            ],
+            [
+              -88.6164157777174,
+              15.697986248962495
+            ],
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_localization": {
+        "pixel_box": [
+          422,
+          1101,
+          443,
+          1116
+        ],
+        "reference_grid": "stc_canal",
+        "geometry_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61445670648388,
+                15.698000730166289
+              ],
+              [
+                -88.61444603569329,
+                15.696645171950843
+              ],
+              [
+                -88.61640509399203,
+                15.696630692059983
+              ],
+              [
+                -88.6164157777174,
+                15.697986248962495
+              ],
+              [
+                -88.61445670648388,
+                15.698000730166289
+              ]
+            ]
+          ]
+        },
+        "boundary_uncertainty_pixels": 2
+      },
+      "zone_ids_by_centroid": [
+        "stc_muelles"
+      ],
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "model_score_used": false
+    },
+    {
+      "visual_id": "V02",
+      "unique_physical_object_key": "stc-20251017-s2-v02",
+      "visual_assessment": "vessel_presence_proposed",
+      "reason": "Casco rojizo continuo en atraque noreste con borde en agua, separado de la cubierta fija del terminal.",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ],
+            [
+              -88.61240434395908,
+              15.698015882134058
+            ],
+            [
+              -88.61399026065173,
+              15.698004175486089
+            ],
+            [
+              -88.61399950684164,
+              15.699178992735366
+            ],
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ],
+            [
+              -88.61240434395908,
+              15.698015882134058
+            ],
+            [
+              -88.61399026065173,
+              15.698004175486089
+            ],
+            [
+              -88.61399950684164,
+              15.699178992735366
+            ],
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_localization": {
+        "pixel_box": [
+          448,
+          1088,
+          465,
+          1101
+        ],
+        "reference_grid": "stc_canal",
+        "geometry_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61241358107321,
+                15.699190700303209
+              ],
+              [
+                -88.61240434395908,
+                15.698015882134058
+              ],
+              [
+                -88.61399026065173,
+                15.698004175486089
+              ],
+              [
+                -88.61399950684164,
+                15.699178992735366
+              ],
+              [
+                -88.61241358107321,
+                15.699190700303209
+              ]
+            ]
+          ]
+        },
+        "boundary_uncertainty_pixels": 2
+      },
+      "zone_ids_by_centroid": [
+        "stc_muelles"
+      ],
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "model_score_used": false
+    }
+  ],
+  "nonexported_raw_reference_objects": [
+    {
+      "visual_id": "V01",
+      "unique_physical_object_key": "stc-20251017-s2-v01",
+      "visual_assessment": "vessel_presence_proposed",
+      "reason": "Casco blanco alargado en tramo central del atraque comercial, diferenciable de los techos terrestres aunque con velo.",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ],
+            [
+              -88.61444603569329,
+              15.696645171950843
+            ],
+            [
+              -88.61640509399203,
+              15.696630692059983
+            ],
+            [
+              -88.6164157777174,
+              15.697986248962495
+            ],
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ],
+            [
+              -88.61444603569329,
+              15.696645171950843
+            ],
+            [
+              -88.61640509399203,
+              15.696630692059983
+            ],
+            [
+              -88.6164157777174,
+              15.697986248962495
+            ],
+            [
+              -88.61445670648388,
+              15.698000730166289
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_localization": {
+        "pixel_box": [
+          422,
+          1101,
+          443,
+          1116
+        ],
+        "reference_grid": "stc_canal",
+        "geometry_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61445670648388,
+                15.698000730166289
+              ],
+              [
+                -88.61444603569329,
+                15.696645171950843
+              ],
+              [
+                -88.61640509399203,
+                15.696630692059983
+              ],
+              [
+                -88.6164157777174,
+                15.697986248962495
+              ],
+              [
+                -88.61445670648388,
+                15.698000730166289
+              ]
+            ]
+          ]
+        },
+        "boundary_uncertainty_pixels": 2
+      },
+      "zone_ids_by_centroid": [
+        "stc_muelles"
+      ],
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "model_score_used": false
+    },
+    {
+      "visual_id": "V02",
+      "unique_physical_object_key": "stc-20251017-s2-v02",
+      "visual_assessment": "vessel_presence_proposed",
+      "reason": "Casco rojizo continuo en atraque noreste con borde en agua, separado de la cubierta fija del terminal.",
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ],
+            [
+              -88.61240434395908,
+              15.698015882134058
+            ],
+            [
+              -88.61399026065173,
+              15.698004175486089
+            ],
+            [
+              -88.61399950684164,
+              15.699178992735366
+            ],
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ],
+            [
+              -88.61240434395908,
+              15.698015882134058
+            ],
+            [
+              -88.61399026065173,
+              15.698004175486089
+            ],
+            [
+              -88.61399950684164,
+              15.699178992735366
+            ],
+            [
+              -88.61241358107321,
+              15.699190700303209
+            ]
+          ]
+        ]
+      },
+      "suggested_visual_localization": {
+        "pixel_box": [
+          448,
+          1088,
+          465,
+          1101
+        ],
+        "reference_grid": "stc_canal",
+        "geometry_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61241358107321,
+                15.699190700303209
+              ],
+              [
+                -88.61240434395908,
+                15.698015882134058
+              ],
+              [
+                -88.61399026065173,
+                15.698004175486089
+              ],
+              [
+                -88.61399950684164,
+                15.699178992735366
+              ],
+              [
+                -88.61241358107321,
+                15.699190700303209
+              ]
+            ]
+          ]
+        },
+        "boundary_uncertainty_pixels": 2
+      },
+      "zone_ids_by_centroid": [
+        "stc_muelles"
+      ],
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "model_score_used": false
+    }
+  ],
+  "raw_stage_summary": {
+    "observations": 4,
+    "unique_acquisitions": 1,
+    "unique_proposed_visual_references": 2,
+    "positive_zone_instances": 2,
+    "reviewable_observations": 1,
+    "abstaining_observations": 3,
+    "independent_target_passes": 1,
+    "all_registered_asset_hashes_verified": true,
+    "human_ground_truth": false,
+    "model_performance_not_observed": true
+  },
+  "consolidation_notes": [
+    "Propuestas y referencias operativas enumeradas exhaustivamente, sin métricas de precisión, recall, IoU o umbrales.",
+    "Cajas raw intactas; cuatro firmas Caribe17 se conservan aparte como discrepancia de calidad no exportada.",
+    "Los dos candidatos indeterminados quedan sin rechazo y fuera del ámbito tras addendum condicionado por detector +10 m; ese ámbito no permite afirmar precisión incondicional.",
+    "No se modificó la base de datos. Root debe adjudicar los dos ámbitos derivados antes de aplicar."
+  ]
+}

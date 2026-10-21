@@ -1,0 +1,83 @@
+{
+  "schema_version": "phase2-calibration-test-readiness-v1",
+  "checked_at": "2026-10-21T16:23:22.050352Z",
+  "metadata_snapshot": {
+    "path": "reports/local-review/phase2/s2-test-round1-evidence.json",
+    "sha256": "c16d309472256ab68933ceb7ad906c4d90ddb1eb746658aa7523580b8cfc8fde",
+    "created_at": "2026-10-21T16:01:17.794570Z"
+  },
+  "round1_summary": [
+    {
+      "split": "calibration",
+      "sensor": "sentinel-1",
+      "assignments": 6,
+      "acquisitions": 4,
+      "observations": 19,
+      "statuses": {
+        "usable": 16,
+        "partial": 3
+      }
+    },
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "assignments": 6,
+      "acquisitions": 4,
+      "observations": 24,
+      "statuses": {
+        "unusable": 13,
+        "partial": 7,
+        "usable": 4
+      }
+    },
+    {
+      "split": "test",
+      "sensor": "sentinel-1",
+      "assignments": 6,
+      "acquisitions": 4,
+      "observations": 14,
+      "statuses": {
+        "partial": 6,
+        "usable": 8
+      }
+    },
+    {
+      "split": "test",
+      "sensor": "sentinel-2",
+      "assignments": 6,
+      "acquisitions": 4,
+      "observations": 24,
+      "statuses": {
+        "usable": 15,
+        "partial": 9
+      }
+    }
+  ],
+  "s2_test": {
+    "native_raw_review_status": "locked_pending_independent_adjudication",
+    "raw_reference_lock": {
+      "path": "reports/local-review/phase2/s2-test-round1-raw-reference-lock.json",
+      "sha256": "5f2e6a02a14dbd4a60fddba7346619ebed7e457fd92f98b494847890ce72b0b9"
+    },
+    "source_assets_verified": 384,
+    "observations": 24,
+    "acquisitions": 4
+  },
+  "existing_frozen_manifest_paths_only_no_label_content_read": [
+    "data/datasets/phase2-reviews/prq-20250103-s2-v1/source/manifest.json",
+    "data/datasets/phase2-reviews/prq-20250103-s2-v1/train-crops/manifest.json",
+    "data/datasets/phase2-reviews/s1-january-v1/source/manifest.json",
+    "data/datasets/phase2-reviews/s1-january-v1/train-crops/manifest.json",
+    "data/datasets/phase2-reviews/s1-january-v1/train-crops-v2/manifest.json",
+    "data/datasets/phase2-reviews/s2-calibration-round1-v1/source/manifest.json",
+    "data/datasets/phase2-reviews/s2-january-v1/source/manifest.json",
+    "data/datasets/phase2-reviews/s2-january-v1/train-crops/manifest.json"
+  ],
+  "frozen_calibration_test_manifest_present": false,
+  "new_calibration_reserve_order": {
+    "path": "reports/local-review/phase2/execution-order-v4.json",
+    "sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb"
+  },
+  "detector_metrics_computed": false,
+  "source_or_database_writes": false
+}

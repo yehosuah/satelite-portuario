@@ -1,0 +1,93 @@
+{
+  "created_at": "2026-10-21T16:44:45.883151+00:00",
+  "author": "codex-ai-model-pilot",
+  "stage": "raw_only_before_correspondence",
+  "checks": {
+    "raw_initial_checksums_verified": true,
+    "evidence_asset_hashes_verified": 384,
+    "unique_visual_objects": 39,
+    "positive_zone_instances": 40,
+    "reviewable_observations": 18,
+    "abstaining_observations": 6,
+    "scope_geometries_valid": true,
+    "negative_regions_exclude_all_positive_boxes": true,
+    "context_raw_hashes_verified": true,
+    "no_model_outputs_seen": true,
+    "no_metrics_computed": true,
+    "no_db_or_source_changes": true
+  },
+  "reports": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/pbr-20251017-s2-raw-review.json",
+      "sha256": "fee1a4d61c999a1d47300d913ba80b7af1c71fc2d1cc2239a93da0dce07ed8c0",
+      "port_id": "pbr",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "unique_visual_objects": 2,
+      "positive_instances_by_zone": {
+        "pbr_muelles": 2
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/pbr-20251025-s2-raw-review.json",
+      "sha256": "f8261d38ea119d86b84ac3d8cd4d8d1ff08eaeeb312cd9832d4557188de008d9",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+      "unique_visual_objects": 2,
+      "positive_instances_by_zone": {
+        "pbr_muelles": 2
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251020-s2-raw-review.json",
+      "sha256": "be217c165b778c616ec41575485b24db79644c69f9127f7b84cedfcd0d9bbe0f",
+      "port_id": "prq",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+      "unique_visual_objects": 13,
+      "positive_instances_by_zone": {
+        "prq_canal": 1,
+        "prq_fondeo": 12,
+        "prq_muelles": 1
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251025-s2-raw-review.json",
+      "sha256": "d6b17dc4910fffc26a6185915db3e5553bc639e4b96305675c06527b8cbb8e3b",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+      "unique_visual_objects": 18,
+      "positive_instances_by_zone": {
+        "prq_fondeo": 16,
+        "prq_muelles": 2
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251017-s2-raw-review.json",
+      "sha256": "95cb746fe93ebea62442e52e53078d77d91d19b54f164381752a774efcc61c35",
+      "port_id": "stc",
+      "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "unique_visual_objects": 2,
+      "positive_instances_by_zone": {
+        "stc_muelles": 2
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round2/stc-20251025-s2-raw-review.json",
+      "sha256": "48b24310dd2aec8106336ce789063313846ae04545d4875644abab9920c668bc",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+      "unique_visual_objects": 2,
+      "positive_instances_by_zone": {
+        "stc_muelles": 2
+      }
+    }
+  ],
+  "requires_observation_status_adjudication": [
+    "a0922735-93e3-4e8a-a9d6-8b5954c3b773",
+    "c6c470ad-d5c4-455b-9434-b80c5ebae8f7"
+  ],
+  "scope_addendum": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/prq-breakwater-scope-addendum.json",
+    "sha256": "dff2049418712770006bfe5136f61cca394b0adcf84de4b49ebe5ded2b4d2ad9"
+  },
+  "interpretation": "39 AI raw reference proposals in 4 unique acquisitions, pending second review. Counts describe reviewed image objects; they are not measured model performance or human ground truth."
+}

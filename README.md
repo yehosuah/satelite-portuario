@@ -49,6 +49,8 @@ Hay pilotos numéricos reales en las seis combinaciones puerto/sensor, pruebas d
 
 Las 22 observaciones ya tienen revisión visual de IA auditada, con 19 áreas etiquetadas y cinco cajas de zona que representan cuatro observaciones de buques. Se ejecutó un primer ajuste por sensor y prueba separada: la muestra radar es insuficiente y óptico falla el criterio de IoU. [Etiquetas, protocolo y resultados](reports/local-review/README.md). El procesamiento de las 824 adquisiciones restantes dispone de una campaña reanudable; [alcance, recursos y excepciones](reports/history/processing-plan.md).
 
+La [fase 2 tiene un punto estable documentado](reports/local-review/phase2/stable-checkpoint-20261021.md): 51 barcos ópticos de entrenamiento y 60 de calibración congelados, calibración de enero fallida y test reservado. El conjunto ampliado aún no se entrenó.
+
 ## Verificación y documentación
 
 ```sh

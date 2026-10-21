@@ -1,0 +1,196 @@
+{
+  "created_at": "2026-10-21T16:15:00.806188+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "status": "independent_artifact_checks_passed_pending_root_adjudication",
+  "reports": [
+    {
+      "path": "reports/local-review/phase2/pbr-20250302-s1-review.json",
+      "sha256": "543939da8d7833f2540864ae9f00c77a40dd5281eaff9c5b4bb836e7068b69f2",
+      "observations": 2
+    },
+    {
+      "path": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "sha256": "ce1b14ee7cffd555be0a84d2ffe5258688ad015a755d5c01cf12f7fb8f935aa7",
+      "observations": 4
+    },
+    {
+      "path": "reports/local-review/phase2/stc-20250302-s1-review.json",
+      "sha256": "ee4f7a731f2774c7450e97df5c099fa06f41326e84c080275ac21e96b1a924ac",
+      "observations": 1
+    },
+    {
+      "path": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "sha256": "7c4a7d227eb348f140785f96347707928c923ac4114b6a1cc80a140cf4610e6c",
+      "observations": 4
+    }
+  ],
+  "observations_checked": 11,
+  "asset_hashes_checked": 88,
+  "geometries_checked": 73,
+  "checks": [
+    "DB identities, acquisition dates, sensor and status preserved",
+    "Train selection and config hashes match",
+    "First-pass and subsequent exposure order documented, with timestamp provenance below",
+    "All referenced source hashes and raster/preview grids match",
+    "All report geometries valid",
+    "Scopes lie inside zones and valid observable pixels",
+    "Exclusions do not overlap final scopes",
+    "Native center-pixel counts recomputed from serialized WGS84 scope",
+    "Retained negative scopes have an interior after 5 m erosion",
+    "Context vessel center lies outside every configured zone; no outside training label",
+    "All referenced inspection/exclusion renders exist"
+  ],
+  "first_pass_order_evidence": [
+    {
+      "report": "reports/local-review/phase2/pbr-20250302-s1-review.json",
+      "raw_first_pass_time": "2026-10-21T16:05:40.883766+00:00",
+      "subsequent_proposal_record_time": "2026-10-21T16:05:40.885062+00:00",
+      "proposal_record_time_source": "filesystem_mtime_with_explicit_order_statement_only"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "raw_first_pass_time": "2026-10-21T16:11:39.328136+00:00",
+      "subsequent_proposal_record_time": "2026-10-21T16:11:51.287105+00:00",
+      "proposal_record_time_source": "explicit_created_at"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250302-s1-review.json",
+      "raw_first_pass_time": "2026-10-21T16:05:40.883766+00:00",
+      "subsequent_proposal_record_time": "2026-10-21T16:05:40.885062+00:00",
+      "proposal_record_time_source": "filesystem_mtime_with_explicit_order_statement_only"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "raw_first_pass_time": "2026-10-21T16:11:39.328136+00:00",
+      "subsequent_proposal_record_time": "2026-10-21T16:11:51.287105+00:00",
+      "proposal_record_time_source": "explicit_created_at"
+    }
+  ],
+  "confirmed_in_zone_vessels": 0,
+  "model_proposals": 0,
+  "unique_context_only_confirmed_vessels": 1,
+  "context_only_key": "caribe-20250322-north-bay-outside-corridors-vessel",
+  "null_scope_observations": [
+    "d9b467f4-1e7d-4fcb-8e2b-c5a780320193"
+  ],
+  "observations": [
+    {
+      "report": "reports/local-review/phase2/pbr-20250302-s1-review.json",
+      "observation_id": "85e4e7bd-9c8e-450f-ae63-17d6580a7e6a",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-03-02T11:45:51.116590Z",
+      "status": "partial",
+      "scope_center_pixels": 6942,
+      "scope_area_m2": 694038.568,
+      "scope_render": "tmp/local-review/phase2/caribe-20250302-s1/pbr_canal-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250302-s1-review.json",
+      "observation_id": "ac28b68f-c432-4780-a3e5-486266cf1670",
+      "zone_id": "pbr_fondeo",
+      "captured_at": "2025-03-02T11:45:51.116590Z",
+      "status": "partial",
+      "scope_center_pixels": 105,
+      "scope_area_m2": 11730.15,
+      "scope_render": "tmp/local-review/phase2/caribe-20250302-s1/pbr_fondeo-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "observation_id": "1fc122cb-b6f0-42c0-8aed-faed37b5150b",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 15982,
+      "scope_area_m2": 1597671.211,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/pbr_canal-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "observation_id": "c25ea95e-d7e9-4e7f-840c-aa0e824f656b",
+      "zone_id": "pbr_fondeo",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 17082,
+      "scope_area_m2": 1707464.345,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/pbr_fondeo-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "observation_id": "c21b90b2-6764-4e4f-b91a-97c70371a04c",
+      "zone_id": "pbr_muelles",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 112,
+      "scope_area_m2": 11506.362,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/pbr_muelles-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "observation_id": "263e1094-1ea9-472e-be2c-90a9bd321a9d",
+      "zone_id": "pbr_patios",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 1590,
+      "scope_area_m2": 158303.782,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/pbr_patios-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250302-s1-review.json",
+      "observation_id": "191860b7-0aa8-44f5-a009-7e4403fafde2",
+      "zone_id": "stc_canal",
+      "captured_at": "2025-03-02T11:45:51.116590Z",
+      "status": "partial",
+      "scope_center_pixels": 6755,
+      "scope_area_m2": 674981.409,
+      "scope_render": "tmp/local-review/phase2/caribe-20250302-s1/stc_canal-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "observation_id": "5bf2ee85-c701-4f06-a098-e7b4e3e4c464",
+      "zone_id": "stc_canal",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 22543,
+      "scope_area_m2": 2253014.168,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/stc_canal-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "observation_id": "6daadbd6-31f9-4156-adcc-8cf6862fb907",
+      "zone_id": "stc_fondeo",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 2400,
+      "scope_area_m2": 240000.0,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/stc_fondeo-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "observation_id": "d9b467f4-1e7d-4fcb-8e2b-c5a780320193",
+      "zone_id": "stc_muelles",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 0,
+      "scope_area_m2": 0.0,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/stc_muelles-proposed-scope.png"
+    },
+    {
+      "report": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "observation_id": "4bb370d5-ed9a-457d-93f1-2a32f9906614",
+      "zone_id": "stc_patios",
+      "captured_at": "2025-03-22T00:06:46.233332Z",
+      "status": "usable",
+      "scope_center_pixels": 2928,
+      "scope_area_m2": 292576.594,
+      "scope_render": "tmp/local-review/phase2/caribe-20250322-s1/stc_patios-proposed-scope.png"
+    }
+  ],
+  "contacts": [
+    "tmp/local-review/phase2/march-s1-contact/march-11-scopes-contact.png",
+    "tmp/local-review/phase2/march-s1-contact/march-raw-context-contact.png"
+  ],
+  "no_database_writes": true,
+  "no_config_or_source_edits": true,
+  "no_validation_or_accuracy_claim": true
+}

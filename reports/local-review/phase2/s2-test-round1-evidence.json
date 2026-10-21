@@ -1,0 +1,4356 @@
+{
+  "schema_version": "phase2-test-evidence-before-proposals-v1",
+  "created_at": "2026-10-21T16:01:17.794570Z",
+  "author": "codex-ai-persistence",
+  "is_human_review": false,
+  "selection": {
+    "split": "test",
+    "round": 1,
+    "assignments": [
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 1,
+        "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 1,
+        "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 1,
+        "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC"
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 2,
+        "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 2,
+        "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 2,
+        "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC"
+      }
+    ],
+    "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+    "execution_order_path": "reports/local-review/phase2/execution-order-v3.json",
+    "execution_order_sha256": "b66266ac36197fbb04d19feeeb31af12c34674ae2c026b6039fffe64b89c1d14"
+  },
+  "prior_exposure": {
+    "test_s2_prediction_counts_read": false,
+    "test_s2_prediction_geometries_read": false,
+    "test_s2_scores_read": false,
+    "test_label_geometries_read": false,
+    "other_test_reviewer_reports_read": false,
+    "context": "Reviewed training report schemas and code/protocol. Previous metadata-only audit confirmed some S1 held-out rasters are entirely nodata; no S2 test proposals or labels were inspected."
+  },
+  "observations": [
+    {
+      "observation_id": "24873aa4-b4cf-43d3-acc7-16409e8941e6",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "prq",
+      "zone_id": "prq_canal",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 0.9999999999999998,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "bac6c67c51a40e6c81f615a10a7eda79",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B02.tif",
+          "sha256": "a5f491924e39a58c0fd63d96ff8e8389749588a1d06e049cff86d39f8b0b4fbb",
+          "size_bytes": 577319,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "39c3bb109d48cb22806fc1bbee38f42a",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B03.tif",
+          "sha256": "89c26727808ce8ca66cfdd90aff145b9c9672f33df434825b88dc7eb3ff50d9f",
+          "size_bytes": 594134,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "0908f2fcdf55d6536f6be53acaed2319",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B04.tif",
+          "sha256": "f6ad4a9e332ed24a930a7236606c4dab4784e6afe59dd8209ac508cf40098f32",
+          "size_bytes": 615679,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6061e1ec16b642b35d66f34a49da9382",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B05.tif",
+          "sha256": "169d880cf1e0d1479dd3fa0be0ba5aad791707ae20a59652b7afa7c754c2c8fc",
+          "size_bytes": 197564,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "9373eb3afadac4081b38d815d019c685",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B06.tif",
+          "sha256": "c860b7df71be8906d75d032af891093727215071f0431f1e782352945184a278",
+          "size_bytes": 201758,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "35f30a86934cb62c920aa3e1badefc97",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B07.tif",
+          "sha256": "07c3d399b697c6a0cf7008a9bef1d69a9dde1746da5fef3178c83cc4dc8076e2",
+          "size_bytes": 206436,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "07864fb67dfa0dd99d3922877f689a73",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B08.tif",
+          "sha256": "cb374ea14adad1ce0be7a9c4eaf1113cb3cb8a40745568fb876b6d25c3cc497e",
+          "size_bytes": 616677,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b278cc35009cf31e7e4a232d7f2c4c02",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B11.tif",
+          "sha256": "7de1a70d5214c426b86188086e83c82494f571a4b37461df3fac2f7247993dd4",
+          "size_bytes": 195743,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6dc8d48bb30d62863dfb1cf44e6570ae",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/B12.tif",
+          "sha256": "0520d581378d986ecf94f8a83abec249f26a623ac95fcc30db7ca85011b5dbd8",
+          "size_bytes": 190940,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7b065449ed4449ef336ff368fbef83f3",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/cloud.tif",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "c5203e17244a8618c5fbe315baa3583f",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/cloud_classes.tif",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a49789987fff075f2d2581f292602cf1",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/observable.tif",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "role": "mask"
+        },
+        {
+          "asset_id": "8c0e92861e7594208a41711175dc693a",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/potentially_observable.tif",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "role": "mask"
+        },
+        {
+          "asset_id": "7ff320b64bf99faf18972850a4b4e3a2",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/preview.png",
+          "sha256": "1ec44e2488254c513353e6ca139aae28fd0181a9a1e4ea0a6367b8a218992c48",
+          "size_bytes": 494121,
+          "role": "preview"
+        },
+        {
+          "asset_id": "d368ad7ccb666721bc4469effa085cea",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/shadow.tif",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "d98a7d2dcbbf270973da433de6f4e265",
+          "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/valid.tif",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "7ff320b64bf99faf18972850a4b4e3a2",
+        "path": "data/assets/24873aa4-b4cf-43d3-acc7-16409e8941e6/preview.png",
+        "sha256": "1ec44e2488254c513353e6ca139aae28fd0181a9a1e4ea0a6367b8a218992c48",
+        "size_bytes": 494121,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "27cc5966-22c7-44c3-bcbd-8dbe5351b6f6",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "d5430971591c2026067613561b398481",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B02.tif",
+          "sha256": "a28ad76ccab0baeb76e95ebfad8dcb73e0bc92ee7d265876e8956d437ccd80d5",
+          "size_bytes": 1008081,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ea7047614c1b5c45ddfeb18b4afb3c7b",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B03.tif",
+          "sha256": "63f0e7f569c05d27a6abb072b679f3fea9d1301985ea3f669c49a4515699aa21",
+          "size_bytes": 1015268,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e3799f7727da255e27e51ce2672c4403",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B04.tif",
+          "sha256": "18de8aa4a16cff0c79fb2cccf35b5ec30f9314acc402bc695b29bae158030651",
+          "size_bytes": 1022939,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "92c787cc30dfc666f442362036f4f979",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B05.tif",
+          "sha256": "f245da88ad1e9f36c1b409e22beaf72ef8a7357a6912435435939c3c98449ce7",
+          "size_bytes": 342153,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "bc1231e06bb06ec0d4c7d5fba2684580",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B06.tif",
+          "sha256": "79214d98bcd34de42b207c24220377aa75fe89c4ec94e50c18ea0f33c2105108",
+          "size_bytes": 348587,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2127055be7b396c05c46e36548c4a6ef",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B07.tif",
+          "sha256": "56f68bd143bf7c7fde46fd8dd6b8b9d1d9802497129849201d785755edd4dbc2",
+          "size_bytes": 350139,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "105f64155581c09bd58067c6974b52e5",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B08.tif",
+          "sha256": "07e3a93f1ec45ca33fb85764165ef8b6c4984086853f51fa2a3b6e2d91a13e91",
+          "size_bytes": 1011488,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b54a79199fa25558f5649f14f21a3a2a",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B11.tif",
+          "sha256": "1215d99f7b54e30352e7552680f08ba611df0c37f508743d5abaf35e73450bf6",
+          "size_bytes": 325929,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1034983b304c2e29b4b18957aba78e16",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/B12.tif",
+          "sha256": "5bf1faef9315bfcd337c6795c3e7212947f5ed9e517af874bc79a14113db9498",
+          "size_bytes": 323707,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ea11267b5e855ec7c0e95a2dc7d76d69",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/cloud.tif",
+          "sha256": "0c8e5533169cff2f23c39d4b67cabd4c42a4158d07b52331d79fd88d67f36aa7",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "d73c8fc9101f7b6051bd95a5aeeaa86d",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/cloud_classes.tif",
+          "sha256": "0c8e5533169cff2f23c39d4b67cabd4c42a4158d07b52331d79fd88d67f36aa7",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "924daa575b531de85a161e2a6dfd8359",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/observable.tif",
+          "sha256": "46f2a0c6ffe8e4e68e9ef003508ed1cb5b72bd60af073b1f9db0db8346cf9e93",
+          "size_bytes": 4269,
+          "role": "mask"
+        },
+        {
+          "asset_id": "c1e2f65e2beb732b15a647e2938cc1a6",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/potentially_observable.tif",
+          "sha256": "46f2a0c6ffe8e4e68e9ef003508ed1cb5b72bd60af073b1f9db0db8346cf9e93",
+          "size_bytes": 4269,
+          "role": "mask"
+        },
+        {
+          "asset_id": "bdd21748a4af05e57e08d79c4d4f98ca",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/preview.png",
+          "sha256": "2e5ad591b1de4f2d53400b96cf5a1e11d951be227166e449e462b35611d28441",
+          "size_bytes": 811894,
+          "role": "preview"
+        },
+        {
+          "asset_id": "396ebef88611ab1681dfea21fd2557af",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/shadow.tif",
+          "sha256": "0c8e5533169cff2f23c39d4b67cabd4c42a4158d07b52331d79fd88d67f36aa7",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "b0a820797dcab25502c81b8d27e44889",
+          "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/valid.tif",
+          "sha256": "46f2a0c6ffe8e4e68e9ef003508ed1cb5b72bd60af073b1f9db0db8346cf9e93",
+          "size_bytes": 4269,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "bdd21748a4af05e57e08d79c4d4f98ca",
+        "path": "data/assets/27cc5966-22c7-44c3-bcbd-8dbe5351b6f6/preview.png",
+        "sha256": "2e5ad591b1de4f2d53400b96cf5a1e11d951be227166e449e462b35611d28441",
+        "size_bytes": 811894,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "943c6082974c28002cae2a14f564374e",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B02.tif",
+          "sha256": "185b505c69ec00aaf7b16e2655b4a9450a929b950dbdd0c793bef5ebcf30c08f",
+          "size_bytes": 1301782,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4466fdd1b4728e600efa82ce78d76b47",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B03.tif",
+          "sha256": "6771c59ac6de446787494625d2809b69a2d031d0bcf26e56ef96c53e0f5b2194",
+          "size_bytes": 1340911,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2f9d1f15fb1b18205dfaae805a0dfb04",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B04.tif",
+          "sha256": "fd3fc218cac365d9ac34448bd379a8bd0205870359bdbd33738b3e186739dc1e",
+          "size_bytes": 1432058,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "116ec2a1dbbf31f10a2d8b98ba1707a1",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B05.tif",
+          "sha256": "94c0dc70a42d9b29a5c56845032d3bfcc71c62326cc23824eb8df3d0fe6c5547",
+          "size_bytes": 431082,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "033a8a154038cdf811259cc62370e375",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B06.tif",
+          "sha256": "363ea137dc93de4710cac380b891b8bf59010daee53184cc0980ca8894d264b0",
+          "size_bytes": 460877,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "771d6c76c5437fa3d848c1c00b32af9f",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B07.tif",
+          "sha256": "c9369e948bf6669cc269df19df4b281cf4d9bee5fc4e26ad61a90bdc6532c7b3",
+          "size_bytes": 458891,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f1ab52e3d32dbeee72a5f953c2874765",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B08.tif",
+          "sha256": "aab5e20a1a4b3bc1448b74f128a0c1a632de23e385278d820a4bb17fb109731a",
+          "size_bytes": 1470278,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "0fc333620f2ca224e39aa0964cb197d8",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B11.tif",
+          "sha256": "8d59bf256b54d1dbeafd5571cd5fa544743510068a2ee1688838c2d34d2d4c25",
+          "size_bytes": 454580,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "0451878791936264c02629eab03b5979",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/B12.tif",
+          "sha256": "c2732c8a773806dabb1cdba0b5fe16d8772ec0bd195c8764a2a90996ee5ebeb1",
+          "size_bytes": 442471,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2321283dc274adc62ba76f18716bd57f",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/cloud.tif",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "fe5d11f1383a93db3fe5f97588f45df7",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/cloud_classes.tif",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "726755ec6e152e085906147076d36418",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/observable.tif",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a2692c3fd366f0f66a9feab99391801b",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/potentially_observable.tif",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a485cd012b6e777727aa9443852fff85",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/preview.png",
+          "sha256": "a2f05e5aa309154e79260cbb037a5196143609d7266e0684a696f9df2c2cbeac",
+          "size_bytes": 1178735,
+          "role": "preview"
+        },
+        {
+          "asset_id": "f13b5d085150b2d9bbcba2f646939340",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/shadow.tif",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "70bbc6ca1490bc50c9fb0bf7e882b7d8",
+          "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/valid.tif",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1545600.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "a485cd012b6e777727aa9443852fff85",
+        "path": "data/assets/ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e/preview.png",
+        "sha256": "a2f05e5aa309154e79260cbb037a5196143609d7266e0684a696f9df2c2cbeac",
+        "size_bytes": 1178735,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "78974109-3b59-43e3-8309-38574e815b11",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "prq",
+      "zone_id": "prq_patios",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "1dd457b307c5ab357f19decddb76302a",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B02.tif",
+          "sha256": "a348012942fd46703139d235b1830a04908915b21f07390826a28a648c964f47",
+          "size_bytes": 296395,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "63aa53d5d2f443db3ce831745fec2f20",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B03.tif",
+          "sha256": "52d7cf75d5221fa302cb8c7061711c4dc054a987dcbabc0937d18a688ffe1b6d",
+          "size_bytes": 302034,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f3a8326d9d4c1f67e8fa9470aacd00d5",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B04.tif",
+          "sha256": "52d74e28c29195659b3c0c4eaf8e82c6fe8b46f624fe97480039fecc40e67d4f",
+          "size_bytes": 316305,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "0b575acb567c3745ba85aee47adeb044",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B05.tif",
+          "sha256": "acc9ff08b7dfffe817df19767dd6cea1d66bd6c1ddd91a0e3dae1f4e99028ceb",
+          "size_bytes": 100340,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "84b0a175b62ba637dced0694ec18b7d5",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B06.tif",
+          "sha256": "a3e59fe67bbeb8baf8b8077d6de46ae7e94364dffad9704131322c0655a75f20",
+          "size_bytes": 103706,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b219117555a9dab37d262f440a2f95ce",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B07.tif",
+          "sha256": "03062fc931719b2e1e043fda60284203faa32253133b228bc9b1ff4e6514c9fb",
+          "size_bytes": 106481,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "5261813526ab1daf6c4271d2c5b09db4",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B08.tif",
+          "sha256": "790cf515bb37817c3b6b4d2c1b64e3d785140cfb7372c8bfe4a9c56fde135aca",
+          "size_bytes": 321062,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2881ae8ef69d36dd8c7173a9acc1c2b4",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B11.tif",
+          "sha256": "60e3a37a503cfbb3cb297307c06cce9fc9764193bdabeae2b5b00cf4436c6b28",
+          "size_bytes": 101906,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7f3b12701f8daf32ea4fb1e8e134330e",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/B12.tif",
+          "sha256": "f0cf0191cf2186f02145daa8e4d09785baae67f5561d4665088ab1e0ab83b39f",
+          "size_bytes": 98378,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "20b6e2f22c20286d00ea8b4cfeaf0eba",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/cloud.tif",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "ce41ebb6255c460fcf5eb754e76642c3",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/cloud_classes.tif",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a9a14e491422ccbd172f391f474db6e3",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/observable.tif",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "role": "mask"
+        },
+        {
+          "asset_id": "e15ccd2c8a4dc4728414fd5a492acf05",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/potentially_observable.tif",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "role": "mask"
+        },
+        {
+          "asset_id": "373ea3cf32f249e7130e3f74493be94b",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/preview.png",
+          "sha256": "a5e4d3bac3243e61b25a665816184c6bb017ae9f7ad479931dfc3d51968aa15d",
+          "size_bytes": 267393,
+          "role": "preview"
+        },
+        {
+          "asset_id": "ccf76a0c90017db6e38d44edc8f8eb1e",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/shadow.tif",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "b1ea3f38b7c7103387e68802beffd6d6",
+          "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/valid.tif",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "373ea3cf32f249e7130e3f74493be94b",
+        "path": "data/assets/78974109-3b59-43e3-8309-38574e815b11/preview.png",
+        "sha256": "a5e4d3bac3243e61b25a665816184c6bb017ae9f7ad479931dfc3d51968aa15d",
+        "size_bytes": 267393,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "5c04db9f-4e06-4f8a-8b0d-f66b693b4963",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "f9230ba1df644a734c270837ee54acb6",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B02.tif",
+          "sha256": "7d0e9a0b8805a882e8a4fc97d0cc718eb56ddeba29ca90ff9fd1184b22abf61c",
+          "size_bytes": 696764,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "625ce9b6c37d2111cca76ac9820bc718",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B03.tif",
+          "sha256": "4fce98d1717d2ad92e882b89ce6cb739cbd07d9ad46906b0fb4daf1d01631bf8",
+          "size_bytes": 713817,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ae6cc79039282cf4f9560853ba95feb5",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B04.tif",
+          "sha256": "1c6cd0e4db6024af13813d4d68d2d7b47a3ffcad4c025b34429e976ad16d7143",
+          "size_bytes": 721777,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "cad2857dd80103cac6f30c1ba430f420",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B05.tif",
+          "sha256": "e3b9cd44d3a9fbca1e052faa8eb831ebb6c67ba1213186358e3a14eb321ecf79",
+          "size_bytes": 221466,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "566386746f00732217b1ba46cdcd0076",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B06.tif",
+          "sha256": "8879391547675dea505476065c6e8e08b2ceaa9050fb0e23cf62251296fd5e7b",
+          "size_bytes": 232312,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c2da3ad6365e81ce950fc76a53d81a18",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B07.tif",
+          "sha256": "a438b557e48e01dddf24b839b1cc495c91c9e5ff6e9882a64fe54c0f2689edc7",
+          "size_bytes": 230530,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "fa2f658dc3be193223da26b1869dec45",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B08.tif",
+          "sha256": "1a58c526c3b04712671e5e8c37273cbb8aa9022a5e3d7a5934ca5c1a656db56b",
+          "size_bytes": 748292,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e25232a4b2b67e918e1829dc2367be1f",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B11.tif",
+          "sha256": "efb0a1b4db8f3a34638be1d8fea722be40d2abd7120c99093a6d353618e4f876",
+          "size_bytes": 225724,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ccd7f1f7fab66148180e9d349f7fb56e",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/B12.tif",
+          "sha256": "3994ab1c7be0f45809375a4a5dbb7d47a03d3180be6677aca44f25f61cd7d88e",
+          "size_bytes": 221024,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2b308f85c8937acbb10237cb10fead7c",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/cloud.tif",
+          "sha256": "f1ca1e878eb689dd65ffeae795d5f6dde766cc1b56901a0b0a96f0c280e29aa5",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "aa8719583fed562224aeb6e7dde98ad1",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/cloud_classes.tif",
+          "sha256": "f1ca1e878eb689dd65ffeae795d5f6dde766cc1b56901a0b0a96f0c280e29aa5",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "99b84e491f6b07c3678047bfbe6b714e",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/observable.tif",
+          "sha256": "92ebebb801c8a05f1e3c5a72bfbd83ed279fd71bdc6117e90edcb58fafa45f7e",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "3fbfb6d4481b4cff2be656d7ab46910e",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/potentially_observable.tif",
+          "sha256": "92ebebb801c8a05f1e3c5a72bfbd83ed279fd71bdc6117e90edcb58fafa45f7e",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "423da3d98c0f803b862638f54b58eab4",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/preview.png",
+          "sha256": "0bb3a8c7b757a362b3e32dac1ee09e1ba6846e72f4d8855b2db18a705cbd141c",
+          "size_bytes": 667536,
+          "role": "preview"
+        },
+        {
+          "asset_id": "9f240b030fa6c314589013cd0a70fcbf",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/shadow.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "e6fa242667574a6b52ba41fe04010783",
+          "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "423da3d98c0f803b862638f54b58eab4",
+        "path": "data/assets/5c04db9f-4e06-4f8a-8b0d-f66b693b4963/preview.png",
+        "sha256": "0bb3a8c7b757a362b3e32dac1ee09e1ba6846e72f4d8855b2db18a705cbd141c",
+        "size_bytes": 667536,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "3a2ea255-4a3f-4d0d-a96e-541f55086361",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "78d920536009e7de35b7a8d1a054b45e",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B02.tif",
+          "sha256": "7d0e9a0b8805a882e8a4fc97d0cc718eb56ddeba29ca90ff9fd1184b22abf61c",
+          "size_bytes": 696764,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "3143b4af65d9266b641ab25eee88c534",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B03.tif",
+          "sha256": "4fce98d1717d2ad92e882b89ce6cb739cbd07d9ad46906b0fb4daf1d01631bf8",
+          "size_bytes": 713817,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "91afd2c7aa0eb3e90a392bbb9dc2b9bc",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B04.tif",
+          "sha256": "1c6cd0e4db6024af13813d4d68d2d7b47a3ffcad4c025b34429e976ad16d7143",
+          "size_bytes": 721777,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "73db03beae28c3b2ca95bb8043aa6d39",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B05.tif",
+          "sha256": "e3b9cd44d3a9fbca1e052faa8eb831ebb6c67ba1213186358e3a14eb321ecf79",
+          "size_bytes": 221466,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "606008bc457fb02c3c83fadc1709a43f",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B06.tif",
+          "sha256": "8879391547675dea505476065c6e8e08b2ceaa9050fb0e23cf62251296fd5e7b",
+          "size_bytes": 232312,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e90ab2d68b27b18f7bc4111ca35f0703",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B07.tif",
+          "sha256": "a438b557e48e01dddf24b839b1cc495c91c9e5ff6e9882a64fe54c0f2689edc7",
+          "size_bytes": 230530,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "933337e3ada73d5ac1673ddb636721fd",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B08.tif",
+          "sha256": "1a58c526c3b04712671e5e8c37273cbb8aa9022a5e3d7a5934ca5c1a656db56b",
+          "size_bytes": 748292,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d76733361440a66eaacda14b5715afd1",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B11.tif",
+          "sha256": "efb0a1b4db8f3a34638be1d8fea722be40d2abd7120c99093a6d353618e4f876",
+          "size_bytes": 225724,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "dc11d613675188054f729c948dac6936",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/B12.tif",
+          "sha256": "3994ab1c7be0f45809375a4a5dbb7d47a03d3180be6677aca44f25f61cd7d88e",
+          "size_bytes": 221024,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2bb178f40326489f7c70b5ec40715b67",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/cloud.tif",
+          "sha256": "f1ca1e878eb689dd65ffeae795d5f6dde766cc1b56901a0b0a96f0c280e29aa5",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "37fe373c5ce57ae1b14af2e27434d8df",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/cloud_classes.tif",
+          "sha256": "f1ca1e878eb689dd65ffeae795d5f6dde766cc1b56901a0b0a96f0c280e29aa5",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "8071fd2a0bfc1add14a2e958399a7548",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/observable.tif",
+          "sha256": "92ebebb801c8a05f1e3c5a72bfbd83ed279fd71bdc6117e90edcb58fafa45f7e",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "2f23ba891f6d2adcd9dd7e30b8210916",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/potentially_observable.tif",
+          "sha256": "92ebebb801c8a05f1e3c5a72bfbd83ed279fd71bdc6117e90edcb58fafa45f7e",
+          "size_bytes": 2374,
+          "role": "mask"
+        },
+        {
+          "asset_id": "4ca5a12078d6800e6e2bdccf4e5a6623",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/preview.png",
+          "sha256": "0bb3a8c7b757a362b3e32dac1ee09e1ba6846e72f4d8855b2db18a705cbd141c",
+          "size_bytes": 667536,
+          "role": "preview"
+        },
+        {
+          "asset_id": "1959015725cbe419d7c311d87f94f8bb",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/shadow.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "3241fa3185e5fa741e351b65e7b05982",
+          "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "4ca5a12078d6800e6e2bdccf4e5a6623",
+        "path": "data/assets/3a2ea255-4a3f-4d0d-a96e-541f55086361/preview.png",
+        "sha256": "0bb3a8c7b757a362b3e32dac1ee09e1ba6846e72f4d8855b2db18a705cbd141c",
+        "size_bytes": 667536,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "c35ce76a-8277-4b40-a418-6be9ae635397",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "5259d89589bd43801d11acfad72004e2",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B02.tif",
+          "sha256": "12afa16a68ca7623ece5dbbc0aab091b90ea88bfe3007d15a75386154540b0f6",
+          "size_bytes": 375314,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4d8aa666b3dc9a05fd7bc54560010d5e",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B03.tif",
+          "sha256": "6909fc7a10c911be47fbd97d8389acc4a38cdf2636996fe08f31739ea2179974",
+          "size_bytes": 387832,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "9d9f812d00a6b7451e8961e4160d6e1b",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B04.tif",
+          "sha256": "adb3f37a171c6d15e47685957a81c35bc41af7295810458858c7881ddbd53c78",
+          "size_bytes": 390815,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8bc85f48db68346d8e57864f42fa4c86",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B05.tif",
+          "sha256": "7351a3beda7046425a747bcdfb6e36b3422c5338bc89c02f0b9dfecdf00b4c40",
+          "size_bytes": 116606,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "5175b42b56f4ffd56af22ac9beec70c5",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B06.tif",
+          "sha256": "5dbcf218c8adb597d82928032dbf4793b4f6c9bdb88c8be77604c22e8e63f1b3",
+          "size_bytes": 125432,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "bbb219a3988011dcddce97fd0d5f95b9",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B07.tif",
+          "sha256": "cd43130a1a76b7a16b34cf74a1110cdcb05b7fb5ce7eea7b7b3a910b5229421d",
+          "size_bytes": 122750,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "23fbfee67b4caad67485c1386fb93bcb",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B08.tif",
+          "sha256": "1da0457c94c69c9baf793af7ea2b4fe48c59226ca9b506677b9fe5c86d65099d",
+          "size_bytes": 411742,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2192cb6289a12d1f9e0d4f513a7c736b",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B11.tif",
+          "sha256": "14b3cd04270f73b325f242cb42364c79f7ba6b8b16c054d62208f88742690724",
+          "size_bytes": 121828,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a4088641e5e17c9b9a557758b99bae22",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/B12.tif",
+          "sha256": "842577ac6f8b28e90038aee9da335c16eb5759e2420e4e72810549efc694225c",
+          "size_bytes": 118920,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a54cbc4f64c91e0a5d81481190fd8d7c",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/cloud.tif",
+          "sha256": "7a095be0adab325d26b74acc55d24670c965d2eab0c630713262f34eaed01f8e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "c75a96660f4516590068bc513a4a4aed",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/cloud_classes.tif",
+          "sha256": "7a095be0adab325d26b74acc55d24670c965d2eab0c630713262f34eaed01f8e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "8ed1b9fa6432f0efbe25d829a8662ecb",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/observable.tif",
+          "sha256": "9a4878cc2f714b6ebaf4f7c18115ffcaa6da33f5ce3bf49b013755850245588e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "fedd771d000ad1827d4d3e396f3612f2",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/potentially_observable.tif",
+          "sha256": "9a4878cc2f714b6ebaf4f7c18115ffcaa6da33f5ce3bf49b013755850245588e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "ac01b385345e02171c2f7702582e9dfd",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/preview.png",
+          "sha256": "47ee60815239bff0e6bdd7a05aa80637913202c1439680ec2dff5e330cd75e74",
+          "size_bytes": 368971,
+          "role": "preview"
+        },
+        {
+          "asset_id": "85d5b7f489b80dec0375e0307064c4a5",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/shadow.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "eff714158f1b5253164f4383f4d92f45",
+          "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "ac01b385345e02171c2f7702582e9dfd",
+        "path": "data/assets/c35ce76a-8277-4b40-a418-6be9ae635397/preview.png",
+        "sha256": "47ee60815239bff0e6bdd7a05aa80637913202c1439680ec2dff5e330cd75e74",
+        "size_bytes": 368971,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "abf68398-3659-470f-a6ae-1e3fbd05b2d6",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "f42fbeca1e8e4c62dbd7e5dc5f5e54cf",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B02.tif",
+          "sha256": "12afa16a68ca7623ece5dbbc0aab091b90ea88bfe3007d15a75386154540b0f6",
+          "size_bytes": 375314,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7b64c1a63dded959ce76fbe177396e8c",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B03.tif",
+          "sha256": "6909fc7a10c911be47fbd97d8389acc4a38cdf2636996fe08f31739ea2179974",
+          "size_bytes": 387832,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "32e57ffd066a3c270998ba4e388ccde7",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B04.tif",
+          "sha256": "adb3f37a171c6d15e47685957a81c35bc41af7295810458858c7881ddbd53c78",
+          "size_bytes": 390815,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6a9de0f6b381d89a00a866af14d8c2be",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B05.tif",
+          "sha256": "7351a3beda7046425a747bcdfb6e36b3422c5338bc89c02f0b9dfecdf00b4c40",
+          "size_bytes": 116606,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1a6584c51dff69fbdef48ad11e1a3785",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B06.tif",
+          "sha256": "5dbcf218c8adb597d82928032dbf4793b4f6c9bdb88c8be77604c22e8e63f1b3",
+          "size_bytes": 125432,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1cb8cff3cfeb03eb333a25b9173a5ab0",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B07.tif",
+          "sha256": "cd43130a1a76b7a16b34cf74a1110cdcb05b7fb5ce7eea7b7b3a910b5229421d",
+          "size_bytes": 122750,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "33a8747126e11aea47e63d86959b293d",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B08.tif",
+          "sha256": "1da0457c94c69c9baf793af7ea2b4fe48c59226ca9b506677b9fe5c86d65099d",
+          "size_bytes": 411742,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "470cb9b6e8073c7541139b06de3887f3",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B11.tif",
+          "sha256": "14b3cd04270f73b325f242cb42364c79f7ba6b8b16c054d62208f88742690724",
+          "size_bytes": 121828,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "613af5a09f5b80d254ea11e2a9326924",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/B12.tif",
+          "sha256": "842577ac6f8b28e90038aee9da335c16eb5759e2420e4e72810549efc694225c",
+          "size_bytes": 118920,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "202de489a2ae56490fcb6daca5dfdbfc",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/cloud.tif",
+          "sha256": "7a095be0adab325d26b74acc55d24670c965d2eab0c630713262f34eaed01f8e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5830263b188221edf4ecaeac6a07dbdf",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/cloud_classes.tif",
+          "sha256": "7a095be0adab325d26b74acc55d24670c965d2eab0c630713262f34eaed01f8e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "0258cc9b08c5a3db88f38a44ddc75482",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/observable.tif",
+          "sha256": "9a4878cc2f714b6ebaf4f7c18115ffcaa6da33f5ce3bf49b013755850245588e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "2a7f90d462297e9705bb8bbf6261e8a7",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/potentially_observable.tif",
+          "sha256": "9a4878cc2f714b6ebaf4f7c18115ffcaa6da33f5ce3bf49b013755850245588e",
+          "size_bytes": 1400,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6eb3b26163213ee276f585ea7fb992e6",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/preview.png",
+          "sha256": "47ee60815239bff0e6bdd7a05aa80637913202c1439680ec2dff5e330cd75e74",
+          "size_bytes": 368971,
+          "role": "preview"
+        },
+        {
+          "asset_id": "d63f3f803d4c1e5279e4b17bbf276742",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/shadow.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6fe302a462c02d7e74defc1443b385a7",
+          "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "6eb3b26163213ee276f585ea7fb992e6",
+        "path": "data/assets/abf68398-3659-470f-a6ae-1e3fbd05b2d6/preview.png",
+        "sha256": "47ee60815239bff0e6bdd7a05aa80637913202c1439680ec2dff5e330cd75e74",
+        "size_bytes": 368971,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "f4c19055-c7e3-4e6d-894c-4ef8fab6fd97",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 0.9999999999999996,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "cd3bf3a476d51481cb4982b47fa15f40",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B02.tif",
+          "sha256": "94216c2dc921e21ee59ace5e4f2fc5404e8008256670830ebfb887d66f72cf6b",
+          "size_bytes": 1915189,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7e9207c8358305f6e3066e69e4fae7b5",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B03.tif",
+          "sha256": "ea6a28527c845d21a3fd78b3cdaae6acbb2659cbf3a4f8c85a60bb786d1d89dc",
+          "size_bytes": 1967268,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f6cdbfd39a0f90b95942b68e60dfd8dd",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B04.tif",
+          "sha256": "7f63388cb13c206a96ff2bacaf6ce791952a17e2a174cc8fb2ea85a3d0778b26",
+          "size_bytes": 1990721,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "80be3c4a0d7801cd2c5f470b4e3ec711",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B05.tif",
+          "sha256": "f94e128ffa121b4bfdfb6af22385cdc07143c0f6fd1a4e7f764da2830dad7fa4",
+          "size_bytes": 594619,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b09ac19630a921283b630fb143d17d10",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B06.tif",
+          "sha256": "1732b05b0b21b020ba4c00f454326680be2fc415d175ea102e3572db22e1bf66",
+          "size_bytes": 626748,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "096e10a3f6bdec6a9299a7509d7fbf04",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B07.tif",
+          "sha256": "a666e1429aef654b5de2be8b1749d7c5f051bfed409104eb944ff133c1a31863",
+          "size_bytes": 617123,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6d464ef11545f27735508974869f8577",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B08.tif",
+          "sha256": "5b1394d361f9a1c3f0d107336d219029cceddfc212c0cd504758f87cf81f5b04",
+          "size_bytes": 2079154,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d24fb4a414810feb6d4e3a6d4e0e05d1",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B11.tif",
+          "sha256": "e4b23a9acffeb9ac0355d6da3066f9cdda821f8babce6e2fc075cae9fa9e9e16",
+          "size_bytes": 612264,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b97f8ec8dbd8e28073b0a74b58eb3b8a",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/B12.tif",
+          "sha256": "5de517242cbf9e890ddbb425325b129b6ec9041de2aff87ecf8c7419e0ff15f7",
+          "size_bytes": 596925,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f959ca385112d0408d675e57ebb69126",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/cloud.tif",
+          "sha256": "f9cf8cd57d08a435cdd401062f2687a58fa7c9e0c7950a9243a8fb532b0b9f20",
+          "size_bytes": 10853,
+          "role": "mask"
+        },
+        {
+          "asset_id": "3a1fbae5966c6f0f745fb1ddcae6894e",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/cloud_classes.tif",
+          "sha256": "0b9f9da13a88e65b88ca1eadac6ced45545de38e7417064598d487223e3af430",
+          "size_bytes": 12252,
+          "role": "mask"
+        },
+        {
+          "asset_id": "cff75ab1ab7efedd4a5eac78a452a546",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/observable.tif",
+          "sha256": "1324762060e576b2e99f900d37171f920c76d14943ca80f2ec92b09403a72b00",
+          "size_bytes": 13471,
+          "role": "mask"
+        },
+        {
+          "asset_id": "7c1f898a6c24319c469797e5fe80146a",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/potentially_observable.tif",
+          "sha256": "1324762060e576b2e99f900d37171f920c76d14943ca80f2ec92b09403a72b00",
+          "size_bytes": 13471,
+          "role": "mask"
+        },
+        {
+          "asset_id": "82f57f3816289a035ca74a87878dec82",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/preview.png",
+          "sha256": "8fa368a7ee5230548fea3b9d515db86bf56b442cbd89d5d4c602b8cc43edec81",
+          "size_bytes": 1674851,
+          "role": "preview"
+        },
+        {
+          "asset_id": "e01c8b3a8e84c40b4b76f81c4b9e5984",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/shadow.tif",
+          "sha256": "d079b860ebe11c2092742978e07682704751db90f3de6f93647251562abcbfc4",
+          "size_bytes": 8717,
+          "role": "mask"
+        },
+        {
+          "asset_id": "ffc1d5d422e2d5e094dd1a1853adf1bc",
+          "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/valid.tif",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+          "size_bytes": 8559,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 1344,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "82f57f3816289a035ca74a87878dec82",
+        "path": "data/assets/f4c19055-c7e3-4e6d-894c-4ef8fab6fd97/preview.png",
+        "sha256": "8fa368a7ee5230548fea3b9d515db86bf56b442cbd89d5d4c602b8cc43edec81",
+        "size_bytes": 1674851,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "3573817d-d287-4b4d-b3f1-544c4bac67c2",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "8f3d6e7206ac1cbbd750efb822b99e25",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B02.tif",
+          "sha256": "82ab2a980ffbca8f39627499f22772da5118186824f5d9084836f147207bac82",
+          "size_bytes": 669335,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b4fe1a8ca8c04e1cfa245974bb7dc024",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B03.tif",
+          "sha256": "248a3ef4eb579d619d1b8522c4b62125b03f923d61ece38a00c132e19c9b702d",
+          "size_bytes": 692145,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "30cc5a799271a41326fbf24cff32db3c",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B04.tif",
+          "sha256": "9e8e935018024d11d34b946191dd37c44f7c35a502d870964d7ea8d629962db8",
+          "size_bytes": 701262,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7b85e82db5010738ac32534ca9886358",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B05.tif",
+          "sha256": "57e439d5481b9af51ebdf2eb0177a75c7ee52894531040009c1fe33eaa6c80a1",
+          "size_bytes": 217149,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ac6b0682d5969631d425ea4244100051",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B06.tif",
+          "sha256": "a24e9146c21b62eec4e0bb91a31a4e0c57c61a426e92e74702e2198532e48f36",
+          "size_bytes": 228351,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "cb50b9cd76404e79c2712530ab1ab250",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B07.tif",
+          "sha256": "2643eaa7271c52c3283985306a4ec8cbaaa348bc814724e2db220375356ebdd4",
+          "size_bytes": 226812,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7e11539b46814ba044aa73f2bc2b57c9",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B08.tif",
+          "sha256": "2d9e27bc149ae0bf244bb47e0e00d394ab9186e1e2c0bfb6b883ef0d228f93f9",
+          "size_bytes": 746661,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "5ee61d5f6ccb94d49013a712a621ddf1",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B11.tif",
+          "sha256": "ad2b713802af3156c492f9f4eaba33da39a1cdf5b9adaead24809125f56dcdda",
+          "size_bytes": 221469,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7d731e468001644ef3bc7b0f8a814339",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/B12.tif",
+          "sha256": "49619a3262b79c79dce94b899b1ed6b57e3e8c043d10dae67dbef52b51cd3895",
+          "size_bytes": 216472,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7d12eee657125f99f062e9be12315bc0",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/cloud.tif",
+          "sha256": "ec46fa42d199b3c16c9d4fd4ff96974341757653e8fd9043f632b4a9f191a757",
+          "size_bytes": 2792,
+          "role": "mask"
+        },
+        {
+          "asset_id": "81803238f66d8d13c6119549f9783d56",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/cloud_classes.tif",
+          "sha256": "13ac4434ab45ec8f724ed0ad688772c9a19e3233c4b546f599f6a1a55d8e2c68",
+          "size_bytes": 2953,
+          "role": "mask"
+        },
+        {
+          "asset_id": "d2a396814fcf191c64e4178b7b5d5faf",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/observable.tif",
+          "sha256": "7e5ba9896826d8b47bde1eb174eaaec29d0ac24787cee95f1dd690b445875eeb",
+          "size_bytes": 2887,
+          "role": "mask"
+        },
+        {
+          "asset_id": "260c0af04b831074ea91e5410f3f0a48",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/potentially_observable.tif",
+          "sha256": "7e5ba9896826d8b47bde1eb174eaaec29d0ac24787cee95f1dd690b445875eeb",
+          "size_bytes": 2887,
+          "role": "mask"
+        },
+        {
+          "asset_id": "2662f71c70cbd908bcfa1333508506bb",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/preview.png",
+          "sha256": "ef30f7e47bb709a53edd7bdcfd93a6b62f92fead17dfd3751de409fdd7a7e981",
+          "size_bytes": 616037,
+          "role": "preview"
+        },
+        {
+          "asset_id": "8a22755e0121062a62fa28ff96e0fb45",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/shadow.tif",
+          "sha256": "a4ea69b5f922eef9d4ae10ba5c79b671834c0af215e26c4a3216a4788bc1f762",
+          "size_bytes": 2528,
+          "role": "mask"
+        },
+        {
+          "asset_id": "bb3312ed25476dc01e2a5149c7dc1f01",
+          "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/valid.tif",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "2662f71c70cbd908bcfa1333508506bb",
+        "path": "data/assets/3573817d-d287-4b4d-b3f1-544c4bac67c2/preview.png",
+        "sha256": "ef30f7e47bb709a53edd7bdcfd93a6b62f92fead17dfd3751de409fdd7a7e981",
+        "size_bytes": 616037,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "0f55ede6-c4d1-4b42-9566-5c905201bb14",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "89d3e81775ce2363f61127e8cf7a2126",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B02.tif",
+          "sha256": "72b027147dd7b412d68544f9eaf4cba85f48107a4b211134fba5c36cbafe15f1",
+          "size_bytes": 828728,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "19f8088afbb40de3375b874fe9565402",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B03.tif",
+          "sha256": "d11160cf5f3d93edbd54bd0fb902b461437833f60bf5319e45ea5c681d9c3bf7",
+          "size_bytes": 845303,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e603c3f9082c61aeca357955c7f5595b",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B04.tif",
+          "sha256": "b8dbab9e7c7c5ae93ed7bb4f1ecafb5fc4b27e04e51d9ca3d8ba5668e302959a",
+          "size_bytes": 858466,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "46c20e2410f9ebfab1e3ea005d494cb0",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B05.tif",
+          "sha256": "1cb405ce6295c85d951e8a1ec9f241eebb44a0ddd9ae1d3bda5cfa1ad25d30ef",
+          "size_bytes": 247495,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7ba6f568e14e4481c38fba4419121a24",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B06.tif",
+          "sha256": "2330a21ffdc46549e4ba43fc1552e43358021b5831221a7471be3cbc32da54a1",
+          "size_bytes": 258928,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7891afeb97fdb00ff0ec00c585a54ac4",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B07.tif",
+          "sha256": "77ea0b6984902d1b1b844bc824faf70956e7a53ea968e34d6ce4acd018b74deb",
+          "size_bytes": 253104,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8ebe552f2e9c6ec7870b8c3828e04ebb",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B08.tif",
+          "sha256": "bbb482ecb3fa8742b695f6fd445ef2421eb6fd9afa8e04f500e830fc955b92ed",
+          "size_bytes": 877622,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b33937a9945e4c23bfe9ec5998e84369",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B11.tif",
+          "sha256": "5fc084664b0bea64dd714638e51962838d210c69ea3642f24c71f0558673d6f6",
+          "size_bytes": 255504,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "21c288c7caddde0349dba8eba470a5d3",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/B12.tif",
+          "sha256": "91997328a4577f80db02ce748ac53e4bf3191b12d65f5eb99520b9a5ba4b0ec8",
+          "size_bytes": 248278,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b8609495f0feee1894901220dc05c74a",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/cloud.tif",
+          "sha256": "198ad9c62868183040a3d3789dbe3496b58e0908c8c09f6d59428435c720e112",
+          "size_bytes": 6360,
+          "role": "mask"
+        },
+        {
+          "asset_id": "33a6db9bae2df6b4c9a747312a589150",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/cloud_classes.tif",
+          "sha256": "a59b5066fee9b49e417bbf5f54af3fc97fb51e5bece91bdff7ab5015acd74786",
+          "size_bytes": 7578,
+          "role": "mask"
+        },
+        {
+          "asset_id": "68dccc3a69faebfc2ed587e7d540aab0",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/observable.tif",
+          "sha256": "b4071a72528a538ae826b5fe295e8cca8e79da6576f2429680c9b469f6cdd809",
+          "size_bytes": 6548,
+          "role": "mask"
+        },
+        {
+          "asset_id": "324b62b73296cc309c3d368fa6df83fd",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/potentially_observable.tif",
+          "sha256": "b4071a72528a538ae826b5fe295e8cca8e79da6576f2429680c9b469f6cdd809",
+          "size_bytes": 6548,
+          "role": "mask"
+        },
+        {
+          "asset_id": "1026cd02fb4d2865d7ec8897f94f42e7",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/preview.png",
+          "sha256": "a5c6d7756f83d56f7482efc28573d52da2a38f5cac4fd7c8d531cad692a30130",
+          "size_bytes": 679945,
+          "role": "preview"
+        },
+        {
+          "asset_id": "891ef2880c5e8a85b145f2916037b6f2",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/shadow.tif",
+          "sha256": "ad08031150abbfab8c9a4195802304443d41154b32a26bdfca92568862e9e821",
+          "size_bytes": 4580,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5e9f6aa8735f36282c7a2aab750a2a95",
+          "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "1026cd02fb4d2865d7ec8897f94f42e7",
+        "path": "data/assets/0f55ede6-c4d1-4b42-9566-5c905201bb14/preview.png",
+        "sha256": "a5c6d7756f83d56f7482efc28573d52da2a38f5cac4fd7c8d531cad692a30130",
+        "size_bytes": 679945,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "44a9676c-9008-4aca-9cbb-839aaeffe808",
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "captured_at": "2026-04-03T16:18:29.024000Z",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "a57fea9cf5090ec71ec4f4dfcaba1a4b",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B02.tif",
+          "sha256": "72b027147dd7b412d68544f9eaf4cba85f48107a4b211134fba5c36cbafe15f1",
+          "size_bytes": 828728,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "9a4572855bda59314da4052fde8827ee",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B03.tif",
+          "sha256": "d11160cf5f3d93edbd54bd0fb902b461437833f60bf5319e45ea5c681d9c3bf7",
+          "size_bytes": 845303,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4b2895410449757aa85ace27d2b90321",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B04.tif",
+          "sha256": "b8dbab9e7c7c5ae93ed7bb4f1ecafb5fc4b27e04e51d9ca3d8ba5668e302959a",
+          "size_bytes": 858466,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "675342515eb94aa4889d9741419b572c",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B05.tif",
+          "sha256": "1cb405ce6295c85d951e8a1ec9f241eebb44a0ddd9ae1d3bda5cfa1ad25d30ef",
+          "size_bytes": 247495,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "b647bd316e181346277d17c584f7716f",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B06.tif",
+          "sha256": "2330a21ffdc46549e4ba43fc1552e43358021b5831221a7471be3cbc32da54a1",
+          "size_bytes": 258928,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2e0722008e2caeb2799fd92c61109473",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B07.tif",
+          "sha256": "77ea0b6984902d1b1b844bc824faf70956e7a53ea968e34d6ce4acd018b74deb",
+          "size_bytes": 253104,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6115fbcb7de8f1df7723871be387f205",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B08.tif",
+          "sha256": "bbb482ecb3fa8742b695f6fd445ef2421eb6fd9afa8e04f500e830fc955b92ed",
+          "size_bytes": 877622,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "bef5ae26146d1286955aa8ac344a139a",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B11.tif",
+          "sha256": "5fc084664b0bea64dd714638e51962838d210c69ea3642f24c71f0558673d6f6",
+          "size_bytes": 255504,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "251e82113be2a81ff53075d96f71c50a",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/B12.tif",
+          "sha256": "91997328a4577f80db02ce748ac53e4bf3191b12d65f5eb99520b9a5ba4b0ec8",
+          "size_bytes": 248278,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "920e13f103c466796c1730cd34a71e46",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/cloud.tif",
+          "sha256": "198ad9c62868183040a3d3789dbe3496b58e0908c8c09f6d59428435c720e112",
+          "size_bytes": 6360,
+          "role": "mask"
+        },
+        {
+          "asset_id": "61201025659eed94b41769975e5333e5",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/cloud_classes.tif",
+          "sha256": "a59b5066fee9b49e417bbf5f54af3fc97fb51e5bece91bdff7ab5015acd74786",
+          "size_bytes": 7578,
+          "role": "mask"
+        },
+        {
+          "asset_id": "1535f899e962b09becb872c3d3eed331",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/observable.tif",
+          "sha256": "b4071a72528a538ae826b5fe295e8cca8e79da6576f2429680c9b469f6cdd809",
+          "size_bytes": 6548,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f3de452a75649176d788b98b27be5c4b",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/potentially_observable.tif",
+          "sha256": "b4071a72528a538ae826b5fe295e8cca8e79da6576f2429680c9b469f6cdd809",
+          "size_bytes": 6548,
+          "role": "mask"
+        },
+        {
+          "asset_id": "c1e845e374693f0ac1aa0f8290ab9885",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/preview.png",
+          "sha256": "a5c6d7756f83d56f7482efc28573d52da2a38f5cac4fd7c8d531cad692a30130",
+          "size_bytes": 679945,
+          "role": "preview"
+        },
+        {
+          "asset_id": "1bec5042f249ef8807af134a7b2b5c0c",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/shadow.tif",
+          "sha256": "ad08031150abbfab8c9a4195802304443d41154b32a26bdfca92568862e9e821",
+          "size_bytes": 4580,
+          "role": "mask"
+        },
+        {
+          "asset_id": "7bc2c469ac36706247f5174045b9d446",
+          "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "c1e845e374693f0ac1aa0f8290ab9885",
+        "path": "data/assets/44a9676c-9008-4aca-9cbb-839aaeffe808/preview.png",
+        "sha256": "a5c6d7756f83d56f7482efc28573d52da2a38f5cac4fd7c8d531cad692a30130",
+        "size_bytes": 679945,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "7fc194ec-cb66-4e52-87e8-bba3fdfe50e5",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "prq",
+      "zone_id": "prq_canal",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 0.9999999999999998,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "61c49e01ae04d4faefe6a67aa21d78c9",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B02.tif",
+          "sha256": "7829065a70212b4c1945dd8dc72ce72f458c9449c03d68c29ad14740969cc19e",
+          "size_bytes": 646219,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1618e0e545c9abd856fff95aba20ca93",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B03.tif",
+          "sha256": "b021dada69818d18c92de2b57b5f946dcb0ff03483a5561b0afda401753984f9",
+          "size_bytes": 652001,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "28ecca418d3c873bcc88de423ccd37ba",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B04.tif",
+          "sha256": "238bcb5250ae882015febe29de6dc672cef870cc201b13b90f869d03a3fc9070",
+          "size_bytes": 678428,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "54dde55e731e88721568fb0e16a3fb75",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B05.tif",
+          "sha256": "7f9ca1ecfdbc709e73ae025ceeae56020cacf44f1567ec96209059321058657f",
+          "size_bytes": 211955,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c323d1f43db9410b53d71284b7e2be5a",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B06.tif",
+          "sha256": "a86e59d4e6fa68f7e1cd087e5338e53a06332bbb276a68a2144d1adc64b083c9",
+          "size_bytes": 215787,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ff3fbba94bbb1e4cc3045c6b02916b38",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B07.tif",
+          "sha256": "bceef20ea0156b7e200d3e006557f70a216cb787619fd4175174b466b753b698",
+          "size_bytes": 217976,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "12ca851f124bdf9fdba81ded6da7415e",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B08.tif",
+          "sha256": "82020fb8d3a2b8dc6903fb9b2e57b717ae8c08f94e35fba79ec505453ce0ba5e",
+          "size_bytes": 673164,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6d237fedcff8005b7a7c5be53190c457",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B11.tif",
+          "sha256": "8fdafd8ca1f5f00743b71dff39a29dafa019899c05ee4bd53b4909a2e9564f60",
+          "size_bytes": 206850,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ce8c5fe8fff66d63ee3d06a92355b373",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/B12.tif",
+          "sha256": "b907c82f88da11bee87bb6c6ad747d29fe386dfb69e186fbe0a7880e95741d47",
+          "size_bytes": 197298,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e84e06d96699e3de126219b0f0888ee4",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/cloud.tif",
+          "sha256": "00b8ffd18d9dd94daeaed1564ff8e36609251e6ea9b85e615d7ad44e00ff96db",
+          "size_bytes": 2320,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5081dcd9334daa6a62e304093f120fbb",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/cloud_classes.tif",
+          "sha256": "15821430c5019adf2f6d0e19234fe25733cae4f210c033447bb402820d187d21",
+          "size_bytes": 2460,
+          "role": "mask"
+        },
+        {
+          "asset_id": "455a5fdbb4ed4534e81f4cdb7b8daa63",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/observable.tif",
+          "sha256": "091498f0e3843a22c9d97bc713c75e92de40ef79b3fb50a9c66412f4d78a7e61",
+          "size_bytes": 2459,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f06d4c5fcb0465f7bee7d0a4e429b748",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/potentially_observable.tif",
+          "sha256": "091498f0e3843a22c9d97bc713c75e92de40ef79b3fb50a9c66412f4d78a7e61",
+          "size_bytes": 2459,
+          "role": "mask"
+        },
+        {
+          "asset_id": "2322c9b8af4195ba18184991fadee481",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/preview.png",
+          "sha256": "e1f0a28415c7d2bf95a857b6e9438ac710a8e1c7a1eea622f5ac6094671ee3aa",
+          "size_bytes": 606569,
+          "role": "preview"
+        },
+        {
+          "asset_id": "9f0b23499e8197afac71c20fe73fb038",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/shadow.tif",
+          "sha256": "a5e5c14e1d4170a26a21c1e0181e208bbacf95029880884d68f885be12b6adb0",
+          "size_bytes": 2459,
+          "role": "mask"
+        },
+        {
+          "asset_id": "97d1cbeb3494793376fef8ce18469ddf",
+          "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/valid.tif",
+          "sha256": "7dd5fdc9bfef5176e8be9aad93a0bd4b502227372741608d85c563f1ea5e8353",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "2322c9b8af4195ba18184991fadee481",
+        "path": "data/assets/7fc194ec-cb66-4e52-87e8-bba3fdfe50e5/preview.png",
+        "sha256": "e1f0a28415c7d2bf95a857b6e9438ac710a8e1c7a1eea622f5ac6094671ee3aa",
+        "size_bytes": 606569,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "c0ae5016-f7d4-48b0-a7f7-fe34237d06ec",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.9970171567394289,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "420bc1ff670a8f5e1c2be12e0e42a04b",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B02.tif",
+          "sha256": "90b902f2eba7f5f7580f27457b535efa8797761cfba2c13a87425a02c732ef68",
+          "size_bytes": 1249678,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "94f97afcccadab95f4a3d236741db94d",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B03.tif",
+          "sha256": "b845762ee9758c6103e9fedbe9f264cf42dd41bc06d8d82d3d34fa7223cb851b",
+          "size_bytes": 1256423,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c72a328fdaed7bdd14785df9a1407439",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B04.tif",
+          "sha256": "16d6534f45c2b12bc6d69c3d2091ac1f91b8b17fa2a4d16cea8091303b54e07d",
+          "size_bytes": 1303067,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6ebe3749b6111651415079fadd1d8bb5",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B05.tif",
+          "sha256": "66a9425628a238dd537898df19786a0c17333cbe018503b382d8f4a64e6a65df",
+          "size_bytes": 411950,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8e5655e71c3ca90a9167d6dc8e10ef51",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B06.tif",
+          "sha256": "304adc8cfefa2066856e4096cad56433b42ef226579efce30a2a60bf0baa1807",
+          "size_bytes": 416001,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "68dc3f42f901c933a1320dd6f3f15c11",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B07.tif",
+          "sha256": "7f33eff7c0ba8921f093fcbe1921a8280d3a67fef7a3a5b838611db50f4c17c8",
+          "size_bytes": 419927,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "917d4fc6a04df8840d2c9772f168385b",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B08.tif",
+          "sha256": "f021876095375281ee618bd19f89b7092ee386c51b7112fb71655b0955fcb58b",
+          "size_bytes": 1288082,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "fa388caf28305c97a0601de92316834a",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B11.tif",
+          "sha256": "3ea75bba7b907fc8f7b10017825a27fc611fc08827fbd930d52b71c67b2be0db",
+          "size_bytes": 391505,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d7bcdc5a37855d75e47708efd16c61c5",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/B12.tif",
+          "sha256": "444a2bf1b9efc5b829e2af4dff709470381fe0bd99fa53c7033d332b2fe24f13",
+          "size_bytes": 376767,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d3071b5876b54ab0ed94b5155d69bf5a",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/cloud.tif",
+          "sha256": "0c8e5533169cff2f23c39d4b67cabd4c42a4158d07b52331d79fd88d67f36aa7",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "8119014a5c2396ea1412bc5b44165c40",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/cloud_classes.tif",
+          "sha256": "5087b0351b67e5dded61b9d75de5cbfa035b81b930429516ee70b2a1c619539d",
+          "size_bytes": 4407,
+          "role": "mask"
+        },
+        {
+          "asset_id": "b377ad42dbb5ef64c5a3b1fd1be3968e",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/observable.tif",
+          "sha256": "3a8e7e7bd8e8f171180ee6a3ab5aa127b7a63f7fea54bc749cb82e4862b82541",
+          "size_bytes": 4408,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5e3952751bbfdfefd44e13f2075e2b2d",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/potentially_observable.tif",
+          "sha256": "3a8e7e7bd8e8f171180ee6a3ab5aa127b7a63f7fea54bc749cb82e4862b82541",
+          "size_bytes": 4408,
+          "role": "mask"
+        },
+        {
+          "asset_id": "e16284be482328fcff1603d091bf6e96",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/preview.png",
+          "sha256": "46ca594601054698937bfeaf15deabde8dcd1f0c8a80cf56fb15975c2f563763",
+          "size_bytes": 1174646,
+          "role": "preview"
+        },
+        {
+          "asset_id": "349ea99423b38d7084615777300e5269",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/shadow.tif",
+          "sha256": "966a9bc4f7c816aec913de7cd067ffae84b1db9806fbc5dd757269ecb5ef85dd",
+          "size_bytes": 4407,
+          "role": "mask"
+        },
+        {
+          "asset_id": "293f36c0271f828015c69a5758328e1e",
+          "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/valid.tif",
+          "sha256": "46f2a0c6ffe8e4e68e9ef003508ed1cb5b72bd60af073b1f9db0db8346cf9e93",
+          "size_bytes": 4269,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "e16284be482328fcff1603d091bf6e96",
+        "path": "data/assets/c0ae5016-f7d4-48b0-a7f7-fe34237d06ec/preview.png",
+        "sha256": "46ca594601054698937bfeaf15deabde8dcd1f0c8a80cf56fb15975c2f563763",
+        "size_bytes": 1174646,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "8818c9ac-36ec-499b-a871-3bf9e91fb60a",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "46561c145bcb128e10d33a96e0ba2786",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B02.tif",
+          "sha256": "6538e1a97b68d0819c67884cdabdbd56c3a55413c62ab79e4d54d148da1db652",
+          "size_bytes": 1395172,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d8258c9596859f7847ea61a72f2e504f",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B03.tif",
+          "sha256": "0dba0e85bd3ef876d3dd65166d73a7368c3d5f0a7d756d24257ee9bad7f6ffe3",
+          "size_bytes": 1416603,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2fb71a256f7a28e47ff46352783c3adb",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B04.tif",
+          "sha256": "d13498613ce2499ac2f1039791d4c7f9ff84f8746409ba0f489535b182c2c1f4",
+          "size_bytes": 1505858,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f1245a604076ad3d9ac48876b7319267",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B05.tif",
+          "sha256": "e42003f5a29ce7090de3c82fc78b85d3e1a094f09874e91a670aa8a599e095c4",
+          "size_bytes": 449133,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4b23e706fc79d95e0d7d3294e8f1d684",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B06.tif",
+          "sha256": "872f7f0d596c34936553d302904922f4a8da1c6c9b6ddd9820f110617e4557d1",
+          "size_bytes": 475077,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4ccd42e3282f6c034a0de37cde806c60",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B07.tif",
+          "sha256": "ccb5461e466b781e06f9e34d31f4c4fcff839008dfd5c5e5babfc34a0623413e",
+          "size_bytes": 471278,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "904641a478e385684e54dc9d390e6edf",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B08.tif",
+          "sha256": "d85ed2dedceac79c35350134e9b9ad958c148b321d04bff886a29de2c4c372df",
+          "size_bytes": 1533420,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e263e187f2c10b9453c450563944a9db",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B11.tif",
+          "sha256": "9876806d75f7c3e2f0ff2f21fa31324460c5dae1a26b6cfddd331541d76c8f72",
+          "size_bytes": 465395,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8b1a9e9f04eb0b3d7d4dc1996fc5731f",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/B12.tif",
+          "sha256": "8babecaca8382b5f75c8bf5e8cea0c881cdab700367ed2003ac1f1a508d371a7",
+          "size_bytes": 452476,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "253b0ab3747fcb9c08bb0db4ef728b34",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/cloud.tif",
+          "sha256": "26ebe0ffde559c9bd33a0dda2f07a371363874b3200c01b8574e322e5969aa03",
+          "size_bytes": 4268,
+          "role": "mask"
+        },
+        {
+          "asset_id": "17323d159d5a6bd2b0358855a7aeba7e",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/cloud_classes.tif",
+          "sha256": "8166258d6d8e3d28fcded6e52b5bc70aa300355477cab742b948899a29629d44",
+          "size_bytes": 4407,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5c3730bd781aa580669ccd3ede11a93f",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/observable.tif",
+          "sha256": "41414a06f51721f7e5d33a3e1567475fe2b917855e82beee0366f326ccdd7039",
+          "size_bytes": 4405,
+          "role": "mask"
+        },
+        {
+          "asset_id": "7946b31882e7717f56d5e69c988da1dd",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/potentially_observable.tif",
+          "sha256": "41414a06f51721f7e5d33a3e1567475fe2b917855e82beee0366f326ccdd7039",
+          "size_bytes": 4405,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f44c208088de48ab492519923f008b9a",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/preview.png",
+          "sha256": "932aad51dcd60913de50da7e8c477c9f475e1f219e5e8c51fe06045a62cd2f0d",
+          "size_bytes": 1318857,
+          "role": "preview"
+        },
+        {
+          "asset_id": "dd5545cb8d777699642a7d99ad6d933d",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/shadow.tif",
+          "sha256": "b734db23a8470c6c10262f222ec990634630ea2f57e8d4036e5843a9f11c2afa",
+          "size_bytes": 4405,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f72f4d4d9755cab73826f53202c6f516",
+          "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/valid.tif",
+          "sha256": "e5116461069c3ac57329fa374e3c4df2ee678cc7b60d0a9024f010f994b5a1b9",
+          "size_bytes": 4269,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1545600.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "f44c208088de48ab492519923f008b9a",
+        "path": "data/assets/8818c9ac-36ec-499b-a871-3bf9e91fb60a/preview.png",
+        "sha256": "932aad51dcd60913de50da7e8c477c9f475e1f219e5e8c51fe06045a62cd2f0d",
+        "size_bytes": 1318857,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "6ab04367-86d9-42c4-93e4-aa7fb69e1f4d",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "prq",
+      "zone_id": "prq_patios",
+      "sensor": "sentinel-2",
+      "status": "usable",
+      "review_status": "provisional",
+      "observable_fraction": 1.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "16973082c23b2d993d07c235a9835bb8",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B02.tif",
+          "sha256": "cc9ccef877905597e983ed561bc040f9271caa8851108ca38fe6d4e7623aba87",
+          "size_bytes": 324539,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "71b817164b746a1d82b5b3874db7ea56",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B03.tif",
+          "sha256": "159e786de82855926728817056a96de65bf428852b19193c79dc1b5b86d7b0a0",
+          "size_bytes": 328701,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4aa7c9e56e1c2244b88f7346dbe5a222",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B04.tif",
+          "sha256": "86e3313f966aa8da9f6dee28191222fa2187f3f6e459f7aa0369fa9ff8fc2ec0",
+          "size_bytes": 341332,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c41a8c1a7d35bc1c8d886de912e4147c",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B05.tif",
+          "sha256": "98cfa53b26b5e74536cbbd90ec50e73b346f3e847b50ac9b4041c3996c34505a",
+          "size_bytes": 105498,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "cde7d367329932f47ce5fd80bca2990a",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B06.tif",
+          "sha256": "30ef6eb3a9879f4b63a8b3aa7a2f76ff1ca0b93cc5f4a18dfcb6c8572aff6bf5",
+          "size_bytes": 108554,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a640c6f48c99effea156c8cc93d5c42b",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B07.tif",
+          "sha256": "4f56c7c3f7a0604b4a62cf12dae7a7ccee4fdc5d0ea1bc1520586280dfa4e570",
+          "size_bytes": 109696,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "fc3e4e7705218525e685ada780856270",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B08.tif",
+          "sha256": "1cdb30072a3130b0dd37ee783bf0de010fbfaace7edb1fb55d88d69747ca6a97",
+          "size_bytes": 339905,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "118a842d97e03a90f5850e58a9752bca",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B11.tif",
+          "sha256": "168b4e365ecb603e544495e3e417a754c63a89848382e0da67c473182106d360",
+          "size_bytes": 103981,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4850543b1f494a2564b72523bef73938",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/B12.tif",
+          "sha256": "c1bc6e43fbe9e2a9892d3a282f82ea3c77f2b95cce5dc5be03501028d85061d4",
+          "size_bytes": 99772,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "d24f658a39660d3c566847346a76bef5",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/cloud.tif",
+          "sha256": "12f02b9d7ffda9dc6735db11dbd73050649194ccb4315cd8f6e73ee12761604d",
+          "size_bytes": 1345,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6b13e575b9f822d50fc094f7d6a42105",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/cloud_classes.tif",
+          "sha256": "433b4aa91d9322ebcc1e00daaac713e63e17c3ff8b225caa9c815c5a8bab7ec4",
+          "size_bytes": 1478,
+          "role": "mask"
+        },
+        {
+          "asset_id": "4858981b835ef87b40f93cea06a182bf",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/observable.tif",
+          "sha256": "2a8fd1ce41f0e2e5ab4ab1d8c3faf10deffa3ce82cf218d3096717042910f803",
+          "size_bytes": 1476,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f196bbcd5b11b4de85b632a2a5a52e20",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/potentially_observable.tif",
+          "sha256": "2a8fd1ce41f0e2e5ab4ab1d8c3faf10deffa3ce82cf218d3096717042910f803",
+          "size_bytes": 1476,
+          "role": "mask"
+        },
+        {
+          "asset_id": "e7382da5a088c72078105d49417ec9bf",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/preview.png",
+          "sha256": "6366ca5253433b128fbe1de4e5d8e383025e044daf932e0f43819e2a9ad30e23",
+          "size_bytes": 312296,
+          "role": "preview"
+        },
+        {
+          "asset_id": "8145dace4a45441569a5fe4fd927148a",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/shadow.tif",
+          "sha256": "b3aff9b0c89267713333fa36e19af5d36c755c2facf2f028df1883aa3d267f36",
+          "size_bytes": 1476,
+          "role": "mask"
+        },
+        {
+          "asset_id": "97e28b21871064044af7193f5f004c57",
+          "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/valid.tif",
+          "sha256": "e59cdfe62e3b6d98ec4aec77aeb370f05dcdf21ef65d4d5db4ddef03529959e0",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          734720.0,
+          0.0,
+          -10.0,
+          1541120.0
+        ],
+        "crs": "EPSG:32615"
+      },
+      "source_preview": {
+        "asset_id": "e7382da5a088c72078105d49417ec9bf",
+        "path": "data/assets/6ab04367-86d9-42c4-93e4-aa7fb69e1f4d/preview.png",
+        "sha256": "6366ca5253433b128fbe1de4e5d8e383025e044daf932e0f43819e2a9ad30e23",
+        "size_bytes": 312296,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "30e06210-8967-431e-9ae0-ad0e662e77ea",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.3074516673966089,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "9d1c1f66bf485380a2e58a27ddedfaa8",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B02.tif",
+          "sha256": "bb35743b29117568fd14818cac368908a0df80fcb2fa35c82a5d784148391e97",
+          "size_bytes": 903574,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c03a485dd55e09108646775401591f59",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B03.tif",
+          "sha256": "216094de3c60a6f1ea726a045ea4d492cc93270e4753113e57baea3cacc035a5",
+          "size_bytes": 907235,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "aed43dcea117e97f3ff35c3fa15b3d97",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B04.tif",
+          "sha256": "8d3be6f617220b3f2e0af4583f7c9afb760184d742becc6bb125825788619c62",
+          "size_bytes": 916012,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "efe14f2e577825f3ddec0905a925431c",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B05.tif",
+          "sha256": "da4b74ae089bf0591f1ac61b69d75c4ae9a62b85b91333c618eeebe587e53838",
+          "size_bytes": 257309,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2ce54cf4b3f1c85aa05086850dd6f491",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B06.tif",
+          "sha256": "725faa4dc077afada63b66389a682b551d9522ce6236617ba6bf47e5d7018748",
+          "size_bytes": 257385,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1a502d6c4693f4f138dacbc78abe0284",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B07.tif",
+          "sha256": "f8cb9058076816572ba253f60072d917a78f3832627909a1af754cb2b6a6cb8a",
+          "size_bytes": 258663,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7391538b20c26acec69f8937abb2c129",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B08.tif",
+          "sha256": "b37cf164325ef5a286c1de75151f9f9dfd0b808a869374f14508c14fbf227f39",
+          "size_bytes": 919071,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c25a1276c4e085f701684c9c21d64a89",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B11.tif",
+          "sha256": "f6789b24253d75933f3de9301b0ba56baf70bf3b626a6a538990ceb49136edb9",
+          "size_bytes": 254797,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "51fb5ad32e8dc930f66038b49334a1f1",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/B12.tif",
+          "sha256": "bcaa7ce9df841a11544901b5d0636486d99b1caa1c876a47102e62c3dfbb667c",
+          "size_bytes": 253590,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "827894b3afb9e12940ef07ffd397e34e",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/cloud.tif",
+          "sha256": "b80ab4346947262e56d2fef9244d022263e2854079dcf972792edbc14c3d9778",
+          "size_bytes": 11851,
+          "role": "mask"
+        },
+        {
+          "asset_id": "0a6e78fd7825acf094673ecdaee76c56",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/cloud_classes.tif",
+          "sha256": "0644b01144ec2ff2a41d0cc45906e02904968d96d8379c6644884d94d73ea5e3",
+          "size_bytes": 13127,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a7ed41f9a7a0888da266a83b60462730",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/observable.tif",
+          "sha256": "011c7ef95124b29fa4ae28be909ec05f827a8558a59971b10dbac4dad46da782",
+          "size_bytes": 6421,
+          "role": "mask"
+        },
+        {
+          "asset_id": "00d260bbb2b11e00f5bc1dacd1919cb5",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/potentially_observable.tif",
+          "sha256": "011c7ef95124b29fa4ae28be909ec05f827a8558a59971b10dbac4dad46da782",
+          "size_bytes": 6421,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6b12d818b0eb784a8650210ac30b2638",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/preview.png",
+          "sha256": "2e245772af2cb9bcea1b956f52c815524658b6ecb826b5a0c2615ec1d7be1e91",
+          "size_bytes": 468181,
+          "role": "preview"
+        },
+        {
+          "asset_id": "1aedbee66e8b5765f7388b6610ae9d8f",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/shadow.tif",
+          "sha256": "c0a4b2d68c74ec61774a2e678c4baf3d08b4bc479215a53d5a3b178b9431d4fc",
+          "size_bytes": 11292,
+          "role": "mask"
+        },
+        {
+          "asset_id": "8667f539fcd11c0906926dde59a6f301",
+          "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "6b12d818b0eb784a8650210ac30b2638",
+        "path": "data/assets/30e06210-8967-431e-9ae0-ad0e662e77ea/preview.png",
+        "sha256": "2e245772af2cb9bcea1b956f52c815524658b6ecb826b5a0c2615ec1d7be1e91",
+        "size_bytes": 468181,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "c76e2c47-a310-4312-96c6-ed21671ba20a",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.4581430745814307,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "19958abdb08229c49c10774d69acc93a",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B02.tif",
+          "sha256": "bb35743b29117568fd14818cac368908a0df80fcb2fa35c82a5d784148391e97",
+          "size_bytes": 903574,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "42c9dbe285075362b338772392f8b054",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B03.tif",
+          "sha256": "216094de3c60a6f1ea726a045ea4d492cc93270e4753113e57baea3cacc035a5",
+          "size_bytes": 907235,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c6cc43629decf1c2018dc286f70c8ee5",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B04.tif",
+          "sha256": "8d3be6f617220b3f2e0af4583f7c9afb760184d742becc6bb125825788619c62",
+          "size_bytes": 916012,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a739f019c7e0ded09f3841bbf66ea60e",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B05.tif",
+          "sha256": "da4b74ae089bf0591f1ac61b69d75c4ae9a62b85b91333c618eeebe587e53838",
+          "size_bytes": 257309,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "3002fbfc761eb6641102df64c28b2580",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B06.tif",
+          "sha256": "725faa4dc077afada63b66389a682b551d9522ce6236617ba6bf47e5d7018748",
+          "size_bytes": 257385,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ac42188b336743a54641b4fd3eb0d180",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B07.tif",
+          "sha256": "f8cb9058076816572ba253f60072d917a78f3832627909a1af754cb2b6a6cb8a",
+          "size_bytes": 258663,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6581332a5c271f1aa26180a805191e4e",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B08.tif",
+          "sha256": "b37cf164325ef5a286c1de75151f9f9dfd0b808a869374f14508c14fbf227f39",
+          "size_bytes": 919071,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "cc3fbc2f0295c22026b606fa56caf615",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B11.tif",
+          "sha256": "f6789b24253d75933f3de9301b0ba56baf70bf3b626a6a538990ceb49136edb9",
+          "size_bytes": 254797,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "59005438dd4d5ed90363b396dc58a70b",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/B12.tif",
+          "sha256": "bcaa7ce9df841a11544901b5d0636486d99b1caa1c876a47102e62c3dfbb667c",
+          "size_bytes": 253590,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1d0ad46f35acb69d068c4f18e865f61a",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/cloud.tif",
+          "sha256": "b80ab4346947262e56d2fef9244d022263e2854079dcf972792edbc14c3d9778",
+          "size_bytes": 11851,
+          "role": "mask"
+        },
+        {
+          "asset_id": "db3db4b7fceef8e7960d9dbd5444d3c5",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/cloud_classes.tif",
+          "sha256": "0644b01144ec2ff2a41d0cc45906e02904968d96d8379c6644884d94d73ea5e3",
+          "size_bytes": 13127,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f7b73e3541a1e5ca502920ebdc7581d3",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/observable.tif",
+          "sha256": "011c7ef95124b29fa4ae28be909ec05f827a8558a59971b10dbac4dad46da782",
+          "size_bytes": 6421,
+          "role": "mask"
+        },
+        {
+          "asset_id": "a07ec72065f9d4da35811dcce282160c",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/potentially_observable.tif",
+          "sha256": "011c7ef95124b29fa4ae28be909ec05f827a8558a59971b10dbac4dad46da782",
+          "size_bytes": 6421,
+          "role": "mask"
+        },
+        {
+          "asset_id": "762c8aba8e86c91bafa825df6184968b",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/preview.png",
+          "sha256": "2e245772af2cb9bcea1b956f52c815524658b6ecb826b5a0c2615ec1d7be1e91",
+          "size_bytes": 468181,
+          "role": "preview"
+        },
+        {
+          "asset_id": "3384e368be4db2fb6437c4c5261e7e97",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/shadow.tif",
+          "sha256": "c0a4b2d68c74ec61774a2e678c4baf3d08b4bc479215a53d5a3b178b9431d4fc",
+          "size_bytes": 11292,
+          "role": "mask"
+        },
+        {
+          "asset_id": "1cb496c20560e9e2b199f69584944030",
+          "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "762c8aba8e86c91bafa825df6184968b",
+        "path": "data/assets/c76e2c47-a310-4312-96c6-ed21671ba20a/preview.png",
+        "sha256": "2e245772af2cb9bcea1b956f52c815524658b6ecb826b5a0c2615ec1d7be1e91",
+        "size_bytes": 468181,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "0b17f461-832d-4df0-908b-71537e4a1b79",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.1433466590519703,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "b6e6aa50a79ee60dc570ab14b3277327",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B02.tif",
+          "sha256": "28d2a9236791e7b1293ce41d83c7509fb72eecd4a3d62df545a1438d2aa77faf",
+          "size_bytes": 455338,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "82a7af3859340dbded969b09278004d1",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B03.tif",
+          "sha256": "12c0118f16f9bbfc78770c990bd5f75a73e3624f96e1f3bb3ed750c448680a5a",
+          "size_bytes": 457488,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e6fd8837a988b17b10b348eb96b663d6",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B04.tif",
+          "sha256": "9bfa7a41262cf294ea4d5761127266d40f4c1b310706f853741e438c50409a70",
+          "size_bytes": 461683,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "15894d3b372295f0c168b35cfdac5703",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B05.tif",
+          "sha256": "064930d4690135a61156ae69ced8e3b8081012076808997d7b0fe1936df5a029",
+          "size_bytes": 130523,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "40dad8b558fcb9603017fb40d9645e32",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B06.tif",
+          "sha256": "8e59a635793ea3eb8b04fd60e1510d9fba42f3b55bbb115dbc430f7766435abe",
+          "size_bytes": 130069,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "252029ce3ec6dbf46eb465a063fad37d",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B07.tif",
+          "sha256": "0f973a36f7bdcdf3a1f3e2598e7d95556f48cc9cb4a299499bf6a6b6eb6c68ee",
+          "size_bytes": 130516,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "006db194fbe9be7415e9db18726be0e2",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B08.tif",
+          "sha256": "89e227bd9c8e474620a5d4b0d811785669fcaf427ce644a38000d731fd60794f",
+          "size_bytes": 463735,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "89e122d09e769a9eaa8cf729b3521349",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B11.tif",
+          "sha256": "d2c997af5e301c5a2d63fc2f13c1d49b93205ed7e0b8cfc96ecdf2dce09005f1",
+          "size_bytes": 128737,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "edd295cdb5ea5623bfe21d4de48ca28a",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/B12.tif",
+          "sha256": "c6b30d713b9be8f9832750fc6a7fff722840fd2d503817782f1fda8a64eac2ca",
+          "size_bytes": 128767,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "0ad010c0773b9eaeeffd0e96fa834764",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/cloud.tif",
+          "sha256": "371e941c95857b3cf1b9afbd8c56e5565f1102937a67f9d7c8d8df263347ef14",
+          "size_bytes": 6378,
+          "role": "mask"
+        },
+        {
+          "asset_id": "dc8a60261abaef7d42621e03f372e573",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/cloud_classes.tif",
+          "sha256": "75791f8da5032b1fea61ff2d52e04df29fddcc4555d2c338f734e138617255d9",
+          "size_bytes": 7150,
+          "role": "mask"
+        },
+        {
+          "asset_id": "4711e368c39f251abd9c348f2fa615ec",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/observable.tif",
+          "sha256": "447dcae9f88d9070600f877393a036a1d88e9f1728cf0576ce8822a77727a2fa",
+          "size_bytes": 3836,
+          "role": "mask"
+        },
+        {
+          "asset_id": "2c60963af981bd2b05a8d9648a592379",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/potentially_observable.tif",
+          "sha256": "447dcae9f88d9070600f877393a036a1d88e9f1728cf0576ce8822a77727a2fa",
+          "size_bytes": 3836,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f3e8c33f0991e54e31be6f1e1afad5c4",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/preview.png",
+          "sha256": "391fecd6f91423a155742699e94243f7e4215517ef8b7af24c999cad601013c8",
+          "size_bytes": 261465,
+          "role": "preview"
+        },
+        {
+          "asset_id": "fde3926365f61f7ac6b1c0cf34b2da64",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/shadow.tif",
+          "sha256": "f47ee6e8dd501cd00b444900f2e17aa696b1471cb8f142d972f90c953d9d5858",
+          "size_bytes": 6009,
+          "role": "mask"
+        },
+        {
+          "asset_id": "04bd723784d59df5df824e56fea1af65",
+          "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "f3e8c33f0991e54e31be6f1e1afad5c4",
+        "path": "data/assets/0b17f461-832d-4df0-908b-71537e4a1b79/preview.png",
+        "sha256": "391fecd6f91423a155742699e94243f7e4215517ef8b7af24c999cad601013c8",
+        "size_bytes": 261465,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "a152d31d-698b-466c-b830-4ffe3fa2be92",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.18126045733407697,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "8f0614602a3f8b976b8c230f38faa511",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B02.tif",
+          "sha256": "28d2a9236791e7b1293ce41d83c7509fb72eecd4a3d62df545a1438d2aa77faf",
+          "size_bytes": 455338,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "466570604dd9dcaa209e4f75f4bb2b90",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B03.tif",
+          "sha256": "12c0118f16f9bbfc78770c990bd5f75a73e3624f96e1f3bb3ed750c448680a5a",
+          "size_bytes": 457488,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2fd0831dd208792fad499ca49a600251",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B04.tif",
+          "sha256": "9bfa7a41262cf294ea4d5761127266d40f4c1b310706f853741e438c50409a70",
+          "size_bytes": 461683,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "26b7df54fcf85bb253bfd244ada8e8f5",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B05.tif",
+          "sha256": "064930d4690135a61156ae69ced8e3b8081012076808997d7b0fe1936df5a029",
+          "size_bytes": 130523,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "71654e192364958e9178277f884b9695",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B06.tif",
+          "sha256": "8e59a635793ea3eb8b04fd60e1510d9fba42f3b55bbb115dbc430f7766435abe",
+          "size_bytes": 130069,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4c9535cebb3143e8185033ae01d7cc60",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B07.tif",
+          "sha256": "0f973a36f7bdcdf3a1f3e2598e7d95556f48cc9cb4a299499bf6a6b6eb6c68ee",
+          "size_bytes": 130516,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "25d693c5bc4c1f872bd5720c24d35beb",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B08.tif",
+          "sha256": "89e227bd9c8e474620a5d4b0d811785669fcaf427ce644a38000d731fd60794f",
+          "size_bytes": 463735,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7994445d392f71a9fb5f8b5b8a2502ab",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B11.tif",
+          "sha256": "d2c997af5e301c5a2d63fc2f13c1d49b93205ed7e0b8cfc96ecdf2dce09005f1",
+          "size_bytes": 128737,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "06f8e1b43bbac5b81dca2473d3522929",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/B12.tif",
+          "sha256": "c6b30d713b9be8f9832750fc6a7fff722840fd2d503817782f1fda8a64eac2ca",
+          "size_bytes": 128767,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "136815f3e4428f1bf35472bba69c4e6d",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/cloud.tif",
+          "sha256": "371e941c95857b3cf1b9afbd8c56e5565f1102937a67f9d7c8d8df263347ef14",
+          "size_bytes": 6378,
+          "role": "mask"
+        },
+        {
+          "asset_id": "0e3f84f6537aab5f8f03be441dc69556",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/cloud_classes.tif",
+          "sha256": "75791f8da5032b1fea61ff2d52e04df29fddcc4555d2c338f734e138617255d9",
+          "size_bytes": 7150,
+          "role": "mask"
+        },
+        {
+          "asset_id": "3058242bf310fa46ba6cd5630e4b0447",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/observable.tif",
+          "sha256": "447dcae9f88d9070600f877393a036a1d88e9f1728cf0576ce8822a77727a2fa",
+          "size_bytes": 3836,
+          "role": "mask"
+        },
+        {
+          "asset_id": "20eef76769a26f08a59fc42dd9153692",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/potentially_observable.tif",
+          "sha256": "447dcae9f88d9070600f877393a036a1d88e9f1728cf0576ce8822a77727a2fa",
+          "size_bytes": 3836,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6dd179a3d851960b9d4d87233fdac6fd",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/preview.png",
+          "sha256": "391fecd6f91423a155742699e94243f7e4215517ef8b7af24c999cad601013c8",
+          "size_bytes": 261465,
+          "role": "preview"
+        },
+        {
+          "asset_id": "4c30dd76248820caee9ffd1cbd52b7b8",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/shadow.tif",
+          "sha256": "f47ee6e8dd501cd00b444900f2e17aa696b1471cb8f142d972f90c953d9d5858",
+          "size_bytes": 6009,
+          "role": "mask"
+        },
+        {
+          "asset_id": "c901e797eaf38de6039e1e0f41852f42",
+          "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9",
+          "size_bytes": 1346,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "6dd179a3d851960b9d4d87233fdac6fd",
+        "path": "data/assets/a152d31d-698b-466c-b830-4ffe3fa2be92/preview.png",
+        "sha256": "391fecd6f91423a155742699e94243f7e4215517ef8b7af24c999cad601013c8",
+        "size_bytes": 261465,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.16302178059708106,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "a36ed1b958977a7180cd4f42c9ceb1b0",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B02.tif",
+          "sha256": "007fec648ab1e1c264f9ff40783db5f4cfa4329adbc7aad24725cc7efa8efb75",
+          "size_bytes": 2267550,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "363c5cd8851f7bc6ac9675650d864689",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B03.tif",
+          "sha256": "0defcf8f98b95d7a4cb3896f2ce71a35d0ca2f00329244b6de94c134979cf350",
+          "size_bytes": 2284022,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4f9b06b380a8c3c96439631b18bc7992",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B04.tif",
+          "sha256": "132bdbf660adfbe0f8fe8f1eff44ce3eef1ffe2b6936be3b7fe73fa802958915",
+          "size_bytes": 2308290,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "780ac6004f5004f7b6361dd4139681ea",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B05.tif",
+          "sha256": "d9c8378b42dad7ea14c96690f40c7cd2d60379545ac4ce413642da1655c30db3",
+          "size_bytes": 656749,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "3e747476641fb9109d2887c95ceb8dd7",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B06.tif",
+          "sha256": "1a40d2a082b1180f6d0ff58d8828df86e6d82b39b0f134134ceb0ef3fe3bbc5f",
+          "size_bytes": 660073,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f8a196ab19174c6994f3eb9fb477f363",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B07.tif",
+          "sha256": "516848d13c82befdc7dcb5c9aac1f5f4d0ff7d2353ddb37b27988a48db8f7a18",
+          "size_bytes": 660156,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8c0e8fac703ed7a8ab617b2964e0f559",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B08.tif",
+          "sha256": "f8ef788c041570cd8ac1771d2758ee27378133e8dd85448009757d4684cfec4a",
+          "size_bytes": 2333076,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "84a1f2a854c1b693bd43b75a33994d8b",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B11.tif",
+          "sha256": "05a8d5acb8689acfb9718d0de319373115a2e1a8ad821a5a36d1274d4ac1889b",
+          "size_bytes": 655388,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "cef46091f6cfd59ae15d842636a0772a",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/B12.tif",
+          "sha256": "44ed2a1e964747e7d4c8aecf151e21172faa8137975d35420c9d0d0c1bb754cb",
+          "size_bytes": 650152,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "6a212d1d2456c9be7dc4672093a8bfd8",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/cloud.tif",
+          "sha256": "4f1b0d08f3b6295b82d060801b82322dfbc902f6fd6c44ccfe99da3ec847dba4",
+          "size_bytes": 31046,
+          "role": "mask"
+        },
+        {
+          "asset_id": "1ef57dd060b2d58118e5cd09f55a2d38",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/cloud_classes.tif",
+          "sha256": "9659edc0941c35f1a0742ba856c2a1ec21f047cc812bbe315fd961e23c0ca8e3",
+          "size_bytes": 37044,
+          "role": "mask"
+        },
+        {
+          "asset_id": "f78287952125ebfee2891262bb51054f",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/observable.tif",
+          "sha256": "644e3e40e85790b653cc526a77be5ae79acb5113021931d2963b306633ca4d80",
+          "size_bytes": 19833,
+          "role": "mask"
+        },
+        {
+          "asset_id": "e719ee0236a274a51960a59e809dabcd",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/potentially_observable.tif",
+          "sha256": "644e3e40e85790b653cc526a77be5ae79acb5113021931d2963b306633ca4d80",
+          "size_bytes": 19833,
+          "role": "mask"
+        },
+        {
+          "asset_id": "de7b92ee16be352972165aea7d1cd9c6",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/preview.png",
+          "sha256": "8d5615be4c949479f1cd51520e764b29b6619df80db19ea566de8f2a6fa26f61",
+          "size_bytes": 1353559,
+          "role": "preview"
+        },
+        {
+          "asset_id": "2a421a67740047306516182f08811797",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/shadow.tif",
+          "sha256": "ea26bf50fe7240b5709d572cd048fdb5d6ba514d94fd514a94fd9d4f43110a77",
+          "size_bytes": 27391,
+          "role": "mask"
+        },
+        {
+          "asset_id": "ce1dfaa48b5a7bcabf2ddbb5557c9a7b",
+          "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/valid.tif",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+          "size_bytes": 8559,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 1344,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "de7b92ee16be352972165aea7d1cd9c6",
+        "path": "data/assets/3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99/preview.png",
+        "sha256": "8d5615be4c949479f1cd51520e764b29b6619df80db19ea566de8f2a6fa26f61",
+        "size_bytes": 1353559,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "d98a6d5d-1b3e-4c47-bfc4-1a3544124690",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.14241547704090596,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "fea7972417ebb3049d49b21bf969d145",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B02.tif",
+          "sha256": "04e1655b2b7a4b719bd2cf39b423e301b77b23080b78fdd80c4fb5270217f38c",
+          "size_bytes": 859770,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a2c7e2ff7a444392c9ac28986e4a02cc",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B03.tif",
+          "sha256": "7099a89a22cedff5e025835f688993c6edd70d36eb974ec6d22c2659a1d9dd25",
+          "size_bytes": 864577,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "2cdc94c5ec64b4feb0ab02d3a059b863",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B04.tif",
+          "sha256": "9958e03bfbd7b313f5544c74bb78bc15011b90edb3ad14dd85ec1527bdd2c467",
+          "size_bytes": 871293,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "9ba374893088c4ec5edd8acf6aae6689",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B05.tif",
+          "sha256": "649b5975db92a18699135c5639ebd7c22a5d365ccf02e2daf22315467e571454",
+          "size_bytes": 249642,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "05eaff2fed09faac312681845460c974",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B06.tif",
+          "sha256": "a4c63d728268ba71fc0ec129ddc208084dfc345c40cdf65436a89ccdfd871df7",
+          "size_bytes": 251580,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "840ca54200546086fd169803a5de1da1",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B07.tif",
+          "sha256": "98fcf55fc739e7d57d2dda3d4c0d3b36f2c6549217207e84cc1b57897cfd60ad",
+          "size_bytes": 251647,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "a51b999e4be34a83cedc5b45bf272311",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B08.tif",
+          "sha256": "3128d28a879e272716268e92d7f7df5ba6f0195d5fb721cd3badbbb88334bcfd",
+          "size_bytes": 879097,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "002cda7ed293bc43b812c459f29861be",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B11.tif",
+          "sha256": "81246d3d7029317e6aae5a6fa8e480d0a70797b1e433483fe271a09c95adccf0",
+          "size_bytes": 249886,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8ebfd2f40c353e138ee878b05cf3cf68",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/B12.tif",
+          "sha256": "85ba1b22dd8767ea61f79bc4e0371a262a3b1de70d69eb4acee04490da967149",
+          "size_bytes": 246258,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f213485429364c238739743dc0a8176a",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/cloud.tif",
+          "sha256": "696b6f0bbbe4ca05cb6c943e3fdf153978e6c691beb6f0bbf4b513dc4e39501d",
+          "size_bytes": 12114,
+          "role": "mask"
+        },
+        {
+          "asset_id": "9b0d1ee49f0bc2b540b1c347ab73901d",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/cloud_classes.tif",
+          "sha256": "a87251edcc95bca7de28499b0811c57611782a4df0d45d44647765e0700e5391",
+          "size_bytes": 14505,
+          "role": "mask"
+        },
+        {
+          "asset_id": "1dd8854f98effc54b0d64f05993bae5e",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/observable.tif",
+          "sha256": "7503e82e2991c2d63ebbfc3e3592998582c45e5670259fc4c7d733d62afc0742",
+          "size_bytes": 8800,
+          "role": "mask"
+        },
+        {
+          "asset_id": "71393339e9dc96991fffc415d238c8fc",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/potentially_observable.tif",
+          "sha256": "7503e82e2991c2d63ebbfc3e3592998582c45e5670259fc4c7d733d62afc0742",
+          "size_bytes": 8800,
+          "role": "mask"
+        },
+        {
+          "asset_id": "264a1cc738c29d355a8bbe2cc07449e9",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/preview.png",
+          "sha256": "068f13a08bfba43f633962d347b6356f0e8af06fdacdba9a32f9c2833f1ac9e8",
+          "size_bytes": 536715,
+          "role": "preview"
+        },
+        {
+          "asset_id": "9b8efce7175db4ddc6ed5300408cb397",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/shadow.tif",
+          "sha256": "241d865503a958475fdd5c33f691dcbe7133306bde79670ea095afa12631f6d2",
+          "size_bytes": 11543,
+          "role": "mask"
+        },
+        {
+          "asset_id": "efd08b8c503ccf50f0c4ab7b24f04742",
+          "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/valid.tif",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 448,
+        "height": 896,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "264a1cc738c29d355a8bbe2cc07449e9",
+        "path": "data/assets/d98a6d5d-1b3e-4c47-bfc4-1a3544124690/preview.png",
+        "sha256": "068f13a08bfba43f633962d347b6356f0e8af06fdacdba9a32f9c2833f1ac9e8",
+        "size_bytes": 536715,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "9713753c-bb17-4385-91a2-9f41f55f0ecb",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.07139689578713969,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "3912c340ab7e97f200ee7142bb86bd02",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B02.tif",
+          "sha256": "b7730c3603655e6bad17478a2870d3f5f640bb345d01d5582ef8f3e1366ac707",
+          "size_bytes": 886788,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "5f5cf983427a658fd2c83e4496d423df",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B03.tif",
+          "sha256": "7f0523d207ffccfffb4615d12595e65fdeb8ab5b92aabcc8bb78e72a93693c42",
+          "size_bytes": 897035,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7a92d60f855e41c2e7d96c3b648b13f8",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B04.tif",
+          "sha256": "04b6685fc0806eb32df01f00ac110bcc7f24692906dc2d7a44c4b1523e24ce01",
+          "size_bytes": 909377,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "1abe86c5d5bdbeea2e9c9c38af0c402f",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B05.tif",
+          "sha256": "9a1b413c39ba98ae4be1fada5b69245a5709447f9bcdb3fb1ac1bc1c0ea8cefe",
+          "size_bytes": 259267,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "f50711566252ed1e80026908e5a98c90",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B06.tif",
+          "sha256": "47b959ef94286235ad11908bda984eb4825b9e97d00160f30745d55932c1c603",
+          "size_bytes": 260988,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "4c611728936632eb6dfd82cf7eaaa318",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B07.tif",
+          "sha256": "a52c34c8cc28631368796f07e2e835c30be4b6f0eb47ed1c71e26252c41a69ed",
+          "size_bytes": 260031,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "59ef257d77d316c4d74f864a034dee2f",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B08.tif",
+          "sha256": "bbdf4660695615de1afc72ea4974dfaf952d4d84cd310c5ee163318e54cff848",
+          "size_bytes": 926243,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "bfb11293bc0d207b101a280d1cb10287",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B11.tif",
+          "sha256": "03d3381c79ad9e188a0d3d6c46ed609b936621f3d917fab5866bf62086f65158",
+          "size_bytes": 260054,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "19194260de0d890a8f4b4f42a02c1c6c",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/B12.tif",
+          "sha256": "3b8271125021acb6806c1e1c3fa73a8a9902b8807ec3e1169cc1ec7d8256dbb9",
+          "size_bytes": 258070,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "7497c8256a635ce12353ecb1bdf14840",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/cloud.tif",
+          "sha256": "67b838c4322c047aac3464ce02426127b5a371f8993d080c32667a597b9efc0c",
+          "size_bytes": 10484,
+          "role": "mask"
+        },
+        {
+          "asset_id": "3c133ca3d94732feb921559e35e73bee",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/cloud_classes.tif",
+          "sha256": "c69a47f6c67196c87b49654a79d9cacdf4b79708e0f511b4818aa8384391154f",
+          "size_bytes": 13248,
+          "role": "mask"
+        },
+        {
+          "asset_id": "6409aafcdf00c7d6eb07c489eb130000",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/observable.tif",
+          "sha256": "781b7e7e21526cb95457af0e0fe25568363de4c7258a3beabcd3eef1404de844",
+          "size_bytes": 8956,
+          "role": "mask"
+        },
+        {
+          "asset_id": "284f6d9380b1b1fea44e33638516b7d9",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/potentially_observable.tif",
+          "sha256": "781b7e7e21526cb95457af0e0fe25568363de4c7258a3beabcd3eef1404de844",
+          "size_bytes": 8956,
+          "role": "mask"
+        },
+        {
+          "asset_id": "090221e061989913437dff5710d40830",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/preview.png",
+          "sha256": "4984d5d99e81a266c29668b48b2f6bf50f537421a134e0dc621e72a838b28451",
+          "size_bytes": 621237,
+          "role": "preview"
+        },
+        {
+          "asset_id": "ee40a019c46388c185a9175e0b7aa6c2",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/shadow.tif",
+          "sha256": "1ab87d3faa5b21e278ffec60a36c43fd99392c1bedbb0ee0a1e512431d6e5956",
+          "size_bytes": 9016,
+          "role": "mask"
+        },
+        {
+          "asset_id": "5b5045ebcbb2785dda88ce12bc394fab",
+          "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "090221e061989913437dff5710d40830",
+        "path": "data/assets/9713753c-bb17-4385-91a2-9f41f55f0ecb/preview.png",
+        "sha256": "4984d5d99e81a266c29668b48b2f6bf50f537421a134e0dc621e72a838b28451",
+        "size_bytes": 621237,
+        "role": "preview"
+      }
+    },
+    {
+      "observation_id": "3940e11a-05d8-49f4-b793-c78b9f3afe83",
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "captured_at": "2026-04-13T16:18:29.025000Z",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "sensor": "sentinel-2",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.6964340140201158,
+      "quality_flags_json": "[\"model_not_locally_validated\"]",
+      "evidence_assets": [
+        {
+          "asset_id": "96ff434fcf829010ad363f82330f8177",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B02.tif",
+          "sha256": "b7730c3603655e6bad17478a2870d3f5f640bb345d01d5582ef8f3e1366ac707",
+          "size_bytes": 886788,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "c9997654c07e17cd738f1473bb0eaa26",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B03.tif",
+          "sha256": "7f0523d207ffccfffb4615d12595e65fdeb8ab5b92aabcc8bb78e72a93693c42",
+          "size_bytes": 897035,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "214435f93f88729a461dd7cad72474d7",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B04.tif",
+          "sha256": "04b6685fc0806eb32df01f00ac110bcc7f24692906dc2d7a44c4b1523e24ce01",
+          "size_bytes": 909377,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "8659bc9eb4e6350820c4bcf0fd6db8d9",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B05.tif",
+          "sha256": "9a1b413c39ba98ae4be1fada5b69245a5709447f9bcdb3fb1ac1bc1c0ea8cefe",
+          "size_bytes": 259267,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "916d052e888ac09f3b2d024897cdd868",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B06.tif",
+          "sha256": "47b959ef94286235ad11908bda984eb4825b9e97d00160f30745d55932c1c603",
+          "size_bytes": 260988,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "3c9a258cf609f34453aa35327e3e652c",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B07.tif",
+          "sha256": "a52c34c8cc28631368796f07e2e835c30be4b6f0eb47ed1c71e26252c41a69ed",
+          "size_bytes": 260031,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "68996d7e23bc84ff19a4f7fc4e8709a2",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B08.tif",
+          "sha256": "bbdf4660695615de1afc72ea4974dfaf952d4d84cd310c5ee163318e54cff848",
+          "size_bytes": 926243,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e25da95c33a9585cf5c96377aa2d1b4e",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B11.tif",
+          "sha256": "03d3381c79ad9e188a0d3d6c46ed609b936621f3d917fab5866bf62086f65158",
+          "size_bytes": 260054,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "e64b6197777492985bf0c2adbcfaf6c9",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/B12.tif",
+          "sha256": "3b8271125021acb6806c1e1c3fa73a8a9902b8807ec3e1169cc1ec7d8256dbb9",
+          "size_bytes": 258070,
+          "role": "numeric"
+        },
+        {
+          "asset_id": "ac217d7f6d4e719593aef1abbde55093",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/cloud.tif",
+          "sha256": "67b838c4322c047aac3464ce02426127b5a371f8993d080c32667a597b9efc0c",
+          "size_bytes": 10484,
+          "role": "mask"
+        },
+        {
+          "asset_id": "651734476b07016b753bca411b3aa471",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/cloud_classes.tif",
+          "sha256": "c69a47f6c67196c87b49654a79d9cacdf4b79708e0f511b4818aa8384391154f",
+          "size_bytes": 13248,
+          "role": "mask"
+        },
+        {
+          "asset_id": "b0d7b2f484af99add4515a7343e9a480",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/observable.tif",
+          "sha256": "781b7e7e21526cb95457af0e0fe25568363de4c7258a3beabcd3eef1404de844",
+          "size_bytes": 8956,
+          "role": "mask"
+        },
+        {
+          "asset_id": "d46f65a99dc32a1b329aff0c3347244c",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/potentially_observable.tif",
+          "sha256": "781b7e7e21526cb95457af0e0fe25568363de4c7258a3beabcd3eef1404de844",
+          "size_bytes": 8956,
+          "role": "mask"
+        },
+        {
+          "asset_id": "fca331501abf3fe6fab9898b0e4f01b4",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/preview.png",
+          "sha256": "4984d5d99e81a266c29668b48b2f6bf50f537421a134e0dc621e72a838b28451",
+          "size_bytes": 621237,
+          "role": "preview"
+        },
+        {
+          "asset_id": "dfc63ad167e6f2fe22404ab8939431e1",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/shadow.tif",
+          "sha256": "1ab87d3faa5b21e278ffec60a36c43fd99392c1bedbb0ee0a1e512431d6e5956",
+          "size_bytes": 9016,
+          "role": "mask"
+        },
+        {
+          "asset_id": "95857f07cbcbb517f70ea55522fae62d",
+          "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "role": "mask"
+        }
+      ],
+      "grid": {
+        "width": 896,
+        "height": 448,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "source_preview": {
+        "asset_id": "fca331501abf3fe6fab9898b0e4f01b4",
+        "path": "data/assets/3940e11a-05d8-49f4-b793-c78b9f3afe83/preview.png",
+        "sha256": "4984d5d99e81a266c29668b48b2f6bf50f537421a134e0dc621e72a838b28451",
+        "size_bytes": 621237,
+        "role": "preview"
+      }
+    }
+  ],
+  "readiness_round1_calibration_and_test": [
+    {
+      "split": "calibration",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "observations": [
+        {
+          "observation_id": "3a04cfcf-6847-48ed-ae4b-ef167fa42305",
+          "zone_id": "pbr_canal",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "3465c141-281b-4936-bf10-3cb4b7e8091a",
+          "zone_id": "pbr_fondeo",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "3e31a667-a48c-4320-ad80-c12de86e146f",
+          "zone_id": "pbr_muelles",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "701c690c-abd6-4720-9eba-e12eab478c11",
+          "zone_id": "pbr_patios",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "observations": [
+        {
+          "observation_id": "ca64f305-a6f0-4045-b80b-3303ac5aa461",
+          "zone_id": "stc_canal",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "a69e926d-4579-4d64-9ddb-315379340def",
+          "zone_id": "stc_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.002822311484816901
+        },
+        {
+          "observation_id": "8ab0970d-e0bc-4421-a98e-28c78e759f4d",
+          "zone_id": "stc_muelles",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "27b83010-3d8b-47e9-8618-b84300e1f70e",
+          "zone_id": "stc_patios",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1C:IW:GRDH:1SDV:20251003T115326:20251003T115402:004397:008B68",
+      "observations": [
+        {
+          "observation_id": "a69a8de3-3319-48d9-897c-cd733526292d",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "b8a677ca-d1cb-487c-a259-675876156aae",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "7c686f19-50b5-436c-9c83-dc6e32001c39",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "7c42ed44-e3f0-4de2-947c-e73af76e2057",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1",
+      "observations": [
+        {
+          "observation_id": "910dff8b-fd2d-4de9-ae64-e04f52299195",
+          "zone_id": "pbr_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.4363386097728837
+        },
+        {
+          "observation_id": "eca70ebf-e504-4817-a1e3-972bc4e8abf4",
+          "zone_id": "pbr_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.00813722046598759
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1",
+      "observations": [
+        {
+          "observation_id": "2d43df33-cf98-4040-8595-d08604b8e9e0",
+          "zone_id": "stc_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.30075855032604343
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "observations": [
+        {
+          "observation_id": "78b11d22-b540-448e-b302-8db93bc7b33c",
+          "zone_id": "prq_canal",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "6c3fd3ce-d2bf-4eae-95eb-2f1cf4dcfdd9",
+          "zone_id": "prq_fondeo",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "f76789c5-ac56-4e01-b688-75a2be78d487",
+          "zone_id": "prq_muelles",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "7309e797-e534-4ad1-ac72-84ef10d8bb56",
+          "zone_id": "prq_patios",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20251009T115446:20251009T115508:061348:07A7B0",
+      "observations": [
+        {
+          "observation_id": "568b8d30-4ea6-4e83-9bb1-f7c4b7af6abf",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "389606ff-79e3-40e9-b65b-0e294b07b3f0",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "eae320a6-c3dd-43a3-ae0d-90640212821d",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "994ca656-e256-4fa7-9824-5be71cd23113",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+      "observations": [
+        {
+          "observation_id": "f1daf655-2050-4ee1-b80f-5d20db5014cc",
+          "zone_id": "pbr_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.5915660389163486
+        },
+        {
+          "observation_id": "f4d9dfa8-7182-43c1-a30b-a8946fad00ce",
+          "zone_id": "pbr_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.7746165554384733
+        },
+        {
+          "observation_id": "72dbadc4-c5cf-4fc1-a404-d339826a4f96",
+          "zone_id": "pbr_muelles",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.041119360365505425
+        },
+        {
+          "observation_id": "9c666768-c890-4a67-84b3-9a13997ad6d2",
+          "zone_id": "pbr_patios",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.912994980479643
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+      "observations": [
+        {
+          "observation_id": "1746f4c7-ec29-47e3-8b91-e593d485c0d5",
+          "zone_id": "stc_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.29849620724836967
+        },
+        {
+          "observation_id": "5f0775ea-5cb6-415b-958d-987f1eefc4bc",
+          "zone_id": "stc_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.18520687191858626
+        },
+        {
+          "observation_id": "bed1ea22-45dd-4fb6-afdc-a3982ae39742",
+          "zone_id": "stc_muelles",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        },
+        {
+          "observation_id": "6526e411-9265-4b5d-846a-190c871c632f",
+          "zone_id": "stc_patios",
+          "status": "unusable",
+          "review_status": "provisional",
+          "observable_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+      "observations": [
+        {
+          "observation_id": "aae8fd10-8e55-46f6-8fe4-37b99620eb8b",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "da782680-1bfc-4f95-8c7f-673e822a67f9",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "bbf28ddd-5f88-4c7b-8770-8cb4c6c52f49",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "17714c75-349e-46eb-b4a7-786cd0ed9cf2",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928",
+      "observations": [
+        {
+          "observation_id": "995fba78-f918-47e9-ae7d-dce2e1f25f1d",
+          "zone_id": "pbr_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "9166a068-d962-410d-a2bf-2f125068cab6",
+          "zone_id": "pbr_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "171779e5-af7b-4bfb-aa91-ce6b3974d8d6",
+          "zone_id": "pbr_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "815a948c-1aab-4e8e-bd04-04107c163031",
+          "zone_id": "pbr_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928",
+      "observations": [
+        {
+          "observation_id": "1e0b0f21-5e8e-424b-9aa5-7688f01065eb",
+          "zone_id": "stc_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999996
+        },
+        {
+          "observation_id": "af6d33b9-6bae-4214-bb34-4dda5117b072",
+          "zone_id": "stc_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "adfa5ea5-4059-4e8d-b9fc-789276bc85c0",
+          "zone_id": "stc_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "acf6cfdc-d5c5-4e9c-b548-bd3b30e22e00",
+          "zone_id": "stc_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A",
+      "observations": [
+        {
+          "observation_id": "b2348f11-0b11-4062-b05c-3938c06e86f7",
+          "zone_id": "pbr_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.43890383532503285
+        },
+        {
+          "observation_id": "543d7d0d-4645-45fc-ae59-771379d230e5",
+          "zone_id": "pbr_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.012235101276197166
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A",
+      "observations": [
+        {
+          "observation_id": "1058c9fe-3fcc-4d1e-a56f-1ca10ca03566",
+          "zone_id": "stc_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.3020893403717339
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+      "observations": [
+        {
+          "observation_id": "24873aa4-b4cf-43d3-acc7-16409e8941e6",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "27cc5966-22c7-44c3-bcbd-8dbe5351b6f6",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "78974109-3b59-43e3-8309-38574e815b11",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "observations": [
+        {
+          "observation_id": "5c04db9f-4e06-4f8a-8b0d-f66b693b4963",
+          "zone_id": "pbr_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "3a2ea255-4a3f-4d0d-a96e-541f55086361",
+          "zone_id": "pbr_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "c35ce76a-8277-4b40-a418-6be9ae635397",
+          "zone_id": "pbr_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "abf68398-3659-470f-a6ae-1e3fbd05b2d6",
+          "zone_id": "pbr_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+      "observations": [
+        {
+          "observation_id": "f4c19055-c7e3-4e6d-894c-4ef8fab6fd97",
+          "zone_id": "stc_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999996
+        },
+        {
+          "observation_id": "3573817d-d287-4b4d-b3f1-544c4bac67c2",
+          "zone_id": "stc_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "0f55ede6-c4d1-4b42-9566-5c905201bb14",
+          "zone_id": "stc_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "44a9676c-9008-4aca-9cbb-839aaeffe808",
+          "zone_id": "stc_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 1,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260407T115437:20260407T115459:063973:080C45",
+      "observations": [
+        {
+          "observation_id": "e792b210-ac84-46de-acf9-9817f90b1168",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "de4a983f-d53b-42a3-a736-62e3794c80aa",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "000947b1-72b0-4ab3-9da5-9ec83f3d1456",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "0deb66cc-d93a-4df2-b0e8-62dd47d11a52",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1C:IW:GRDH:1SDV:20260413T115323:20260413T115359:007197:00E961",
+      "observations": [
+        {
+          "observation_id": "9bdd566f-3c2b-4e99-934b-0eff78bd0096",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "be004dfa-9657-4f38-903b-53bc1f7525aa",
+          "zone_id": "prq_fondeo",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "bddc214e-1662-47b3-bff1-a7fd4be31e2d",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "d05c87c4-1a46-4b64-ba71-4ed94861f700",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+      "observations": [
+        {
+          "observation_id": "7fc194ec-cb66-4e52-87e8-bba3fdfe50e5",
+          "zone_id": "prq_canal",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 0.9999999999999998
+        },
+        {
+          "observation_id": "c0ae5016-f7d4-48b0-a7f7-fe34237d06ec",
+          "zone_id": "prq_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.9970171567394289
+        },
+        {
+          "observation_id": "8818c9ac-36ec-499b-a871-3bf9e91fb60a",
+          "zone_id": "prq_muelles",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        },
+        {
+          "observation_id": "6ab04367-86d9-42c4-93e4-aa7fb69e1f4d",
+          "zone_id": "prq_patios",
+          "status": "usable",
+          "review_status": "provisional",
+          "observable_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "observations": [
+        {
+          "observation_id": "30e06210-8967-431e-9ae0-ad0e662e77ea",
+          "zone_id": "pbr_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.3074516673966089
+        },
+        {
+          "observation_id": "c76e2c47-a310-4312-96c6-ed21671ba20a",
+          "zone_id": "pbr_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.4581430745814307
+        },
+        {
+          "observation_id": "0b17f461-832d-4df0-908b-71537e4a1b79",
+          "zone_id": "pbr_muelles",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.1433466590519703
+        },
+        {
+          "observation_id": "a152d31d-698b-466c-b830-4ffe3fa2be92",
+          "zone_id": "pbr_patios",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.18126045733407697
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+      "observations": [
+        {
+          "observation_id": "3cc5e8f6-cd0b-4876-b3cd-1be6b89beb99",
+          "zone_id": "stc_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.16302178059708106
+        },
+        {
+          "observation_id": "d98a6d5d-1b3e-4c47-bfc4-1a3544124690",
+          "zone_id": "stc_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.14241547704090596
+        },
+        {
+          "observation_id": "9713753c-bb17-4385-91a2-9f41f55f0ecb",
+          "zone_id": "stc_muelles",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.07139689578713969
+        },
+        {
+          "observation_id": "3940e11a-05d8-49f4-b793-c78b9f3afe83",
+          "zone_id": "stc_patios",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.6964340140201158
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C",
+      "observations": [
+        {
+          "observation_id": "072d1e06-ea81-4cd1-8253-012f81dc7e88",
+          "zone_id": "pbr_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.4373396734029907
+        },
+        {
+          "observation_id": "a2ec24f6-def3-4a32-9913-fb110ff48752",
+          "zone_id": "pbr_fondeo",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.009600749326776724
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "primary_ordinal_in_stratum": 2,
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C",
+      "observations": [
+        {
+          "observation_id": "24a1c380-224b-4f0e-8a9e-4765dc76a5dc",
+          "zone_id": "stc_canal",
+          "status": "partial",
+          "review_status": "provisional",
+          "observable_fraction": 0.30133522601250934
+        }
+      ]
+    }
+  ],
+  "frozen_manifest_readiness": {
+    "calibration": [],
+    "test": []
+  },
+  "metrics_computed": false,
+  "database_writes": false
+}

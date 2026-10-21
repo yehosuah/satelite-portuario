@@ -1,0 +1,65 @@
+{
+  "schema_version": "minimal-train-inference-plan-v1",
+  "planned_at": "2026-10-21T17:02:41.331938Z",
+  "author": "codex-ai-persistence",
+  "status": "not_executed_waiting_for_coordinator_history_boundary",
+  "selection_rule": "First nonempty reference crop in frozen TRAIN manifest order; no calibration or test data consulted.",
+  "train_manifest": {
+    "path": "data/datasets/phase2-reviews/s2-january-v1/train-crops/manifest.json",
+    "sha256": "f0334c9d341f57624794d370a44091308a8f08ae31624f69a7c057ad4e0f8686"
+  },
+  "sample": {
+    "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+    "parent_observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8",
+    "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+    "port_id": "prq",
+    "zone_id": "prq_canal",
+    "crop_window": [
+      0,
+      0,
+      512,
+      448
+    ],
+    "labels": "ddc08c5a2fa3d7cf23b99884.geojson",
+    "sha256": "d54873ca3a9d985b9fa4ce59597ca8a88c57275acd6067c6f8f8aef7f60925e6",
+    "reviewed_pixel_count": 2421
+  },
+  "model_manifests": [
+    {
+      "role": "base",
+      "path": "data/experiments/phase2-s2-round1-20261021/base-manifest.json",
+      "sha256": "53b18a3c8063906c06994559d4dad42719b61a1b073ccaae0c9005c7d5e119e9"
+    },
+    {
+      "role": "trained",
+      "path": "data/experiments/phase2-s2-round1-20261021/trained/manifest.json",
+      "sha256": "c0e6c7620d0768c3eb0aee47901504f141296bd4c91b616bc83153dab1bbc7a0"
+    }
+  ],
+  "execution": {
+    "device": "cpu",
+    "threads": 4,
+    "forwards": 2,
+    "sequential": true,
+    "load_using": "puertogt.cli.read_model(path, data_dir); puertogt.ml.detection.load_detector",
+    "inputs": "bundle_from_evidence \u2192 read_model_input \u2192 original TRAIN padding to multiple32; unchanged radiometry/context",
+    "inference_method": "Detector.raw_predict; intrinsic existing head score floor0.05 retained; no threshold search",
+    "report_fields": [
+      "all_raw_boxes_labels_scores",
+      "reference_visual_box_unchanged",
+      "diagnostic_nearest_center_distance_pixels",
+      "width_height_pixels",
+      "iou_against_visual_reference"
+    ],
+    "no_optimizer": true,
+    "no_weights_or_protocol_changes": true,
+    "no_metrics_gate_or_publication": true,
+    "no_calibration_or_test_access": true
+  },
+  "questions": [
+    "Does the adapted model shrink predicted windows toward the visual hull?",
+    "Does the box center remain localized while IoU fails because of dimensions?",
+    "Do classification scores change independently of localization?"
+  ],
+  "official_iou_criterion_unchanged": 0.5
+}

@@ -1,0 +1,94 @@
+{
+  "batch": "phase2-caribe-march-s1-v1",
+  "created_at": "2026-10-21T16:24:12.964071Z",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Independent reviewer inspected raw VV/VH and context before proposals and retained that first pass. Root knew the zero-proposal summary and outside-zone vessel finding before viewing the11 scope contact panels, raw/context details, four native VV/VH images and three enlarged scope/sidelobe details. Root adjudication was not blind; AI references are not human ground truth.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/pbr-20250302-s1-review.json",
+      "sha256": "543939da8d7833f2540864ae9f00c77a40dd5281eaff9c5b4bb836e7068b69f2"
+    },
+    {
+      "path": "reports/local-review/phase2/pbr-20250322-s1-review.json",
+      "sha256": "ce1b14ee7cffd555be0a84d2ffe5258688ad015a755d5c01cf12f7fb8f935aa7"
+    },
+    {
+      "path": "reports/local-review/phase2/stc-20250302-s1-review.json",
+      "sha256": "ee4f7a731f2774c7450e97df5c099fa06f41326e84c080275ac21e96b1a924ac"
+    },
+    {
+      "path": "reports/local-review/phase2/stc-20250322-s1-review.json",
+      "sha256": "7c4a7d227eb348f140785f96347707928c923ac4114b6a1cc80a140cf4610e6c"
+    }
+  ],
+  "accepted_observation_ids": [
+    "85e4e7bd-9c8e-450f-ae63-17d6580a7e6a",
+    "ac28b68f-c432-4780-a3e5-486266cf1670",
+    "1fc122cb-b6f0-42c0-8aed-faed37b5150b",
+    "c25ea95e-d7e9-4e7f-840c-aa0e824f656b",
+    "c21b90b2-6764-4e4f-b91a-97c70371a04c",
+    "263e1094-1ea9-472e-be2c-90a9bd321a9d",
+    "191860b7-0aa8-44f5-a009-7e4403fafde2",
+    "5bf2ee85-c701-4f06-a098-e7b4e3e4c464",
+    "6daadbd6-31f9-4156-adcc-8cf6862fb907",
+    "d9b467f4-1e7d-4fcb-8e2b-c5a780320193",
+    "4bb370d5-ed9a-457d-93f1-2a32f9906614"
+  ],
+  "supporting_renders": [
+    {
+      "path": "tmp/local-review/phase2/march-s1-contact/march-11-scopes-contact.png",
+      "sha256": "6966cb2105ec063bb1bdf51b54a9d9f36d3c31cb4b81a86e97fc7b9cc8b0421e"
+    },
+    {
+      "path": "tmp/local-review/phase2/march-s1-contact/march-raw-context-contact.png",
+      "sha256": "60319c4a1e63ac280a520a8060e346c589756f21d3307fd642a9688b392cedbf"
+    },
+    {
+      "path": "tmp/local-review/phase2/march-s1-contact/march-outside-box-geography-contact.png",
+      "sha256": "10691f922d58429143887b4853137616c9347cf53d12157a92659959756b13e7"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250322-s1/vv-full-native.png",
+      "sha256": "22d61f7d76e2b82db5ac6ecc907e82c7c61ce54631a26d39492987fb57b90866"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250322-s1/vh-full-native.png",
+      "sha256": "0e9d65a28ed0748ce50bd9a30627a452ab0e61db129f30c16c8fd64e5cd782a9"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250302-s1/vv-full-native.png",
+      "sha256": "f5fe4cb3c49bd5a58e323134ec83c78b9c0d841e78a2f0da71ea612aca45fcd9"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250302-s1/vh-full-native.png",
+      "sha256": "4236eb97880d93eb2b1f8c633ff178cdd7522c02eca23c93d7cc5d4fd95e3259"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250322-s1/pbr-pier-western-sidelobe-canal-detail.png",
+      "sha256": "9d11ac7a83e26105e290971f77bd21822d54dd091a0131f26a054449ba97ed83"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250322-s1/stc_fondeo-proposed-scope.png",
+      "sha256": "402a18a9721d6a128b3405b09e719a3fc98c062216ee77c1f4cff0d383bd49ff"
+    },
+    {
+      "path": "tmp/local-review/phase2/caribe-20250302-s1/pbr_fondeo-proposed-scope.png",
+      "sha256": "bd5327c17d9de17729d8fa9053a763ba99c796dac2cbc74af945a930bae13a55"
+    }
+  ],
+  "verification": {
+    "path": "reports/local-review/phase2/march-s1-review-verification.json",
+    "sha256": "40fd31abe3de2d04b3fb18a37e131460181f7ed837e23cd1b9a4762c00f8a230"
+  },
+  "expected_reviewed_observations": 11,
+  "expected_unique_objects": 0,
+  "decisions": [
+    "No unequivocal vessel is resolved inside the proposed limited water scopes; retain pier interfaces, SAR sidelobes and other unresolved coastal returns outside supervision.",
+    "Keep STCmuelles Mar22 as abstention. Patios are explicit terrestrial negative controls, not marine coverage.",
+    "The isolated Mar22 SAR response is consistent with one vessel but its whole visual box and exclusion guard lie outside active polygons; retain it only as context without moving AOIs or boxes.",
+    "Mar2 is a partial northern slice; preserve only the explicit observable remnants and margins from nodata. These references assert no full-port absence."
+  ]
+}

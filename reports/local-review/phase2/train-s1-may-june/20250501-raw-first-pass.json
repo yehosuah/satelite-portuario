@@ -1,0 +1,139 @@
+{
+  "schema_version": "raw_first_pass_v1",
+  "frozen_at": "2026-10-21T17:02:47.045303+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+  "captured_at": "2025-05-01T11:45:52.416285Z",
+  "raw_manifest_sha256": "55c0f2796960985ee825539793f6ca7d36c1012aec8c9b104be93e8a25d4bd72",
+  "selection_execution_order": "reports/local-review/phase2/execution-order-v5.json",
+  "selection_frozen_path": "reports/local-review/phase2/train-s1-may-june/selection.json",
+  "selection_frozen_sha256": "44033291d583d1f06d94135fa846923c5f190696dd5b72299a26b249c0a295a0",
+  "split": "train",
+  "raw_panels_visually_inspected": [
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y000.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y000.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y448.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y448.png"
+  ],
+  "zero_only_panels_verified_numerically": [
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y896.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y896.png"
+  ],
+  "additional_raw_details_inspected": [
+    "tmp/local-review/phase2/train-s1-may-june/20250501/northwest-detail.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/northeast-contacts-detail.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/anchorage-coverage-detail.png",
+    "tmp/local-review/phase2/train-s1-may-june/20250501/north-channels-detail.png"
+  ],
+  "masks_and_aoi_visually_inspected": true,
+  "scores_read": false,
+  "prediction_counts_read": false,
+  "prediction_geometries_read": false,
+  "detector_overlay_viewed": false,
+  "context_prior_exposure": "The March 2 TRAIN context was reviewed in an earlier task. No current target model output or context detector output was opened for this pass; complete independence from prior context review is not claimed.",
+  "in_zone_confirmed_vessels": [],
+  "family": null,
+  "length_m": null,
+  "width_m": null,
+  "proposed_scope_policy": [
+    {
+      "zone_id": "pbr_canal",
+      "policy": "Use only the automatic observable and valid intersection, with a two-native-pixel guard at internal nodata boundaries. Exclude paired ambiguous VV response [550,220,582,247]. The additional weak return [536,425,554,451] lies outside the common mask and remains unknown, not a negative."
+    },
+    {
+      "zone_id": "stc_canal",
+      "policy": "Restricted open-water scope where both valid and observable masks support review, with a two-native-pixel internal nodata guard."
+    },
+    {
+      "zone_id": "pbr_fondeo",
+      "policy": "Only a small upper-edge fragment is common-observable. Inspect its actual interior after the nodata guard. The rest of the anchorage and the ambiguous contact [536,425,554,451] are not negatives."
+    },
+    {
+      "zone_id": "stc_fondeo",
+      "policy": "No automatic observable area. Preserve null scope; no marine-negative claim for the mostly terrestrial configured polygon."
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "pbr-channel-paired-vv-return",
+      "canonical_pixel_bbox": [
+        550,
+        220,
+        582,
+        247
+      ],
+      "decision": "indeterminada",
+      "reason": "Two short adjacent VV streaks have a vessel-like response but no sufficiently resolved individual hull. Their number and separation from radar ambiguity cannot be established from this raw VV/VH pair and historical context. Exclude the complete neighborhood from negative training.",
+      "evidence_render": "north-channels-detail.png",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "pbr-anchorage-weak-vv-return",
+      "canonical_pixel_bbox": [
+        536,
+        425,
+        554,
+        451
+      ],
+      "decision": "indeterminada",
+      "reason": "A weak elongated VV contact appears in the target water. The historical raster is absent here and the target VH does not resolve a compact hull. Retain as unknown: it is not counted as a vessel or a negative, and no mask override is proposed without an unequivocal visual reference.",
+      "evidence_render": "anchorage-coverage-detail.png",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "partial-slice-context-coverage",
+      "decision": "not_observable",
+      "reason": "Target covers a northern strip, while the historical slice stops earlier. The published automatic observable mask follows the common extent. Muelles/patios are not covered; STC fondeo has no common-observable pixel. Missing coverage is unknown, not ship absence."
+    }
+  ],
+  "context_only_signatures": [
+    {
+      "id": "northwest-weak-return",
+      "canonical_pixel_bbox": [
+        313,
+        20,
+        334,
+        51
+      ],
+      "decision": "indeterminada",
+      "reason": "Short faint VV streak, without a sufficiently resolved hull. Outside the configured observation zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "east-grouped-return",
+      "canonical_pixel_bbox": [
+        598,
+        235,
+        643,
+        255
+      ],
+      "decision": "indeterminada",
+      "reason": "Grouped diffuse VV responses east of the canal. Context has nearby varying responses, without a resolved individual hull in this pair. Outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    },
+    {
+      "id": "far-east-weak-return",
+      "canonical_pixel_bbox": [
+        651,
+        239,
+        680,
+        265
+      ],
+      "decision": "indeterminada",
+      "reason": "Faint fragmented VV response outside all observation zones; insufficient raw evidence for an unequivocal vessel reference.",
+      "family": null,
+      "length_m": null,
+      "width_m": null
+    }
+  ]
+}

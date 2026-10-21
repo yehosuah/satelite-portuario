@@ -1,0 +1,588 @@
+{
+  "schema_version": "frozen-train-learning-signals-v1",
+  "created_at": "2026-10-21T17:13:26.577475Z",
+  "script_sha256": "313c3f8075bfc5198a36f7521fd206ba5798e31475b79e52541130da3f8a3256",
+  "inputs": [
+    {
+      "path": "reports/local-review/phase2/train-diagnostics/train-box-contract-probe-v2.json",
+      "sha256": "70ae139976e8594ca0d8e7294ac4124117c7350e1dcd220182cfff10401d4c09"
+    },
+    {
+      "path": "data/experiments/phase2-s2-round1-20261021/trained/manifest.json",
+      "sha256": "c0e6c7620d0768c3eb0aee47901504f141296bd4c91b616bc83153dab1bbc7a0"
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/puertogt/ml/workflows.py",
+      "sha256": "bc530c256ca610dca18354e893234619b426a6ad45f01c4a9bfefbe389441ce9"
+    },
+    {
+      "path": "src/puertogt/ml/detection.py",
+      "sha256": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/models/faster_rcnn.py",
+      "sha256": "1e577a0f0df3d9dbc7c6a13fd6fe246e5c2f3300aa350e203d15950a70b83998"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/rslearn/train/data_module.py",
+      "sha256": "e9c08668d04ed93bf1230efba0efae9433a44618e22de68cbdcd550ab8ddedc1"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/torchvision/models/detection/rpn.py",
+      "sha256": "17eb939224b28c435839b7958c6ab25765f041c151be1cf137507dd0e4d5ddd5"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/torchvision/models/detection/roi_heads.py",
+      "sha256": "ddf91a1c89603c86c0e7b30f3ad9f1613adf4623ed1c1688ed03e9af47579ff8"
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/torch/optim/adamw.py",
+      "sha256": "39c5eaa04f83632285b114fd093eeb0006866e4adf59ad50cc28de12e63a8459"
+    }
+  ],
+  "samples": 40,
+  "positive_samples": 17,
+  "negative_samples": 23,
+  "per_port": {
+    "prq": {
+      "crops": 22,
+      "positive_crops": 14,
+      "label_instances": 59,
+      "unique_physical_references": 29,
+      "physical_reference_occurrences": {
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v15-east-red-berthed-vessel": 6,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v02": 1,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v04": 1,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v10": 4,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v07": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v05": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v01": 1,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v06": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v09": 4,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v03": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v11": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v08": 2,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v13": 1,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v12": 1,
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v14": 1,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v08": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v12": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v09": 4,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v07": 4,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v11": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v03": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v01": 1,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v02": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v05": 1,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v06": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v10": 2,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v16": 1,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v15": 1,
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v14": 1
+      }
+    },
+    "pbr": {
+      "crops": 6,
+      "positive_crops": 1,
+      "label_instances": 1,
+      "unique_physical_references": 1,
+      "physical_reference_occurrences": {
+        "S2B:MSIL1C:20250118T162519:R040:T16PCC|pbr-20250118-red-berthed-vessel": 1
+      }
+    },
+    "stc": {
+      "crops": 12,
+      "positive_crops": 2,
+      "label_instances": 2,
+      "unique_physical_references": 1,
+      "physical_reference_occurrences": {
+        "S2B:MSIL1C:20250118T162519:R040:T16PCC|stc-20250118-white-berthed-vessel": 2
+      }
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "positive_updates": 17,
+      "negative_updates": 19,
+      "skipped_steps": 4,
+      "tail_14_negative_updates": 12,
+      "tail_14_regression_losses_all_zero": true,
+      "roi_sample_contains_only_appended_gt_implied_by_count": [
+        {
+          "position_zero_based": 1,
+          "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+          "references": 1,
+          "roi_supervised": 1
+        },
+        {
+          "position_zero_based": 2,
+          "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:384:0:512:448",
+          "references": 1,
+          "roi_supervised": 1
+        },
+        {
+          "position_zero_based": 23,
+          "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e:crop:0:0:448:448",
+          "references": 1,
+          "roi_supervised": 1
+        },
+        {
+          "position_zero_based": 24,
+          "observation_id": "53a1f203-5cac-4424-930a-5e2413b7b2d1:crop:0:0:512:448",
+          "references": 1,
+          "roi_supervised": 1
+        }
+      ],
+      "selected_crop": {
+        "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+        "supervision": {
+          "rpn_supervised": 15,
+          "roi_supervised": 1
+        },
+        "losses": {
+          "detect_loss_objectness": 9.110602378845215,
+          "detect_loss_rpn_box_reg": 0.4051486849784851,
+          "detect_loss_classifier": 7.680838584899902,
+          "detect_loss_box_reg": 4.471198558807373
+        },
+        "unmasked_rpn_positive_anchors": 15
+      }
+    },
+    {
+      "epoch": 2,
+      "positive_updates": 17,
+      "negative_updates": 20,
+      "skipped_steps": 3,
+      "tail_14_negative_updates": 13,
+      "tail_14_regression_losses_all_zero": true,
+      "roi_sample_contains_only_appended_gt_implied_by_count": [
+        {
+          "position_zero_based": 23,
+          "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e:crop:0:0:448:448",
+          "references": 1,
+          "roi_supervised": 1
+        }
+      ],
+      "selected_crop": {
+        "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+        "supervision": {
+          "rpn_supervised": 15,
+          "roi_supervised": 5
+        },
+        "losses": {
+          "detect_loss_objectness": 2.938037157058716,
+          "detect_loss_rpn_box_reg": 0.3700360059738159,
+          "detect_loss_classifier": 2.124083995819092,
+          "detect_loss_box_reg": 3.1546144485473633
+        },
+        "unmasked_rpn_positive_anchors": 15
+      }
+    },
+    {
+      "epoch": 3,
+      "positive_updates": 17,
+      "negative_updates": 21,
+      "skipped_steps": 2,
+      "tail_14_negative_updates": 13,
+      "tail_14_regression_losses_all_zero": true,
+      "roi_sample_contains_only_appended_gt_implied_by_count": [
+        {
+          "position_zero_based": 23,
+          "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e:crop:0:0:448:448",
+          "references": 1,
+          "roi_supervised": 1
+        }
+      ],
+      "selected_crop": {
+        "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+        "supervision": {
+          "rpn_supervised": 15,
+          "roi_supervised": 4
+        },
+        "losses": {
+          "detect_loss_objectness": 0.744580864906311,
+          "detect_loss_rpn_box_reg": 0.37216901779174805,
+          "detect_loss_classifier": 1.2912319898605347,
+          "detect_loss_box_reg": 2.4293458461761475
+        },
+        "unmasked_rpn_positive_anchors": 15
+      }
+    }
+  ],
+  "sample_order": [
+    {
+      "position_zero_based": 0,
+      "observation_id": "52049cad-e7b9-4f92-875d-cb20c2ad2ad4:crop:0:0:448:448",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 562,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 1,
+      "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 2421,
+      "rpn_positive_anchors_including_low_quality_matches": 15
+    },
+    {
+      "position_zero_based": 2,
+      "observation_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:384:0:512:448",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 2421,
+      "rpn_positive_anchors_including_low_quality_matches": 15
+    },
+    {
+      "position_zero_based": 3,
+      "observation_id": "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:0:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 10,
+      "reviewed_pixels": 90289,
+      "rpn_positive_anchors_including_low_quality_matches": 281
+    },
+    {
+      "position_zero_based": 4,
+      "observation_id": "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:384:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 6,
+      "reviewed_pixels": 42007,
+      "rpn_positive_anchors_including_low_quality_matches": 174
+    },
+    {
+      "position_zero_based": 5,
+      "observation_id": "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:0:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 6,
+      "reviewed_pixels": 75663,
+      "rpn_positive_anchors_including_low_quality_matches": 176
+    },
+    {
+      "position_zero_based": 6,
+      "observation_id": "8bd32264-0629-4560-ba09-8e24d875e6a4:crop:384:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 4,
+      "reviewed_pixels": 37682,
+      "rpn_positive_anchors_including_low_quality_matches": 140
+    },
+    {
+      "position_zero_based": 7,
+      "observation_id": "b9376324-e854-46ac-b065-c78875a58dd3:crop:0:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 9404,
+      "rpn_positive_anchors_including_low_quality_matches": 24
+    },
+    {
+      "position_zero_based": 8,
+      "observation_id": "b9376324-e854-46ac-b065-c78875a58dd3:crop:384:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 6588,
+      "rpn_positive_anchors_including_low_quality_matches": 24
+    },
+    {
+      "position_zero_based": 9,
+      "observation_id": "b9376324-e854-46ac-b065-c78875a58dd3:crop:0:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 10317,
+      "rpn_positive_anchors_including_low_quality_matches": 15
+    },
+    {
+      "position_zero_based": 10,
+      "observation_id": "b9376324-e854-46ac-b065-c78875a58dd3:crop:384:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+      "labels": 1,
+      "reviewed_pixels": 7501,
+      "rpn_positive_anchors_including_low_quality_matches": 15
+    },
+    {
+      "position_zero_based": 11,
+      "observation_id": "1039f334-a235-473a-acb1-dba7600a2def:crop:0:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 10,
+      "reviewed_pixels": 90766,
+      "rpn_positive_anchors_including_low_quality_matches": 308
+    },
+    {
+      "position_zero_based": 12,
+      "observation_id": "1039f334-a235-473a-acb1-dba7600a2def:crop:384:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 6,
+      "reviewed_pixels": 45484,
+      "rpn_positive_anchors_including_low_quality_matches": 182
+    },
+    {
+      "position_zero_based": 13,
+      "observation_id": "1039f334-a235-473a-acb1-dba7600a2def:crop:0:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 7,
+      "reviewed_pixels": 75021,
+      "rpn_positive_anchors_including_low_quality_matches": 232
+    },
+    {
+      "position_zero_based": 14,
+      "observation_id": "1039f334-a235-473a-acb1-dba7600a2def:crop:384:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 4,
+      "reviewed_pixels": 37682,
+      "rpn_positive_anchors_including_low_quality_matches": 128
+    },
+    {
+      "position_zero_based": 15,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:0:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 8546,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 16,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:0:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 10613,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 17,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:448:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 10981,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 18,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:448:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 10981,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 19,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:0:832:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 5062,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 20,
+      "observation_id": "230de383-0bf2-41d4-85bd-29fd838f1ff8:crop:384:832:512:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 5062,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 21,
+      "observation_id": "2ef24623-5eef-4cbb-ae40-6cfd1347b200:crop:0:0:512:448",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 2619,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 22,
+      "observation_id": "2ef24623-5eef-4cbb-ae40-6cfd1347b200:crop:384:0:512:448",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 2605,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 23,
+      "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e:crop:0:0:448:448",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 1,
+      "reviewed_pixels": 1207,
+      "rpn_positive_anchors_including_low_quality_matches": 38
+    },
+    {
+      "position_zero_based": 24,
+      "observation_id": "53a1f203-5cac-4424-930a-5e2413b7b2d1:crop:0:0:512:448",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 1,
+      "reviewed_pixels": 1869,
+      "rpn_positive_anchors_including_low_quality_matches": 30
+    },
+    {
+      "position_zero_based": 25,
+      "observation_id": "53a1f203-5cac-4424-930a-5e2413b7b2d1:crop:384:0:512:448",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 1,
+      "reviewed_pixels": 1626,
+      "rpn_positive_anchors_including_low_quality_matches": 30
+    },
+    {
+      "position_zero_based": 26,
+      "observation_id": "56d3772c-9a57-4248-806c-f38fc97a0abd:crop:0:0:448:448",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 1496,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 27,
+      "observation_id": "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:0:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 10189,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 28,
+      "observation_id": "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:384:0:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 6602,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 29,
+      "observation_id": "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:0:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 12864,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 30,
+      "observation_id": "700e22d5-f4b7-4415-9ae5-de0c2f930344:crop:384:384:512:512",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 8773,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 31,
+      "observation_id": "78e1ccc2-cb86-4338-95ce-51ff2ac29d03:crop:0:0:448:512",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 11478,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 32,
+      "observation_id": "78e1ccc2-cb86-4338-95ce-51ff2ac29d03:crop:0:384:448:512",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 7938,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 33,
+      "observation_id": "853d4a63-7b38-4b2e-bad3-d9ae173aef67:crop:0:0:448:512",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 13917,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 34,
+      "observation_id": "853d4a63-7b38-4b2e-bad3-d9ae173aef67:crop:0:384:448:512",
+      "port_id": "pbr",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 14138,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 35,
+      "observation_id": "d012f5a4-f580-4650-9654-b5566616603b:crop:0:0:448:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 2400,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 36,
+      "observation_id": "d012f5a4-f580-4650-9654-b5566616603b:crop:0:384:448:512",
+      "port_id": "stc",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "labels": 0,
+      "reviewed_pixels": 2400,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 37,
+      "observation_id": "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b:crop:0:0:512:448",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 9534,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 38,
+      "observation_id": "e1f9c6b6-e9f0-4113-b447-3afd55d79f9b:crop:384:0:512:448",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 9534,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    },
+    {
+      "position_zero_based": 39,
+      "observation_id": "e812e31b-9dd3-4b32-9aee-c90c4007e91c:crop:0:0:448:448",
+      "port_id": "prq",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+      "labels": 0,
+      "reviewed_pixels": 621,
+      "rpn_positive_anchors_including_low_quality_matches": 0
+    }
+  ],
+  "roi_inference_qualification": "RoI appends every GT; positive sampler cap is128 and every crop has<=10GT. When total selected RoIs equals GT count, no additional RPN proposal was selected. Counts greater than GT do not distinguish additional negatives from positives.",
+  "limitations": {
+    "weights_loaded": false,
+    "new_model_forwards": 0,
+    "optimizer_created": false,
+    "calibration_or_test_access": false,
+    "geometry_or_label_changes": false,
+    "gradient_norms_measured": false,
+    "causal_failure_reproduced": false,
+    "generalization_metrics_computed": false
+  }
+}

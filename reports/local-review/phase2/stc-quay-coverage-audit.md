@@ -4,9 +4,9 @@ Las ventanas de muelles y canal están separadas por **136,87 m**. La franja tie
 
 La API oficial devolvió el [way 715624206, versión 5](https://api.openstreetmap.org/api/0.6/way/715624206/full.json), con fecha de edición 2025-12-08. Su segmento noroeste de 916,93 m coincide con el borde compartido de muelles y patios en la configuración. Es un polígono de uso industrial, no un levantamiento del muelle. La coincidencia con el RGB de enero es visual a resolución de 10 m; no se presenta como una medición de error de registro. Los hashes, nodos, geometrías y cifras completas están en [el informe reproducible](stc-quay-coverage-audit.json).
 
-![RGB del 18 de enero y geometrías fijas](../../../tmp/local-review/phase2/stc-quay-geometry-audit/s2-20250118-rgb-overlay.png)
+![RGB del 18 de enero y geometrías fijas](geography-evidence/s2-20250118-rgb-overlay.png)
 
-![SAR VV del 2 de febrero y geometrías fijas](../../../tmp/local-review/phase2/stc-quay-geometry-audit/s1-20250202-vv-overlay.png)
+![SAR VV del 2 de febrero y geometrías fijas](geography-evidence/s1-20250202-vv-overlay.png)
 
 El rectángulo verde es la ventana visual SAR de febrero proyectada sobre ambas imágenes. **No es una etiqueta de enero.** Solo unos 137,91 m² de una esquina de esa ventana intersectan muelles; su centro está fuera de todas las zonas actuales. Se conserva como evidencia contextual y su vecindad no se utiliza como negativo.
 

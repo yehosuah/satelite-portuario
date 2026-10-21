@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-10-21T16:27:37.804821Z",
+  "scope": "Expanded frozen training cohort only. S1 training gate remains closed: no unequivocal in-zone positive references in STC/PBR.",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "source": {
+    "path": "data/datasets/phase2-reviews/s1-january-march-v1/source",
+    "sha256": "7a0c36fd618cfdd8871f5d085d919efbf9c39e19cfebbaa83ac9b40993717553",
+    "samples": 38
+  },
+  "train_crops": {
+    "path": "data/datasets/phase2-reviews/s1-january-march-v1/train-crops",
+    "sha256": "3bfbea2f6971cfcf203eae97be3ed9ead2b141836983b2839ded6e3f62be201c",
+    "samples": 82
+  },
+  "unique_objects": 30,
+  "zone_label_instances": 31,
+  "objects_per_port": {
+    "prq": 30,
+    "pbr": 0,
+    "stc": 0
+  },
+  "target_acquisitions": 8,
+  "applied_reviews": [
+    {
+      "path": "reports/local-review/phase2/s1-january-applied.json",
+      "sha256": "d6d849a60c157c6e56aa30a27f1c303262cd4893cc436eb74015a02c78af1184"
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-february-s1-applied.json",
+      "sha256": "754d35b32cc500c84c3e0f43a55a9571a6212fe8a921ba4853b890b866bdf397"
+    },
+    {
+      "path": "reports/local-review/phase2/caribe-march-s1-applied.json",
+      "sha256": "fa664cb18f52b9782b5e7c06bb2898a1cf7307c84ec0db1e5b43c0e8aadf57b0"
+    }
+  ],
+  "source_validation": "All derived labels validated before atomic publication by crop_training_dataset; native pixel arrays retained.",
+  "no_training_or_metrics_executed": true
+}

@@ -1,0 +1,112 @@
+{
+  "created_at": "2026-10-21T16:47:27.351449+00:00",
+  "author": "codex-ai-reviewer-s1",
+  "provenance_kind": "ai_visual_review",
+  "is_human_review": false,
+  "status": "ready_for_raw_review",
+  "selection": {
+    "execution_order": "reports/local-review/phase2/execution-order-v4.json",
+    "execution_order_sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb",
+    "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+    "protocol_sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c",
+    "round": 4,
+    "split": "train",
+    "assignments": [
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 7,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 7,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 8,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 8,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24"
+      }
+    ],
+    "uses_predictions": false
+  },
+  "detector_exposure": {
+    "counts_read": false,
+    "scores_read": false,
+    "prediction_geometries_read": false,
+    "prior_images_opened_for_this_batch": false
+  },
+  "acquisitions": [
+    {
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+      "captured_at": "2025-04-03T00:06:46.502996Z",
+      "complete_in_ledger": true,
+      "ready": true,
+      "context": {
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11",
+        "captured_at": "2025-02-02T00:06:46.131408Z",
+        "days_before": 60.00000430078704,
+        "relative_orbit": 63,
+        "orbit_direction": "ASCENDING"
+      },
+      "registered_assets_verified": 64,
+      "retained_assets_verified": 42,
+      "manifest_sha256": "2b44037acd35f424d224d858b3389652af1c24d8a335010aa96c02c7d7c1a51a",
+      "published_mosaics_equal_retained_cores": true,
+      "observation_ids": [
+        "1d86f54e-70f7-4e2b-bcca-d8949ac00271",
+        "d5eea70b-8d3b-47b6-8a1f-63ff376e38ba",
+        "9c0eb432-89f5-4e0e-8be1-94721707f906",
+        "259ab377-f6ab-4c0b-8e44-f3213b534fb2",
+        "d6eb6f3e-efbd-454e-b25c-7b59e48304dd",
+        "db36e4f9-e8aa-4419-be3b-972b46bdcbd1",
+        "5bccfe2a-8658-40c1-9766-c519801ee85d",
+        "a43873c7-f7e5-4c2d-83c7-4512662a5503"
+      ],
+      "raw_manifest": "tmp/local-review/phase2/train-s1-april/20250403/raw-asset-manifest.json",
+      "raw_manifest_sha256": "56fd7830267bf3c8f99f87643ffcb15bb538690a63cc37cab1a55ebc82327cca",
+      "provenance": {
+        "kind": "retained_original_prepared_bytes",
+        "original_halo_hash_available": true
+      }
+    },
+    {
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24",
+      "captured_at": "2025-04-19T11:45:51.813014Z",
+      "complete_in_ledger": true,
+      "ready": true,
+      "context": {
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250218T114551:20250218T114616:057950:0726BD",
+        "captured_at": "2025-02-18T11:45:51.073786Z",
+        "days_before": 60.00000855587963,
+        "relative_orbit": 128,
+        "orbit_direction": "DESCENDING"
+      },
+      "registered_assets_verified": 24,
+      "retained_assets_verified": 35,
+      "manifest_sha256": "f1b8c5a30cd1d12e01c81e4cb8a1cf1acbe476f651d73dee795f2f394a277aa2",
+      "published_mosaics_equal_retained_cores": true,
+      "observation_ids": [
+        "5aa2d622-18a5-4ce9-b558-f807b9d3ba4f",
+        "bbb02966-5b69-4bdf-b405-114191f1e5fb",
+        "666b09f4-1cbb-4947-b440-e70fcbd12069"
+      ],
+      "raw_manifest": "tmp/local-review/phase2/train-s1-april/20250419/raw-asset-manifest.json",
+      "raw_manifest_sha256": "81aaf975b307c6cf34c39a26a0ac4731277750f58c2bea2d77371966f368846b",
+      "provenance": {
+        "kind": "retained_original_prepared_bytes",
+        "original_halo_hash_available": true
+      }
+    }
+  ],
+  "verified_at": "2026-10-21T16:47:28.904774+00:00"
+}

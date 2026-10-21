@@ -1,0 +1,1180 @@
+{
+  "schema_version": "1.1",
+  "coordinate_convention": "Pixel boxes are [xmin,ymin,xmax,ymax] at native pixel edges, upper-left origin, half-open. WGS84 vertices are the exact transform of selected pixel-edge corners, not an assertion of subpixel annotation accuracy.",
+  "created_at": "2026-10-21T17:02:47.336118+00:00",
+  "status": "raw_complete_pending_adjudication_and_proposal_resolution",
+  "author": "codex-ai-reviewer-s1",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "purpose": "Independent raw-first AI review of the fixed May TRAIN primary. No model output consulted and no real accuracy or human-ground-truth claim.",
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "ui_access": "Registered numeric rasters and read-only SQLite; no review action saved.",
+  "selection": {
+    "execution_order": "reports/local-review/phase2/execution-order-v5.json",
+    "execution_order_sha256": "58d740da7dbb36ee18690fcec422709d126461c7d70c3348b5386c83a9df17ae",
+    "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+    "protocol_sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c",
+    "rounds": [
+      5,
+      6
+    ],
+    "split": "train",
+    "assignments": [
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 9,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 9,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 10,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 10,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 11,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 11,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 12,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "primary_ordinal_in_stratum": 12,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1"
+      }
+    ],
+    "uses_predictions": false,
+    "port_id": "stc",
+    "slot": {
+      "split": "train",
+      "sensor": "sentinel-1",
+      "port_id": "stc",
+      "slot_start": "2025-05-01T00:00:00+00:00",
+      "slot_end_exclusive": "2025-05-16T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+        "captured_at": "2025-05-01T11:45:52.416285Z",
+        "context": {
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+          "captured_at": "2025-03-02T11:45:51.116590Z",
+          "days_before": 60.00001504276621,
+          "relative_orbit": 128,
+          "orbit_direction": "DESCENDING"
+        }
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114617:20250501T114642:059000:075143",
+          "captured_at": "2025-05-01T11:46:17.416554Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114616:20250302T114641:058125:072DE1",
+            "captured_at": "2025-03-02T11:46:16.117137Z",
+            "days_before": 60.000015039548614,
+            "relative_orbit": 128,
+            "orbit_direction": "DESCENDING"
+          }
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250503T000531:20250503T000556:002159:004956",
+          "captured_at": "2025-05-03T00:05:31.990000Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250226T000645:20250226T000710:058060:072B33",
+            "captured_at": "2025-02-26T00:06:45.396292Z",
+            "days_before": 65.9991503901389,
+            "relative_orbit": 63,
+            "orbit_direction": "ASCENDING"
+          }
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250509T000646:20250509T000711:059110:075574",
+          "captured_at": "2025-05-09T00:06:46.288364Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250310T000645:20250310T000710:058235:073255",
+            "captured_at": "2025-03-10T00:06:45.840612Z",
+            "days_before": 60.000005182314815,
+            "relative_orbit": 63,
+            "orbit_direction": "ASCENDING"
+          }
+        },
+        {
+          "rank": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250513T114551:20250513T114616:059175:0757BD",
+          "captured_at": "2025-05-13T11:45:51.749826Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250314T114551:20250314T114616:058300:0734F4",
+            "captured_at": "2025-03-14T11:45:51.239812Z",
+            "days_before": 60.00000590293982,
+            "relative_orbit": 128,
+            "orbit_direction": "DESCENDING"
+          }
+        },
+        {
+          "rank": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250513T114616:20250513T114641:059175:0757BD",
+          "captured_at": "2025-05-13T11:46:16.748803Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250314T114616:20250314T114641:058300:0734F4",
+            "captured_at": "2025-03-14T11:46:16.238816Z",
+            "days_before": 60.00000590262732,
+            "relative_orbit": 128,
+            "orbit_direction": "DESCENDING"
+          }
+        },
+        {
+          "rank": 7,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250515T000532:20250515T000557:002334:004ECF",
+          "captured_at": "2025-05-15T00:05:32.561000Z",
+          "context": {
+            "acquisition_key": "S1A:IW:GRDH:1SDV:20250310T000645:20250310T000710:058235:073255",
+            "captured_at": "2025-03-10T00:06:45.840612Z",
+            "days_before": 65.99915185634259,
+            "relative_orbit": 63,
+            "orbit_direction": "ASCENDING"
+          }
+        }
+      ]
+    },
+    "selection_uses_predictions": false,
+    "date_unchanged_after_visual_findings": true,
+    "selection_frozen_path": "reports/local-review/phase2/train-s1-may-june/selection.json",
+    "selection_frozen_sha256": "44033291d583d1f06d94135fa846923c5f190696dd5b72299a26b249c0a295a0"
+  },
+  "first_pass_before_proposal_geometry": {
+    "path": "reports/local-review/phase2/train-s1-may-june/20250501-raw-first-pass.json",
+    "sha256": "3015bdf358ab7958cd0532ec6bb4ae3aa1464604bbeb889a8e7d0d0e157136e0",
+    "frozen_at": "2026-10-21T17:02:47.045303+00:00",
+    "prediction_counts_read": false,
+    "scores_read": false,
+    "prediction_geometries_read": false,
+    "detector_comparison_performed": false,
+    "context_prior_exposure": "The March 2 TRAIN context was reviewed in an earlier task. No current target model output or context detector output was opened for this pass; complete independence from prior context review is not claimed."
+  },
+  "method": [
+    "Inspected all four nonzero target/context native 448-pixel panels and four focal details. The two southern panels were numerically confirmed to contain no target or context data. Fixed log-amplitude-DN display bounds: VV20..1000, VH10..300; not calibrated dB.",
+    "Inspected automatic masks and configured AOIs. No prediction count, score, geometry or overlay was read.",
+    "Published numeric mosaics were compared pixel-for-pixel with their applicable retained cores; all registered and retained source hashes passed.",
+    "Fondeo/canal scopes are marine; patios preserve terrestrial interior controls. Ambiguous waterfronts are excluded, not assigned vessel absence.",
+    "Partial-slice scope has a two-native-pixel guard at internal nodata boundaries. Components without a 5 m interior or a center pixel are withdrawn.",
+    "No family, length or width inferred. Absence of a confirmed boat never changes the selected acquisition."
+  ],
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+    "version": "2026-10-20-provisional-v1",
+    "changed": false
+  },
+  "context_reference": {
+    "acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+    "captured_at": "2025-03-02T11:45:51.116590Z",
+    "days_before": 60.00001504276621,
+    "relative_orbit": 128,
+    "orbit_direction": "DESCENDING"
+  },
+  "canonical_review_grid": {
+    "crs": "EPSG:32616",
+    "affine": [
+      10.0,
+      0.0,
+      322560.0,
+      0.0,
+      -10.0,
+      1747200.0
+    ],
+    "width_px": 896,
+    "height_px": 1344
+  },
+  "consolidation_notes": [
+    "These are raw-reference proposals only. Do not infer zero model proposals from existing_detections=[]: detector output was not accessed.",
+    "Root must adjudicate the proposed scopes and resolve every intersecting provisional proposal before setting scene_complete in the database.",
+    "A null scope must stay null; do not substitute the complete configured zone."
+  ],
+  "observations": [
+    {
+      "observation_id": "6d949866-7aaf-4b5f-b211-bb39a48b5865",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-05-01T11:45:52.416285Z",
+      "status": "partial",
+      "review_status": "provisional",
+      "observable_fraction": 0.3018675420307855,
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "detection_count": null,
+      "author": "codex-ai-reviewer-s1",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_first_ai_review",
+      "summary": "No unequivocal vessel within the reviewed scope. Propose a restricted negative reference pending root adjudication and provisional-proposal resolution.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "whole_proposed_scope_inspected": true,
+      "label_status": "raw_complete_pending_adjudication_and_proposal_resolution",
+      "source_preview": {
+        "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/preview.png",
+        "sha256": "a987f5c1376c727baeffb1725591084a0f187173285ce439e5ed7ab6f9e56673",
+        "width_px": 896,
+        "height_px": 1344,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/historical_vh.tif",
+          "sha256": "b6ab407901084dab463584a0e8687dd65b46564e97dbde03c0c409cbec127839",
+          "size_bytes": 221281
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/historical_vv.tif",
+          "sha256": "83af580b006c86b29583f828b3c1b862faa0801f0fdf069cb846bd04c051c785",
+          "size_bytes": 242301
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/vh.tif",
+          "sha256": "7a0a5cdf24d56f9d90b750af4d44bd64bc6439481f52c3ab1cd9c55b2eed61b4",
+          "size_bytes": 447996
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/vv.tif",
+          "sha256": "01796be0a5b4549196c7a2f2978c68d77e7ad351c4136d886703407a9c478b5d",
+          "size_bytes": 510149
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/observable.tif",
+          "sha256": "1edbfe2da0af08ac3a4539a4d2bf215e07957c129eafc243d1389e30db9fc805",
+          "size_bytes": 8381
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/potentially_observable.tif",
+          "sha256": "1edbfe2da0af08ac3a4539a4d2bf215e07957c129eafc243d1389e30db9fc805",
+          "size_bytes": 8381
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/valid.tif",
+          "sha256": "1edbfe2da0af08ac3a4539a4d2bf215e07957c129eafc243d1389e30db9fc805",
+          "size_bytes": 8381
+        },
+        {
+          "path": "data/assets/6d949866-7aaf-4b5f-b211-bb39a48b5865/preview.png",
+          "sha256": "a987f5c1376c727baeffb1725591084a0f187173285ce439e5ed7ab6f9e56673",
+          "size_bytes": 253730
+        }
+      ],
+      "zone_geometry_status": "provisional-v1; unchanged; not an official port boundary",
+      "zone_scope_render": "tmp/local-review/phase2/train-s1-may-june/20250501/zone-mask-full.png",
+      "inspection_renders": [
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y000.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y000.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y448.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y448.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/zone-mask-full.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/observable-full-native.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/northwest-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/northeast-contacts-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/anchorage-coverage-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/north-channels-detail.png"
+      ],
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60986965309093,
+              15.767171985759546
+            ],
+            [
+              -88.60987036578071,
+              15.767262355933982
+            ],
+            [
+              -88.61033697043774,
+              15.767258904649063
+            ],
+            [
+              -88.61033768333849,
+              15.767349274801933
+            ],
+            [
+              -88.61080428808654,
+              15.767345822497063
+            ],
+            [
+              -88.61080500119826,
+              15.767436192628367
+            ],
+            [
+              -88.61127160603729,
+              15.767432739303509
+            ],
+            [
+              -88.61127231935995,
+              15.767523109413245
+            ],
+            [
+              -88.6113984578915,
+              15.767522175689798
+            ],
+            [
+              -88.609,
+              15.795999999999998
+            ],
+            [
+              -88.607,
+              15.796000000000001
+            ],
+            [
+              -88.60942767517123,
+              15.767175253950013
+            ],
+            [
+              -88.60986965309093,
+              15.767171985759546
+            ]
+          ]
+        ]
+      },
+      "visible_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60986965309093,
+              15.767171985759546
+            ],
+            [
+              -88.60987036578071,
+              15.767262355933982
+            ],
+            [
+              -88.61033697043774,
+              15.767258904649063
+            ],
+            [
+              -88.61033768333849,
+              15.767349274801933
+            ],
+            [
+              -88.61080428808654,
+              15.767345822497063
+            ],
+            [
+              -88.61080500119826,
+              15.767436192628367
+            ],
+            [
+              -88.61127160603729,
+              15.767432739303509
+            ],
+            [
+              -88.61127231935995,
+              15.767523109413245
+            ],
+            [
+              -88.6113984578915,
+              15.767522175689798
+            ],
+            [
+              -88.609,
+              15.795999999999998
+            ],
+            [
+              -88.607,
+              15.796000000000001
+            ],
+            [
+              -88.60942767517123,
+              15.767175253950013
+            ],
+            [
+              -88.60986965309093,
+              15.767171985759546
+            ]
+          ]
+        ]
+      },
+      "visual_mask_disagreement_extensions": [],
+      "confirmed_additional_vessels": [],
+      "ui_actions_saved": false,
+      "training_split_group": "S1A:059000:075143",
+      "sar_evidence": {
+        "units": {
+          "vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "historical_vh": "amplitude_dn"
+        },
+        "target_relative_orbit": 128,
+        "target_orbit_direction": "DESCENDING",
+        "historical_relative_orbit": 128,
+        "historical_orbit_direction": "DESCENDING",
+        "historical_captured_at": "2025-03-02T11:45:51.116590Z",
+        "historical_acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+        "context_days_before": 60.00001504276621,
+        "target_context_grid_aligned": true,
+        "source_products": [
+          "S1A_IW_GRDH_1SDV_20250501T114552_20250501T114617_059000_075143_39BB",
+          "S1A_IW_GRDH_1SDV_20250302T114551_20250302T114616_058125_072DE1_1A84"
+        ],
+        "display_transform": {
+          "kind": "log_amplitude_dn",
+          "vv_bounds": [
+            20,
+            1000
+          ],
+          "vh_bounds": [
+            10,
+            300
+          ],
+          "calibrated_db": false,
+          "same_target_context_scale": true
+        }
+      },
+      "existing_detections": [],
+      "detector_comparison_performed": false,
+      "detector_count_known": false,
+      "marine_scope_constraints": null,
+      "excluded_ambiguous_regions": [],
+      "possible_omissions_indeterminate": [],
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60968443649747,
+              15.767354106350131
+            ],
+            [
+              -88.60968514911393,
+              15.767444476531313
+            ],
+            [
+              -88.61015175422979,
+              15.76744102560452
+            ],
+            [
+              -88.61015246705722,
+              15.76753139576414
+            ],
+            [
+              -88.61061907226411,
+              15.76752794381737
+            ],
+            [
+              -88.61061978530252,
+              15.767618313955435
+            ],
+            [
+              -88.6110863906004,
+              15.767614860988685
+            ],
+            [
+              -88.61108710384975,
+              15.767705231105174
+            ],
+            [
+              -88.61138322609652,
+              15.76770303921404
+            ],
+            [
+              -88.609,
+              15.795999999999998
+            ],
+            [
+              -88.607,
+              15.796000000000001
+            ],
+            [
+              -88.60941244339455,
+              15.76735611748918
+            ],
+            [
+              -88.60968443649747,
+              15.767354106350131
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60968443649747,
+              15.767354106350131
+            ],
+            [
+              -88.60968514911393,
+              15.767444476531313
+            ],
+            [
+              -88.61015175422979,
+              15.76744102560452
+            ],
+            [
+              -88.61015246705722,
+              15.76753139576414
+            ],
+            [
+              -88.61061907226411,
+              15.76752794381737
+            ],
+            [
+              -88.61061978530252,
+              15.767618313955435
+            ],
+            [
+              -88.6110863906004,
+              15.767614860988685
+            ],
+            [
+              -88.61108710384975,
+              15.767705231105174
+            ],
+            [
+              -88.61138322609652,
+              15.76770303921404
+            ],
+            [
+              -88.609,
+              15.795999999999998
+            ],
+            [
+              -88.607,
+              15.796000000000001
+            ],
+            [
+              -88.60941244339455,
+              15.76735611748918
+            ],
+            [
+              -88.60968443649747,
+              15.767354106350131
+            ]
+          ]
+        ]
+      },
+      "coverage": {
+        "zone_area_m2": 2253014.195,
+        "zone_crop_intersection_area_m2": 2253014.195,
+        "geometric_crop_coverage_fraction": 0.9999999999999996,
+        "automatic_observable_intersection_area_m2": 680058.921,
+        "automatic_observable_zone_fraction_geometric": 0.30184404622130195,
+        "zone_center_pixels_in_crop": 22543,
+        "zone_center_pixels_automatic_observable": 6805,
+        "visually_reviewed_extension_area_m2": 0,
+        "visually_reviewed_extension_center_pixels": 0,
+        "proposed_training_scope_center_pixels": 6755,
+        "candidate_negative_center_pixels": 6755,
+        "final_training_scope_area_m2": 675041.369,
+        "final_negative_scope_area_m2": 675041.369,
+        "scope_adequacy_check": {
+          "predecision_center_pixels": 6755,
+          "predecision_area_m2": 675041.369,
+          "interior_after_5m_erosion_area_m2": 641229.62,
+          "discarded_thin_components_area_m2": 0.0,
+          "withdrawal_reason": null
+        },
+        "internal_nodata_guard_pixels": 2,
+        "mask_definition": "observable >0 intersected with valid >0, configured zone, registered raster footprint; no SAR mask override.",
+        "statistic_caution": "Geometric area and center-pixel count differ at boundaries. Existing catalog quality state is preserved.",
+        "scope_pixel_count_method": "Serialized WGS84 scope reprojected to native grid and rasterized by pixel centers."
+      },
+      "negative_recommendation": "restricted_scope_pending_adjudication",
+      "uncertainties": [
+        "No independent family or dimensions; all object attributes remain null.",
+        "No detector proposal was inspected or resolved.",
+        "Missing slice coverage is unknown, not vessel absence."
+      ],
+      "proposed_scope_render": "tmp/local-review/phase2/train-s1-may-june/20250501/stc_canal-proposed-scope.png"
+    },
+    {
+      "observation_id": "078d51a9-3dd7-424f-87ba-f465cdc535e3",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-05-01T11:45:52.416285Z",
+      "status": "unusable",
+      "review_status": "provisional",
+      "observable_fraction": 0.0,
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "detection_count": null,
+      "author": "codex-ai-reviewer-s1",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_first_ai_review",
+      "summary": "Abstain: no adequate reviewed scope remains; this is not a negative observation.",
+      "whole_observable_part_inspected": true,
+      "whole_zone_scene_complete": false,
+      "whole_proposed_scope_inspected": false,
+      "label_status": "raw_complete_pending_adjudication_and_proposal_resolution",
+      "source_preview": {
+        "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/preview.png",
+        "sha256": "6a28cb32e45f99369054965a4682b880f615b8dbb90fb6c303b285e7ac028fa6",
+        "width_px": 448,
+        "height_px": 896,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/historical_vh.tif",
+          "sha256": "2b84bf2924b85a13d4d7a48057437d090ccbbca32bc99630ee12795f83e4d899",
+          "size_bytes": 134306
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/historical_vv.tif",
+          "sha256": "b79a58460ff440b5e5b6f06d2bffdd95313651efd87da84c56be4c3186037135",
+          "size_bytes": 155318
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/vh.tif",
+          "sha256": "b479eb7d94b0b2b7e2485c8c5ad6e9bd79fcbafa53e959bfb6f7d26fa61f0e8f",
+          "size_bytes": 279632
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/vv.tif",
+          "sha256": "da7a9122a300b7459585e5b1def6f1a6c8f9b148be98bf267ec65f102123ceb2",
+          "size_bytes": 328568
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/observable.tif",
+          "sha256": "695aaf1e1727a75a783d1be0e9216020cd1999f2caaf8a7a5845c2ec1bc73729",
+          "size_bytes": 2730
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/potentially_observable.tif",
+          "sha256": "695aaf1e1727a75a783d1be0e9216020cd1999f2caaf8a7a5845c2ec1bc73729",
+          "size_bytes": 2730
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/valid.tif",
+          "sha256": "695aaf1e1727a75a783d1be0e9216020cd1999f2caaf8a7a5845c2ec1bc73729",
+          "size_bytes": 2730
+        },
+        {
+          "path": "data/assets/078d51a9-3dd7-424f-87ba-f465cdc535e3/preview.png",
+          "sha256": "6a28cb32e45f99369054965a4682b880f615b8dbb90fb6c303b285e7ac028fa6",
+          "size_bytes": 161006
+        }
+      ],
+      "zone_geometry_status": "provisional-v1; unchanged; not an official port boundary",
+      "zone_scope_render": "tmp/local-review/phase2/train-s1-may-june/20250501/zone-mask-full.png",
+      "inspection_renders": [
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y000.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y000.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x000-y448.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/raw-quad-x448-y448.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/zone-mask-full.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/observable-full-native.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/northwest-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/northeast-contacts-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/anchorage-coverage-detail.png",
+        "tmp/local-review/phase2/train-s1-may-june/20250501/north-channels-detail.png"
+      ],
+      "automatic_observable_reviewed_area_wgs84": null,
+      "visible_reviewed_area_wgs84": null,
+      "visual_mask_disagreement_extensions": [],
+      "confirmed_additional_vessels": [],
+      "ui_actions_saved": false,
+      "training_split_group": "S1A:059000:075143",
+      "sar_evidence": {
+        "units": {
+          "vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "historical_vh": "amplitude_dn"
+        },
+        "target_relative_orbit": 128,
+        "target_orbit_direction": "DESCENDING",
+        "historical_relative_orbit": 128,
+        "historical_orbit_direction": "DESCENDING",
+        "historical_captured_at": "2025-03-02T11:45:51.116590Z",
+        "historical_acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+        "context_days_before": 60.00001504276621,
+        "target_context_grid_aligned": true,
+        "source_products": [
+          "S1A_IW_GRDH_1SDV_20250501T114552_20250501T114617_059000_075143_39BB",
+          "S1A_IW_GRDH_1SDV_20250302T114551_20250302T114616_058125_072DE1_1A84"
+        ],
+        "display_transform": {
+          "kind": "log_amplitude_dn",
+          "vv_bounds": [
+            20,
+            1000
+          ],
+          "vh_bounds": [
+            10,
+            300
+          ],
+          "calibrated_db": false,
+          "same_target_context_scale": true
+        }
+      },
+      "existing_detections": [],
+      "detector_comparison_performed": false,
+      "detector_count_known": false,
+      "marine_scope_constraints": {
+        "representative_of_configured_anchorage": false,
+        "reason": "Configured polygon mostly overlaps the peninsula. Only the explicitly inspected northern water strip is used; the remainder is not a marine negative.",
+        "verified_marine_scope_canonical_pixel_box": [
+          250,
+          416,
+          350,
+          440
+        ],
+        "verified_marine_scope_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.63295527540461,
+                15.759770065336598
+              ],
+              [
+                -88.62362360714572,
+                15.75983983833689
+              ],
+              [
+                -88.6236063663289,
+                15.757670967239271
+              ],
+              [
+                -88.63293793560439,
+                15.75760120432453
+              ],
+              [
+                -88.63295527540461,
+                15.759770065336598
+              ]
+            ]
+          ]
+        },
+        "excluded_outside_verified_marine_scope_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.647,
+                15.76
+              ],
+              [
+                -88.623,
+                15.759999999999996
+              ],
+              [
+                -88.623,
+                15.73
+              ],
+              [
+                -88.647,
+                15.729999999999999
+              ],
+              [
+                -88.647,
+                15.76
+              ]
+            ],
+            [
+              [
+                -88.63293793560439,
+                15.75760120432453
+              ],
+              [
+                -88.6236063663289,
+                15.757670967239271
+              ],
+              [
+                -88.62362360714572,
+                15.75983983833689
+              ],
+              [
+                -88.63295527540461,
+                15.759770065336598
+              ],
+              [
+                -88.63293793560439,
+                15.75760120432453
+              ]
+            ]
+          ]
+        }
+      },
+      "excluded_ambiguous_regions": [],
+      "possible_omissions_indeterminate": [],
+      "proposed_training_reviewed_area_wgs84": null,
+      "proposed_negative_only_area_wgs84": null,
+      "coverage": {
+        "zone_area_m2": 8538065.538,
+        "zone_crop_intersection_area_m2": 8538065.538,
+        "geometric_crop_coverage_fraction": 1.0,
+        "automatic_observable_intersection_area_m2": 0.0,
+        "automatic_observable_zone_fraction_geometric": 0.0,
+        "zone_center_pixels_in_crop": 85391,
+        "zone_center_pixels_automatic_observable": 0,
+        "visually_reviewed_extension_area_m2": 0,
+        "visually_reviewed_extension_center_pixels": 0,
+        "proposed_training_scope_center_pixels": 0,
+        "candidate_negative_center_pixels": 0,
+        "final_training_scope_area_m2": 0.0,
+        "final_negative_scope_area_m2": 0.0,
+        "scope_adequacy_check": {
+          "predecision_center_pixels": 0,
+          "predecision_area_m2": 0.0,
+          "interior_after_5m_erosion_area_m2": 0.0,
+          "discarded_thin_components_area_m2": 0.0,
+          "withdrawal_reason": "No pixel of the configured zone is observable in the published target/context common mask; no negative scope is proposed."
+        },
+        "internal_nodata_guard_pixels": 2,
+        "mask_definition": "observable >0 intersected with valid >0, configured zone, registered raster footprint; no SAR mask override.",
+        "statistic_caution": "Geometric area and center-pixel count differ at boundaries. Existing catalog quality state is preserved.",
+        "scope_pixel_count_method": "Serialized WGS84 scope reprojected to native grid and rasterized by pixel centers."
+      },
+      "negative_recommendation": "abstain_no_revisable_scope",
+      "uncertainties": [
+        "No independent family or dimensions; all object attributes remain null.",
+        "No detector proposal was inspected or resolved.",
+        "Missing slice coverage is unknown, not vessel absence."
+      ],
+      "proposed_scope_render": "tmp/local-review/phase2/train-s1-may-june/20250501/stc_fondeo-proposed-scope.png"
+    }
+  ],
+  "context_only_objects_outside_observation_zones": [
+    {
+      "id": "northwest-weak-return",
+      "canonical_pixel_bbox": [
+        313,
+        20,
+        334,
+        51
+      ],
+      "decision": "indeterminada",
+      "reason": "Short faint VV streak, without a sufficiently resolved hull. Outside the configured observation zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "unique_physical_object_key": "S1A:059000:075143:northwest-weak-return",
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6273617952892,
+              15.795600315569134
+            ],
+            [
+              -88.62540179920668,
+              15.79561498309153
+            ],
+            [
+              -88.62537945269987,
+              15.792813536177041
+            ],
+            [
+              -88.62733942186476,
+              15.792798871387582
+            ],
+            [
+              -88.6273617952892,
+              15.795600315569134
+            ]
+          ]
+        ]
+      },
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6273617952892,
+              15.795600315569134
+            ],
+            [
+              -88.62540179920668,
+              15.79561498309153
+            ],
+            [
+              -88.62537945269987,
+              15.792813536177041
+            ],
+            [
+              -88.62733942186476,
+              15.792798871387582
+            ],
+            [
+              -88.6273617952892,
+              15.795600315569134
+            ]
+          ]
+        ]
+      },
+      "zone_intersections": [],
+      "pixel_reference": {
+        "path": "tmp/local-review/phase2/train-s1-may-june/20250501/vv-full-native.png",
+        "width_px": 896,
+        "height_px": 1344,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "count_as_confirmed_vessel": false,
+      "count_as_training_reference": false
+    },
+    {
+      "id": "east-grouped-return",
+      "canonical_pixel_bbox": [
+        598,
+        235,
+        643,
+        255
+      ],
+      "decision": "indeterminada",
+      "reason": "Grouped diffuse VV responses east of the canal. Context has nearby varying responses, without a resolved individual hull in this pair. Outside configured zones.",
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "unique_physical_object_key": "S1A:059000:075143:east-grouped-return",
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60060912790519,
+              15.776368226735574
+            ],
+            [
+              -88.59640947436084,
+              15.77639908204657
+            ],
+            [
+              -88.5963953319709,
+              15.774591667970903
+            ],
+            [
+              -88.60059494834972,
+              15.774560816373175
+            ],
+            [
+              -88.60060912790519,
+              15.776368226735574
+            ]
+          ]
+        ]
+      },
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60060912790519,
+              15.776368226735574
+            ],
+            [
+              -88.59640947436084,
+              15.77639908204657
+            ],
+            [
+              -88.5963953319709,
+              15.774591667970903
+            ],
+            [
+              -88.60059494834972,
+              15.774560816373175
+            ],
+            [
+              -88.60060912790519,
+              15.776368226735574
+            ]
+          ]
+        ]
+      },
+      "zone_intersections": [],
+      "pixel_reference": {
+        "path": "tmp/local-review/phase2/train-s1-may-june/20250501/vv-full-native.png",
+        "width_px": 896,
+        "height_px": 1344,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "count_as_confirmed_vessel": false,
+      "count_as_training_reference": false
+    },
+    {
+      "id": "far-east-weak-return",
+      "canonical_pixel_bbox": [
+        651,
+        239,
+        680,
+        265
+      ],
+      "decision": "indeterminada",
+      "reason": "Faint fragmented VV response outside all observation zones; insufficient raw evidence for an unequivocal vessel reference.",
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "unique_physical_object_key": "S1A:059000:075143:far-east-weak-return",
+      "suggested_visual_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.595660041013,
+              15.776043076034792
+            ],
+            [
+              -88.5929535964385,
+              15.77606290790085
+            ],
+            [
+              -88.59293525188846,
+              15.773713265500929
+            ],
+            [
+              -88.5956416653276,
+              15.773693436737588
+            ],
+            [
+              -88.595660041013,
+              15.776043076034792
+            ]
+          ]
+        ]
+      },
+      "geometry_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.595660041013,
+              15.776043076034792
+            ],
+            [
+              -88.5929535964385,
+              15.77606290790085
+            ],
+            [
+              -88.59293525188846,
+              15.773713265500929
+            ],
+            [
+              -88.5956416653276,
+              15.773693436737588
+            ],
+            [
+              -88.595660041013,
+              15.776043076034792
+            ]
+          ]
+        ]
+      },
+      "zone_intersections": [],
+      "pixel_reference": {
+        "path": "tmp/local-review/phase2/train-s1-may-june/20250501/vv-full-native.png",
+        "width_px": 896,
+        "height_px": 1344,
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ],
+        "crs": "EPSG:32616"
+      },
+      "count_as_confirmed_vessel": false,
+      "count_as_training_reference": false
+    }
+  ],
+  "summary": {
+    "observations_inspected": 2,
+    "confirmed_vessels_in_fixed_zones": 0,
+    "proposal_counts_known": false,
+    "observations_with_proposed_scope": 1,
+    "observations_with_null_scope": 1,
+    "family_and_dimensions_indeterminate": true,
+    "not_human_ground_truth": true,
+    "new_confirmed_training_positives": 0,
+    "reviewed_acquisition_complete_port_coverage": false
+  },
+  "verification": {
+    "registered_asset_hashes_verified": 16,
+    "retained_asset_hashes_verified": 42,
+    "retained_manifest_sha256": "7881e6dc56db96de8ab301b8086d736ebc68cf22f4450b8ee55dba13126273a9",
+    "retention_provenance": {
+      "kind": "retained_original_prepared_bytes",
+      "original_halo_hash_available": true
+    },
+    "published_mosaics_equal_applicable_retained_cores": true,
+    "raster_grids_and_preview_dimensions_verified": true,
+    "target_context_orbit_and_direction_match_verified": true,
+    "geometries_valid": true,
+    "scope_containment_and_exclusions_verified": true,
+    "no_database_writes": true,
+    "all_physical_attributes_null": true,
+    "no_model_scores_used_for_visual_decisions": true,
+    "all_nonzero_native_target_and_context_panels_visually_inspected": true,
+    "scope_overlays_visually_checked": true,
+    "scope_overlays_checked_at": "2026-10-21T17:04:54.074811+00:00"
+  },
+  "context_prior_exposure": "The March 2 TRAIN context was reviewed in an earlier task. No current target model output or context detector output was opened for this pass; complete independence from prior context review is not claimed.",
+  "coverage_limitation": "The target and historical slices do not cover the complete port. No quay or patio observation was available for this acquisition; those zones cannot be assigned negative references."
+}

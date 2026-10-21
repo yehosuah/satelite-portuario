@@ -1,0 +1,207 @@
+{
+  "schema_version": "phase2-post-reference-scope-conflicts-v1",
+  "created_at": "2026-10-21T16:55:49.282562+00:00",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "split": "calibration",
+  "catalog_read": {
+    "path": "tmp/local-review/phase2/calibration-s2-round2/catalog-correspondence-snapshot.json",
+    "sha256": "c0a1a92cf0e3a9759e8838000583cee075211672bfca4ba6cbe726bddae48106"
+  },
+  "second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/root-raw-pass.json",
+    "sha256": "a25f718c52f813aebbc13e3e194ee8dc5fe82cd97a7d6c48060405e5f9d2c0a6"
+  },
+  "scores_seen": false,
+  "conflicts": [
+    {
+      "observation_id": "4e12d586-ee12-4039-8a57-1b5ca12aa9d4",
+      "zone_id": "prq_muelles",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+      "detection_id": "2f2fc3b0eabeca1066a98d65",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251020-s2-raw-review.json",
+        "sha256": "be217c165b778c616ec41575485b24db79644c69f9127f7b84cedfcd0d9bbe0f"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -90.79540095660529,
+              13.925158859245764
+            ],
+            [
+              -90.79263352484215,
+              13.92513380034523
+            ],
+            [
+              -90.79265925745227,
+              13.922423852920396
+            ],
+            [
+              -90.79542665701753,
+              13.922448906754262
+            ],
+            [
+              -90.79540095660529,
+              13.925158859245764
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.7926414642197,
+              13.924297690225101
+            ],
+            [
+              -90.79265925745227,
+              13.922423852920396
+            ],
+            [
+              -90.79542665701753,
+              13.922448906754262
+            ],
+            [
+              -90.79541831176127,
+              13.923328863378527
+            ],
+            [
+              -90.79297200715368,
+              13.923306725800945
+            ],
+            [
+              -90.79296257094825,
+              13.92430059813904
+            ],
+            [
+              -90.7926414642197,
+              13.924297690225101
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 32955.673131085,
+      "previously_marked_unknown_before_correspondence": true,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "pending_explicit_second_reviewer_adjudication",
+      "reason": "Objeto blanco/pontón pequeño ya excluido del ámbito raw; caja del modelo cruza el ámbito.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251020-muelles-correspondence-conflict.png",
+        "sha256": "df4805980aec4df4605fb53ef086c14011a0b2ac71196dbf0c6968cebf6edca2"
+      }
+    },
+    {
+      "observation_id": "b0622ffc-1076-4e4d-a53d-b1b536817935",
+      "zone_id": "prq_muelles",
+      "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+      "detection_id": "767796fd370b9a53c1a7ee1c",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251025-s2-raw-review.json",
+        "sha256": "d6b17dc4910fffc26a6185915db3e5553bc639e4b96305675c06527b8cbb8e3b"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -90.79135277649011,
+              13.925495111966638
+            ],
+            [
+              -90.78858648876871,
+              13.925470016862084
+            ],
+            [
+              -90.78861238989921,
+              13.92274738624327
+            ],
+            [
+              -90.7913786452848,
+              13.922772476250207
+            ],
+            [
+              -90.79135277649011,
+              13.925495111966638
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": true,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79112075020986,
+              13.925493007079385
+            ],
+            [
+              -90.79106181386805,
+              13.925492472422905
+            ],
+            [
+              -90.79092668743904,
+              13.92437251911911
+            ],
+            [
+              -90.78944065582175,
+              13.9249915649456
+            ],
+            [
+              -90.78955009417591,
+              13.925478758461251
+            ],
+            [
+              -90.78858648876871,
+              13.925470016862084
+            ],
+            [
+              -90.78861238989921,
+              13.92274738624327
+            ],
+            [
+              -90.7913786452848,
+              13.922772476250207
+            ],
+            [
+              -90.79136426354329,
+              13.924286124009516
+            ],
+            [
+              -90.79120504931716,
+              13.924284682179662
+            ],
+            [
+              -90.79112075020986,
+              13.925493007079385
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 72432.15106990765,
+      "previously_marked_unknown_before_correspondence": false,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "pending_explicit_second_reviewer_adjudication",
+      "reason": "Firma oblicua gris tenue dentro del ámbito raw inicialmente revisado; señalada al consultar la propuesta. No estaba marcada desconocida en primera revisión. No se reclasifica ni excluye automáticamente para favorecer métricas.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-round2/prq-20251025-muelles-correspondence-conflict.png",
+        "sha256": "4000129ab01ace554fa3fc1874b7c6c41c38f9cd17aa43547df03432d4653ebf"
+      }
+    }
+  ],
+  "actions_performed": {
+    "db_writes": false,
+    "reference_changes": false,
+    "scope_changes": false,
+    "metric_or_threshold_computation": false
+  },
+  "guardrail": "No se excluye candidato desconocido ni se promueve a positivo/negativo automáticamente. Cualquier resolución posterior conserva procedencia de exposición y requiere adjudicación explícita."
+}

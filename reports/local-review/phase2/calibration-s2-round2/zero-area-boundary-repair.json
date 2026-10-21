@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-21T17:12:25.730142Z",
+  "author": "codex-ai-root",
+  "kind": "geometry_representation_repair",
+  "reason": "AOI intersection yielded valid Polygon parts plus two tangent LineStrings. Observation review requires Polygon/MultiPolygon. Retain all area; discard only zero-area fragments. Previous partial apply stopped at this observation; replay is idempotent and preserves existing revisions/additions.",
+  "original_plan": {
+    "path": "reports/local-review/phase2/calibration-s2-round2/consolidated.json",
+    "sha256": "8a8291a00f413ae94d02df9a9c243054b2c72b0cc12e84c49393db5b2dfffac5"
+  },
+  "changes": [
+    {
+      "observation_id": "2125287f-8f9c-4c33-9b94-319e834e51c6",
+      "before_type": "GeometryCollection",
+      "after_type": "MultiPolygon",
+      "surface_area_deg2_before": 4.9179132305173874e-05,
+      "surface_area_deg2_after": 4.9179132305173874e-05,
+      "symmetric_difference_area_deg2": 0,
+      "discarded_non_area_components": 2
+    }
+  ],
+  "positive_geometries_changed": false,
+  "scores_or_metrics_used": false,
+  "other_actions_changed": false,
+  "original_reports_and_plan_unchanged": true
+}

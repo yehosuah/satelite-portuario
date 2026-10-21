@@ -1,0 +1,218 @@
+{
+  "kind": "reserve_activation",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "created_at": "2026-10-21T16:20:57.490035+00:00",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_versions_preserved": {
+    "reports/local-review/phase2/execution-order.json": "d9eaa2f2008ddc5f6b44acee32dbb58ece17ee7043c1177e3b975d5ac2723d70",
+    "reports/local-review/phase2/execution-order-v2.json": "2e1095ff54aea6d43122a7d41a4e29dbe392ee9fd7bf2e08953c9b8f40c96ef0",
+    "reports/local-review/phase2/execution-order-v3.json": "b66266ac36197fbb04d19feeeb31af12c34674ae2c026b6039fffe64b89c1d14"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v4.json",
+    "sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb"
+  },
+  "activation": {
+    "split": "calibration",
+    "port_ids": [
+      "stc",
+      "pbr"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+    "reserve_acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+    "reserve_rank": 2,
+    "reason": "Both ports have zero reviewable marine area in the first raw quality review of the cloudy Oct 2 primary. STC's small automatically clear fragment is terrestrial/hazy and was independently abstained. Activate only the next chronological candidate within the same Oct 1–9 calibration slot; retain all primary failures.",
+    "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251005-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "raw_quality_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/stc-20251002-s2-raw-review.json",
+      "sha256": "658ef68f92054ecc5113b316bea3ba76612558ee00bdbc06169747b79f877474",
+      "cause": "zero_reviewable_marine_area_in_raw_quality_review"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/pbr-20251002-s2-raw-review.json",
+      "sha256": "80f1ddf1c620c2af0949e1964f69a40dc62023b1bc9488bf0ed2cfcefd33b1f1",
+      "cause": "zero_reviewable_marine_area_in_raw_quality_review"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round1/prq-20251005-s2-raw-review.json",
+      "sha256": "f9818fb0ae839bc541dfb63409b0dfa973381205dcca22a5770f6ff77bb41ccc",
+      "cause": "zero_reviewable_marine_area_in_raw_quality_review"
+    }
+  ],
+  "quality_evidence": [
+    {
+      "observation_id": "3a04cfcf-6847-48ed-ae4b-ef167fa42305",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "3465c141-281b-4936-bf10-3cb4b7e8091a",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "3e31a667-a48c-4320-ad80-c12de86e146f",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "701c690c-abd6-4720-9eba-e12eab478c11",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "ca64f305-a6f0-4045-b80b-3303ac5aa461",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "a69e926d-4579-4d64-9ddb-315379340def",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "partial",
+      "observable_fraction": 0.002822311484816901,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "8ab0970d-e0bc-4421-a98e-28c78e759f4d",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "27b83010-3d8b-47e9-8618-b84300e1f70e",
+      "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-02T16:10:19.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "78b11d22-b540-448e-b302-8db93bc7b33c",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "zone_id": "prq_canal",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-05T16:20:39.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "6c3fd3ce-d2bf-4eae-95eb-2f1cf4dcfdd9",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "zone_id": "prq_fondeo",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-05T16:20:39.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "f76789c5-ac56-4e01-b688-75a2be78d487",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "zone_id": "prq_muelles",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-05T16:20:39.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    },
+    {
+      "observation_id": "7309e797-e534-4ad1-ac72-84ef10d8bb56",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "zone_id": "prq_patios",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-10-05T16:20:39.024000Z",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "quality_flags_json": "[\"model_not_locally_validated\"]"
+    }
+  ],
+  "candidate_processing_state_before_activation": {
+    "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+    "status": "pending",
+    "attempts": 0,
+    "error_code": null,
+    "error_message": null,
+    "not_before": "2026-10-21T14:33:56.416839Z"
+  },
+  "unfilled_slot_exceptions": [
+    {
+      "split": "calibration",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "slot_start": "2025-10-01T00:00:00+00:00",
+      "slot_end_exclusive": "2025-10-09T00:00:00+00:00",
+      "primary_acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+      "reason": "Clouds and no reviewable marine area; no reserve exists in this immutable calendar slot.",
+      "action": "Keep primary abstention and mark slot exhausted; do not borrow January training data or reassign the Oct 10 next-slot primary."
+    }
+  ],
+  "priorities_before_sha256": "d6ca3e2e311eacce27871d889eeca8a35d99d38598b43c71f69c9dab7845a9fe",
+  "priorities_after_sha256": "5b69aab6824c47d07caec00e7ab071af483bbef6e39dc39f22dc0b445570eebc",
+  "checks": {
+    "runner_allowed_assignments_passed": true,
+    "cross_split_target_context_overlap": false,
+    "train_and_test_stages_unchanged": true,
+    "primary_assignments_unchanged": true,
+    "candidate_is_next_chronological_reserve": true,
+    "candidate_predictions_or_scores_read": false,
+    "no_replacement_for_ship_absence": true,
+    "all_previous_reserves_retained": true
+  },
+  "used_predictions_or_scores": false,
+  "changes": "Immutable order v4 and operational priority only. No catalog, reviews, label datasets, earlier order, protocol, or ledger writes."
+}

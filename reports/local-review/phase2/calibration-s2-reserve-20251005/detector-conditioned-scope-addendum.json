@@ -1,0 +1,628 @@
+{
+  "schema_version": "phase2-detector-conditioned-scope-addendum-v1",
+  "created_at": "2026-10-21T16:49:54.490052+00:00",
+  "author": "codex-ai-model-pilot",
+  "requested_by_second_reviewer": "codex-ai-root",
+  "is_human_review": false,
+  "split": "calibration",
+  "status": "pending_final_visual_scope_adjudication",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/root-raw-pass.json",
+      "sha256": "74384c2c7f85383dc72fcf01b680bc74f953f55f31ba53d2256559a12f2a8334"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/correspondence-scope-conflicts.json",
+      "sha256": "b8a06028b0ba1be509688bd8550abb2b8b183fedaca9647cbcf038ec4d8b0694"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-reserve-20251005/catalog-correspondence-snapshot.json",
+      "sha256": "645cb3c0d4b95c89d7c858fe8e0c02b412a3d2dfeba77aafd26b804c81f6d0fb"
+    }
+  ],
+  "raw_reference_count_preserved": 4,
+  "raw_masks_and_reports_unchanged": true,
+  "metric_or_threshold_computation": false,
+  "model_scores_seen": false,
+  "conditioned_scope_limitation": "Cualquier métrica posterior describe únicamente el ámbito condicionado y revisado. La exclusión depende de geometrías propuestas por el detector y no permite afirmar precisión incondicional de puerto, adquisición o modelo. Los candidatos excluidos permanecen indeterminados, no falsos positivos.",
+  "changes": [
+    {
+      "observation_id": "4613d900-42d1-4a10-bb27-ca131bed1cae",
+      "zone_id": "pbr_fondeo",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+      "raw_report": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr-20251005-s2-raw-review.json",
+        "sha256": "a384a72aedcaf87898e27b34a5a16883dbd738bfbe0a598a6e43496e3a6fab0f"
+      },
+      "indeterminate_detection_id": "a335e0bcf5edab19fc62921f",
+      "raw_unknown_reason": "Pequeña firma clara U01 en banda de reflexión/estela, previamente excluida.",
+      "reason": "Excluir caja completa más 10 m para evitar que un candidato indeterminado intersecante se exporte como fondo negativo. Recorte condicionado explícitamente por geometría del detector después de fijar referencias raw. No equivale a rechazo ni confirmación de buque.",
+      "occurred_after_catalog_correspondence": true,
+      "scope_selection_conditioned_on_detector_geometry": true,
+      "uses_detection_score": false,
+      "detector_box_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60304571890221,
+              15.763960547906086
+            ],
+            [
+              -88.60024521592962,
+              15.763981149362092
+            ],
+            [
+              -88.60022413020558,
+              15.76129051577149
+            ],
+            [
+              -88.60302459631565,
+              15.761269918008896
+            ],
+            [
+              -88.60304571890221,
+              15.763960547906086
+            ]
+          ]
+        ]
+      },
+      "exclusion_buffer_m": 10,
+      "exclusion_crs": "EPSG:32616",
+      "exclusion_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ],
+            [
+              -88.60015260428011,
+              15.76407220586777
+            ],
+            [
+              -88.60013010344933,
+              15.761200830864583
+            ],
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ],
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ]
+          ]
+        ]
+      },
+      "before_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.748
+            ],
+            [
+              -88.607,
+              15.748
+            ],
+            [
+              -88.607,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ]
+          ],
+          [
+            [
+              -88.6005120347028,
+              15.76398745950022
+            ],
+            [
+              -88.60256507086406,
+              15.763972357666194
+            ],
+            [
+              -88.60254450300327,
+              15.761351612076751
+            ],
+            [
+              -88.60049149316393,
+              15.761366711273658
+            ],
+            [
+              -88.6005120347028,
+              15.76398745950022
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.599,
+              15.748
+            ],
+            [
+              -88.607,
+              15.748
+            ],
+            [
+              -88.607,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.748
+            ]
+          ],
+          [
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ],
+            [
+              -88.60013010344933,
+              15.761200830864583
+            ],
+            [
+              -88.60015260428011,
+              15.76407220586777
+            ],
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ],
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.748
+            ],
+            [
+              -88.607,
+              15.766
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.599,
+              15.748
+            ],
+            [
+              -88.607,
+              15.748
+            ]
+          ],
+          [
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ],
+            [
+              -88.60013010344933,
+              15.761200830864583
+            ],
+            [
+              -88.60015260428011,
+              15.76407220586777
+            ],
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ],
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ]
+          ]
+        ]
+      },
+      "removed_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ],
+            [
+              -88.60015260428011,
+              15.76407220586777
+            ],
+            [
+              -88.60013010344933,
+              15.761200830864583
+            ],
+            [
+              -88.60311720541512,
+              15.761178860495594
+            ],
+            [
+              -88.60313974820635,
+              15.764050231294584
+            ]
+          ],
+          [
+            [
+              -88.60256507086406,
+              15.763972357666194
+            ],
+            [
+              -88.60254450300327,
+              15.761351612076751
+            ],
+            [
+              -88.60049149316393,
+              15.761366711273658
+            ],
+            [
+              -88.6005120347028,
+              15.76398745950022
+            ],
+            [
+              -88.60256507086406,
+              15.763972357666194
+            ]
+          ]
+        ]
+      },
+      "area_m2": {
+        "configured_zone": 1707464.356473501,
+        "before_reviewed": 1643664.3564675187,
+        "after_reviewed": 1605758.8154331136,
+        "removed_reviewed": 37905.5410343929,
+        "exclusion_window_total": 101705.54104038313
+      },
+      "removed_fraction_of_raw_reviewed_area": 0.023061606760067244,
+      "removed_fraction_of_configured_zone": 0.02219990179629918,
+      "raw_reference_boxes_changed": false,
+      "automatic_mask_changed": false,
+      "requires_final_scope_adjudication": true,
+      "render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/pbr_fondeo-conditioned-scope-final.png",
+        "sha256": "537f97fd565f170291648007b0f92cb21d1619b9a1542fd18032973ac5aeeb2e"
+      }
+    },
+    {
+      "observation_id": "c13a5dd9-e54e-41f5-9de6-f0a65198896b",
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+      "raw_report": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc-20251005-s2-raw-review.json",
+        "sha256": "e658237eb0b2de0b9a567b12e93a000323244025d6470ee5eee3608cf808283b"
+      },
+      "indeterminate_detection_id": "c933f4a17e24079169cc64f8",
+      "raw_unknown_reason": "Firma clara costera fuera de la franja de agua raw revisada; presencia no adjudicada.",
+      "reason": "Excluir caja completa más 10 m para evitar que un candidato indeterminado intersecante se exporte como fondo negativo. Recorte condicionado explícitamente por geometría del detector después de fijar referencias raw. No equivale a rechazo ni confirmación de buque.",
+      "occurred_after_catalog_correspondence": true,
+      "scope_selection_conditioned_on_detector_geometry": true,
+      "uses_detection_score": false,
+      "detector_box_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.62711797708056,
+              15.753503596364867
+            ],
+            [
+              -88.62432823574406,
+              15.753524414952402
+            ],
+            [
+              -88.62430678347762,
+              15.750825730261518
+            ],
+            [
+              -88.62709648801001,
+              15.75080491541972
+            ],
+            [
+              -88.62711797708056,
+              15.753503596364867
+            ]
+          ]
+        ]
+      },
+      "exclusion_buffer_m": 10,
+      "exclusion_crs": "EPSG:32616",
+      "exclusion_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.62721201064576,
+              15.753593268898324
+            ],
+            [
+              -88.62423564013612,
+              15.75361548033963
+            ],
+            [
+              -88.62421275245822,
+              15.7507360562113
+            ],
+            [
+              -88.62718908107185,
+              15.750713849033955
+            ],
+            [
+              -88.62721201064576,
+              15.753593268898324
+            ]
+          ]
+        ]
+      },
+      "before_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.62325159036617,
+              15.76
+            ],
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ],
+            [
+              -88.6268493911058,
+              15.754754771519462
+            ],
+            [
+              -88.62872000170539,
+              15.755283042200576
+            ],
+            [
+              -88.63292493252222,
+              15.755974558270326
+            ],
+            [
+              -88.63759863135166,
+              15.756933590022909
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64601734738116,
+              15.759400606227906
+            ],
+            [
+              -88.64602098897997,
+              15.759852449265333
+            ],
+            [
+              -88.62636388669364,
+              15.76
+            ],
+            [
+              -88.62325159036617,
+              15.76
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.62422456472194,
+              15.752222118595409
+            ],
+            [
+              -88.62423564013612,
+              15.75361548033963
+            ],
+            [
+              -88.62513090411562,
+              15.75360879934905
+            ],
+            [
+              -88.6268493911058,
+              15.754754771519462
+            ],
+            [
+              -88.62872000170539,
+              15.755283042200576
+            ],
+            [
+              -88.63292493252222,
+              15.755974558270326
+            ],
+            [
+              -88.63759863135166,
+              15.756933590022909
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64601734738116,
+              15.759400606227906
+            ],
+            [
+              -88.64602098897997,
+              15.759852449265333
+            ],
+            [
+              -88.62636388669364,
+              15.76
+            ],
+            [
+              -88.62325159036617,
+              15.76
+            ],
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.62422456472194,
+              15.752222118595409
+            ],
+            [
+              -88.62423564013612,
+              15.75361548033963
+            ],
+            [
+              -88.62513090411562,
+              15.75360879934905
+            ],
+            [
+              -88.6268493911058,
+              15.754754771519462
+            ],
+            [
+              -88.62872000170539,
+              15.755283042200576
+            ],
+            [
+              -88.63292493252222,
+              15.755974558270326
+            ],
+            [
+              -88.63759863135166,
+              15.756933590022909
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64601734738116,
+              15.759400606227906
+            ],
+            [
+              -88.64602098897997,
+              15.759852449265333
+            ],
+            [
+              -88.62636388669364,
+              15.76
+            ],
+            [
+              -88.62325159036617,
+              15.76
+            ],
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ]
+          ]
+        ]
+      },
+      "removed_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ],
+            [
+              -88.6268493911058,
+              15.754754771519462
+            ],
+            [
+              -88.62513090411562,
+              15.75360879934905
+            ],
+            [
+              -88.62423564013612,
+              15.75361548033963
+            ],
+            [
+              -88.62422456472194,
+              15.752222118595409
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ]
+          ]
+        ]
+      },
+      "area_m2": {
+        "configured_zone": 8538065.634145947,
+        "before_reviewed": 990716.7895472513,
+        "after_reviewed": 984052.6552823517,
+        "removed_reviewed": 6664.134264912057,
+        "exclusion_window_total": 101630.3297038947
+      },
+      "removed_fraction_of_raw_reviewed_area": 0.006726578508836523,
+      "removed_fraction_of_configured_zone": 0.0007805203837108547,
+      "raw_reference_boxes_changed": false,
+      "automatic_mask_changed": false,
+      "requires_final_scope_adjudication": true,
+      "render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251005/stc_fondeo-conditioned-scope-final.png",
+        "sha256": "e89dde94f9c024402c84e8c419241a57f856d39e6c3a180a6fec8119061a64e3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "phase2-id-geometry-correspondence-receipt-v1",
+  "created_at": "2026-10-21T16:27:40.596008Z",
+  "status": "pending_independent_adjudication",
+  "author": "codex-ai-persistence",
+  "is_human_review": false,
+  "raw_reference_lock": {
+    "path": "reports/local-review/phase2/s2-test-round1-raw-reference-lock.json",
+    "sha256": "5f2e6a02a14dbd4a60fddba7346619ebed7e457fd92f98b494847890ce72b0b9"
+  },
+  "catalog_geometry_snapshot": {
+    "path": "reports/local-review/phase2/s2-test-round1-correspondence/catalog-id-geometry-snapshot.json",
+    "sha256": "139fd28f1affd900527cdbec211df99399283e68af1603957ebb444fbb24f3b0"
+  },
+  "reports": [
+    {
+      "path": "reports/local-review/phase2/s2-test-round1-correspondence/prq-20260403-s2-test-correspondence.json",
+      "sha256": "377a7a44b13aa5f8764ce2bee15474c5783ac3f8e5cd09c12d4c090f788bcd64",
+      "raw_source": {
+        "path": "reports/local-review/phase2/prq-20260403-s2-test-raw-first-pass.json",
+        "sha256": "97f052ff1d139e19e90d149d20b634434232ebd3abbe9d9c9f9f7c8454acd261"
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/s2-test-round1-correspondence/prq-20260413-s2-test-correspondence.json",
+      "sha256": "ae422d329a74c95aea435c183d07da450c9982c38f931b584c51b9cfa6cc2fc2",
+      "raw_source": {
+        "path": "reports/local-review/phase2/prq-20260413-s2-test-raw-first-pass.json",
+        "sha256": "87f587ca84f2d24ad7ddb9af46a1942c9faceac8fac30953ca7b662fa156eaf4"
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/s2-test-round1-correspondence/caribe-20260403-s2-test-correspondence.json",
+      "sha256": "c0005fb3f4f2bc321f05263a623e327a2775363606cda2ce879de15cf8eb6e76",
+      "raw_source": {
+        "path": "reports/local-review/phase2/caribe-20260403-s2-test-raw-first-pass.json",
+        "sha256": "6fcbed28f71152b48f03d580e9d18620d29999ace374dcfab92807f16e5f01ec"
+      }
+    },
+    {
+      "path": "reports/local-review/phase2/s2-test-round1-correspondence/caribe-20260413-s2-test-correspondence.json",
+      "sha256": "5264c94f7e3497f0af453b0a70b82ef6997923e0c006a066e489e4972b81f751",
+      "raw_source": {
+        "path": "reports/local-review/phase2/caribe-20260413-s2-test-raw-first-pass.json",
+        "sha256": "f993afccf29a8cb075601b4b098613ee7b75f80651bd3fcaae7b9503a00deb3d"
+      }
+    }
+  ],
+  "raw_files_and_scope_renders_still_match_lock": true,
+  "all_positive_geometries_unchanged_from_raw": true,
+  "all_reviewed_scopes_unchanged_from_raw": true,
+  "freezing_blockers": [
+    {
+      "observation_id": "ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e",
+      "zone_id": "prq_muelles",
+      "detection_id": "7f2cea210390dec9ceb12694",
+      "reason": "Raw-first north-berth exclusion already contains the center. Gray horizontal signal may be a platform, fixed fitting or small craft; identity is unresolved.",
+      "centroid_inside_raw_reviewed_scope": false,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    },
+    {
+      "observation_id": "ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e",
+      "zone_id": "prq_muelles",
+      "detection_id": "ab375e3c205aa4fc82574bf8",
+      "reason": "Newly localized after ID/geometry correspondence: a faint roughly2×4 native-pixel signal in previously proposed clear-water scope. Do not reject as empty water; independent raw adjudication must decide vessel versus unknown. Any scope reduction would be post-proposal and must be disclosed.",
+      "centroid_inside_raw_reviewed_scope": true,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    },
+    {
+      "observation_id": "ff74b7dd-6f97-4e14-bcdc-aa4e1ff8844e",
+      "zone_id": "prq_muelles",
+      "detection_id": "f1df27f737afa84029b89a43",
+      "reason": "Raw-first exclusion already contains this small blue/gray berth-adjacent signal. Insufficient native evidence for a supported vessel reference or rejection.",
+      "centroid_inside_raw_reviewed_scope": false,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    },
+    {
+      "observation_id": "7fc194ec-cb66-4e52-87e8-bba3fdfe50e5",
+      "zone_id": "prq_canal",
+      "detection_id": "b8ad4f1f97133ac28b4ea450",
+      "reason": "Small signal at native muelles(435,532), also represented by the muelles observation; unresolved vessel versus point-like water signature. Independently adjudicate before accepting or expanding the raw unknown scope. Both observations must share one physical object key if accepted.",
+      "centroid_inside_raw_reviewed_scope": true,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    },
+    {
+      "observation_id": "8818c9ac-36ec-499b-a871-3bf9e91fb60a",
+      "zone_id": "prq_muelles",
+      "detection_id": "647e4f9ad530086c3dd30508",
+      "reason": "Same small signal as canal detection b8ad4f1f97133ac28b4ea450; native muelles(435,532). Raw eastern-quay exclusion contains its center. Identity unresolved; do not treat as a negative. Both observations must share one physical object key if accepted.",
+      "centroid_inside_raw_reviewed_scope": true,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    },
+    {
+      "observation_id": "8818c9ac-36ec-499b-a871-3bf9e91fb60a",
+      "zone_id": "prq_muelles",
+      "detection_id": "ab87e4e93bbf656967a608c4",
+      "reason": "Raw-first north-berth exclusion already contains the center. Gray horizontal signal may be a platform, fixed fitting or small craft; identity is unresolved.",
+      "centroid_inside_raw_reviewed_scope": false,
+      "automatic_box_intersects_raw_reviewed_scope": true,
+      "required_action": "Independent adjudication. Do not auto-reject or automatically shrink the held-out raw scope."
+    }
+  ],
+  "performance_metrics_computed": false,
+  "model_scores_read": false,
+  "database_writes": false,
+  "model_or_training_decisions_changed": false
+}

@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-21T17:12:40.641334+00:00",
+  "source": "read-only SQLite",
+  "scores_queried": false,
+  "selected_columns": [
+    "detection_id",
+    "geometry_json",
+    "review_status"
+  ],
+  "raw_sources": {
+    "pbr-20251020-s2-raw-review.json": "6b3004d24ff6b7ce12f8a5d4628bf6b96ccc1f1561d3a6491f34b20222be2a60",
+    "stc-20251020-s2-raw-review.json": "29bf218c6dd44047354d9ffc9dd0fe161410ff117889b4760eb760aacf23e1f0"
+  },
+  "observations": {
+    "8419a7c3-165f-471b-b356-d78304354f6e": {
+      "zone_id": "pbr_canal",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "21e501b1-e769-4486-8aad-70b39507fd0e": {
+      "zone_id": "pbr_fondeo",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "e454c3b2-221b-44a8-8004-27477f5118a2": {
+      "zone_id": "pbr_muelles",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "777f9c96-2737-4eec-bfa1-54fbdad446ba": {
+      "zone_id": "pbr_patios",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "dab961be-1a6e-4a97-9bf1-8761b0af8525": {
+      "zone_id": "stc_canal",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": [
+        {
+          "detection_id": "e7a7b057ecd02e18fcb8d8d2",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -88.61553683557399,
+                  15.729315620681012
+                ],
+                [
+                  -88.61274381680597,
+                  15.729336286663985
+                ],
+                [
+                  -88.61272257309513,
+                  15.726640272188206
+                ],
+                [
+                  -88.61551555511134,
+                  15.726619609924981
+                ],
+                [
+                  -88.61553683557399,
+                  15.729315620681012
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "review_status": "provisional"
+        }
+      ]
+    },
+    "0ad41d14-f5f3-4c80-81b8-43558449b62e": {
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "d41a36b0-eefd-4649-94f2-e634e56db908": {
+      "zone_id": "stc_muelles",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    },
+    "46177fe9-0883-454a-9a3d-e4d7aeb99bdd": {
+      "zone_id": "stc_patios",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "detections": []
+    }
+  }
+}

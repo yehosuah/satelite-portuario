@@ -1,0 +1,208 @@
+{
+  "created_at": "2026-10-21T16:57:25.162179+00:00",
+  "author": "codex-ai-root",
+  "experiment": "phase2-s2-round1-20261021",
+  "source_commit": "d040d8b2550b1637344cc5e1b8d204004f618dcc",
+  "status": "trained_calibration_failed_test_unopened",
+  "precision_target_demonstrated": false,
+  "training": {
+    "epochs": 3,
+    "learning_rate": 2e-05,
+    "steps": 120,
+    "parameter_updates": 111,
+    "skipped_unsupervised_steps": 9,
+    "positive_steps": 51,
+    "support": {
+      "prq": {
+        "references": 29,
+        "passes": 2
+      },
+      "stc": {
+        "references": 1,
+        "passes": 1
+      },
+      "pbr": {
+        "references": 1,
+        "passes": 1
+      }
+    },
+    "weights_sha256": "9900d056dca159eb8f9acb27b92e9f74aed715780eabff30b056aad717058949",
+    "device": "cpu",
+    "seconds": 40.7474985000008
+  },
+  "calibration": {
+    "status": "calibration_failed_do_not_open_test",
+    "selected_threshold": null,
+    "tested_thresholds": 90,
+    "all_thresholds_ineligible": true,
+    "diagnostic_at_original_s2_threshold": {
+      "threshold": 0.8,
+      "iou_threshold": 0.5,
+      "overall": {
+        "true_positives": 0,
+        "false_positives": 16,
+        "false_negatives": 22,
+        "prediction_count": 16,
+        "reference_count": 22,
+        "scene_count": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.1936076805344365
+        ],
+        "recall_interval": [
+          0,
+          0.14865487460862087
+        ],
+        "false_positives_per_scene": 5.333333333333333
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 3,
+          "prediction_count": 0,
+          "reference_count": 3,
+          "scene_count": 1,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 1,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target"
+          ]
+        },
+        "prq": {
+          "true_positives": 0,
+          "false_positives": 16,
+          "false_negatives": 19,
+          "prediction_count": 16,
+          "reference_count": 19,
+          "scene_count": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "precision_interval": [
+            0,
+            0.1936076805344365
+          ],
+          "recall_interval": [
+            0,
+            0.16817922405261626
+          ],
+          "false_positives_per_scene": 16.0,
+          "pass_count": 1,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "prediction_count": 0,
+          "reference_count": 0,
+          "scene_count": 1,
+          "precision": null,
+          "recall": null,
+          "precision_interval": null,
+          "recall_interval": null,
+          "false_positives_per_scene": 0.0,
+          "pass_count": 1,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target"
+          ]
+        }
+      }
+    }
+  },
+  "test": {
+    "inference_executed": false,
+    "metrics_computed": false,
+    "consumption_created": false
+  },
+  "publication": {
+    "model_status": "experimental",
+    "automatic_publication": false,
+    "weights_committed": false,
+    "original_round1_datasets_unchanged": true
+  },
+  "source_files": [
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/freeze.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/freeze.json",
+      "sha256": "36a53d3c0af7f069259108749d0663f458442c43f0ffd1e7dc9fc20caa233a69"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/base-manifest.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/base-manifest.json",
+      "sha256": "53b18a3c8063906c06994559d4dad42719b61a1b073ccaae0c9005c7d5e119e9"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/execution-order.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/execution-order.json",
+      "sha256": "4bf5b454028a38c70cac6237b5ce46acdb67d2a877737a4f05d6f4633a0353eb"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/train.started.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/train.started.json",
+      "sha256": "4dee81ddf27693a22aa68e0aa6d8578b8a77eeee2a0f55df911b3e4bcc601447"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/train.completed.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/train.completed.json",
+      "sha256": "7c2fb19dbc9859dfd3c08886e6918520ee87947be0c973698dd8bd74c0642a00"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/train-support.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/train-support.json",
+      "sha256": "9b29f3695161311e17a572e7c01430bc8164a5d9a761b31e2947d1069f175a7a"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/calibrate.started.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/calibrate.started.json",
+      "sha256": "c076bef842f5949970f1da70ffb97e853da99dda71c4d4bd601a1d92d3dff90c"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/calibrate.completed.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/calibrate.completed.json",
+      "sha256": "caa6dee817c8e645063a5928f441fbe175c21888e8542420abba4bd0060dec39"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/trained/manifest.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/trained/manifest.json",
+      "sha256": "c0e6c7620d0768c3eb0aee47901504f141296bd4c91b616bc83153dab1bbc7a0"
+    },
+    {
+      "source": "data/experiments/phase2-s2-round1-20261021/calibration/report.json",
+      "public_copy": "reports/local-review/phase2/experiment-s2-round1-20261021/calibration/report.json",
+      "sha256": "184173835b2458c2c4f39001ce82db8f7a538978282e8bf2bfcc4d2762134c81"
+    }
+  ],
+  "compact_prediction_file": {
+    "path": "reports/local-review/phase2/experiment-s2-round1-20261021/calibration/predictions-compact.json",
+    "sha256": "df3c2c49d074b1ef79b7de2776188a9504958066204569b29c8afedef8e0ec8e"
+  },
+  "limitations": [
+    "All visual reference labels are AI-reviewed, not human ground truth.",
+    "Calibration support is only PRQ19/PBR3/STC0 unique references and one pass per port, below frozen minima.",
+    "At IoU0.5 the adjusted model produces no correct localization in this calibration subset; coverage and mask failures remain relevant.",
+    "Several reviewed areas were conservatively narrowed around unresolved objects; reports explicitly disclose any proposal-conditioned scope.",
+    "Nearest-centroid diagnostics describe localization errors and do not replace the fixed IoU criterion."
+  ],
+  "next_development_step": "Expand the preselected training cohort and diagnose the upstream point-window versus visual-hull box target mismatch using TRAIN only; preserve this failed experiment."
+}
