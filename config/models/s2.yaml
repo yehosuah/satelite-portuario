@@ -1,0 +1,74 @@
+model_id: ai2-sentinel2-vessels
+version: data_20250213_02_all_bands
+sensor: sentinel-2
+task: detection
+recipe_version: ai2-s2-v1
+bands:
+- B04
+- B03
+- B02
+- B05
+- B06
+- B07
+- B08
+- B11
+- B12
+units:
+  B04: DN_harmonized
+  B03: DN_harmonized
+  B02: DN_harmonized
+  B05: DN_harmonized
+  B06: DN_harmonized
+  B07: DN_harmonized
+  B08: DN_harmonized
+  B11: DN_harmonized
+  B12: DN_harmonized
+weights_path: data/models/sentinel2-vessels.ckpt
+weights_sha256: 99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe
+code_commit: 0bae49abb76d1deee9b6b6ca2a59212611ebc6fe
+dataset_version: ai2-sentinel2-20250213
+metrics: {}
+publication_policy:
+  status: experimental
+  local_validation: absent
+  automatic_publication: false
+  score_threshold: 0.8
+licenses:
+- component: rslearn_projects code and detector weights
+  license: Apache-2.0
+  source: https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md
+- component: public vessel annotations
+  license: CC-BY-4.0
+  source: https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md
+metadata:
+  product_level: L1C
+  architecture: swin_v2_b_fpn_fasterrcnn
+  rslearn_commit: e0ec9c8f404f348de1b7d64521f7afc588c80e0a
+  input_channels: 9
+  patch_size: 512
+  normalization_divisors:
+  - 3000
+  - 3000
+  - 3000
+  - 8160
+  - 8160
+  - 8160
+  - 8160
+  - 8160
+  - 8160
+  clip_range:
+  - 0
+  - 1
+  harmonization: Subtract 1000 DN for processing baseline >= 04.00; preserve nodata
+    zero and clamp previously valid pixels to at least DN 1, as in pinned rslearn.
+  numerical_input: GeoTIFF or JP2 numeric bands; RGB presentation images are forbidden.
+  infrastructure_filter: disabled_for_proposals; validate near-dock performance separately
+  checkpoint_url: https://storage.googleapis.com/ai2-rslearn-projects-data/projects/sentinel2_vessels/data_20250213_02_all_bands/checkpoints/best.ckpt?generation=1741285831820037
+  checkpoint_bytes: 1150160105
+  checkpoint_md5: 59ae055cf86119bafdeb09bd37e950b0
+  checkpoint_derivation: Selected all 479 state_dict tensors from pinned upstream
+    ZIP, verified per-member CRC32, omitted optimizer and loop states; tensor values
+    unchanged.
+  inference_checkpoint_bytes: 386642035
+  infrastructure_filter_threshold_m: 50
+  serialization_archive_prefix: sentinel2-vessels

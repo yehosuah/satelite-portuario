@@ -1,0 +1,111 @@
+{
+  "checked_at_utc": "2026-10-21T02:34:14.494830+00:00",
+  "scope": "real_pretrained_encoder_and_random_decoder_operability_only",
+  "model_identifier": "Sentinel2_SwinT_SI_MS",
+  "decoder_state": "random_untrained_not_exported",
+  "device": "cpu",
+  "torch": "2.14.1",
+  "cpu_threads": 4,
+  "seed": 0,
+  "radiometric_reproduction_of_pretraining": false,
+  "input_adaptation": {
+    "pretraining": "TCI RGB /255; B05,B06,B07,B08,B11,B12 /8160 clipped0..1",
+    "local_numeric_recipe": "B04,B03,B02 harmonized DN /3000; six other bands /8160 clipped0..1",
+    "exact_pretraining_radiometry": false,
+    "requirement": "Fine-tune and evaluate independently on the declared local numeric recipe before publication",
+    "source": "https://github.com/allenai/satlas/blob/a81422740e68447f732718d6d48ed0ce97671c57/Normalization.md",
+    "source_sha256": "1b264c81b1beabcd0e8baa5e8fd699ae8c69ade05e625cdc2f59098880822ddd"
+  },
+  "load_seconds": 0.903015542000503,
+  "encoder_seconds": 0.03302099999928032,
+  "feature_shapes": [
+    [
+      1,
+      96,
+      64,
+      64
+    ],
+    [
+      1,
+      192,
+      32,
+      32
+    ],
+    [
+      1,
+      384,
+      16,
+      16
+    ],
+    [
+      1,
+      768,
+      8,
+      8
+    ]
+  ],
+  "encoder_outputs_finite": true,
+  "pair_forward_seconds": 0.06343266700059758,
+  "output_shape": [
+    1,
+    1,
+    256,
+    256
+  ],
+  "output_finite": true,
+  "synthetic_loss_check": {
+    "labels": "synthetic square; not reviewed observations or change evidence",
+    "loss": 0.7213084697723389,
+    "backward_seconds": 0.02832529100123793,
+    "encoder_has_gradients": false,
+    "decoder_gradients_finite": true,
+    "optimizer_step_performed": false,
+    "synthetic_loss_mask_fraction": 0.93701171875,
+    "model_weights_exported": false
+  },
+  "input": {
+    "bundle": "data/pilot/stc-prepared/bundle.json",
+    "scene_id": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+    "pair_is_same_acquisition": true,
+    "shape": [
+      1,
+      9,
+      256,
+      256
+    ],
+    "pixel_window": [
+      128,
+      128,
+      256,
+      256
+    ],
+    "min_per_band": [
+      0.12566666305065155,
+      0.21133333444595337,
+      0.28166666626930237,
+      0.05894607678055763,
+      0.06556372344493866,
+      0.07953431457281113,
+      0.05919117480516434,
+      0.06139705702662468,
+      0.03174019604921341
+    ],
+    "max_per_band": [
+      1.0,
+      1.0,
+      1.0,
+      0.5471813678741455,
+      0.5982843041419983,
+      0.6425244808197021,
+      0.7778186202049255,
+      0.9761029481887817,
+      1.0
+    ],
+    "observable_fraction": 0.99951171875,
+    "bundle_sha256": "6d7cbb4451e8ad72fc962e1ea146bc7f715286b264f5c2c9fae973d1ac067057"
+  },
+  "encoder_checkpoint_sha256": "ea15889fd2feb8723def74b6a650d406296940d3b71cfca0ea50933a95bf2a11",
+  "encoder_checkpoint_bytes": 225851364,
+  "peak_rss_bytes": 779911168,
+  "success": true
+}

@@ -1,0 +1,18 @@
+# Conservative service defaults. Replace estimates only after the measured pilot.
+data_dir: ./data
+database: catalog.sqlite
+heavy_workers: 1
+queue:
+  lease_seconds: 600
+  heartbeat_seconds: 30
+  max_attempts: 5
+  retry_base_seconds: 30
+  retry_max_seconds: 3600
+  pause_seconds: 60
+storage:
+  reserve_bytes: 5368709120
+  volume_limit_bytes: null  # Set from pilot measurements before bulk processing.
+quotas: {}  # Configure each provider/month explicitly; claims never assume unlimited quota.
+historical_processing:
+  enabled: false
+  requires_measured_pilot: true

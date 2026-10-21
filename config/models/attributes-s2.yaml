@@ -1,0 +1,27 @@
+model_id: puertogt-attributes-s2
+version: untrained-v1
+sensor: sentinel-2
+task: attributes
+recipe_version: ai2-s2-v1
+weights_path: null
+weights_sha256: null
+metrics: {}
+publication_policy:
+  status: untrained
+  automatic_publication: false
+  fields: {}
+metadata:
+  architecture: pooled_fpn_mlp_v1
+  encoder_manifest_path: s2.yaml
+  feature_dim: 128
+  feature_level: 0
+  pooling: roi_mean
+  hidden_dim: 128
+  dimension_scale: [100, 20]
+  taxonomy: [carga, tanquero, pasajeros, remolcador, pesquero, otros]
+  labels: independent_reference_or_documented_public_dataset
+  training_state: requires_reviewed_labels_and_feature_cache
+licenses:
+  - component: public frozen encoder
+    license: Apache-2.0
+    source: https://github.com/allenai/rslearn_projects

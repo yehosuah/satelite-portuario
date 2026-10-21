@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Satélite Portuario · Revisión local</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Ir a la revisión</a>
+  <header class="app-header">
+    <div class="identity"><span class="brand-mark" aria-hidden="true">◈</span><div><h1>Satélite Portuario</h1><p>Observatorio de los puertos de Guatemala</p></div></div>
+    <div class="header-actions"><span id="connection" class="connection">Conectando…</span><button id="auth-toggle" class="secondary" type="button">Acceso a revisión</button><a class="api-link" href="/docs" target="_blank" rel="noreferrer">API ↗</a></div>
+  </header>
+
+  <section id="auth-panel" class="auth-panel" aria-label="Credencial local" hidden>
+    <form id="auth-form"><label>Nombre del revisor<input id="author" autocomplete="name" required maxlength="120" placeholder="Nombre o identificador"></label><label>Credencial local<input id="token" type="password" autocomplete="off" required placeholder="Token de revisión"></label><button type="submit">Usar credencial</button><button id="lock-review" type="button" class="secondary">Cerrar acceso</button></form>
+    <p>La credencial permanece en memoria hasta cerrar o recargar esta página. Cada corrección conserva autor e historial.</p>
+  </section>
+
+  <form id="filters" class="filters" aria-label="Filtros de observaciones">
+    <label>Puerto<select id="port-filter"><option value="">Todos los puertos</option></select></label>
+    <label>Sensor<select id="sensor-filter"><option value="">Radar y óptico</option><option value="sentinel-1">Sentinel-1 · Radar</option><option value="sentinel-2">Sentinel-2 · Óptico</option></select></label>
+    <label>Desde · UTC<input id="start-filter" type="date"></label>
+    <label>Hasta · exclusivo, UTC<input id="end-filter" type="date"></label>
+    <button type="submit" class="secondary">Actualizar</button>
+  </form>
+
+  <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+  <main id="workspace" class="workspace">
+    <aside class="scene-rail" aria-label="Lista de observaciones">
+      <div class="section-heading"><h2>Observaciones</h2><span id="scene-count" class="quiet">0 cargadas</span></div>
+      <p class="rail-hint">Cada fila corresponde a una adquisición, zona y versión.</p>
+      <div id="scene-list" class="scene-list"></div>
+      <button id="more-scenes" class="secondary full-width" type="button" hidden>Cargar más</button>
+    </aside>
+
+    <section class="review-area" aria-label="Evidencia y anotaciones">
+      <div class="review-heading"><div><h2 id="scene-title">Selecciona una observación</h2><p id="scene-meta">Las imágenes y sus propuestas aparecerán aquí.</p></div><span id="scene-status" class="status" hidden></span></div>
+      <p id="model-notice" class="model-notice" hidden></p>
+      <div class="review-nav"><div class="tabs" role="tablist" aria-label="Tipo de revisión"><button id="tab-detections" type="button" role="tab" aria-selected="true">Buques</button><button id="tab-changes" type="button" role="tab" aria-selected="false">Cambios físicos</button></div><button id="mark-unusable" class="text-button" type="button" disabled>Marcar no observable</button></div>
+      <div id="drawing-tools" class="toolbar" aria-label="Herramientas de anotación"><button id="tool-select" type="button" class="tool active" aria-pressed="true">Seleccionar</button><button id="tool-add" type="button" class="tool" disabled>Añadir omitido</button><button id="tool-move" type="button" class="tool" disabled>Mover</button><button id="tool-redraw" type="button" class="tool" disabled>Redibujar</button><span id="drawing-hint" class="quiet">Selecciona una propuesta para revisarla.</span></div>
+
+      <div id="evidence-stage" class="evidence-stage">
+        <div id="empty-evidence" class="empty-evidence"><span class="empty-mark" aria-hidden="true">＋</span><h3>Sin evidencia seleccionada</h3><p>El catálogo y las imágenes procesadas se muestran por separado. Una escena pendiente todavía no tiene resultados para revisar.</p></div>
+        <div id="image-wrap" class="image-wrap" hidden><img id="evidence-image" alt="Evidencia satelital de la observación seleccionada"><svg id="overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-label="Propuestas y recuadros de revisión"></svg></div>
+        <div id="comparison" class="comparison" hidden><figure><figcaption>Referencia · t0</figcaption><img id="before-image" alt="Evidencia anterior al cambio"><p id="before-note"></p></figure><figure><figcaption>Cambio observado · t1</figcaption><img id="after-image" alt="Evidencia posterior al cambio"><p id="after-note"></p></figure></div>
+      </div>
+      <div class="evidence-caption"><span id="asset-caption">Solo se muestra evidencia registrada en el servicio.</span><a id="asset-download" target="_blank" rel="noreferrer" hidden>Abrir imagen ↗</a></div>
+      <div class="scene-summary"><div><span class="quiet">Conteo del modelo</span><strong id="model-count">—</strong></div><div><span class="quiet">Área observable</span><strong id="observable-fraction">—</strong></div><div><span class="quiet">Revisión</span><strong id="review-label">—</strong></div><p>Un conteo cero expresa el resultado del modelo. No acredita ausencia absoluta de buques.</p></div>
+    </section>
+
+    <aside class="inspector" aria-label="Revisión de propuestas">
+      <div class="section-heading"><h2 id="proposal-heading">Propuestas</h2><span id="proposal-count" class="quiet">0</span></div>
+      <div id="proposal-list" class="proposal-list"></div>
+      <div id="detail-panel" hidden>
+        <div class="detail-header"><h3 id="detail-title">Propuesta</h3><p id="detail-meta" class="quiet"></p></div>
+        <div class="review-buttons"><button id="accept" type="button" disabled>Aceptar <kbd>A</kbd></button><button id="reject" type="button" class="danger secondary" disabled>Rechazar <kbd>R</kbd></button></div>
+        <button id="abstain" type="button" class="text-button" disabled>Marcar familia indeterminada</button>
+        <form id="attributes-form">
+          <label>Familia<select id="family"><option value="">Indeterminado</option><option value="carga">Carga</option><option value="tanquero">Tanquero</option><option value="pasajeros">Pasajeros</option><option value="remolcador">Remolcador</option><option value="pesquero">Pesquero</option><option value="otros">Otros</option></select></label>
+          <div class="dimension-fields"><label>Eslora · m<input id="length" type="number" min="0.01" max="999.99" step="0.01" placeholder="Sin referencia"></label><label>Manga · m<input id="width" type="number" min="0.01" max="999.99" step="0.01" placeholder="Sin referencia"></label></div>
+          <label>Referencia independiente<textarea id="reference" rows="2" maxlength="2000" placeholder="Fuente que sustenta familia o dimensiones"></textarea></label>
+          <p class="field-help">Sin referencia, conserva indeterminado y dimensiones vacías. El recuadro no mide el tamaño físico del buque.</p>
+          <label>Nota de revisión<textarea id="review-note" rows="2" maxlength="2000" placeholder="Observación para el historial"></textarea></label>
+          <button id="save-attributes" type="submit" class="secondary full-width" disabled>Guardar corrección</button>
+        </form>
+        <div id="change-detail" hidden></div>
+        <button id="show-audit" type="button" class="text-button">Ver historial</button><div id="audit-list" class="audit-list" hidden></div>
+      </div>
+      <div class="review-note"><strong>Revisión por escena completa</strong><p>Busca también buques que el modelo omitió. Aceptar propuestas no permite medir omisiones.</p><button id="complete-scene" type="button" class="secondary full-width" disabled>Registrar escena revisada</button></div>
+    </aside>
+  </main>
+  <footer class="app-footer"><span><i class="legend-dot provisional"></i> Provisional <i class="legend-dot reviewed"></i> Revisado <i class="legend-dot rejected"></i> Rechazado</span><span><kbd>J</kbd> / <kbd>K</kbd> propuesta siguiente / anterior · <kbd>Esc</kbd> salir de herramienta</span><span>Fechas UTC · Geometrías provisionales</span></footer>
+</body>
+</html>

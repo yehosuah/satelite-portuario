@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "measured_at_utc": "2026-10-21T02:19:31.143904+00:00",
+  "device": "cpu",
+  "torch": "2.14.1",
+  "python": "3.11.15",
+  "cpu_threads": 4,
+  "initial_smoke": {
+    "torch": "2.14.1",
+    "device": "cpu",
+    "load_seconds": 2.9922590000023774,
+    "samples": [
+      {
+        "sample": "upstream",
+        "inference_seconds": 0.36231512499944074,
+        "detections": 1,
+        "scores": [
+          0.999265730381012
+        ],
+        "observable_fraction": null
+      },
+      {
+        "sample": "prq",
+        "inference_seconds": 0.3117830419978418,
+        "detections": 2,
+        "scores": [
+          0.9990348815917969,
+          0.9986600875854492
+        ],
+        "observable_fraction": null
+      }
+    ],
+    "training_step": {
+      "loss": 0.03945038840174675,
+      "losses": {
+        "detect_loss_objectness": 3.215306787751615e-05,
+        "detect_loss_rpn_box_reg": 0.00022782104497309774,
+        "detect_loss_classifier": 0.019730782136321068,
+        "detect_loss_box_reg": 0.01945963129401207
+      },
+      "seconds": 0.42973108399746707,
+      "encoder_frozen": true,
+      "updated_parameters": true,
+      "reference_boxes": 1,
+      "scope": "operability_only_not_local_validation"
+    },
+    "peak_rss_bytes": 1378615296
+  },
+  "public_reference_runs": {
+    "sentinel-2": {
+      "device": "cpu",
+      "torch": "2.14.1",
+      "sample": "S2A_MSIL1C_20211104T023901_N0301_R089_T51SWB_20211108T130304",
+      "load_seconds": 1.8153917090021423,
+      "inference_seconds": 0.6930671670015727,
+      "detections": 1,
+      "scores": [
+        0.999265730381012
+      ],
+      "observable_fraction": null,
+      "training_step": {
+        "loss": 0.040096886456012726,
+        "losses": {
+          "detect_loss_objectness": 1.773246913217008e-05,
+          "detect_loss_rpn_box_reg": 0.00022782104497309774,
+          "detect_loss_classifier": 0.02039169892668724,
+          "detect_loss_box_reg": 0.01945963129401207
+        },
+        "seconds": 0.7436852499995439,
+        "encoder_frozen": true,
+        "updated_parameters": true,
+        "reference_boxes": 1,
+        "scope": "operability_only_not_local_validation"
+      },
+      "peak_rss_bytes": 1193410560
+    },
+    "sentinel-1": {
+      "device": "cpu",
+      "torch": "2.14.1",
+      "sample": "S1A_IW_GRDH_1SDV_20211014T231904_20211014T231929_040122_04C042_B5B3.SAFE",
+      "load_seconds": 1.806002790999628,
+      "inference_seconds": 0.6285867079968739,
+      "detections": 1,
+      "scores": [
+        0.7260528802871704
+      ],
+      "observable_fraction": 1.0,
+      "training_step": {
+        "loss": 0.003804194275289774,
+        "losses": {
+          "detect_loss_objectness": 5.973502993583679e-06,
+          "detect_loss_rpn_box_reg": 0.0,
+          "detect_loss_classifier": 0.0037982207722961903,
+          "detect_loss_box_reg": 0.0
+        },
+        "seconds": 0.7456081669988635,
+        "encoder_frozen": true,
+        "updated_parameters": true,
+        "reference_boxes": 0,
+        "scope": "operability_only_not_local_validation"
+      },
+      "peak_rss_bytes": 1666826240
+    }
+  },
+  "local_runs": [
+    {
+      "port": "prq",
+      "sensor": "sentinel-2",
+      "bundle_path": "data/pilot/prq-prepared/bundle.json",
+      "scene_id": "S2B_MSIL1C_20260910T161859_N0512_R040_T15PYR_20260910T212543",
+      "acquisition_key": "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "captured_at": "2026-09-10T16:18:59+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S2B_MSIL1C_20260910T161859_N0512_R040_T15PYR_20260910T212543",
+        "load_seconds": 1.4221878749995085,
+        "inference_seconds": 0.3389617909997469,
+        "detections": 2,
+        "scores": [
+          0.9990348815917969,
+          0.9986600875854492
+        ],
+        "observable_fraction": 0.9960975646972656,
+        "peak_rss_bytes": 1351778304
+      },
+      "download": null,
+      "stored_prepared_bytes": 3572620,
+      "numeric_summary": {
+        "shape": [
+          9,
+          512,
+          512
+        ],
+        "units": {
+          "B04": "DN_harmonized",
+          "B03": "DN_harmonized",
+          "B02": "DN_harmonized",
+          "B05": "DN_harmonized",
+          "B06": "DN_harmonized",
+          "B07": "DN_harmonized",
+          "B08": "DN_harmonized",
+          "B11": "DN_harmonized",
+          "B12": "DN_harmonized"
+        },
+        "min_per_band": [
+          0.10966666787862778,
+          0.18933333456516266,
+          0.2953333258628845,
+          0.0,
+          0.0,
+          0.0,
+          0.029044117778539658,
+          0.0,
+          0.0
+        ],
+        "mean_per_band": [
+          0.24546943604946136,
+          0.32309865951538086,
+          0.37163788080215454,
+          0.10728126764297485,
+          0.19826063513755798,
+          0.24820198118686676,
+          0.229691743850708,
+          0.14597779512405396,
+          0.08078378438949585
+        ],
+        "max_per_band": [
+          1.0,
+          1.0,
+          1.0,
+          0.6216911673545837,
+          0.6501225233078003,
+          0.7117646932601929,
+          0.7340686321258545,
+          0.6476715803146362,
+          0.6207107901573181
+        ],
+        "sha256": {
+          "B04": "5019f8a20486c880595310cfb01575319503a095b7e6971c8576ac3eb08efb34",
+          "B03": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
+          "B02": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
+          "B05": "fb36ee4c29ef53b084defa6d6ea8364b06916d6c70545ff087e978aba3d93805",
+          "B06": "be3450ea3d36bbc5c174eaf0bab7aff6743141cfe677b87837ee8619cdc524db",
+          "B07": "1e25043377a639c390527d283d6a884ac64c6311f6a1794dbf1c47ffd08b36f1",
+          "B08": "da7bcd4a59132a1dd21964701af7be2d3726dccda1c206e63cabf12c97df1427",
+          "B11": "bbd147837cf2dcf9adac7b8aa54cce814955e3bcaf76db06738716cc5e541b4c",
+          "B12": "86c6bb100790ca586463982ea9a76ab253ef98cd1f0555d8070b993645504f3a"
+        },
+        "crs": "EPSG:32615",
+        "transform": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ],
+        "wgs84_bounds": [
+          -90.81091422993221,
+          13.903701625315161,
+          -90.76311274336028,
+          13.9503924569349
+        ]
+      },
+      "predictions": [
+        {
+          "prediction_id": "7e29b0c40a223c144b50247d",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78348691185313,
+                  13.906593493428483
+                ],
+                [
+                  -90.78071061727533,
+                  13.906568249296752
+                ],
+                [
+                  -90.78073609455242,
+                  13.90389591461137
+                ],
+                [
+                  -90.78351235732222,
+                  13.90392115370363
+                ],
+                [
+                  -90.78348691185313,
+                  13.906593493428483
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.9990348815917969,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel2-vessels",
+            "model_version": "data_20250213_02_all_bands",
+            "pixel_box": [
+              296.2537536621094,
+              482.00909423828125,
+              326.2698669433594,
+              511.58587646484375
+            ],
+            "score_threshold": 0.8,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        },
+        {
+          "prediction_id": "a6afe74faf9476c152fcd742",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80213848350988,
+                  13.907079300006787
+                ],
+                [
+                  -90.7993667378105,
+                  13.90705430861699
+                ],
+                [
+                  -90.7993921083883,
+                  13.904370679146595
+                ],
+                [
+                  -90.80216382219562,
+                  13.904395665526444
+                ],
+                [
+                  -90.80213848350988,
+                  13.907079300006787
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.9986600875854492,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel2-vessels",
+            "model_version": "data_20250213_02_all_bands",
+            "pixel_box": [
+              94.57009887695312,
+              478.5006103515625,
+              124.53659057617188,
+              508.2020263671875
+            ],
+            "score_threshold": 0.8,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        }
+      ],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-2",
+        "proposals": 2,
+        "threshold_m": 50,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [
+          {
+            "prediction_id": "7e29b0c40a223c144b50247d",
+            "nearest_infrastructure_m": 188839.61763648863,
+            "deleted_by_upstream_filter": false
+          },
+          {
+            "prediction_id": "a6afe74faf9476c152fcd742",
+            "nearest_infrastructure_m": 190841.99789856066,
+            "deleted_by_upstream_filter": false
+          }
+        ],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    },
+    {
+      "port": "stc",
+      "sensor": "sentinel-2",
+      "bundle_path": "data/pilot/stc-prepared/bundle.json",
+      "scene_id": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "captured_at": "2026-09-30T16:20:59+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+        "load_seconds": 1.2881525410011818,
+        "inference_seconds": 0.36188016700180015,
+        "detections": 0,
+        "scores": [],
+        "observable_fraction": 0.9533119201660156,
+        "peak_rss_bytes": 1348517888
+      },
+      "download": {
+        "scene_id": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+        "downloaded_bytes": 11108352,
+        "range_requests": 45,
+        "stored_bytes": 2069435,
+        "seconds": 93.86183158300264,
+        "api_processing_units": 0,
+        "provider": "GCS public bucket (HTTP ranges)",
+        "bands": [
+          {
+            "band": "B04",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B04.jp2?generation=1790838544727855",
+            "source_bytes": 41457009,
+            "downloaded_bytes": 1998848,
+            "range_requests": 5,
+            "local_bytes": 392877,
+            "sha256": "d38d12268841ebcea1de15f0ac4fe78d785d067fcc6a38d26b7a75e67dabac7b"
+          },
+          {
+            "band": "B03",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B03.jp2?generation=1790838545317214",
+            "source_bytes": 41933373,
+            "downloaded_bytes": 2015232,
+            "range_requests": 5,
+            "local_bytes": 387483,
+            "sha256": "3d37f5ece8c0d25794114c60f05c5e15fce4148a34953602d5a5ecf54286e6bf"
+          },
+          {
+            "band": "B02",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B02.jp2?generation=1790838544983207",
+            "source_bytes": 40523968,
+            "downloaded_bytes": 1949696,
+            "range_requests": 5,
+            "local_bytes": 375673,
+            "sha256": "d40b676d8b36dbcca23ebb33487e6dec7a082bbae3434a2d31c9564006286f27"
+          },
+          {
+            "band": "B05",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B05.jp2?generation=1790838544338916",
+            "source_bytes": 11338513,
+            "downloaded_bytes": 573440,
+            "range_requests": 5,
+            "local_bytes": 99267,
+            "sha256": "5377163753b18b494d4832f394edd51a1d3e45b2d67cb225912ce853c75e812a"
+          },
+          {
+            "band": "B06",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B06.jp2?generation=1790838544320713",
+            "source_bytes": 12221065,
+            "downloaded_bytes": 622592,
+            "range_requests": 5,
+            "local_bytes": 100807,
+            "sha256": "239d4fd4481cb33df569a88011e2cdbc737f5f36e38d34bd69e0e8510976dbd5"
+          },
+          {
+            "band": "B07",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B07.jp2?generation=1790838544009723",
+            "source_bytes": 12606612,
+            "downloaded_bytes": 622592,
+            "range_requests": 5,
+            "local_bytes": 103410,
+            "sha256": "b893374bcd1b78dac5d43f2c4f8df3f25853cc1c7674b785c2d5ac7a386af85b"
+          },
+          {
+            "band": "B08",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B08.jp2?generation=1790838545216316",
+            "source_bytes": 47026429,
+            "downloaded_bytes": 2195456,
+            "range_requests": 5,
+            "local_bytes": 407034,
+            "sha256": "4256a58145bc410846e196a6ec7bc87473061d1ec68c6569dff4d96499983b8d"
+          },
+          {
+            "band": "B11",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B11.jp2?generation=1790838544328062",
+            "source_bytes": 11334269,
+            "downloaded_bytes": 573440,
+            "range_requests": 5,
+            "local_bytes": 102732,
+            "sha256": "95c01498dd29fd03cdfaa019129e3d94b6408f40348b2596ae0a03fc491efd8a"
+          },
+          {
+            "band": "B12",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B12.jp2?generation=1790838544685274",
+            "source_bytes": 10573451,
+            "downloaded_bytes": 557056,
+            "range_requests": 5,
+            "local_bytes": 100152,
+            "sha256": "8b18ff021a2597b72134384d277a8e9e6d848648a38c478bd4a07afe960cb629"
+          }
+        ]
+      },
+      "stored_prepared_bytes": 4070234,
+      "numeric_summary": {
+        "shape": [
+          9,
+          512,
+          512
+        ],
+        "units": {
+          "B04": "DN_harmonized",
+          "B03": "DN_harmonized",
+          "B02": "DN_harmonized",
+          "B05": "DN_harmonized",
+          "B06": "DN_harmonized",
+          "B07": "DN_harmonized",
+          "B08": "DN_harmonized",
+          "B11": "DN_harmonized",
+          "B12": "DN_harmonized"
+        },
+        "min_per_band": [
+          0.11833333224058151,
+          0.19566667079925537,
+          0.26866665482521057,
+          0.044485293328762054,
+          0.044607844203710556,
+          0.04325980320572853,
+          0.036274511367082596,
+          0.01764705963432789,
+          0.012132353149354458
+        ],
+        "mean_per_band": [
+          0.3415762484073639,
+          0.40128085017204285,
+          0.4287814795970917,
+          0.1314297467470169,
+          0.20383599400520325,
+          0.25083842873573303,
+          0.22296473383903503,
+          0.18255817890167236,
+          0.11556481570005417
+        ],
+        "max_per_band": [
+          1.0,
+          1.0,
+          1.0,
+          0.5471813678741455,
+          0.5982843041419983,
+          0.6425244808197021,
+          0.7778186202049255,
+          1.0,
+          1.0
+        ],
+        "sha256": {
+          "B04": "8af5c4453507a74ebb19c07c3b97f773b447973b231b3ded354202f7b2e38116",
+          "B03": "f98b6ff5d15d4d09036bbf6dd01317f22680d3109dd92fe29e063c4d95332c9b",
+          "B02": "069d4f41adc4bc24945c9f4b9f17509130b816703acd97e403eb5a0bde623777",
+          "B05": "a8b047b633ef0057ae43c9b4ce0be90320b9cec29339931f4956fff093ab89d6",
+          "B06": "e217cd875fd8d3a07ec1992b915ed7691bc884e181b838d825566603787f3230",
+          "B07": "b9aead00bc6b593be3f404f9e4f27549136afd0702811cde54fc913db5a132d7",
+          "B08": "14e86669e7f3e54ee0a206c95969d00be6c3b22cae4effba436fc55e2f7f9bb4",
+          "B11": "c99e75c7df76fe1a5bdd284ad1514994cb932837a0a20766a329384e9b6fea5f",
+          "B12": "2df7dd39a28fbd0e0d4cd884c7621458f0b4001a62cf468fdcaf2617f0234f72"
+        },
+        "crs": "EPSG:32616",
+        "transform": [
+          10.0,
+          0.0,
+          324260.0,
+          0.0,
+          -10.0,
+          1738650.0
+        ],
+        "wgs84_bounds": [
+          -88.64010238196228,
+          15.673772819320153,
+          -88.59197400111519,
+          15.720395677002303
+        ]
+      },
+      "predictions": [],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-2",
+        "proposals": 0,
+        "threshold_m": 50,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    },
+    {
+      "port": "pbr",
+      "sensor": "sentinel-2",
+      "bundle_path": "data/pilot/pbr-prepared/bundle.json",
+      "scene_id": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+      "acquisition_key": "S2B:MSIL1C:20260930T162059:R040:T16PCC",
+      "captured_at": "2026-09-30T16:20:59+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+        "quality_seconds": 1.1518509160014219,
+        "load_seconds": 1.045940916003019,
+        "inference_seconds": 0.3604378750023898,
+        "detections": 3,
+        "scores": [
+          0.9192994832992554,
+          0.8466932773590088,
+          0.8224877715110779
+        ],
+        "observable_fraction": 0.9928245544433594,
+        "peak_rss_bytes": 1865973760
+      },
+      "download": {
+        "scene_id": "S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702",
+        "downloaded_bytes": 11108352,
+        "range_requests": 45,
+        "stored_bytes": 1993753,
+        "seconds": 87.23417458399854,
+        "api_processing_units": 0,
+        "provider": "GCS public bucket (HTTP ranges)",
+        "bands": [
+          {
+            "band": "B04",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B04.jp2?generation=1790838544727855",
+            "source_bytes": 41457009,
+            "downloaded_bytes": 1998848,
+            "range_requests": 5,
+            "local_bytes": 379838,
+            "sha256": "afbd35b57b85ab4415bc5a9fadbf25fb38857e0d67cb4250217c72d95521efaa"
+          },
+          {
+            "band": "B03",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B03.jp2?generation=1790838545317214",
+            "source_bytes": 41933373,
+            "downloaded_bytes": 2015232,
+            "range_requests": 5,
+            "local_bytes": 373931,
+            "sha256": "32dc51822e4ea4a429fb6475598d92e18e57328386e58711d62e037c413cfc59"
+          },
+          {
+            "band": "B02",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B02.jp2?generation=1790838544983207",
+            "source_bytes": 40523968,
+            "downloaded_bytes": 1949696,
+            "range_requests": 5,
+            "local_bytes": 364012,
+            "sha256": "b2fa48b20c369cff0404953c070962981a8258257e5e0c940fac42b78cca6cbc"
+          },
+          {
+            "band": "B05",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B05.jp2?generation=1790838544338916",
+            "source_bytes": 11338513,
+            "downloaded_bytes": 573440,
+            "range_requests": 5,
+            "local_bytes": 95376,
+            "sha256": "b5132b765862495fb06346473fff91948361d989dfa6ff065221d3dff34d8c6c"
+          },
+          {
+            "band": "B06",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B06.jp2?generation=1790838544320713",
+            "source_bytes": 12221065,
+            "downloaded_bytes": 622592,
+            "range_requests": 5,
+            "local_bytes": 97775,
+            "sha256": "985356503cbf009518ddcea18e3b4758cc8070b2b8ab0924ea818d9a86a86107"
+          },
+          {
+            "band": "B07",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B07.jp2?generation=1790838544009723",
+            "source_bytes": 12606612,
+            "downloaded_bytes": 622592,
+            "range_requests": 5,
+            "local_bytes": 99647,
+            "sha256": "d114aafa5ed008b3205b16abb9d85e9b3269920e69fda12a9c78098ccd945077"
+          },
+          {
+            "band": "B08",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B08.jp2?generation=1790838545216316",
+            "source_bytes": 47026429,
+            "downloaded_bytes": 2195456,
+            "range_requests": 5,
+            "local_bytes": 388843,
+            "sha256": "de8bcbdb6d5ae455398d3ca54b7f19d1c29fe90a4de28a72bb93425683dfc681"
+          },
+          {
+            "band": "B11",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B11.jp2?generation=1790838544328062",
+            "source_bytes": 11334269,
+            "downloaded_bytes": 573440,
+            "range_requests": 5,
+            "local_bytes": 98344,
+            "sha256": "90fc9d05b4490990e0f207bd9e65c6f8d816a4cfd1ac4149e724005501872ebd"
+          },
+          {
+            "band": "B12",
+            "source_url": "https://storage.googleapis.com/gcp-public-data-sentinel-2/tiles/16/P/CC/S2B_MSIL1C_20260930T162059_N0513_R040_T16PCC_20260930T212702.SAFE/GRANULE/L1C_T16PCC_A049973_20260930T163458/IMG_DATA/T16PCC_20260930T162059_B12.jp2?generation=1790838544685274",
+            "source_bytes": 10573451,
+            "downloaded_bytes": 557056,
+            "range_requests": 5,
+            "local_bytes": 95987,
+            "sha256": "129174ff556bd2c79b93fe00ff9e54203b5a9cff1ab66ea6da5e6cd2bb5e4e8c"
+          }
+        ]
+      },
+      "stored_prepared_bytes": 3527193,
+      "numeric_summary": {
+        "shape": [
+          9,
+          512,
+          512
+        ],
+        "units": {
+          "B04": "DN_harmonized",
+          "B03": "DN_harmonized",
+          "B02": "DN_harmonized",
+          "B05": "DN_harmonized",
+          "B06": "DN_harmonized",
+          "B07": "DN_harmonized",
+          "B08": "DN_harmonized",
+          "B11": "DN_harmonized",
+          "B12": "DN_harmonized"
+        },
+        "min_per_band": [
+          0.11866666376590729,
+          0.19633333384990692,
+          0.2563333213329315,
+          0.04105392098426819,
+          0.03872549161314964,
+          0.045098040252923965,
+          0.03529411926865578,
+          0.014460784383118153,
+          0.008333333767950535
+        ],
+        "mean_per_band": [
+          0.3723495304584503,
+          0.42613649368286133,
+          0.45934373140335083,
+          0.13139379024505615,
+          0.16274559497833252,
+          0.1890403777360916,
+          0.1609974205493927,
+          0.15525242686271667,
+          0.11075865477323532
+        ],
+        "max_per_band": [
+          1.0,
+          1.0,
+          1.0,
+          0.6133578419685364,
+          0.6909313797950745,
+          0.6939951181411743,
+          0.8203431367874146,
+          0.7127450704574585,
+          0.7174019813537598
+        ],
+        "sha256": {
+          "B04": "c2df2005bf991e0f138bc00058dc033144c9a086f998c8d38d3a8d7469fd9c1a",
+          "B03": "a6032167606ea5145a72a8bc58356a40e5e092e2e85fa1b2f34b4da87ab4ca15",
+          "B02": "774c9f13c6c7b0924a60f16b31a7509c3f71067d96a162771e4d08c0926accdf",
+          "B05": "812dcb2b695991b08602e4a05a542927a4c75e9b8364c892308665a542b7f4a7",
+          "B06": "872a868a48f29c455238e4a54ab94e8551bd22dfa8783b4fa9f57e7c0b827d6a",
+          "B07": "66ad40daeedf885be9e655607734cf9369625f42e35041796574a325bd4bb5c8",
+          "B08": "b23ed6ff559d0199ec9a57c24a080b71062c0876f829b20ce6c84e363b3125aa",
+          "B11": "27f1b485a6e124393e01cbdc9943fe196e9cf480a79aace113545672600db323",
+          "B12": "cf26e9d7ffaff1bb0a35fd945a6f19775620d3c6e1ba194f122a38ecd6b1b485"
+        },
+        "crs": "EPSG:32616",
+        "transform": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ],
+        "wgs84_bounds": [
+          -88.63209954041908,
+          15.711519077266777,
+          -88.58396305902026,
+          15.758141031451226
+        ]
+      },
+      "predictions": [
+        {
+          "prediction_id": "282da7d1e5fc5d32b9a108c0",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61663731803614,
+                  15.745317146998632
+                ],
+                [
+                  -88.61382752130194,
+                  15.745337970168093
+                ],
+                [
+                  -88.61380608578975,
+                  15.74262234980153
+                ],
+                [
+                  -88.61661584524266,
+                  15.742601530403912
+                ],
+                [
+                  -88.61663731803614,
+                  15.745317146998632
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.9192994832992554,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel2-vessels",
+            "model_version": "data_20250213_02_all_bands",
+            "pixel_box": [
+              164.63046264648438,
+              139.26824951171875,
+              194.74273681640625,
+              169.31820678710938
+            ],
+            "score_threshold": 0.8,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        },
+        {
+          "prediction_id": "963f25009a17d271363c384f",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62326740638701,
+                  15.749154152925614
+                ],
+                [
+                  -88.62045882055723,
+                  15.749175057176487
+                ],
+                [
+                  -88.62043733796109,
+                  15.746465311298294
+                ],
+                [
+                  -88.62324588659696,
+                  15.74644441082493
+                ],
+                [
+                  -88.62326740638701,
+                  15.749154152925614
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.8466932773590088,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel2-vessels",
+            "model_version": "data_20250213_02_all_bands",
+            "pixel_box": [
+              93.9071044921875,
+              96.26652526855469,
+              124.00593566894531,
+              126.2515869140625
+            ],
+            "score_threshold": 0.8,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        },
+        {
+          "prediction_id": "f1f73de57dc6288f6c390e18",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61509104200307,
+                  15.739627463438586
+                ],
+                [
+                  -88.6122820758827,
+                  15.739648253782798
+                ],
+                [
+                  -88.61226082565268,
+                  15.736952500476246
+                ],
+                [
+                  -88.61506975478947,
+                  15.73693171387159
+                ],
+                [
+                  -88.61509104200307,
+                  15.739627463438586
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.8224877715110779,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel2-vessels",
+            "model_version": "data_20250213_02_all_bands",
+            "pixel_box": [
+              180.71914672851562,
+              202.35118103027344,
+              210.82333374023438,
+              232.18125915527344
+            ],
+            "score_threshold": 0.8,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        }
+      ],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-2",
+        "proposals": 3,
+        "threshold_m": 50,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [
+          {
+            "prediction_id": "282da7d1e5fc5d32b9a108c0",
+            "nearest_infrastructure_m": 4259.380921033984,
+            "deleted_by_upstream_filter": false
+          },
+          {
+            "prediction_id": "963f25009a17d271363c384f",
+            "nearest_infrastructure_m": 4173.024552430024,
+            "deleted_by_upstream_filter": false
+          },
+          {
+            "prediction_id": "f1f73de57dc6288f6c390e18",
+            "nearest_infrastructure_m": 3944.8840244308712,
+            "deleted_by_upstream_filter": false
+          }
+        ],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    },
+    {
+      "port": "prq",
+      "sensor": "sentinel-1",
+      "bundle_path": "data/pilot/prq-s1-prepared/bundle.json",
+      "scene_id": "S1D_IW_GRDH_1SDV_20261019T001342_20261019T001407_005077_0099B2_9247",
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20261019T001342:20261019T001407:005077:0099B2",
+      "captured_at": "2026-10-19T00:13:42.206721+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S1D_IW_GRDH_1SDV_20261019T001342_20261019T001407_005077_0099B2_9247",
+        "load_seconds": 1.8160240830002294,
+        "inference_seconds": 1.0684667919995263,
+        "detections": 2,
+        "scores": [
+          0.992598295211792,
+          0.9545809030532837
+        ],
+        "observable_fraction": 1.0,
+        "peak_rss_bytes": 1531281408
+      },
+      "download": {
+        "scene_id": "S1D_IW_GRDH_1SDV_20261019T001342_20261019T001407_005077_0099B2_9247",
+        "historical_scene_id": "S1D_IW_GRDH_1SDV_20260820T001340_20260820T001405_004202_007B37_42E9",
+        "downloaded_bytes": 21905408,
+        "range_requests": 16,
+        "stored_bytes": 1264431,
+        "seconds": 58.651417541997944,
+        "api_processing_units": 0,
+        "provider": "public unsigned AWS S3 byte ranges",
+        "bands": [
+          {
+            "band": "vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/19/IW/DV/S1D_IW_GRDH_1SDV_20261019T001342_20261019T001407_005077_0099B2_9247/measurement/iw-vv.tiff",
+            "etag": "\"9a705c4b254c83f966e4604395fb48b0\"",
+            "source_bytes": 727638374,
+            "downloaded_bytes": 6094848,
+            "range_requests": 4,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32615",
+            "sha256": "2ea581cfaf738e1b317e4bcc97da619d0aff63a6f207d1fd5cfc9423a87f2b67",
+            "stored_bytes": 348303
+          },
+          {
+            "band": "vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/19/IW/DV/S1D_IW_GRDH_1SDV_20261019T001342_20261019T001407_005077_0099B2_9247/measurement/iw-vh.tiff",
+            "etag": "\"7f53fef0942d7a90ddfd61fcc5d09141\"",
+            "source_bytes": 619608549,
+            "downloaded_bytes": 4898816,
+            "range_requests": 4,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32615",
+            "sha256": "e61ff31c1909ec12fcfee6311a7ead10edb50de88d27b7757d109d2db9d4d76c",
+            "stored_bytes": 289332
+          },
+          {
+            "band": "historical_vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/20/IW/DV/S1D_IW_GRDH_1SDV_20260820T001340_20260820T001405_004202_007B37_42E9/measurement/iw-vv.tiff",
+            "etag": "\"fc230f01497c337a7ad9be6c5602975b\"",
+            "source_bytes": 719176386,
+            "downloaded_bytes": 6078464,
+            "range_requests": 4,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32615",
+            "sha256": "ec20442ee33c77d5ab1164b6232e51a2b46c3a0688e77a8da54feee0b1fd5051",
+            "stored_bytes": 340535
+          },
+          {
+            "band": "historical_vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/20/IW/DV/S1D_IW_GRDH_1SDV_20260820T001340_20260820T001405_004202_007B37_42E9/measurement/iw-vh.tiff",
+            "etag": "\"d931f06d6ca06e20d1c03d277c80d3fe\"",
+            "source_bytes": 608117775,
+            "downloaded_bytes": 4833280,
+            "range_requests": 4,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32615",
+            "sha256": "e54247bb59126ee64eced048dbb70a942430d9323578028b1ec82275c263cdc6",
+            "stored_bytes": 286261
+          }
+        ]
+      },
+      "stored_prepared_bytes": 1805870,
+      "numeric_summary": {
+        "shape": [
+          4,
+          512,
+          512
+        ],
+        "units": {
+          "vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "historical_vh": "amplitude_dn"
+        },
+        "min_per_band": [
+          0.10400000214576721,
+          0.04399999976158142,
+          0.08799999952316284,
+          0.035999998450279236
+        ],
+        "mean_per_band": [
+          0.8932173252105713,
+          0.35407009720802307,
+          0.7763664722442627,
+          0.33445873856544495
+        ],
+        "max_per_band": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "sha256": {
+          "vv": "f5c1a25aa451b41ae671950038890647ce607783eaf5d85bd0c7986c94ba7698",
+          "vh": "6cd8cd633b27c3222c1fcee6e18d267c857e36803c4846c7921b2df0ddf8eeae",
+          "historical_vv": "9731999f4a3845e697cb69d8feecccc7398fe6d81cfd3df999fb47c4e79c8c16",
+          "historical_vh": "e444eebcda236c164380840d298ccdfb00aef090f0a8ff79a06a64052e68101c"
+        },
+        "crs": "EPSG:32615",
+        "transform": [
+          10.0,
+          0.0,
+          736550.0,
+          0.0,
+          -10.0,
+          1543330.0
+        ],
+        "wgs84_bounds": [
+          -90.81091422993221,
+          13.903701625315161,
+          -90.76311274336028,
+          13.9503924569349
+        ]
+      },
+      "predictions": [
+        {
+          "prediction_id": "79b610e4b0bbf1fdb802767c",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78197602621721,
+                  13.905824549379128
+                ],
+                [
+                  -90.77924127066031,
+                  13.905799667492003
+                ],
+                [
+                  -90.77925991712374,
+                  13.9038450614834
+                ],
+                [
+                  -90.78199464976437,
+                  13.903869939737234
+                ],
+                [
+                  -90.78197602621721,
+                  13.905824549379128
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.992598295211792,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel1-vessels",
+            "model_version": "data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist",
+            "pixel_box": [
+              312.6665954589844,
+              490.3668518066406,
+              342.2337341308594,
+              512.0
+            ],
+            "score_threshold": 0.7,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        },
+        {
+          "prediction_id": "4cc8857e98d05f4e90a22794",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7977604967668,
+                  13.905729789243514
+                ],
+                [
+                  -90.79501641228644,
+                  13.905705000325323
+                ],
+                [
+                  -90.79503267441197,
+                  13.903988127176339
+                ],
+                [
+                  -90.79777673869414,
+                  13.90401291291505
+                ],
+                [
+                  -90.7977604967668,
+                  13.905729789243514
+                ]
+              ]
+            ]
+          },
+          "detection_score": 0.9545809030532837,
+          "family": null,
+          "length_m": null,
+          "width_m": null,
+          "field_quality": {
+            "detection": "experimental",
+            "family": "not_evaluated",
+            "length_m": "not_evaluated",
+            "width_m": "not_evaluated"
+          },
+          "evidence_asset_ids": [],
+          "metadata": {
+            "model_id": "ai2-sentinel1-vessels",
+            "model_version": "data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist",
+            "pixel_box": [
+              142.03634643554688,
+              492.99822998046875,
+              171.70404052734375,
+              512.0
+            ],
+            "score_threshold": 0.7,
+            "geometry_role": "detection_window_not_vessel_dimensions",
+            "infrastructure_filter_applied": false,
+            "quality_flags": []
+          }
+        }
+      ],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-1",
+        "proposals": 2,
+        "threshold_m": 200,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [
+          {
+            "prediction_id": "79b610e4b0bbf1fdb802767c",
+            "nearest_infrastructure_m": 188673.7407549965,
+            "deleted_by_upstream_filter": false
+          },
+          {
+            "prediction_id": "4cc8857e98d05f4e90a22794",
+            "nearest_infrastructure_m": 190361.8212322907,
+            "deleted_by_upstream_filter": false
+          }
+        ],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    },
+    {
+      "port": "stc",
+      "sensor": "sentinel-1",
+      "bundle_path": "data/pilot/stc-s1-prepared/bundle.json",
+      "scene_id": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20261018T114526:20261018T114551:005069:009972",
+      "captured_at": "2026-10-18T11:45:26.359069+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+        "load_seconds": 1.4104310829970927,
+        "inference_seconds": 0.5908323340008792,
+        "detections": 0,
+        "scores": [],
+        "observable_fraction": 1.0,
+        "peak_rss_bytes": 1666940928
+      },
+      "download": {
+        "scene_id": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+        "historical_scene_id": "S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603",
+        "downloaded_bytes": 21741568,
+        "range_requests": 12,
+        "stored_bytes": 1300236,
+        "seconds": 33.82690129199909,
+        "api_processing_units": 0,
+        "provider": "public unsigned AWS S3 byte ranges",
+        "bands": [
+          {
+            "band": "vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/18/IW/DV/S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197/measurement/iw-vv.tiff",
+            "etag": "\"33a43f4652b0317e32b3618060a78ce8\"",
+            "source_bytes": 762840882,
+            "downloaded_bytes": 5849088,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "155ca8692213c415897254e7c26635033469a7743f1e7a2600d7fb04c722507a",
+            "stored_bytes": 347638
+          },
+          {
+            "band": "vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/18/IW/DV/S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197/measurement/iw-vh.tiff",
+            "etag": "\"08b14b6a9e2039acf98131421b63099c\"",
+            "source_bytes": 659358382,
+            "downloaded_bytes": 5079040,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "996d63a2afa85fd247e0ce707f71f948cbead01755f746cef7a7580eaef7192d",
+            "stored_bytes": 306329
+          },
+          {
+            "band": "historical_vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/19/IW/DV/S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603/measurement/iw-vv.tiff",
+            "etag": "\"f9c97717df856b235d160e16d80203f6\"",
+            "source_bytes": 753866658,
+            "downloaded_bytes": 5799936,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "c0d0b37a610723cbd3d34de040a01307d76108ffd0b62834d262f32bc12dad5f",
+            "stored_bytes": 344504
+          },
+          {
+            "band": "historical_vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/19/IW/DV/S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603/measurement/iw-vh.tiff",
+            "etag": "\"f1755d8e381ba22f8766641f375bf6b2\"",
+            "source_bytes": 647852786,
+            "downloaded_bytes": 5013504,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "8742076f6d0cdf9e0381e87e258fd4f28a2a7fe064282d371f3627c8a7b1533a",
+            "stored_bytes": 301765
+          }
+        ]
+      },
+      "stored_prepared_bytes": 1863717,
+      "numeric_summary": {
+        "shape": [
+          4,
+          512,
+          512
+        ],
+        "units": {
+          "vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "historical_vh": "amplitude_dn"
+        },
+        "min_per_band": [
+          0.09600000083446503,
+          0.0560000017285347,
+          0.06800000369548798,
+          0.04800000041723251
+        ],
+        "mean_per_band": [
+          0.8894211649894714,
+          0.408153772354126,
+          0.8071268796920776,
+          0.37410810589790344
+        ],
+        "max_per_band": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "sha256": {
+          "vv": "33c531b2119c2970ed112789ee5bb6e1e3871d437e5b874fb9233899c835947b",
+          "vh": "7edc56238b3b51cc5a58e255fc0b7d6c2f240bf8dd6271aaab2250a5550e5280",
+          "historical_vv": "9e61ad6e332e95f1b718c3cdcc438ffa70daac328cf30ba2b2e8a17535af84c8",
+          "historical_vh": "da82cdda957e518e4da86af76b7ee11b927491ff2761fee411476ff14920b69b"
+        },
+        "crs": "EPSG:32616",
+        "transform": [
+          10.0,
+          0.0,
+          324260.0,
+          0.0,
+          -10.0,
+          1738650.0
+        ],
+        "wgs84_bounds": [
+          -88.64010238196228,
+          15.673772819320153,
+          -88.59197400111519,
+          15.720395677002303
+        ]
+      },
+      "predictions": [],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-1",
+        "proposals": 0,
+        "threshold_m": 200,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    },
+    {
+      "port": "pbr",
+      "sensor": "sentinel-1",
+      "bundle_path": "data/pilot/pbr-s1-prepared/bundle.json",
+      "scene_id": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20261018T114526:20261018T114551:005069:009972",
+      "captured_at": "2026-10-18T11:45:26.359069+00:00",
+      "inference": {
+        "device": "cpu",
+        "torch": "2.14.1",
+        "sample": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+        "load_seconds": 1.3126421250017302,
+        "inference_seconds": 0.5852062500016473,
+        "detections": 0,
+        "scores": [],
+        "observable_fraction": 0.8413047790527344,
+        "peak_rss_bytes": 1604534272
+      },
+      "download": {
+        "scene_id": "S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197",
+        "historical_scene_id": "S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603",
+        "downloaded_bytes": 10747904,
+        "range_requests": 10,
+        "stored_bytes": 1052730,
+        "seconds": 21.615053417001036,
+        "api_processing_units": 0,
+        "provider": "public unsigned AWS S3 byte ranges",
+        "bands": [
+          {
+            "band": "vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/18/IW/DV/S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197/measurement/iw-vv.tiff",
+            "etag": "\"33a43f4652b0317e32b3618060a78ce8\"",
+            "source_bytes": 762840882,
+            "downloaded_bytes": 2883584,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "58927511758926a1883a28cb5b53c42929e6f4598799f380a7431cccefc2c508",
+            "stored_bytes": 282355
+          },
+          {
+            "band": "vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/10/18/IW/DV/S1D_IW_GRDH_1SDV_20261018T114526_20261018T114551_005069_009972_9197/measurement/iw-vh.tiff",
+            "etag": "\"08b14b6a9e2039acf98131421b63099c\"",
+            "source_bytes": 659358382,
+            "downloaded_bytes": 2490368,
+            "range_requests": 3,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "4a45fcd830795d42444cc87d52d4a2782d7cbd5856007ab4059014541e71dff5",
+            "stored_bytes": 242894
+          },
+          {
+            "band": "historical_vv",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/19/IW/DV/S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603/measurement/iw-vv.tiff",
+            "etag": "\"f9c97717df856b235d160e16d80203f6\"",
+            "source_bytes": 753866658,
+            "downloaded_bytes": 2883584,
+            "range_requests": 2,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "4b41e8b49c8605357fa57244c1615a0b5f940763e9e90f1f20947d9f62300b56",
+            "stored_bytes": 286186
+          },
+          {
+            "band": "historical_vh",
+            "source_url": "https://sentinel-s1-l1c.s3.amazonaws.com/GRD/2026/8/19/IW/DV/S1D_IW_GRDH_1SDV_20260819T114524_20260819T114549_004194_007AF7_3603/measurement/iw-vh.tiff",
+            "etag": "\"f1755d8e381ba22f8766641f375bf6b2\"",
+            "source_bytes": 647852786,
+            "downloaded_bytes": 2490368,
+            "range_requests": 2,
+            "gcp_count": 210,
+            "native_utm": "EPSG:32616",
+            "sha256": "9ceff6f47a8679e2294ece2fe4b565babe13cc22caa621ebca374b376b44c040",
+            "stored_bytes": 241295
+          }
+        ]
+      },
+      "stored_prepared_bytes": 1508767,
+      "numeric_summary": {
+        "shape": [
+          4,
+          512,
+          512
+        ],
+        "units": {
+          "vv": "amplitude_dn",
+          "vh": "amplitude_dn",
+          "historical_vv": "amplitude_dn",
+          "historical_vh": "amplitude_dn"
+        },
+        "min_per_band": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_per_band": [
+          0.5825464725494385,
+          0.2374264895915985,
+          0.5734126567840576,
+          0.22458449006080627
+        ],
+        "max_per_band": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "sha256": {
+          "vv": "2a4507978151b88fc7a5f3e737c51f8c88377560466406f5bfb82238f943d8e2",
+          "vh": "4b9f0297f051713eeed92e1b6f088305656e305574fc80eb3d5472fc97c5b0c2",
+          "historical_vv": "ea5aa1d00cabcdbba9859813606ec553dae94790bb844240c4ec1430097faa28",
+          "historical_vh": "89dc95f02612729b005e71ddf1ef3264c5ae156d01497ac38087eaeb055dee6c"
+        },
+        "crs": "EPSG:32616",
+        "transform": [
+          10.0,
+          0.0,
+          325150.0,
+          0.0,
+          -10.0,
+          1742820.0
+        ],
+        "wgs84_bounds": [
+          -88.63209954041908,
+          15.711519077266777,
+          -88.58396305902026,
+          15.758141031451226
+        ]
+      },
+      "predictions": [],
+      "infrastructure_comparison": {
+        "sensor": "sentinel-1",
+        "proposals": 0,
+        "threshold_m": 200,
+        "deleted": 0,
+        "infrastructure_sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+        "distances": [],
+        "interpretation": "Effect on proposals only; no claim about precision, recall or near-dock improvement."
+      }
+    }
+  ],
+  "quality_runs": [
+    {
+      "port": "prq",
+      "seconds": 1.8451134579991049,
+      "cloud_fraction": 0.0,
+      "shadow_fraction": 0.0,
+      "observable_fraction": 0.9960975646972656,
+      "visual_review": "2026-10-21: overlay checked against numeric RGB; no obvious gross cloud/shadow displacement; not independent mask-accuracy validation"
+    },
+    {
+      "port": "stc",
+      "seconds": 0.5253470419993391,
+      "cloud_fraction": 0.02230072021484375,
+      "shadow_fraction": 0.024387359619140625,
+      "observable_fraction": 0.9533119201660156,
+      "visual_review": "2026-10-21: overlay checked against numeric RGB; no obvious gross cloud/shadow displacement; not independent mask-accuracy validation"
+    },
+    {
+      "port": "pbr",
+      "seconds": 0.5544980420017964,
+      "cloud_fraction": 0.003082275390625,
+      "shadow_fraction": 0.004093170166015625,
+      "observable_fraction": 0.9928245544433594,
+      "visual_review": "2026-10-21: overlay checked against numeric RGB; no obvious gross cloud/shadow displacement; not independent mask-accuracy validation"
+    }
+  ],
+  "mps": {
+    "device": "mps",
+    "available": true,
+    "load_seconds": 1.5092349579972506,
+    "inference_seconds": 2.8891352499995264,
+    "scores": [
+      0.999265730381012
+    ],
+    "success": true,
+    "peak_rss_bytes": 1125531648
+  },
+  "historical_projection": {
+    "assumption": "One 512x512 10 m crop per port and acquisition; not full configured zones. Reference reads counted for every S1 target, without caching benefit. Scene availability, cloud usability and accuracy not assumed. Extrapolation only; no bulk download launched.",
+    "counts_by_port_sensor": [
+      {
+        "port": "pbr",
+        "sensor": "sentinel-1",
+        "count": 169
+      },
+      {
+        "port": "stc",
+        "sensor": "sentinel-1",
+        "count": 169
+      },
+      {
+        "port": "prq",
+        "sensor": "sentinel-1",
+        "count": 195
+      },
+      {
+        "port": "prq",
+        "sensor": "sentinel-2",
+        "count": 157
+      },
+      {
+        "port": "pbr",
+        "sensor": "sentinel-2",
+        "count": 307
+      },
+      {
+        "port": "stc",
+        "sensor": "sentinel-2",
+        "count": 307
+      }
+    ],
+    "scenarios": [
+      {
+        "sensor": "sentinel-1",
+        "port_acquisition_crops": 533,
+        "observed_network_bytes_per_crop_range": [
+          10747904,
+          21905408
+        ],
+        "estimated_network_bytes_range": [
+          5728632832,
+          11675582464
+        ],
+        "observed_download_seconds_range": [
+          21.615053417001036,
+          58.651417541997944
+        ],
+        "estimated_serial_download_hours_range": [
+          3.2002287420170976,
+          8.683668208301363
+        ],
+        "estimated_prepared_storage_bytes": 920020894
+      },
+      {
+        "sensor": "sentinel-2",
+        "port_acquisition_crops": 771,
+        "observed_network_bytes_per_crop_range": [
+          11108352,
+          11108352
+        ],
+        "estimated_network_bytes_range": [
+          8564539392,
+          8564539392
+        ],
+        "observed_download_seconds_range": [
+          87.23417458399854,
+          93.86183158300264
+        ],
+        "estimated_serial_download_hours_range": [
+          18.68265239007302,
+          20.102075597359732
+        ],
+        "estimated_prepared_storage_bytes": 2928808108.5
+      }
+    ]
+  },
+  "limits": {
+    "heavy_workers": 1,
+    "max_numeric_side_pixels": 4096,
+    "pilot_crop_side_pixels": 512,
+    "s2_download_cap_bytes": 83886080,
+    "s1_download_cap_bytes": 201326592,
+    "checkpoint_download_cap_bytes": 576716800,
+    "bulk_history_enabled": false,
+    "automatic_local_publication": false
+  }
+}

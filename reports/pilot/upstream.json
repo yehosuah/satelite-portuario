@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-21T02:19:31.145344+00:00",
+  "repositories": [
+    {
+      "name": "rslearn_projects",
+      "url": "https://github.com/allenai/rslearn_projects",
+      "commit": "0bae49abb76d1deee9b6b6ca2a59212611ebc6fe",
+      "license_code_and_weights": "Apache-2.0",
+      "license_annotations": "CC-BY-4.0"
+    },
+    {
+      "name": "rslearn",
+      "url": "https://github.com/allenai/rslearn",
+      "commit": "e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "OmniCloudMask",
+      "url": "https://github.com/DPIRD-DMA/OmniCloudMask",
+      "commit": "d7ca21c686ab2ea63fd0f7e6a662a3179169f7e6",
+      "version": "1.8.0",
+      "license": "MIT"
+    },
+    {
+      "name": "satlaspretrain_models",
+      "url": "https://github.com/allenai/satlaspretrain_models",
+      "role": "Pretrained encoder used in the real change-adapter smoke; decoder remains untrained",
+      "commit": "7b5cd45adc3cad70b3834d65956974af6f6bffd0"
+    }
+  ],
+  "detector_manifests": {
+    "sentinel-1": {
+      "model_id": "ai2-sentinel1-vessels",
+      "version": "data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist",
+      "sensor": "sentinel-1",
+      "task": "detection",
+      "recipe_version": "ai2-s1-v1",
+      "bands": [
+        "vv",
+        "vh",
+        "historical_vv",
+        "historical_vh"
+      ],
+      "units": {
+        "vv": "amplitude_dn",
+        "vh": "amplitude_dn",
+        "historical_vv": "amplitude_dn",
+        "historical_vh": "amplitude_dn"
+      },
+      "weights_path": "data/models/sentinel1-vessels.ckpt",
+      "weights_sha256": "35645431fb58c410603ea3e4af4c7654218389fc8bf953fe3d7f83e5629b5d2a",
+      "code_commit": "0bae49abb76d1deee9b6b6ca2a59212611ebc6fe",
+      "metrics": {},
+      "publication_policy": {
+        "status": "experimental",
+        "local_validation": "absent",
+        "automatic_publication": false,
+        "score_threshold": 0.7
+      },
+      "licenses": [
+        {
+          "component": "rslearn_projects code and detector weights",
+          "license": "Apache-2.0",
+          "source": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md"
+        }
+      ],
+      "metadata": {
+        "product_level": "GRDH",
+        "acquisition_mode": "IW",
+        "architecture": "shared_swin_v2_b_temporal_concat_fpn_fasterrcnn",
+        "rslearn_commit": "e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+        "input_channels": 2,
+        "timesteps": 2,
+        "patch_size": 512,
+        "normalization_divisors": [
+          250,
+          250,
+          250,
+          250
+        ],
+        "clip_range": [
+          0,
+          4
+        ],
+        "temporal_order": [
+          "target",
+          "historical"
+        ],
+        "historical_same_orbit_direction": true,
+        "historical_search_days_before": [
+          90,
+          30
+        ],
+        "incompatible_units": [
+          "sigma0",
+          "gamma0",
+          "dB",
+          "power"
+        ],
+        "infrastructure_filter": "disabled_for_proposals; validate near-dock performance separately",
+        "checkpoint_url": "https://storage.googleapis.com/ai2-rslearn-projects-data/projects/20260626_num_historical/data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist/best.ckpt?generation=1782832753594154",
+        "checkpoint_bytes": 1262487287,
+        "checkpoint_md5": "7e76eb1238c8712bae1536f3b1c65943",
+        "checkpoint_derivation": "All 479 state_dict tensors from pinned ZIP; per-member CRC32 verified; optimizer and loop states omitted; tensor values unchanged.",
+        "inference_checkpoint_bytes": 424089772,
+        "gcp_warp": "thin_plate_spline (MAX_GCP_ORDER=-1)",
+        "resampling": "cubic (GCP warp and 10 m materialization)",
+        "score_threshold_source": "rslp/sentinel1_vessels/config.py API default=0.7; training config_1hist.yaml=0.9",
+        "infrastructure_filter_threshold_m": 200,
+        "serialization_archive_prefix": "sentinel1-vessels.part"
+      },
+      "dataset_version": "ai2-sentinel1-20250521"
+    },
+    "sentinel-2": {
+      "model_id": "ai2-sentinel2-vessels",
+      "version": "data_20250213_02_all_bands",
+      "sensor": "sentinel-2",
+      "task": "detection",
+      "recipe_version": "ai2-s2-v1",
+      "bands": [
+        "B04",
+        "B03",
+        "B02",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B11",
+        "B12"
+      ],
+      "units": {
+        "B04": "DN_harmonized",
+        "B03": "DN_harmonized",
+        "B02": "DN_harmonized",
+        "B05": "DN_harmonized",
+        "B06": "DN_harmonized",
+        "B07": "DN_harmonized",
+        "B08": "DN_harmonized",
+        "B11": "DN_harmonized",
+        "B12": "DN_harmonized"
+      },
+      "weights_path": "data/models/sentinel2-vessels.ckpt",
+      "weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+      "code_commit": "0bae49abb76d1deee9b6b6ca2a59212611ebc6fe",
+      "dataset_version": "ai2-sentinel2-20250213",
+      "metrics": {},
+      "publication_policy": {
+        "status": "experimental",
+        "local_validation": "absent",
+        "automatic_publication": false,
+        "score_threshold": 0.8
+      },
+      "licenses": [
+        {
+          "component": "rslearn_projects code and detector weights",
+          "license": "Apache-2.0",
+          "source": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md"
+        },
+        {
+          "component": "public vessel annotations",
+          "license": "CC-BY-4.0",
+          "source": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md"
+        }
+      ],
+      "metadata": {
+        "product_level": "L1C",
+        "architecture": "swin_v2_b_fpn_fasterrcnn",
+        "rslearn_commit": "e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+        "input_channels": 9,
+        "patch_size": 512,
+        "normalization_divisors": [
+          3000,
+          3000,
+          3000,
+          8160,
+          8160,
+          8160,
+          8160,
+          8160,
+          8160
+        ],
+        "clip_range": [
+          0,
+          1
+        ],
+        "harmonization": "Subtract 1000 DN for processing baseline >= 04.00; preserve nodata zero and clamp previously valid pixels to at least DN 1, as in pinned rslearn.",
+        "numerical_input": "GeoTIFF or JP2 numeric bands; RGB presentation images are forbidden.",
+        "infrastructure_filter": "disabled_for_proposals; validate near-dock performance separately",
+        "checkpoint_url": "https://storage.googleapis.com/ai2-rslearn-projects-data/projects/sentinel2_vessels/data_20250213_02_all_bands/checkpoints/best.ckpt?generation=1741285831820037",
+        "checkpoint_bytes": 1150160105,
+        "checkpoint_md5": "59ae055cf86119bafdeb09bd37e950b0",
+        "checkpoint_derivation": "Selected all 479 state_dict tensors from pinned upstream ZIP, verified per-member CRC32, omitted optimizer and loop states; tensor values unchanged.",
+        "inference_checkpoint_bytes": 386642035,
+        "infrastructure_filter_threshold_m": 50,
+        "serialization_archive_prefix": "sentinel2-vessels"
+      }
+    }
+  },
+  "checkpoint_integrity": "All state_dict tensors copied from generation-pinned source ZIP. Each ZIP member CRC32 verified and final inference-only file SHA256 pinned. Source provider MD5 recorded but whole-source MD5 not recomputed because optimizer states were not downloaded.",
+  "quality_models": {
+    "hf_repository": "https://huggingface.co/NickWright/OmniCloudMask",
+    "revision": "c9a4fb88188709127aa25cfe51ae7fd41b0132f8",
+    "license": "MIT (HF model card)",
+    "weights": [
+      {
+        "filename": "PM_model_OCM_7.97_R_G_NIR_3_smp_edgenext_small.usi_in1k_PT_state.safetensors",
+        "sha256": "d5fe67ad00f6fdb73eb8382ad925849e97fb82cedb46225344afff1a734a9c1d",
+        "bytes": 30711472
+      },
+      {
+        "filename": "PM_model_OCM_7.97_R_G_NIR_3_smp_regnety_004.pycls_in1k_PT_state.safetensors",
+        "sha256": "7f6e4202e17ee73efa4aba7abb5c34f4f90a9f7eb42480820714994dff2db660",
+        "bytes": 27094520
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "sensor": "sentinel-2",
+      "url": "https://storage.googleapis.com/ai2-rslearn-projects-data/sentinel2_vessels/dataset_20250213.tar?generation=1772126779837328",
+      "source_bytes": 239963688960,
+      "downloaded_prefix_bytes": 8388608,
+      "prefix_sha256": "36f041e5dfc81e01b1183b58d960e30699c4663f3d161d67454044609b1dc60c",
+      "window": "20250213/windows/split3/3535872_1626112_130313",
+      "scope": "upstream training example; not independent/local validation",
+      "label_boxes_in_crop": 1,
+      "license": "CC-BY-4.0 Ai2 annotations"
+    },
+    {
+      "sensor": "sentinel-1",
+      "url": "https://storage.googleapis.com/ai2-olmoearth-projects-public-data/evals/partner_tasks/sentinel1_vessels.tar?generation=1762098182799064",
+      "source_bytes": 9589923840,
+      "downloaded_prefix_bytes": 8388608,
+      "prefix_sha256": "62483e5d1f534f454daead986ef359a5b2e2dd7dff2b9ede363b957f28c877ea",
+      "window": "windows/val_ascending/1189838_1832353_1301",
+      "declared_split": "train (metadata.options.olmoearth_evals_split)",
+      "scope": "negative upstream window; annotation mask covers all 512x512 crop; not independent/local validation",
+      "label_boxes_in_crop": 0,
+      "license": "CC-BY-4.0 Ai2 annotations"
+    }
+  ],
+  "sentinel_data": {
+    "license": "Copernicus Sentinel Data Legal Notice; free full and open",
+    "source": "https://dataspace.copernicus.eu/terms-and-conditions",
+    "credit": "Contains modified Copernicus Sentinel data (2021, 2026)."
+  },
+  "marine_infrastructure": {
+    "url": "https://storage.googleapis.com/satlas-explorer-public/outputs/marine/latest.geojson?generation=1791818639390818",
+    "sha256": "350d0e3c27613b4874c5c35cf683cd9a40cf09fd6a2bca871c6dadaa06ff7855",
+    "thresholds_m": {
+      "sentinel-2": 50,
+      "sentinel-1": 200
+    },
+    "filter_in_detector": false
+  },
+  "primary_sources": [
+    "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/docs/sentinel2_vessels.md",
+    "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/docs/sentinel1_vessels.md",
+    "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/rslp/olmoearth_evals/README.md",
+    "https://omnicloudmask.readthedocs.io/en/latest/"
+  ],
+  "change_encoder": {
+    "manifest": "config/models/change.yaml",
+    "report": "reports/pilot/satlas-smoke.json",
+    "checkpoint_sha256": "ea15889fd2feb8723def74b6a650d406296940d3b71cfca0ea50933a95bf2a11",
+    "checkpoint_bytes": 225851364,
+    "weights_revision": "b1f8de04dacf9f9ed9640fe32484947710b47ede",
+    "decoder_trained": false
+  }
+}

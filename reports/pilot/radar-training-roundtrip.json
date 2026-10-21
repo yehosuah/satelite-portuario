@@ -1,0 +1,41 @@
+{
+  "manifest": "data/trained/public-negative-smoke-s1-v2/manifest.json",
+  "model_id": "puertogt-detection-sentinel-1-public-negative-smoke-s1-v2",
+  "validation_status": "experimental",
+  "weights_sha256": "3938a1e7d9111b519c5afbc9cdfd6a7cfd57c2ac45528a582bdfa941ead663b8",
+  "reloaded_checkpoint_inference_count": 0,
+  "reference_boxes": 0,
+  "training": {
+    "dataset_manifest_sha256": "21c70a13b6a886d2beadc58811d2f3ea2da34188d1a6f156e752b7485d05c6c6",
+    "reserved_manifest_hashes": [],
+    "split_groups": [
+      "public-negative-smoke-s1"
+    ],
+    "observation_ids": [
+      "public-negative-smoke-s1"
+    ],
+    "epochs": 1,
+    "steps": [
+      {
+        "loss": 0.0063442871905863285,
+        "losses": {
+          "detect_loss_objectness": 6.584450602531433e-06,
+          "detect_loss_rpn_box_reg": 0.0,
+          "detect_loss_classifier": 0.006337702739983797,
+          "detect_loss_box_reg": 0.0
+        },
+        "seconds": 0.830121875002078,
+        "encoder_frozen": true,
+        "updated_parameters": true,
+        "reference_boxes": 0,
+        "scope": "operability_only_not_local_validation"
+      }
+    ],
+    "learning_rate": 2e-05,
+    "seconds": 0.8787938339992252,
+    "device": "cpu",
+    "encoder_frozen": true,
+    "scope": "supervised_training; independent evaluation still required"
+  },
+  "scope": "one public training crop; operability only; no local training or held-out accuracy claim"
+}

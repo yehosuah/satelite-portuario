@@ -1,0 +1,80 @@
+model_id: puertogt-physical-change-s2
+version: untrained-v1
+sensor: sentinel-2
+task: change
+recipe_version: ai2-s2-v1
+weights_path: null
+weights_sha256: null
+code_commit: null
+metrics: {}
+publication_policy:
+  status: untrained
+  automatic_publication: false
+  change_threshold: null
+  min_area_m2: null
+  max_alignment_rmse_pixels: null
+  minimum_observable_fraction: null
+metadata:
+  architecture: satlas_swint_siamese_unet_v1
+  encoder_identifier: Sentinel2_SwinT_SI_MS
+  encoder_code_commit: 7b5cd45adc3cad70b3834d65956974af6f6bffd0
+  encoder_checkpoint: data/models/satlas-sentinel2-swint-si-ms.pth
+  encoder_sha256: ea15889fd2feb8723def74b6a650d406296940d3b71cfca0ea50933a95bf2a11
+  encoder_channels:
+  - 96
+  - 192
+  - 384
+  - 768
+  decoder_channels: 64
+  encoder_frozen: true
+  required_masks:
+  - observable
+  - static_area
+  optional_exclusion_masks:
+  - vessels
+  - temporary
+  required_comparability:
+  - alignment_rmse_pixels
+  - radiometric_comparable
+  training_state: requires_reviewed_pairs_and_negative_examples
+  persistence_rule: valid_t0_without_change_then_valid_t1_and_t2_with_change
+  encoder_checkpoint_url: https://huggingface.co/allenai/satlas-pretrain/resolve/b1f8de04dacf9f9ed9640fe32484947710b47ede/sentinel2_swint_si_ms.pth
+  encoder_checkpoint_bytes: 225851364
+  encoder_weights_revision: b1f8de04dacf9f9ed9640fe32484947710b47ede
+  input_adaptation:
+    pretraining: TCI RGB /255; B05,B06,B07,B08,B11,B12 /8160 clipped0..1
+    local_numeric_recipe: B04,B03,B02 harmonized DN /3000; six other bands /8160 clipped0..1
+    exact_pretraining_radiometry: false
+    requirement: Fine-tune and evaluate independently on the declared local numeric
+      recipe before publication
+    source: https://github.com/allenai/satlas/blob/a81422740e68447f732718d6d48ed0ce97671c57/Normalization.md
+    source_sha256: 1b264c81b1beabcd0e8baa5e8fd699ae8c69ade05e625cdc2f59098880822ddd
+  encoder_weights_license_note: Project README explicitly labels checkpoints ODC-BY;
+    HuggingFace repository model-card metadata says Apache-2.0. Retain provenance
+    and do not relabel the downloaded weights.
+  encoder_smoke_report: reports/pilot/satlas-smoke.json
+  encoder_smoke_status: pretrained_encoder_forward_and_synthetic_loss_passed; decoder_untrained
+licenses:
+- component: SatlasPretrain encoder weights
+  license: ODC-BY
+  source: https://github.com/allenai/satlaspretrain_models
+bands:
+- B04
+- B03
+- B02
+- B05
+- B06
+- B07
+- B08
+- B11
+- B12
+units:
+  B04: DN_harmonized
+  B03: DN_harmonized
+  B02: DN_harmonized
+  B05: DN_harmonized
+  B06: DN_harmonized
+  B07: DN_harmonized
+  B08: DN_harmonized
+  B11: DN_harmonized
+  B12: DN_harmonized

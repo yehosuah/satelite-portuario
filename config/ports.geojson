@@ -1,0 +1,669 @@
+{
+  "type": "FeatureCollection",
+  "name": "Guatemala port observation zones",
+  "version": "2026-10-20-provisional-v1",
+  "crs_note": "RFC7946 longitude/latitude WGS84; metrics require local projected CRS",
+  "attribution_policy": "Cross-port polygons have no area overlap. A point on a shared boundary is assigned once using lexicographic port_id. Uncovered open water remains unassigned. Zones within the same port may overlap; zone counts must not be summed without spatial deduplication.",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "prq_muelles",
+      "properties": {
+        "port_id": "prq",
+        "port_name": "Puerto Quetzal",
+        "zone_id": "prq_muelles",
+        "zone_type": "muelles",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://www.puertoquetzal.gob.gt/",
+          "https://www.openstreetmap.org/way/704380412"
+        ],
+        "method": "AOI envelope around commercial basin and APM terminal; mixed land/water requires pixel mask. Not a surveyed quay boundary.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.796,
+              13.9205
+            ],
+            [
+              -90.783,
+              13.9205
+            ],
+            [
+              -90.783,
+              13.933
+            ],
+            [
+              -90.796,
+              13.933
+            ],
+            [
+              -90.796,
+              13.9205
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "prq_fondeo",
+      "properties": {
+        "port_id": "prq",
+        "port_name": "Puerto Quetzal",
+        "zone_id": "prq_fondeo",
+        "zone_type": "fondeo",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://www.puertoquetzal.gob.gt/wp-content/themes/total-child-theme/files/_1531162445_1471_PLANO2.pdf"
+        ],
+        "method": "Principal anchorage polygon transcribed from WGS84 corner coordinates in search-indexed official chart; current PDF URL redirects, so original chart currency has not been validated.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z",
+        "source_availability": "indexed_excerpt_only_url_redirects"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.81141075,
+              13.9089665278
+            ],
+            [
+              -90.77687925,
+              13.9086542222
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.9089665278
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "prq_canal",
+      "properties": {
+        "port_id": "prq",
+        "port_name": "Puerto Quetzal",
+        "zone_id": "prq_canal",
+        "zone_type": "canal",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://www.puertoquetzal.gob.gt/wp-content/themes/total-child-theme/files/_1531162445_1471_PLANO2.pdf",
+          "https://www.openstreetmap.org/way/704380412"
+        ],
+        "method": "Conservative analytic corridor around approach/basin; approximate vertices require validation against current navigation chart.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.787,
+              13.905
+            ],
+            [
+              -90.782,
+              13.905
+            ],
+            [
+              -90.782,
+              13.9185
+            ],
+            [
+              -90.786,
+              13.927
+            ],
+            [
+              -90.79,
+              13.926
+            ],
+            [
+              -90.787,
+              13.917
+            ],
+            [
+              -90.787,
+              13.905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "prq_patios",
+      "properties": {
+        "port_id": "prq",
+        "port_name": "Puerto Quetzal",
+        "zone_id": "prq_patios",
+        "zone_type": "patios",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://www.openstreetmap.org/way/704380412"
+        ],
+        "method": "OSM industrial polygon APM Terminals Quetzal; seed infrastructure zone, does not include all port yards.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.7935302,
+              13.928887
+            ],
+            [
+              -90.7934686,
+              13.9286182
+            ],
+            [
+              -90.7933533,
+              13.9286406
+            ],
+            [
+              -90.7922073,
+              13.9246841
+            ],
+            [
+              -90.7917535,
+              13.9246617
+            ],
+            [
+              -90.7908466,
+              13.9254961
+            ],
+            [
+              -90.7904599,
+              13.9256488
+            ],
+            [
+              -90.7913465,
+              13.928709
+            ],
+            [
+              -90.7917203,
+              13.9285885
+            ],
+            [
+              -90.7919612,
+              13.92932
+            ],
+            [
+              -90.7935302,
+              13.928887
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "stc_muelles",
+      "properties": {
+        "port_id": "stc",
+        "port_name": "Santo Tomás de Castilla",
+        "zone_id": "stc_muelles",
+        "zone_type": "muelles",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://santotomasport.com.gt/datospuerto/",
+          "https://www.openstreetmap.org/way/715624206"
+        ],
+        "method": "Water-side strip adjoining northwest edge of OSM port polygon; approximate 200 m observation buffer.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "stc_fondeo",
+      "properties": {
+        "port_id": "stc",
+        "port_name": "Santo Tomás de Castilla",
+        "zone_id": "stc_fondeo",
+        "zone_type": "fondeo",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://santotomasport.com.gt/datospuerto/",
+          "https://www.openstreetmap.org/#map=13/15.735/-88.626"
+        ],
+        "method": "Analytic open-water AOI west of approach, provisional; source confirms anchorage service, not these boundaries.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.647,
+              15.73
+            ],
+            [
+              -88.623,
+              15.73
+            ],
+            [
+              -88.623,
+              15.76
+            ],
+            [
+              -88.647,
+              15.76
+            ],
+            [
+              -88.647,
+              15.73
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "stc_canal",
+      "properties": {
+        "port_id": "stc",
+        "port_name": "Santo Tomás de Castilla",
+        "zone_id": "stc_canal",
+        "zone_type": "canal",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://santotomasport.com.gt/datospuerto/",
+          "https://www.openstreetmap.org/way/715624206"
+        ],
+        "method": "Approximate observation corridor from port toward north-northeast; operator documents 10.7 km canal and 4°53′ direction. Wider than navigable channel; not a navigation boundary.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.615,
+              15.701
+            ],
+            [
+              -88.607,
+              15.796
+            ],
+            [
+              -88.609,
+              15.796
+            ],
+            [
+              -88.617,
+              15.701
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "stc_patios",
+      "properties": {
+        "port_id": "stc",
+        "port_name": "Santo Tomás de Castilla",
+        "zone_id": "stc_patios",
+        "zone_type": "patios",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://www.openstreetmap.org/way/715624206",
+          "https://santotomasport.com.gt/datospuerto/"
+        ],
+        "method": "OSM industrial Portuaria Santo Tomás polygon; infrastructure seed rather than individual yard segmentation.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6204882,
+              15.6942803
+            ],
+            [
+              -88.6195376,
+              15.6926089
+            ],
+            [
+              -88.6190534,
+              15.6928514
+            ],
+            [
+              -88.6187536,
+              15.6922614
+            ],
+            [
+              -88.6171964,
+              15.6930225
+            ],
+            [
+              -88.6166798,
+              15.6919832
+            ],
+            [
+              -88.6150469,
+              15.6927772
+            ],
+            [
+              -88.614184,
+              15.6931968
+            ],
+            [
+              -88.6136091,
+              15.6934763
+            ],
+            [
+              -88.613991,
+              15.6941879
+            ],
+            [
+              -88.6114767,
+              15.6954106
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6126648,
+              15.6980238
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.6203434,
+              15.6943503
+            ],
+            [
+              -88.6204882,
+              15.6942803
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pbr_muelles",
+      "properties": {
+        "port_id": "pbr",
+        "port_name": "Puerto Barrios",
+        "zone_id": "pbr_muelles",
+        "zone_type": "muelles",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://puertobarrios.gt/",
+          "https://www.openstreetmap.org/way/638933275"
+        ],
+        "method": "Observation envelope around commercial pier represented by OSM coastline way 638933275; excludes municipal pier to south.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6105,
+              15.7333
+            ],
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6052,
+              15.7361
+            ],
+            [
+              -88.6105,
+              15.7361
+            ],
+            [
+              -88.6105,
+              15.7333
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pbr_fondeo",
+      "properties": {
+        "port_id": "pbr",
+        "port_name": "Puerto Barrios",
+        "zone_id": "pbr_fondeo",
+        "zone_type": "fondeo",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://puertobarrios.gt/",
+          "https://www.openstreetmap.org/#map=14/15.748/-88.607"
+        ],
+        "method": "Analytic open-water AOI north of terminal, provisional; boundaries are not operator-confirmed anchorage limits.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.748
+            ],
+            [
+              -88.599,
+              15.748
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.607,
+              15.766
+            ],
+            [
+              -88.607,
+              15.748
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pbr_canal",
+      "properties": {
+        "port_id": "pbr",
+        "port_name": "Puerto Barrios",
+        "zone_id": "pbr_canal",
+        "zone_type": "canal",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://puertobarrios.gt/",
+          "https://www.openstreetmap.org/way/638933275"
+        ],
+        "method": "Provisional analytic approach corridor; separate from Santo Tomás corridor. Requires current chart review.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6105,
+              15.7361
+            ],
+            [
+              -88.608,
+              15.7361
+            ],
+            [
+              -88.601,
+              15.79
+            ],
+            [
+              -88.6035,
+              15.79
+            ],
+            [
+              -88.6105,
+              15.7361
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pbr_patios",
+      "properties": {
+        "port_id": "pbr",
+        "port_name": "Puerto Barrios",
+        "zone_id": "pbr_patios",
+        "zone_type": "patios",
+        "version": "2026-10-20-provisional-v1",
+        "geometry_status": "provisional",
+        "source_urls": [
+          "https://puertobarrios.gt/",
+          "https://www.openstreetmap.org/way/132451928",
+          "https://www.openstreetmap.org/way/132451927"
+        ],
+        "method": "Infrastructure envelope anchored in named Parqueo Cobigua polygons and commercial pier; includes mixed infrastructure pending segmentation.",
+        "review_required": true,
+        "not_for_navigation": true,
+        "attribution": "© OpenStreetMap contributors (ODbL), where OSM-derived; operator sources as cited",
+        "evidence_checked_utc": "2026-10-21T01:40:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6052,
+              15.7333
+            ],
+            [
+              -88.6002,
+              15.7333
+            ],
+            [
+              -88.6002,
+              15.7363
+            ],
+            [
+              -88.6052,
+              15.7363
+            ],
+            [
+              -88.6052,
+              15.7333
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

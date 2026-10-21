@@ -1,0 +1,19 @@
+name: service
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --no-editable --python 3.11
+      - run: uv run --no-sync ruff check src tests scripts
+      - run: uv run --no-sync pytest -q
+      - run: uv build

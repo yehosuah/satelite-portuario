@@ -1,0 +1,29 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      PUERTOGT_DATA_DIR: /data
+      PUERTOGT_REVIEW_TOKEN: ${PUERTOGT_REVIEW_TOKEN:?Set a local review token}
+    volumes:
+      - observatorio:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  worker:
+    profiles: [worker]
+    build:
+      context: .
+      args:
+        INSTALL_ML: "true"
+    environment:
+      PUERTOGT_DATA_DIR: /data
+    volumes:
+      - observatorio:/data
+    command: ["puertogt", "worker", "--model", "/data/active-model.yaml", "--max-jobs", "1"]
+volumes:
+  observatorio:

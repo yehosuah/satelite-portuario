@@ -1,0 +1,70 @@
+model_id: ai2-sentinel1-vessels
+version: data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist
+sensor: sentinel-1
+task: detection
+recipe_version: ai2-s1-v1
+bands:
+- vv
+- vh
+- historical_vv
+- historical_vh
+units:
+  vv: amplitude_dn
+  vh: amplitude_dn
+  historical_vv: amplitude_dn
+  historical_vh: amplitude_dn
+weights_path: data/models/sentinel1-vessels.ckpt
+weights_sha256: 35645431fb58c410603ea3e4af4c7654218389fc8bf953fe3d7f83e5629b5d2a
+code_commit: 0bae49abb76d1deee9b6b6ca2a59212611ebc6fe
+metrics: {}
+publication_policy:
+  status: experimental
+  local_validation: absent
+  automatic_publication: false
+  score_threshold: 0.7
+licenses:
+- component: rslearn_projects code and detector weights
+  license: Apache-2.0
+  source: https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/README.md
+metadata:
+  product_level: GRDH
+  acquisition_mode: IW
+  architecture: shared_swin_v2_b_temporal_concat_fpn_fasterrcnn
+  rslearn_commit: e0ec9c8f404f348de1b7d64521f7afc588c80e0a
+  input_channels: 2
+  timesteps: 2
+  patch_size: 512
+  normalization_divisors:
+  - 250
+  - 250
+  - 250
+  - 250
+  clip_range:
+  - 0
+  - 4
+  temporal_order:
+  - target
+  - historical
+  historical_same_orbit_direction: true
+  historical_search_days_before:
+  - 90
+  - 30
+  incompatible_units:
+  - sigma0
+  - gamma0
+  - dB
+  - power
+  infrastructure_filter: disabled_for_proposals; validate near-dock performance separately
+  checkpoint_url: https://storage.googleapis.com/ai2-rslearn-projects-data/projects/20260626_num_historical/data_20250521_model_20250530_satlaspretrain_unfreeze4_13_1hist/best.ckpt?generation=1782832753594154
+  checkpoint_bytes: 1262487287
+  checkpoint_md5: 7e76eb1238c8712bae1536f3b1c65943
+  checkpoint_derivation: All 479 state_dict tensors from pinned ZIP; per-member CRC32
+    verified; optimizer and loop states omitted; tensor values unchanged.
+  inference_checkpoint_bytes: 424089772
+  gcp_warp: thin_plate_spline (MAX_GCP_ORDER=-1)
+  resampling: cubic (GCP warp and 10 m materialization)
+  score_threshold_source: rslp/sentinel1_vessels/config.py API default=0.7; training
+    config_1hist.yaml=0.9
+  infrastructure_filter_threshold_m: 200
+  serialization_archive_prefix: sentinel1-vessels.part
+dataset_version: ai2-sentinel1-20250521

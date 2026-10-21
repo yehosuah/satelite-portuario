@@ -1,0 +1,37 @@
+{
+  "measured_at": "2026-10-21T01:32:56.124252+00:00",
+  "system": "Darwin",
+  "machine": "arm64",
+  "os_version": "27.0.1",
+  "memory_bytes": 25769803776,
+  "disk": {
+    "total_bytes": 994610155520,
+    "used_bytes": 613776699392,
+    "free_bytes": 380833456128
+  },
+  "docker": {
+    "available_cli": true,
+    "daemon_reachable": true,
+    "server_version": "29.2.0"
+  },
+  "python_selected": "3.11",
+  "mps_runtime_test": {
+    "available": true,
+    "tensor_result": 2.0
+  },
+  "cpu_training_test": {
+    "completed": true,
+    "references": [
+      "training-roundtrip.json",
+      "radar-training-roundtrip.json"
+    ],
+    "scope": "one public sample per sensor; not local validation"
+  },
+  "operating_limits": {
+    "max_heavy_workers": 1,
+    "bulk_history_enabled": false,
+    "reserve_bytes": 5368709120
+  },
+  "limits_status": "Pilot measured; full-zone historical workload not approved by technical validation gates",
+  "torch": "2.14.1"
+}

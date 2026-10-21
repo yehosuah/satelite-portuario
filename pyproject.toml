@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "satelite-portuario"
+version = "0.1.0"
+description = "Observatorio satelital local de los puertos de Guatemala"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.32,<1", "pydantic>=2.10,<3",
+  "httpx>=0.27,<1", "numpy>=1.26,<3", "rasterio>=1.4,<2",
+  "pyproj>=3.6,<4", "shapely>=2,<3", "pyyaml>=6,<7",
+  "pyarrow>=17,<24", "pillow>=11,<13",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+
+[project.optional-dependencies]
+ml = [
+  "rslearn @ git+https://github.com/allenai/rslearn.git@e0ec9c8f404f348de1b7d64521f7afc588c80e0a",
+  "einops>=0.8,<1",
+  "torch>=2.7,<3", "torchvision>=0.22,<1",
+  "satlaspretrain-models @ git+https://github.com/allenai/satlaspretrain_models.git@7b5cd45adc3cad70b3834d65956974af6f6bffd0",
+]
+quality = ["omnicloudmask @ git+https://github.com/DPIRD-DMA/OmniCloudMask.git@d7ca21c686ab2ea63fd0f7e6a662a3179169f7e6"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[project.scripts]
+puertogt = "puertogt.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/puertogt"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"config" = "puertogt/config"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
