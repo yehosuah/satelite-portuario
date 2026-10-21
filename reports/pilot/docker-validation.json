@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-10-21T03:13:55.429026Z",
+  "recorded_at": "2026-10-21T03:41:24.708218Z",
   "status": "passed",
   "scope": "Linux ARM64 installed runtime and real CPU inference operability; not local model accuracy",
   "platform": "linux/arm64",
@@ -15,11 +15,11 @@
     "status": "passed",
     "tag": "satelite-portuario:local",
     "image": {
-      "Id": "sha256:43c057fa4743fa0141b2649e1b054b3cd4525a29786a66061d353b993f370e0f",
-      "Created": "2026-10-21T03:06:15.561993548Z",
+      "Id": "sha256:1f77fd69295554321e22d34204e2091b0ff6dc7075573ee1018157593e613cbc",
+      "Created": "2026-10-21T03:34:37.645971461Z",
       "Architecture": "arm64",
       "Os": "linux",
-      "Size": 720535300
+      "Size": 720536357
     },
     "first_python_dependency_layer_seconds": 598.0,
     "source_matches_current_checkout": true,
@@ -51,7 +51,7 @@
         "preprocess.py": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
         "review.py": "3cc9093bb4fcd9fe6ad1cbdb1eb036c80191e8292a11501c136522e2a05dea72",
         "store.py": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d",
-        "worker.py": "f08a466f2c4455e1e050766969ef9b6d4f883dc88dc43fc22336f915412c05f8"
+        "worker.py": "ecfd956ceaa9e343b13dcb17980cecd45fe7a4b32670e9802b7cbfc17cd620ed"
       },
       "platform": "Linux-6.12.67-linuxkit-aarch64-with-glibc2.41",
       "python": "3.11.17",
@@ -72,17 +72,18 @@
         "rasterio": "1.4.4",
         "satelite-portuario": "0.1.0"
       }
-    }
+    },
+    "latest_python_dependency_layer_seconds": 3.2
   },
   "ml": {
     "status": "passed",
     "tag": "satelite-portuario:ml",
     "image": {
-      "Id": "sha256:0d33a71feddb2c57e7bf3630f05b8f13eefca0e4133d74c17d6f25d9af83ff6c",
-      "Created": "2026-10-21T03:10:19.787638384Z",
+      "Id": "sha256:22dcb5460a84191202a56ab11a289fa44927b6befa1661260dc37b54a36899a0",
+      "Created": "2026-10-21T03:34:41.99704163Z",
       "Architecture": "arm64",
       "Os": "linux",
-      "Size": 2632222913
+      "Size": 2631256368
     },
     "build_arguments": {
       "INSTALL_ML": "true"
@@ -100,7 +101,7 @@
         {
           "bundle_sha256": "332b06b8828c459d230e796412ab11f72e6f68942d57ffee00fce6687323b66e",
           "detections": 2,
-          "inference_seconds": 0.9533325420002257,
+          "inference_seconds": 1.0397070000000213,
           "input_files_sha256": {
             "pilot/prq-s1-prepared/historical_vh.tif": "e444eebcda236c164380840d298ccdfb00aef090f0a8ff79a06a64052e68101c",
             "pilot/prq-s1-prepared/historical_vv.tif": "9731999f4a3845e697cb69d8feecccc7398fe6d81cfd3df999fb47c4e79c8c16",
@@ -116,9 +117,9 @@
             512
           ],
           "model_id": "ai2-sentinel1-vessels",
-          "model_load_seconds": 2.0693850419997943,
+          "model_load_seconds": 1.8788521259999698,
           "model_manifest_sha256": "eedfd5d555058ccd69bf983e1ac16cd4e54f7d9adc419aba3e2a40cd4218461b",
-          "peak_process_rss_bytes": 1479499776,
+          "peak_process_rss_bytes": 1478066176,
           "resolved_weights_path": "/data/models/sentinel1-vessels.ckpt",
           "scope": "CPU_runtime_operability_only_not_local_accuracy",
           "scores": [
@@ -131,7 +132,7 @@
         {
           "bundle_sha256": "686974181a3b2e1248343e98d1145c59d58c9632254d578603f79e385916af00",
           "detections": 2,
-          "inference_seconds": 0.47357358300041597,
+          "inference_seconds": 0.4848395819999496,
           "input_files_sha256": {
             "pilot/prq-prepared/B02.tif": "b0611df69d637a6fb36d53d8d29eba0c9e8eb1c129ce459230cdbfafe4ae28ea",
             "pilot/prq-prepared/B03.tif": "69d7e1095347fc79bda1f822f1b69407d04365208b0eddf61c1fe56e4f7bdae0",
@@ -155,9 +156,9 @@
             512
           ],
           "model_id": "ai2-sentinel2-vessels",
-          "model_load_seconds": 1.1941314999999122,
+          "model_load_seconds": 1.2075078760000224,
           "model_manifest_sha256": "cd0d6f1665b3018b8be2ebaed8bb638ba25a5e087264873672242ceb4d56744d",
-          "peak_process_rss_bytes": 1479499776,
+          "peak_process_rss_bytes": 1478066176,
           "resolved_weights_path": "/data/models/sentinel2-vessels.ckpt",
           "scope": "CPU_runtime_operability_only_not_local_accuracy",
           "scores": [
@@ -194,7 +195,7 @@
         "preprocess.py": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
         "review.py": "3cc9093bb4fcd9fe6ad1cbdb1eb036c80191e8292a11501c136522e2a05dea72",
         "store.py": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d",
-        "worker.py": "f08a466f2c4455e1e050766969ef9b6d4f883dc88dc43fc22336f915412c05f8"
+        "worker.py": "ecfd956ceaa9e343b13dcb17980cecd45fe7a4b32670e9802b7cbfc17cd620ed"
       },
       "path_resolution": "CLI read_model and worker resolve_bundle_paths",
       "platform": "Linux-6.12.67-linuxkit-aarch64-with-glibc2.41",
@@ -230,7 +231,6 @@
       "apt_additional_installed_megabytes": 883,
       "first_apt_layer_seconds": 1231.2,
       "fiona_built_after_uv_layer_seconds": 42.84,
-      "final_python_dependency_layer_seconds": 253.7,
       "git_transport": "HTTP/1.1 during uv sync only",
       "cold_network_build_completed": false,
       "transport_failures": [
@@ -243,7 +243,9 @@
         "source": "existing verified public repository in host uv cache",
         "method": "Git fetched the exact commit locally into the BuildKit uv cache; no dependency version or source changes"
       },
-      "dependency_sources_unchanged": true
+      "dependency_sources_unchanged": true,
+      "first_successful_python_dependency_layer_seconds": 253.7,
+      "latest_python_dependency_layer_seconds": 7.8
     }
   },
   "runtime_conditions": {
@@ -258,10 +260,32 @@
   "limitations": [
     "The successful ML build reused a preloaded rslearn Git cache after two network transport failures; an empty-cache network build was not completed.",
     "The smoke uses ASGI TestClient, not a remote HTTP deployment.",
-    "Only the two Puerto Quetzal 512x512 pilot crops were executed in Docker; whole-scene processing and training were not measured.",
+    "Real-model inference used only the two Puerto Quetzal 512x512 pilot crops; whole-scene processing and training were not measured.",
     "Inference timing includes numeric input reading, tiling and output filtering.",
     "Peak RSS is the Linux process high-water mark, cumulative across model runs.",
     "No scientific validation, local-label training or calibration is implied.",
     "Debian packages are resolved at build time; base image digests and the Python lockfile are pinned."
-  ]
+  ],
+  "image_refresh_reason": "Geometric zone/raster-footprint coverage correction in worker.py",
+  "worker_geometric_coverage_regression": {
+    "status": "passed",
+    "passed_tests": 6,
+    "duration_seconds": 0.53,
+    "test_files_sha256": {
+      "tests/test_worker.py": "53cc81fdb0818beec483ca667abaf163ca1138bd33ad4318d3af1f1e91bc9d3b",
+      "tests/test_coverage.py": "936985c44b81ca1b2944157ed2afb360095e5d6b6002b9beac47ed2c5135c43d"
+    },
+    "runner": "pytest 9.1.1 supplied as temporary read-only pure-Python support; not installed in the production image",
+    "image_id": "sha256:22dcb5460a84191202a56ab11a289fa44927b6befa1661260dc37b54a36899a0",
+    "network": "none",
+    "fixtures": "temporary synthetic rasters; the real catalog was not mounted",
+    "cases": [
+      "zone wholly inside raster with edges on pixel centres",
+      "half-zone outside north-up raster",
+      "half-zone outside skewed affine footprint",
+      "custom-volume path resolution",
+      "unknown observability does not publish zero",
+      "coverage reporting"
+    ]
+  }
 }

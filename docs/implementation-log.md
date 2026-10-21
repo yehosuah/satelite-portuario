@@ -150,3 +150,7 @@ La revisión independiente detectó y corrigió conflictos de adquisición compa
 El inventario completo incluye 828 adquisiciones desde 2025; cuatro tienen observaciones piloto y 824 siguen sin programar. Faltan etiquetas locales independientes, pesos locales validados, evaluación ≥90% por el protocolo y una proyección de zonas completas. `doctor --check-release` y el gate de backfill siguen cerrados por esa evidencia ausente. La autorización para publicar código está resuelta; no equivale a aprobar métricas no medidas.
 
 El lint estructural pasó antes de ejecutar. Al cerrar, ese lint rechaza las casillas marcadas porque está diseñado para planes sin iniciar; las marcas se conservan como registro de ejecución.
+
+La verificación de instalación detectó y corrigió rutas de modelos y bandas preparadas al montar un volumen en `/data` desde otro directorio de trabajo. Las regresiones observaron el fallo antes del cambio; la suite instalada posterior pasó 99 pruebas.
+
+La CI posterior encontró sensibilidad del cálculo de cobertura a bordes sobre centros de píxel. Se reprodujeron dos fallos antes de cambiar el worker a intersección geométrica, incluida una huella inclinada. La suite instalada final pasó 101 pruebas; CI en Linux y macOS pasó 94 con siete omisiones de ML opcional. El impacto sobre el piloto se midió sin alterar su catálogo y se conserva en [coverage-correction.json](../reports/pilot/coverage-correction.json).

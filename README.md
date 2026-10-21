@@ -4,6 +4,10 @@ Observatorio local de Puerto Quetzal, Santo Tomás de Castilla y Puerto Barrios.
 
 **Versión experimental.** El servicio funciona con pilotos reales de ambos sensores en los tres puertos. Todavía no hay precisión local de detección ≥90% demostrada, atributos locales entrenados ni un histórico completo procesado. El detector base omitió barcos visibles junto a muelles: un conteo cero no confirma ausencia. [Estado y evidencia](docs/status.md).
 
+## Paquete experimental
+
+La [versión v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) distribuye el instalador y una copia portable del piloto con imágenes, catálogo y cuatro modelos. Sus 270 archivos fueron verificados y restaurados en otra carpeta; el histórico sigue incompleto. Consulta los SHA256 y las [instrucciones de restauración](docs/restore-pilot.md).
+
 ## Arranque local
 
 ```sh

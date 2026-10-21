@@ -1,20 +1,20 @@
 {
-  "verified_at": "2026-10-21T03:08:18.550933+00:00",
+  "verified_at": "2026-10-21T03:39:16.237730+00:00",
   "full_installed_suite": {
-    "passed": 99,
+    "passed": 101,
     "failed": 0,
     "command": "uv run --no-sync pytest -q --disable-warnings",
-    "duration_seconds": 3.02,
-    "warnings": 318,
-    "warning_scope": "upstream affine/shapely deprecations"
+    "duration_seconds": 2.94,
+    "warnings": 333,
+    "warning_scope": "upstream affine/shapely and Starlette deprecations"
   },
   "ruff": "passed",
   "wheel_build": "passed",
   "isolated_wheel": "wheel-validation.json",
   "scientific_validation": false,
   "ci": {
-    "commit": "f0486852f75758d7b5aa2c58e8a1302f1495b4fb",
-    "run": "https://github.com/yehosuah/satelite-portuario/actions/runs/39534361158",
+    "commit": "2dc16f2f90613be42e11ed19a6f4079bfcff3cb0",
+    "run": "https://github.com/yehosuah/satelite-portuario/actions/runs/39539464734",
     "ubuntu-latest": "success",
     "macos-latest": "success",
     "checks": [
@@ -25,10 +25,14 @@
     ],
     "scope": "Base service dependencies; local full suite includes optional ML",
     "base_suite": {
-      "passed": 88,
+      "passed": 94,
       "skipped_optional_ml": 7,
       "failed": 0
+    },
+    "duration_seconds": {
+      "ubuntu-latest": 3.69,
+      "macos-latest": 3.73
     }
   },
-  "final_regression": "Resolve model/embedded-encoder and prepared numeric paths under a relocated data volume with a different working directory"
+  "final_regression": "Relocated model/numeric paths and exact geometric crop coverage, including full zones at pixel-centre boundaries and skewed rasters"
 }
