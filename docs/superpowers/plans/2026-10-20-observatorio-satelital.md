@@ -279,4 +279,4 @@ No se asigna una duración ficticia. El primer presupuesto de esfuerzo y tiempo 
 | Instalación interna futura y copia del histórico | 7, 9 |
 | Resultados provisionales y cruce externo | 5, 7, contrato del diseño |
 
-El plan queda listo para revisión. La siguiente acción técnica, cuando se autorice implementar, será el piloto de las tareas 1 y 2; no la descarga completa del histórico.
+El usuario revisó y dio por cerrada la planificación. La siguiente acción técnica, cuando se autorice implementar, será el piloto de las tareas 1 y 2; no la descarga completa del histórico.

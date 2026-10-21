@@ -1,6 +1,6 @@
 # Servicio satelital del Observatorio Portuario de Guatemala
 
-Fecha de decisiones: 20 de octubre de 2026, Guatemala. Estado: diseño acordado en conversación; documento para revisión. Esta entrega contiene planificación, sin implementación ni entrenamiento.
+Fecha de decisiones: 20 de octubre de 2026, Guatemala. Estado: planificación revisada y aprobada por el usuario; fase cerrada. Esta entrega contiene planificación, sin implementación ni entrenamiento.
 
 ## 1. Resultado que construiremos
 
@@ -246,4 +246,4 @@ El orden es por dependencias; buques y cambios tienen la misma prioridad de prod
 
 **Por demostrar mediante el piloto:** escenas L1C/GRDH utilizables para todo el alcance, etiquetas locales suficientes, compatibilidad de los pesos con el entorno, precisión ≥90%, calidad de tipos/dimensiones/cambios y coste real de procesar el histórico en el equipo disponible.
 
-El siguiente paso autorizado después de esta entrega sigue siendo revisión del plan. La implementación requiere una instrucción posterior del usuario.
+La planificación quedó cerrada por confirmación del usuario. La implementación requiere una instrucción posterior; su primera etapa será el piloto de viabilidad.
