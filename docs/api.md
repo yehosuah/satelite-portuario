@@ -31,6 +31,8 @@ Las listas usan `items`; detecciones usa `features`. Las detecciones y sus geome
 
 Una observación representa una adquisición, zona y receta de procesamiento. `detection_count` es el conteo producido por el modelo. `visible_detection_count` refleja detecciones actuales no rechazadas, incluidas las añadidas manualmente. Una escena no observable devuelve conteo nulo. Un cero en una escena utilizable representa cero detecciones del modelo, sin demostrar ausencia absoluta de buques.
 
+`observable_fraction` estima la fracción de la zona observable a la resolución de la máscara. El worker combina la proporción de píxeles observables dentro de la zona con el área geométrica que el recorte realmente cubre. Los estados `usable`, `partial` y `unusable` describen esa observabilidad, no la precisión del detector. Las observaciones ya guardadas conservan el cálculo de su ejecución; actualizar el software no modifica retrospectivamente su evidencia.
+
 `detection_score` no equivale a precisión validada. Los atributos sin soporte suficiente permanecen nulos y una anotación manual no recibe score inventado. Las revisiones no convierten automáticamente un modelo en validado. Los rechazos se ocultan de las consultas ordinarias; usa `include_rejected=true` para revisión.
 
 Estos resultados no expresan llegadas, salidas, carga, TEU, identidad de buques ni actividad entre adquisiciones. Las geometrías portuarias actuales son provisionales y no son cartas de navegación.

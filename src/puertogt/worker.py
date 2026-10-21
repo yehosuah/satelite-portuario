@@ -15,7 +15,7 @@ import rasterio
 from PIL import Image
 from pyproj import Transformer
 from rasterio.transform import array_bounds, rowcol
-from shapely.geometry import shape
+from shapely.geometry import Polygon, shape
 
 from puertogt.api import config_path
 from puertogt.contracts import ModelManifest, RasterBundle, Scene
@@ -250,8 +250,9 @@ def process_once(
                 from rasterio.features import geometry_mask
                 from shapely.ops import transform as transform_geometry
 
+                projected_zone = transform_geometry(to_mask.transform, zone)
                 in_zone = geometry_mask(
-                    [transform_geometry(to_mask.transform, zone)],
+                    [projected_zone],
                     out_shape=observable.shape,
                     transform=mask_transform,
                     invert=True,
@@ -260,13 +261,23 @@ def process_once(
                 if not zone_pixels:
                     raise ValueError("prepared crop does not overlap the scheduled zone")
                 fraction = float(observable[in_zone].mean())
-                # A crop may cover only part of a zone. Its observed fraction must
-                # include the missing zone area instead of reporting full coverage.
-                pixel_area = abs(
-                    mask_transform.a * mask_transform.e - mask_transform.b * mask_transform.d
+                # Compute crop coverage geometrically. Rasterized pixel counts
+                # can undercount a fully covered zone at pixel-centre boundaries.
+                mask_height, mask_width = observable.shape
+                footprint = Polygon(
+                    [
+                        mask_transform * corner
+                        for corner in (
+                            (0, 0),
+                            (mask_width, 0),
+                            (mask_width, mask_height),
+                            (0, mask_height),
+                        )
+                    ]
                 )
-                zone_area = transform_geometry(to_mask.transform, zone).area
-                covered_fraction = min(1.0, zone_pixels * pixel_area / zone_area)
+                covered_fraction = min(
+                    1.0, projected_zone.intersection(footprint).area / projected_zone.area
+                )
                 fraction *= covered_fraction
                 if covered_fraction < 0.999:
                     flags.append("zone_partially_outside_crop")

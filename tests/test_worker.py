@@ -3,8 +3,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
+import pytest
 import rasterio
-from rasterio.transform import from_origin
+from rasterio.transform import Affine, from_origin
 
 from puertogt.contracts import ModelManifest, Prediction, RasterBundle, Scene
 from puertogt.jobs import JobQueue, RuntimeLimits
@@ -40,13 +41,71 @@ def test_bundle_resolution_keeps_existing_paths_and_bundle_file_precedence(tmp_p
     assert absolute.band_paths["B04"] == volume / relative
 
 
+@pytest.mark.parametrize(
+    "zone_bounds,skew,expected_status,expected_fraction",
+    [
+        pytest.param(
+            (-90.796875, 13.920654296875, -90.78857421875, 13.928955078125),
+            False,
+            "usable",
+            1.0,
+            id="whole-zone-with-pixel-centre-boundary",
+        ),
+        pytest.param(
+            (-90.796875, 13.921875, -90.765625, 13.9296875),
+            False,
+            "partial",
+            0.5,
+            id="half-zone-outside-crop",
+        ),
+        pytest.param(
+            (-90.8125, 13.921875, -90.796875, 13.9375),
+            True,
+            "partial",
+            0.5,
+            id="half-zone-outside-skewed-footprint",
+        ),
+    ],
+)
 def test_worker_reads_prepared_bundle_from_custom_volume_in_another_directory(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, zone_bounds, skew, expected_status, expected_fraction
 ):
     store = Store(tmp_path / "mounted-volume" / "catalog.sqlite")
     prepared = store.data_dir / "pilot" / "prepared"
     prepared.mkdir(parents=True)
-    affine = from_origin(-90.8, 13.94, 0.001, 0.001)
+    # Binary-exact coordinates make geometric coverage independent of rounding.
+    # The first zone has area 72.25 pixels, with an edge on pixel centres;
+    # a rasterized pixel count must not turn its fully covered area into a gap.
+    affine = Affine(1 / 1024, 1 / 1024 if skew else 0, -90.8125, 0, -1 / 1024, 13.9375)
+    west, south, east, north = zone_bounds
+    configuration = tmp_path / "configuration"
+    configuration.mkdir()
+    (configuration / "ports.geojson").write_text(
+        json.dumps(
+            {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "properties": {"zone_id": "prq_muelles", "port_id": "prq"},
+                        "geometry": {
+                            "type": "Polygon",
+                            "coordinates": [
+                                [
+                                    [west, south],
+                                    [east, south],
+                                    [east, north],
+                                    [west, north],
+                                    [west, south],
+                                ]
+                            ],
+                        },
+                    }
+                ],
+            }
+        )
+    )
+    monkeypatch.setenv("PUERTOGT_CONFIG_DIR", str(configuration))
     for name in ("B04", "B03", "B02", "observable", "valid"):
         with rasterio.open(
             prepared / f"{name}.tif",
@@ -115,10 +174,14 @@ def test_worker_reads_prepared_bundle_from_custom_volume_in_another_directory(
         predictor=predict,
     )
 
-    assert result["status"] == "partial"
+    assert result["status"] == expected_status
     assert result["published_detections"] == 0
     observation = store.get_observation(queue.get_job(job_id)["observation_id"])
     assert observation["detection_count"] == 0
+    assert observation["observable_fraction"] == expected_fraction
+    assert ("zone_partially_outside_crop" in observation["quality_flags"]) == (
+        expected_status == "partial"
+    )
     assert (store.data_dir / "assets" / result["observation_id"] / "observable.tif").is_file()
 
 
