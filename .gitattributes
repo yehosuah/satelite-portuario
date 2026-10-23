@@ -1,0 +1,7 @@
+# Evidence is byte-pinned; checkout must not normalize these files.
+reports/** -text
+config/ports.geojson -text
+
+# The original upstream README and CSV retain their original whitespace.
+reports/change/public-data/oscd-official-archive-README.txt whitespace=-blank-at-eol,-blank-at-eof
+reports/local-review/phase2/calibration-s2-slot-coverage-audit-v11.csv whitespace=cr-at-eol
