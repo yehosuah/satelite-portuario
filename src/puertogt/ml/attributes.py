@@ -119,7 +119,8 @@ def apply_attribute_policy(detection: Prediction, values: Mapping[str, Any], pol
 
 
 def extract_features(bundle: RasterBundle, detections: list[Prediction], encoder_manifest: ModelManifest,
-                     *, feature_level: int = 0, detector=None) -> np.ndarray:
+                     *, feature_level: int = 0, detector=None,
+                     context_policy: Mapping[str, Any] | None = None) -> np.ndarray:
     """ROI mean pooling of learned FPN channels; never infer metres from box extents."""
     from pyproj import Transformer
     from rasterio import Affine
@@ -127,9 +128,21 @@ def extract_features(bundle: RasterBundle, detections: list[Prediction], encoder
     from shapely.ops import transform as project_geometry
 
     from puertogt.ml.detection import load_detector
+    from puertogt.ml.features import fixed_context_image
     from puertogt.preprocess import read_model_input
 
     image = read_model_input(bundle, encoder_manifest)
+    if context_policy is not None:
+        detector = detector or load_detector(encoder_manifest)
+        features = []
+        for prediction in detections:
+            context = fixed_context_image(image, bundle, prediction.geometry, context_policy)
+            levels = detector.features(context)
+            if not 0 <= feature_level < len(levels):
+                raise ValueError("Feature level is outside the pinned encoder")
+            feature_map = levels[feature_level][0].detach().cpu().numpy()
+            features.append(feature_map.mean(axis=(1, 2)))
+        return np.asarray(features, dtype=np.float32)
     if max(image.shape[-2:]) > 512:
         raise ValueError("Attribute feature extraction currently requires a crop no larger than 512 pixels")
     detector = detector or load_detector(encoder_manifest)
@@ -179,7 +192,8 @@ def estimate_attributes(bundle: RasterBundle, detections: list[Prediction], mode
     encoder = ModelManifest.model_validate(encoder_values)
     if encoder.sensor != model.sensor or not encoder.weights_sha256:
         raise ValueError("Attribute encoder does not match the sensor or lacks its hash")
-    features = extract_features(bundle, detections, encoder, feature_level=model.metadata.get("feature_level", 0))
+    features = extract_features(bundle, detections, encoder, feature_level=model.metadata.get("feature_level", 0),
+                                context_policy=model.metadata.get("feature_context"))
     import torch
     taxonomy = model.metadata.get("taxonomy", list(FAMILIES))
     if any(label not in FAMILIES for label in taxonomy) or len(set(taxonomy)) != len(taxonomy):
@@ -213,5 +227,17 @@ def predict_attributes(bundle: RasterBundle, detections: list[Prediction], model
     policies = model.publication_policy.get("fields", {})
     if not model.weights_path:
         return [apply_attribute_policy(item, {}, policies) for item in detections]
-    estimates = estimate_attributes(bundle, detections, model)
+    from puertogt.ml.features import ContextUnavailable
+
+    try:
+        estimates = estimate_attributes(bundle, detections, model)
+    except ContextUnavailable:
+        # Missing surrounding pixels affect only the corresponding object. The
+        # raw evaluation API remains strict about incomplete reference contexts.
+        estimates = []
+        for detection in detections:
+            try:
+                estimates.append(estimate_attributes(bundle, [detection], model)[0])
+            except ContextUnavailable:
+                estimates.append({})
     return [apply_attribute_policy(detection, values, policies) for detection, values in zip(detections, estimates)]

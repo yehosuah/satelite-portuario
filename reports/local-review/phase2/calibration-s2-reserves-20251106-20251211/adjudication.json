@@ -1,0 +1,74 @@
+{
+  "batch": "phase2-calibration-s2-reserves-20251106-20251211-v1",
+  "created_at": "2026-10-23T04:34:15.347753+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Root inspected raw/reference images listed in root-raw-pass before target proposal correspondence. Other dates and prior CAL failure known. Later scope addenda inspected separately. AI references, not independent human or AIS ground truth. No target scores or metrics seen.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/correspondence/pbr-20251106-s2-review.json",
+      "sha256": "60a317aa7347eb2fdc2e8b7a4ab9f07cf7da5896cb417be99a41710554929384"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/correspondence/stc-20251106-s2-review.json",
+      "sha256": "5bfdacd6b347c2a6074892fe6f67fee78615dbcb39d72803a157e122c6f75504"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/correspondence/pbr-20251211-s2-review.json",
+      "sha256": "5171aeee51a5bf7a31bcfe002d5cf31df2080325c02d6b1d67af66e5a8ce0750"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/correspondence/stc-20251211-s2-review.json",
+      "sha256": "d27d08c08063f2ef9e65216047d17bad3d877b7380d8e62f910cdc9af0bed90a"
+    }
+  ],
+  "accepted_observation_ids": [
+    "32c19cc1-5ea4-4394-b065-fe16ae3c6d1b",
+    "c616db1f-796e-4a12-aa9d-7742cefbb12a",
+    "94766ba4-bcc9-4906-a97d-63d0597ae24e",
+    "54eae851-17db-4832-ac44-8fa67204235b",
+    "3604c543-9be5-4b4b-b8a3-b19c17028deb",
+    "69a11745-6307-40ec-bb1c-b82ff9779f70",
+    "8a3fb82c-4b1d-4688-8bce-af58736fc81f",
+    "fc046350-bd77-42ba-9df3-e044309518a2",
+    "770e1093-8ea9-40fd-abfc-aa70c6d42fad",
+    "6acadd95-1586-4ed0-9ee5-c6572edd9cc5",
+    "3c9df6ee-66c4-49ca-a7bf-7897c0679d78",
+    "932f8226-42f7-48e4-99ea-9ad34fdd6b41",
+    "a6f6a280-5ea4-48c8-9f57-f54d7d0b934a",
+    "c08dac92-a702-4e8c-b062-b7ec61b2ec63",
+    "828a390e-1409-4d00-bae6-c4e0d407e942",
+    "e4b92e60-5afe-46ae-acc8-936791de9438"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/correspondence/verification.json",
+      "sha256": "63a4d56a30dcb9dfc63bbd9d91e352759be44afb36ab36c84a7f07debee67bc3"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/second-review-packet.json",
+      "sha256": "c8e3ce9336d9c436997909b162d90e47acfe2850535834731ae10d93ac1153a7"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/root-raw-pass.json",
+      "sha256": "7bf0302b20cdcf5ef19fc4519a90c479cd5d244349239b954461e65a263ad18d"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251106-20251211/stc-20251106-southeast-raw-quality-addendum.json",
+      "sha256": "7fbe63aa0f21bcc6326e6b306e5b7dafca3a1a32fb6d1fea49a08f957f5148b3"
+    }
+  ],
+  "expected_reviewed_observations": 16,
+  "expected_unique_objects": 4,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 4,
+  "expected_useful_scopes": 14,
+  "expected_abstentions": 2,
+  "decisions": [
+    "Confirm four raw hull references across Nov6/Dec11 and preserve unknowns. Offshore red hull outside frozen AOIs is context only.",
+    "Approve removal of uncertain southeast STCfondeo Nov6 fragment before model correspondence. No proven terrestrial or marine negative label claimed there.",
+    "PBR Dec11 muelles/patios abstain. No scores or TEST inference and no family/dimension labels."
+  ]
+}

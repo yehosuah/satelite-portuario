@@ -41,6 +41,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import shutil
 import tempfile
 import time
@@ -70,6 +71,38 @@ from puertogt.store import Store, confined_path, json_text, sha256_file, utc_tex
 PAIR_FORMAT = "puertogt-reviewed-change-pairs-v1"
 
 
+def _pair_identity(sample: dict) -> tuple:
+    """Windows retain the real acquisition identity and its split membership."""
+    pair = tuple(sample[role].get("acquisition_key") for role in ("reference", "target"))
+    window = sample.get("spatial_window")
+    if window is None:
+        return (*pair, None)
+    if (not isinstance(window, list) or len(window) != 4
+            or any(type(value) is not int for value in window)
+            or min(window[:2]) < 0 or min(window[2:]) <= 0):
+        raise ValueError("Pair spatial_window must be nonnegative x/y and positive width/height")
+    return (*pair, tuple(window))
+
+
+def _label_provenance(label: dict, *, require_kind: bool = False) -> None:
+    if label.get("complete") is not True or type(label.get("negative")) is not bool:
+        raise ValueError("Pairs require complete annotation and explicit negative labels")
+    kind = label.get("review_kind", None if require_kind else "human")
+    if kind == "public_dataset":
+        provenance = label.get("provenance", {})
+        if (provenance.get("annotation_method") != "manual_pixel_annotation"
+                or not all(isinstance(provenance.get(field), str) and provenance[field].strip()
+                           for field in ("dataset", "source", "attribution", "license"))
+                or not re.fullmatch(r"[a-f0-9]{64}", str(provenance.get("source_sha256", "")))):
+            raise ValueError("Public manual labels require complete source/license provenance")
+    elif kind == "human":
+        if not str(label.get("reviewed_by", "")).strip() or not label.get("reviewed_at"):
+            raise ValueError("Pairs require complete, attributed human review")
+        utc_text(label["reviewed_at"])
+    else:
+        raise ValueError("References require human review or attributed public manual provenance")
+
+
 def _verified(root: Path, path: str, expected: str) -> Path:
     source = confined_path(root, path)
     if not expected or sha256_file(source) != expected:
@@ -93,16 +126,19 @@ def _groups(sample: dict) -> set[str]:
 
 
 def _dataset(root: Path, reserved_manifests: Iterable[Path]) -> dict:
+    from puertogt.ml.oscd import PIXEL_PAIR_FORMAT
     path = confined_path(root, "manifest.json")
     manifest = json.loads(path.read_text())
-    if manifest.get("format") != PAIR_FORMAT or manifest.get("split") != "train":
+    if manifest.get("format") not in {PAIR_FORMAT, PIXEL_PAIR_FORMAT} or manifest.get("split") != "train":
         raise ValueError("Change training requires the reviewed pairs format and train split")
     if not manifest.get("version") or not manifest.get("samples"):
         raise ValueError("A versioned nonempty pair dataset is required")
     groups, identifiers, pairs = set(), set(), set()
     for sample in manifest["samples"]:
+        if ("numeric_pair" in sample) != (manifest["format"] == PIXEL_PAIR_FORMAT):
+            raise ValueError("Numeric pair representation must match the dataset format")
         identifier = sample.get("pair_id")
-        pair = tuple(sample[role].get("acquisition_key") for role in ("reference", "target"))
+        pair = _pair_identity(sample)
         if not identifier or identifier in identifiers or pair in pairs:
             raise ValueError("Pair IDs and acquisition pairs must be unique")
         if sample.get("split", "train") != "train":
@@ -115,7 +151,7 @@ def _dataset(root: Path, reserved_manifests: Iterable[Path]) -> dict:
         reserved_path = Path(reserved_path)
         reserved = json.loads(reserved_path.read_text())
         if (
-            reserved.get("format") != PAIR_FORMAT
+            reserved.get("format") != manifest["format"]
             or reserved.get("split") not in {"calibration", "test"}
             or not reserved.get("samples")
         ):
@@ -227,19 +263,18 @@ def _pair_arrays(reference: RasterBundle, target: RasterBundle, protocol: dict):
 
 
 def _reviewed_pair(root: Path, sample: dict, protocol: dict):
+    if "numeric_pair" in sample:
+        from puertogt.ml.oscd import load_pixel_pair
+        return load_pixel_pair(root, sample, protocol)
     label = sample["labels"]
-    if (
-        label.get("complete") is not True
-        or not str(label.get("reviewed_by", "")).strip()
-        or type(label.get("negative")) is not bool
-        or not label.get("reviewed_at")
-    ):
-        raise ValueError(
-            "Pairs require complete, attributed human review and explicit negative labels"
-        )
-    utc_text(label["reviewed_at"])
+    _label_provenance(label)
     before = _load_bundle(root, sample["reference"], sample["asset_hashes"])
     after = _load_bundle(root, sample["target"], sample["asset_hashes"])
+    if sample.get("spatial_window") is not None:
+        _pair_identity(sample)
+        if any(bundle.metadata.get("source_spatial_window") != sample["spatial_window"]
+               for bundle in (before, after)):
+            raise ValueError("Pair spatial window disagrees with its numeric evidence")
     left, right, valid = _pair_arrays(before, after, protocol)
     path = _verified(root, label["path"], label["sha256"])
     values, label_valid = _grid_raster(path, after, valid.shape)
@@ -261,6 +296,8 @@ def train_change_dataset(
     learning_rate: float = 1e-4,
     device: str = "cpu",
     reserved_manifests: Iterable[Path] = (),
+    positive_weight: float = 1.0,
+    max_seconds: float | None = None,
 ) -> ModelManifest:
     """Train the own decoder on reviewed pairs; save full encoder/decoder CPU weights."""
     if (
@@ -275,10 +312,14 @@ def train_change_dataset(
         or epochs < 1
         or not math.isfinite(learning_rate)
         or learning_rate <= 0
+        or not math.isfinite(positive_weight)
+        or positive_weight <= 0
     ):
         raise ValueError("Training epochs and learning rate must be positive")
     if device not in {"cpu", "mps"}:
         raise ValueError("Change training supports CPU or MPS")
+    if max_seconds is not None and (not math.isfinite(max_seconds) or max_seconds <= 0):
+        raise ValueError("Training time budget must be finite and positive")
     root = Path(dataset_dir).resolve()
     dataset = _dataset(root, reserved_manifests)
     positive, negative = 0, 0
@@ -316,6 +357,8 @@ def train_change_dataset(
     for _ in range(epochs):
         network.train()
         for sample in dataset["samples"]:
+            if max_seconds is not None and time.monotonic() - started >= max_seconds:
+                raise TimeoutError("Change training exceeded the fixed time budget; no model exported")
             # Keep only one bounded pair in memory and recheck its immutable bytes.
             left, right, labels, valid = _reviewed_pair(root, sample, dataset["quality_protocol"])
             pad = ((0, (-labels.shape[0]) % 32), (0, (-labels.shape[1]) % 32))
@@ -326,7 +369,7 @@ def train_change_dataset(
             target = torch.from_numpy(np.pad(labels.astype(np.float32), pad)).to(device)[None, None]
             mask = torch.from_numpy(np.pad(valid, pad)).to(device)[None, None]
             optimizer.zero_grad(set_to_none=True)
-            loss = masked_change_loss(network(*inputs), target, mask)
+            loss = masked_change_loss(network(*inputs), target, mask, positive_weight=positive_weight)
             if not torch.isfinite(loss):
                 raise ValueError("Non-finite supervised change training loss")
             loss.backward()
@@ -337,7 +380,7 @@ def train_change_dataset(
     )
     if not changed:
         raise ValueError("Training did not update the change decoder")
-    return export_training_artifact(
+    result = export_training_artifact(
         network,
         base_manifest,
         destination,
@@ -371,11 +414,22 @@ def train_change_dataset(
             "seconds": time.monotonic() - started,
             "updated_parameters": changed,
             "encoder_frozen": True,
+            "positive_weight": positive_weight,
             "encoder_weights_sha256": encoder_hash,
             "quality_protocol": dataset["quality_protocol"],
             "scope": "supervised_training; independent evaluation still required",
         },
     )
+    # These parameters define inference, not an approval or validation result.
+    for field in ("change_threshold", "min_area_m2", "max_alignment_rmse_pixels",
+                  "minimum_observable_fraction"):
+        if field in base_manifest.publication_policy:
+            result.publication_policy[field] = base_manifest.publication_policy[field]
+    result.metadata["training_state"] = "own_supervised_decoder_trained; not_locally_validated"
+    pending = Path(destination) / ".manifest.pending.json"
+    pending.write_text(json_text(result.model_dump(mode="json")))
+    os.replace(pending, Path(destination) / "manifest.json")
+    return result
 
 
 def _observation(connection, bundle: RasterBundle, *, require_visible: bool = True) -> dict:

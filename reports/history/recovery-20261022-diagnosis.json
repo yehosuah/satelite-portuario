@@ -1,0 +1,184 @@
+{
+  "schema_version": "history-recovery-diagnosis-v1",
+  "as_of_utc": "2026-10-23T02:51:34.111000+00:00",
+  "author": "codex-ai-systems-reviewer",
+  "scope": "Operational recovery only; no detector scores, prediction counts or prediction geometries inspected.",
+  "inputs": {
+    "plan": {
+      "path": "data/history/full-v1/plan.json",
+      "sha256": "28095b6d61477bff3147ac5ec3a72d9397f97b1c117beab480c78113ae3a56ae"
+    },
+    "sources": {
+      "src/puertogt/history.py": "045a989919d299b1c3d7afdea98e3ee8b1befd0ab1433712bebd3873f349ff6c",
+      "scripts/process_history.py": "63811a27d6cb56b7ea1fefbe3843b40cca5fe9f835612c6fb26387fdfc65815f",
+      "tests/test_history_recovery.py": "dae3b1de6c164fd8008dafd4d88938fa6bfc6bec67ced4ebbcd5c69d811f2e41"
+    }
+  },
+  "boundary": {
+    "previous_pid": 95041,
+    "exit": "campaign_paused after acquisition_complete",
+    "last_complete_acquisition": "S2C:MSIL1C:20250311T161121:R140:T16PCC",
+    "pause_file_retained": true,
+    "running_ledger_rows": 0,
+    "running_queue_jobs": 0,
+    "both_os_locks_observed_available": true
+  },
+  "current_states": {
+    "complete": 635,
+    "retry": 182,
+    "unavailable": 7
+  },
+  "remaining_attempts": [
+    {
+      "status": "retry",
+      "attempts": 1,
+      "acquisitions": 179
+    },
+    {
+      "status": "retry",
+      "attempts": 2,
+      "acquisitions": 3
+    },
+    {
+      "status": "unavailable",
+      "attempts": 1,
+      "acquisitions": 7
+    }
+  ],
+  "diagnosis": {
+    "dns": {
+      "acquisitions": 154,
+      "attempts_each": 1,
+      "reserved_bytes_total": 0,
+      "first_started_utc": "2026-10-21T23:05:56.300707Z",
+      "last_started_utc": "2026-10-22T12:39:49.279053Z",
+      "interpretation": "Failures occurred during metadata discovery before raster reservations; they remain retryable."
+    },
+    "lease_expiry": {
+      "acquisitions": 10,
+      "source": "pmset -g log, filtered to Sleep/Wake/DarkWake timestamps",
+      "acquisition_windows_with_sleep_over_600_seconds": 6,
+      "largest_observed_sleep_seconds": 1075,
+      "lease_seconds": 600,
+      "interpretation": "Host sleep is a demonstrated contributor in the acquisition windows; timing does not establish it as the sole cause of every expired lease."
+    },
+    "local_publication": {
+      "acquisition_key": "S2C:MSIL1C:20261005T162131:R040:T16PCC",
+      "failure": "Temporary .pending file absent during no-replace link to B07.tif",
+      "classification_bug_confirmed": true,
+      "original_temporary_disappearance_cause": "unresolved",
+      "cleanup_review": "History cleanup targets only per-acquisition work subdirectories; retained evidence cleanup removes its own uniquely named .part files. No code path found that scans/removes publication .pending files."
+    }
+  },
+  "recovery": {
+    "journal_path": "data/history/full-v1/recoveries/ffb2a198baba0329b81d1990-local-publication.json",
+    "sha256": "1bb7e81d2a5447df91618b12fdc16bf1352185ed59929721a19d218c0b22612f",
+    "job_id": "477674b3-7cf8-4381-b4f9-97c01e1715ee",
+    "observation_id": "6b89bc9f-051d-4651-beb7-893019f23e6f",
+    "status": "retry scheduled; acquisition not yet reprocessed",
+    "attempts_before_and_after": 1,
+    "reserved_bytes_before_and_after": 26165248,
+    "published_assets_verified_and_preserved": 5,
+    "successful_zone_preserved": "stc_muelles"
+  },
+  "download_accounting": {
+    "reserved_bytes": 19306524975,
+    "campaign_limit_bytes": 214748364800,
+    "retroactive_refunds": 0,
+    "new_behavior": "Specific durable receipts can be refunded once only after DNS resolution fails before any response begins; interrupted/partial/unknown transfers retain the conservative reservation."
+  },
+  "unavailable_exceptions": [
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114525:20260831T114550:004369:008126",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114501:20260912T114526:004544:00873E",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114526:20260912T114551:004544:00873E",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "No same-track public context 30–90 days before acquisition",
+      "bytes_reserved": 0
+    },
+    {
+      "acquisition_key": "S2B:MSIL1C:20250826T161829:R040:T16PCC",
+      "status": "unavailable",
+      "attempts": 1,
+      "error_code": "FileNotFoundError",
+      "error_message": "GCS has no complete L1C nine-band representation for S2B:MSIL1C:20250826T161829:R040:T16PCC",
+      "bytes_reserved": 0
+    }
+  ],
+  "public_source_checks": [
+    {
+      "acquisition_key": "S2B:MSIL1C:20250826T161829:R040:T16PCC",
+      "checked_at_utc": "2026-10-23T02:44:51.722599Z",
+      "provider": "GCS public Sentinel-2 L1C",
+      "url": "https://storage.googleapis.com/storage/v1/b/gcp-public-data-sentinel-2/o?prefix=tiles%2F16%2FP%2FCC%2FS2B_MSIL1C_20250826T161829&maxResults=1000&fields=items%28name%2Cgeneration%2Csize%29%2CnextPageToken",
+      "http_status": 200,
+      "objects": 0,
+      "next_page_token": false,
+      "limitation": "Absence in this exact public mirror prefix, not evidence that the acquisition does not exist in CDSE or another archive."
+    },
+    {
+      "targets": 6,
+      "report_path": "reports/history/missing-context-investigation.json",
+      "sha256": "50eb30b0322d15068d6ba08b4a2220d88e3c5975310704e768df2fafb73d0064",
+      "finding": "Prior independent CDSE/ASF search found no local same-track context 30–90 days before the six S1D acquisitions."
+    }
+  ],
+  "validation": {
+    "command": "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_history_recovery.py tests/test_history_materialization.py tests/test_history_evidence.py tests/test_jobs.py",
+    "passed": 40,
+    "ruff": "passed",
+    "git_diff_check": "passed",
+    "red_green": [
+      "Local FileNotFoundError: unavailable -> retry",
+      "Repeated DNS before response: accumulated reservation -> refund per durable receipt",
+      "Error after response started: reservation incorrectly refunded -> conservatively retained"
+    ],
+    "recovery_crash_contract": "Replay tested after catalog commit and after ledger commit; original job/observation IDs, attempt counts and assets retained."
+  },
+  "remaining_work": [
+    "Coordinate heavy lock before resuming 182 retry acquisitions.",
+    "Use updated source explicitly: the current virtual environment resolves the installed package unless PYTHONPATH=src is set or the updated wheel is installed.",
+    "Reconcile terminal states after real processing; do not classify unsuccessful acquisitions as complete.",
+    "A compatible alternate public source for the missing S2 may still be investigated; no source or frozen plan was substituted."
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "schema_version": "phase2-amended-candidate-calibration-v1",
+  "pins": {
+    "model": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/experiments/phase2-s2-train-temporal-v1-20261022/integration-manifest.json",
+      "sha256": "4e9462bc1c0048b0cf63d2c865cddcf8d6cba30ffc34e02401d4029effc329d4"
+    },
+    "training_receipt": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/experiments/phase2-s2-train-temporal-v1-20261022/completed.json",
+      "sha256": "77aab2d7a9e989a41bcd7d401a1f86c840b35041caef9967ce2cc4b5b670a1cd"
+    },
+    "training_plan": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/reports/local-review/phase2/amendments/s2-train-temporal-v1.json",
+      "sha256": "871b1cf349e415ad79d1a6eefa4f2a910cb5771b0f84b3bd1d29126d91577c73"
+    },
+    "protocol": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/reports/local-review/phase2/protocol.md",
+      "sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c"
+    },
+    "selection": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/reports/local-review/phase2/sampling-plan.json",
+      "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+    },
+    "execution_order": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/reports/local-review/phase2/execution-order-v11.json",
+      "sha256": "a86bacc5a642bc9f4ab4c7049c5a8e4016d088c2311222f21238a5ca253d8f63"
+    },
+    "weights": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/experiments/phase2-s2-train-temporal-v1-20261022/final-trained/weights.pt",
+      "sha256": "45c1a890173fc654d17b91e0391fb52d6fef8c4daa8b9eefdd53c5c9ba5a9cfb"
+    },
+    "train_source": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/datasets/phase2-reviews/s2-january-february-v1/source/manifest.json",
+      "sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204"
+    }
+  },
+  "datasets": {
+    "train": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+      "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc"
+    },
+    "calibration": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source",
+      "sha256": "e7a5cac71247291d5e66eb889394deb69cf6c5196fee4ec116b361861c018729"
+    },
+    "test": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/data/datasets/phase2-reviews/s2-test-round1-v1/source",
+      "sha256": "f25fcf5b39f88dfd029e9f014d1794577016b2f87f497b6e57c099704bd11e1e"
+    }
+  },
+  "source_sha256": {
+    "runner": "4837f940de88a79ee9f137e4a26ea8d80e0e47cf8db3a4f8c364bb2d678bbcc5",
+    "history": "09bdbfc1d9cc2670544cf04d4d47cc35df001b4d640f041d976455d7a5fef3e3",
+    "preprocess": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
+    "review": "c9fe1b118f43e119ea07df5dcaf99a7a848c87f709153325c9820a9f4fc9841b",
+    "models": "be755d93b03d2ea7d8ffa76d7538250043396ecbaa95c1115479aeb4b4250b92",
+    "ml.workflows": "00047902ba54a6be8ffbeb51e08139fb24debb6be6ff7b26120fb6d17a772921",
+    "ml.history_evidence": "c92bc3dfb2e16d30afeee85a195bb836292246f38397212e452c0e1cfb9cd45a",
+    "ml.detection": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25",
+    "ml.training": "5e5096152f1e3d890fb8ccc1395731ea0d9b1065f67108fa8e71637381b68762",
+    "ml.evaluation": "4e0681ef1b526a327b31c7ffd6e7a5dd01de969efda71220874db3b3abfa8b29",
+    "calibration_runner": "c280e383f76d12b8a587628e21fdb64aed5cdc47193627032fc37393aa85438f"
+  },
+  "runtime": {
+    "python": "3.11.15 (main, Jul 23 2026, 14:34:23) [Clang 22.1.3 ]",
+    "platform": "darwin",
+    "lock_sha256": "0645704d62bce6a34ab2cf2f983ea44d87e3f39cea838825624778a66b5d8959",
+    "packages": {
+      "numpy": "2.4.6",
+      "rasterio": "1.4.4",
+      "shapely": "2.2.0",
+      "pyproj": "3.7.2",
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "rslearn": "0.1.18"
+    }
+  },
+  "parameters": {
+    "iou": 0.5,
+    "min_support_per_port": 30,
+    "precision": 0.9,
+    "recall": 0.8,
+    "grid": [
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.24,
+      0.25,
+      0.26,
+      0.27,
+      0.28,
+      0.29,
+      0.3,
+      0.31,
+      0.32,
+      0.33,
+      0.34,
+      0.35,
+      0.36,
+      0.37,
+      0.38,
+      0.39,
+      0.4,
+      0.41,
+      0.42,
+      0.43,
+      0.44,
+      0.45,
+      0.46,
+      0.47,
+      0.48,
+      0.49,
+      0.5,
+      0.51,
+      0.52,
+      0.53,
+      0.54,
+      0.55,
+      0.56,
+      0.57,
+      0.58,
+      0.59,
+      0.6,
+      0.61,
+      0.62,
+      0.63,
+      0.64,
+      0.65,
+      0.66,
+      0.67,
+      0.68,
+      0.69,
+      0.7,
+      0.71,
+      0.72,
+      0.73,
+      0.74,
+      0.75,
+      0.76,
+      0.77,
+      0.78,
+      0.79,
+      0.8,
+      0.81,
+      0.82,
+      0.83,
+      0.84,
+      0.85,
+      0.86,
+      0.87,
+      0.88,
+      0.89,
+      0.9,
+      0.91,
+      0.92,
+      0.93,
+      0.94,
+      0.95,
+      0.96,
+      0.97,
+      0.98,
+      0.99
+    ],
+    "required_ports": [
+      "prq",
+      "stc",
+      "pbr"
+    ]
+  },
+  "test_label_geometries_opened": false,
+  "test_inference_permitted": false,
+  "automatic_publication": false,
+  "reference_scope": "Attributed AI visual references on explicit reviewed surfaces; some surfaces are detector-conditioned, not whole-port precision."
+}

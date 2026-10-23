@@ -1,0 +1,74 @@
+{
+  "batch": "phase2-calibration-s2-round4-caribe-v1",
+  "created_at": "2026-10-23T04:03:41.295406+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Root inspected raw evidence before target correspondence, then one score-free unknown proposal geometry and final guard. Previous-cohort failure known. Scope is detector-conditioned; no unconditional whole-port precision claim. Attributed AI visual labels, not human or AIS ground truth.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence/pbr-20251118-s2-review.json",
+      "sha256": "dfda0dab5c717ec807f0c57b84703bcc4609476a6b30f3a7c4f78bf84145a261"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence/stc-20251118-s2-review.json",
+      "sha256": "1ef976ee86c668442a0d519da617d789234433f9c239be4fb8e06187145946f5"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence/pbr-20251126-s2-review.json",
+      "sha256": "cdb5a4a548570f1100756e791621c1b961edb5b1bd9448b0a611cecbc5b345b6"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence/stc-20251126-s2-review.json",
+      "sha256": "519830180284d965a63c45347f8d5512e1ad6886dd0603c43a4d35d2ae641bf8"
+    }
+  ],
+  "accepted_observation_ids": [
+    "2f8b3136-eca3-4839-9444-da479a0a7784",
+    "46abd8c1-3051-409f-97bd-611a08c7b059",
+    "4f4a9861-3694-451d-bb64-cf7077de258c",
+    "042546e2-92ad-499f-9e50-c5b0edcd9cad",
+    "46402aa9-2b9d-4748-9bd5-80f1699507c3",
+    "dc7d8b08-8cc4-49e4-a1e0-b47c2cf9e312",
+    "a02635af-fa8b-4f45-8454-3676cd4ca207",
+    "f93f9167-95c8-4ad9-bead-ac4af31240f6",
+    "42ce466a-5217-4ad4-84e4-9f3980631f79",
+    "ef690ebd-fadf-4c56-a8bd-64da14d6fec6",
+    "20aad731-8cb1-481e-8090-252dbf3ee5f3",
+    "42d65138-003e-49bf-83eb-9dfa9f852cd7",
+    "97644660-1f49-4965-b104-755b1a5a5a1a",
+    "7315dcfb-a604-416e-a662-d48a21415ae6",
+    "6d1056eb-cd81-4a1b-97e3-f3abf3589e06",
+    "69b937c7-c26c-4027-9999-e919c59eec03"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/root-raw-pass.json",
+      "sha256": "494772e5440aad65e24a183c6cc83d0f13e3bfda95fbca5f675e9446ddc6fe0e"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence/verification.json",
+      "sha256": "c00a1573c226739f98bf4e963eb9859685605b0443e60992ce3149a568817053"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/detector-conditioned-scope-addendum.json",
+      "sha256": "247b3f68cb252a335da74abf12093b48df46523088b30b967e916005b6a337d5"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_canal-20251118-final-detector-guard.png",
+      "sha256": "d1587c8a9c24fd5ebfc6680fecda12379e9e4fbd5bdce45fca4c1b90ba4004d7"
+    }
+  ],
+  "expected_reviewed_observations": 16,
+  "expected_unique_objects": 2,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 2,
+  "expected_useful_scopes": 9,
+  "expected_abstentions": 7,
+  "decisions": [
+    "Confirm PBR and STC berth hulls Nov18; preserve boxes and raw unknown areas.",
+    "Exclude unknown STC canal proposal footprint plus10m; removes24459.342m\u00b2 /1.10999% of prior reviewed scope. No reject. Manual ring projection preserves topology; segmentize rejected.",
+    "Nov26 PBR abstains; STC only explicit tiny canal negative scope. No family or dimensions."
+  ]
+}

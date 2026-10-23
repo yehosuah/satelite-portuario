@@ -1,0 +1,295 @@
+{
+  "created_at": "2026-10-23T02:54:10.031914+00:00",
+  "author": "codex-ai-model-pilot",
+  "reason": "All eight observations unusable; each full observable mask has zero positive pixels. Saturated raw previews do not support a vessel presence or absence claim.",
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v6.json",
+    "sha256": "356cc5d4931f08898320246f746194ce336b9494bc16ee6149fd79aec0fc790d"
+  },
+  "prior_activation": {
+    "path": "reports/local-review/phase2/reserve-calibration-caribe-20251101-activation.json",
+    "sha256": "16828f341126ed567cadbb8b359abd387b3b0fc8f93ce71b342b3d58068ee67d"
+  },
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "source_raw_reports": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/pbr-20251101-s2-raw-review.json",
+      "sha256": "399c00b3b6b9458e716a7dce51185bbe079c912a1c5b133218eebcd397e05b09"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/stc-20251101-s2-raw-review.json",
+      "sha256": "a198f214068a057534c905711b53f230294a8a36c2f259329776216230d6f424"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "d62b9716-a702-4e49-9aff-87708d831e85",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/d62b9716-a702-4e49-9aff-87708d831e85/observable.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+        },
+        {
+          "path": "data/assets/d62b9716-a702-4e49-9aff-87708d831e85/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/d62b9716-a702-4e49-9aff-87708d831e85/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "c7a9fb5d-2983-4f8e-9ef8-cf598329bda4",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/c7a9fb5d-2983-4f8e-9ef8-cf598329bda4/observable.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+        },
+        {
+          "path": "data/assets/c7a9fb5d-2983-4f8e-9ef8-cf598329bda4/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/c7a9fb5d-2983-4f8e-9ef8-cf598329bda4/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "4f11a23d-cbbd-4c42-8bec-8312f69c4aa6",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/4f11a23d-cbbd-4c42-8bec-8312f69c4aa6/observable.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e"
+        },
+        {
+          "path": "data/assets/4f11a23d-cbbd-4c42-8bec-8312f69c4aa6/preview.png",
+          "sha256": "75bc4c81a223da07d4a750e6c6c8035694649649ff6d15f6894f2a93b88cbd09"
+        },
+        {
+          "path": "data/assets/4f11a23d-cbbd-4c42-8bec-8312f69c4aa6/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "9ca970cc-4d50-429e-8801-705175fcf810",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/9ca970cc-4d50-429e-8801-705175fcf810/observable.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e"
+        },
+        {
+          "path": "data/assets/9ca970cc-4d50-429e-8801-705175fcf810/preview.png",
+          "sha256": "75bc4c81a223da07d4a750e6c6c8035694649649ff6d15f6894f2a93b88cbd09"
+        },
+        {
+          "path": "data/assets/9ca970cc-4d50-429e-8801-705175fcf810/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "1f078167-1efb-48fd-9e5f-b1633577fa3f",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/1f078167-1efb-48fd-9e5f-b1633577fa3f/observable.tif",
+          "sha256": "ffa2e4c14a139dabf1e9d01c35ea46bba9c3c08ff227a21a6548a877169c1da6"
+        },
+        {
+          "path": "data/assets/1f078167-1efb-48fd-9e5f-b1633577fa3f/preview.png",
+          "sha256": "96e85786844f5be2231c2bbbc4a214544473c09cc54c26004accd627f5373fe3"
+        },
+        {
+          "path": "data/assets/1f078167-1efb-48fd-9e5f-b1633577fa3f/valid.tif",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6"
+        }
+      ]
+    },
+    {
+      "observation_id": "845fd5f2-8f07-4904-8466-a46cdd101f79",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/845fd5f2-8f07-4904-8466-a46cdd101f79/observable.tif",
+          "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec"
+        },
+        {
+          "path": "data/assets/845fd5f2-8f07-4904-8466-a46cdd101f79/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/845fd5f2-8f07-4904-8466-a46cdd101f79/valid.tif",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823"
+        }
+      ]
+    },
+    {
+      "observation_id": "42b2a258-cdd7-4dfe-b3c1-a0bac9604ebb",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/42b2a258-cdd7-4dfe-b3c1-a0bac9604ebb/observable.tif",
+          "sha256": "92d96784979f6aafff7264dc58558f7d7337470c6700fc7664ee6d98e705dd09"
+        },
+        {
+          "path": "data/assets/42b2a258-cdd7-4dfe-b3c1-a0bac9604ebb/preview.png",
+          "sha256": "810d2e57aa8d7419d79eea7720cc454fdc5248e46f9bb19d01c0c1c466a8a8ff"
+        },
+        {
+          "path": "data/assets/42b2a258-cdd7-4dfe-b3c1-a0bac9604ebb/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    },
+    {
+      "observation_id": "3c67d49d-db3b-4f89-82f1-8492197dc4e9",
+      "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/3c67d49d-db3b-4f89-82f1-8492197dc4e9/observable.tif",
+          "sha256": "92d96784979f6aafff7264dc58558f7d7337470c6700fc7664ee6d98e705dd09"
+        },
+        {
+          "path": "data/assets/3c67d49d-db3b-4f89-82f1-8492197dc4e9/preview.png",
+          "sha256": "810d2e57aa8d7419d79eea7720cc454fdc5248e46f9bb19d01c0c1c466a8a8ff"
+        },
+        {
+          "path": "data/assets/3c67d49d-db3b-4f89-82f1-8492197dc4e9/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    }
+  ],
+  "slot_records": [
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "stc",
+      "slot_start": "2025-11-01T00:00:00+00:00",
+      "slot_end_exclusive": "2025-11-09T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+        "captured_at": "2025-11-01T16:13:29.024000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+          "captured_at": "2025-11-01T16:27:01.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+          "captured_at": "2025-11-04T16:23:49.025000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+          "captured_at": "2025-11-06T16:21:01.024000Z",
+          "context": null
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "pbr",
+      "slot_start": "2025-11-01T00:00:00+00:00",
+      "slot_end_exclusive": "2025-11-09T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+        "captured_at": "2025-11-01T16:13:29.024000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+          "captured_at": "2025-11-01T16:27:01.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+          "captured_at": "2025-11-04T16:23:49.025000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+          "captured_at": "2025-11-06T16:21:01.024000Z",
+          "context": null
+        }
+      ]
+    }
+  ],
+  "requested_next_reserve": {
+    "rank": 3,
+    "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+    "ports": [
+      "pbr",
+      "stc"
+    ],
+    "images_opened": false,
+    "proposals_or_scores_opened": false
+  },
+  "original_primary_and_rank2_preserved_as_abstentions": true,
+  "replacement_based_on_presence_or_performance": false,
+  "database_writes": false,
+  "metrics_computed": false
+}

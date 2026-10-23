@@ -1,0 +1,9 @@
+{
+  "stage": "continuity structural validation",
+  "attempt": 1,
+  "status": "validator_assumption_corrected",
+  "source_data_changed": false,
+  "evidence_omitted": false,
+  "reason": "Zone mosaic bundles legitimately use mosaic_method and do not carry prepared-tile history_file_hashes. All referenced files existed. The initial validator required the tile-only hash field for every bundle and rejected a valid mosaic. The failed staging directory was removed before publication.",
+  "correction": "Prepared tiles continue to require their original pinned hashes. Zone mosaics require recognized mosaic_method, source/copy byte equality and a new packaging hash; report explicitly distinguishes both verification bases."
+}

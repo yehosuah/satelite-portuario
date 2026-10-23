@@ -1,0 +1,66 @@
+{
+  "batch": "phase2-calibration-s2-reserve-20251228-v1",
+  "created_at": "2026-10-23T04:38:05.503733+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Root inspected raw/reference images listed in root-raw-pass before target proposal correspondence. Other dates and prior CAL failure known. Later scope addenda inspected separately. AI references, not independent human or AIS ground truth. No target scores or metrics seen.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/correspondence/pbr-20251228-s2-review.json",
+      "sha256": "99dc5380dd30b59c97cc2ffe3447a1e93c11cf8a1231f76691b8522f033b7612"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/correspondence/stc-20251228-s2-review.json",
+      "sha256": "601e8f7523b07d9ed0c93efcca03970b7b6b7b2077a4720af53355e9a6bd8cf1"
+    }
+  ],
+  "accepted_observation_ids": [
+    "599bb3e5-3397-49a7-9eec-5cc08e602d2d",
+    "d22d287a-92fb-42f0-bc1b-d842acd4cd8b",
+    "27af61d1-ed3a-4a10-ab63-b2a73596d7ba",
+    "8989a6f6-16be-4b5c-bf26-15929086224c",
+    "4834bc21-7501-4ca7-820e-32f0be9dbcd9",
+    "3eee756a-790f-4d2a-8674-96da1b063335",
+    "d8a36d81-4a8d-4f94-b939-dce400197428",
+    "1d629614-5b51-4301-b762-e54074f5a2f2"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/correspondence/verification.json",
+      "sha256": "8411c73a5da72c7dd41745c6ea588212308f291d49eddb07ebe6f167b55f3d3b"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/second-review-packet.json",
+      "sha256": "d6f0a5a2e8770fa7ebba9b20c138eb76cfae8573622612b048c9d32365716f4b"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/root-raw-pass.json",
+      "sha256": "fd35ad5470ef45876333c43a452f7a292ef467ff94f767a5e5316fcc5009e894"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/detector-conditioned-scope-addendum.json",
+      "sha256": "067de1f65fbf01d26bcc0149052f936d701a76fb9829c887307e1793ddeb23c2"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc_fondeo-20251228-0bf539e7-final-detector-guard.png",
+      "sha256": "f6cb26123c15209c617786ab8e23881222d68c7ef9d873523784646e4823c752"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc_fondeo-20251228-c7103ac5-final-detector-guard.png",
+      "sha256": "9924cd1681b6996e231e6e62d0d66e4dd05136b715ac4baa0699caf5dd0e8656"
+    }
+  ],
+  "expected_reviewed_observations": 8,
+  "expected_unique_objects": 2,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 2,
+  "expected_useful_scopes": 8,
+  "expected_abstentions": 0,
+  "decisions": [
+    "Confirm two PBR quay hulls; STC quay remains unknown where cloud and shadows obscure hull boundaries.",
+    "Root visually approved both full proposal-footprint plus10m guards for tiny STC coastal wakes. The union removes79120.731m2 counting shared1384.635m2 only once; positive boxes unchanged.",
+    "Report detector-conditioned reviewed surfaces, not whole-port precision. No target scores or TEST inference; no family or dimension labels."
+  ]
+}

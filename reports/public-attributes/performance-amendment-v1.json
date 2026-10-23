@@ -1,0 +1,49 @@
+{
+  "schema_version": "public-attributes-performance-amendment-v1",
+  "created_at": "2026-10-23T04:15:55.530804Z",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "experiment_plan_sha256": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+  "limits_before": {
+    "reserve_bytes": 10737418240,
+    "total_download_bytes": 2147483648,
+    "acquisition_download_bytes": 134217728,
+    "volume_limit_bytes": 4294967296,
+    "max_attempts": 3,
+    "retry_seconds": 60,
+    "io_workers": 1
+  },
+  "limits_after": {
+    "reserve_bytes": 10737418240,
+    "total_download_bytes": 2147483648,
+    "acquisition_download_bytes": 134217728,
+    "volume_limit_bytes": 4294967296,
+    "max_attempts": 3,
+    "retry_seconds": 60,
+    "io_workers": 4
+  },
+  "training_started": false,
+  "test_evaluation_started": false,
+  "reason": "Authorized performance amendment before fitting or test evaluation; parallelize bands while retaining one sample at a time and pausing historical campaign to preserve a global maximum of four public download workers.",
+  "source_changes": {
+    "src/puertogt/ml/public_attributes.py": {
+      "before": "8bae0c0a706dfdfa022d1652988d240bf54fb600609f363cab8ebf698b09a16c",
+      "after": "a4b1c18dc0c54e1faa584eda87290db83e0d9ecb4f0a08485a2eae75c6b5c094"
+    }
+  },
+  "unchanged": [
+    "All 48 selected window IDs and original splits",
+    "Nine pinned original SAFE bands and GCS generations per sample",
+    "Per-field public reference provenance",
+    "Context geometry, normalization, masks and feature extraction",
+    "Encoder checkpoint and head training recipe",
+    "Train/calibration/test separation and fixed test decision rule",
+    "Download, per-sample, storage, free-space and retry budgets"
+  ],
+  "resume_policy": "Preserve cached ranges, attempts and all prior byte reservations; no sample replacement or quota reset",
+  "original_source_archive_sha256": "8bae0c0a706dfdfa022d1652988d240bf54fb600609f363cab8ebf698b09a16c",
+  "actual_interruption_receipt_sha256": "184a0759f993fa9457ffe5c101be8ad8e7ebaa4ceee676d52afdda59bdfa45b3",
+  "test_evidence": [
+    "tests/test_public_attributes.py::test_io_amendment_changes_only_concurrency_and_preserves_attempts_and_budget",
+    "tests/test_history_transport.py::test_four_concurrent_ranges_cannot_overrun_durable_download_budget"
+  ]
+}

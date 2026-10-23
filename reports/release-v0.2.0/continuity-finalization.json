@@ -1,0 +1,13 @@
+{
+  "integrity_check": "ok",
+  "journal_mode": "delete",
+  "new_ledger_sha256": "296a6cc8044aa7c20735b93c7aa859c6623c98c55b5e0d1bded74fe62a614e01",
+  "old_ledger_sha256": "d6c44ce33cc60cbdc4cb5acaac75a0d6a0119c7c43d1ebaeb493ee97388c467a",
+  "reason": "SQLite.backup preserves WAL header mode. A read-only structural check generated an empty WAL and SHM beside the copied ledger. The packaged copy was normalized to DELETE mode before final delivery, preserving all acquisition and reservation rows.",
+  "row_hashes_preserved": {
+    "reservation_rows_sha256": "cc0ee8d0428e14e8d5885f10730abd44e783932afb62d89f2e6c414ecaec51d2",
+    "rows_sha256": "1729d3dd9c3958a117ecc076416069fff3bcfcd6839b282eea44025f1db9957a"
+  },
+  "scope": "packaged copy only; source unchanged",
+  "sidecars_present": false
+}

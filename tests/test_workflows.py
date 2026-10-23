@@ -109,6 +109,39 @@ def test_training_without_any_supervised_step_does_not_export_weights(tmp_path):
     export.assert_not_called()
 
 
+def test_training_shuffle_is_reproducible_per_epoch_without_dropping_samples(tmp_path):
+    root = tmp_path / "train"
+    sample = dataset(root)
+    path = root / "manifest.json"
+    value = json.loads(path.read_text())
+    value["samples"] = [{**sample, "observation_id": str(index)} for index in range(8)]
+    path.write_text(json.dumps(value))
+
+    def run(seed, order="shuffle"):
+        captured = []
+        detector = SimpleNamespace(model=object(), make_optimizer=lambda **kw: object(),
+                                   frozen_train_step=lambda image, boxes, **kw: captured.append(
+                                       int(image[0, 0, 0])) or {})
+        with (
+            patch("puertogt.ml.detection.load_detector", return_value=detector),
+            patch("puertogt.ml.workflows.bundle_from_evidence", side_effect=lambda row, _: SimpleNamespace(
+                marker=int(row["observation_id"]), crs="EPSG:4326",
+                transform=tuple(from_origin(0, 4, 1, 1))[:6])),
+            patch("puertogt.preprocess.read_model_input", side_effect=lambda bundle, _: np.full(
+                (9, 4, 4), bundle.marker, dtype=np.float32)),
+            patch("puertogt.ml.training.export_training_artifact", return_value=model()),
+        ):
+            train_detector(root, model(), tmp_path / "out", epochs=2, sample_order=order, seed=seed)
+        return captured
+
+    first = run(7)
+    assert sorted(first[:8]) == sorted(first[8:]) == list(range(8))
+    assert first[:8] != first[8:]
+    assert run(7) == first
+    assert run(8) != first
+    assert run(7, order="manifest") == list(range(8)) * 2
+
+
 def test_label_outside_reviewed_area_is_rejected(tmp_path):
     root = tmp_path / "train"
     sample = dataset(root, outside_label=True)

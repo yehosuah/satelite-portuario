@@ -158,7 +158,7 @@ def create_satlas_change_model(*, encoder_checkpoint: Path | None = None,
     return build_siamese_change_model(encoder, [96, 192, 384, 768], decoder_channels=decoder_channels)
 
 
-def masked_change_loss(logits, targets, valid_mask):
+def masked_change_loss(logits, targets, valid_mask, *, positive_weight: float = 1.0):
     import torch
     import torch.nn.functional as functional
 
@@ -169,7 +169,12 @@ def masked_change_loss(logits, targets, valid_mask):
         raise ValueError("No observable change labels in this batch")
     if not torch.isfinite(logits[valid]).all() or ((targets[valid] < 0) | (targets[valid] > 1)).any():
         raise ValueError("Invalid binary change labels or logits")
-    return functional.binary_cross_entropy_with_logits(logits[valid], targets[valid])
+    if not math.isfinite(positive_weight) or positive_weight <= 0:
+        raise ValueError("Positive loss weight must be finite and positive")
+    return functional.binary_cross_entropy_with_logits(
+        logits[valid], targets[valid],
+        pos_weight=logits.new_tensor(positive_weight),
+    )
 
 
 def load_change_model(model: ModelManifest):

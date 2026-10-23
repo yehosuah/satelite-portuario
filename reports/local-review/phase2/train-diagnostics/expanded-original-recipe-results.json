@@ -1,0 +1,515 @@
+{
+  "schema_version": "phase2-train-diagnostics-summary-v1",
+  "scope": "TRAIN fit only; no generalization or validation claim",
+  "experiment": "data/experiments/phase2-s2-round2-original-20261022",
+  "training_receipt": {
+    "status": "passed",
+    "freeze_sha256": "0c5012b28505ee66026a9be82c3915ea76c2ae824c7142bd205aa98ccd3e26fb",
+    "outputs": {
+      "trained/manifest.json": "ea6dd56287a4d7f708c07860bcd4149e9934f78287e3bef41995bb0db738ac8f",
+      "trained/weights.pt": "414228122f8eea518273008e7bc3607d01284364f005e2f51df89e21b39754aa",
+      "train-support.json": "0209727cce9c23dc40138ee7281203d320b3b3a1a24a30530c606cffa21fbd61"
+    },
+    "seconds": 78.97838283298188,
+    "peak_rss_bytes": 1581187072
+  },
+  "fit_receipt": {
+    "schema_version": "fixed-history-train-fit-start-v1",
+    "plan": {
+      "path": "/Users/yhimp/Documents/ChatGPT/HE_PuertoGT/reports/local-review/phase2/train-diagnostics/expanded-original-recipe-train-fit-plan.json",
+      "sha256": "c3049357c8ddfd89965964f8e604e66e8fcb010d47577e3e4f3d292a4e0d9e7e"
+    },
+    "freeze_sha256": "0c5012b28505ee66026a9be82c3915ea76c2ae824c7142bd205aa98ccd3e26fb",
+    "script_sha256": "ee39b6089cd35ec04998f65bad16ff93552bfcf2632085dcfddb487114c2095e",
+    "source_sha256": {
+      "runner": "4837f940de88a79ee9f137e4a26ea8d80e0e47cf8db3a4f8c364bb2d678bbcc5",
+      "history": "776afd8ab9b99fa8caba02d91364ff5b9357cfea2f9e8af0344cfad35e259ed0",
+      "preprocess": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd",
+      "review": "c9fe1b118f43e119ea07df5dcaf99a7a848c87f709153325c9820a9f4fc9841b",
+      "models": "be755d93b03d2ea7d8ffa76d7538250043396ecbaa95c1115479aeb4b4250b92",
+      "ml.workflows": "a5135ceabdac7b88decabe2bf00fda8fff280d8750b2b5fc5b28133bec248e15",
+      "ml.history_evidence": "c92bc3dfb2e16d30afeee85a195bb836292246f38397212e452c0e1cfb9cd45a",
+      "ml.detection": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25",
+      "ml.training": "3dfb36e825334528d0f0d866fdcd2f193306a9737289e4599e2fd58dc85ecc6e",
+      "ml.evaluation": "4e0681ef1b526a327b31c7ffd6e7a5dd01de969efda71220874db3b3abfa8b29"
+    },
+    "dataset_sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204",
+    "thresholds": [
+      0.1,
+      0.8
+    ],
+    "iou": 0.5,
+    "device": "cpu",
+    "threads": 4,
+    "calibration_or_test_labels_opened": false,
+    "automatic_publication": false,
+    "status": "completed_training_diagnostic_only",
+    "results": [
+      {
+        "role": "base",
+        "report_sha256": "4d4036803c087e22e9a5dfc7df1825e924439063957af782dd22bbfe85162abe",
+        "predictions_sha256": "2cc7fd912e0abf3ec5a3fd673f7a899311b9e8f232f5ac636be4095146f25c66"
+      },
+      {
+        "role": "adjusted",
+        "report_sha256": "7443a7710e5e63de95d7c6d479003e5b7d6402ef0dd3dddf96da5826eb1c31ba",
+        "predictions_sha256": "f4cd4cc368f52b8dfd5bacf9279c6204179df8d0272425dc36d6fb56bfc2bc66"
+      }
+    ],
+    "seconds": 31.83653879200574,
+    "peak_rss_bytes": 1388183552,
+    "validation_eligible": false,
+    "weights_or_labels_changed": false
+  },
+  "training": {
+    "epochs": 3,
+    "learning_rate": 2e-05,
+    "steps": 252,
+    "optimizer_steps": 214,
+    "references_by_port": {
+      "prq": 48,
+      "pbr": 2,
+      "stc": 1
+    }
+  },
+  "fixed_crop": {
+    "path": "reports/local-review/phase2/train-diagnostics/minimal-train-inference-result/trained.json",
+    "sha256": "5ee8e166b4d658d216969cefa57696b224911869846d4c95b5e9bbf850d9e6c6",
+    "nearest_center_prediction": {
+      "index": 13,
+      "label": 1,
+      "score": 0.47889086604118347,
+      "box": [
+        435.90496826171875,
+        47.57773971557617,
+        453.03228759765625,
+        73.05673217773438
+      ],
+      "center_distance_pixels": 0.9420651405230603,
+      "iou": 0.7344449016671296,
+      "width_pixels": 17.1273193359375,
+      "height_pixels": 25.478992462158203,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": true
+    },
+    "reference_visual_box_unchanged": [
+      437.0,
+      45.0,
+      451.0,
+      74.0
+    ]
+  },
+  "fit_metrics": [
+    {
+      "model": "base",
+      "threshold": 0.1,
+      "overall": {
+        "true_positives": 0,
+        "false_positives": 48,
+        "false_negatives": 51,
+        "prediction_count": 48,
+        "reference_count": 51,
+        "scene_count": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          6.938893903907228e-18,
+          0.07410012966611748
+        ],
+        "recall_interval": [
+          0,
+          0.07004661989853143
+        ],
+        "false_positives_per_scene": 4.8
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 0,
+          "false_positives": 1,
+          "false_negatives": 2,
+          "prediction_count": 1,
+          "reference_count": 2,
+          "scene_count": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "precision_interval": [
+            0,
+            0.7934506856227626
+          ],
+          "recall_interval": [
+            0,
+            0.6576197724933469
+          ],
+          "false_positives_per_scene": 0.3333333333333333,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "prq": {
+          "true_positives": 0,
+          "false_positives": 47,
+          "false_negatives": 48,
+          "prediction_count": 47,
+          "reference_count": 48,
+          "scene_count": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "precision_interval": [
+            0,
+            0.07555760416399632
+          ],
+          "recall_interval": [
+            6.938893903907228e-18,
+            0.07410012966611748
+          ],
+          "false_positives_per_scene": 11.75,
+          "pass_count": 4,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 1,
+          "prediction_count": 0,
+          "reference_count": 1,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.7934506856227626
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        }
+      },
+      "report_sha256": "4d4036803c087e22e9a5dfc7df1825e924439063957af782dd22bbfe85162abe"
+    },
+    {
+      "model": "base",
+      "threshold": 0.8,
+      "overall": {
+        "true_positives": 0,
+        "false_positives": 45,
+        "false_negatives": 51,
+        "prediction_count": 45,
+        "reference_count": 51,
+        "scene_count": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "precision_interval": [
+          0,
+          0.07865159873288836
+        ],
+        "recall_interval": [
+          0,
+          0.07004661989853143
+        ],
+        "false_positives_per_scene": 4.5
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 2,
+          "prediction_count": 0,
+          "reference_count": 2,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.6576197724933469
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "prq": {
+          "true_positives": 0,
+          "false_positives": 45,
+          "false_negatives": 48,
+          "prediction_count": 45,
+          "reference_count": 48,
+          "scene_count": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "precision_interval": [
+            0,
+            0.07865159873288836
+          ],
+          "recall_interval": [
+            6.938893903907228e-18,
+            0.07410012966611748
+          ],
+          "false_positives_per_scene": 11.25,
+          "pass_count": 4,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 1,
+          "prediction_count": 0,
+          "reference_count": 1,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.7934506856227626
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        }
+      },
+      "report_sha256": "4d4036803c087e22e9a5dfc7df1825e924439063957af782dd22bbfe85162abe"
+    },
+    {
+      "model": "adjusted",
+      "threshold": 0.1,
+      "overall": {
+        "true_positives": 27,
+        "false_positives": 34,
+        "false_negatives": 24,
+        "prediction_count": 61,
+        "reference_count": 51,
+        "scene_count": 10,
+        "precision": 0.4426229508196721,
+        "recall": 0.5294117647058824,
+        "precision_interval": [
+          0.3250780552148288,
+          0.5669663230685612
+        ],
+        "recall_interval": [
+          0.39523304210096466,
+          0.6594700979050041
+        ],
+        "false_positives_per_scene": 3.4
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 0,
+          "false_positives": 4,
+          "false_negatives": 2,
+          "prediction_count": 4,
+          "reference_count": 2,
+          "scene_count": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "precision_interval": [
+            0,
+            0.4898908364545973
+          ],
+          "recall_interval": [
+            0,
+            0.6576197724933469
+          ],
+          "false_positives_per_scene": 1.3333333333333333,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "prq": {
+          "true_positives": 27,
+          "false_positives": 30,
+          "false_negatives": 21,
+          "prediction_count": 57,
+          "reference_count": 48,
+          "scene_count": 4,
+          "precision": 0.47368421052631576,
+          "recall": 0.5625,
+          "precision_interval": [
+            0.3498716798112528,
+            0.6008198378125881
+          ],
+          "recall_interval": [
+            0.42275017419827776,
+            0.6929873095934576
+          ],
+          "false_positives_per_scene": 7.5,
+          "pass_count": 4,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 1,
+          "prediction_count": 0,
+          "reference_count": 1,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.7934506856227626
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        }
+      },
+      "report_sha256": "7443a7710e5e63de95d7c6d479003e5b7d6402ef0dd3dddf96da5826eb1c31ba"
+    },
+    {
+      "model": "adjusted",
+      "threshold": 0.8,
+      "overall": {
+        "true_positives": 22,
+        "false_positives": 3,
+        "false_negatives": 29,
+        "prediction_count": 25,
+        "reference_count": 51,
+        "scene_count": 10,
+        "precision": 0.88,
+        "recall": 0.43137254901960786,
+        "precision_interval": [
+          0.7004420607907267,
+          0.9583318284955964
+        ],
+        "recall_interval": [
+          0.3050123610790954,
+          0.5673469789069776
+        ],
+        "false_positives_per_scene": 0.3
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 2,
+          "prediction_count": 0,
+          "reference_count": 2,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.6576197724933469
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "prq": {
+          "true_positives": 22,
+          "false_positives": 3,
+          "false_negatives": 26,
+          "prediction_count": 25,
+          "reference_count": 48,
+          "scene_count": 4,
+          "precision": 0.88,
+          "recall": 0.4583333333333333,
+          "precision_interval": [
+            0.7004420607907267,
+            0.9583318284955964
+          ],
+          "recall_interval": [
+            0.32575242292867446,
+            0.5970892545435019
+          ],
+          "false_positives_per_scene": 0.75,
+          "pass_count": 4,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 1,
+          "prediction_count": 0,
+          "reference_count": 1,
+          "scene_count": 3,
+          "precision": null,
+          "recall": 0.0,
+          "precision_interval": null,
+          "recall_interval": [
+            0,
+            0.7934506856227626
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 3,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        }
+      },
+      "report_sha256": "7443a7710e5e63de95d7c6d479003e5b7d6402ef0dd3dddf96da5826eb1c31ba"
+    }
+  ],
+  "interpretation": [
+    "The trained head can regress the visual box in the fixed January TRAIN crop (IoU0.7344); inability to change upstream30px windows is not supported.",
+    "Original3ep recipe learns some expanded TRAIN references but misses all PBR2/STC1. More data and reviewed AOI support remain necessary.",
+    "February was already exposed through expanded TRAIN aggregate fit. The separate January/February amendment is internal development, not pristine confirmatory validation."
+  ],
+  "calibration_or_test_inference_performed": false,
+  "validated": false
+}

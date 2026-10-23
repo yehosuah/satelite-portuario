@@ -113,7 +113,10 @@ def test_training_refuses_test_split_before_reading_tensors(tmp_path):
         validate_training_dataset(tmp_path)
 
 
-def test_train_real_head_exports_changed_weights_with_dataset_hash(tmp_path):
+@pytest.mark.parametrize("feature_context", [None, {"kind": "fixed_center_context_v1", "size_px": 128,
+    "resolution_m": 10.0, "projection": "local_utm", "center": "geometry_centroid", "resampling": "nearest",
+    "pooling": "full_context_mean", "minimum_coverage": 1.0}])
+def test_train_real_head_exports_changed_weights_with_dataset_hash(tmp_path, feature_context):
     torch = pytest.importorskip("torch")
     import json
 
@@ -135,9 +138,13 @@ def test_train_real_head_exports_changed_weights_with_dataset_hash(tmp_path):
         "labels": "labels.geojson", "sha256": sha256_file(dataset / "labels.geojson"),
         "feature_cache": {"path": "features.npz", "sha256": sha256_file(dataset / "features.npz"),
                           "encoder_sha256": "a" * 64, "pooling": "roi_mean", "feature_level": 0}}]}
+    if feature_context is not None:
+        manifest["samples"][0]["feature_cache"]["context_policy"] = feature_context
     (dataset / "manifest.json").write_text(json.dumps(manifest))
     base = ModelManifest(model_id="own-attrs", version="v1", sensor="sentinel-2", task="attributes", recipe_version="ai2-s2-v1",
                          metadata={"feature_dim": 4, "encoder_manifest": {"weights_sha256": "a" * 64}})
+    if feature_context is not None:
+        base.metadata["feature_context"] = feature_context
     result = train_attribute_dataset(dataset, base, tmp_path / "trained", epochs=2, seed=7)
     assert result.weights_sha256 == sha256_file(tmp_path / "trained/weights.pt")
     assert result.dataset_version == "fixture-v1"
@@ -148,5 +155,6 @@ def test_train_real_head_exports_changed_weights_with_dataset_hash(tmp_path):
     assert result.metadata["training"]["dimension_baseline_m"] == {"length_m": 100.0, "width_m": None}
     assert result.metadata["training"]["observation_ids"] == ["obs"]
     assert result.metadata["training"]["split_groups"] == ["take"]
+    assert result.metadata.get("feature_context") == feature_context
     state = torch.load(tmp_path / "trained/weights.pt", weights_only=True)["state_dict"]
     assert state

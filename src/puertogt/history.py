@@ -13,11 +13,13 @@ import json
 import math
 import os
 import shutil
+import socket
 import threading
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import closing, contextmanager
 from dataclasses import asdict, dataclass
@@ -38,9 +40,13 @@ from .contracts import ModelManifest, RasterBundle, Scene
 from .jobs import JobQueue, ResourceLimit, RuntimeLimits
 from .models import processing_recipe
 from .preprocess import S1_BANDS, S2_BANDS, add_cloud_shadow_masks, prepare
-from .store import Store, json_text, sha256_file, utc_now, utc_text
+from .store import Store, confined_path, json_text, sha256_file, utc_now, utc_text
 
 HISTORY_VERSION = "history-full-v1"
+
+
+class PublicSourceUnavailable(FileNotFoundError):
+    """The frozen acquisition has no compatible representation on a public source."""
 
 
 @dataclass(frozen=True)
@@ -71,6 +77,11 @@ def _atomic_json(path: Path, value) -> None:
         output.flush()
         os.fsync(output.fileno())
     os.replace(temporary, path)
+    descriptor = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
 
 
 def build_tiles(features: list[dict], *, pixel_size=10, tile_size=512, margin=32) -> list[dict]:
@@ -184,6 +195,10 @@ class HistoryLedger:
                 not_before TEXT NOT NULL, bytes_reserved INTEGER NOT NULL DEFAULT 0,
                 started_at TEXT, finished_at TEXT, error_code TEXT, error_message TEXT,
                 metrics_json TEXT NOT NULL DEFAULT '{}')""")
+            tx.execute("""CREATE TABLE IF NOT EXISTS history_download_reservations (
+                reservation_id TEXT PRIMARY KEY, acquisition_key TEXT NOT NULL,
+                size_bytes INTEGER NOT NULL CHECK(size_bytes>=0), created_at TEXT NOT NULL,
+                dns_refunded_at TEXT)""")
         if not (self.directory / "limits.json").exists():
             _atomic_json(self.directory / "limits.json", asdict(limits))
 
@@ -230,6 +245,7 @@ class HistoryLedger:
             raise ValueError("Download reservation cannot be negative")
         if shutil.disk_usage(self.directory).free < self.limits.reserve_bytes + size:
             raise ResourceLimit("insufficient_disk: preserve 5 GiB configured reserve")
+        reservation_id = uuid.uuid4().hex
         with self.store.transaction() as tx:
             used = tx.execute("SELECT sum(bytes_reserved) FROM history_acquisitions").fetchone()[0] or 0
             row = tx.execute("SELECT bytes_reserved FROM history_acquisitions WHERE acquisition_key=?", (key,)).fetchone()
@@ -240,6 +256,32 @@ class HistoryLedger:
             if used + size > self.limits.total_download_bytes:
                 raise ResourceLimit("campaign_download_budget")
             tx.execute("UPDATE history_acquisitions SET bytes_reserved=bytes_reserved+? WHERE acquisition_key=?", (size, key))
+            tx.execute("""INSERT INTO history_download_reservations
+                (reservation_id,acquisition_key,size_bytes,created_at) VALUES (?,?,?,?)""",
+                (reservation_id, key, size, utc_text()))
+        return reservation_id
+
+    def refund_dns_reservation(self, reservation_id):
+        """Release only a specific receipt after DNS proves no response was received.
+
+        A repeated reconciliation is a no-op. Old aggregate reservations and
+        interrupted or partially read transfers are never retroactively refunded.
+        """
+        with self.store.transaction() as tx:
+            row = tx.execute("SELECT * FROM history_download_reservations WHERE reservation_id=?",
+                             (reservation_id,)).fetchone()
+            if row is None:
+                raise ValueError("Unknown download reservation receipt")
+            if row["dns_refunded_at"] is not None:
+                return False
+            changed = tx.execute("""UPDATE history_acquisitions SET bytes_reserved=bytes_reserved-?
+                WHERE acquisition_key=? AND bytes_reserved>=?""",
+                (row["size_bytes"], row["acquisition_key"], row["size_bytes"])).rowcount
+            if changed != 1:
+                raise ValueError("Download reservation accounting is inconsistent")
+            tx.execute("UPDATE history_download_reservations SET dns_refunded_at=? WHERE reservation_id=?",
+                       (utc_text(), reservation_id))
+        return True
 
     def finish(self, key, metrics):
         with self.store.transaction() as tx:
@@ -280,6 +322,105 @@ def file_lock(path: Path):
         yield
     finally:
         os.close(descriptor)
+
+
+def recover_local_publication(catalog: Store, plan: dict, ledger: HistoryLedger,
+                              acquisition_key: str, *, reason: str) -> dict:
+    """Audit and reopen one misclassified local temporary publication failure.
+
+    Both locks and an explicit campaign pause are required. The durable journal
+    precedes either database update, so replay can finish an interrupted recovery
+    without resetting attempts, removing evidence or touching successful zones.
+    """
+    if not reason.strip():
+        raise ValueError("Recovery requires a documented reason")
+    planned = next((item for item in plan["acquisitions"]
+                    if item["scene"]["acquisition_key"] == acquisition_key), None)
+    if planned is None:
+        raise ValueError("Recovery acquisition is not in the frozen plan")
+    journal_path = ledger.directory / "recoveries" / (
+        hashlib.sha256(acquisition_key.encode()).hexdigest()[:24] + "-local-publication.json")
+    ledger_fields = ("acquisition_key,status,attempts,not_before,bytes_reserved,started_at,"
+                     "finished_at,error_code,error_message")
+    job_fields = ("j.job_id,j.observation_id,j.status,j.attempts,j.max_attempts,j.not_before,"
+                  "j.started_at,j.finished_at,j.error_code,j.error_message,j.lease_token,"
+                  "j.lease_expires_at,j.worker_id,o.status AS observation_status,o.review_status")
+    with file_lock(ledger.directory / "campaign.lock"), file_lock(catalog.data_dir / ".heavy-worker.lock"):
+        if not (ledger.directory / "PAUSE").exists():
+            raise ValueError("Pause the campaign before local publication recovery")
+        with closing(ledger.store.connect()) as tx:
+            row = tx.execute(f"SELECT {ledger_fields},plan_json FROM history_acquisitions WHERE acquisition_key=?",
+                             (acquisition_key,)).fetchone()
+        if row is None or json.loads(row["plan_json"]) != planned:
+            raise ValueError("Recovery must match the unchanged frozen acquisition plan")
+        current_ledger = {field: row[field] for field in ledger_fields.split(",")}
+        with closing(catalog.connect()) as tx:
+            jobs = [dict(row) for row in tx.execute(
+                f"SELECT {job_fields} FROM jobs j JOIN observations o USING(observation_id) WHERE o.acquisition_key=?",
+                (acquisition_key,))]
+        if any(job["observation_id"] in set(plan["protected_observation_ids"]) for job in jobs):
+            raise ValueError("Recovery cannot modify a protected observation")
+        if journal_path.exists():
+            journal = json.loads(journal_path.read_text())
+            if journal["plan_id"] != plan["plan_id"] or journal["acquisition_key"] != acquisition_key:
+                raise ValueError("Recovery journal identity differs from the frozen plan")
+            if journal["status"] == "complete":
+                return journal
+        else:
+            failed = [job for job in jobs if job["status"] == "input_failed"]
+            if (current_ledger["status"] != "unavailable" or current_ledger["error_code"] != "FileNotFoundError"
+                    or len(failed) != 1 or any(job["status"] not in {"input_failed", "succeeded"} for job in jobs)):
+                raise ValueError("Recovery only accepts one misclassified local publication failure")
+            job = failed[0]
+            prefix = str(catalog.data_dir / "assets" / job["observation_id"] / ".pending-")
+            if (prefix not in (current_ledger["error_message"] or "")
+                    or job["error_message"] != "FileNotFoundError" or job["review_status"] != "provisional"
+                    or job["observation_status"] != "failed" or job["lease_token"] is not None
+                    or job["attempts"] >= job["max_attempts"] or current_ledger["attempts"] >= ledger.limits.max_attempts):
+                raise ValueError("Failure is not an eligible unreviewed local temporary publication")
+            with closing(catalog.connect()) as tx:
+                assets = [dict(row) for row in tx.execute(
+                    "SELECT asset_id,path,sha256,size_bytes FROM assets WHERE observation_id=? ORDER BY path",
+                    (job["observation_id"],))]
+            journal = {"version": "history-local-publication-recovery-v1", "status": "prepared",
+                       "plan_id": plan["plan_id"], "acquisition_key": acquisition_key,
+                       "created_at": utc_text(), "reason": reason, "ledger_before": current_ledger,
+                       "job_before": job, "assets": assets}
+        for asset in journal["assets"]:
+            path = confined_path(catalog.data_dir, asset["path"])
+            if path.stat().st_size != asset["size_bytes"] or sha256_file(path) != asset["sha256"]:
+                raise ValueError("Published evidence checksum changed; recovery refused")
+        if not journal_path.exists():
+            _atomic_json(journal_path, journal)
+        before = journal["job_before"]
+        after = {**before, "status": "retry", "not_before": journal["created_at"], "finished_at": None,
+                 "error_code": None, "error_message": None, "observation_status": "pending"}
+        with catalog.transaction() as tx:
+            current = tx.execute(f"SELECT {job_fields} FROM jobs j JOIN observations o USING(observation_id) WHERE j.job_id=?",
+                                 (before["job_id"],)).fetchone()
+            if current is None or dict(current) not in (before, after):
+                raise ValueError("Queue state changed since recovery was prepared")
+            if dict(current) == before:
+                tx.execute("""UPDATE jobs SET status='retry',not_before=?,finished_at=NULL,
+                    error_code=NULL,error_message=NULL WHERE job_id=?""", (journal["created_at"], before["job_id"]))
+                tx.execute("UPDATE observations SET status='pending' WHERE observation_id=?", (before["observation_id"],))
+        journal["status"] = "queue_reopened"
+        _atomic_json(journal_path, journal)
+        before = journal["ledger_before"]
+        after = {**before, "status": "retry", "not_before": journal["created_at"], "finished_at": None,
+                 "error_code": None, "error_message": None}
+        with ledger.store.transaction() as tx:
+            current = tx.execute(f"SELECT {ledger_fields} FROM history_acquisitions WHERE acquisition_key=?",
+                                 (acquisition_key,)).fetchone()
+            if current is None or dict(current) not in (before, after):
+                raise ValueError("Ledger state changed since recovery was prepared")
+            if dict(current) == before:
+                tx.execute("""UPDATE history_acquisitions SET status='retry',not_before=?,finished_at=NULL,
+                    error_code=NULL,error_message=NULL WHERE acquisition_key=?""", (journal["created_at"], acquisition_key))
+        journal.update(status="complete", completed_at=utc_text())
+        _atomic_json(journal_path, journal)
+        _atomic_json(ledger.directory / "status.json", ledger.summary())
+        return journal
 
 
 def _public_json(url: str) -> dict:
@@ -324,7 +465,7 @@ def discover_sources(item: dict) -> dict:
                 and entry["name"].endswith(f"_{band}.jp2") for entry in objects)
             for band in S2_BANDS)), None)
         if folder is None:
-            raise FileNotFoundError(f"GCS has no complete L1C nine-band representation for {scene.acquisition_key}")
+            raise PublicSourceUnavailable(f"GCS has no complete L1C nine-band representation for {scene.acquisition_key}")
         sources = {}
         for band in S2_BANDS:
             entry = next(entry for entry in objects if f"/{folder}/" in entry["name"]
@@ -338,7 +479,7 @@ def discover_sources(item: dict) -> dict:
                 "processing_baseline": f"{int(baseline[:2])}.{baseline[2:]}",
                 "provider": "GCS public Sentinel-2 L1C", "metadata_pages": len(objects)}
     if "context" not in item:
-        raise FileNotFoundError(item.get("planning_error", "Missing historical radar context"))
+        raise PublicSourceUnavailable(item.get("planning_error", "Missing historical radar context"))
     sources = {}
     names = []
     for index, value in enumerate([item["scene"], item["context"]]):
@@ -347,7 +488,7 @@ def discover_sources(item: dict) -> dict:
                                  for entry in current.metadata["representations"]
                                  if "_COG" not in entry["name"])
         if not names_for_scene:
-            raise FileNotFoundError(f"No original GRDH representation for {current.acquisition_key}")
+            raise PublicSourceUnavailable(f"No original GRDH representation for {current.acquisition_key}")
         name = names_for_scene[-1]
         names.append(name)
         date = current.captured_at
@@ -363,8 +504,9 @@ def discover_sources(item: dict) -> dict:
 
 
 class _RangeSource:
-    def __init__(self, spec, ledger, key, cache):
+    def __init__(self, spec, ledger, key, cache, opener=None):
         self.spec, self.ledger, self.key = spec, ledger, key
+        self.opener = opener
         self.cache = cache / hashlib.sha256(json_text(spec).encode()).hexdigest()[:24]
         self.cache.mkdir(parents=True, exist_ok=True)
         self.bytes = self.requests = self.cached_bytes = 0
@@ -381,13 +523,15 @@ class _RangeSource:
                     self.cached_bytes += end - start
                     return path.read_bytes()
             for attempt in range(3):
-                self.ledger.reserve_download(self.key, end - start)
+                reservation_id = self.ledger.reserve_download(self.key, end - start)
                 headers = {"Range": f"bytes={start}-{end - 1}", "Accept-Encoding": "identity"}
                 if self.spec.get("etag"):
                     headers["If-Match"] = self.spec["etag"]
+                response_started = False
                 try:
                     request = urllib.request.Request(self.spec["url"], headers=headers)
-                    with urllib.request.urlopen(request, timeout=120) as response:
+                    with (self.opener or urllib.request.urlopen)(request, timeout=120) as response:
+                        response_started = True
                         expected = f"bytes {start}-{end - 1}/{self.spec['size']}"
                         if response.status != 206 or response.headers.get("Content-Range") != expected:
                             raise ValueError("Provider did not honor the bounded immutable byte range")
@@ -402,6 +546,9 @@ class _RangeSource:
                     checksum.write_text(hashlib.sha256(data).hexdigest() + "\n")
                     return data
                 except (TimeoutError, urllib.error.URLError, OSError) as exc:
+                    if (not response_started and isinstance(exc, urllib.error.URLError)
+                            and isinstance(exc.reason, socket.gaierror)):
+                        self.ledger.refund_dns_reservation(reservation_id)
                     if isinstance(exc, urllib.error.HTTPError) and exc.code not in {408, 429, 500, 502, 503, 504}:
                         raise
                     if attempt == 2:
@@ -471,7 +618,7 @@ def _verified_bundle(path: Path) -> RasterBundle | None:
 
 
 def materialize(item: dict, ledger: HistoryLedger, *, quality_models: Path,
-                quality=True, device="cpu") -> tuple[list[tuple[dict, RasterBundle]], dict]:
+                quality=True, device="cpu", range_opener=None) -> tuple[list[tuple[dict, RasterBundle]], dict]:
     """Read bounded remote windows; publish verified local tiles for replay."""
     started = time.monotonic()
     scene = Scene.model_validate(item["scene"])
@@ -491,7 +638,7 @@ def materialize(item: dict, ledger: HistoryLedger, *, quality_models: Path,
     discovery = (json.loads(discovery_path.read_text()) if discovery_path.exists()
                  else discover_sources(item))
     _atomic_json(discovery_path, discovery)
-    sources = {name: _RangeSource(spec, ledger, key, directory / "ranges")
+    sources = {name: _RangeSource(spec, ledger, key, directory / "ranges", opener=range_opener)
                for name, spec in discovery["sources"].items()}
     bundles = {tile["tile_id"]: _verified_bundle(directory / tile["tile_id"] / "prepared" / "bundle.json")
                for tile in item["tiles"]}
@@ -906,7 +1053,7 @@ def publish_acquisition(catalog, item, tiles, predictions, model, *, protected_i
 def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[str, ModelManifest],
                 *, max_acquisitions=1, sensor=None, quality_models: Path, device="cpu",
                 materialize_only=False, quality=True, keep_work=False, acquisition_key=None,
-                priority_file: Path | None = None):
+                priority_file: Path | None = None, range_opener=None):
     """Execute one campaign serially, resuming completed numeric/published work."""
     detectors = {}
     processed = 0
@@ -938,10 +1085,10 @@ def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[
             terminal = True
             try:
                 if item.get("planning_error"):
-                    raise FileNotFoundError(item["planning_error"])
+                    raise PublicSourceUnavailable(item["planning_error"])
                 with file_lock(catalog.data_dir / ".heavy-worker.lock"):
                     tiles, report = materialize(item, ledger, quality_models=quality_models,
-                                                quality=quality, device=device)
+                                                quality=quality, device=device, range_opener=range_opener)
                     if materialize_only:
                         with ledger.store.transaction() as tx:
                             tx.execute("""UPDATE history_acquisitions SET status='pending',metrics_json=?
@@ -978,7 +1125,7 @@ def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[
                         if path.is_dir():
                             shutil.rmtree(path)
             except Exception as exc:
-                permanent = (isinstance(exc, (FileNotFoundError, ValueError))
+                permanent = (isinstance(exc, PublicSourceUnavailable)
                              or isinstance(exc, urllib.error.HTTPError) and exc.code in {401, 403, 404, 410})
                 state = ledger.fail(key, exc, permanent=permanent)
                 terminal = state != "retry"

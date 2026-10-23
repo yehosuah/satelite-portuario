@@ -87,6 +87,8 @@ def runtime_limits() -> RuntimeLimits:
 
 
 def doctor(store: Store) -> dict:
+    from puertogt.status import REQUIRED_TASKS, declares_local_validation
+
     with closing(store.connect()) as tx:
         models = [json.loads(row[0]) for row in tx.execute("SELECT data_json FROM models")]
         counts = {
@@ -97,19 +99,11 @@ def doctor(store: Store) -> dict:
             row[0]: row[1]
             for row in tx.execute("SELECT status,count(*) FROM observations GROUP BY status")
         }
-    required = {
-        ("detection", "sentinel-1"),
-        ("detection", "sentinel-2"),
-        ("attributes", "sentinel-1"),
-        ("attributes", "sentinel-2"),
-        ("change", "sentinel-2"),
-    }
+    required = set(REQUIRED_TASKS)
     validated = {
         (m["task"], m["sensor"])
         for m in models
-        if m.get("publication_policy", {}).get("status") == "validated"
-        and m.get("weights_sha256")
-        and m.get("dataset_version")
+        if declares_local_validation(m)
     }
     missing = [
         f"Independent local validation and own weights: {task}/{sensor}"

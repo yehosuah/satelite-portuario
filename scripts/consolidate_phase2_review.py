@@ -42,11 +42,13 @@ def verify_sources(plan):
 
 def phase2_selection(selection_path, order_path):
     selection, order = read(selection_path), read(order_path)
-    active = {item["reserve_acquisition_key"] for item in order["activated_reserves"]}
+    active = {(item["split"], port, item["sensor"], item["reserve_acquisition_key"])
+              for item in order["activated_reserves"] for port in item["port_ids"]}
     result = {}
     for slot in selection["slots"]:
         candidates = ([slot["selected"]] if slot["selected"] else []) + [
-            item for item in slot["reserves"] if item["acquisition_key"] in active]
+            item for item in slot["reserves"]
+            if (slot["split"], slot["port_id"], slot["sensor"], item["acquisition_key"]) in active]
         for item in candidates:
             key = (item["acquisition_key"], slot["port_id"], slot["sensor"])
             value = {"split": slot["split"], "context": (item.get("context") or {}).get("acquisition_key")}

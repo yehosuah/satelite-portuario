@@ -1,0 +1,48 @@
+{
+  "kind": "reserve_activation",
+  "author": "codex-ai-root",
+  "is_human_review": false,
+  "created_at": "2026-10-23T02:44:58.756261+00:00",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v5.json",
+    "sha256": "58d740da7dbb36ee18690fcec422709d126461c7d70c3348b5386c83a9df17ae"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v6.json",
+    "sha256": "356cc5d4931f08898320246f746194ce336b9494bc16ee6149fd79aec0fc790d"
+  },
+  "activation": {
+    "split": "calibration",
+    "port_ids": [
+      "pbr",
+      "stc"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+    "reserve_acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+    "reserve_rank": 2,
+    "reason": "All eight primary observations have zero observable pixels. Activate the first chronological reserve in the same Nov1-Nov9 slot before opening its imagery or proposals. Original primary abstentions remain recorded.",
+    "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251101-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "quality_evidence": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/caribe-20251101-r140-quality-abstention.json",
+    "sha256": "6ce97bd6d5f5bfc27dc4e744396fb7125f5208e5a2ad601f59f5cf2af0e95ec1"
+  },
+  "verified_assets": 24,
+  "verified_zero_observable_rasters": 8,
+  "candidate_processing_state_before_activation": {
+    "status": "complete",
+    "attempts": 1
+  },
+  "checks": {
+    "next_chronological_reserve_in_same_slot": true,
+    "primary_retained": true,
+    "selected_without_candidate_images_predictions_or_scores": true,
+    "existing_experiments_keep_their_pinned_orders": true
+  }
+}

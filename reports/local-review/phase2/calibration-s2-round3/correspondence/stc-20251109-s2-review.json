@@ -1,0 +1,3420 @@
+{
+  "schema_version": "phase2-raw-correspondence-review-v1",
+  "created_at": "2026-10-23T03:26:22.124860+00:00",
+  "status": "exhaustive_correspondence_pending_root_adjudication",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "provenance_kind": "ai_visual_review",
+  "ready_for_consolidation": false,
+  "do_not_import_as_empty_labels": false,
+  "data_writes_performed": false,
+  "ui_actions_saved": false,
+  "selection": {
+    "split": "calibration",
+    "port_id": "stc",
+    "sensor": "sentinel-2",
+    "primary_ordinal_in_stratum": 6,
+    "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+    "changed_dates": false,
+    "selection_uses_predictions": false
+  },
+  "selection_sources": [
+    {
+      "path": "reports/local-review/phase2/sampling-plan.json",
+      "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+    },
+    {
+      "path": "reports/local-review/phase2/execution-order-v5.json",
+      "sha256": "58d740da7dbb36ee18690fcec422709d126461c7d70c3348b5386c83a9df17ae"
+    },
+    {
+      "path": "reports/local-review/phase2/protocol.md",
+      "sha256": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c"
+    }
+  ],
+  "config_reference": {
+    "path": "config/ports.geojson",
+    "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589"
+  },
+  "proposal_exposure": {
+    "raw_reference_stage": {
+      "detection_table_queried": false,
+      "model_counts_seen": false,
+      "model_scores_seen": false,
+      "model_geometry_seen": false
+    },
+    "raw_references_frozen_before_catalog_read": true,
+    "catalog_read_at": "2026-10-23T03:00:59.317024+00:00",
+    "detection_table_queried": true,
+    "selected_columns": [
+      "detection_id",
+      "geometry_json",
+      "review_status"
+    ],
+    "model_scores_seen": false,
+    "model_geometry_seen": true,
+    "model_counts_seen_after_reference_freeze": true,
+    "performance_metrics_computed": false
+  },
+  "prior_exposure_to_other_acquisitions": {
+    "target_acquisition_model_outputs_seen": false,
+    "other_calibration_acquisitions_model_geometries_and_counts_seen": true,
+    "other_calibration_reference_boxes_and_scopes_seen": true,
+    "model_scores_seen": false,
+    "performance_metrics_computed": false,
+    "note": "Raw primero para estas cuatro adquisiciones. El revisor ya conoce referencias y correspondencias de otras fechas CAL; no es ciego respecto del experimento entero. Áreas de infraestructura revisadas nuevamente sobre las imágenes actuales."
+  },
+  "first_raw_notes": "Agua y puerto legibles pese nubes al suroeste del mosaico. Firmas de muelle requieren zoom; no asignar automáticamente estructuras contiguas como barcos. Ventana fondeo debe limitarse a agua, AOI incluye tierra.",
+  "first_raw_recorded_at": "2026-10-23T02:33:01.790576+00:00",
+  "reference_grid": {
+    "zone_id": "stc_canal",
+    "crs": "EPSG:32616",
+    "affine": [
+      10.0,
+      0.0,
+      322560.0,
+      0.0,
+      -10.0,
+      1747200.0
+    ]
+  },
+  "coordinate_convention": "Half-open pixel-edge boxes transformed to WGS84. No physical dimensions or subpixel accuracy asserted.",
+  "context_only_raw_assets": [],
+  "method": [
+    "All raw contacts inspected before model outputs; enlarged every explicit reviewable water/land scope and quay interface.",
+    "Only explicit manually authored boxes and exclusions. Original image bytes, masks and catalog status preserved.",
+    "Water-only polygons restrict maritime fondeo to independently inspected water; patios are separate terrestrial controls.",
+    "Cloud-mask disagreements are local visual positive windows requiring independent adjudication; no quiet status override.",
+    "Empty correspondence arrays are unclassified until later matching, never an empty-label dataset."
+  ],
+  "reference_objects": [],
+  "observations": [
+    {
+      "observation_id": "72cfa67a-6afa-476a-ac24-3ba0c5ac346c",
+      "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-11-09T16:25:21.024000Z",
+      "status": "partial",
+      "observable_fraction": 0.9982699729406019,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_root_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/preview.png",
+        "sha256": "beebcaf1d2b21c0efced88d6aa232babed995012191a3421cc7c641ca3ae01af",
+        "width_px": 896,
+        "height_px": 1344,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "35758768fb8c9a29ce54613985cf2de5",
+          "sha256": "03085287e299cc8c242b35f25bff3e8698be5cafddbb89a1456e11766824d80f",
+          "size_bytes": 1808701,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B02.tif"
+        },
+        {
+          "asset_id": "95dc6b2ec9ba492a67c0618696eb1b54",
+          "sha256": "9fae7fcf798a37366c2c5d5be75b730d0d8a8241e7daffa72a16ee02f73be555",
+          "size_bytes": 1876309,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B03.tif"
+        },
+        {
+          "asset_id": "856f4e0fb60760ff11aea26225ad85cc",
+          "sha256": "aea4145887a617981e5c8bba573697e803adaa33849f655c096cad5a06c15b28",
+          "size_bytes": 1877385,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B04.tif"
+        },
+        {
+          "asset_id": "9a89717716448d7d331820ebacc8359f",
+          "sha256": "d0d2959dbf9ef728bcf2f9b292c2efbcea2eaedd8b6994336942365b10f6a3f1",
+          "size_bytes": 581766,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B05.tif"
+        },
+        {
+          "asset_id": "f5cd7ee8dd55ab0b9d6659123d1183e9",
+          "sha256": "d7392925b1ed38bbc4a64ea9bc1eb949fa524f85746c4bdaf4c5bfc2a4bb80bf",
+          "size_bytes": 612979,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B06.tif"
+        },
+        {
+          "asset_id": "a05ca09c58319ca661406e95d1a9bad5",
+          "sha256": "4d32093fca89b600617677d437ea0514d79a785ca64a6890b27d32c6fab10a28",
+          "size_bytes": 606650,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B07.tif"
+        },
+        {
+          "asset_id": "83e1e1ea9f163f2e75312de09e75a317",
+          "sha256": "14a2ee786b27bbb954f84e197a0c322e7a0ae7726e0a3654653c730d10ff095d",
+          "size_bytes": 1989915,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B08.tif"
+        },
+        {
+          "asset_id": "55a0ffc08534647f09478bd79dd1333c",
+          "sha256": "bb53b71c97574fcafb29dfb0296b11cab484c0672f49da6a89d41a7759110c38",
+          "size_bytes": 590984,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B11.tif"
+        },
+        {
+          "asset_id": "108a490acca126f17e21b78165602384",
+          "sha256": "00e52352bef8a97986b086ed45fb3ddbff5d060ffff4f7fa67d4665608d19c83",
+          "size_bytes": 558796,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/B12.tif"
+        },
+        {
+          "asset_id": "95a0ecbb11e4a728db9b48b9c3914ab7",
+          "sha256": "a1962a21343e3809dfc9af153129d0d391889a6f5ed580e63ba85dfef1235d7d",
+          "size_bytes": 13019,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/cloud.tif"
+        },
+        {
+          "asset_id": "77ef1ed551453a24376ba946ef17f3b6",
+          "sha256": "e262061f1d48eec7780015b71c3dc46771cbef79c061f6c53d3e598f3be16ee4",
+          "size_bytes": 16308,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/cloud_classes.tif"
+        },
+        {
+          "asset_id": "9eae9daeff06488eb3b8adf2b6b4cacc",
+          "sha256": "21cee32620209b67701146db9397c453c6c1a554c7493dcc39cc64e329eadb86",
+          "size_bytes": 16219,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/observable.tif"
+        },
+        {
+          "asset_id": "ebedb79d15eed3ccd7e856b4f1317f22",
+          "sha256": "21cee32620209b67701146db9397c453c6c1a554c7493dcc39cc64e329eadb86",
+          "size_bytes": 16219,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/potentially_observable.tif"
+        },
+        {
+          "asset_id": "52626c398d817b7d180ecf28bd302d3a",
+          "sha256": "beebcaf1d2b21c0efced88d6aa232babed995012191a3421cc7c641ca3ae01af",
+          "size_bytes": 1386312,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/preview.png"
+        },
+        {
+          "asset_id": "3377f7138e4836310e72d60d3c198919",
+          "sha256": "b0184a84568e0b0ed4341624b94f6b8cf9d1c2f7943ebbe07c142a3eaeb68f6d",
+          "size_bytes": 11929,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/shadow.tif"
+        },
+        {
+          "asset_id": "442d1a101203659d142dc53df3e429e7",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+          "size_bytes": 8559,
+          "path": "data/assets/72cfa67a-6afa-476a-ac24-3ba0c5ac346c/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.609,
+              15.796
+            ],
+            [
+              -88.607,
+              15.796
+            ],
+            [
+              -88.615,
+              15.701
+            ],
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.609,
+              15.796
+            ]
+          ],
+          [
+            [
+              -88.61394459236155,
+              15.727738119337072
+            ],
+            [
+              -88.61394387975211,
+              15.727647749017489
+            ],
+            [
+              -88.61338406361598,
+              15.727651889566035
+            ],
+            [
+              -88.61338548834563,
+              15.72783263025439
+            ],
+            [
+              -88.61357209390744,
+              15.72783125021433
+            ],
+            [
+              -88.6135728063615,
+              15.72792162054901
+            ],
+            [
+              -88.61366610917662,
+              15.727920930465023
+            ],
+            [
+              -88.61366682167646,
+              15.728011300794762
+            ],
+            [
+              -88.61376012452811,
+              15.728010610666754
+            ],
+            [
+              -88.61376083707371,
+              15.728100980991544
+            ],
+            [
+              -88.61385413996192,
+              15.728100290819505
+            ],
+            [
+              -88.6138548525533,
+              15.728190661139362
+            ],
+            [
+              -88.61394815547801,
+              15.728189970923294
+            ],
+            [
+              -88.61394886811517,
+              15.728280341238204
+            ],
+            [
+              -88.61422877698509,
+              15.728278270338336
+            ],
+            [
+              -88.61422521322821,
+              15.727826418818477
+            ],
+            [
+              -88.61413191048196,
+              15.72782710913747
+            ],
+            [
+              -88.6141311977856,
+              15.727736738827
+            ],
+            [
+              -88.61394459236155,
+              15.727738119337072
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.615,
+              15.701
+            ],
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.61408314574138,
+              15.735637644321269
+            ],
+            [
+              -88.61243660040323,
+              15.735649830159348
+            ],
+            [
+              -88.61245941917372,
+              15.738544480667338
+            ],
+            [
+              -88.61291005569697,
+              15.738541144976047
+            ],
+            [
+              -88.6129204246859,
+              15.739856021522495
+            ],
+            [
+              -88.6137284176829,
+              15.739850040015565
+            ],
+            [
+              -88.609,
+              15.796
+            ],
+            [
+              -88.607,
+              15.796
+            ],
+            [
+              -88.615,
+              15.701
+            ]
+          ],
+          [
+            [
+              -88.61338406361598,
+              15.727651889566035
+            ],
+            [
+              -88.61338548834563,
+              15.72783263025439
+            ],
+            [
+              -88.61357209390744,
+              15.72783125021433
+            ],
+            [
+              -88.6135728063615,
+              15.72792162054901
+            ],
+            [
+              -88.61366610917662,
+              15.727920930465023
+            ],
+            [
+              -88.61366682167646,
+              15.728011300794762
+            ],
+            [
+              -88.61376012452811,
+              15.728010610666754
+            ],
+            [
+              -88.61376083707371,
+              15.728100980991544
+            ],
+            [
+              -88.61385413996192,
+              15.728100290819505
+            ],
+            [
+              -88.6138548525533,
+              15.728190661139362
+            ],
+            [
+              -88.61394815547801,
+              15.728189970923294
+            ],
+            [
+              -88.61394886811517,
+              15.728280341238204
+            ],
+            [
+              -88.61422877698509,
+              15.728278270338336
+            ],
+            [
+              -88.61422521322821,
+              15.727826418818477
+            ],
+            [
+              -88.61413191048196,
+              15.72782710913747
+            ],
+            [
+              -88.6141311977856,
+              15.727736738827
+            ],
+            [
+              -88.61394459236155,
+              15.727738119337072
+            ],
+            [
+              -88.61394387975211,
+              15.727647749017489
+            ],
+            [
+              -88.61338406361598,
+              15.727651889566035
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.61408314574138,
+              15.735637644321269
+            ],
+            [
+              -88.61243660040323,
+              15.735649830159348
+            ],
+            [
+              -88.61245941917372,
+              15.738544480667338
+            ],
+            [
+              -88.61291005569697,
+              15.738541144976047
+            ],
+            [
+              -88.6129204246859,
+              15.739856021522495
+            ],
+            [
+              -88.6137284176829,
+              15.739850040015565
+            ],
+            [
+              -88.609,
+              15.796
+            ],
+            [
+              -88.607,
+              15.796
+            ],
+            [
+              -88.615,
+              15.701
+            ],
+            [
+              -88.617,
+              15.701
+            ]
+          ],
+          [
+            [
+              -88.61338548834563,
+              15.72783263025439
+            ],
+            [
+              -88.61357209390744,
+              15.72783125021433
+            ],
+            [
+              -88.6135728063615,
+              15.72792162054901
+            ],
+            [
+              -88.61366610917662,
+              15.727920930465023
+            ],
+            [
+              -88.61366682167646,
+              15.728011300794762
+            ],
+            [
+              -88.61376012452811,
+              15.728010610666754
+            ],
+            [
+              -88.61376083707371,
+              15.728100980991544
+            ],
+            [
+              -88.61385413996192,
+              15.728100290819505
+            ],
+            [
+              -88.6138548525533,
+              15.728190661139362
+            ],
+            [
+              -88.61394815547801,
+              15.728189970923294
+            ],
+            [
+              -88.61394886811517,
+              15.728280341238204
+            ],
+            [
+              -88.61422877698509,
+              15.728278270338336
+            ],
+            [
+              -88.61422521322821,
+              15.727826418818477
+            ],
+            [
+              -88.61413191048196,
+              15.72782710913747
+            ],
+            [
+              -88.6141311977856,
+              15.727736738827
+            ],
+            [
+              -88.61394459236155,
+              15.727738119337072
+            ],
+            [
+              -88.61394387975211,
+              15.727647749017489
+            ],
+            [
+              -88.61338406361598,
+              15.727651889566035
+            ],
+            [
+              -88.61338548834563,
+              15.72783263025439
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "channel-faint-streak-uncertain",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61289405658938,
+                  15.736512321192725
+                ],
+                [
+                  -88.61401018439604,
+                  15.736504060297154
+                ],
+                [
+                  -88.6137284176829,
+                  15.739850040015565
+                ],
+                [
+                  -88.6129204246859,
+                  15.739856021522495
+                ],
+                [
+                  -88.61289405658938,
+                  15.736512321192725
+                ]
+              ]
+            ]
+          },
+          "reason": "Estela/firma diagonal tenue, sin casco continuo resuelto. Desconocida antes de propuestas.",
+          "label_status": "unknown_excluded"
+        },
+        {
+          "region_id": "detector-guard-d547aa772be18a1cd1011f77",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61544554336105,
+                  15.738522376847671
+                ],
+                [
+                  -88.61245941917372,
+                  15.738544480667338
+                ],
+                [
+                  -88.61243660040323,
+                  15.735649830159348
+                ],
+                [
+                  -88.61542268237709,
+                  15.735627730609108
+                ],
+                [
+                  -88.61544554336105,
+                  15.738522376847671
+                ]
+              ]
+            ]
+          },
+          "reason": "Estela tenue al norte del puerto, ya excluida en raw. Guard de caja completa +10m aprobado como exclusión indeterminada; depende de geometría del detector vista después de raw.",
+          "label_status": "unknown_excluded",
+          "based_on_detector_geometry": true,
+          "source_detection_id": "d547aa772be18a1cd1011f77"
+        }
+      ],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [
+        {
+          "detection_id": "d547aa772be18a1cd1011f77",
+          "review_status_at_read": "provisional",
+          "original_model_geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -88.61535152204951,
+                  15.738432697978212
+                ],
+                [
+                  -88.61255201437393,
+                  15.738453420313625
+                ],
+                [
+                  -88.61253061916005,
+                  15.735739510547962
+                ],
+                [
+                  -88.61533008973133,
+                  15.735718791965242
+                ],
+                [
+                  -88.61535152204951,
+                  15.738432697978212
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "proposed_decision": "indeterminate",
+          "reason": "Estela tenue al norte del puerto, ya excluida en raw.",
+          "raw_reference_source": {
+            "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+            "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+          },
+          "scope_addendum_source": {
+            "path": "reports/local-review/phase2/calibration-s2-round3/detector-conditioned-scope-addendum.json",
+            "sha256": "9381922e99c25405a595c0bed768fc643faf81ab87193ad38adea901bb07eb8e"
+          },
+          "requires_independent_adjudication": true,
+          "do_not_convert_to_negative": true,
+          "reference_match": null
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "summary": "0 propuestas para aceptar, 0 altas raw y 1 propuestas indeterminadas. Solo el ámbito explícito es evaluable; objetos desconocidos no son negativos.",
+      "abstention_reason": null,
+      "coverage": {
+        "zone_center_pixels": 22543,
+        "automatic_observable_zone_center_pixels": 22504,
+        "automatic_observable_area_m2": 2249114.1949811466,
+        "reviewed_area_m2": 2183625.5057069655,
+        "raw_reviewed_area_before_detector_guard_m2": 2210965.31114874,
+        "detector_guard_removed_m2": 27339.80544200178
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-stc_canal-reference-scope.png",
+      "scope_selection_conditioned_on_detector_geometry": true,
+      "post_correspondence_scope_adjustments": [
+        {
+          "detection_id": "d547aa772be18a1cd1011f77",
+          "raw_scope_before_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.61401018439604,
+                  15.736504060297154
+                ],
+                [
+                  -88.61289405658938,
+                  15.736512321192725
+                ],
+                [
+                  -88.6129204246859,
+                  15.739856021522495
+                ],
+                [
+                  -88.6137284176829,
+                  15.739850040015565
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ]
+              ],
+              [
+                [
+                  -88.61394387975211,
+                  15.727647749017489
+                ],
+                [
+                  -88.61338406361598,
+                  15.727651889566035
+                ],
+                [
+                  -88.61338548834563,
+                  15.72783263025439
+                ],
+                [
+                  -88.61357209390744,
+                  15.72783125021433
+                ],
+                [
+                  -88.6135728063615,
+                  15.72792162054901
+                ],
+                [
+                  -88.61366610917662,
+                  15.727920930465023
+                ],
+                [
+                  -88.61366682167646,
+                  15.728011300794762
+                ],
+                [
+                  -88.61376012452811,
+                  15.728010610666754
+                ],
+                [
+                  -88.61376083707371,
+                  15.728100980991544
+                ],
+                [
+                  -88.61385413996192,
+                  15.728100290819505
+                ],
+                [
+                  -88.6138548525533,
+                  15.728190661139362
+                ],
+                [
+                  -88.61394815547801,
+                  15.728189970923294
+                ],
+                [
+                  -88.61394886811517,
+                  15.728280341238204
+                ],
+                [
+                  -88.61422877698509,
+                  15.728278270338336
+                ],
+                [
+                  -88.61422521322821,
+                  15.727826418818477
+                ],
+                [
+                  -88.61413191048196,
+                  15.72782710913747
+                ],
+                [
+                  -88.6141311977856,
+                  15.727736738827
+                ],
+                [
+                  -88.61394459236155,
+                  15.727738119337072
+                ],
+                [
+                  -88.61394387975211,
+                  15.727647749017489
+                ]
+              ]
+            ]
+          },
+          "derived_scope_after_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.61408314574138,
+                  15.735637644321269
+                ],
+                [
+                  -88.61243660040323,
+                  15.735649830159348
+                ],
+                [
+                  -88.61245941917372,
+                  15.738544480667338
+                ],
+                [
+                  -88.61291005569697,
+                  15.738541144976047
+                ],
+                [
+                  -88.6129204246859,
+                  15.739856021522495
+                ],
+                [
+                  -88.6137284176829,
+                  15.739850040015565
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.615,
+                  15.701
+                ]
+              ],
+              [
+                [
+                  -88.61338406361598,
+                  15.727651889566035
+                ],
+                [
+                  -88.61338548834563,
+                  15.72783263025439
+                ],
+                [
+                  -88.61357209390744,
+                  15.72783125021433
+                ],
+                [
+                  -88.6135728063615,
+                  15.72792162054901
+                ],
+                [
+                  -88.61366610917662,
+                  15.727920930465023
+                ],
+                [
+                  -88.61366682167646,
+                  15.728011300794762
+                ],
+                [
+                  -88.61376012452811,
+                  15.728010610666754
+                ],
+                [
+                  -88.61376083707371,
+                  15.728100980991544
+                ],
+                [
+                  -88.61385413996192,
+                  15.728100290819505
+                ],
+                [
+                  -88.6138548525533,
+                  15.728190661139362
+                ],
+                [
+                  -88.61394815547801,
+                  15.728189970923294
+                ],
+                [
+                  -88.61394886811517,
+                  15.728280341238204
+                ],
+                [
+                  -88.61422877698509,
+                  15.728278270338336
+                ],
+                [
+                  -88.61422521322821,
+                  15.727826418818477
+                ],
+                [
+                  -88.61413191048196,
+                  15.72782710913747
+                ],
+                [
+                  -88.6141311977856,
+                  15.727736738827
+                ],
+                [
+                  -88.61394459236155,
+                  15.727738119337072
+                ],
+                [
+                  -88.61394387975211,
+                  15.727647749017489
+                ],
+                [
+                  -88.61338406361598,
+                  15.727651889566035
+                ]
+              ]
+            ]
+          },
+          "excluded_region_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61544554336105,
+                  15.738522376847671
+                ],
+                [
+                  -88.61245941917372,
+                  15.738544480667338
+                ],
+                [
+                  -88.61243660040323,
+                  15.735649830159348
+                ],
+                [
+                  -88.61542268237709,
+                  15.735627730609108
+                ],
+                [
+                  -88.61544554336105,
+                  15.738522376847671
+                ]
+              ]
+            ]
+          },
+          "buffer_m": 10,
+          "removed_area_m2": 27339.80544200178,
+          "removed_fraction_of_previous_scope": 0.012365551510076374,
+          "conditioned_on_detector_geometry": true,
+          "prior_raw_unknown": true
+        }
+      ],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+        "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/root-raw-pass.json",
+        "sha256": "721ce027766d4b9803911a2279e74082d4b04cbea164f6f978b47ada2f25319f"
+      },
+      "correspondence_exhaustive_at": "2026-10-23T03:00:59.317024+00:00",
+      "raw_visual_summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas."
+    },
+    {
+      "observation_id": "d8205729-73f3-4ee0-b905-1a4f32b8d636",
+      "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-11-09T16:25:21.024000Z",
+      "status": "partial",
+      "observable_fraction": 0.9950228946844515,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_root_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/preview.png",
+        "sha256": "a9abb9a917565bbbacdc0d48edbd5f43c3a3e52386f1e454214caa9711b0747d",
+        "width_px": 448,
+        "height_px": 896,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "4aa0a50bda29f20e201bafc5bbe03d09",
+          "sha256": "9683847838227ea3aef0861f5f3c1ae9cdf7543a8d54f5e20eb12b6df8b1206f",
+          "size_bytes": 593569,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B02.tif"
+        },
+        {
+          "asset_id": "36ecdabcf3ea3caf269d4bae3c9ffebf",
+          "sha256": "a4d5b4e51b048f6771a08dce38ae9cd222cd6999f842fa976ab860991eb5ac73",
+          "size_bytes": 620003,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B03.tif"
+        },
+        {
+          "asset_id": "30fc990aeddc7cd5a114156e8f0593f4",
+          "sha256": "7589395d5352750975a80f5566c02760e100c13f5e6b4855c23aca73186a7d32",
+          "size_bytes": 611526,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B04.tif"
+        },
+        {
+          "asset_id": "00cb7f051e278c9c0c8790b14dc710a0",
+          "sha256": "b94d8fffcf91031aa102a83036e7ec0986d8b50e904fa0066e69a62173cc6817",
+          "size_bytes": 200625,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B05.tif"
+        },
+        {
+          "asset_id": "fdd15b08600ac59e2c83b76952b694cf",
+          "sha256": "ccbad1fd4ed210928f5c349ee4fad761ae0fda4b977043d296aa8d1401bd75eb",
+          "size_bytes": 210458,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B06.tif"
+        },
+        {
+          "asset_id": "13bfcf10e53fd35f754c7da1db4aec42",
+          "sha256": "732ad842ac0c02774a536a7d84c227cf725c544bb0f0745ae0aa405936511c37",
+          "size_bytes": 208916,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B07.tif"
+        },
+        {
+          "asset_id": "23725c51503da8372e3586767b2112ed",
+          "sha256": "1dcf1d21f340b3ffe1b3b61cbe8731a10c47da0fc5d5ba4470bd869d27b9e2c6",
+          "size_bytes": 648771,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B08.tif"
+        },
+        {
+          "asset_id": "e889c7cf6a14ccf71021fda01d93b01c",
+          "sha256": "73dc980a2a44aad585ffb9a85164affcbdaaebda1275d415805068bdfbd2904a",
+          "size_bytes": 197241,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B11.tif"
+        },
+        {
+          "asset_id": "5722f8f0328014ddc13da5dbfa2a1c8d",
+          "sha256": "3f6b5e6fe1f39e5d626959b21601afe849c00d30ee6d8710096ad3b1bfb39259",
+          "size_bytes": 184358,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/B12.tif"
+        },
+        {
+          "asset_id": "491df77fcd55be02f87c40519a685e13",
+          "sha256": "9feaebaa429784f7fb95516b2bb5acc31c0404efcfd247d43014216196ac2f30",
+          "size_bytes": 3996,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/cloud.tif"
+        },
+        {
+          "asset_id": "13a1db3a0e62d6522b881bf579c0bc30",
+          "sha256": "f5e183b93913b456467e64da5a179f789028f7cf2d9a7f64c779432ebf3b408d",
+          "size_bytes": 4466,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/cloud_classes.tif"
+        },
+        {
+          "asset_id": "f14bb2e3ec26de563da6c381ddc10993",
+          "sha256": "838bde8fc7d195b0750c6ee429571f84b5966bea32f8c712316976f56d2af281",
+          "size_bytes": 4143,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/observable.tif"
+        },
+        {
+          "asset_id": "353bc9e7bac248e0ebc94f1b20ffe2cf",
+          "sha256": "838bde8fc7d195b0750c6ee429571f84b5966bea32f8c712316976f56d2af281",
+          "size_bytes": 4143,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/potentially_observable.tif"
+        },
+        {
+          "asset_id": "90f341544b828905cac8abae76bfd067",
+          "sha256": "a9abb9a917565bbbacdc0d48edbd5f43c3a3e52386f1e454214caa9711b0747d",
+          "size_bytes": 449493,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/preview.png"
+        },
+        {
+          "asset_id": "8eef034e9fc53e8049cc9e5dffdcf345",
+          "sha256": "f34745bd6d6a451f28eadaa21f37a8bcd62f3d017844b037260cb90b3529a07f",
+          "size_bytes": 3256,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/shadow.tif"
+        },
+        {
+          "asset_id": "a39667328a2d6caa7f1e9f602bf43e3f",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823",
+          "size_bytes": 2321,
+          "path": "data/assets/d8205729-73f3-4ee0-b905-1a4f32b8d636/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.64270191849778,
+              15.730053974780427
+            ],
+            [
+              -88.64288852335481,
+              15.73005256947899
+            ],
+            [
+              -88.6428892488575,
+              15.730142938473318
+            ],
+            [
+              -88.64307585377804,
+              15.73014153300394
+            ],
+            [
+              -88.64307657936773,
+              15.73023190198901
+            ],
+            [
+              -88.64372969672954,
+              15.730226981560714
+            ],
+            [
+              -88.64373042261202,
+              15.730317350515326
+            ],
+            [
+              -88.64410363259417,
+              15.730314537947988
+            ],
+            [
+              -88.64410435864602,
+              15.730404906884846
+            ],
+            [
+              -88.64466417372496,
+              15.730400686812398
+            ],
+            [
+              -88.64466344742617,
+              15.730310317901
+            ],
+            [
+              -88.6448500523325,
+              15.730308910899739
+            ],
+            [
+              -88.64484932595612,
+              15.730218541996054
+            ],
+            [
+              -88.64503593076131,
+              15.730217134843821
+            ],
+            [
+              -88.6450352043073,
+              15.730126765947839
+            ],
+            [
+              -88.64512850666166,
+              15.730126062316172
+            ],
+            [
+              -88.64512778017122,
+              15.730035693423654
+            ],
+            [
+              -88.64522108247972,
+              15.730034989756362
+            ],
+            [
+              -88.64522080117717,
+              15.73
+            ],
+            [
+              -88.64531410912284,
+              15.73
+            ],
+            [
+              -88.64531438478352,
+              15.730034286049206
+            ],
+            [
+              -88.64540768708261,
+              15.730033582302182
+            ],
+            [
+              -88.64540841369652,
+              15.730123951181964
+            ],
+            [
+              -88.64550171603206,
+              15.730123247390825
+            ],
+            [
+              -88.64550316935635,
+              15.730303985139553
+            ],
+            [
+              -88.64559647176948,
+              15.730303281300056
+            ],
+            [
+              -88.64559719847983,
+              15.730393650169004
+            ],
+            [
+              -88.64569050092942,
+              15.730392946285399
+            ],
+            [
+              -88.64569122768566,
+              15.730483315149318
+            ],
+            [
+              -88.645877832653,
+              15.730481907254013
+            ],
+            [
+              -88.64587855949627,
+              15.730572276108655
+            ],
+            [
+              -88.64606516452707,
+              15.730570868045392
+            ],
+            [
+              -88.64606589145737,
+              15.73066123689076
+            ],
+            [
+              -88.64625249655165,
+              15.73065982865954
+            ],
+            [
+              -88.64625322356898,
+              15.730750197495633
+            ],
+            [
+              -88.6463465261502,
+              15.730749493315965
+            ],
+            [
+              -88.6463472532134,
+              15.73083986214703
+            ],
+            [
+              -88.64644055583106,
+              15.730839157923253
+            ],
+            [
+              -88.64644128294015,
+              15.730929526749287
+            ],
+            [
+              -88.64662788824366,
+              15.73092811817363
+            ],
+            [
+              -88.64662861543977,
+              15.7310184869904
+            ],
+            [
+              -88.64681522080676,
+              15.731017078246774
+            ],
+            [
+              -88.64681667537775,
+              15.731197815860948
+            ],
+            [
+              -88.64690997813649,
+              15.731197111420833
+            ],
+            [
+              -88.6469121601518,
+              15.731468217823506
+            ],
+            [
+              -88.647,
+              15.731467554579922
+            ],
+            [
+              -88.647,
+              15.732823168811146
+            ],
+            [
+              -88.64664316035176,
+              15.732825863161725
+            ],
+            [
+              -88.64664461494665,
+              15.733006600761696
+            ],
+            [
+              -88.6465513113505,
+              15.733007305167185
+            ],
+            [
+              -88.64655203861388,
+              15.733097673970251
+            ],
+            [
+              -88.64636543132511,
+              15.733099082670103
+            ],
+            [
+              -88.64636470414408,
+              15.733008713858545
+            ],
+            [
+              -88.64627140053379,
+              15.733009418144414
+            ],
+            [
+              -88.64627067339865,
+              15.732919049327828
+            ],
+            [
+              -88.6461773698248,
+              15.732919753569576
+            ],
+            [
+              -88.64617664273554,
+              15.732829384747951
+            ],
+            [
+              -88.64599003565606,
+              15.732830793103336
+            ],
+            [
+              -88.64598930865382,
+              15.732740424272444
+            ],
+            [
+              -88.64580270163783,
+              15.732741832459839
+            ],
+            [
+              -88.64580197472264,
+              15.732651463619673
+            ],
+            [
+              -88.64570867124873,
+              15.732652167649318
+            ],
+            [
+              -88.64570794437942,
+              15.732561798804113
+            ],
+            [
+              -88.64561464094197,
+              15.732562502789639
+            ],
+            [
+              -88.64561391411854,
+              15.732472133939421
+            ],
+            [
+              -88.64552061071754,
+              15.732472837880826
+            ],
+            [
+              -88.64551915716713,
+              15.732292100169547
+            ],
+            [
+              -88.64542585384376,
+              15.732292804062586
+            ],
+            [
+              -88.64542512711678,
+              15.732202435201536
+            ],
+            [
+              -88.64533182382985,
+              15.732203139050457
+            ],
+            [
+              -88.64532964380068,
+              15.731932032449876
+            ],
+            [
+              -88.64523634063254,
+              15.731932736246192
+            ],
+            [
+              -88.64523488738563,
+              15.73175199850008
+            ],
+            [
+              -88.64504828119986,
+              15.73175340595611
+            ],
+            [
+              -88.64505336707016,
+              15.73238598811329
+            ],
+            [
+              -88.64514667045354,
+              15.732385284375495
+            ],
+            [
+              -88.64514812368405,
+              15.732566022119174
+            ],
+            [
+              -88.64524142714507,
+              15.732565318333013
+            ],
+            [
+              -88.64524215380855,
+              15.732655687199438
+            ],
+            [
+              -88.64533545730602,
+              15.732654983369157
+            ],
+            [
+              -88.64533763744824,
+              15.732926089951013
+            ],
+            [
+              -88.64543094106448,
+              15.732925386068125
+            ],
+            [
+              -88.6454323945985,
+              15.733106123776972
+            ],
+            [
+              -88.64552569829237,
+              15.73310541984572
+            ],
+            [
+              -88.64552933241572,
+              15.733557264082949
+            ],
+            [
+              -88.64562263631072,
+              15.733556560090584
+            ],
+            [
+              -88.64562409007536,
+              15.733737297771523
+            ],
+            [
+              -88.64571739404796,
+              15.733736593730793
+            ],
+            [
+              -88.64571884791381,
+              15.733917331400118
+            ],
+            [
+              -88.64581215196404,
+              15.733916627311018
+            ],
+            [
+              -88.64581287894521,
+              15.734006996140263
+            ],
+            [
+              -88.6459061830319,
+              15.734006292007042
+            ],
+            [
+              -88.64590691005893,
+              15.73409666083126
+            ],
+            [
+              -88.6460935183005,
+              15.734095252436694
+            ],
+            [
+              -88.64609279119114,
+              15.73400488362097
+            ],
+            [
+              -88.64618609526369,
+              15.73400417936812
+            ],
+            [
+              -88.64618536811786,
+              15.733913810555865
+            ],
+            [
+              -88.64627867214453,
+              15.733913106267389
+            ],
+            [
+              -88.64627794496224,
+              15.733822737458608
+            ],
+            [
+              -88.64637124894303,
+              15.733822033134503
+            ],
+            [
+              -88.64636979451026,
+              15.733641295523086
+            ],
+            [
+              -88.64655640229303,
+              15.733639886772245
+            ],
+            [
+              -88.64655712958941,
+              15.733730255569844
+            ],
+            [
+              -88.64674373743566,
+              15.733728846651006
+            ],
+            [
+              -88.64674446481905,
+              15.73381921543933
+            ],
+            [
+              -88.64693107272878,
+              15.733817806352494
+            ],
+            [
+              -88.64693034526303,
+              15.733727437572668
+            ],
+            [
+              -88.647,
+              15.733726911564078
+            ],
+            [
+              -88.647,
+              15.76
+            ],
+            [
+              -88.623,
+              15.76
+            ],
+            [
+              -88.623,
+              15.73
+            ],
+            [
+              -88.64270148522807,
+              15.73
+            ],
+            [
+              -88.64270191849778,
+              15.730053974780427
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ],
+            [
+              -88.62582710386894,
+              15.754073059798452
+            ],
+            [
+              -88.62583607927402,
+              15.755200994674848
+            ],
+            [
+              -88.6283626346414,
+              15.75518211978394
+            ],
+            [
+              -88.62872000170539,
+              15.755283042200576
+            ],
+            [
+              -88.63292493252222,
+              15.755974558270326
+            ],
+            [
+              -88.63759863135166,
+              15.756933590022909
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64601734738116,
+              15.759400606227906
+            ],
+            [
+              -88.64602098897997,
+              15.759852449265333
+            ],
+            [
+              -88.62636388669364,
+              15.76
+            ],
+            [
+              -88.62325159036617,
+              15.76
+            ],
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ],
+            [
+              -88.6249730388282,
+              15.75350352696288
+            ],
+            [
+              -88.62582710386894,
+              15.754073059798452
+            ],
+            [
+              -88.62583607927402,
+              15.755200994674848
+            ],
+            [
+              -88.6283626346414,
+              15.75518211978394
+            ],
+            [
+              -88.62872000170539,
+              15.755283042200576
+            ],
+            [
+              -88.63292493252222,
+              15.755974558270326
+            ],
+            [
+              -88.63759863135166,
+              15.756933590022909
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64601734738116,
+              15.759400606227906
+            ],
+            [
+              -88.64602098897997,
+              15.759852449265333
+            ],
+            [
+              -88.62636388669364,
+              15.76
+            ],
+            [
+              -88.62325159036617,
+              15.76
+            ],
+            [
+              -88.6231756657383,
+              15.750444174535756
+            ],
+            [
+              -88.6240269702892,
+              15.751883831462452
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "land-and-unreviewed-coastal-water",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.64288852335481,
+                  15.73005256947899
+                ],
+                [
+                  -88.6428892488575,
+                  15.730142938473318
+                ],
+                [
+                  -88.64307585377804,
+                  15.73014153300394
+                ],
+                [
+                  -88.64307657936773,
+                  15.73023190198901
+                ],
+                [
+                  -88.64372969672954,
+                  15.730226981560714
+                ],
+                [
+                  -88.64373042261202,
+                  15.730317350515326
+                ],
+                [
+                  -88.64410363259417,
+                  15.730314537947988
+                ],
+                [
+                  -88.64410435864602,
+                  15.730404906884846
+                ],
+                [
+                  -88.64466417372496,
+                  15.730400686812398
+                ],
+                [
+                  -88.64466344742617,
+                  15.730310317901
+                ],
+                [
+                  -88.6448500523325,
+                  15.730308910899739
+                ],
+                [
+                  -88.64484932595612,
+                  15.730218541996054
+                ],
+                [
+                  -88.64503593076131,
+                  15.730217134843821
+                ],
+                [
+                  -88.6450352043073,
+                  15.730126765947839
+                ],
+                [
+                  -88.64512850666166,
+                  15.730126062316172
+                ],
+                [
+                  -88.64512778017122,
+                  15.730035693423654
+                ],
+                [
+                  -88.64522108247972,
+                  15.730034989756362
+                ],
+                [
+                  -88.64522080117717,
+                  15.73
+                ],
+                [
+                  -88.64531410912284,
+                  15.73
+                ],
+                [
+                  -88.64531438478352,
+                  15.730034286049206
+                ],
+                [
+                  -88.64540768708261,
+                  15.730033582302182
+                ],
+                [
+                  -88.64540841369652,
+                  15.730123951181964
+                ],
+                [
+                  -88.64550171603206,
+                  15.730123247390825
+                ],
+                [
+                  -88.64550316935635,
+                  15.730303985139553
+                ],
+                [
+                  -88.64559647176948,
+                  15.730303281300056
+                ],
+                [
+                  -88.64559719847983,
+                  15.730393650169004
+                ],
+                [
+                  -88.64569050092942,
+                  15.730392946285399
+                ],
+                [
+                  -88.64569122768566,
+                  15.730483315149318
+                ],
+                [
+                  -88.645877832653,
+                  15.730481907254013
+                ],
+                [
+                  -88.64587855949627,
+                  15.730572276108655
+                ],
+                [
+                  -88.64606516452707,
+                  15.730570868045392
+                ],
+                [
+                  -88.64606589145737,
+                  15.73066123689076
+                ],
+                [
+                  -88.64625249655165,
+                  15.73065982865954
+                ],
+                [
+                  -88.64625322356898,
+                  15.730750197495633
+                ],
+                [
+                  -88.6463465261502,
+                  15.730749493315965
+                ],
+                [
+                  -88.6463472532134,
+                  15.73083986214703
+                ],
+                [
+                  -88.64644055583106,
+                  15.730839157923253
+                ],
+                [
+                  -88.64644128294015,
+                  15.730929526749287
+                ],
+                [
+                  -88.64662788824366,
+                  15.73092811817363
+                ],
+                [
+                  -88.64662861543977,
+                  15.7310184869904
+                ],
+                [
+                  -88.64681522080676,
+                  15.731017078246774
+                ],
+                [
+                  -88.64681667537775,
+                  15.731197815860948
+                ],
+                [
+                  -88.64690997813649,
+                  15.731197111420833
+                ],
+                [
+                  -88.6469121601518,
+                  15.731468217823506
+                ],
+                [
+                  -88.647,
+                  15.731467554579922
+                ],
+                [
+                  -88.647,
+                  15.732823168811146
+                ],
+                [
+                  -88.64664316035176,
+                  15.732825863161725
+                ],
+                [
+                  -88.64664461494665,
+                  15.733006600761696
+                ],
+                [
+                  -88.6465513113505,
+                  15.733007305167185
+                ],
+                [
+                  -88.64655203861388,
+                  15.733097673970251
+                ],
+                [
+                  -88.64636543132511,
+                  15.733099082670103
+                ],
+                [
+                  -88.64636470414408,
+                  15.733008713858545
+                ],
+                [
+                  -88.64627140053379,
+                  15.733009418144414
+                ],
+                [
+                  -88.64627067339865,
+                  15.732919049327828
+                ],
+                [
+                  -88.6461773698248,
+                  15.732919753569576
+                ],
+                [
+                  -88.64617664273554,
+                  15.732829384747951
+                ],
+                [
+                  -88.64599003565606,
+                  15.732830793103336
+                ],
+                [
+                  -88.64598930865382,
+                  15.732740424272444
+                ],
+                [
+                  -88.64580270163783,
+                  15.732741832459839
+                ],
+                [
+                  -88.64580197472264,
+                  15.732651463619673
+                ],
+                [
+                  -88.64570867124873,
+                  15.732652167649318
+                ],
+                [
+                  -88.64570794437942,
+                  15.732561798804113
+                ],
+                [
+                  -88.64561464094197,
+                  15.732562502789639
+                ],
+                [
+                  -88.64561391411854,
+                  15.732472133939421
+                ],
+                [
+                  -88.64552061071754,
+                  15.732472837880826
+                ],
+                [
+                  -88.64551915716713,
+                  15.732292100169547
+                ],
+                [
+                  -88.64542585384376,
+                  15.732292804062586
+                ],
+                [
+                  -88.64542512711678,
+                  15.732202435201536
+                ],
+                [
+                  -88.64533182382985,
+                  15.732203139050457
+                ],
+                [
+                  -88.64532964380068,
+                  15.731932032449876
+                ],
+                [
+                  -88.64523634063254,
+                  15.731932736246192
+                ],
+                [
+                  -88.64523488738563,
+                  15.73175199850008
+                ],
+                [
+                  -88.64504828119986,
+                  15.73175340595611
+                ],
+                [
+                  -88.64505336707016,
+                  15.73238598811329
+                ],
+                [
+                  -88.64514667045354,
+                  15.732385284375495
+                ],
+                [
+                  -88.64514812368405,
+                  15.732566022119174
+                ],
+                [
+                  -88.64524142714507,
+                  15.732565318333013
+                ],
+                [
+                  -88.64524215380855,
+                  15.732655687199438
+                ],
+                [
+                  -88.64533545730602,
+                  15.732654983369157
+                ],
+                [
+                  -88.64533763744824,
+                  15.732926089951013
+                ],
+                [
+                  -88.64543094106448,
+                  15.732925386068125
+                ],
+                [
+                  -88.6454323945985,
+                  15.733106123776972
+                ],
+                [
+                  -88.64552569829237,
+                  15.73310541984572
+                ],
+                [
+                  -88.64552933241572,
+                  15.733557264082949
+                ],
+                [
+                  -88.64562263631072,
+                  15.733556560090584
+                ],
+                [
+                  -88.64562409007536,
+                  15.733737297771523
+                ],
+                [
+                  -88.64571739404796,
+                  15.733736593730793
+                ],
+                [
+                  -88.64571884791381,
+                  15.733917331400118
+                ],
+                [
+                  -88.64581215196404,
+                  15.733916627311018
+                ],
+                [
+                  -88.64581287894521,
+                  15.734006996140263
+                ],
+                [
+                  -88.6459061830319,
+                  15.734006292007042
+                ],
+                [
+                  -88.64590691005893,
+                  15.73409666083126
+                ],
+                [
+                  -88.6460935183005,
+                  15.734095252436694
+                ],
+                [
+                  -88.64609279119114,
+                  15.73400488362097
+                ],
+                [
+                  -88.64618609526369,
+                  15.73400417936812
+                ],
+                [
+                  -88.64618536811786,
+                  15.733913810555865
+                ],
+                [
+                  -88.64627867214453,
+                  15.733913106267389
+                ],
+                [
+                  -88.64627794496224,
+                  15.733822737458608
+                ],
+                [
+                  -88.64637124894303,
+                  15.733822033134503
+                ],
+                [
+                  -88.64636979451026,
+                  15.733641295523086
+                ],
+                [
+                  -88.64655640229303,
+                  15.733639886772245
+                ],
+                [
+                  -88.64655712958941,
+                  15.733730255569844
+                ],
+                [
+                  -88.64674373743566,
+                  15.733728846651006
+                ],
+                [
+                  -88.64674446481905,
+                  15.73381921543933
+                ],
+                [
+                  -88.64693107272878,
+                  15.733817806352494
+                ],
+                [
+                  -88.64693034526303,
+                  15.733727437572668
+                ],
+                [
+                  -88.647,
+                  15.733726911564078
+                ],
+                [
+                  -88.647,
+                  15.76
+                ],
+                [
+                  -88.62636388669364,
+                  15.76
+                ],
+                [
+                  -88.64602098897997,
+                  15.759852449265333
+                ],
+                [
+                  -88.64601734738116,
+                  15.759400606227906
+                ],
+                [
+                  -88.64227527073386,
+                  15.758253992351454
+                ],
+                [
+                  -88.63759863135166,
+                  15.756933590022909
+                ],
+                [
+                  -88.63292493252222,
+                  15.755974558270326
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.6268493911058,
+                  15.754754771519462
+                ],
+                [
+                  -88.6249730388282,
+                  15.75350352696288
+                ],
+                [
+                  -88.6240269702892,
+                  15.751883831462452
+                ],
+                [
+                  -88.6231756657383,
+                  15.750444174535756
+                ],
+                [
+                  -88.62325159036617,
+                  15.76
+                ],
+                [
+                  -88.623,
+                  15.76
+                ],
+                [
+                  -88.623,
+                  15.73
+                ],
+                [
+                  -88.64270148522807,
+                  15.73
+                ],
+                [
+                  -88.64270191849778,
+                  15.730053974780427
+                ],
+                [
+                  -88.64288852335481,
+                  15.73005256947899
+                ]
+              ]
+            ]
+          },
+          "reason": "Solo ventana marina interior revisada; tierra, vegetación, costa y restos acuáticos ambiguos del AOI se conservan desconocidos, sin negativos marinos en tierra.",
+          "label_status": "unknown_excluded"
+        },
+        {
+          "region_id": "detector-guard-054cdbb34ad87b69ea264f2f",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62880609157688,
+                  15.755178806893438
+                ],
+                [
+                  -88.62583607927402,
+                  15.755200994674848
+                ],
+                [
+                  -88.62581314076174,
+                  15.752318322775906
+                ],
+                [
+                  -88.62878311120653,
+                  15.75229613925834
+                ],
+                [
+                  -88.62880609157688,
+                  15.755178806893438
+                ]
+              ]
+            ]
+          },
+          "reason": "Geometría centrada en franja costera/tierra, fuera del ámbito acuático conservador fijado en raw; su caja invade una parte del agua revisada. Guard de caja completa +10m aprobado como exclusión indeterminada; depende de geometría del detector vista después de raw.",
+          "label_status": "unknown_excluded",
+          "based_on_detector_geometry": true,
+          "source_detection_id": "054cdbb34ad87b69ea264f2f"
+        }
+      ],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [
+        {
+          "detection_id": "054cdbb34ad87b69ea264f2f",
+          "review_status_at_read": "provisional",
+          "original_model_geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -88.62871205658078,
+                  15.755089135195938
+                ],
+                [
+                  -88.62592867474774,
+                  15.755109928619207
+                ],
+                [
+                  -88.6259071732126,
+                  15.752407995987717
+                ],
+                [
+                  -88.62869051827737,
+                  15.752387206309827
+                ],
+                [
+                  -88.62871205658078,
+                  15.755089135195938
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "proposed_decision": "indeterminate",
+          "reason": "Geometría centrada en franja costera/tierra, fuera del ámbito acuático conservador fijado en raw; su caja invade una parte del agua revisada.",
+          "raw_reference_source": {
+            "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+            "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+          },
+          "scope_addendum_source": {
+            "path": "reports/local-review/phase2/calibration-s2-round3/detector-conditioned-scope-addendum.json",
+            "sha256": "9381922e99c25405a595c0bed768fc643faf81ab87193ad38adea901bb07eb8e"
+          },
+          "requires_independent_adjudication": true,
+          "do_not_convert_to_negative": true,
+          "reference_match": null
+        }
+      ],
+      "confirmed_additional_vessels": [],
+      "summary": "0 propuestas para aceptar, 0 altas raw y 1 propuestas indeterminadas. Solo el ámbito explícito es evaluable; objetos desconocidos no son negativos.",
+      "abstention_reason": null,
+      "coverage": {
+        "zone_center_pixels": 85391,
+        "automatic_observable_zone_center_pixels": 84966,
+        "automatic_observable_area_m2": 8495118.859097827,
+        "reviewed_area_m2": 977345.7537254296,
+        "raw_reviewed_area_before_detector_guard_m2": 990716.789548356,
+        "detector_guard_removed_m2": 13371.035822941176
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-stc_fondeo-reference-scope.png",
+      "scope_selection_conditioned_on_detector_geometry": true,
+      "post_correspondence_scope_adjustments": [
+        {
+          "detection_id": "054cdbb34ad87b69ea264f2f",
+          "raw_scope_before_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62325159036617,
+                  15.76
+                ],
+                [
+                  -88.6231756657383,
+                  15.750444174535756
+                ],
+                [
+                  -88.6240269702892,
+                  15.751883831462452
+                ],
+                [
+                  -88.6249730388282,
+                  15.75350352696288
+                ],
+                [
+                  -88.6268493911058,
+                  15.754754771519462
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.63292493252222,
+                  15.755974558270326
+                ],
+                [
+                  -88.63759863135166,
+                  15.756933590022909
+                ],
+                [
+                  -88.64227527073386,
+                  15.758253992351454
+                ],
+                [
+                  -88.64601734738116,
+                  15.759400606227906
+                ],
+                [
+                  -88.64602098897997,
+                  15.759852449265333
+                ],
+                [
+                  -88.62636388669364,
+                  15.76
+                ],
+                [
+                  -88.62325159036617,
+                  15.76
+                ]
+              ]
+            ]
+          },
+          "derived_scope_after_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6231756657383,
+                  15.750444174535756
+                ],
+                [
+                  -88.6240269702892,
+                  15.751883831462452
+                ],
+                [
+                  -88.6249730388282,
+                  15.75350352696288
+                ],
+                [
+                  -88.62582710386894,
+                  15.754073059798452
+                ],
+                [
+                  -88.62583607927402,
+                  15.755200994674848
+                ],
+                [
+                  -88.6283626346414,
+                  15.75518211978394
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.63292493252222,
+                  15.755974558270326
+                ],
+                [
+                  -88.63759863135166,
+                  15.756933590022909
+                ],
+                [
+                  -88.64227527073386,
+                  15.758253992351454
+                ],
+                [
+                  -88.64601734738116,
+                  15.759400606227906
+                ],
+                [
+                  -88.64602098897997,
+                  15.759852449265333
+                ],
+                [
+                  -88.62636388669364,
+                  15.76
+                ],
+                [
+                  -88.62325159036617,
+                  15.76
+                ],
+                [
+                  -88.6231756657383,
+                  15.750444174535756
+                ]
+              ]
+            ]
+          },
+          "excluded_region_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62880609157688,
+                  15.755178806893438
+                ],
+                [
+                  -88.62583607927402,
+                  15.755200994674848
+                ],
+                [
+                  -88.62581314076174,
+                  15.752318322775906
+                ],
+                [
+                  -88.62878311120653,
+                  15.75229613925834
+                ],
+                [
+                  -88.62880609157688,
+                  15.755178806893438
+                ]
+              ]
+            ]
+          },
+          "buffer_m": 10,
+          "removed_area_m2": 13371.035822941176,
+          "removed_fraction_of_previous_scope": 0.013496325048691978,
+          "conditioned_on_detector_geometry": true,
+          "prior_raw_unknown": true
+        }
+      ],
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+        "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/root-raw-pass.json",
+        "sha256": "721ce027766d4b9803911a2279e74082d4b04cbea164f6f978b47ada2f25319f"
+      },
+      "correspondence_exhaustive_at": "2026-10-23T03:00:59.317024+00:00",
+      "raw_visual_summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas."
+    },
+    {
+      "observation_id": "93ba2bff-55ce-49d0-a844-47e6951cf3f3",
+      "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-11-09T16:25:21.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_root_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/preview.png",
+        "sha256": "ea1d95b948ab58f83ef623eec592d8c2de9f1bf255191a8a33fd61503edd2f65",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "0fcacf88aa8abd646e535c2e7f56bfd5",
+          "sha256": "05391a6e42c5b62092eada537779acfc77411579e5c34c0d661fb00d1f6e1e2f",
+          "size_bytes": 827900,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B02.tif"
+        },
+        {
+          "asset_id": "f1e34bee9cdad09c9afa46eb06118f33",
+          "sha256": "3b9969e2feb27ec5c0ffdc1708b093153b8d5437b6c145a19e46a6555d73db71",
+          "size_bytes": 853802,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B03.tif"
+        },
+        {
+          "asset_id": "c760b72295cde8ce1fd1bb6d8eab33de",
+          "sha256": "15908d08d0f57fe85fb02744ebd3a4c7da7d9a4efcb968c3af79ae3db9dc5369",
+          "size_bytes": 858699,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B04.tif"
+        },
+        {
+          "asset_id": "79c4121336ecbdbe2900e62549b2eca6",
+          "sha256": "33f7c35d66a26691fba7a927904ce674f9240280cfe3d47899499a0fb848c2b7",
+          "size_bytes": 250099,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B05.tif"
+        },
+        {
+          "asset_id": "55ad82dfe4a9f7e5aa5d4e693b4a144f",
+          "sha256": "7507cc7fa3e031948c8b140a4c5f3c2e51c469bb226ce64e236b2ffbe1cef3a3",
+          "size_bytes": 259894,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B06.tif"
+        },
+        {
+          "asset_id": "0396f6c55364273600ce2fc3757f8979",
+          "sha256": "10a415d99cc12e7cf3fbec191ea2335fd8dc6566e88fb8e678349dce5bf46ae3",
+          "size_bytes": 256514,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B07.tif"
+        },
+        {
+          "asset_id": "d644b0d9735013369dbee08f5f7b1416",
+          "sha256": "d177cbb55a3aaf73bdaaf28f384258441a0e463f784da75477f18ab54a3531ae",
+          "size_bytes": 892372,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B08.tif"
+        },
+        {
+          "asset_id": "7cbbaa97dde1a47a121980bc9e21ae44",
+          "sha256": "5f947d0e7cc718af3dc961008c7ed4f2115c13e28a902fe02435ff022a384c15",
+          "size_bytes": 254536,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B11.tif"
+        },
+        {
+          "asset_id": "4ecbbf2ed5e4bdd8f07e2c60af27e77f",
+          "sha256": "4ef4a78e0f38fbb482a20d8f6de3149efd4af9ec5023de3aa7df977b15b00ddc",
+          "size_bytes": 246766,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/B12.tif"
+        },
+        {
+          "asset_id": "f48c82bcc98781b35d5f76ce17b16470",
+          "sha256": "3aa91ca670b2e7017b30fcb7d0d2d7029a6967ffb51ba8cba7782696fd767c65",
+          "size_bytes": 6901,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/cloud.tif"
+        },
+        {
+          "asset_id": "53dac16b557b116a222fa667639f9b81",
+          "sha256": "236dfc52aeff7b497f798a1b8e9c06eaf5a7bdb5b858d14bd474f685b0f965a0",
+          "size_bytes": 9287,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/cloud_classes.tif"
+        },
+        {
+          "asset_id": "d2a2922b4e8e6a931cc711cfb91481cd",
+          "sha256": "3595c700bf33c18774fa5ee7bcb08f99459bf7e14961047430e6f035f9d14547",
+          "size_bytes": 7240,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/observable.tif"
+        },
+        {
+          "asset_id": "bfdd353ec34262fc66dc17f857f1bbe1",
+          "sha256": "3595c700bf33c18774fa5ee7bcb08f99459bf7e14961047430e6f035f9d14547",
+          "size_bytes": 7240,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/potentially_observable.tif"
+        },
+        {
+          "asset_id": "a10f433b8673dca16b8d34698cb1577a",
+          "sha256": "ea1d95b948ab58f83ef623eec592d8c2de9f1bf255191a8a33fd61503edd2f65",
+          "size_bytes": 591431,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/preview.png"
+        },
+        {
+          "asset_id": "e74ba8da55bc9b38139d2aab1e6a25c0",
+          "sha256": "ab40a74e51c32079828269581c9a899c8d639e23fcf463508b14af4905b85d63",
+          "size_bytes": 6576,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/shadow.tif"
+        },
+        {
+          "asset_id": "32ca1999e43b2f63b105c04087249b5e",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "path": "data/assets/93ba2bff-55ce-49d0-a844-47e6951cf3f3/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61317132669582,
+              15.69900435339165
+            ],
+            [
+              -88.6140913666865,
+              15.698997561775863
+            ],
+            [
+              -88.61409137392748,
+              15.698997562598436
+            ],
+            [
+              -88.614091375729,
+              15.698997561709113
+            ],
+            [
+              -88.61427795316841,
+              15.698996184418673
+            ],
+            [
+              -88.61427724178797,
+              15.698905809134741
+            ],
+            [
+              -88.6209721400158,
+              15.69560088003159
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.61317132669582,
+              15.69900435339165
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6140913666865,
+              15.698997561775863
+            ],
+            [
+              -88.61409137392748,
+              15.698997562598436
+            ],
+            [
+              -88.614091375729,
+              15.698997561709113
+            ],
+            [
+              -88.61427795316841,
+              15.698996184418673
+            ],
+            [
+              -88.61427724178797,
+              15.698905809134741
+            ],
+            [
+              -88.6209721400158,
+              15.69560088003159
+            ],
+            [
+              -88.621394,
+              15.6964446
+            ],
+            [
+              -88.6137773,
+              15.7002163
+            ],
+            [
+              -88.61317132669582,
+              15.69900435339165
+            ],
+            [
+              -88.6140913666865,
+              15.698997561775863
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "commercial-quay-interface",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61409137392748,
+                  15.698997562598436
+                ],
+                [
+                  -88.61311232129566,
+                  15.698886342591324
+                ],
+                [
+                  -88.6127773,
+                  15.6982163
+                ],
+                [
+                  -88.620394,
+                  15.6944446
+                ],
+                [
+                  -88.6209721400158,
+                  15.69560088003159
+                ],
+                [
+                  -88.61409137392748,
+                  15.698997562598436
+                ]
+              ]
+            ]
+          },
+          "reason": "Interfaz de muelle, sombras y objetos pequeños no separables con certeza; se conservan solo ventanas de casco inequívoco.",
+          "label_status": "unknown_excluded"
+        },
+        {
+          "region_id": "northeast-fixed-projection-uncertain",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61427795316841,
+                  15.698996184418673
+                ],
+                [
+                  -88.61317132669582,
+                  15.69900435339165
+                ],
+                [
+                  -88.6127773,
+                  15.6982163
+                ],
+                [
+                  -88.61426601164236,
+                  15.69747910755426
+                ],
+                [
+                  -88.61427795316841,
+                  15.698996184418673
+                ]
+              ]
+            ]
+          },
+          "reason": "Proyección noreste contigua al muelle, posible estructura fija; no se convierte en barco ni en negativo.",
+          "label_status": "unknown_excluded"
+        }
+      ],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 propuestas para aceptar, 0 altas raw y 0 propuestas indeterminadas. Solo el ámbito explícito es evaluable; objetos desconocidos no son negativos.",
+      "abstention_reason": null,
+      "coverage": {
+        "zone_center_pixels": 2255,
+        "automatic_observable_zone_center_pixels": 2255,
+        "automatic_observable_area_m2": 225418.36843431566,
+        "reviewed_area_m2": 97490.67869630545
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-stc_muelles-reference-scope.png",
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+        "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/root-raw-pass.json",
+        "sha256": "721ce027766d4b9803911a2279e74082d4b04cbea164f6f978b47ada2f25319f"
+      },
+      "correspondence_exhaustive_at": "2026-10-23T03:00:59.317024+00:00",
+      "raw_visual_summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas.",
+      "post_correspondence_scope_adjustments": [],
+      "scope_selection_conditioned_on_detector_geometry": false
+    },
+    {
+      "observation_id": "447d257f-f77d-4f9d-942c-76c04eba88aa",
+      "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-11-09T16:25:21.024000Z",
+      "status": "usable",
+      "observable_fraction": 1.0,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "raw_frozen_then_catalog_correspondence",
+      "label_status": "exhaustive_correspondence_pending_root_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": true,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/preview.png",
+        "sha256": "ea1d95b948ab58f83ef623eec592d8c2de9f1bf255191a8a33fd61503edd2f65",
+        "width_px": 896,
+        "height_px": 448,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1738240.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "1f9436e87b6d9397d069a6bc76298b27",
+          "sha256": "05391a6e42c5b62092eada537779acfc77411579e5c34c0d661fb00d1f6e1e2f",
+          "size_bytes": 827900,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B02.tif"
+        },
+        {
+          "asset_id": "90a0d8babd2cca4f76d6d4313002e3e0",
+          "sha256": "3b9969e2feb27ec5c0ffdc1708b093153b8d5437b6c145a19e46a6555d73db71",
+          "size_bytes": 853802,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B03.tif"
+        },
+        {
+          "asset_id": "e2e05d28616e5715bc25e1bcc1ba5508",
+          "sha256": "15908d08d0f57fe85fb02744ebd3a4c7da7d9a4efcb968c3af79ae3db9dc5369",
+          "size_bytes": 858699,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B04.tif"
+        },
+        {
+          "asset_id": "331246f5163849ee49d2141937303c51",
+          "sha256": "33f7c35d66a26691fba7a927904ce674f9240280cfe3d47899499a0fb848c2b7",
+          "size_bytes": 250099,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B05.tif"
+        },
+        {
+          "asset_id": "2a139d406191908dd9e485ce6f06ca0e",
+          "sha256": "7507cc7fa3e031948c8b140a4c5f3c2e51c469bb226ce64e236b2ffbe1cef3a3",
+          "size_bytes": 259894,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B06.tif"
+        },
+        {
+          "asset_id": "64f7f0e63380819938770cf03d8013ac",
+          "sha256": "10a415d99cc12e7cf3fbec191ea2335fd8dc6566e88fb8e678349dce5bf46ae3",
+          "size_bytes": 256514,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B07.tif"
+        },
+        {
+          "asset_id": "09e4ded220bfd4172b346990aa07d2f7",
+          "sha256": "d177cbb55a3aaf73bdaaf28f384258441a0e463f784da75477f18ab54a3531ae",
+          "size_bytes": 892372,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B08.tif"
+        },
+        {
+          "asset_id": "c9e49e9a7cf435f30838ed1ea967dc9b",
+          "sha256": "5f947d0e7cc718af3dc961008c7ed4f2115c13e28a902fe02435ff022a384c15",
+          "size_bytes": 254536,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B11.tif"
+        },
+        {
+          "asset_id": "f287a35bf99a202c4674ed0013d71905",
+          "sha256": "4ef4a78e0f38fbb482a20d8f6de3149efd4af9ec5023de3aa7df977b15b00ddc",
+          "size_bytes": 246766,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/B12.tif"
+        },
+        {
+          "asset_id": "dd919ae441c8aa9f99affc7e5a5b31e7",
+          "sha256": "3aa91ca670b2e7017b30fcb7d0d2d7029a6967ffb51ba8cba7782696fd767c65",
+          "size_bytes": 6901,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/cloud.tif"
+        },
+        {
+          "asset_id": "bb896dc56c59b8f5cef6c21667597beb",
+          "sha256": "236dfc52aeff7b497f798a1b8e9c06eaf5a7bdb5b858d14bd474f685b0f965a0",
+          "size_bytes": 9287,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/cloud_classes.tif"
+        },
+        {
+          "asset_id": "a689645dbef7e5d6a744072ad260a04a",
+          "sha256": "3595c700bf33c18774fa5ee7bcb08f99459bf7e14961047430e6f035f9d14547",
+          "size_bytes": 7240,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/observable.tif"
+        },
+        {
+          "asset_id": "ed4414aa6c564ea4a0c3c41198af5b67",
+          "sha256": "3595c700bf33c18774fa5ee7bcb08f99459bf7e14961047430e6f035f9d14547",
+          "size_bytes": 7240,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/potentially_observable.tif"
+        },
+        {
+          "asset_id": "38e8ba3a7f84a5ea289469a197d8b715",
+          "sha256": "ea1d95b948ab58f83ef623eec592d8c2de9f1bf255191a8a33fd61503edd2f65",
+          "size_bytes": 591431,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/preview.png"
+        },
+        {
+          "asset_id": "137aa4554dc588a660a23e99f742e1a3",
+          "sha256": "ab40a74e51c32079828269581c9a899c8d639e23fcf463508b14af4905b85d63",
+          "size_bytes": 6576,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/shadow.tif"
+        },
+        {
+          "asset_id": "4c388fbba8f43763138cfd52cd743f80",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83",
+          "size_bytes": 2321,
+          "path": "data/assets/447d257f-f77d-4f9d-942c-76c04eba88aa/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6203434,
+              15.6943503
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.6126648,
+              15.6980238
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.6954106
+            ],
+            [
+              -88.613991,
+              15.6941879
+            ],
+            [
+              -88.6136091,
+              15.6934763
+            ],
+            [
+              -88.614184,
+              15.6931968
+            ],
+            [
+              -88.6150469,
+              15.6927772
+            ],
+            [
+              -88.6166798,
+              15.6919832
+            ],
+            [
+              -88.6171964,
+              15.6930225
+            ],
+            [
+              -88.6187536,
+              15.6922614
+            ],
+            [
+              -88.6190534,
+              15.6928514
+            ],
+            [
+              -88.6195376,
+              15.6926089
+            ],
+            [
+              -88.6204882,
+              15.6942803
+            ],
+            [
+              -88.6203434,
+              15.6943503
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6203434,
+              15.6943503
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.6126648,
+              15.6980238
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.6954106
+            ],
+            [
+              -88.613991,
+              15.6941879
+            ],
+            [
+              -88.6136091,
+              15.6934763
+            ],
+            [
+              -88.614184,
+              15.6931968
+            ],
+            [
+              -88.6150469,
+              15.6927772
+            ],
+            [
+              -88.6166798,
+              15.6919832
+            ],
+            [
+              -88.6171964,
+              15.6930225
+            ],
+            [
+              -88.6187536,
+              15.6922614
+            ],
+            [
+              -88.6190534,
+              15.6928514
+            ],
+            [
+              -88.6195376,
+              15.6926089
+            ],
+            [
+              -88.6204882,
+              15.6942803
+            ],
+            [
+              -88.6203434,
+              15.6943503
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.620394,
+              15.6944446
+            ],
+            [
+              -88.6127773,
+              15.6982163
+            ],
+            [
+              -88.6126648,
+              15.6980238
+            ],
+            [
+              -88.6119362,
+              15.6964985
+            ],
+            [
+              -88.6119295,
+              15.6963012
+            ],
+            [
+              -88.6114767,
+              15.6954106
+            ],
+            [
+              -88.613991,
+              15.6941879
+            ],
+            [
+              -88.6136091,
+              15.6934763
+            ],
+            [
+              -88.614184,
+              15.6931968
+            ],
+            [
+              -88.6150469,
+              15.6927772
+            ],
+            [
+              -88.6166798,
+              15.6919832
+            ],
+            [
+              -88.6171964,
+              15.6930225
+            ],
+            [
+              -88.6187536,
+              15.6922614
+            ],
+            [
+              -88.6190534,
+              15.6928514
+            ],
+            [
+              -88.6195376,
+              15.6926089
+            ],
+            [
+              -88.6204882,
+              15.6942803
+            ],
+            [
+              -88.6203434,
+              15.6943503
+            ],
+            [
+              -88.620394,
+              15.6944446
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 propuestas para aceptar, 0 altas raw y 0 propuestas indeterminadas. Solo el ámbito explícito es evaluable; objetos desconocidos no son negativos.",
+      "abstention_reason": null,
+      "coverage": {
+        "zone_center_pixels": 3281,
+        "automatic_observable_zone_center_pixels": 3281,
+        "automatic_observable_area_m2": 329295.88461862615,
+        "reviewed_area_m2": 329295.88461862615
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-stc_patios-reference-scope.png",
+      "consolidation_schema_complete": true,
+      "model_scores_queried": false,
+      "raw_reference_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+        "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+      },
+      "second_raw_review_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round3/root-raw-pass.json",
+        "sha256": "721ce027766d4b9803911a2279e74082d4b04cbea164f6f978b47ada2f25319f"
+      },
+      "correspondence_exhaustive_at": "2026-10-23T03:00:59.317024+00:00",
+      "raw_visual_summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas.",
+      "post_correspondence_scope_adjustments": [],
+      "scope_selection_conditioned_on_detector_geometry": false
+    }
+  ],
+  "unresolved_raw_objects": [
+    {
+      "visual_id": "U01",
+      "pixel_box": [
+        440,
+        638,
+        463,
+        675
+      ],
+      "reference_grid": "stc_canal",
+      "reason": "Firma tenue terminada en píxeles claros; posible pequeño buque/estela, no confirma casco a 10 m."
+    },
+    {
+      "visual_id": "U02",
+      "pixel_box": [
+        374,
+        1125,
+        438,
+        1141
+      ],
+      "reference_grid": "stc_canal",
+      "reason": "Firmas claras junto al frente de muelle con continuidad de infraestructura; presencia de barco no inequívoca."
+    },
+    {
+      "visual_id": "U03",
+      "pixel_box": [
+        447,
+        1093,
+        466,
+        1108
+      ],
+      "reference_grid": "stc_canal",
+      "reason": "Proyección gris noreste, posible estructura fija. Se conserva indeterminada."
+    }
+  ],
+  "summary": {
+    "observations": 4,
+    "unique_acquisitions": 1,
+    "unique_proposed_visual_references": 0,
+    "positive_zone_instances": 0,
+    "reviewable_observations": 4,
+    "abstaining_observations": 0,
+    "independent_target_passes": 1,
+    "all_registered_asset_hashes_verified": true,
+    "human_ground_truth": false,
+    "existing_catalog_proposals": 2,
+    "proposed_acceptances": 0,
+    "proposed_additions": 0,
+    "rejected_proposals": 0,
+    "indeterminate_proposals": 2,
+    "performance_metrics_computed": false
+  },
+  "limitations": [
+    "AI raw review, pending independent second review/adjudication.",
+    "Unknown quay/shore/cloud regions are not negative labels.",
+    "Small-vessel completeness unestablished at 10 m; family and dimensions null.",
+    "Multiple zones from the same acquisition are not independent passes.",
+    "No training, inference, performance metrics or test inspection performed."
+  ],
+  "consolidation_schema_complete": true,
+  "requires_independent_second_review": false,
+  "requires_final_scope_adjudication": true,
+  "raw_reference_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/stc-20251109-s2-raw-review.json",
+    "sha256": "007e65bf077b3ea5847a51ce4d46b2602de545eb912ef7f669d7ba7e6df1d383"
+  },
+  "raw_reference_created_at": "2026-10-23T02:40:18.953401+00:00",
+  "second_raw_review_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/root-raw-pass.json",
+    "sha256": "721ce027766d4b9803911a2279e74082d4b04cbea164f6f978b47ada2f25319f"
+  },
+  "catalog_correspondence_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/correspondence/catalog-correspondence-snapshot.json",
+    "sha256": "72ffb24426ea872407fc504c5d81aff2f4fdea660cdb5d638c8338a00ff10fb7"
+  },
+  "raw_addendum_sources": [],
+  "scope_addendum_source": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/detector-conditioned-scope-addendum.json",
+    "sha256": "9381922e99c25405a595c0bed768fc643faf81ab87193ad38adea901bb07eb8e"
+  },
+  "scope_selection_conditioned_on_detector_geometry": true,
+  "raw_stage_summary": {
+    "observations": 4,
+    "unique_acquisitions": 1,
+    "unique_proposed_visual_references": 0,
+    "positive_zone_instances": 0,
+    "reviewable_observations": 4,
+    "abstaining_observations": 0,
+    "independent_target_passes": 1,
+    "all_registered_asset_hashes_verified": true,
+    "human_ground_truth": false,
+    "model_performance_not_observed": true
+  },
+  "consolidation_notes": [
+    "Correspondencia administrativa exhaustiva del snapshot, pendiente de adjudicación root y aprobación de renders finales.",
+    "Referencias y cajas raw conservadas; solo PBR Nov9 V03 fue retirado mediante addendum temporal previo al catálogo.",
+    "Cinco guards posteriores a propuestas, footprint completo +10m, están documentados explícitamente: el ámbito resultante está condicionado al detector. No implica precisión incondicional del puerto.",
+    "No se consultaron scores ni se calcularon precisión, recall, IoU o umbrales. No hubo inferencia, entrenamiento ni escritura de base de datos.",
+    "Autoría y segunda revisión IA explícitas; no se presenta como validación humana."
+  ]
+}

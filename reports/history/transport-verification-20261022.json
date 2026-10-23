@@ -1,0 +1,66 @@
+{
+  "schema_version": "history-transport-verification-v1",
+  "created_at": "2026-10-23T03:53:14.899487+00:00",
+  "scope": "bounded range transport timing only; no model inference",
+  "comparison": {
+    "s1": {
+      "urllib_median_seconds": 0.6381472079956438,
+      "pool_first_connection_seconds": 0.7372921250062063,
+      "pool_warm_median_seconds": 0.23860187499667518,
+      "warm_latency_ratio": 2.6745272140235117,
+      "one_source_same_bytes_all_requests": true
+    },
+    "s2": {
+      "urllib_median_seconds": 0.6831610419903882,
+      "pool_first_connection_seconds": 0.7691276660189033,
+      "pool_warm_median_seconds": 0.3075537499971688,
+      "warm_latency_ratio": 2.221273653781419,
+      "one_source_same_bytes_all_requests": true
+    }
+  },
+  "requested_range": "0-16383",
+  "requests_per_method_per_source": 3,
+  "comparison_transferred_bytes": 196608,
+  "production_adapter_live_check": {
+    "results": [
+      {
+        "source": "s1",
+        "same_sha256": "323ae2291383685f962b6fcf2a202af8b58e50cd2518b5525d10420f64b50690",
+        "bytes": 16384,
+        "range_verified_by_production_reader": true
+      },
+      {
+        "source": "s2",
+        "same_sha256": "0d9076cd27e93cdd1d4059c06fc91d44558792244b0e0252e996bea2291121d9",
+        "bytes": 16384,
+        "range_verified_by_production_reader": true
+      }
+    ],
+    "reserved_bytes_total": 229376
+  },
+  "same_contract": [
+    "exact requested byte ranges",
+    "206 and Content-Range verification",
+    "ETag If-Match or immutable GCS generation",
+    "durable reservations before I/O",
+    "proven pre-response DNS refund only",
+    "existing retry/backoff policy",
+    "CPU4 and I/O4 maximum",
+    "unchanged frozen acquisition order and preprocessing"
+  ],
+  "limits": [
+    "Two sources and a short sample; this is not an end-to-end throughput guarantee.",
+    "No prediction counts, scores or geometries were inspected."
+  ],
+  "raw_evidence_sha256": {
+    "tmp/history-transport-benchmark/result.json": "054309a02afd8c2412bdc5b29e715c4e8f935d39c97c798e6abdfc13d8ad1701",
+    "tmp/history-transport-benchmark/adapter-live-verification.json": "a46729c75b72a573e36087a14a6103aff54f5d85c5c6004904592b9c05335cc4"
+  },
+  "activation": {
+    "flag": "--reuse-connections",
+    "default_enabled": false,
+    "metadata_requests_unchanged": true,
+    "global_urllib_opener_modified": false,
+    "process_started_at": "2026-10-23T04:00:28.560101+00:00"
+  }
+}

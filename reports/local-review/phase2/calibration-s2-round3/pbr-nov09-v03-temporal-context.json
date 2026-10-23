@@ -1,0 +1,127 @@
+{
+  "created_at": "2026-10-23T02:50:40.113928+00:00",
+  "author": "codex-ai-model-pilot",
+  "purpose": "Requested independent temporal raw inspection of PBR Nov9 V03: pier/platform versus vessel, no model outputs or identity claim.",
+  "source_raw_report": {
+    "path": "reports/local-review/phase2/calibration-s2-round3/pbr-20251109-s2-raw-review.json",
+    "sha256": "98cfe7b3f726731a0217470e2980321e98d6f043e8eeea96f464a920a84de123"
+  },
+  "sources": [
+    {
+      "label": "TRAIN Jan18",
+      "observation_id": "521bdbf5-50f6-410a-94d2-f7d7357e3f4e",
+      "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "status": "usable",
+      "asset": {
+        "path": "data/assets/521bdbf5-50f6-410a-94d2-f7d7357e3f4e/preview.png",
+        "sha256": "10171e62521be215fb0225c61f071b422feec9bf1955f8a99851ac0625cb2a22"
+      },
+      "grid": {
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "width": 448,
+        "height": 448
+      }
+    },
+    {
+      "label": "TRAIN Feb02",
+      "observation_id": "fe48500a-aaa2-4962-8a26-39a0eec99279",
+      "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "status": "unusable",
+      "asset": {
+        "path": "data/assets/fe48500a-aaa2-4962-8a26-39a0eec99279/preview.png",
+        "sha256": "e127cf9da9dbb85759d154f1ea1e8afb70aa59b57947bedd2f214a699fbb17d4"
+      },
+      "grid": {
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "width": 448,
+        "height": 448
+      }
+    },
+    {
+      "label": "CAL Oct20",
+      "observation_id": "e454c3b2-221b-44a8-8004-27477f5118a2",
+      "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "status": "usable",
+      "asset": {
+        "path": "data/assets/e454c3b2-221b-44a8-8004-27477f5118a2/preview.png",
+        "sha256": "2c2fc37b1d17b63ad767b7059d052c62ca29b1b00bd4b8163a13d2bced26e985"
+      },
+      "grid": {
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "width": 448,
+        "height": 448
+      }
+    },
+    {
+      "label": "CAL Nov09",
+      "observation_id": "7980b841-84ab-4c6a-b8c6-e697d220f2c9",
+      "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "status": "usable",
+      "asset": {
+        "path": "data/assets/7980b841-84ab-4c6a-b8c6-e697d220f2c9/preview.png",
+        "sha256": "0629e0b7deb09cee2959e2515dd910b0176269503b50fdaf24d0514b89023b8e"
+      },
+      "grid": {
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          327040.0,
+          0.0,
+          -10.0,
+          1742720.0
+        ],
+        "width": 448,
+        "height": 448
+      }
+    }
+  ],
+  "same_grid_verified": true,
+  "contexts_were_fixed_train_dates_requested_by_root": true,
+  "proposals_queried": false,
+  "model_scores_seen": false,
+  "metrics_computed": false,
+  "references_changed": false,
+  "renders": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round3/pbr-nov09-v03-temporal-raw-context.png",
+      "sha256": "c2e3a1f3eedf88b2a38fadb3aec4ca069ab4a85ec0de98cd84b46c2ad1da9dc8"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round3/pbr-nov09-v03-temporal-raw-west-detail.png",
+      "sha256": "cc186ea57db4c7860f47c1d9c6f366973000fca506972cbeb342ce441e5998a9"
+    }
+  ]
+}

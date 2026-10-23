@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+  "installed_wheel_only": true,
+  "routes": {
+    "/": 200,
+    "/health": 200,
+    "/v1/system": 200,
+    "/v1/ports": 200,
+    "/v1/observations": 200,
+    "/app.js": 200
+  },
+  "status": {
+    "generated_at": "2026-10-23T05:00:14.261011Z",
+    "scope": "entire_local_volume",
+    "catalog_acquisitions": 0,
+    "observations": {
+      "total": 0,
+      "states": {}
+    },
+    "jobs": {},
+    "reviews": {
+      "states": {},
+      "complete_scopes": 0
+    },
+    "history": [],
+    "model_tasks": [
+      {
+        "task": "detection",
+        "sensor": "sentinel-1",
+        "registered_versions": 0,
+        "local_validation_declared": false
+      },
+      {
+        "task": "detection",
+        "sensor": "sentinel-2",
+        "registered_versions": 0,
+        "local_validation_declared": false
+      },
+      {
+        "task": "attributes",
+        "sensor": "sentinel-1",
+        "registered_versions": 0,
+        "local_validation_declared": false
+      },
+      {
+        "task": "attributes",
+        "sensor": "sentinel-2",
+        "registered_versions": 0,
+        "local_validation_declared": false
+      },
+      {
+        "task": "change",
+        "sensor": "sentinel-2",
+        "registered_versions": 0,
+        "local_validation_declared": false
+      }
+    ],
+    "limits": [
+      "Processed acquisitions may contain unusable observations.",
+      "Review counts include attributed AI reviews and abstentions, not only human labels.",
+      "Local validation requires an explicit passed declaration in a registered manifest; this snapshot does not evaluate accuracy.",
+      "Campaign counts are persisted state, not proof that a worker process is alive."
+    ]
+  }
+}

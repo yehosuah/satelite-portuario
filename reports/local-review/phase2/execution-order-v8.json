@@ -1,0 +1,2019 @@
+{
+  "author": "Codex (AI)",
+  "sampling_plan": "reports/local-review/phase2/sampling-plan.json",
+  "primary_acquisitions": 152,
+  "activated_reserve_acquisitions": 8,
+  "unique_prioritized_acquisitions": 160,
+  "selection_uses_predictions": false,
+  "initial_observable_quota_per_port_sensor_split": 2,
+  "milestones": [
+    {
+      "id": "first_train_block",
+      "goal": "Review two observable target acquisitions per each of the six port/sensor strata; positive training examples are needed but not guaranteed.",
+      "completion": "Quality and annotation audit, never detection score."
+    },
+    {
+      "id": "first_calibration_block",
+      "goal": "Review two observable acquisitions per stratum with the same blinded-label protocol.",
+      "completion": "No threshold search until calibration labels/protocol frozen."
+    },
+    {
+      "id": "first_test_block",
+      "goal": "Prepare held-out raw evidence and independent label review; do not open detector predictions.",
+      "completion": "No model evaluation until final support, labels, weights and pipeline frozen."
+    },
+    {
+      "id": "support_expansion",
+      "goal": "Advance balanced primary rounds, then prespecified reserve waves until support or inventory exhausted, before test evaluation.",
+      "completion": "At least 30 unique references per port/sensor; predicted denominator checked only at final evaluation and never used for retrospective resampling."
+    }
+  ],
+  "activated_reserves": [
+    {
+      "split": "train",
+      "port_ids": [
+        "stc",
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "reserve_acquisition_key": "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+      "reserve_rank": 2,
+      "reason": "All eight published zone observations have no observable area under the quality mask; primary retained in coverage audit.",
+      "evidence": "reports/history/processing-plan.md; coordinator confirmed unusable acquisition before this activation.",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "train",
+      "port_ids": [
+        "stc",
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "failed_prior_reserve_acquisition_keys": [
+        "S2B:MSIL1C:20250105T161559:R140:T16PCC"
+      ],
+      "reserve_acquisition_key": "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+      "reserve_rank": 3,
+      "reason": "Both earlier chronological candidates have zero observable area in all eight zones each. Jan 8 retains its first recoverable I/O failure and must be retried before later reserves.",
+      "evidence": "reports/local-review/phase2/reserve-caribe-20250108-activation.json",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "train",
+      "port_ids": [
+        "stc",
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+      "failed_prior_reserve_acquisition_keys": [
+        "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+        "S2B:MSIL1C:20250108T162549:R040:T16PCC"
+      ],
+      "reserve_acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+      "reserve_rank": 4,
+      "reason": "All three earlier chronological candidates have zero observable area in all eight zones each. Jan 8 completed its recoverable retry before this activation; no earlier candidate was skipped.",
+      "evidence": "reports/local-review/phase2/reserve-caribe-20250110-activation.json",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "calibration",
+      "port_ids": [
+        "stc",
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+      "reserve_acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+      "reserve_rank": 2,
+      "reason": "Both ports have zero reviewable marine area in the first raw quality review of the cloudy Oct 2 primary. STC's small automatically clear fragment is terrestrial/hazy and was independently abstained. Activate only the next chronological candidate within the same Oct 1–9 calibration slot; retain all primary failures.",
+      "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251005-activation.json",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "calibration",
+      "port_ids": [
+        "stc",
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+      "reserve_acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+      "reserve_rank": 2,
+      "reason": "Both ports have an entirely zero automatic observability mask and all eight primary observations are unusable. Four visually discernible berth hulls are retained only as raw quality-disagreement evidence; no reviewed operational area can be exported. Activate the first chronological reserve within the same Oct 17–25 slot, without consulting its predictions, scores or vessel counts.",
+      "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251020-activation.json",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "calibration",
+      "port_ids": [
+        "pbr",
+        "stc"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+      "reserve_acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+      "reserve_rank": 2,
+      "reason": "All eight primary observations have zero observable pixels. Activate the first chronological reserve in the same Nov1-Nov9 slot before opening its imagery or proposals. Original primary abstentions remain recorded.",
+      "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251101-activation.json",
+      "used_predictions_or_scores": false
+    },
+    {
+      "split": "calibration",
+      "port_ids": [
+        "pbr",
+        "stc"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+      "reserve_acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+      "reserve_rank": 3,
+      "reason": "All eight observations unusable; each full observable mask has zero positive pixels. Saturated raw previews do not support a vessel presence or absence claim.",
+      "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251104-activation.json",
+      "used_predictions_or_scores": false,
+      "failed_reserve_acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC"
+    },
+    {
+      "split": "calibration",
+      "port_ids": [
+        "pbr"
+      ],
+      "sensor": "sentinel-2",
+      "failed_primary_acquisition_key": "S2C:MSIL1C:20251126T161631:R140:T16PCC",
+      "reserve_acquisition_key": "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+      "reserve_rank": 2,
+      "reason": "PBR only: all four Nov26 observations are unusable with zero observable pixels inside their AOIs. Each mosaic has 1523 observable pixels outside those zones; these are not counted as port observability. STC is assessed separately and retains its small reviewed canal scope.",
+      "evidence": "reports/local-review/phase2/reserve-calibration-pbr-20251129-activation.json",
+      "used_predictions_or_scores": false
+    }
+  ],
+  "stages": [
+    {
+      "round": 1,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+        "S1A:IW:GRDH:1SDV:20250102T001418:20250102T001443:057258:070B29",
+        "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+        "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+        "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+        "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+        "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250118T115449:20250118T115511:057498:0714B3",
+        "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+        "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250102T001418:20250102T001443:057258:070B29"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250118T115449:20250118T115511:057498:0714B3"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 1,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251003T115326:20251003T115402:004397:008B68",
+        "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1",
+        "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+        "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20251009T115446:20251009T115508:061348:07A7B0",
+        "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+        "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20251002T161019:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251003T115326:20251003T115402:004397:008B68"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251009T115446:20251009T115508:061348:07A7B0"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 1,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A",
+        "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260407T115437:20260407T115459:063973:080C45",
+        "S1C:IW:GRDH:1SDV:20260413T115323:20260413T115359:007197:00E961",
+        "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S2B:MSIL1C:20260403T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 1,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260407T115437:20260407T115459:063973:080C45"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260413T115323:20260413T115359:007197:00E961"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S2B:MSIL1C:20260413T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 2,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 2,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11",
+        "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+        "S2C:MSIL1C:20250202T162531:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250207T001416:20250207T001441:057783:071FFA",
+        "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+        "S2B:MSIL1C:20250217T162239:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250218T114551:20250218T114616:057950:0726BD",
+        "S1A:IW:GRDH:1SDV:20250219T001415:20250219T001440:057958:072701"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250207T001416:20250207T001441:057783:071FFA"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250218T114551:20250218T114616:057950:0726BD"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250218T114551:20250218T114616:057950:0726BD"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250219T001415:20250219T001440:057958:072701"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 2,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20251017T001432:20251017T001457:061458:07AC0F",
+        "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+        "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251018T000540:20251018T000605:004609:0091D4",
+        "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+        "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+        "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251027T115326:20251027T115402:004747:009602",
+        "S1A:IW:GRDH:1SDV:20251028T114548:20251028T114613:061625:07B2D2"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251017T001432:20251017T001457:061458:07AC0F"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20251017T161301:R140:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251018T000540:20251018T000605:004609:0091D4"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251018T000540:20251018T000605:004609:0091D4"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251027T115326:20251027T115402:004747:009602"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251028T114548:20251028T114613:061625:07B2D2"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251028T114548:20251028T114613:061625:07B2D2"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 2,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20260422T000618:20260422T000643:064185:08142C",
+        "S1D:IW:GRDH:1SDV:20260422T001324:20260422T001353:002452:004082",
+        "S2B:MSIL1C:20260423T161819:R040:T15PYR",
+        "S2B:MSIL1C:20260423T161819:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260501T115437:20260501T115459:064323:081951",
+        "S2B:MSIL1C:20260503T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260503T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260504T000617:20260504T000642:064360:081AAE"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260422T000618:20260422T000643:064185:08142C"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260422T000618:20260422T000643:064185:08142C"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260422T001324:20260422T001353:002452:004082"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2B:MSIL1C:20260423T161819:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2B:MSIL1C:20260423T161819:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 3,
+          "acquisition_key": "S2B:MSIL1C:20260423T161819:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260501T115437:20260501T115459:064323:081951"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20260503T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20260503T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S2B:MSIL1C:20260503T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260504T000617:20260504T000642:064360:081AAE"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 4,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260504T000617:20260504T000642:064360:081AAE"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 3,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S2C:MSIL1C:20250301T161231:R140:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+        "S1A:IW:GRDH:1SDV:20250303T001415:20250303T001440:058133:072E2A",
+        "S2C:MSIL1C:20250304T162211:R040:T15PYR",
+        "S2B:MSIL1C:20250316T160919:R140:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250319T115448:20250319T115510:058373:0737C9",
+        "S2B:MSIL1C:20250319T161909:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20250322T000646:20250322T000711:058410:073940"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2C:MSIL1C:20250301T161231:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2C:MSIL1C:20250301T161231:R140:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250303T001415:20250303T001440:058133:072E2A"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2C:MSIL1C:20250304T162211:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20250316T160919:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20250316T160919:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250319T115448:20250319T115510:058373:0737C9"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20250319T161909:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250322T000646:20250322T000711:058410:073940"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250322T000646:20250322T000711:058410:073940"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 3,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+        "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+        "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+        "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20251102T115446:20251102T115508:061698:07B5B1",
+        "S1A:IW:GRDH:1SDV:20251105T000626:20251105T000651:061735:07B71D",
+        "S1A:IW:GRDH:1SDV:20251109T114548:20251109T114613:061800:07B9AA",
+        "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+        "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20251110T001429:20251110T001454:061808:07B9F1"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2B:MSIL1C:20251101T161329:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251102T115446:20251102T115508:061698:07B5B1"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251105T000626:20251105T000651:061735:07B71D"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251105T000626:20251105T000651:061735:07B71D"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251109T114548:20251109T114613:061800:07B9AA"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251109T114548:20251109T114613:061800:07B9AA"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251110T001429:20251110T001454:061808:07B9F1"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 3,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20260513T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260513T161829:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20260515T001315:20260515T001344:007657:00F8EB",
+        "S1A:IW:GRDH:1SDV:20260516T000617:20260516T000642:064535:0820E4",
+        "S2B:MSIL1C:20260523T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260523T161829:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20260527T001316:20260527T001345:007832:00FEC1",
+        "S1D:IW:GRDH:1SDV:20260604T000549:20260604T000614:003079:005534"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2B:MSIL1C:20260513T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2B:MSIL1C:20260513T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S2B:MSIL1C:20260513T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260515T001315:20260515T001344:007657:00F8EB"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260516T000617:20260516T000642:064535:0820E4"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 5,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260516T000617:20260516T000642:064535:0820E4"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20260523T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20260523T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S2B:MSIL1C:20260523T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260527T001316:20260527T001345:007832:00FEC1"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260604T000549:20260604T000614:003079:005534"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 6,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260604T000549:20260604T000614:003079:005534"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 4,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1C:IW:GRDH:1SDV:20250402T001307:20250402T001336:001707:002E75",
+        "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+        "S2C:MSIL1C:20250403T161851:R040:T15PYR",
+        "S2C:MSIL1C:20250403T161851:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20250418T115317:20250418T115353:001947:003D99",
+        "S2B:MSIL1C:20250418T161829:R040:T15PYR",
+        "S2B:MSIL1C:20250418T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250402T001307:20250402T001336:001707:002E75"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2C:MSIL1C:20250403T161851:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2C:MSIL1C:20250403T161851:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2C:MSIL1C:20250403T161851:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250418T115317:20250418T115353:001947:003D99"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20250418T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20250418T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20250418T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 4,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+        "S2C:MSIL1C:20251119T162611:R040:T15PYR",
+        "S1C:IW:GRDH:1SDV:20251120T115325:20251120T115401:005097:00A1A3",
+        "S1A:IW:GRDH:1SDV:20251121T114547:20251121T114612:061975:07C078",
+        "S1A:IW:GRDH:1SDV:20251126T115444:20251126T115506:062048:07C34A",
+        "S2C:MSIL1C:20251126T161631:R140:T16PCC",
+        "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20251129T000624:20251129T000649:062085:07C4BD",
+        "S2C:MSIL1C:20251129T162641:R040:T15PYR"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2C:MSIL1C:20251119T162611:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251120T115325:20251120T115401:005097:00A1A3"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251121T114547:20251121T114612:061975:07C078"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251121T114547:20251121T114612:061975:07C078"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251126T115444:20251126T115506:062048:07C34A"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2C:MSIL1C:20251126T161631:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2C:MSIL1C:20251126T161631:R140:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251129T000624:20251129T000649:062085:07C4BD"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251129T000624:20251129T000649:062085:07C4BD"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2C:MSIL1C:20251129T162641:R040:T15PYR"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 4,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S1D:IW:GRDH:1SDV:20260601T115335:20260601T115411:003042:005404",
+        "S2B:MSIL1C:20260602T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260602T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20260621T000615:20260621T000640:065060:08334B",
+        "S2B:MSIL1C:20260612T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260612T161829:R040:T16PCC",
+        "S1D:IW:GRDH:1SDV:20260613T115336:20260613T115412:003217:0059D1",
+        "S1D:IW:GRDH:1SDV:20260628T000535:20260628T000600:003429:0060B9"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260601T115335:20260601T115411:003042:005404"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2B:MSIL1C:20260602T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2B:MSIL1C:20260602T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S2B:MSIL1C:20260602T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260621T000615:20260621T000640:065060:08334B"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 7,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20260621T000615:20260621T000640:065060:08334B"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20260612T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20260612T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S2B:MSIL1C:20260612T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260613T115336:20260613T115412:003217:0059D1"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260628T000535:20260628T000600:003429:0060B9"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 8,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260628T000535:20260628T000600:003429:0060B9"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 5,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+        "S1A:IW:GRDH:1SDV:20250502T001416:20250502T001441:059008:075185",
+        "S2A:MSIL1C:20250502T161701:R140:T16PCC",
+        "S2C:MSIL1C:20250503T161851:R040:T15PYR",
+        "S1A:IW:GRDH:1SDV:20250518T115448:20250518T115510:059248:075A36",
+        "S2B:MSIL1C:20250518T161829:R040:T15PYR",
+        "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250502T001416:20250502T001441:059008:075185"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2A:MSIL1C:20250502T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2A:MSIL1C:20250502T161701:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2C:MSIL1C:20250503T161851:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250518T115448:20250518T115510:059248:075A36"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 5,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251202T115325:20251202T115401:005272:00A788",
+        "S1A:IW:GRDH:1SDV:20251203T114546:20251203T114611:062150:07C74B",
+        "S2B:MSIL1C:20251204T162549:R040:T15PYR",
+        "S2C:MSIL1C:20251209T162701:R040:T15PYR",
+        "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251210T001315:20251210T001344:005382:00AB50",
+        "S1A:IW:GRDH:1SDV:20251211T000623:20251211T000648:062260:07CB92"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251202T115325:20251202T115401:005272:00A788"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251203T114546:20251203T114611:062150:07C74B"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251203T114546:20251203T114611:062150:07C74B"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20251204T162549:R040:T15PYR"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251210T001315:20251210T001344:005382:00AB50"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251211T000623:20251211T000648:062260:07CB92"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251211T000623:20251211T000648:062260:07CB92"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 5,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20260622T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260622T161829:R040:T16PCC",
+        "S1D:IW:GRDH:1SDV:20260625T115354:20260625T115416:003392:005F80",
+        "S1C:IW:GRDH:1SDV:20260716T000539:20260716T000604:008561:010F33",
+        "S1C:IW:GRDH:1SDV:20260701T115324:20260701T115400:008349:01085D",
+        "S2B:MSIL1C:20260702T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260702T161829:R040:T16PCC",
+        "S1D:IW:GRDH:1SDV:20260722T000536:20260722T000601:003779:006C92"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20260622T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20260622T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S2B:MSIL1C:20260622T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260625T115354:20260625T115416:003392:005F80"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260716T000539:20260716T000604:008561:010F33"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 9,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260716T000539:20260716T000604:008561:010F33"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260701T115324:20260701T115400:008349:01085D"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20260702T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20260702T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S2B:MSIL1C:20260702T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260722T000536:20260722T000601:003779:006C92"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 10,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260722T000536:20260722T000601:003779:006C92"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 6,
+      "split": "train",
+      "unique_acquisition_keys": [
+        "S1C:IW:GRDH:1SDV:20250601T001311:20250601T001340:002582:0055B7",
+        "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192",
+        "S2C:MSIL1C:20250602T161921:R040:T15PYR",
+        "S2C:MSIL1C:20250602T161921:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20250617T115321:20250617T115357:002822:005CAF",
+        "S2B:MSIL1C:20250617T161829:R040:T15PYR",
+        "S2B:MSIL1C:20250617T161829:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250601T001311:20250601T001340:002582:0055B7"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20250602T161921:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20250602T161921:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20250602T161921:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20250617T115321:20250617T115357:002822:005CAF"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20250617T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20250617T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20250617T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 6,
+      "split": "calibration",
+      "unique_acquisition_keys": [
+        "S1C:IW:GRDH:1SDV:20251217T000538:20251217T000603:005484:00AEC8",
+        "S2C:MSIL1C:20251219T162721:R040:T15PYR",
+        "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+        "S1A:IW:GRDH:1SDV:20251220T115442:20251220T115504:062398:07D0F0",
+        "S1C:IW:GRDH:1SDV:20251226T115323:20251226T115359:005622:00B391",
+        "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+        "S1C:IW:GRDH:1SDV:20251229T000537:20251229T000602:005659:00B4D0",
+        "S2C:MSIL1C:20251229T162941:R040:T15PYR"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251217T000538:20251217T000603:005484:00AEC8"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251217T000538:20251217T000603:005484:00AEC8"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1A:IW:GRDH:1SDV:20251220T115442:20251220T115504:062398:07D0F0"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251226T115323:20251226T115359:005622:00B391"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251229T000537:20251229T000602:005659:00B4D0"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20251229T000537:20251229T000602:005659:00B4D0"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T15PYR"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 6,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20260712T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260712T161829:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20260713T115325:20260713T115401:008524:010E09",
+        "S1D:IW:GRDH:1SDV:20260815T000537:20260815T000602:004129:0078B8",
+        "S2B:MSIL1C:20260722T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260722T161829:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20260725T115326:20260725T115402:008699:0113D6"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2B:MSIL1C:20260712T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2B:MSIL1C:20260712T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S2B:MSIL1C:20260712T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260713T115325:20260713T115401:008524:010E09"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260815T000537:20260815T000602:004129:0078B8"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 11,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260815T000537:20260815T000602:004129:0078B8"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20260722T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20260722T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S2B:MSIL1C:20260722T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 12,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260725T115326:20260725T115402:008699:0113D6"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 7,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S2B:MSIL1C:20260801T161829:R040:T15PYR",
+        "S2B:MSIL1C:20260801T161829:R040:T16PCC",
+        "S1C:IW:GRDH:1SDV:20260802T001317:20260802T001346:008809:011775",
+        "S1D:IW:GRDH:1SDV:20260812T115357:20260812T115418:004092:007775",
+        "S2C:MSIL1C:20260813T160821:R140:T16PCC",
+        "S2C:MSIL1C:20260816T161831:R040:T15PYR"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 13,
+          "acquisition_key": "S2B:MSIL1C:20260801T161829:R040:T15PYR"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 13,
+          "acquisition_key": "S2B:MSIL1C:20260801T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 13,
+          "acquisition_key": "S2B:MSIL1C:20260801T161829:R040:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 13,
+          "acquisition_key": "S1C:IW:GRDH:1SDV:20260802T001317:20260802T001346:008809:011775"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 14,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260812T115357:20260812T115418:004092:007775"
+        },
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 14,
+          "acquisition_key": "S2C:MSIL1C:20260813T160821:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 14,
+          "acquisition_key": "S2C:MSIL1C:20260813T160821:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 14,
+          "acquisition_key": "S2C:MSIL1C:20260816T161831:R040:T15PYR"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    },
+    {
+      "round": 8,
+      "split": "test",
+      "unique_acquisition_keys": [
+        "S2C:MSIL1C:20260823T160821:R140:T16PCC",
+        "S1D:IW:GRDH:1SDV:20260824T115357:20260824T115419:004267:007D9A",
+        "S2C:MSIL1C:20260826T161831:R040:T15PYR"
+      ],
+      "primary_assignments": [
+        {
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 15,
+          "acquisition_key": "S2C:MSIL1C:20260823T160821:R140:T16PCC"
+        },
+        {
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 15,
+          "acquisition_key": "S2C:MSIL1C:20260823T160821:R140:T16PCC"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "primary_ordinal_in_stratum": 15,
+          "acquisition_key": "S1D:IW:GRDH:1SDV:20260824T115357:20260824T115419:004267:007D9A"
+        },
+        {
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "primary_ordinal_in_stratum": 15,
+          "acquisition_key": "S2C:MSIL1C:20260826T161831:R040:T15PYR"
+        }
+      ],
+      "quota_note": "Two new primary attempts per available stratum; actual observable counts require quality/review audit. This stage is not a validation milestone."
+    }
+  ],
+  "acquisition_keys": [
+    "S1A:IW:GRDH:1SDV:20250101T114554:20250101T114619:057250:070AE5",
+    "S1A:IW:GRDH:1SDV:20250102T001418:20250102T001443:057258:070B29",
+    "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+    "S2A:MSIL1C:20250103T162701:R040:T16PCC",
+    "S2B:MSIL1C:20250105T161559:R140:T16PCC",
+    "S2B:MSIL1C:20250108T162549:R040:T16PCC",
+    "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250118T115449:20250118T115511:057498:0714B3",
+    "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+    "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250121T000646:20250121T000711:057535:07161F",
+    "S2B:MSIL1C:20251002T161019:R140:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251003T115326:20251003T115402:004397:008B68",
+    "S1A:IW:GRDH:1SDV:20251004T114548:20251004T114613:061275:07A4C1",
+    "S2B:MSIL1C:20251005T162039:R040:T15PYR",
+    "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20251009T115446:20251009T115508:061348:07A7B0",
+    "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+    "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+    "S1A:IW:GRDH:1SDV:20251012T000643:20251012T000708:061385:07A928",
+    "S1A:IW:GRDH:1SDV:20260402T114540:20260402T114605:063900:08098A",
+    "S2B:MSIL1C:20260403T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260403T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20260407T115437:20260407T115459:063973:080C45",
+    "S1C:IW:GRDH:1SDV:20260413T115323:20260413T115359:007197:00E961",
+    "S2B:MSIL1C:20260413T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260413T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20260414T114540:20260414T114605:064075:08101C",
+    "S1A:IW:GRDH:1SDV:20250202T000646:20250202T000711:057710:071D11",
+    "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+    "S2C:MSIL1C:20250202T162531:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250207T001416:20250207T001441:057783:071FFA",
+    "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+    "S2B:MSIL1C:20250217T162239:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250218T114551:20250218T114616:057950:0726BD",
+    "S1A:IW:GRDH:1SDV:20250219T001415:20250219T001440:057958:072701",
+    "S1A:IW:GRDH:1SDV:20251017T001432:20251017T001457:061458:07AC0F",
+    "S2C:MSIL1C:20251017T161301:R140:T16PCC",
+    "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251018T000540:20251018T000605:004609:0091D4",
+    "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+    "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+    "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251027T115326:20251027T115402:004747:009602",
+    "S1A:IW:GRDH:1SDV:20251028T114548:20251028T114613:061625:07B2D2",
+    "S1A:IW:GRDH:1SDV:20260422T000618:20260422T000643:064185:08142C",
+    "S1D:IW:GRDH:1SDV:20260422T001324:20260422T001353:002452:004082",
+    "S2B:MSIL1C:20260423T161819:R040:T15PYR",
+    "S2B:MSIL1C:20260423T161819:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20260501T115437:20260501T115459:064323:081951",
+    "S2B:MSIL1C:20260503T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260503T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20260504T000617:20260504T000642:064360:081AAE",
+    "S2C:MSIL1C:20250301T161231:R140:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250302T114551:20250302T114616:058125:072DE1",
+    "S1A:IW:GRDH:1SDV:20250303T001415:20250303T001440:058133:072E2A",
+    "S2C:MSIL1C:20250304T162211:R040:T15PYR",
+    "S2B:MSIL1C:20250316T160919:R140:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250319T115448:20250319T115510:058373:0737C9",
+    "S2B:MSIL1C:20250319T161909:R040:T15PYR",
+    "S1A:IW:GRDH:1SDV:20250322T000646:20250322T000711:058410:073940",
+    "S2B:MSIL1C:20251101T161329:R140:T16PCC",
+    "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+    "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+    "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+    "S1A:IW:GRDH:1SDV:20251102T115446:20251102T115508:061698:07B5B1",
+    "S1A:IW:GRDH:1SDV:20251105T000626:20251105T000651:061735:07B71D",
+    "S1A:IW:GRDH:1SDV:20251109T114548:20251109T114613:061800:07B9AA",
+    "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+    "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20251110T001429:20251110T001454:061808:07B9F1",
+    "S2B:MSIL1C:20260513T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260513T161829:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20260515T001315:20260515T001344:007657:00F8EB",
+    "S1A:IW:GRDH:1SDV:20260516T000617:20260516T000642:064535:0820E4",
+    "S2B:MSIL1C:20260523T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260523T161829:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20260527T001316:20260527T001345:007832:00FEC1",
+    "S1D:IW:GRDH:1SDV:20260604T000549:20260604T000614:003079:005534",
+    "S1C:IW:GRDH:1SDV:20250402T001307:20250402T001336:001707:002E75",
+    "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+    "S2C:MSIL1C:20250403T161851:R040:T15PYR",
+    "S2C:MSIL1C:20250403T161851:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20250418T115317:20250418T115353:001947:003D99",
+    "S2B:MSIL1C:20250418T161829:R040:T15PYR",
+    "S2B:MSIL1C:20250418T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250419T114551:20250419T114616:058825:074A24",
+    "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+    "S2C:MSIL1C:20251119T162611:R040:T15PYR",
+    "S1C:IW:GRDH:1SDV:20251120T115325:20251120T115401:005097:00A1A3",
+    "S1A:IW:GRDH:1SDV:20251121T114547:20251121T114612:061975:07C078",
+    "S1A:IW:GRDH:1SDV:20251126T115444:20251126T115506:062048:07C34A",
+    "S2C:MSIL1C:20251126T161631:R140:T16PCC",
+    "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20251129T000624:20251129T000649:062085:07C4BD",
+    "S2C:MSIL1C:20251129T162641:R040:T15PYR",
+    "S1D:IW:GRDH:1SDV:20260601T115335:20260601T115411:003042:005404",
+    "S2B:MSIL1C:20260602T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260602T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20260621T000615:20260621T000640:065060:08334B",
+    "S2B:MSIL1C:20260612T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260612T161829:R040:T16PCC",
+    "S1D:IW:GRDH:1SDV:20260613T115336:20260613T115412:003217:0059D1",
+    "S1D:IW:GRDH:1SDV:20260628T000535:20260628T000600:003429:0060B9",
+    "S1A:IW:GRDH:1SDV:20250501T114552:20250501T114617:059000:075143",
+    "S1A:IW:GRDH:1SDV:20250502T001416:20250502T001441:059008:075185",
+    "S2A:MSIL1C:20250502T161701:R140:T16PCC",
+    "S2C:MSIL1C:20250503T161851:R040:T15PYR",
+    "S1A:IW:GRDH:1SDV:20250518T115448:20250518T115510:059248:075A36",
+    "S2B:MSIL1C:20250518T161829:R040:T15PYR",
+    "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E",
+    "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251202T115325:20251202T115401:005272:00A788",
+    "S1A:IW:GRDH:1SDV:20251203T114546:20251203T114611:062150:07C74B",
+    "S2B:MSIL1C:20251204T162549:R040:T15PYR",
+    "S2C:MSIL1C:20251209T162701:R040:T15PYR",
+    "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251210T001315:20251210T001344:005382:00AB50",
+    "S1A:IW:GRDH:1SDV:20251211T000623:20251211T000648:062260:07CB92",
+    "S2B:MSIL1C:20260622T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260622T161829:R040:T16PCC",
+    "S1D:IW:GRDH:1SDV:20260625T115354:20260625T115416:003392:005F80",
+    "S1C:IW:GRDH:1SDV:20260716T000539:20260716T000604:008561:010F33",
+    "S1C:IW:GRDH:1SDV:20260701T115324:20260701T115400:008349:01085D",
+    "S2B:MSIL1C:20260702T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260702T161829:R040:T16PCC",
+    "S1D:IW:GRDH:1SDV:20260722T000536:20260722T000601:003779:006C92",
+    "S1C:IW:GRDH:1SDV:20250601T001311:20250601T001340:002582:0055B7",
+    "S1A:IW:GRDH:1SDV:20250602T000645:20250602T000710:059460:076192",
+    "S2C:MSIL1C:20250602T161921:R040:T15PYR",
+    "S2C:MSIL1C:20250602T161921:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20250617T115321:20250617T115357:002822:005CAF",
+    "S2B:MSIL1C:20250617T161829:R040:T15PYR",
+    "S2B:MSIL1C:20250617T161829:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20250618T114549:20250618T114614:059700:0769D1",
+    "S1C:IW:GRDH:1SDV:20251217T000538:20251217T000603:005484:00AEC8",
+    "S2C:MSIL1C:20251219T162721:R040:T15PYR",
+    "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+    "S1A:IW:GRDH:1SDV:20251220T115442:20251220T115504:062398:07D0F0",
+    "S1C:IW:GRDH:1SDV:20251226T115323:20251226T115359:005622:00B391",
+    "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+    "S1C:IW:GRDH:1SDV:20251229T000537:20251229T000602:005659:00B4D0",
+    "S2C:MSIL1C:20251229T162941:R040:T15PYR",
+    "S2B:MSIL1C:20260712T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260712T161829:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20260713T115325:20260713T115401:008524:010E09",
+    "S1D:IW:GRDH:1SDV:20260815T000537:20260815T000602:004129:0078B8",
+    "S2B:MSIL1C:20260722T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260722T161829:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20260725T115326:20260725T115402:008699:0113D6",
+    "S2B:MSIL1C:20260801T161829:R040:T15PYR",
+    "S2B:MSIL1C:20260801T161829:R040:T16PCC",
+    "S1C:IW:GRDH:1SDV:20260802T001317:20260802T001346:008809:011775",
+    "S1D:IW:GRDH:1SDV:20260812T115357:20260812T115418:004092:007775",
+    "S2C:MSIL1C:20260813T160821:R140:T16PCC",
+    "S2C:MSIL1C:20260816T161831:R040:T15PYR",
+    "S2C:MSIL1C:20260823T160821:R140:T16PCC",
+    "S1D:IW:GRDH:1SDV:20260824T115357:20260824T115419:004267:007D9A",
+    "S2C:MSIL1C:20260826T161831:R040:T15PYR"
+  ],
+  "version": "v8",
+  "created_at": "2026-10-23T03:23:58.770033+00:00",
+  "previous_execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v7.json",
+    "sha256": "20560eda9facd0ce07cdf696f7d13f51c9d36081c590384fd600b0e7f8cc5ba8"
+  },
+  "sampling_plan_sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+}

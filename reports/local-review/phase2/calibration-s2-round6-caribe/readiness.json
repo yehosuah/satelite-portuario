@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-10-23T03:39:52.339482+00:00",
+  "author": "codex-ai-model-pilot",
+  "status": "first_raw_pass_in_progress",
+  "selection": {
+    "created_at": "2026-10-23T03:38:17.912407+00:00",
+    "execution_order": {
+      "path": "reports/local-review/phase2/execution-order-v8.json",
+      "sha256": "a2f02bed30df6a513f028ac1b23b313be22f1b4192858a83d91ee5ece4295478"
+    },
+    "assignments": [
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 11,
+        "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 11,
+        "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC"
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 12,
+        "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC"
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "primary_ordinal_in_stratum": 12,
+        "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC"
+      }
+    ],
+    "query_columns": [
+      "observation_id",
+      "acquisition_key",
+      "zone_id",
+      "port_id",
+      "sensor",
+      "captured_at",
+      "status",
+      "observable_fraction"
+    ],
+    "detections_table_queried": false,
+    "model_scores_read": false,
+    "model_counts_read": false,
+    "assets_verified": 256
+  },
+  "target_proposals_seen": false,
+  "database_writes": false
+}

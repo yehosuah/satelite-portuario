@@ -1,0 +1,45 @@
+{
+  "schema_version": "public-attribute-numeric-source-diagnostic-v1",
+  "created_at": "2026-10-23T04:48:20.690209Z",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "window_id": 153185,
+  "split": "train",
+  "source_product": "S2B_MSIL1C_20211127T072159_N0301_R063_T38LLH_20211127T085846.SAFE",
+  "source_band": "B04",
+  "source_generation": "1638020459807239",
+  "source_size_bytes": 49291734,
+  "cached_header_sha256": "ff0fe9c119b19aa2a4fffb9292b38b47d4fd5133f1701ca0bfb0653da12385a8",
+  "source_crs": "EPSG:32738",
+  "target_crs": "EPSG:32738",
+  "source_bounds": [
+    300000.0,
+    8190220.0,
+    409800.0,
+    8300020.0
+  ],
+  "target_bounds": [
+    353615.5099551885,
+    8276274.715207752,
+    354895.5099551885,
+    8277554.715207752
+  ],
+  "diagnosis": "The target lies within the source raster grid, but the native source window and target reprojection both decode to all-zero nodata. Source CRS is consistent; there is no evidence of a southern-hemisphere projection error.",
+  "offline_check": {
+    "network_requests": 0,
+    "native_window_column_row_width_height": [
+      5361,
+      2246,
+      128,
+      128
+    ],
+    "native_min": 0,
+    "native_max": 0,
+    "warped_min": 0,
+    "warped_max": 0,
+    "cached_ranges_used": [
+      "0-16384"
+    ],
+    "comparison": "Reading a distant source window at column9000,row8000 requires additional source bytes; the offline diagnostic refused uncached requests."
+  },
+  "decision": "Retain selected original sources and evidence; apply the separately frozen center-observability rule before fitting, without replacement."
+}

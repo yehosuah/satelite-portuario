@@ -1,0 +1,47 @@
+{
+  "kind": "reserve_activation",
+  "author": "codex-ai-root",
+  "is_human_review": false,
+  "created_at": "2026-10-23T03:23:58.770033+00:00",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v7.json",
+    "sha256": "20560eda9facd0ce07cdf696f7d13f51c9d36081c590384fd600b0e7f8cc5ba8"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v8.json",
+    "sha256": "a2f02bed30df6a513f028ac1b23b313be22f1b4192858a83d91ee5ece4295478"
+  },
+  "activation": {
+    "split": "calibration",
+    "port_ids": [
+      "pbr"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2C:MSIL1C:20251126T161631:R140:T16PCC",
+    "reserve_acquisition_key": "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+    "reserve_rank": 2,
+    "reason": "PBR only: all four Nov26 observations are unusable with zero observable pixels inside their AOIs. Each mosaic has 1523 observable pixels outside those zones; these are not counted as port observability. STC is assessed separately and retains its small reviewed canal scope.",
+    "evidence": "reports/local-review/phase2/reserve-calibration-pbr-20251129-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "quality_evidence": {
+    "path": "reports/local-review/phase2/calibration-s2-round4-caribe/pbr-20251126-quality-abstention-and-reserve-request.json",
+    "sha256": "9491715aa300b6cc66fa7ca1faf7836134a03392e16a724e823c58f53dfa22f0"
+  },
+  "verified_assets": 12,
+  "verified_zero_observable_zone_masks": 4,
+  "candidate_processing_state_before_activation": {
+    "status": "complete",
+    "attempts": 1
+  },
+  "checks": {
+    "chronological_rank_in_same_slot": true,
+    "all_failed_attempts_retained": true,
+    "selected_without_candidate_images_predictions_or_scores": true,
+    "existing_experiments_keep_their_pinned_orders": true
+  }
+}

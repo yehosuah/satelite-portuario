@@ -8,6 +8,7 @@ import math
 import shutil
 import tempfile
 import time
+import uuid
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
@@ -64,6 +65,7 @@ def freeze_encoder(model: Any) -> int:
 
 def export_training_artifact(model: Any, base_manifest: ModelManifest, destination: Path | str,
                              *, training: dict[str, Any], dataset_version: str) -> ModelManifest:
+    """Export a new immutable identity, keeping the parent and its policy intact."""
     import torch
 
     destination = Path(destination).absolute()
@@ -75,11 +77,18 @@ def export_training_artifact(model: Any, base_manifest: ModelManifest, destinati
         checkpoint = stage / "weights.pt"
         torch.save({"state_dict": {key: tensor.detach().cpu() for key, tensor in model.state_dict().items()}}, checkpoint)
         # Saved paths are relative so a model directory can be moved independently.
+        # A run needs its own identity even when equal weights are reproduced:
+        # timestamps, dataset provenance and policy still belong to this artifact.
+        artifact_id = uuid.uuid4().hex
         result = base_manifest.model_copy(update={
+            "model_id": f"{base_manifest.model_id}-trained-{artifact_id}",
+            "version": f"{base_manifest.version}+trained.{artifact_id}",
             "weights_path": "weights.pt", "weights_sha256": sha256_file(checkpoint), "dataset_version": dataset_version,
             "metrics": {}, "publication_policy": {"status": "experimental", "automatic_publication": False,
                 "local_validation": "not_evaluated", "fields": {}},
             "metadata": {**base_manifest.metadata, "training": training, "created_at": utc_text(),
+                         "parent_model": {"model_id": base_manifest.model_id, "version": base_manifest.version,
+                                          "weights_sha256": base_manifest.weights_sha256},
                          "training_code_sha256": sha256_file(Path(__file__)),
                          "recipe_sha256": hashlib.sha256(base_manifest.model_dump_json().encode()).hexdigest(),
                          "runtime": {"torch": str(torch.__version__), "numpy": str(np.__version__)}},
@@ -172,6 +181,8 @@ def train_attribute_dataset(dataset_dir: Path | str, base_manifest: ModelManifes
         if (cache.get("encoder_sha256") != encoder_hash or cache.get("pooling") != "roi_mean"
                 or cache.get("feature_level") != base_manifest.metadata.get("feature_level", 0)):
             raise ValueError("Feature cache does not match the frozen encoder recipe")
+        if cache.get("context_policy") != base_manifest.metadata.get("feature_context"):
+            raise ValueError("Feature cache context policy does not match the frozen encoder recipe")
         path = confined_path(Path(dataset_dir), cache["path"])
         if sha256_file(path) != cache["sha256"]:
             raise ValueError("Feature cache checksum mismatch")

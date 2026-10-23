@@ -186,6 +186,12 @@ def create_app(
     def get_ports():
         return ports()
 
+    @app.get("/v1/system")
+    def system():
+        from puertogt.status import system_status
+
+        return system_status(store)
+
     @app.get("/v1/observations")
     def observations(
         port_id: str | None = None,

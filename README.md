@@ -2,18 +2,30 @@
 
 Observatorio local de Puerto Quetzal, Santo Tomás de Castilla y Puerto Barrios. Inventaría adquisiciones Sentinel-1 y Sentinel-2, procesa recortes numéricos, conserva evidencia y permite revisar propuestas de buques y cambios físicos.
 
-**Versión experimental.** El servicio funciona con pilotos reales de ambos sensores en los tres puertos. Todavía no hay precisión local de detección ≥90% demostrada, atributos locales entrenados ni un histórico completo procesado. El detector base omitió barcos visibles junto a muelles: un conteo cero no confirma ausencia. [Estado y evidencia](docs/status.md).
+**Versión experimental.** El servicio procesa imágenes reales de ambos sensores, conserva revisiones y entrena pesos propios. Todavía no hay precisión local de detección ≥90% demostrada ni atributos o cambios físicos validados para estos puertos. Un conteo cero no confirma ausencia. [Estado y evidencia](docs/status.md).
+
+<!-- BEGIN DYNAMIC_STATUS -->
+Al corte **2026-10-23T05:03:55.799342Z**, la campaña está reanudada: **645/824 adquisiciones completas, 173 por resolver y seis excepciones de contexto radar**. El worker conserva plan, reintentos y presupuestos.
+
+La [calibración óptica](reports/local-review/phase2/candidate-calibration-v1/README.md) terminó: **ninguno de 90 umbrales cumplió los requisitos**. Con umbral 0,50: 73 TP / 34 FP / 40 FN, precisión 68,22% y recall 64,60%; TEST del candidato sigue cerrado. TRAIN 94,12% era ajuste, no validación. CAL contiene 105 ámbitos y 113 referencias IA (PRQ 87 / PBR 16 / STC 10), con 24 observaciones PRQ posteriores aún fuera del corte.
+
+El [experimento público de atributos](reports/public-attributes/experiment-result-v1.json) terminó: 48 muestras materializadas,34 TRAIN elegibles de 36, cinco CAL sin usar y siete TEST evaluadas una vez. Familias: 3/7 correctas; MAE eslora 71,75 m y manga 11,43 m. Campos y publicación automática continúan deshabilitados. OSCD público también conserva su prueba fallida. Ninguno de estos resultados demuestra precisión local ≥90%.
+<!-- END DYNAMIC_STATUS -->
 
 ## Paquete experimental
 
-El código y el [piloto portable v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) están publicados. El paquete contiene imágenes, catálogo y cuatro modelos del piloto inicial: sus 270 archivos fueron verificados y restaurados en otra carpeta. Se verificaron los 39 archivos de la versión pública, incluidas las 34 partes del snapshot. Consulta la [verificación de publicación](reports/pilot/release-upload-status.json) y las [instrucciones de restauración](docs/restore-pilot.md). El histórico sigue en procesamiento.
+La versión de software **0.2.0** tiene [verificación de instalación, visor y restauración](reports/release-v0.2.0/README.md). Su copia actual del catálogo y la continuidad permanecen locales; el repositorio publica código y recibos.
+
+El código y el [piloto portable v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) están publicados. **Ese paquete es el piloto inicial, no una copia del estado actual.** Contiene imágenes, catálogo y cuatro modelos iniciales: sus 270 archivos fueron restaurados y verificados. Los 39 archivos públicos, incluidas las 34 partes del snapshot, se comprobaron. Las revisiones, pesos y campaña posteriores requieren una nueva entrega. Consulta la [verificación de publicación](reports/pilot/release-upload-status.json) y las [instrucciones de restauración](docs/restore-pilot.md).
 
 ## Arranque local
+
+Usa Python 3.11, Git y `uv`. La instalación base permite consultar y revisar; ML requiere los extras indicados abajo.
 
 ```sh
 git clone https://github.com/yehosuah/satelite-portuario.git
 cd satelite-portuario
-uv sync --frozen --no-editable
+uv sync --frozen --no-editable --python 3.11
 uv run --no-sync puertogt init
 uv run --no-sync puertogt import-scenes reports/pilot/inventory.json
 uv run --no-sync puertogt serve
@@ -28,7 +40,9 @@ uv sync --frozen --no-editable --extra ml --extra quality
 uv run --no-sync puertogt --help
 ```
 
-La revisión escrita requiere `PUERTOGT_REVIEW_TOKEN` en el entorno del servidor. [Instalación, Docker, credencial local y restauración](docs/installation.md).
+La revisión escrita requiere `PUERTOGT_REVIEW_TOKEN` en el entorno del servidor. `PUERTOGT_DATA_DIR` selecciona el volumen y `PUERTOGT_CONFIG_DIR` la configuración. [Instalación, Docker, credencial local y restauración](docs/installation.md).
+
+Para continuar una instalación existente, conserva su volumen y consulta [la secuencia de reanudación](docs/status.md#preparar-y-reanudar-el-sistema). No vuelvas a crear el plan ni reemplaces sus recibos. La API consulta el estado persistido y nunca inicia trabajos pesados por sí sola.
 
 ## Qué incluye
 
@@ -36,7 +50,7 @@ La revisión escrita requiere `PUERTOGT_REVIEW_TOKEN` en el entorno del servidor
 - Cola persistente de un trabajador pesado, leases, reintentos, pausas por recursos y evidencia publicada de forma atómica.
 - Detectores públicos fijados por commit y SHA256, máscaras de nubes/sombras, recortes radar con contexto histórico y entrenamiento supervisado que genera pesos propios versionados.
 - Revisión visual auditada, corrección de cajas, buques omitidos y datasets separados por adquisición y grupos relacionados.
-- Cabezas de atributos por sensor y decoder siamés de cambios; las recetas sin etiquetas suficientes permanecen sin validar. Tipos y dimensiones pueden ser nulos.
+- Cabezas de atributos por sensor, importador público con contexto numérico fijo y decoder siamés de cambios con entrenamiento/evaluación reales. Sus resultados experimentales no habilitan campos ni eventos validados.
 - API localhost, filtros UTC, paginación, cobertura sin interpolar huecos, GeoJSON/Parquet y snapshots verificables para otro equipo.
 
 El [protocolo de etiquetas](docs/labeling-protocol.md) y las [tarjetas de modelos](docs/model_cards/vessels.md) explican qué referencias hacen falta. El score del modelo nunca se interpreta como precisión medida. La API no inicia inferencia, descargas ni entrenamiento.
@@ -45,11 +59,15 @@ El [protocolo de etiquetas](docs/labeling-protocol.md) y las [tarjetas de modelo
 
 El inventario al **21 de octubre de 2026, 01:40:47 UTC** reúne 1,267 productos en 81 páginas, agrupados en 863 adquisiciones: **828 desde enero de 2025 y 35 de contexto anterior**. Los puertos atlánticos comparten algunas adquisiciones; sus conteos no deben sumarse para obtener el total global.
 
-Hay pilotos numéricos reales en las seis combinaciones puerto/sensor, pruebas de entrenamiento con muestras públicas y 22 observaciones de zonas procesadas por el servicio. Son pruebas de operación; no constituyen una evaluación independiente de los puertos. [Mediciones](reports/pilot/inference-results.json), [servicio óptico](reports/pilot/service-validation.json), [servicio radar](reports/pilot/radar-service-validation.json).
+El piloto inicial tiene recortes numéricos reales en las seis combinaciones puerto/sensor y 22 observaciones de zonas. Es una prueba de operación; sus conteos no describen el catálogo histórico actual ni constituyen evaluación independiente de los puertos. [Mediciones](reports/pilot/inference-results.json), [servicio óptico](reports/pilot/service-validation.json), [servicio radar](reports/pilot/radar-service-validation.json).
 
-Las 22 observaciones ya tienen revisión visual de IA auditada, con 19 áreas etiquetadas y cinco cajas de zona que representan cuatro observaciones de buques. Se ejecutó un primer ajuste por sensor y prueba separada: la muestra radar es insuficiente y óptico falla el criterio de IoU. [Etiquetas, protocolo y resultados](reports/local-review/README.md). El procesamiento de las 824 adquisiciones restantes dispone de una campaña reanudable; [alcance, recursos y excepciones](reports/history/processing-plan.md).
+Las 22 observaciones ya tienen revisión visual de IA auditada, con 19 áreas etiquetadas y cinco cajas de zona que representan cuatro observaciones de buques. Se ejecutó un primer ajuste por sensor y prueba separada: la muestra radar es insuficiente y óptico falla el criterio de IoU. [Etiquetas, protocolo y resultados](reports/local-review/README.md). La campaña programó otras 824 adquisiciones y conserva su avance para reanudar; [alcance, recursos y excepciones](reports/history/processing-plan.md).
 
-La [fase 2 tiene un punto estable documentado](reports/local-review/phase2/stable-checkpoint-20261021.md): 51 barcos ópticos de entrenamiento y 60 de calibración congelados, calibración de enero fallida y test reservado. El conjunto ampliado aún no se entrenó.
+La fase 2 ya entrenó sobre **51 referencias ópticas y 84 crops TRAIN**. Una [enmienda fijada antes de comparar recetas](reports/local-review/phase2/amendments/s2-train-temporal-v1-results.md) usó solo desarrollo interno de TRAIN; el refit obtuvo 48 TP / 3 FP / 3 FN a IoU 0.5 y score 0.5. Las rondas anteriores fallidas permanecen conservadas. Puerto Barrios y Santo Tomás todavía tienen soporte insuficiente.
+
+El [experimento público de cambios OSCD](reports/change/public-data/oscd-bounded-results.md) entrenó un decoder propio y falló TEST: **TP 0 / FP 0 / FN 9,749 píxeles**. Ese TEST ya fue consumido; no es validación portuaria ni ausencia de cambios. Se aplica la licencia conservadora del archivo fuente: investigación local, sin redistribuir sus máscaras o pesos.
+
+Los [atributos públicos](docs/public-attributes.md) tienen 48 muestras fijadas y descarga reanudable; el estado de ejecución está en [docs/status.md](docs/status.md). Los splits originales, la procedencia por campo y los pesos del encoder se conservan. Ni el pequeño conjunto público ni una ejecución terminada demuestran precisión local del 90%.
 
 ## Verificación y documentación
 

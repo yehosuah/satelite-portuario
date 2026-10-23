@@ -1,0 +1,48 @@
+{
+  "batch": "phase2-calibration-s2-reserve-20251101-r040-v1",
+  "created_at": "2026-10-23T03:56:02.754814+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Numeric quality sources were independently rechecked before reserve activation: full masks have zero observable pixels. This adjudication is a quality abstention, not a vessel presence/absence visual label. Administrative correspondence confirms no proposals.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/correspondence/pbr-20251101-s2-review.json",
+      "sha256": "9bbfb5c057f44b213031da0d012087407ca76c465fa7e1711ef07b8eedf2f8c9"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/correspondence/stc-20251101-s2-review.json",
+      "sha256": "48ecf8bdf34b6c49ec3889acf087e041515fa99979826a352499ef8733b94e53"
+    }
+  ],
+  "accepted_observation_ids": [
+    "d62b9716-a702-4e49-9aff-87708d831e85",
+    "c7a9fb5d-2983-4f8e-9ef8-cf598329bda4",
+    "4f11a23d-cbbd-4c42-8bec-8312f69c4aa6",
+    "9ca970cc-4d50-429e-8801-705175fcf810",
+    "1f078167-1efb-48fd-9e5f-b1633577fa3f",
+    "845fd5f2-8f07-4904-8466-a46cdd101f79",
+    "42b2a258-cdd7-4dfe-b3c1-a0bac9604ebb",
+    "3c67d49d-db3b-4f89-82f1-8492197dc4e9"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/correspondence/verification.json",
+      "sha256": "9e522ba33946e0d63685387c3e9641f558c34adb9fd306f73f5a38e203633842"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251101-r040/second-review-packet.json",
+      "sha256": "b09a3d9693b666cd5d4ff2e699a36c7c3c8933acacb8395bc6ba9805d34ebcfa"
+    }
+  ],
+  "expected_reviewed_observations": 8,
+  "expected_unique_objects": 0,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 0,
+  "expected_useful_scopes": 0,
+  "expected_abstentions": 8,
+  "decisions": [
+    "All observations abstain without complete scene scope or negative vessel labels. Preserve original observations and evidence."
+  ]
+}

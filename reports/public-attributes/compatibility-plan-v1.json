@@ -1,0 +1,169 @@
+{
+  "schema_version": "public-attributes-compatibility-v1",
+  "created_at": "2026-10-23T03:07:23.620087+00:00",
+  "status": "metadata_compatible; importer_and_consistent_roi_policy_pending",
+  "selection": {
+    "path": "reports/public-attributes/selection-v1.json",
+    "sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+    "sample_counts": {
+      "train": 36,
+      "calibration": 5,
+      "test": 7
+    },
+    "family_counts": {
+      "train": {
+        "carga": 6,
+        "tanquero": 6,
+        "pasajeros": 6,
+        "remolcador": 6,
+        "pesquero": 6,
+        "otros": 6
+      },
+      "calibration": {
+        "carga": 2,
+        "tanquero": 2,
+        "pasajeros": 1
+      },
+      "test": {
+        "carga": 2,
+        "tanquero": 2,
+        "remolcador": 1,
+        "otros": 2
+      }
+    },
+    "raster_original_representation_available": 48,
+    "raster_bytes_downloaded": 0
+  },
+  "metadata": {
+    "url": "https://raw.githubusercontent.com/allenai/vessel-detection-sentinels/60b003d059937a9fcddbf6e1c9b64c00c33c0279/data/metadata.sqlite3",
+    "commit": "60b003d059937a9fcddbf6e1c9b64c00c33c0279",
+    "size_bytes": 18935808,
+    "sha256": "d3a8bbd6c6685a6f8bb685f122b37fda613649d6da4c450e3240cace353ca2ac",
+    "git_blob_sha1": "288c6137ca5aea782797f5e45e01001d8f5e1f59",
+    "download_budget_bytes": 33554432,
+    "seconds": 7.3328114580072
+  },
+  "sources": {
+    "legacy_repository_commit": "60b003d059937a9fcddbf6e1c9b64c00c33c0279",
+    "legacy_repository": "https://github.com/allenai/vessel-detection-sentinels/tree/60b003d059937a9fcddbf6e1c9b64c00c33c0279",
+    "legacy_license_url": "https://github.com/allenai/vessel-detection-sentinels/blob/60b003d059937a9fcddbf6e1c9b64c00c33c0279/LICENSE",
+    "legacy_license_file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "legacy_license_header": "Apache License, Version 2.0",
+    "rslearn_projects_commit": "0bae49abb76d1deee9b6b6ca2a59212611ebc6fe",
+    "rslearn_config": "https://github.com/allenai/rslearn_projects/blob/0bae49abb76d1deee9b6b6ca2a59212611ebc6fe/data/sentinel2_vessel_attribute/config.yaml"
+  },
+  "newer_dataset": {
+    "url": "gs://rslearn-eai/datasets/sentinel2_vessel_attribute/dataset_v1/20250205/",
+    "anonymous_listing_http_status": 401,
+    "anonymous_config_http_status": 403,
+    "status": "not_materializable_anonymously_in_checked_endpoints",
+    "validation_test_share_val_group": true
+  },
+  "newer_checkpoint": {
+    "url": "gs://ai2-rslearn-projects-data/projects/2026_09_17_vessel_attribute_l1_01/sentinel2_l1/best.ckpt",
+    "size_bytes": 1091778443,
+    "generation": "1790005473782450",
+    "downloaded": false,
+    "compatible_with_current_attribute_mlp": false,
+    "reason": "upstream task-specific PoolingDecoder heads differ from pooled_fpn_mlp_v1"
+  },
+  "input_contract": {
+    "sensor": "sentinel-2",
+    "product_level": "L1C",
+    "bands": [
+      "B04",
+      "B03",
+      "B02",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B11",
+      "B12"
+    ],
+    "source": "exact SAFE representation named by source metadata; GCS object generations pinned",
+    "normalization": "harmonized DN divided by 10000, clipped [0,1] using existing ai2-s2-v1 preprocessing",
+    "numeric_rasters_required": true,
+    "rgb_or_png_training_forbidden": true,
+    "dimensions_from_pixels_forbidden": true
+  },
+  "geometry_contract": {
+    "source_window": "128 x 128 pixels in Web Mercator tiling, tile_size=512, zoom=13",
+    "transformation": "resolution_m=2*pi*6378137/(512*2**zoom); x=(column-total_pixels/2)*resolution_m; y=-(row-total_pixels/2)*resolution_m",
+    "label_geometry": "absent; labels attach attributes to a context window",
+    "proposal": "Preserve original context window and its center, reproject numeric bands to native 10 m UTM; use a declared fixed context ROI independent of attribute values. A matching inference policy must be implemented before claiming operational compatibility.",
+    "unresolved": "Original database does not supply exact vessel outline or MMSI; cropping policy cannot manufacture either."
+  },
+  "leakage_audit": {
+    "original_image_overlap": {
+      "train_test": 476,
+      "train_val": 436,
+      "val_test": 337
+    },
+    "selection_removes_all_passes_shared_across_source_splits": true,
+    "group_key": "spacecraft:sensing_time:relative_orbit",
+    "source_split_reassignment": false,
+    "vessel_identity_overlap": "unknown; MMSI not published",
+    "local_guatemala_validation": false,
+    "encoder_pretraining_overlap": "not_audited; published encoder may have seen related public data"
+  },
+  "family_mapping": {
+    "70-79": "carga",
+    "80-89": "tanquero",
+    "60-69": "pasajeros",
+    "52": "remolcador",
+    "30": "pesquero",
+    "90-99,33,34,35,36,37,50,51,53,54,55,58,59": "otros",
+    "unknown_reserved_unmapped": "null; excluded from family training"
+  },
+  "selection_dimension_filter": {
+    "length_m": "5 <= value < 460",
+    "width_m": "2 <= value < 120",
+    "basis": "upstream rslearn create_windows plausibility bounds; not measured from image"
+  },
+  "proposed_execution_budget": {
+    "first_stage": "first preselected TRAIN sample, all nine bands; stop at 128 MiB reserved transfer bytes",
+    "initial_total_transfer_cap_bytes": 2147483648,
+    "per_sample_transfer_cap_bytes": 134217728,
+    "local_volume_cap_bytes": 4294967296,
+    "disk_free_reserve_bytes": 10737418240,
+    "io_workers": 2,
+    "cpu_threads": 4,
+    "automatic_full_asset_download": false,
+    "heavy_operations": "serialized with campaign/training heavy lock after parent coordination",
+    "no_model_download_required": true
+  },
+  "evaluation_scope": {
+    "allowed": "experimental public attribute heads on independently sourced fields and fixed reference contexts",
+    "forbidden_claims": [
+      "local port validation",
+      "90 percent accuracy",
+      "MMSI-disjoint test",
+      "independent test for the newer val-only dataset"
+    ],
+    "calibration_size": 5,
+    "test_size": 7,
+    "unsupported_classes_explicit": true,
+    "automatic_publication": false
+  },
+  "next_steps": [
+    "Implement importer with generation-pinned ranged reads and independent durable budget ledger after source freeze is released.",
+    "Verify numeric alignment and context semantics on the first preselected TRAIN sample; do not replace unavailable samples based on visual/model results.",
+    "Materialize remaining fixed samples within cap and record unavailable samples without changing split selection.",
+    "Use the existing frozen encoder and train only attribute MLP heads after a matching context ROI policy is defined; evaluate public test once with frozen recipe and report tiny support."
+  ],
+  "source_probe_files": [
+    {
+      "path": "tmp/public-attributes/source-probes.json",
+      "sha256": "16ad1728a8178f970e4e9e69c4b1f1649d7c642c26e288fc8ca3e89f1320d26a"
+    },
+    {
+      "path": "tmp/public-attributes/metadata-candidates.json",
+      "sha256": "fc4df76f691047fb88b86d4fbf932daeb85ade0b246ae122065d11386bfe6b02"
+    },
+    {
+      "path": "tmp/public-attributes/candidate-band-pins.json",
+      "sha256": "17211204679af446ea8a46cab0a9275439ff9620058b614fe3ec304683d103d4"
+    }
+  ]
+}

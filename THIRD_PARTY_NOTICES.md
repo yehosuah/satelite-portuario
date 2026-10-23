@@ -19,6 +19,10 @@ El NOTICE de rslearn incluye avisos adicionales de DETR (Facebook, Apache-2.0), 
 
 Las dependencias instaladas conservan sus propios archivos de licencia. Al redistribuir código, imágenes de contenedor, pesos o bundles, conserva los avisos aplicables de cada componente. Los manifiestos en `config/models/` y los modelos registrados documentan fuentes, hashes y licencias del modelo correspondiente. Una licencia de código no debe aplicarse automáticamente a las anotaciones, imágenes o checkpoints de otra fuente.
 
+El experimento de atributos utiliza metadatos de [vessel-detection-sentinels, commit 60b003d](https://github.com/allenai/vessel-detection-sentinels/tree/60b003d059937a9fcddbf6e1c9b64c00c33c0279), con procedencia y licencias registradas en [el plan de compatibilidad](reports/public-attributes/compatibility-plan-v1.json). No identifica buques locales ni acredita una separación por identidad entre particiones.
+
+El experimento de cambios utiliza [OSCD](https://rcdaudt.github.io/oscd/). El registro DOI declara CC BY 4.0, mientras el README del archivo original declara CC BY-NC-SA y consulta comercial. Se conserva esta discrepancia en [el informe de fuentes](reports/change/public-data/oscd-bounded-results.md) y se aplica la restricción del archivo: no se redistribuyen sus máscaras ni los pesos derivados en esta entrega pública.
+
 ## Datos Copernicus Sentinel
 
 Las adquisiciones S1 y S2 proceden del programa Copernicus. El [aviso oficial de datos Sentinel](https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice) establece su acceso abierto y la atribución al distribuir datos originales o modificados. Los [términos de Copernicus Data Space](https://dataspace.copernicus.eu/terms-and-conditions) remiten a ese aviso para los datos Sentinel y distinguen los demás contenidos del portal.

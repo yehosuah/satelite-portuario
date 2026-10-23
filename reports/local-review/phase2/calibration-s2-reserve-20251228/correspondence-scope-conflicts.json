@@ -1,0 +1,279 @@
+{
+  "schema_version": "phase2-post-reference-scope-conflicts-v1",
+  "created_at": "2026-10-23T04:31:28.177452+00:00",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "split": "calibration",
+  "catalog_read": {
+    "path": "tmp/local-review/phase2/calibration-s2-reserve-20251228/catalog-correspondence-snapshot.json",
+    "sha256": "afbba7d2208b162ab132955e2b3fa4f0c0e64c8d74d5c74a5ccdd9528f39f83f"
+  },
+  "second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/root-raw-pass.json",
+    "sha256": "fd35ad5470ef45876333c43a452f7a292ef467ff94f767a5e5316fcc5009e894"
+  },
+  "scores_seen": false,
+  "conflicts": [
+    {
+      "observation_id": "3eee756a-790f-4d2a-8674-96da1b063335",
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detection_id": "0bf539e796e49722ee6f6378",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc-20251228-s2-raw-review.json",
+        "sha256": "eea9dc0c21748204d1d810b022e3fff0132f49c679d721fa10d5b881684f949b"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -88.64368316747732,
+              15.75991601132472
+            ],
+            [
+              -88.64090864293424,
+              15.759936935171792
+            ],
+            [
+              -88.64088673530826,
+              15.757209995574597
+            ],
+            [
+              -88.64366122284954,
+              15.75718907553022
+            ],
+            [
+              -88.64368316747732,
+              15.75991601132472
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ],
+            [
+              -88.64256312641918,
+              15.758342194532839
+            ],
+            [
+              -88.6418094204673,
+              15.758347878932284
+            ],
+            [
+              -88.64181741110308,
+              15.759341935792074
+            ],
+            [
+              -88.64331046391892,
+              15.759330674597114
+            ],
+            [
+              -88.64330433819512,
+              15.758569310059267
+            ],
+            [
+              -88.64367323972786,
+              15.758682345589094
+            ],
+            [
+              -88.64368279720992,
+              15.759870000270991
+            ],
+            [
+              -88.64090827250736,
+              15.759890826492082
+            ],
+            [
+              -88.64089198489874,
+              15.757863435439004
+            ],
+            [
+              -88.64227527073386,
+              15.758253992351454
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 36585.70936956406,
+      "previously_unknown_or_outside_water_scope_before_correspondence": true,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "pending_explicit_second_reviewer_adjudication",
+      "reason": "Estela con extremo de pocos píxeles, sin contorno de casco inequívoco; ya excluida como desconocida en primera raw. Su caja automática completa invade el agua revisada alrededor.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc_fondeo-20251228-0bf539e7-correspondence-conflict.png",
+        "sha256": "3a570b870ee2993422dfbdb286a116e12fe1763b10975ffcc8d68f9c23520f4d"
+      },
+      "proposed_exclusion_buffer_m": 10,
+      "proposed_guard_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.64377721083224,
+              15.760005675682262
+            ],
+            [
+              -88.64081605281407,
+              15.760028007134864
+            ],
+            [
+              -88.64079269450862,
+              15.757120329702794
+            ],
+            [
+              -88.64375381041862,
+              15.757098002577678
+            ],
+            [
+              -88.64377721083224,
+              15.760005675682262
+            ]
+          ]
+        ]
+      },
+      "proposed_removed_area_m2": 40142.15410038417,
+      "proposed_removed_fraction_of_previous_scope": 0.042168907610138605,
+      "proposed_guard_has_been_applied": false,
+      "guard_would_be_detector_conditioned": true
+    },
+    {
+      "observation_id": "3eee756a-790f-4d2a-8674-96da1b063335",
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detection_id": "c7103ac562fc7f4fee08cd9a",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc-20251228-s2-raw-review.json",
+        "sha256": "eea9dc0c21748204d1d810b022e3fff0132f49c679d721fa10d5b881684f949b"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -88.64082979103175,
+              15.758759417029454
+            ],
+            [
+              -88.63803666518452,
+              15.758780443036818
+            ],
+            [
+              -88.63801508138133,
+              15.756088893373443
+            ],
+            [
+              -88.6408081704648,
+              15.756067871138004
+            ],
+            [
+              -88.64082979103175,
+              15.758759417029454
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.639188682914,
+              15.757382525169245
+            ],
+            [
+              -88.63919513737376,
+              15.758186822255949
+            ],
+            [
+              -88.64050155299014,
+              15.758176985697794
+            ],
+            [
+              -88.64049814168486,
+              15.757752237748914
+            ],
+            [
+              -88.64082243608365,
+              15.75784379902707
+            ],
+            [
+              -88.64082979103175,
+              15.758759417029454
+            ],
+            [
+              -88.63803666518452,
+              15.758780443036818
+            ],
+            [
+              -88.63802281548791,
+              15.757053354168798
+            ],
+            [
+              -88.639188682914,
+              15.757382525169245
+            ]
+          ]
+        ]
+      },
+      "intersection_area_m2": 34245.680934946475,
+      "previously_unknown_or_outside_water_scope_before_correspondence": true,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "pending_explicit_second_reviewer_adjudication",
+      "reason": "Estela con extremo de pocos píxeles, sin contorno de casco inequívoco; ya excluida como desconocida en primera raw. Su caja automática completa invade el agua revisada alrededor.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/stc_fondeo-20251228-c7103ac5-correspondence-conflict.png",
+        "sha256": "3263c47aca48460a2c390f986eefd40eebefc394c59f457bf3be6009a77d9656"
+      },
+      "proposed_exclusion_buffer_m": 10,
+      "proposed_guard_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.6409238326741,
+              15.758849082798934
+            ],
+            [
+              -88.63794407413155,
+              15.75887151385939
+            ],
+            [
+              -88.63792104228334,
+              15.7559992260834
+            ],
+            [
+              -88.64090075897201,
+              15.755976799317112
+            ],
+            [
+              -88.6409238326741,
+              15.758849082798934
+            ]
+          ]
+        ]
+      },
+      "proposed_removed_area_m2": 40363.21195538608,
+      "proposed_removed_fraction_of_previous_scope": 0.04240112654489631,
+      "proposed_guard_has_been_applied": false,
+      "guard_would_be_detector_conditioned": true
+    }
+  ],
+  "actions_performed": {
+    "db_writes": false,
+    "reference_changes": false,
+    "scope_changes": false,
+    "metric_or_threshold_computation": false
+  },
+  "guardrail": "El centro están fuera del ámbito raw; sus cajas lo cruzan. No se promueven a positivos ni negativos. Guards propuestos solo para representar esa indeterminación de forma compatible con exportación; si se aprueban las métricas quedarán condicionadas al ámbito recortado."
+}

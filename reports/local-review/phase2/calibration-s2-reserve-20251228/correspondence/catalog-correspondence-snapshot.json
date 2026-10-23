@@ -1,0 +1,124 @@
+{
+  "created_at": "2026-10-23T04:30:06.512858+00:00",
+  "source": "read-only SQLite",
+  "scores_queried": false,
+  "selected_columns": [
+    "detection_id",
+    "geometry_json",
+    "review_status"
+  ],
+  "raw_sources": {
+    "pbr-20251228-s2-raw-review.json": "e7a26a1051f4cc00f27e6bddf10d94ae44fd2386191a14c969e8f8dfc888032b",
+    "stc-20251228-s2-raw-review.json": "eea9dc0c21748204d1d810b022e3fff0132f49c679d721fa10d5b881684f949b"
+  },
+  "second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-reserve-20251228/root-raw-pass.json",
+    "sha256": "fd35ad5470ef45876333c43a452f7a292ef467ff94f767a5e5316fcc5009e894"
+  },
+  "authorization": "Root message authorized correspondence of this fixed raw batch; quality-only sources may await formal second-review receipt.",
+  "observations": {
+    "599bb3e5-3397-49a7-9eec-5cc08e602d2d": {
+      "zone_id": "pbr_canal",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "d22d287a-92fb-42f0-bc1b-d842acd4cd8b": {
+      "zone_id": "pbr_fondeo",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "27af61d1-ed3a-4a10-ab63-b2a73596d7ba": {
+      "zone_id": "pbr_muelles",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "8989a6f6-16be-4b5c-bf26-15929086224c": {
+      "zone_id": "pbr_patios",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "4834bc21-7501-4ca7-820e-32f0be9dbcd9": {
+      "zone_id": "stc_canal",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "3eee756a-790f-4d2a-8674-96da1b063335": {
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": [
+        {
+          "detection_id": "0bf539e796e49722ee6f6378",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -88.64368316747732,
+                  15.75991601132472
+                ],
+                [
+                  -88.64090864293424,
+                  15.759936935171792
+                ],
+                [
+                  -88.64088673530826,
+                  15.757209995574597
+                ],
+                [
+                  -88.64366122284954,
+                  15.75718907553022
+                ],
+                [
+                  -88.64368316747732,
+                  15.75991601132472
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "review_status": "provisional"
+        },
+        {
+          "detection_id": "c7103ac562fc7f4fee08cd9a",
+          "geometry_wgs84": {
+            "coordinates": [
+              [
+                [
+                  -88.64082979103175,
+                  15.758759417029454
+                ],
+                [
+                  -88.63803666518452,
+                  15.758780443036818
+                ],
+                [
+                  -88.63801508138133,
+                  15.756088893373443
+                ],
+                [
+                  -88.6408081704648,
+                  15.756067871138004
+                ],
+                [
+                  -88.64082979103175,
+                  15.758759417029454
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "review_status": "provisional"
+        }
+      ]
+    },
+    "d8a36d81-4a8d-4f94-b939-dce400197428": {
+      "zone_id": "stc_muelles",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    },
+    "1d629614-5b51-4301-b762-e54074f5a2f2": {
+      "zone_id": "stc_patios",
+      "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+      "detections": []
+    }
+  }
+}

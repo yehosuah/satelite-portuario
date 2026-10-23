@@ -1,0 +1,188 @@
+{
+  "schema": "oscd-bounded-experiment-result-v1",
+  "outcome": "failed_independent_public_test",
+  "experiment_path": "data/experiments/oscd-bounded-v1-20261023",
+  "protocol_sha256": "78938ee041f6fa1f930c5c13beda551a6fb00f7c68a719674df4899fdcc47753",
+  "weights_sha256": "acab5ad44a51b9ab2b78bb0290dfc27322291a9e038f4a88b47ebfb3dcbcd24f",
+  "model_id": "puertogt-physical-change-s2-trained-70049b18f1b04a00a23df0704e873e60",
+  "train_manifest_sha256": "79fc667de252abd37db5c40f476e457c2071abfbc5e72997ac14aa1027f58be6",
+  "test_manifest_sha256": "186a4c7a62ff7f41347c4ecb17e2cf5df32ddf1a90918e1f145f69cc2a96f196",
+  "model_manifest_sha256": "eac10c1dc616a03f1a554f0eb399f3b892252451f75d4e7d60a0b8e665586e4a",
+  "run_sha256": "72cde4f8b716913582a5a3c3370c7d8a7e9aa0a10ff0820a63169a05675297f8",
+  "test_report_sha256": "9fefd350405e8a303b1ef64d7c2b3a0ef81bc4f9458ed90c1a1ffc947a684450",
+  "training": {
+    "epochs": 3,
+    "steps": 30,
+    "positive_pairs": 9,
+    "negative_pairs": 1,
+    "positive_weight": 20,
+    "encoder_frozen": true,
+    "updated_parameters": true
+  },
+  "evaluation": {
+    "automatic_publication": false,
+    "by_city": {
+      "oscd-city:norcia": {
+        "f1": 0.0,
+        "fn": 1227,
+        "fp": 0,
+        "iou": 0.0,
+        "negative_cores": 0,
+        "negative_cores_with_false_alarm": 0,
+        "precision": null,
+        "recall": 0.0,
+        "tn": 91558,
+        "tp": 0,
+        "valid_pixels": 92785
+      },
+      "oscd-city:rio": {
+        "f1": 0.0,
+        "fn": 8522,
+        "fp": 0,
+        "iou": 0.0,
+        "negative_cores": 0,
+        "negative_cores_with_false_alarm": 0,
+        "precision": null,
+        "recall": 0.0,
+        "tn": 136603,
+        "tp": 0,
+        "valid_pixels": 145125
+      }
+    },
+    "cores": [
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:norcia",
+        "fn": 968,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "norcia-0000-0000",
+        "tn": 60728,
+        "tp": 0,
+        "valid_pixels": 61696
+      },
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:norcia",
+        "fn": 259,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "norcia-0000-0256",
+        "tn": 30830,
+        "tp": 0,
+        "valid_pixels": 31089
+      },
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:rio",
+        "fn": 2569,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "rio-0000-0000",
+        "tn": 61959,
+        "tp": 0,
+        "valid_pixels": 64528
+      },
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:rio",
+        "fn": 1425,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "rio-0000-0256",
+        "tn": 42036,
+        "tp": 0,
+        "valid_pixels": 43461
+      },
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:rio",
+        "fn": 3691,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "rio-0256-0000",
+        "tn": 17017,
+        "tp": 0,
+        "valid_pixels": 20708
+      },
+      {
+        "candidate_components": 0,
+        "city": "oscd-city:rio",
+        "fn": 837,
+        "fp": 0,
+        "negative": false,
+        "pair_id": "rio-0256-0256",
+        "tn": 15591,
+        "tp": 0,
+        "valid_pixels": 16428
+      }
+    ],
+    "limitations": [
+      "No source CRS/affine; no geographic polygons produced",
+      "Cloud screening is not independently validated",
+      "Alignment diagnostic is integer-pixel and source-quality conditioned",
+      "Noncommercial label restriction and DOI license conflict retained"
+    ],
+    "local_validation": false,
+    "minimum_nominal_area_m2": 100,
+    "model_id": "puertogt-physical-change-s2-trained-70049b18f1b04a00a23df0704e873e60",
+    "schema": "public-change-pixel-evaluation-v1",
+    "scope": "OSCD fixed public pixel subset; no local port, geographic accuracy or persistence validation",
+    "test_manifest_sha256": "186a4c7a62ff7f41347c4ecb17e2cf5df32ddf1a90918e1f145f69cc2a96f196",
+    "threshold": 0.5,
+    "total": {
+      "f1": 0.0,
+      "fn": 9749,
+      "fp": 0,
+      "iou": 0.0,
+      "negative_cores": 0,
+      "negative_cores_with_false_alarm": 0,
+      "precision": null,
+      "recall": 0.0,
+      "tn": 228161,
+      "tp": 0,
+      "valid_pixels": 237910
+    },
+    "weights_sha256": "acab5ad44a51b9ab2b78bb0290dfc27322291a9e038f4a88b47ebfb3dcbcd24f"
+  },
+  "seconds": 4.951877915998921,
+  "peak_rss_bytes": 835878912,
+  "source_pins_unchanged": true,
+  "preparation_replay": "identical train/test manifests and all numeric hashes, no new network requests",
+  "download_measurement": {
+    "partial_full_archive_bytes": 11844595,
+    "selected_range_bytes": 60843576,
+    "label_archives_bytes": 221487,
+    "metadata_range_bytes": 393637,
+    "downloaded_bytes_known_total": 73303295
+  },
+  "excluded_source_cities": [
+    {
+      "city": "bercy",
+      "reason": "alignment_gate"
+    },
+    {
+      "city": "bordeaux",
+      "reason": "alignment_gate"
+    }
+  ],
+  "license": {
+    "archive_readme": "CC-BY-NC-SA; contact authors for commercial purposes",
+    "datacite_doi_metadata": "CC-BY4.0",
+    "disposition": "unresolved; retain stricter archive notice; local research only, no model/data publication or commercial deployment"
+  },
+  "local_patios": {
+    "scope": "TRAIN imagery only; chronological available triplets, no predictions or reference labels",
+    "manifest_path": "tmp/change-data-source/local-train-patios/manifest.json",
+    "manifest_sha256": "6b95c266f1c429ca3480d169e87fac23183fd0d848f8f7b192705fe48f4e4459",
+    "result": "No unambiguous persistent construction/demolition positive identified at10m. Container rearrangement, ships, shadows and radiometric appearance were not labeled physical change. No local supervised labels created."
+  },
+  "local_validation": false,
+  "automatic_publication": false,
+  "test_consumed": true,
+  "attempt_notes": [
+    "First materialization stopped on TIFF labels1/2 contradicting README0/1; mapping then verified pixel-by-pixel with paired official PNG0/255. No geometry or classes guessed.",
+    "Four protocol receipts preserved: full-source plan, byte-bounded subset, pixel-coordinate adaptation, and TRAIN-only weighted-loss amendment.",
+    "Only one model candidate trained and evaluated. No tuning on public TEST."
+  ]
+}

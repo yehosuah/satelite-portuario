@@ -1,0 +1,1394 @@
+{
+  "schema_version": "phase2-detector-conditioned-scope-addendum-v1",
+  "created_at": "2026-10-23T03:58:16.199166+00:00",
+  "author": "codex-ai-model-pilot",
+  "requested_by_second_reviewer": "codex-ai-root",
+  "is_human_review": false,
+  "split": "calibration",
+  "status": "pending_final_scope_render_adjudication",
+  "approval_basis": "Root explicitly reviewed the STC canal Nov18 conflict render and authorized the whole proposal footprint plus 10m, preserving indeterminate status.",
+  "source_conflicts": {
+    "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence-scope-conflicts.json",
+    "sha256": "7e7cbc0be879a024ed7e02e32a714eb7dee7a85d42586a272447be4e9bd0f1e3"
+  },
+  "source_second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-round4-caribe/root-raw-pass.json",
+    "sha256": "494772e5440aad65e24a183c6cc83d0f13e3bfda95fbca5f675e9446ddc6fe0e"
+  },
+  "scope_changes": [
+    {
+      "observation": {
+        "observation_id": "46402aa9-2b9d-4748-9bd5-80f1699507c3",
+        "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+        "zone_id": "stc_canal",
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "captured_at": "2025-11-18T16:17:01.024000Z",
+        "status": "usable",
+        "observable_fraction": 0.9999999999999996,
+        "author": "codex-ai-model-pilot",
+        "is_human_review": false,
+        "provenance_kind": "ai_visual_review",
+        "review_type": "independent_raw_no_model_proposals",
+        "label_status": "detector_conditioned_scope_pending_final_adjudication",
+        "ready_for_consolidation": false,
+        "model_proposals_queried": false,
+        "whole_zone_scene_complete": false,
+        "source_preview": {
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/preview.png",
+          "sha256": "40bc9fd4463576ce8769d89565b30ced47602f9a230f0dac3c82473225ac9685",
+          "width_px": 896,
+          "height_px": 1344,
+          "crs": "EPSG:32616",
+          "affine": [
+            10.0,
+            0.0,
+            322560.0,
+            0.0,
+            -10.0,
+            1747200.0
+          ]
+        },
+        "evidence_assets": [
+          {
+            "asset_id": "b92ad246833b09fc505df6f157246674",
+            "sha256": "f5e4db68d28b244b4a3a4924c773bc3dbb3cd675fb0f8580ca9d44ea366eed10",
+            "size_bytes": 1671875,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B02.tif"
+          },
+          {
+            "asset_id": "32641c8934f9a4a032a33dc8e2ee8b73",
+            "sha256": "207d112440fb0ec364da31cfacdbe5c10dca1eaabb0855079335b7d4b70560dc",
+            "size_bytes": 1759182,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B03.tif"
+          },
+          {
+            "asset_id": "ac75441fc42ad35bff5a783db8aad797",
+            "sha256": "9cbc5eecb58c8b1469dd6db2dbe66dada8491efae2952ff976455ff1357de3f4",
+            "size_bytes": 1707262,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B04.tif"
+          },
+          {
+            "asset_id": "c85dc5f7f722f60dd5e739a94890d432",
+            "sha256": "fb5923e4d2b5ba14111c9f087729af152b447cdff1a539b04abef9b881a7e507",
+            "size_bytes": 528384,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B05.tif"
+          },
+          {
+            "asset_id": "84756b940de1d4df88442c7bde8cbcfa",
+            "sha256": "aa7d3b5a932521c57ba24d05ded616fae42e3102131d1e74536d6aba191d91ac",
+            "size_bytes": 538925,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B06.tif"
+          },
+          {
+            "asset_id": "e6294a0bfbe325bed0bedf3be7e5160a",
+            "sha256": "c5cfc565ae348afb234ba3187a102794a2a8d19af18b60bab79d694928eb630c",
+            "size_bytes": 546198,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B07.tif"
+          },
+          {
+            "asset_id": "71575f4b9646377a8029f9223fbb4a43",
+            "sha256": "7cce008a138c3c259d996ae3951824a833b33bf5663da0f347fa8a195d9871b9",
+            "size_bytes": 1715811,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B08.tif"
+          },
+          {
+            "asset_id": "6fcdf9ae44eb3047bf85827887eff3a5",
+            "sha256": "48bbb88c73d68cbdf480bdc4b7a0b47dc60b4c48304219d067b20a766c811fbe",
+            "size_bytes": 539387,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B11.tif"
+          },
+          {
+            "asset_id": "e9e693d04e6f774d902e3625980e4d93",
+            "sha256": "de9b874f38e4d5eeb055a56e7691e1cde8e05c32e8c6e39843267e3428c2c806",
+            "size_bytes": 537407,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B12.tif"
+          },
+          {
+            "asset_id": "ca497530b58965a9e82a7af3ca9c03f9",
+            "sha256": "e6c57901f658f37bae847fd85566d6a68b261c9e7822166e1a64a617635ed388",
+            "size_bytes": 11653,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/cloud.tif"
+          },
+          {
+            "asset_id": "fb6397e275396caff0c562fcf253f00d",
+            "sha256": "ac173ff62c5ce2db6602b4c3afb0cef22636e8b7383480a4d7b69832f6005524",
+            "size_bytes": 14717,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/cloud_classes.tif"
+          },
+          {
+            "asset_id": "c801d7285f002bc5c630becd30cca1fd",
+            "sha256": "2d883409fb76330d32cd30e3eb1193c938c3ea4697497e972f40e06b492721c5",
+            "size_bytes": 15506,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/observable.tif"
+          },
+          {
+            "asset_id": "5d02042de0e4f3e561e51ea0912716e4",
+            "sha256": "2d883409fb76330d32cd30e3eb1193c938c3ea4697497e972f40e06b492721c5",
+            "size_bytes": 15506,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/potentially_observable.tif"
+          },
+          {
+            "asset_id": "c48e405ce5487979097aa44b3c56bce8",
+            "sha256": "40bc9fd4463576ce8769d89565b30ced47602f9a230f0dac3c82473225ac9685",
+            "size_bytes": 1446559,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/preview.png"
+          },
+          {
+            "asset_id": "636d6e111a01641794bc47c67db62df1",
+            "sha256": "bcf430f5f521d7085e4617b3127a008904695a38294cc40ff0d38a7d1375993f",
+            "size_bytes": 10817,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/shadow.tif"
+          },
+          {
+            "asset_id": "89424c0cbb6309a22460f928e2e3ade0",
+            "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+            "size_bytes": 8559,
+            "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/valid.tif"
+          }
+        ],
+        "zone_geometry_status": "provisional",
+        "automatic_observable_reviewed_area_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.609,
+                15.796
+              ],
+              [
+                -88.607,
+                15.796
+              ],
+              [
+                -88.615,
+                15.701
+              ],
+              [
+                -88.617,
+                15.701
+              ],
+              [
+                -88.609,
+                15.796
+              ]
+            ]
+          ]
+        },
+        "proposed_training_reviewed_area_wgs84": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ],
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ],
+                [
+                  -88.61279226020093,
+                  15.735436203127154
+                ],
+                [
+                  -88.61410092458624,
+                  15.735426520538475
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.61207193536232,
+                  15.735770767572347
+                ],
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.61434437437453,
+                  15.732535554302464
+                ],
+                [
+                  -88.61234312770142,
+                  15.732550358545437
+                ],
+                [
+                  -88.615,
+                  15.701
+                ]
+              ]
+            ]
+          ]
+        },
+        "proposed_negative_only_area_wgs84": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ],
+                [
+                  -88.61279226020093,
+                  15.735436203127154
+                ],
+                [
+                  -88.61410092458624,
+                  15.735426520538475
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.61207193536232,
+                  15.735770767572347
+                ],
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ],
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.61434437437453,
+                  15.732535554302464
+                ],
+                [
+                  -88.61234312770142,
+                  15.732550358545437
+                ],
+                [
+                  -88.615,
+                  15.701
+                ]
+              ]
+            ]
+          ]
+        },
+        "excluded_ambiguous_regions": [
+          {
+            "region_id": "channel-short-streak-uncertain",
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.6126817966373,
+                    15.733260370020075
+                  ],
+                  [
+                    -88.61426798593607,
+                    15.733248635771588
+                  ],
+                  [
+                    -88.61426938578605,
+                    15.733426043790669
+                  ],
+                  [
+                    -88.61410156802754,
+                    15.735418879673006
+                  ],
+                  [
+                    -88.61269889358076,
+                    15.735429257714912
+                  ],
+                  [
+                    -88.6126817966373,
+                    15.733260370020075
+                  ]
+                ]
+              ]
+            },
+            "reason": "Respuesta corta y estela difusa, sin casco resuelto inequívoco; desconocida antes de propuestas.",
+            "label_status": "unknown_excluded"
+          },
+          {
+            "region_id": "channel-edge-streak-uncertain",
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61278578782267,
+                    15.734615234888603
+                  ],
+                  [
+                    -88.61279718725645,
+                    15.736061159814799
+                  ],
+                  [
+                    -88.61204701428193,
+                    15.736066705402088
+                  ],
+                  [
+                    -88.61216885936254,
+                    15.73461979506973
+                  ],
+                  [
+                    -88.61278578782267,
+                    15.734615234888603
+                  ]
+                ]
+              ]
+            },
+            "reason": "Segunda firma tenue cerca de borde del canal; objeto pequeño/estela indeterminados.",
+            "label_status": "unknown_excluded"
+          },
+          {
+            "region_id": "detector-guard-f97ee7e4d9ce3ddc3fff2ffc",
+            "geometry_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61499551481997,
+                    15.735419901615115
+                  ],
+                  [
+                    -88.61202174135717,
+                    15.735441904067072
+                  ],
+                  [
+                    -88.61199897804002,
+                    15.732552904396117
+                  ],
+                  [
+                    -88.61497270955466,
+                    15.732530906186467
+                  ],
+                  [
+                    -88.61499551481997,
+                    15.735419901615115
+                  ]
+                ]
+              ]
+            },
+            "reason": "Estela tenue al norte del puerto, ya excluida en raw. Guard de caja completa +10m aprobado como exclusión indeterminada; depende de geometría del detector vista después de raw.",
+            "label_status": "unknown_excluded",
+            "based_on_detector_geometry": true,
+            "source_detection_id": "f97ee7e4d9ce3ddc3fff2ffc"
+          }
+        ],
+        "visual_mask_disagreement_extensions": [],
+        "independent_visual_vessels": [],
+        "existing_detections": [],
+        "confirmed_additional_vessels": [],
+        "summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas.",
+        "abstention_reason": null,
+        "coverage": {
+          "zone_center_pixels": 22543,
+          "automatic_observable_zone_center_pixels": 22543,
+          "automatic_observable_area_m2": 2253014.194981197,
+          "reviewed_area_m2": 2179101.270030528,
+          "raw_reviewed_area_before_detector_guard_m2": 2203560.611789704,
+          "detector_guard_removed_m2": 24459.341761182382
+        },
+        "negative_recommendation": {
+          "full_observation_negative": false,
+          "small_vessel_completeness_established": false,
+          "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+        },
+        "requires_observation_status_adjudication": false,
+        "training_split_group": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+        "dataset_split": "calibration",
+        "ui_actions_saved": false,
+        "family": null,
+        "length_m": null,
+        "width_m": null,
+        "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-s2-stc_canal-reference-scope.png",
+        "scope_selection_conditioned_on_detector_geometry": true,
+        "post_correspondence_scope_adjustments": [
+          {
+            "detection_id": "f97ee7e4d9ce3ddc3fff2ffc",
+            "raw_scope_before_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61207193536232,
+                    15.735770767572347
+                  ],
+                  [
+                    -88.61204701428193,
+                    15.736066705402088
+                  ],
+                  [
+                    -88.61279718725645,
+                    15.736061159814799
+                  ],
+                  [
+                    -88.61279220000183,
+                    15.73542856736374
+                  ],
+                  [
+                    -88.61410156802754,
+                    15.735418879673006
+                  ],
+                  [
+                    -88.61426938578605,
+                    15.733426043790669
+                  ],
+                  [
+                    -88.61426798593607,
+                    15.733248635771588
+                  ],
+                  [
+                    -88.6126817966373,
+                    15.733260370020075
+                  ],
+                  [
+                    -88.612692482225,
+                    15.734615924580282
+                  ],
+                  [
+                    -88.61216885936254,
+                    15.73461979506973
+                  ],
+                  [
+                    -88.615,
+                    15.701
+                  ],
+                  [
+                    -88.617,
+                    15.701
+                  ],
+                  [
+                    -88.609,
+                    15.796
+                  ],
+                  [
+                    -88.607,
+                    15.796
+                  ],
+                  [
+                    -88.61207193536232,
+                    15.735770767572347
+                  ]
+                ]
+              ]
+            },
+            "derived_scope_after_wgs84": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -88.61204701428193,
+                      15.736066705402088
+                    ],
+                    [
+                      -88.61279718725645,
+                      15.736061159814799
+                    ],
+                    [
+                      -88.61279226020093,
+                      15.735436203127154
+                    ],
+                    [
+                      -88.61410092458624,
+                      15.735426520538475
+                    ],
+                    [
+                      -88.609,
+                      15.796
+                    ],
+                    [
+                      -88.607,
+                      15.796
+                    ],
+                    [
+                      -88.61207193536232,
+                      15.735770767572347
+                    ],
+                    [
+                      -88.61204701428193,
+                      15.736066705402088
+                    ]
+                  ]
+                ],
+                [
+                  [
+                    [
+                      -88.615,
+                      15.701
+                    ],
+                    [
+                      -88.617,
+                      15.701
+                    ],
+                    [
+                      -88.61434437437453,
+                      15.732535554302464
+                    ],
+                    [
+                      -88.61234312770142,
+                      15.732550358545437
+                    ],
+                    [
+                      -88.615,
+                      15.701
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "excluded_region_wgs84": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -88.61499551481997,
+                    15.735419901615115
+                  ],
+                  [
+                    -88.61202174135717,
+                    15.735441904067072
+                  ],
+                  [
+                    -88.61199897804002,
+                    15.732552904396117
+                  ],
+                  [
+                    -88.61497270955466,
+                    15.732530906186467
+                  ],
+                  [
+                    -88.61499551481997,
+                    15.735419901615115
+                  ]
+                ]
+              ]
+            },
+            "buffer_m": 10,
+            "removed_area_m2": 24459.341761182382,
+            "removed_fraction_of_previous_scope": 0.01109991784674206,
+            "conditioned_on_detector_geometry": true,
+            "prior_raw_unknown": true
+          }
+        ]
+      },
+      "change": {
+        "detection_id": "f97ee7e4d9ce3ddc3fff2ffc",
+        "raw_scope_before_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61207193536232,
+                15.735770767572347
+              ],
+              [
+                -88.61204701428193,
+                15.736066705402088
+              ],
+              [
+                -88.61279718725645,
+                15.736061159814799
+              ],
+              [
+                -88.61279220000183,
+                15.73542856736374
+              ],
+              [
+                -88.61410156802754,
+                15.735418879673006
+              ],
+              [
+                -88.61426938578605,
+                15.733426043790669
+              ],
+              [
+                -88.61426798593607,
+                15.733248635771588
+              ],
+              [
+                -88.6126817966373,
+                15.733260370020075
+              ],
+              [
+                -88.612692482225,
+                15.734615924580282
+              ],
+              [
+                -88.61216885936254,
+                15.73461979506973
+              ],
+              [
+                -88.615,
+                15.701
+              ],
+              [
+                -88.617,
+                15.701
+              ],
+              [
+                -88.609,
+                15.796
+              ],
+              [
+                -88.607,
+                15.796
+              ],
+              [
+                -88.61207193536232,
+                15.735770767572347
+              ]
+            ]
+          ]
+        },
+        "derived_scope_after_wgs84": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ],
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ],
+                [
+                  -88.61279226020093,
+                  15.735436203127154
+                ],
+                [
+                  -88.61410092458624,
+                  15.735426520538475
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.61207193536232,
+                  15.735770767572347
+                ],
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.61434437437453,
+                  15.732535554302464
+                ],
+                [
+                  -88.61234312770142,
+                  15.732550358545437
+                ],
+                [
+                  -88.615,
+                  15.701
+                ]
+              ]
+            ]
+          ]
+        },
+        "excluded_region_wgs84": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61499551481997,
+                15.735419901615115
+              ],
+              [
+                -88.61202174135717,
+                15.735441904067072
+              ],
+              [
+                -88.61199897804002,
+                15.732552904396117
+              ],
+              [
+                -88.61497270955466,
+                15.732530906186467
+              ],
+              [
+                -88.61499551481997,
+                15.735419901615115
+              ]
+            ]
+          ]
+        },
+        "buffer_m": 10,
+        "removed_area_m2": 24459.341761182382,
+        "removed_fraction_of_previous_scope": 0.01109991784674206,
+        "conditioned_on_detector_geometry": true,
+        "prior_raw_unknown": true
+      },
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-s2-raw-review.json",
+        "sha256": "3ab47de0bb76750422b4d20a4e0f75604e883b9651a133a24460a82fe730ee41"
+      },
+      "conflict_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round4-caribe/correspondence-scope-conflicts.json",
+        "sha256": "7e7cbc0be879a024ed7e02e32a714eb7dee7a85d42586a272447be4e9bd0f1e3"
+      },
+      "render": {
+        "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_canal-20251118-final-detector-guard.png",
+        "sha256": "d1587c8a9c24fd5ebfc6680fecda12379e9e4fbd5bdce45fca4c1b90ba4004d7"
+      },
+      "original_reference_boxes_unchanged": true,
+      "raw_files_modified": false
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "46402aa9-2b9d-4748-9bd5-80f1699507c3",
+      "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-11-18T16:17:01.024000Z",
+      "status": "usable",
+      "observable_fraction": 0.9999999999999996,
+      "author": "codex-ai-model-pilot",
+      "is_human_review": false,
+      "provenance_kind": "ai_visual_review",
+      "review_type": "independent_raw_no_model_proposals",
+      "label_status": "detector_conditioned_scope_pending_final_adjudication",
+      "ready_for_consolidation": false,
+      "model_proposals_queried": false,
+      "whole_zone_scene_complete": false,
+      "source_preview": {
+        "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/preview.png",
+        "sha256": "40bc9fd4463576ce8769d89565b30ced47602f9a230f0dac3c82473225ac9685",
+        "width_px": 896,
+        "height_px": 1344,
+        "crs": "EPSG:32616",
+        "affine": [
+          10.0,
+          0.0,
+          322560.0,
+          0.0,
+          -10.0,
+          1747200.0
+        ]
+      },
+      "evidence_assets": [
+        {
+          "asset_id": "b92ad246833b09fc505df6f157246674",
+          "sha256": "f5e4db68d28b244b4a3a4924c773bc3dbb3cd675fb0f8580ca9d44ea366eed10",
+          "size_bytes": 1671875,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B02.tif"
+        },
+        {
+          "asset_id": "32641c8934f9a4a032a33dc8e2ee8b73",
+          "sha256": "207d112440fb0ec364da31cfacdbe5c10dca1eaabb0855079335b7d4b70560dc",
+          "size_bytes": 1759182,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B03.tif"
+        },
+        {
+          "asset_id": "ac75441fc42ad35bff5a783db8aad797",
+          "sha256": "9cbc5eecb58c8b1469dd6db2dbe66dada8491efae2952ff976455ff1357de3f4",
+          "size_bytes": 1707262,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B04.tif"
+        },
+        {
+          "asset_id": "c85dc5f7f722f60dd5e739a94890d432",
+          "sha256": "fb5923e4d2b5ba14111c9f087729af152b447cdff1a539b04abef9b881a7e507",
+          "size_bytes": 528384,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B05.tif"
+        },
+        {
+          "asset_id": "84756b940de1d4df88442c7bde8cbcfa",
+          "sha256": "aa7d3b5a932521c57ba24d05ded616fae42e3102131d1e74536d6aba191d91ac",
+          "size_bytes": 538925,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B06.tif"
+        },
+        {
+          "asset_id": "e6294a0bfbe325bed0bedf3be7e5160a",
+          "sha256": "c5cfc565ae348afb234ba3187a102794a2a8d19af18b60bab79d694928eb630c",
+          "size_bytes": 546198,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B07.tif"
+        },
+        {
+          "asset_id": "71575f4b9646377a8029f9223fbb4a43",
+          "sha256": "7cce008a138c3c259d996ae3951824a833b33bf5663da0f347fa8a195d9871b9",
+          "size_bytes": 1715811,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B08.tif"
+        },
+        {
+          "asset_id": "6fcdf9ae44eb3047bf85827887eff3a5",
+          "sha256": "48bbb88c73d68cbdf480bdc4b7a0b47dc60b4c48304219d067b20a766c811fbe",
+          "size_bytes": 539387,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B11.tif"
+        },
+        {
+          "asset_id": "e9e693d04e6f774d902e3625980e4d93",
+          "sha256": "de9b874f38e4d5eeb055a56e7691e1cde8e05c32e8c6e39843267e3428c2c806",
+          "size_bytes": 537407,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/B12.tif"
+        },
+        {
+          "asset_id": "ca497530b58965a9e82a7af3ca9c03f9",
+          "sha256": "e6c57901f658f37bae847fd85566d6a68b261c9e7822166e1a64a617635ed388",
+          "size_bytes": 11653,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/cloud.tif"
+        },
+        {
+          "asset_id": "fb6397e275396caff0c562fcf253f00d",
+          "sha256": "ac173ff62c5ce2db6602b4c3afb0cef22636e8b7383480a4d7b69832f6005524",
+          "size_bytes": 14717,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/cloud_classes.tif"
+        },
+        {
+          "asset_id": "c801d7285f002bc5c630becd30cca1fd",
+          "sha256": "2d883409fb76330d32cd30e3eb1193c938c3ea4697497e972f40e06b492721c5",
+          "size_bytes": 15506,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/observable.tif"
+        },
+        {
+          "asset_id": "5d02042de0e4f3e561e51ea0912716e4",
+          "sha256": "2d883409fb76330d32cd30e3eb1193c938c3ea4697497e972f40e06b492721c5",
+          "size_bytes": 15506,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/potentially_observable.tif"
+        },
+        {
+          "asset_id": "c48e405ce5487979097aa44b3c56bce8",
+          "sha256": "40bc9fd4463576ce8769d89565b30ced47602f9a230f0dac3c82473225ac9685",
+          "size_bytes": 1446559,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/preview.png"
+        },
+        {
+          "asset_id": "636d6e111a01641794bc47c67db62df1",
+          "sha256": "bcf430f5f521d7085e4617b3127a008904695a38294cc40ff0d38a7d1375993f",
+          "size_bytes": 10817,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/shadow.tif"
+        },
+        {
+          "asset_id": "89424c0cbb6309a22460f928e2e3ade0",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6",
+          "size_bytes": 8559,
+          "path": "data/assets/46402aa9-2b9d-4748-9bd5-80f1699507c3/valid.tif"
+        }
+      ],
+      "zone_geometry_status": "provisional",
+      "automatic_observable_reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.609,
+              15.796
+            ],
+            [
+              -88.607,
+              15.796
+            ],
+            [
+              -88.615,
+              15.701
+            ],
+            [
+              -88.617,
+              15.701
+            ],
+            [
+              -88.609,
+              15.796
+            ]
+          ]
+        ]
+      },
+      "proposed_training_reviewed_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -88.61204701428193,
+                15.736066705402088
+              ],
+              [
+                -88.61279718725645,
+                15.736061159814799
+              ],
+              [
+                -88.61279226020093,
+                15.735436203127154
+              ],
+              [
+                -88.61410092458624,
+                15.735426520538475
+              ],
+              [
+                -88.609,
+                15.796
+              ],
+              [
+                -88.607,
+                15.796
+              ],
+              [
+                -88.61207193536232,
+                15.735770767572347
+              ],
+              [
+                -88.61204701428193,
+                15.736066705402088
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -88.615,
+                15.701
+              ],
+              [
+                -88.617,
+                15.701
+              ],
+              [
+                -88.61434437437453,
+                15.732535554302464
+              ],
+              [
+                -88.61234312770142,
+                15.732550358545437
+              ],
+              [
+                -88.615,
+                15.701
+              ]
+            ]
+          ]
+        ]
+      },
+      "proposed_negative_only_area_wgs84": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -88.61279718725645,
+                15.736061159814799
+              ],
+              [
+                -88.61279226020093,
+                15.735436203127154
+              ],
+              [
+                -88.61410092458624,
+                15.735426520538475
+              ],
+              [
+                -88.609,
+                15.796
+              ],
+              [
+                -88.607,
+                15.796
+              ],
+              [
+                -88.61207193536232,
+                15.735770767572347
+              ],
+              [
+                -88.61204701428193,
+                15.736066705402088
+              ],
+              [
+                -88.61279718725645,
+                15.736061159814799
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -88.615,
+                15.701
+              ],
+              [
+                -88.617,
+                15.701
+              ],
+              [
+                -88.61434437437453,
+                15.732535554302464
+              ],
+              [
+                -88.61234312770142,
+                15.732550358545437
+              ],
+              [
+                -88.615,
+                15.701
+              ]
+            ]
+          ]
+        ]
+      },
+      "excluded_ambiguous_regions": [
+        {
+          "region_id": "channel-short-streak-uncertain",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6126817966373,
+                  15.733260370020075
+                ],
+                [
+                  -88.61426798593607,
+                  15.733248635771588
+                ],
+                [
+                  -88.61426938578605,
+                  15.733426043790669
+                ],
+                [
+                  -88.61410156802754,
+                  15.735418879673006
+                ],
+                [
+                  -88.61269889358076,
+                  15.735429257714912
+                ],
+                [
+                  -88.6126817966373,
+                  15.733260370020075
+                ]
+              ]
+            ]
+          },
+          "reason": "Respuesta corta y estela difusa, sin casco resuelto inequívoco; desconocida antes de propuestas.",
+          "label_status": "unknown_excluded"
+        },
+        {
+          "region_id": "channel-edge-streak-uncertain",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61278578782267,
+                  15.734615234888603
+                ],
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ],
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ],
+                [
+                  -88.61216885936254,
+                  15.73461979506973
+                ],
+                [
+                  -88.61278578782267,
+                  15.734615234888603
+                ]
+              ]
+            ]
+          },
+          "reason": "Segunda firma tenue cerca de borde del canal; objeto pequeño/estela indeterminados.",
+          "label_status": "unknown_excluded"
+        },
+        {
+          "region_id": "detector-guard-f97ee7e4d9ce3ddc3fff2ffc",
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61499551481997,
+                  15.735419901615115
+                ],
+                [
+                  -88.61202174135717,
+                  15.735441904067072
+                ],
+                [
+                  -88.61199897804002,
+                  15.732552904396117
+                ],
+                [
+                  -88.61497270955466,
+                  15.732530906186467
+                ],
+                [
+                  -88.61499551481997,
+                  15.735419901615115
+                ]
+              ]
+            ]
+          },
+          "reason": "Estela tenue al norte del puerto, ya excluida en raw. Guard de caja completa +10m aprobado como exclusión indeterminada; depende de geometría del detector vista después de raw.",
+          "label_status": "unknown_excluded",
+          "based_on_detector_geometry": true,
+          "source_detection_id": "f97ee7e4d9ce3ddc3fff2ffc"
+        }
+      ],
+      "visual_mask_disagreement_extensions": [],
+      "independent_visual_vessels": [],
+      "existing_detections": [],
+      "confirmed_additional_vessels": [],
+      "summary": "0 referencias visuales propuestas; ámbito explícito, regiones restantes desconocidas.",
+      "abstention_reason": null,
+      "coverage": {
+        "zone_center_pixels": 22543,
+        "automatic_observable_zone_center_pixels": 22543,
+        "automatic_observable_area_m2": 2253014.194981197,
+        "reviewed_area_m2": 2179101.270030528,
+        "raw_reviewed_area_before_detector_guard_m2": 2203560.611789704,
+        "detector_guard_removed_m2": 24459.341761182382
+      },
+      "negative_recommendation": {
+        "full_observation_negative": false,
+        "small_vessel_completeness_established": false,
+        "claim": "Ausencia solo de buques inequívocos en ámbito negativo explícito a esta resolución."
+      },
+      "requires_observation_status_adjudication": false,
+      "training_split_group": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+      "dataset_split": "calibration",
+      "ui_actions_saved": false,
+      "family": null,
+      "length_m": null,
+      "width_m": null,
+      "proposed_scope_render": "reports/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-s2-stc_canal-reference-scope.png",
+      "scope_selection_conditioned_on_detector_geometry": true,
+      "post_correspondence_scope_adjustments": [
+        {
+          "detection_id": "f97ee7e4d9ce3ddc3fff2ffc",
+          "raw_scope_before_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61207193536232,
+                  15.735770767572347
+                ],
+                [
+                  -88.61204701428193,
+                  15.736066705402088
+                ],
+                [
+                  -88.61279718725645,
+                  15.736061159814799
+                ],
+                [
+                  -88.61279220000183,
+                  15.73542856736374
+                ],
+                [
+                  -88.61410156802754,
+                  15.735418879673006
+                ],
+                [
+                  -88.61426938578605,
+                  15.733426043790669
+                ],
+                [
+                  -88.61426798593607,
+                  15.733248635771588
+                ],
+                [
+                  -88.6126817966373,
+                  15.733260370020075
+                ],
+                [
+                  -88.612692482225,
+                  15.734615924580282
+                ],
+                [
+                  -88.61216885936254,
+                  15.73461979506973
+                ],
+                [
+                  -88.615,
+                  15.701
+                ],
+                [
+                  -88.617,
+                  15.701
+                ],
+                [
+                  -88.609,
+                  15.796
+                ],
+                [
+                  -88.607,
+                  15.796
+                ],
+                [
+                  -88.61207193536232,
+                  15.735770767572347
+                ]
+              ]
+            ]
+          },
+          "derived_scope_after_wgs84": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    -88.61204701428193,
+                    15.736066705402088
+                  ],
+                  [
+                    -88.61279718725645,
+                    15.736061159814799
+                  ],
+                  [
+                    -88.61279226020093,
+                    15.735436203127154
+                  ],
+                  [
+                    -88.61410092458624,
+                    15.735426520538475
+                  ],
+                  [
+                    -88.609,
+                    15.796
+                  ],
+                  [
+                    -88.607,
+                    15.796
+                  ],
+                  [
+                    -88.61207193536232,
+                    15.735770767572347
+                  ],
+                  [
+                    -88.61204701428193,
+                    15.736066705402088
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    -88.615,
+                    15.701
+                  ],
+                  [
+                    -88.617,
+                    15.701
+                  ],
+                  [
+                    -88.61434437437453,
+                    15.732535554302464
+                  ],
+                  [
+                    -88.61234312770142,
+                    15.732550358545437
+                  ],
+                  [
+                    -88.615,
+                    15.701
+                  ]
+                ]
+              ]
+            ]
+          },
+          "excluded_region_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61499551481997,
+                  15.735419901615115
+                ],
+                [
+                  -88.61202174135717,
+                  15.735441904067072
+                ],
+                [
+                  -88.61199897804002,
+                  15.732552904396117
+                ],
+                [
+                  -88.61497270955466,
+                  15.732530906186467
+                ],
+                [
+                  -88.61499551481997,
+                  15.735419901615115
+                ]
+              ]
+            ]
+          },
+          "buffer_m": 10,
+          "removed_area_m2": 24459.341761182382,
+          "removed_fraction_of_previous_scope": 0.01109991784674206,
+          "conditioned_on_detector_geometry": true,
+          "prior_raw_unknown": true
+        }
+      ]
+    }
+  ],
+  "total_removed_area_m2": 24459.341761182382,
+  "detector_conditioned": true,
+  "area_measurement_method": "Manual linear WGS84 ring densification (5e-6 degrees), projected ring shoelace areas without GEOS segmentize or topology repair; before-minus-after/intersection cross-check tolerance 0.1 m2.",
+  "reference_boxes_modified": false,
+  "raw_files_modified": false,
+  "target_scores_seen": false,
+  "metrics_computed": false,
+  "database_writes": false,
+  "limitation": "Future metrics describe only these explicit detector-conditioned scopes; they are not unconditional whole-port precision. Unknown responses are never declared negative. Exclusions are additional to immutable raw-first unknown scopes."
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "public-attribute-numeric-eligibility-amendment-v1",
+  "created_at": "2026-10-23T04:36:01.875384+00:00",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "experiment_plan_sha256": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+  "performance_amendment_sha256": "8afe88d06ab24d9cd5d63508d99a391bf04594f8924f7d21c310f2495f243628",
+  "training_started": false,
+  "test_evaluation_started": false,
+  "materialization_states_at_policy_freeze": {
+    "complete": 30,
+    "pending": 17,
+    "running": 1
+  },
+  "reason": "Pinned original numeric crops include no-data at a public reference center. This rule is fixed before model fitting and any test prediction; no target labels determine eligibility.",
+  "rule": {
+    "reference_pixel": "row=floor(height/2), column=floor(width/2) in the fixed centered 128x128 context",
+    "required_bands": [
+      "B04",
+      "B03",
+      "B02",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B11",
+      "B12"
+    ],
+    "valid_mask_nonempty": true,
+    "valid_mask_at_reference_center": true,
+    "all_center_band_values_finite": true,
+    "all_center_band_values_differ_from_band_nodata": true,
+    "partial_context_with_valid_center": "retain and report valid fraction",
+    "train_ineligible": "exclude from fitting without replacement; retain original selected evidence and denominator",
+    "calibration_test_ineligible": "retain as numeric abstention and in coverage denominator; never an accuracy success"
+  },
+  "already_observed_numeric_cases": [
+    {
+      "window_id": 153185,
+      "split": "train",
+      "valid_pixels": 0,
+      "context_pixels": 16384,
+      "reference_center_valid": false,
+      "bundle_sha256": "913b9271cd3b93b61534ff72e3cec61abe3103e75b72d52ee5b54f326b909411",
+      "sources_sha256": "1941a7c659d1b556effb497f45088362f4a9f6a7781055878c30c8bc41908e83",
+      "targets_used_to_determine_eligibility": false
+    },
+    {
+      "window_id": 145720,
+      "split": "train",
+      "valid_pixels": 768,
+      "context_pixels": 16384,
+      "reference_center_valid": false,
+      "bundle_sha256": "ffd8fd73370427b0b641e92ec9549da01403e50d82cd7d5692dea6f8eb2df81e",
+      "sources_sha256": "d33baa039c220d918cd970e59e90cac8aba6a26445436db862b158c49008f71e",
+      "targets_used_to_determine_eligibility": false
+    }
+  ],
+  "unchanged": [
+    "48 selected IDs, original SAFE sources, GCS generations and splits",
+    "No geometry, pixel, mask or preprocessing changes",
+    "Encoder and feature context policy",
+    "Training epochs, learning rate, batch size, seed and CPU budget",
+    "TEST evaluated once after weights freeze",
+    "All publication permissions remain false"
+  ],
+  "permission_basis": "Root explicitly authorized numeric eligibility amendment before fit, including invalid center with partially valid context."
+}

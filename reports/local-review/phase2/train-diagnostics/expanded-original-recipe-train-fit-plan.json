@@ -1,0 +1,64 @@
+{
+  "schema_version": "s2-expanded-original-recipe-train-fit-plan-v1",
+  "created_at": "2026-10-23T02:34:43.664816Z",
+  "status": "preregistered_before_new_model_results",
+  "purpose": "Compare original public initialization with original three-epoch recipe on expanded frozen TRAIN; diagnose fit before any new calibration",
+  "prior_exposure": "Author knows January experiment failed calibration, but has not opened calibration predictions/label geometries or test for this diagnostic; earlier test visual review disclosed in raw-review reports. No held-out outcomes guide recipe.",
+  "train_source": {
+    "path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+    "sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204"
+  },
+  "train_crops": {
+    "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+    "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc"
+  },
+  "support_train_only": {
+    "prq": {
+      "physical_references": 48,
+      "passes": 4
+    },
+    "stc": {
+      "physical_references": 1,
+      "passes": 3
+    },
+    "pbr": {
+      "physical_references": 2,
+      "passes": 3
+    }
+  },
+  "parameters": {
+    "seed": 20261021,
+    "device": "cpu",
+    "threads": 4,
+    "epochs": 3,
+    "learning_rate": 2e-05,
+    "encoder_frozen": true,
+    "sample_order": "existing frozen manifest order unchanged",
+    "anchors": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "baseline_weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe"
+  },
+  "train_fit_diagnostic": {
+    "models": [
+      "public_base",
+      "expanded_original_recipe_adjusted"
+    ],
+    "path": "exact history.infer_tiles original512/core448/halo32; shared acquisition dedup and frozen reviewed areas",
+    "inference_floor": 0.1,
+    "fixed_reporting_thresholds": [
+      0.1,
+      0.8
+    ],
+    "iou": 0.5,
+    "threshold_selection_performed": false,
+    "reference_geometries_unchanged": true,
+    "purpose": "training_fit_only_not_generalization",
+    "automatic_publication": false
+  },
+  "next_decision": "If TRAIN fit remains poor, diagnose or amend recipe using TRAIN only before consuming new CAL results; any new recipe requires separate preregistration. No TEST inference is authorized by this plan.",
+  "source_code_semantics": "Original training recipe preserved; a separate explicit train-diagnostic entry point may be added with tests while held-out anti-leakage guards remain intact. Previous experiments retain original source hashes and commit replay."
+}

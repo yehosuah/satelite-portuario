@@ -1,0 +1,326 @@
+{
+  "created_at": "2026-10-23T04:06:20.164560+00:00",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "reason": "Both ports have zero observable pixels within all eight AOIs and zero raw-reviewed marine area on Dec26. All primary abstentions remain; this is quality failure, not evidence of vessel absence.",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "activation_rule": "Materialize/review selected dates first. Activate chronological reserves only for recorded access, missing compatible bands/context, missing observable mask, or zero reviewable marine area. No replacement for absence of ships or model performance. Review and freeze labels plus calibration protocol before training/evaluation.",
+  "execution_order_at_request": {
+    "path": "reports/local-review/phase2/execution-order-v10.json",
+    "sha256": "395024b8f8ac57f7d921f2dbdfe73a66940a463dfb3491a9f609c29bbc30da75"
+  },
+  "source_raw_reports": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/pbr-20251226-s2-raw-review.json",
+      "sha256": "265e2463b56c79280b5c920375523c1fb0919fe56b2e5e926567b546e0f41abc"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/stc-20251226-s2-raw-review.json",
+      "sha256": "3eadd667d5a60f9d79a247e87d6a655fcd6962964acd21a7ce42f922237eb790"
+    }
+  ],
+  "source_second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-round6-caribe/root-raw-pass.json",
+    "sha256": "425558559fbd6185a4107993728720154b913ad65b111a38ad46a21d6bd39bd9"
+  },
+  "observations": [
+    {
+      "observation_id": "d1a7b356-bb0c-40ed-8001-21d134c64d0f",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/d1a7b356-bb0c-40ed-8001-21d134c64d0f/observable.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+        },
+        {
+          "path": "data/assets/d1a7b356-bb0c-40ed-8001-21d134c64d0f/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/d1a7b356-bb0c-40ed-8001-21d134c64d0f/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "9409d25b-c1c2-4dba-bae3-efeafc53f2bc",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/9409d25b-c1c2-4dba-bae3-efeafc53f2bc/observable.tif",
+          "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+        },
+        {
+          "path": "data/assets/9409d25b-c1c2-4dba-bae3-efeafc53f2bc/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/9409d25b-c1c2-4dba-bae3-efeafc53f2bc/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "dcd871ef-ea7e-44b3-975e-3144f360acdf",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/dcd871ef-ea7e-44b3-975e-3144f360acdf/observable.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e"
+        },
+        {
+          "path": "data/assets/dcd871ef-ea7e-44b3-975e-3144f360acdf/preview.png",
+          "sha256": "75bc4c81a223da07d4a750e6c6c8035694649649ff6d15f6894f2a93b88cbd09"
+        },
+        {
+          "path": "data/assets/dcd871ef-ea7e-44b3-975e-3144f360acdf/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "96eb21fb-e4c4-4de4-a307-db379cf891d4",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/96eb21fb-e4c4-4de4-a307-db379cf891d4/observable.tif",
+          "sha256": "30b17ccbe655ee29a13f63924bc697772a63e74e0c6781d423cf98cd9580f14e"
+        },
+        {
+          "path": "data/assets/96eb21fb-e4c4-4de4-a307-db379cf891d4/preview.png",
+          "sha256": "75bc4c81a223da07d4a750e6c6c8035694649649ff6d15f6894f2a93b88cbd09"
+        },
+        {
+          "path": "data/assets/96eb21fb-e4c4-4de4-a307-db379cf891d4/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "c08d8519-b4ce-448a-a479-ede0936dec6b",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/c08d8519-b4ce-448a-a479-ede0936dec6b/observable.tif",
+          "sha256": "ffa2e4c14a139dabf1e9d01c35ea46bba9c3c08ff227a21a6548a877169c1da6"
+        },
+        {
+          "path": "data/assets/c08d8519-b4ce-448a-a479-ede0936dec6b/preview.png",
+          "sha256": "7a6eeb3abbae993169b620abe5c234558213f1287ade3377bfad7c0076e90927"
+        },
+        {
+          "path": "data/assets/c08d8519-b4ce-448a-a479-ede0936dec6b/valid.tif",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6"
+        }
+      ]
+    },
+    {
+      "observation_id": "1b63cfcf-64db-48c1-a1fa-aece952c9f66",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/1b63cfcf-64db-48c1-a1fa-aece952c9f66/observable.tif",
+          "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec"
+        },
+        {
+          "path": "data/assets/1b63cfcf-64db-48c1-a1fa-aece952c9f66/preview.png",
+          "sha256": "1c7c16e8dacd1801c1eed4f2422d313917b713171c5c6ed17351db3ac1f96129"
+        },
+        {
+          "path": "data/assets/1b63cfcf-64db-48c1-a1fa-aece952c9f66/valid.tif",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823"
+        }
+      ]
+    },
+    {
+      "observation_id": "021bc424-1c01-4cd8-88c5-d6da84060abe",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/021bc424-1c01-4cd8-88c5-d6da84060abe/observable.tif",
+          "sha256": "92d96784979f6aafff7264dc58558f7d7337470c6700fc7664ee6d98e705dd09"
+        },
+        {
+          "path": "data/assets/021bc424-1c01-4cd8-88c5-d6da84060abe/preview.png",
+          "sha256": "facf7cff5ebfa70fb7bace73ebdc24ec9223e88c54d3d802d0befa23b1e40444"
+        },
+        {
+          "path": "data/assets/021bc424-1c01-4cd8-88c5-d6da84060abe/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    },
+    {
+      "observation_id": "ede98f70-2904-442f-8317-2724a195e05a",
+      "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 0,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/ede98f70-2904-442f-8317-2724a195e05a/observable.tif",
+          "sha256": "92d96784979f6aafff7264dc58558f7d7337470c6700fc7664ee6d98e705dd09"
+        },
+        {
+          "path": "data/assets/ede98f70-2904-442f-8317-2724a195e05a/preview.png",
+          "sha256": "facf7cff5ebfa70fb7bace73ebdc24ec9223e88c54d3d802d0befa23b1e40444"
+        },
+        {
+          "path": "data/assets/ede98f70-2904-442f-8317-2724a195e05a/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    }
+  ],
+  "slot_records": [
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "stc",
+      "slot_start": "2025-12-25T00:00:00+00:00",
+      "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+        "captured_at": "2025-12-26T16:17:11.025000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "captured_at": "2025-12-28T16:17:21.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T16PCC",
+          "captured_at": "2025-12-29T16:29:41.025000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2B:MSIL1C:20251231T161559:R140:T16PCC",
+          "captured_at": "2025-12-31T16:15:59.024000Z",
+          "context": null
+        },
+        {
+          "rank": 5,
+          "acquisition_key": "S2A:MSIL1C:20251231T162721:R040:T16PCC",
+          "captured_at": "2025-12-31T16:27:21.024000Z",
+          "context": null
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "pbr",
+      "slot_start": "2025-12-25T00:00:00+00:00",
+      "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2C:MSIL1C:20251226T161711:R140:T16PCC",
+        "captured_at": "2025-12-26T16:17:11.025000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "captured_at": "2025-12-28T16:17:21.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T16PCC",
+          "captured_at": "2025-12-29T16:29:41.025000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2B:MSIL1C:20251231T161559:R140:T16PCC",
+          "captured_at": "2025-12-31T16:15:59.024000Z",
+          "context": null
+        },
+        {
+          "rank": 5,
+          "acquisition_key": "S2A:MSIL1C:20251231T162721:R040:T16PCC",
+          "captured_at": "2025-12-31T16:27:21.024000Z",
+          "context": null
+        }
+      ]
+    }
+  ],
+  "requested_next_reserve": {
+    "rank": 2,
+    "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+    "ports": [
+      "pbr",
+      "stc"
+    ],
+    "images_opened": false,
+    "proposals_or_scores_opened": false
+  },
+  "parent_activation_pending": true,
+  "source_raw_scope_retained": true,
+  "replacement_based_on_presence_or_performance": false,
+  "database_writes": false,
+  "metrics_computed": false
+}

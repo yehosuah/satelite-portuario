@@ -1,0 +1,49 @@
+{
+  "kind": "reserve_activation",
+  "author": "codex-ai-root",
+  "is_human_review": false,
+  "created_at": "2026-10-23T03:48:12.097320+00:00",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "previous_execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v9.json",
+    "sha256": "86431f0ea629da5bd1d334e8b6fc36dc930bacc138759b5cbf23bcd607a85889"
+  },
+  "execution_order": {
+    "path": "reports/local-review/phase2/execution-order-v10.json",
+    "sha256": "395024b8f8ac57f7d921f2dbdfe73a66940a463dfb3491a9f609c29bbc30da75"
+  },
+  "activation": {
+    "split": "calibration",
+    "port_ids": [
+      "pbr",
+      "stc"
+    ],
+    "sensor": "sentinel-2",
+    "failed_primary_acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+    "reserve_acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+    "reserve_rank": 2,
+    "reason": "Zero reviewable marine area: numeric masks have zero within PBR zones and STC canal/muelles. The 1551 STC fondeo observable pixels are on land as verified in native quality overlay. Separate terrestrial patio scope retained. This is not replacement for vessel absence.",
+    "evidence": "reports/local-review/phase2/reserve-calibration-caribe-20251211-activation.json",
+    "used_predictions_or_scores": false
+  },
+  "quality_evidence": {
+    "path": "reports/local-review/phase2/calibration-s2-round5-caribe/caribe-20251209-marine-abstention-and-reserve-request.json",
+    "sha256": "106ecc397ae10be5bc49869b975d690aa4d7076dbe0becb6d2b917f843998b23"
+  },
+  "verified_quality": {
+    "assets": 24,
+    "zone_masks": 8,
+    "land_mask_visual": {
+      "path": "reports/local-review/phase2/calibration-s2-round5-caribe/root-stc-fondeo-dec9-quality.png",
+      "sha256": "dfdf8918744a7f7975c9be23582f6e9941686aff7f8a5548d3b40e3ad378ddfc"
+    }
+  },
+  "candidate_processing_state_before_activation": [
+    "complete",
+    1
+  ],
+  "selected_without_candidate_images_predictions_or_scores": true
+}

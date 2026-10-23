@@ -1,0 +1,9 @@
+{
+  "stage": "post-restore verification",
+  "attempt": 1,
+  "status": "validator_assumption_corrected",
+  "source_data_changed": false,
+  "evidence_omitted": false,
+  "reason": "The CLI restore verifies catalog bytes, then returns Store, whose initialize() enables WAL. This changes the SQLite header journal flags and counters, so the operational database byte hash differs from the immutable DELETE-mode bundle.",
+  "correction": "Require the packaged catalog SHA256; verify the precise DELETE-to-WAL transition and incremented counters; normalize only those allowed header bytes in memory and require the complete remaining file SHA256 to equal the bundle. No database files are edited for verification."
+}

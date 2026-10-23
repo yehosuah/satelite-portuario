@@ -1,0 +1,753 @@
+{
+  "api": {
+    "/": {
+      "bytes": 9629,
+      "status": 200
+    },
+    "/health": {
+      "bytes": 60,
+      "status": 200
+    },
+    "/v1/assets": {
+      "checked": 14,
+      "sample_rule": "first path for every sensor/port/MIME stratum, <=5MB; all files separately rehashed",
+      "samples": [
+        {
+          "asset_id": "37fd60fbd0026ec9eac62c750f813b9f",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "application/json",
+          "pick": 1,
+          "port_id": null,
+          "sensor": null,
+          "sha256": "3038f6a477b8b52700fe6789fecfa5e614e953fea9521b6e6e6c4942758a3f51",
+          "size_bytes": 82740,
+          "status": 200
+        },
+        {
+          "asset_id": "b3286fa5ffe606c89fc51b6ea05272dd",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": null,
+          "sensor": null,
+          "sha256": "af0e727f596a5524438d83a1d23b0a570ed483bada669bfed7cc7075ae20137a",
+          "size_bytes": 370851,
+          "status": 200
+        },
+        {
+          "asset_id": "dfa9a142a25ac888af00a2b6c26553d9",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "sha256": "066e18d04cc0cd05deb30427ae7fd6159294eeeb69e939bff9e448032487dbda",
+          "size_bytes": 186487,
+          "status": 200
+        },
+        {
+          "asset_id": "5ccf8e50d02444fbf29cfb94dfa908f3",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "pbr",
+          "sensor": "sentinel-1",
+          "sha256": "c29dbb5bdc4bb5d86eeb1e75e7cd85af9e9996a6290e27f95c9cdbaae29f1ed2",
+          "size_bytes": 275171,
+          "status": 200
+        },
+        {
+          "asset_id": "977d8165f5fc29ead22faef7facb2a17",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "sha256": "ff5ad2864d6c819ee39f17deb51d12986deddece580c825108d49945d54d2ae2",
+          "size_bytes": 511999,
+          "status": 200
+        },
+        {
+          "asset_id": "d86d4644902819389061e2b195410318",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "prq",
+          "sensor": "sentinel-1",
+          "sha256": "356d39b77f8d87d89c08aa391a538ad729f29314e18bf8f625594e76cd75e91a",
+          "size_bytes": 838312,
+          "status": 200
+        },
+        {
+          "asset_id": "d158e1a5aa7d0ceb4d23a207fe6608fe",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "sha256": "2edad0afb5ad87a77ab827462d504198eb8fbe338701f0b35bb3f662e387369f",
+          "size_bytes": 381543,
+          "status": 200
+        },
+        {
+          "asset_id": "2ae700a12adb7bf28e801ff5dc9d3284",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "stc",
+          "sensor": "sentinel-1",
+          "sha256": "6e0a66ac83c3f37778d61db87f6eb84a8d2fa115b31c1c8da3c43f5c48a1ec68",
+          "size_bytes": 586493,
+          "status": 200
+        },
+        {
+          "asset_id": "7aca24791ee82759b573f7333d34211f",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "sha256": "61c92deeed78cc490da89d530ba4ab16b1844fbe7c17faecf036474a578f7e03",
+          "size_bytes": 269811,
+          "status": 200
+        },
+        {
+          "asset_id": "0c3126cffb2786d3a955fcb25959a4a8",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "pbr",
+          "sensor": "sentinel-2",
+          "sha256": "8c7efdc2e3a4107565fe55d0fbb267ee6c76394b55941b7309e55f225aa93039",
+          "size_bytes": 434881,
+          "status": 200
+        },
+        {
+          "asset_id": "4d3559b08aa0a351312e1ecc8e928bd6",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "sha256": "1be03273a522d2c1a5d0edcce9f197b01d22030290f0fa00b7b10185b4535a42",
+          "size_bytes": 1081733,
+          "status": 200
+        },
+        {
+          "asset_id": "3539f7d244f5a1a52504c2f2d2ccd845",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "prq",
+          "sensor": "sentinel-2",
+          "sha256": "4c4c7617f36bd5307e161a0fe59e7b01c93b2ddd979b3de1fd8ce95c30139cce",
+          "size_bytes": 1314691,
+          "status": 200
+        },
+        {
+          "asset_id": "677069b5204254b81b54f555971934d5",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/png",
+          "pick": 1,
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "sha256": "ee01745dc10864c97d587e33a58457bee99ddcae2eba9fa4b336d4f0a8a44e8b",
+          "size_bytes": 80115,
+          "status": 200
+        },
+        {
+          "asset_id": "832e05bde7149801b52abc836ea8f496",
+          "bytes_and_etag_verified": true,
+          "metadata_status": 200,
+          "mime_type": "image/tiff",
+          "pick": 1,
+          "port_id": "stc",
+          "sensor": "sentinel-2",
+          "sha256": "87f78ba724b4434cf350c42635ca8e9297433a430e2320c06e72b10b8c4dae8e",
+          "size_bytes": 823482,
+          "status": 200
+        }
+      ]
+    },
+    "/v1/models": {
+      "bytes": 16303,
+      "status": 200
+    },
+    "/v1/observations": {
+      "detail_status": 200,
+      "include_rejected": true,
+      "pages": 8,
+      "status": 200,
+      "unique_observations": 3921
+    },
+    "/v1/ports": {
+      "bytes": 10699,
+      "status": 200
+    },
+    "/v1/system": {
+      "bytes": 1214,
+      "history": [],
+      "history_scope_note": "Catalog bundle does not embed auxiliary campaign databases",
+      "model_tasks": [
+        {
+          "local_validation_declared": false,
+          "registered_versions": 3,
+          "sensor": "sentinel-1",
+          "task": "detection"
+        },
+        {
+          "local_validation_declared": false,
+          "registered_versions": 3,
+          "sensor": "sentinel-2",
+          "task": "detection"
+        },
+        {
+          "local_validation_declared": false,
+          "registered_versions": 0,
+          "sensor": "sentinel-1",
+          "task": "attributes"
+        },
+        {
+          "local_validation_declared": false,
+          "registered_versions": 0,
+          "sensor": "sentinel-2",
+          "task": "attributes"
+        },
+        {
+          "local_validation_declared": false,
+          "registered_versions": 0,
+          "sensor": "sentinel-2",
+          "task": "change"
+        }
+      ],
+      "status": 200
+    }
+  },
+  "bundle": {
+    "bytes_verified_after_restore": 26538200290,
+    "catalog_operational_header_verification": {
+      "changed_byte_offsets": [
+        18,
+        19,
+        27,
+        95
+      ],
+      "explanation": "restore_bundle checks the original bytes, then Store.initialize changes DELETE to WAL; journal flags and SQLite counters change",
+      "operational_sha256": "eb99de8cc00790714d3ad905b8f60c0358acd14173aa67d2231eced83c2d8db3",
+      "packaged_sha256": "42dad9e7cf5928a3486566e503a563f9d874ebf32426fb53c60905373197dd4c",
+      "remaining_bytes_identical": true,
+      "sha256_with_only_verified_header_fields_normalized": "42dad9e7cf5928a3486566e503a563f9d874ebf32426fb53c60905373197dd4c"
+    },
+    "files_verified_after_restore": 96494,
+    "files_with_exact_sha256_after_restore": 96493,
+    "manifest_sha256": "2b41ff0bd341112c7f7b3edc48f7669fcf1ba8e1166ef93394cde1b655f8fc48",
+    "path": "dist/release-v0.2.0/catalog-bundle",
+    "total_bytes_including_manifest": 26559239692,
+    "total_files_including_manifest": 96495
+  },
+  "commands": [
+    "PYTHONPATH=src .venv/bin/python -m puertogt.cli --data-dir data export dist/release-v0.2.0/catalog-bundle",
+    "PYTHONPATH=src .venv/bin/python -m puertogt.cli restore dist/release-v0.2.0/catalog-bundle tmp/restored-v0.2.0"
+  ],
+  "continuity": {
+    "bundle_count": 91,
+    "bytes": 6122525395,
+    "file_count": 61363,
+    "frozen_phase2_directories": [
+      {
+        "bytes": 488789719,
+        "files": 2520,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-january-february-v1"
+      },
+      {
+        "bytes": 845721758,
+        "files": 3406,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-calibration-reviewed-v1"
+      },
+      {
+        "bytes": 191718609,
+        "files": 718,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-test-round1-v1"
+      },
+      {
+        "bytes": 2099248954,
+        "files": 2910,
+        "originals_unchanged": true,
+        "path": "experiments/phase2-s2-train-temporal-v1-20261022"
+      },
+      {
+        "bytes": 308585000,
+        "files": 1773,
+        "originals_unchanged": true,
+        "path": "experiments/phase2-s2-candidate-calibration-v1-20261023"
+      }
+    ],
+    "frozen_phase2_pins": {
+      "datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json": "e7a5cac71247291d5e66eb889394deb69cf6c5196fee4ec116b361861c018729",
+      "experiments/phase2-s2-candidate-calibration-v1-20261023/freeze.json": "2b8763ec25fb5f69c80ee5684e8639b6cc29c47289f900dda2fa302aabf24bc8"
+    },
+    "historical_workspace_bytes": 1013769901,
+    "historical_workspace_file_count": 8189,
+    "ledger": {
+      "acquisitions": 824,
+      "download_reservations": 2448,
+      "foreign_key_errors": 0,
+      "integrity_check": "ok",
+      "reservation_rows_sha256": "cc0ee8d0428e14e8d5885f10730abd44e783932afb62d89f2e6c414ecaec51d2",
+      "rows_sha256": "1729d3dd9c3958a117ecc076416069fff3bcfcd6839b282eea44025f1db9957a",
+      "states": {
+        "complete": 645,
+        "retry": 173,
+        "unavailable": 6
+      }
+    },
+    "manifest_sha256": "86aa8cbe62efb075356e65457d5a641213a54ccbad26fee45f7840540b0a3e90",
+    "numeric_path_references": 1245,
+    "plan_id": "history-full-v1-3e4733ed6e0e7481",
+    "plan_sha256": "28095b6d61477bff3147ac5ec3a72d9397f97b1c117beab480c78113ae3a56ae",
+    "public_attributes": {
+      "bytes": 1116885462,
+      "excluded_files": [
+        {
+          "path": "public-attributes/v1/import.lock",
+          "reason": "runtime lock"
+        },
+        {
+          "path": "public-attributes/v1/process-io4-retry1.json",
+          "reason": "process identity or pause marker"
+        },
+        {
+          "path": "public-attributes/v1/process-io4.json",
+          "reason": "process identity or pause marker"
+        },
+        {
+          "path": "public-attributes/v1/process.json",
+          "reason": "process identity or pause marker"
+        },
+        {
+          "path": "public-attributes/v1/progress.sqlite-shm",
+          "reason": "SQLite sidecar; backup captures committed state"
+        },
+        {
+          "path": "public-attributes/v1/progress.sqlite-wal",
+          "reason": "SQLite sidecar; backup captures committed state"
+        }
+      ],
+      "experiment_replayed": false,
+      "files": 41845,
+      "ledger": {
+        "foreign_key_errors": 0,
+        "integrity_check": "ok",
+        "states": {
+          "complete": 48
+        },
+        "tables": {
+          "acquisitions": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "assets": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "changes": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "detections": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "history_acquisitions": {
+            "rows": 48,
+            "rows_sha256": "4873fafe3dff9f8146e916f9e59eecec5244157de37dce54f66d2b1931d85f63"
+          },
+          "history_download_reservations": {
+            "rows": 19322,
+            "rows_sha256": "204e8615bf3e616a4d1c8c25b4e44ae09f1a7e00bed89b40e06e40580946a3ec"
+          },
+          "jobs": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "models": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "observations": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "quotas": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "revisions": {
+            "rows": 0,
+            "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "schema_migrations": {
+            "rows": 1,
+            "rows_sha256": "9dd0674a47d9032b7806759e62677286884101003fde3e518b18b28aa548e349"
+          }
+        }
+      },
+      "path": "public-attributes/v1",
+      "pins": {
+        "public-attributes/v1/datasets/calibration/manifest.json": "d8edb6a5ff5e5147e47b989afc290d5b695ec8a1b190704c374dd92e8dba0f64",
+        "public-attributes/v1/datasets/test/manifest.json": "e09c0911e7c8f38557da46e05114190f3160d756b83b6877af1b1a614c8bf1fc",
+        "public-attributes/v1/datasets/train/manifest.json": "4a07ea9cea1ecc6cb94d0eebf8617831ad5ed5a2d54764e6f0482a5ce6f5dafb",
+        "public-attributes/v1/experiment-v1/experiment-plan-v1.json": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+        "public-attributes/v1/experiment-v1/numeric-eligibility-amendment-v1.json": "86edf951bcdf3594f8b0fe67dd748869b87a4a3a60d6451f6a29de9b52de737c",
+        "public-attributes/v1/experiment-v1/numeric-eligibility-report-v1.json": "fe1af64b9c731443e3567b91f13e01622db71b16ad2a284a34687088fbc31140",
+        "public-attributes/v1/experiment-v1/performance-amendment-v1.json": "8afe88d06ab24d9cd5d63508d99a391bf04594f8924f7d21c310f2495f243628",
+        "public-attributes/v1/experiment-v1/portable/manifest.json": "e94a64a51ab6f96e0b5e612631e1f7255cef6ed7af5da9f8aeb1f67c60ee7065",
+        "public-attributes/v1/experiment-v1/portable/models/17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa.pt": "17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa",
+        "public-attributes/v1/experiment-v1/portable/models/99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe.pt": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+        "public-attributes/v1/experiment-v1/public-test-evaluation.json": "c631eb87916071b8e967ea548c5431ef522c57202e14fbdcde681e396652d0c4",
+        "public-attributes/v1/experiment-v1/selection-v1.json": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+        "public-attributes/v1/experiment-v1/training-features/manifest.json": "28b04da7520fe95f482f67bb16221af818515e5a96276b6808999ea7369ef6c0"
+      },
+      "source_result_sha256": "06d6f99ce2744683ae536b323102d0741f01b9a7ee1ca475c7882f68790ddca7",
+      "source_unchanged_during_copy": true,
+      "sqlite_method": "progress.sqlite copied with SQLite.backup and DELETE journal; portable catalog copied byte-exact as a frozen artifact",
+      "test_repeated": false
+    },
+    "quality_model_dependencies": [
+      {
+        "path": "models/omnicloudmask/PM_model_OCM_7.97_R_G_NIR_3_smp_edgenext_small.usi_in1k_PT_state.safetensors",
+        "sha256": "d5fe67ad00f6fdb73eb8382ad925849e97fb82cedb46225344afff1a734a9c1d",
+        "size_bytes": 30711472
+      },
+      {
+        "path": "models/omnicloudmask/PM_model_OCM_7.97_R_G_NIR_3_smp_regnety_004.pycls_in1k_PT_state.safetensors",
+        "sha256": "7f6e4202e17ee73efa4aba7abb5c34f4f90a9f7eb42480820714994dff2db660",
+        "size_bytes": 27094520
+      }
+    ],
+    "relocations_sha256": "3fba767233dd8e77d05dc00bf68657824ab8031a42a8c8c9ca03b72179b7efc3",
+    "seconds": 6.695676084025763
+  },
+  "continuity_control_sha256": "70a05409435e6439c8d9fd8e8f2ccb6e88fca64a4c150b7487d2e04b357c2dac",
+  "continuity_final_audit": {
+    "actual_file_set_exact": true,
+    "control_sha256": "70a05409435e6439c8d9fd8e8f2ccb6e88fca64a4c150b7487d2e04b357c2dac",
+    "created_at": "2026-10-23T05:09:53.630456+00:00",
+    "inference_executed": false,
+    "ledger": {
+      "acquisitions": 824,
+      "integrity_check": "ok",
+      "journal_mode": "delete",
+      "states": {
+        "complete": 645,
+        "retry": 173,
+        "unavailable": 6
+      }
+    },
+    "live_source_reopened": false,
+    "manifest_sha256": "86aa8cbe62efb075356e65457d5a641213a54ccbad26fee45f7840540b0a3e90",
+    "payload_bytes_verified": 6122525395,
+    "payload_files_verified": 61363,
+    "policy_sha256": "687badaae0717bd74cce18b3b9460800d8573aaa6487aede6dcb8432944619e1",
+    "schema_version": "puertogt-continuity-final-audit-v1",
+    "seconds": 12.513347750005778,
+    "worker_restart_executed": false
+  },
+  "continuity_restoration_policy_sha256": "687badaae0717bd74cce18b3b9460800d8573aaa6487aede6dcb8432944619e1",
+  "created_at": "2026-10-23T04:53:25.224487+00:00",
+  "finalized_at": "2026-10-23T05:09:53.637868+00:00",
+  "frozen_science": {
+    "added_bytes": 3934064040,
+    "added_files": 11327,
+    "combined_continuity_bytes": 6122525395,
+    "combined_continuity_files": 61363,
+    "experiments_replayed": false,
+    "inference_executed": false,
+    "manifest_sha256": "86aa8cbe62efb075356e65457d5a641213a54ccbad26fee45f7840540b0a3e90",
+    "pins": {
+      "datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json": "e7a5cac71247291d5e66eb889394deb69cf6c5196fee4ec116b361861c018729",
+      "experiments/phase2-s2-candidate-calibration-v1-20261023/freeze.json": "2b8763ec25fb5f69c80ee5684e8639b6cc29c47289f900dda2fa302aabf24bc8"
+    },
+    "schema_version": "puertogt-frozen-science-copy-v1",
+    "seconds": 10.491376667021541,
+    "sources": [
+      {
+        "bytes": 488789719,
+        "files": 2520,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-january-february-v1"
+      },
+      {
+        "bytes": 845721758,
+        "files": 3406,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-calibration-reviewed-v1"
+      },
+      {
+        "bytes": 191718609,
+        "files": 718,
+        "originals_unchanged": true,
+        "path": "datasets/phase2-reviews/s2-test-round1-v1"
+      },
+      {
+        "bytes": 2099248954,
+        "files": 2910,
+        "originals_unchanged": true,
+        "path": "experiments/phase2-s2-train-temporal-v1-20261022"
+      },
+      {
+        "bytes": 308585000,
+        "files": 1773,
+        "originals_unchanged": true,
+        "path": "experiments/phase2-s2-candidate-calibration-v1-20261023"
+      }
+    ]
+  },
+  "inference_executed": false,
+  "network_requests_executed": false,
+  "package_local_paths": {
+    "catalog_bundle": "dist/release-v0.2.0/catalog-bundle",
+    "continuity": "dist/release-v0.2.0/continuity",
+    "restored_catalog": "tmp/restored-v0.2.0"
+  },
+  "package_subset_totals": {
+    "catalog-bundle": {
+      "bytes": 26559239692,
+      "files": 96495
+    },
+    "continuity": {
+      "bytes": 6137213903,
+      "files": 61367
+    }
+  },
+  "package_total_bytes": 32696453595,
+  "package_total_files": 157862,
+  "public_attributes": {
+    "bytes": 1116885462,
+    "combined_continuity_bytes": 6122525395,
+    "combined_continuity_files": 61363,
+    "created_at": "2026-10-23T05:08:44.104800+00:00",
+    "excluded_files": [
+      {
+        "path": "public-attributes/v1/import.lock",
+        "reason": "runtime lock"
+      },
+      {
+        "path": "public-attributes/v1/process-io4-retry1.json",
+        "reason": "process identity or pause marker"
+      },
+      {
+        "path": "public-attributes/v1/process-io4.json",
+        "reason": "process identity or pause marker"
+      },
+      {
+        "path": "public-attributes/v1/process.json",
+        "reason": "process identity or pause marker"
+      },
+      {
+        "path": "public-attributes/v1/progress.sqlite-shm",
+        "reason": "SQLite sidecar; backup captures committed state"
+      },
+      {
+        "path": "public-attributes/v1/progress.sqlite-wal",
+        "reason": "SQLite sidecar; backup captures committed state"
+      }
+    ],
+    "experiment_replayed": false,
+    "files": 41845,
+    "history_snapshot_altered": false,
+    "history_source_reopened": false,
+    "inference_executed": false,
+    "ledger": {
+      "foreign_key_errors": 0,
+      "integrity_check": "ok",
+      "states": {
+        "complete": 48
+      },
+      "tables": {
+        "acquisitions": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "assets": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "changes": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "detections": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "history_acquisitions": {
+          "rows": 48,
+          "rows_sha256": "4873fafe3dff9f8146e916f9e59eecec5244157de37dce54f66d2b1931d85f63"
+        },
+        "history_download_reservations": {
+          "rows": 19322,
+          "rows_sha256": "204e8615bf3e616a4d1c8c25b4e44ae09f1a7e00bed89b40e06e40580946a3ec"
+        },
+        "jobs": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "models": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "observations": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "quotas": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "revisions": {
+          "rows": 0,
+          "rows_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        "schema_migrations": {
+          "rows": 1,
+          "rows_sha256": "9dd0674a47d9032b7806759e62677286884101003fde3e518b18b28aa548e349"
+        }
+      }
+    },
+    "manifest_sha256": "86aa8cbe62efb075356e65457d5a641213a54ccbad26fee45f7840540b0a3e90",
+    "path": "public-attributes/v1",
+    "pins": {
+      "public-attributes/v1/datasets/calibration/manifest.json": "d8edb6a5ff5e5147e47b989afc290d5b695ec8a1b190704c374dd92e8dba0f64",
+      "public-attributes/v1/datasets/test/manifest.json": "e09c0911e7c8f38557da46e05114190f3160d756b83b6877af1b1a614c8bf1fc",
+      "public-attributes/v1/datasets/train/manifest.json": "4a07ea9cea1ecc6cb94d0eebf8617831ad5ed5a2d54764e6f0482a5ce6f5dafb",
+      "public-attributes/v1/experiment-v1/experiment-plan-v1.json": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+      "public-attributes/v1/experiment-v1/numeric-eligibility-amendment-v1.json": "86edf951bcdf3594f8b0fe67dd748869b87a4a3a60d6451f6a29de9b52de737c",
+      "public-attributes/v1/experiment-v1/numeric-eligibility-report-v1.json": "fe1af64b9c731443e3567b91f13e01622db71b16ad2a284a34687088fbc31140",
+      "public-attributes/v1/experiment-v1/performance-amendment-v1.json": "8afe88d06ab24d9cd5d63508d99a391bf04594f8924f7d21c310f2495f243628",
+      "public-attributes/v1/experiment-v1/portable/manifest.json": "e94a64a51ab6f96e0b5e612631e1f7255cef6ed7af5da9f8aeb1f67c60ee7065",
+      "public-attributes/v1/experiment-v1/portable/models/17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa.pt": "17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa",
+      "public-attributes/v1/experiment-v1/portable/models/99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe.pt": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+      "public-attributes/v1/experiment-v1/public-test-evaluation.json": "c631eb87916071b8e967ea548c5431ef522c57202e14fbdcde681e396652d0c4",
+      "public-attributes/v1/experiment-v1/selection-v1.json": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+      "public-attributes/v1/experiment-v1/training-features/manifest.json": "28b04da7520fe95f482f67bb16221af818515e5a96276b6808999ea7369ef6c0"
+    },
+    "schema_version": "puertogt-public-attributes-copy-v1",
+    "seconds": 18.05694575002417,
+    "source_result_sha256": "06d6f99ce2744683ae536b323102d0741f01b9a7ee1ca475c7882f68790ddca7",
+    "source_unchanged_during_copy": true,
+    "sqlite_method": "progress.sqlite copied with SQLite.backup and DELETE journal; portable catalog copied byte-exact as a frozen artifact",
+    "test_repeated": false
+  },
+  "published": false,
+  "quality_model_dependencies": [
+    {
+      "included_in_catalog_bundle": false,
+      "included_in_continuity": true,
+      "sha256": "d5fe67ad00f6fdb73eb8382ad925849e97fb82cedb46225344afff1a734a9c1d",
+      "size_bytes": 30711472,
+      "source_relative_path": "models/omnicloudmask/PM_model_OCM_7.97_R_G_NIR_3_smp_edgenext_small.usi_in1k_PT_state.safetensors"
+    },
+    {
+      "included_in_catalog_bundle": false,
+      "included_in_continuity": true,
+      "sha256": "7f6e4202e17ee73efa4aba7abb5c34f4f90a9f7eb42480820714994dff2db660",
+      "size_bytes": 27094520,
+      "source_relative_path": "models/omnicloudmask/PM_model_OCM_7.97_R_G_NIR_3_smp_regnety_004.pycls_in1k_PT_state.safetensors"
+    }
+  ],
+  "restored": {
+    "counts": {
+      "acquisitions": 863,
+      "assets": 96488,
+      "changes": 0,
+      "detections": 3534,
+      "jobs": 3921,
+      "models": 6,
+      "observations": 3921,
+      "revisions": 539
+    },
+    "foreign_key_errors": 0,
+    "integrity_check": "ok",
+    "job_states": {
+      "retry": 10,
+      "succeeded": 3911
+    },
+    "model_tasks": [
+      {
+        "model_id": "ai2-sentinel1-vessels",
+        "sensor": "sentinel-1",
+        "task": "detection"
+      },
+      {
+        "model_id": "ai2-sentinel1-vessels-history-full-v1",
+        "sensor": "sentinel-1",
+        "task": "detection"
+      },
+      {
+        "model_id": "ai2-sentinel2-vessels",
+        "sensor": "sentinel-2",
+        "task": "detection"
+      },
+      {
+        "model_id": "ai2-sentinel2-vessels-history-full-v1",
+        "sensor": "sentinel-2",
+        "task": "detection"
+      },
+      {
+        "model_id": "puertogt-detection-sentinel-1-public-negative-smoke-s1-v2",
+        "sensor": "sentinel-1",
+        "task": "detection"
+      },
+      {
+        "model_id": "puertogt-detection-sentinel-2-public-smoke-s2-v1",
+        "sensor": "sentinel-2",
+        "task": "detection"
+      }
+    ],
+    "observation_states": {
+      "partial": 839,
+      "pending": 10,
+      "unusable": 888,
+      "usable": 2184
+    },
+    "path": "tmp/restored-v0.2.0",
+    "review_states": {
+      "provisional": 3614,
+      "reviewed": 307
+    }
+  },
+  "schema_version": "puertogt-local-release-restore-validation-v1",
+  "scope": "Local operational restoration and structural continuity; not scientific validation",
+  "seconds_validation": 171.1939567500085,
+  "source_catalog_quiescent_structure_matches": true,
+  "source_file_sha256_at_report_finalization": {
+    "src/puertogt/api.py": "59ad877ee1f959472d04e35e3447fb55dd660f766cb3479107a9fa8764b3d67d",
+    "src/puertogt/cli.py": "2ef12d4ec0d4c3672d4499047986aebbb45607657f26eca8f17bb0c47d4c414e",
+    "src/puertogt/export.py": "fce6f3ac4bce7565bf711131f0bd63d0e89ff5f85b66004723c66ae38b5ad2e9",
+    "src/puertogt/status.py": "1b71d46cf661da6fd62c0bff3132ad0ae8c90819e831c61e774f7d5512d7b305",
+    "src/puertogt/store.py": "816d7c48d82c6429b410f67f30c4da8c51ca8ca9617daebe427c0909900aac7d"
+  },
+  "verification_attempt_notes": [
+    "restore-attempt1.json",
+    "continuity-attempt1.json",
+    "continuity-finalization.json"
+  ],
+  "worker_restart_executed": false
+}

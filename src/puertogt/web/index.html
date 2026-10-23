@@ -21,6 +21,16 @@
     <p>La credencial permanece en memoria hasta cerrar o recargar esta página. Cada corrección conserva autor, tipo de revisor e historial.</p>
   </section>
 
+  <details id="system-panel" class="system-panel">
+    <summary>Estado del sistema <span id="system-summary" class="quiet">Consultando…</span></summary>
+    <div class="system-heading"><p>Volumen local completo · independiente de los filtros de revisión</p><button id="refresh-system" type="button" class="secondary">Actualizar estado</button></div>
+    <p id="system-error" role="status" hidden></p>
+    <div id="system-cards" class="system-cards"></div>
+    <div id="history-status" class="history-status"></div>
+    <p id="system-updated" class="quiet"></p>
+    <p class="system-note">Una adquisición procesada puede contener zonas no observables. La revisión incluye anotaciones de IA y abstenciones. La validación registrada proviene de los manifiestos de modelos; este panel no calcula precisión.</p>
+  </details>
+
   <form id="filters" class="filters" aria-label="Filtros de observaciones">
     <label>Puerto<select id="port-filter"><option value="">Todos los puertos</option></select></label>
     <label>Sensor<select id="sensor-filter"><option value="">Radar y óptico</option><option value="sentinel-1">Sentinel-1 · Radar</option><option value="sentinel-2">Sentinel-2 · Óptico</option></select></label>

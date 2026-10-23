@@ -1,0 +1,162 @@
+{
+  "schema_version": "phase2-post-reference-scope-conflicts-v1",
+  "created_at": "2026-10-23T03:51:24.384456+00:00",
+  "author": "codex-ai-model-pilot",
+  "is_human_review": false,
+  "split": "calibration",
+  "catalog_read": {
+    "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/catalog-correspondence-snapshot.json",
+    "sha256": "0ff035b37c789a9310b55de2d5163c333906660f0972259f1d0bece011167465"
+  },
+  "second_raw_review": {
+    "path": "reports/local-review/phase2/calibration-s2-round4-caribe/root-raw-pass.json",
+    "sha256": "494772e5440aad65e24a183c6cc83d0f13e3bfda95fbca5f675e9446ddc6fe0e"
+  },
+  "scores_seen": false,
+  "conflicts": [
+    {
+      "observation_id": "46402aa9-2b9d-4748-9bd5-80f1699507c3",
+      "zone_id": "stc_canal",
+      "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+      "detection_id": "f97ee7e4d9ce3ddc3fff2ffc",
+      "raw_source": {
+        "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-s2-raw-review.json",
+        "sha256": "3ab47de0bb76750422b4d20a4e0f75604e883b9651a133a24460a82fe730ee41"
+      },
+      "model_box_wgs84": {
+        "coordinates": [
+          [
+            [
+              -88.61490149524921,
+              15.735330222374738
+            ],
+            [
+              -88.61211433550366,
+              15.73535084398777
+            ],
+            [
+              -88.6120929950643,
+              15.732642585149195
+            ],
+            [
+              -88.61488011795373,
+              15.732621967263498
+            ],
+            [
+              -88.61490149524921,
+              15.735330222374738
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "model_box_center_in_raw_scope": false,
+      "model_box_intersection_raw_scope_wgs84": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.61426798593607,
+                  15.733248635771588
+                ],
+                [
+                  -88.6126817966373,
+                  15.733260370020075
+                ],
+                [
+                  -88.612692482225,
+                  15.734615924580282
+                ],
+                [
+                  -88.61216885936254,
+                  15.73461979506973
+                ],
+                [
+                  -88.61233551232714,
+                  15.732640791115204
+                ],
+                [
+                  -88.61433675900722,
+                  15.732625986789403
+                ],
+                [
+                  -88.61426938578605,
+                  15.733426043790669
+                ],
+                [
+                  -88.61426798593607,
+                  15.733248635771588
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -88.61410853984958,
+                15.73533608928618
+              ],
+              [
+                -88.61426938578605,
+                15.733426043790669
+              ]
+            ]
+          }
+        ]
+      },
+      "intersection_area_m2": 22195.92254137438,
+      "previously_unknown_or_outside_water_scope_before_correspondence": true,
+      "raw_scope_changed": false,
+      "reference_boxes_changed": false,
+      "disposition": "pending_explicit_second_reviewer_adjudication",
+      "reason": "Estela tenue al norte del puerto, ya excluida en raw.",
+      "conflict_render": {
+        "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_canal-20251118-correspondence-conflict.png",
+        "sha256": "259a1f772babe13cd798f89e05157ed03b74c799f9c0c2014cd74b2c036cc203"
+      },
+      "proposed_exclusion_buffer_m": 10,
+      "proposed_guard_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.61499551481997,
+              15.735419901615115
+            ],
+            [
+              -88.61202174135717,
+              15.735441904067072
+            ],
+            [
+              -88.61199897804002,
+              15.732552904396117
+            ],
+            [
+              -88.61497270955466,
+              15.732530906186467
+            ],
+            [
+              -88.61499551481997,
+              15.735419901615115
+            ]
+          ]
+        ]
+      },
+      "proposed_removed_area_m2": 24459.325263928273,
+      "proposed_removed_fraction_of_previous_scope": 0.011098886600336663,
+      "proposed_guard_has_been_applied": false,
+      "guard_would_be_detector_conditioned": true
+    }
+  ],
+  "actions_performed": {
+    "db_writes": false,
+    "reference_changes": false,
+    "scope_changes": false,
+    "metric_or_threshold_computation": false
+  },
+  "guardrail": "El centro están fuera del ámbito raw; sus cajas lo cruzan. No se promueven a positivos ni negativos. Guards propuestos solo para representar esa indeterminación de forma compatible con exportación; si se aprueban las métricas quedarán condicionadas al ámbito recortado."
+}

@@ -1,0 +1,81 @@
+{
+  "batch": "phase2-calibration-s2-round6-caribe-v1",
+  "created_at": "2026-10-23T04:30:36.444732+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Fifteen raw/reference renders inspected before target correspondence. Two unknown proposal footprints and their final guards inspected afterwards. Other CAL dates and prior failure known. AI references, not human/AIS ground truth. No target scores or metrics seen.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/correspondence/pbr-20251219-s2-review.json",
+      "sha256": "3e8fca21ec76332a835685069003ed578822fc2e5a4848a6260415532e666a45"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/correspondence/stc-20251219-s2-review.json",
+      "sha256": "9be16136b87d90fb4f92103291c6e490ec75873870d477cd1a429642e076a885"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/correspondence/pbr-20251226-s2-review.json",
+      "sha256": "6453a60cfabd32c39346a5f0216d8706207a15d379460ae075a0186571e3fe9d"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/correspondence/stc-20251226-s2-review.json",
+      "sha256": "2b08e351a84d9d6dadd81aafcd99675a0b440fec833160143a71b8be1f5df5f1"
+    }
+  ],
+  "accepted_observation_ids": [
+    "a2bf1576-46f7-4c6f-a1e7-3da05bd90788",
+    "5fff313a-6470-4d78-b456-a76bbdd25532",
+    "5cb0ba3a-5fa9-4c87-ab82-24aa4612699d",
+    "e4f5ab35-f8cd-4c36-b3f3-8748461f5746",
+    "b11a2056-c0fe-4836-ad6f-ac2449b3a284",
+    "0c628f0d-740b-4cbe-8f39-69a348f3a98f",
+    "bc850038-4ed8-44a2-94f5-4aa09ed96bc4",
+    "9fcedaaf-dfd1-44dc-9175-162ab2455364",
+    "d1a7b356-bb0c-40ed-8001-21d134c64d0f",
+    "9409d25b-c1c2-4dba-bae3-efeafc53f2bc",
+    "dcd871ef-ea7e-44b3-975e-3144f360acdf",
+    "96eb21fb-e4c4-4de4-a307-db379cf891d4",
+    "c08d8519-b4ce-448a-a479-ede0936dec6b",
+    "1b63cfcf-64db-48c1-a1fa-aece952c9f66",
+    "021bc424-1c01-4cd8-88c5-d6da84060abe",
+    "ede98f70-2904-442f-8317-2724a195e05a"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/correspondence/verification.json",
+      "sha256": "466201a24805d9f3631d41c8f59319d66165d87a5ee4f255a229b784661bbf3b"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/second-review-packet.json",
+      "sha256": "cd4d2479d8a578de178a5f6da2d203a35fa4c47b4847b9f7ce248867f4f52da0"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/root-raw-pass.json",
+      "sha256": "425558559fbd6185a4107993728720154b913ad65b111a38ad46a21d6bd39bd9"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/detector-conditioned-scope-addendum.json",
+      "sha256": "77385c601d9ecc9a44c8b15ea211919b4244105c14d08e33d5b717d728e37ea0"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/stc_fondeo-20251219-0356a9de-final-detector-guard.png",
+      "sha256": "a477da243acf0710c81af9cc62e1f14daa827ff85ccaad647d86facae0a58e22"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round6-caribe/stc_fondeo-20251219-639ea8e4-final-detector-guard.png",
+      "sha256": "2454633b977303ca1f90f3f86e6b08a4b267c7350395c69cbb274e07692c1ef5"
+    }
+  ],
+  "expected_reviewed_observations": 16,
+  "expected_unique_objects": 3,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 3,
+  "expected_useful_scopes": 8,
+  "expected_abstentions": 8,
+  "decisions": [
+    "Confirm two PBR and one STC Dec19 hulls. Dec26 abstains; saturated scenes are not negative examples.",
+    "Two tiny STC coastal wakes remain unknown. Approved complete proposal-footprint plus10m exclusions after visual verification; 83897.050m2 removed. Report detector-conditioned scope, never whole-port precision."
+  ]
+}

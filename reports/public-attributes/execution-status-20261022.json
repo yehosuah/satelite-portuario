@@ -1,0 +1,65 @@
+{
+  "schema_version": "public-attribute-execution-status-v1",
+  "as_of": "2026-10-23T04:06:19.183053Z",
+  "status": "materializing_fixed_selection_in_background",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "experiment_plan_sha256": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+  "states": {
+    "complete": 10,
+    "pending": 37,
+    "running": 1
+  },
+  "bytes_reserved": 122090162,
+  "materialization_limits": {
+    "reserve_bytes": 10737418240,
+    "total_download_bytes": 2147483648,
+    "acquisition_download_bytes": 134217728,
+    "volume_limit_bytes": 4294967296,
+    "max_attempts": 3,
+    "retry_seconds": 60,
+    "io_workers": 1
+  },
+  "training_completed": false,
+  "test_evaluation_started": false,
+  "local_validation": false,
+  "automatic_publication": false,
+  "field_gates_validated": false,
+  "first_sample_verification_sha256": "2b8a7c53d9c1d6e93becc0d3a91d45742182955981984343780b917b7e7ff422",
+  "implementation_source_sha256": {
+    "src/puertogt/ml/attributes.py": "9e88c4d2387ac7fe0898562460e73de76bf405da67b5f6c7a1db1ab109bfb349",
+    "src/puertogt/ml/features.py": "6126687de25e33e8ba5607bc6b9d59c071d1058dc85ba4423bb76f108bcebbbf",
+    "src/puertogt/ml/public_attributes.py": "8bae0c0a706dfdfa022d1652988d240bf54fb600609f363cab8ebf698b09a16c",
+    "src/puertogt/ml/public_attribute_transport.py": "3f7b223176a242116e4310ea11670af0f9ccfe2727e3ca3121ecf8bc8ad3f33d",
+    "scripts/import_public_attributes.py": "31f3f214c47a9dea868149ec41d5c140889b62a3cd377aba7c3cadeb712fb6cd",
+    "scripts/train_public_attributes.py": "6ed980cdb19d505e6587019b9c7b32bb239aca7fd9e065468a2334f9b9706ea6",
+    "src/puertogt/history.py": "09bdbfc1d9cc2670544cf04d4d47cc35df001b4d640f041d976455d7a5fef3e3",
+    "src/puertogt/history_recovery.py": "d7557821c1e1e9b1ec6c283ed6ff4736aa924a18d870ec051ea7d367d2f2c622",
+    "scripts/process_history.py": "58831c77bab92a0ee45741e9faf02d3eb7c085c2f054f4eb3c9ea6b2d53b35a8",
+    "scripts/recover_history_source.py": "06d79b0e97eabb7da1efde638e32ca4ef21daa99cdf293ea67684f11e4ae037c"
+  },
+  "checks": [
+    {
+      "suite": "attribute importer/context/workflows/training identity/transport/experiment pins",
+      "passed": 24
+    },
+    {
+      "suite": "history recovery/materialization/evidence/source replacement/transport",
+      "passed": 46,
+      "overlap_with_attribute_suite": 3
+    }
+  ],
+  "remaining_steps": [
+    "Complete or durably report failures for all 48 unchanged selected contexts.",
+    "Finalize immutable portable datasets.",
+    "Coordinate PAUSE at the historical acquisition boundary and confirm both locks.",
+    "Run scripts/train_public_attributes.py with a new immutable destination (CPU 4, maximum 900 s).",
+    "Archive test results without tuning; all publication gates remain closed.",
+    "Resume historical campaign with caffeinate and unchanged processing recipe."
+  ],
+  "documents": "docs/public-attributes.md",
+  "limits_of_evidence": [
+    "Source field provenance is public dataset metadata, not local human annotation.",
+    "MMSI identity disjointness and encoder pretraining overlap are unknown.",
+    "Seven external test objects do not establish local or general 90 percent accuracy."
+  ]
+}

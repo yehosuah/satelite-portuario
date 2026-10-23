@@ -7,6 +7,7 @@ La API sirve resultados del catálogo local. No inicia descargas, inferencia, en
 | Método y ruta | Respuesta |
 |---|---|
 | `GET /health` | Salud del catálogo, versión del esquema y ausencia de inferencia en HTTP. |
+| `GET /v1/system` | Estado del volumen completo: catálogo, revisiones, campañas históricas y declaración de validación local por tarea/sensor. No depende de filtros ni ejecuta modelos. |
 | `GET /v1/ports` | FeatureCollection WGS84 de puertos y zonas, con procedencia y estado provisional. |
 | `GET /v1/observations` | Observaciones paginadas con calidad, estado, versión y enlaces a activos. |
 | `GET /v1/observations/{observation_id}` | Una observación y sus activos registrados. |

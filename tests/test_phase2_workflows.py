@@ -136,6 +136,41 @@ def test_incomplete_original_tile_set_is_rejected(tmp_path):
         validate_history_evidence(root, dataset, model())
 
 
+def test_train_diagnostic_preserves_history_path_without_claiming_independence(tmp_path):
+    from puertogt.ml.workflows import history_training_diagnostic_inputs
+
+    root = tmp_path / "train"
+    frozen_history(root, split="train")
+    before = {p.name: sha256_file(p) for p in root.iterdir()}
+    trained = model().model_copy(update={"metadata": {"training": {
+        "split_groups": [KEY, PASS], "observation_ids": ["obs-prq_canal"],
+    }}})
+
+    class NumericDetector:
+        manifest = trained
+        calls = 0
+
+        def raw_predict(self, image):
+            assert image.shape == (9, 512, 512)
+            self.calls += 1
+            marker = round(float(image[0, 0, 0]), 1)
+            boxes = ([[474, 270, 484, 280], [5, 270, 15, 280]] if marker == .1
+                     else [[28, 270, 38, 280], [95, 270, 105, 280]])
+            return {"boxes": np.asarray(boxes, dtype=float), "scores": np.asarray([.9, .7]),
+                    "labels": np.asarray([1, 1])}
+
+    detector = NumericDetector()
+    _, records = history_training_diagnostic_inputs(root, trained,
+                                                     cache_dir=tmp_path / "scratch", detector=detector)
+    assert detector.calls == 2
+    assert [len(record["predictions"]) for record in records] == [2, 2]
+    assert all(record["inference_purpose"] == "training_fit_only" for record in records)
+    assert before == {p.name: sha256_file(p) for p in root.iterdir()}
+    with pytest.raises(ValueError, match="calibration or test"):
+        history_evaluation_inputs(root, trained, required_split="train",
+                                  cache_dir=tmp_path / "forbidden", detector=detector)
+
+
 def scoring_records():
     records = []
     for port in ["prq", "stc", "pbr"]:
@@ -168,6 +203,47 @@ def test_calibration_counts_overlap_once_and_obeys_all_port_recall_gates():
         if r["sample"]["port_id"] == "pbr":
             r["predictions"] = r["predictions"][:3]
     assert select_history_threshold(records, min_support=3)["selected"] is None
+
+
+def test_perfect_training_fit_never_qualifies_as_validation():
+    from puertogt.ml.workflows import history_training_fit_report
+
+    records = scoring_records()
+    for record in records:
+        record["inference_purpose"] = "training_fit_only"
+        record["predictions"] = [{"prediction_id": str(i), "geometry": ref["geometry"],
+                                  "detection_score": .9}
+                                 for i, ref in enumerate(record["references"])]
+    result = history_training_fit_report(records, threshold=.8)
+    assert result["overall"]["true_positives"] == 15
+    assert result["overall"]["false_positives"] == result["overall"]["false_negatives"] == 0
+    assert result["eligible"] is False
+    assert all(not port["eligible"] for port in result["ports"].values())
+    assert result["status"] == "training_diagnostic_not_validation"
+
+
+@pytest.mark.parametrize("split", ["calibration", "test"])
+def test_train_diagnostic_rejects_reserved_splits_before_inference(tmp_path, split):
+    from puertogt.ml.workflows import history_training_diagnostic_inputs
+
+    root = tmp_path / split
+    frozen_history(root, split=split)
+
+    class ForbiddenDetector:
+        def raw_predict(self, image):
+            pytest.fail("Reserved split reached the TRAIN diagnostic detector")
+
+    with pytest.raises(ValueError, match="train split"):
+        history_training_diagnostic_inputs(root, model(), cache_dir=tmp_path / "cache",
+                                            detector=ForbiddenDetector())
+    assert not (tmp_path / "cache").exists()
+
+
+def test_training_fit_report_rejects_unmarked_evaluation_records():
+    from puertogt.ml.workflows import history_training_fit_report
+
+    with pytest.raises(ValueError, match="training-diagnostic"):
+        history_training_fit_report(scoring_records(), threshold=.8)
 
 
 def test_repeated_zones_do_not_satisfy_independent_pass_support():

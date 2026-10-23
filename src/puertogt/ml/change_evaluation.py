@@ -27,7 +27,9 @@ from puertogt.ml.change import compare
 from puertogt.ml.change_workflows import (
     PAIR_FORMAT,
     _groups,
+    _label_provenance,
     _load_bundle,
+    _pair_identity,
     _reviewed_pair,
     _verified,
 )
@@ -35,10 +37,11 @@ from puertogt.store import confined_path, sha256_file
 
 
 def _test_manifest(root: Path, model: ModelManifest) -> dict:
+    from puertogt.ml.oscd import PIXEL_PAIR_FORMAT
     path = confined_path(root, "manifest.json")
     manifest = json.loads(path.read_text())
     if (
-        manifest.get("format") != PAIR_FORMAT
+        manifest.get("format") not in {PAIR_FORMAT, PIXEL_PAIR_FORMAT}
         or manifest.get("split") != "test"
         or manifest.get("frozen") is not True
     ):
@@ -60,13 +63,16 @@ def _test_manifest(root: Path, model: ModelManifest) -> dict:
         raise ValueError("A pinned training dataset manifest hash is required")
     ids, pairs = set(), set()
     for sample in manifest["samples"]:
+        if ("numeric_pair" in sample) != (manifest["format"] == PIXEL_PAIR_FORMAT):
+            raise ValueError("Numeric pair representation must match the dataset format")
         identity = sample.get("pair_id")
         _groups(sample)
         pair = tuple(sample[role]["acquisition_key"] for role in ("reference", "target"))
-        if not identity or identity in ids or pair in pairs:
+        spatial_pair = _pair_identity(sample)
+        if not identity or identity in ids or spatial_pair in pairs:
             raise ValueError("Test pair IDs and acquisition pairs must be unique")
         ids.add(identity)
-        pairs.add(pair)
+        pairs.add(spatial_pair)
         if sample.get("split", "test") != "test":
             raise ValueError("Every evaluated pair must belong to test")
         if (
@@ -77,8 +83,7 @@ def _test_manifest(root: Path, model: ModelManifest) -> dict:
             or sample.get("sensor") != "sentinel-2"
         ):
             raise ValueError("Every test pair needs explicit port_id, zone_id and optical sensor")
-        if sample.get("labels", {}).get("review_kind") != "human":
-            raise ValueError("Test references require attributed human review")
+        _label_provenance(sample.get("labels", {}), require_kind=True)
         if (
             memberships["split_groups"].intersection(sample["split_groups"])
             or memberships["acquisition_ids"].intersection(pair)
@@ -163,6 +168,9 @@ def evaluate_change_dataset(dataset_dir: Path | str, model: ModelManifest) -> di
         raise ValueError("Change evaluation weight checksum mismatch")
     root = Path(dataset_dir).resolve()
     dataset = _test_manifest(root, model)
+    from puertogt.ml.oscd import PIXEL_PAIR_FORMAT, evaluate_pixel_dataset
+    if dataset["format"] == PIXEL_PAIR_FORMAT:
+        return evaluate_pixel_dataset(root, model, dataset)
     strata, total, records = defaultdict(lambda: defaultdict(int)), defaultdict(int), []
     for sample in dataset["samples"]:
         reference = _load_bundle(root, sample["reference"], sample["asset_hashes"])

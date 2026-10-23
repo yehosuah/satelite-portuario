@@ -1,0 +1,51 @@
+{
+  "batch": "phase2-calibration-s2-reserve-20251020-v1",
+  "created_at": "2026-10-23T02:44:29.033404+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "First reviewer fixed raw labels before target proposals. Root viewed raw imagery, masks, manual references and temporal infrastructure context in two sessions, before reading the compact proposal correspondence. Root knows other-cohort calibration failed. This is attributed AI visual review, not human or AIS ground truth.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251020/correspondence/pbr-20251020-s2-review.json",
+      "sha256": "058a535358b4b30e2b4582884eff4973c2c1c72e479c41b70369efa0142b7234"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251020/correspondence/stc-20251020-s2-review.json",
+      "sha256": "c81f982e737409e82305865bfb9c0e35940e0849b6eb5ccb9b3d3f3e7f1b76c4"
+    }
+  ],
+  "accepted_observation_ids": [
+    "8419a7c3-165f-471b-b356-d78304354f6e",
+    "21e501b1-e769-4486-8aad-70b39507fd0e",
+    "e454c3b2-221b-44a8-8004-27477f5118a2",
+    "777f9c96-2737-4eec-bfa1-54fbdad446ba",
+    "dab961be-1a6e-4a97-9bf1-8761b0af8525",
+    "0ad41d14-f5f3-4c80-81b8-43558449b62e",
+    "d41a36b0-eefd-4649-94f2-e634e56db908",
+    "46177fe9-0883-454a-9a3d-e4d7aeb99bdd"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251020/root-raw-pass.json",
+      "sha256": "d88d11c95218b79da26c353ee6c076af483744d5458631f7a793cdb37dda30c1"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserve-20251020/correspondence/verification.json",
+      "sha256": "1bd016713add088d97adebe9ed0ce737bfb6e9b561e974d6aba2a75cffa61fb1"
+    }
+  ],
+  "expected_reviewed_observations": 8,
+  "expected_unique_objects": 2,
+  "expected_existing_acceptances": 1,
+  "expected_additions": 1,
+  "expected_useful_scopes": 8,
+  "expected_abstentions": 0,
+  "decisions": [
+    "Confirm the PBR north-pier hull and the STC canal hull; preserve authored visual boxes and exclude the wake.",
+    "Ships outside the active AOIs are documented context, not in-zone labels.",
+    "Retain unknown areas around ambiguous berth structures. Negative scope means only the explicit reviewed surface. STC fondeo has very limited marine coverage.",
+    "No family, length or width reference is inferred from the optical box."
+  ]
+}

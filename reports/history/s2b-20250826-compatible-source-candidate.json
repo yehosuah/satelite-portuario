@@ -1,0 +1,89 @@
+{
+  "schema_version": "historical-compatible-source-candidate-v1",
+  "created_at": "2026-10-23T03:21:39.690136+00:00",
+  "acquisition_key": "S2B:MSIL1C:20250826T161829:R040:T16PCC",
+  "exact_product": "S2B_MSIL1C_20250826T161829_N0511_R040_T16PCC_20250826T200224.SAFE",
+  "processing_baseline": "05.11",
+  "provider": "AWS Sentinel-2 L1C mirror, listed by AWS Registry of Open Data",
+  "source_documentation": "https://registry.opendata.aws/sentinel-2/",
+  "stac_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l1c/items/S2B_16PCC_20250826_0_L1C",
+  "tile_info_url": "https://roda.sentinel-hub.com/sentinel-s2-l1c/tiles/16/P/CC/2025/8/26/0/tileInfo.json",
+  "verification": {
+    "exact_SAFE_matches_frozen_plan": true,
+    "all_nine_bands_anonymous_range_get_206": true,
+    "transferred_probe_bytes": 288,
+    "jp2_signature_verified": true,
+    "credential_used": false,
+    "request_payer_header_used": false,
+    "range_probe_size_per_band": 32,
+    "full_checksum_verified": false
+  },
+  "sources": {
+    "B04": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B04.jp2",
+      "size": 43649886,
+      "etag": "\"24fac7f31f235ae4f697d535c5524039\"",
+      "format": "jp2"
+    },
+    "B03": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B03.jp2",
+      "size": 44097278,
+      "etag": "\"a1a67070ebbd2a5afea1ee5dd8c5df1c\"",
+      "format": "jp2"
+    },
+    "B02": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B02.jp2",
+      "size": 42980423,
+      "etag": "\"266329fe7b8662b427e774c993ba7021\"",
+      "format": "jp2"
+    },
+    "B05": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B05.jp2",
+      "size": 12530137,
+      "etag": "\"a30a50e39d126e10016f8bc2ac52cbf5\"",
+      "format": "jp2"
+    },
+    "B06": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B06.jp2",
+      "size": 13326716,
+      "etag": "\"79646f540f338ef8b516727e9d86adf0\"",
+      "format": "jp2"
+    },
+    "B07": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B07.jp2",
+      "size": 13689599,
+      "etag": "\"475bf1a5ba60f7db20446b7d998989e7\"",
+      "format": "jp2"
+    },
+    "B08": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B08.jp2",
+      "size": 48810818,
+      "etag": "\"40e139762d65f028f38fe9dc39e11a1e\"",
+      "format": "jp2"
+    },
+    "B11": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B11.jp2",
+      "size": 12404319,
+      "etag": "\"53c6bbfd50549c2a4025ae9ba07f6dfe\"",
+      "format": "jp2"
+    },
+    "B12": {
+      "url": "https://sentinel-s2-l1c.s3.eu-central-1.amazonaws.com/tiles/16/P/CC/2025/8/26/0/B12.jp2",
+      "size": 11801097,
+      "etag": "\"473b4c9b695bf70245942a9c1635165f\"",
+      "format": "jp2"
+    }
+  },
+  "status": "candidate_verified_at_headers_and_JP2_signature; not_applied",
+  "recovery_requirements": [
+    "Preserve the frozen plan and prior unavailable receipt.",
+    "Stop at campaign boundary before durable targeted reconciliation.",
+    "Use If-Match ETag for every bounded byte range and fail closed on mismatch.",
+    "Pin this exact representation in sources.json; no product, orbit, band, baseline or processing recipe substitution.",
+    "Account subsequent transfer within existing historical limits."
+  ],
+  "probe_sha256": {
+    "tmp/history-s2b-20250826-alternatives.json": "c417303840b9f03c904e6692ce18dad6c4f7fe130e942e79b08d389a1402e9eb",
+    "tmp/history-s2b-20250826-band-range-access.json": "7133ab9ee57fac488f1b33c147431a878baef0513fbf74f4cdb3fe6ec1da3735"
+  }
+}

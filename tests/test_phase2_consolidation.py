@@ -137,7 +137,9 @@ def test_versioned_execution_order_preserves_original_batch_replay(tmp_path, mon
     applied = consolidation.apply(store, first_plan, receipt)
     original_hash = consolidation.sha256_file(original)
     versioned = phase2 / "execution-order-v2.json"
-    versioned.write_text(json.dumps({"activated_reserves": [{"reserve_acquisition_key": "new-take"}]}))
+    versioned.write_text(json.dumps({"activated_reserves": [{"reserve_acquisition_key": "new-take",
+                                                          "split": "train", "sensor": "sentinel-2",
+                                                          "port_ids": ["prq"]}]}))
     second = consolidation.prepare(store, adjudication, phase2 / "plan-v2.json", order_path=versioned)
     assert consolidation.pinned(original) in first["sources"]
     assert consolidation.pinned(versioned) in second["sources"]
@@ -185,3 +187,24 @@ def test_review_written_after_preflight_is_not_silently_accepted(tmp_path, monke
     assert not (tmp_path / "receipt.json").exists()
     with closing(store.connect()) as tx:
         assert tx.execute("SELECT review_status FROM observations WHERE observation_id='obs'").fetchone()[0] == "rejected"
+
+
+def test_reserve_activation_is_limited_to_its_port_sensor_and_split(tmp_path):
+    selection = tmp_path / 'selection.json'
+    order = tmp_path / 'order.json'
+    selection.write_text(json.dumps({'slots': [
+        {'selected': {'acquisition_key': 'primary'}, 'reserves': [{'acquisition_key': 'shared-reserve'}],
+         'port_id': port, 'sensor': 'sentinel-2', 'split': split}
+        for port, split in [('pbr', 'calibration'), ('stc', 'calibration'), ('pbr', 'test')]]
+    }))
+    order.write_text(json.dumps({'activated_reserves': [
+        {'reserve_acquisition_key': 'shared-reserve', 'port_ids': ['pbr'],
+         'sensor': 'sentinel-2', 'split': 'calibration'}]
+    }))
+    # Use distinct primary keys for the contradictory synthetic test assignment.
+    data = json.loads(selection.read_text())
+    data['slots'][-1]['selected']['acquisition_key'] = 'test-primary'
+    selection.write_text(json.dumps(data))
+    active = consolidation.phase2_selection(selection, order)
+    assert active[('shared-reserve', 'pbr', 'sentinel-2')]['split'] == 'calibration'
+    assert ('shared-reserve', 'stc', 'sentinel-2') not in active

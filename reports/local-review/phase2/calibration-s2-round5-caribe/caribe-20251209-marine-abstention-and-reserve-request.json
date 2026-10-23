@@ -1,0 +1,322 @@
+{
+  "created_at": "2026-10-23T03:14:17.816679+00:00",
+  "author": "codex-ai-model-pilot",
+  "reason": "Both ports have zero manually reviewable marine area on Dec9. STC has a small terrestrial patio control, preserved separately; it cannot substitute marine observability. No vessel absence claim.",
+  "sampling_plan": {
+    "path": "reports/local-review/phase2/sampling-plan.json",
+    "sha256": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8"
+  },
+  "activation_rule": "Materialize/review selected dates first. Activate chronological reserves only for recorded access, missing compatible bands/context, missing observable mask, or zero reviewable marine area. No replacement for absence of ships or model performance. Review and freeze labels plus calibration protocol before training/evaluation.",
+  "execution_order_at_request": {
+    "path": "reports/local-review/phase2/execution-order-v6.json",
+    "sha256": "356cc5d4931f08898320246f746194ce336b9494bc16ee6149fd79aec0fc790d"
+  },
+  "source_raw_reports": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round5-caribe/pbr-20251209-s2-raw-review.json",
+      "sha256": "6eea3ca5663502ff451f5a4df7988d5f72790f43a84b22254940b3a056d4f2f2"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round5-caribe/stc-20251209-s2-raw-review.json",
+      "sha256": "be55e20dd7953f3f52787653ede16141ebb13cacd062f49aeeffcd6d3dd8e110"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "443c60a1-4005-48c4-a50d-4070b3a3abf9",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 312,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/443c60a1-4005-48c4-a50d-4070b3a3abf9/observable.tif",
+          "sha256": "f7d0b6c40a86446fb283402075cd0fcf8f4e70d594d93ee1b8b7915ad041211d"
+        },
+        {
+          "path": "data/assets/443c60a1-4005-48c4-a50d-4070b3a3abf9/preview.png",
+          "sha256": "b5c6a0c325cd075bc18b8c0903a041f2025c31377a2d8780dc785d7bc7ec33b7"
+        },
+        {
+          "path": "data/assets/443c60a1-4005-48c4-a50d-4070b3a3abf9/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "4c6e762c-a1a6-47ae-ab91-9d1380ac522e",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 312,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/4c6e762c-a1a6-47ae-ab91-9d1380ac522e/observable.tif",
+          "sha256": "f7d0b6c40a86446fb283402075cd0fcf8f4e70d594d93ee1b8b7915ad041211d"
+        },
+        {
+          "path": "data/assets/4c6e762c-a1a6-47ae-ab91-9d1380ac522e/preview.png",
+          "sha256": "b5c6a0c325cd075bc18b8c0903a041f2025c31377a2d8780dc785d7bc7ec33b7"
+        },
+        {
+          "path": "data/assets/4c6e762c-a1a6-47ae-ab91-9d1380ac522e/valid.tif",
+          "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+        }
+      ]
+    },
+    {
+      "observation_id": "b5625d59-e375-40d4-bba0-fe098c508f5c",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 312,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/b5625d59-e375-40d4-bba0-fe098c508f5c/observable.tif",
+          "sha256": "a76f8bbdc79d794f7ef9c6d7715f630c8ca530f0eabafd3547256ecfa65db03c"
+        },
+        {
+          "path": "data/assets/b5625d59-e375-40d4-bba0-fe098c508f5c/preview.png",
+          "sha256": "1cf336a8e6f6e33520f845ea2b15dbe03e7cd04100598417aa0dcf4f4f67d005"
+        },
+        {
+          "path": "data/assets/b5625d59-e375-40d4-bba0-fe098c508f5c/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "28f0578e-e1f4-4e1b-8d46-4b449fe7cb9a",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 312,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/28f0578e-e1f4-4e1b-8d46-4b449fe7cb9a/observable.tif",
+          "sha256": "a76f8bbdc79d794f7ef9c6d7715f630c8ca530f0eabafd3547256ecfa65db03c"
+        },
+        {
+          "path": "data/assets/28f0578e-e1f4-4e1b-8d46-4b449fe7cb9a/preview.png",
+          "sha256": "1cf336a8e6f6e33520f845ea2b15dbe03e7cd04100598417aa0dcf4f4f67d005"
+        },
+        {
+          "path": "data/assets/28f0578e-e1f4-4e1b-8d46-4b449fe7cb9a/valid.tif",
+          "sha256": "5f8c8e62fd9e23eeedb412da9fe0a4bdb092a53d90cb400086ebce603700fcf9"
+        }
+      ]
+    },
+    {
+      "observation_id": "6c383859-ed6e-4190-96a7-038085da0a6e",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 14422,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/6c383859-ed6e-4190-96a7-038085da0a6e/observable.tif",
+          "sha256": "5c056e4d02adb3eac79d2ab52bbe235db4cd732263b2e0ba9dda8a011926718a"
+        },
+        {
+          "path": "data/assets/6c383859-ed6e-4190-96a7-038085da0a6e/preview.png",
+          "sha256": "6019c97144b14f64159ce567fbf634abb5b40118f17f7d8dcadafb5d8f945777"
+        },
+        {
+          "path": "data/assets/6c383859-ed6e-4190-96a7-038085da0a6e/valid.tif",
+          "sha256": "7b25235586b4f7cd404ce16eeba0a0d06ae7ec38a55c0e9de94e58d47bcc4fb6"
+        }
+      ]
+    },
+    {
+      "observation_id": "74335f7d-4e32-4626-8cea-b67b4d83fb14",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "status": "partial",
+      "observable_fraction": 0.018163506692742797,
+      "observable_positive_pixels_full_mosaic": 3114,
+      "observable_positive_pixels_within_zone": 1551,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/74335f7d-4e32-4626-8cea-b67b4d83fb14/observable.tif",
+          "sha256": "85c94d6f748bfc0c371cdea4ba19f10b3d9ed0cda9acd5d3a464b3ba63c53399"
+        },
+        {
+          "path": "data/assets/74335f7d-4e32-4626-8cea-b67b4d83fb14/preview.png",
+          "sha256": "aa1c1179fdeb15aeaa869cf9f7e30fec942fe84964e20b5640f7c21482e1a98b"
+        },
+        {
+          "path": "data/assets/74335f7d-4e32-4626-8cea-b67b4d83fb14/valid.tif",
+          "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823"
+        }
+      ],
+      "observable_positive_pixels_in_fixed_raw_water_window": 0
+    },
+    {
+      "observation_id": "d52d1ffe-bd55-4450-8233-5c229d3bac36",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "status": "unusable",
+      "observable_fraction": 0.0,
+      "observable_positive_pixels_full_mosaic": 11348,
+      "observable_positive_pixels_within_zone": 0,
+      "reviewed_area_m2": 0.0,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/d52d1ffe-bd55-4450-8233-5c229d3bac36/observable.tif",
+          "sha256": "d089df159390adba99684a09cc3d63f87716c4e960c291b3d6cf0413c5f42c41"
+        },
+        {
+          "path": "data/assets/d52d1ffe-bd55-4450-8233-5c229d3bac36/preview.png",
+          "sha256": "be64fc7a6fe6daa89f5a56041491d9ab11233a99bd86dddfaaa9c1bc0286c9f4"
+        },
+        {
+          "path": "data/assets/d52d1ffe-bd55-4450-8233-5c229d3bac36/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    },
+    {
+      "observation_id": "339113e2-ccf2-4fb4-8ed8-96e7cd0713b7",
+      "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "status": "partial",
+      "observable_fraction": 0.26516306004266993,
+      "observable_positive_pixels_full_mosaic": 11348,
+      "observable_positive_pixels_within_zone": 870,
+      "reviewed_area_m2": 53767.584949784214,
+      "source_quality_assets": [
+        {
+          "path": "data/assets/339113e2-ccf2-4fb4-8ed8-96e7cd0713b7/observable.tif",
+          "sha256": "d089df159390adba99684a09cc3d63f87716c4e960c291b3d6cf0413c5f42c41"
+        },
+        {
+          "path": "data/assets/339113e2-ccf2-4fb4-8ed8-96e7cd0713b7/preview.png",
+          "sha256": "be64fc7a6fe6daa89f5a56041491d9ab11233a99bd86dddfaaa9c1bc0286c9f4"
+        },
+        {
+          "path": "data/assets/339113e2-ccf2-4fb4-8ed8-96e7cd0713b7/valid.tif",
+          "sha256": "06e7a30dc2384f8396b11c06a20b30e73efe27e306148f99a30522535f52bd83"
+        }
+      ]
+    }
+  ],
+  "slot_records": [
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "stc",
+      "slot_start": "2025-12-09T00:00:00+00:00",
+      "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+        "captured_at": "2025-12-09T16:27:01.024000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "captured_at": "2025-12-11T16:15:59.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2A:MSIL1C:20251211T162711:R040:T16PCC",
+          "captured_at": "2025-12-11T16:27:11.024000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2B:MSIL1C:20251214T162609:R040:T16PCC",
+          "captured_at": "2025-12-14T16:26:09.024000Z",
+          "context": null
+        },
+        {
+          "rank": 5,
+          "acquisition_key": "S2C:MSIL1C:20251216T161711:R140:T16PCC",
+          "captured_at": "2025-12-16T16:17:11.025000Z",
+          "context": null
+        }
+      ]
+    },
+    {
+      "split": "calibration",
+      "sensor": "sentinel-2",
+      "port_id": "pbr",
+      "slot_start": "2025-12-09T00:00:00+00:00",
+      "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+      "selected": {
+        "rank": 1,
+        "acquisition_key": "S2C:MSIL1C:20251209T162701:R040:T16PCC",
+        "captured_at": "2025-12-09T16:27:01.024000Z",
+        "context": null
+      },
+      "reserves": [
+        {
+          "rank": 2,
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "captured_at": "2025-12-11T16:15:59.024000Z",
+          "context": null
+        },
+        {
+          "rank": 3,
+          "acquisition_key": "S2A:MSIL1C:20251211T162711:R040:T16PCC",
+          "captured_at": "2025-12-11T16:27:11.024000Z",
+          "context": null
+        },
+        {
+          "rank": 4,
+          "acquisition_key": "S2B:MSIL1C:20251214T162609:R040:T16PCC",
+          "captured_at": "2025-12-14T16:26:09.024000Z",
+          "context": null
+        },
+        {
+          "rank": 5,
+          "acquisition_key": "S2C:MSIL1C:20251216T161711:R140:T16PCC",
+          "captured_at": "2025-12-16T16:17:11.025000Z",
+          "context": null
+        }
+      ]
+    }
+  ],
+  "requested_next_reserve": {
+    "rank": 2,
+    "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+    "ports": [
+      "pbr",
+      "stc"
+    ],
+    "images_opened": false,
+    "proposals_or_scores_opened": false
+  },
+  "parent_review_pending": true,
+  "source_raw_scope_retained": true,
+  "replacement_based_on_presence_or_performance": false,
+  "database_writes": false,
+  "metrics_computed": false
+}

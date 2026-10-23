@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import random
 import shutil
 import time
 from pathlib import Path
@@ -100,6 +101,8 @@ def train_detector(
     learning_rate: float = 2e-5,
     device: str = "cpu",
     reserved_manifests=(),
+    sample_order: str = "manifest",
+    seed: int = 20261021,
 ) -> ModelManifest:
     from puertogt.ml.detection import load_detector
     from puertogt.ml.training import export_training_artifact, validate_training_dataset
@@ -108,11 +111,17 @@ def train_detector(
     dataset = validate_training_dataset(dataset_dir, reserved_manifests=reserved_manifests)
     if not 1 <= epochs <= 100 or not math.isfinite(learning_rate) or learning_rate <= 0:
         raise ValueError("Use 1..100 epochs and a positive finite learning rate")
+    if sample_order not in {"manifest", "shuffle"} or type(seed) is not int or not 0 <= seed < 2**63:
+        raise ValueError("Use manifest/shuffle ordering and a nonnegative integer seed")
     detector = load_detector(base, device=device)
     optimizer = detector.make_optimizer(learning_rate=learning_rate)
-    steps, started = [], time.monotonic()
-    for _ in range(epochs):
-        for sample in dataset["samples"]:
+    steps, epoch_orders, started = [], [], time.monotonic()
+    for epoch in range(epochs):
+        samples = list(dataset["samples"])
+        if sample_order == "shuffle":
+            random.Random(seed + epoch).shuffle(samples)
+        epoch_orders.append([sample["observation_id"] for sample in samples])
+        for sample in samples:
             bundle = bundle_from_evidence(sample, dataset_dir)
             image = read_model_input(bundle, base)
             height, width = image.shape[-2:]
@@ -139,6 +148,9 @@ def train_detector(
             ),
             "observation_ids": [sample["observation_id"] for sample in dataset["samples"]],
             "epochs": epochs,
+            "sample_order": sample_order,
+            "order_seed": seed if sample_order == "shuffle" else None,
+            "epoch_observation_ids": epoch_orders,
             "steps": steps,
             "learning_rate": learning_rate,
             "supervision_policy": "reviewed_footprint_negatives_v1; known positive matches retained; native context preserved",
@@ -395,6 +407,13 @@ def history_pass_id(key: str) -> str:
 def history_evaluation_inputs(dataset_dir: Path, model: ModelManifest, *, required_split: str,
                               cache_dir: Path, detector=None, device: str = "cpu"):
     """Evaluate original halos through the deployed history.infer_tiles path."""
+    return _history_inference_inputs(dataset_dir, model, required_split=required_split,
+                                     cache_dir=cache_dir, detector=detector, device=device)
+
+
+def _history_inference_inputs(dataset_dir: Path, model: ModelManifest, *, required_split: str,
+                              cache_dir: Path, detector=None, device: str = "cpu",
+                              training_diagnostic: bool = False):
     from puertogt.history import infer_tiles
     from puertogt.ml.detection import load_detector
 
@@ -402,14 +421,17 @@ def history_evaluation_inputs(dataset_dir: Path, model: ModelManifest, *, requir
     if root == cache or root in cache.parents or cache in root.parents:
         raise ValueError("Inference cache must be separate from the frozen dataset")
     dataset = json.loads((root / "manifest.json").read_text())
-    if required_split not in {"calibration", "test"} or dataset.get("split") != required_split:
-        raise ValueError("History evaluation requires its designated calibration or test split")
+    allowed = {"train"} if training_diagnostic else {"calibration", "test"}
+    if required_split not in allowed or dataset.get("split") != required_split:
+        purpose = "train split" if training_diagnostic else "designated calibration or test split"
+        raise ValueError(f"History inference requires its {purpose}")
     tiles_by_acquisition = validate_history_evidence(root, dataset, model)
     training = model.metadata.get("training", {})
     train_ids, train_groups = set(training.get("observation_ids", [])), set(training.get("split_groups", []))
     references = {}
     for sample in dataset["samples"]:
-        if (sample["observation_id"] in train_ids or sample.get("parent_observation_id") in train_ids
+        if not training_diagnostic and (
+                sample["observation_id"] in train_ids or sample.get("parent_observation_id") in train_ids
                 or train_groups.intersection([sample["acquisition_key"], *sample.get("split_groups", [])])):
             raise ValueError("Training and evaluation contain related samples")
         if reviewed_area(sample) is None:
@@ -443,11 +465,20 @@ def history_evaluation_inputs(dataset_dir: Path, model: ModelManifest, *, requir
         area = reviewed_area(sample)
         records.append({
             "sample": sample, "reviewed_area_scope": "frozen_area",
+            **({"inference_purpose": "training_fit_only"} if training_diagnostic else {}),
             "predictions": [p.model_dump(mode="json") for p in by_acquisition[sample["acquisition_key"]]
                             if area.covers(shape(p.geometry).centroid)],
             "references": references[sample["observation_id"]],
         })
     return dataset, records
+
+
+def history_training_diagnostic_inputs(dataset_dir: Path, model: ModelManifest, *,
+                                      cache_dir: Path, detector=None, device: str = "cpu"):
+    """Measure frozen TRAIN fit; never a held-out validation claim."""
+    return _history_inference_inputs(dataset_dir, model, required_split="train",
+                                     cache_dir=cache_dir, detector=detector, device=device,
+                                     training_diagnostic=True)
 
 
 def history_detection_report(records: list[dict], *, threshold: float, split: str,
@@ -527,6 +558,20 @@ def history_detection_report(records: list[dict], *, threshold: float, split: st
         "target_precision": .9, "minimum_recall": .8, "automatic_publication": False,
         "reference_scope": "Agreement with frozen reference provenance; not automatically human validation",
     }
+
+
+def history_training_fit_report(records: list[dict], *, threshold: float) -> dict:
+    """Report fit on TRAIN while explicitly preventing a validation decision."""
+    if not records or any(record.get("inference_purpose") != "training_fit_only" for record in records):
+        raise ValueError("Training fit needs explicit training-diagnostic records")
+    report = history_detection_report(records, threshold=threshold, split="train",
+                                       min_support=1, min_passes=0)
+    for port in report["ports"].values():
+        port["eligible"] = False
+        port["reasons"].append("training_fit_is_not_validation")
+    report.update(eligible=False, status="training_diagnostic_not_validation",
+                  automatic_publication=False, threshold_selection_performed=False)
+    return report
 
 
 def select_history_threshold(records: list[dict], *, min_support: int = 30,

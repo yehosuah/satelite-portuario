@@ -135,7 +135,7 @@ Seam de prueba: export_bundle/restore_bundle
 ## Registro
 - Autoridad: usuario solicitó implementar el plan y luego el alcance íntegro, con subagentes y publicación pública en yehosuah/satelite-portuario. Esto resuelve la autorización posterior exigida por el documento.
 - El lint del documento original reportó 17 diferencias de formato; este registro adapta la estructura sin cambiar el diseño ni las restricciones.
-- Las tareas se separan por archivos para trabajo paralelo autorizado; los gates científicos siguen vigentes antes de carga masiva/publicación validada.
+- Las tareas se separan por archivos para trabajo paralelo autorizado. La autorización posterior permite procesar el histórico con propuestas experimentales; los gates científicos siguen vigentes antes de declarar publicación validada.
 - Commits y push autorizados como parte de publicar el repositorio. No se publica output/tmp ni secretos.
 - Las geometrías provisionales, muestras sintéticas y estados sin validar se identifican explícitamente.
 
@@ -147,7 +147,7 @@ Se ejecutaron pilotos numéricos S1/S2 en los tres puertos, máscaras ópticas, 
 
 La revisión independiente detectó y corrigió conflictos de adquisición compartida entre puertos, identidad insuficiente de procesamiento, cálculo de cobertura parcial, exportación de metadatos necesarios para restaurar, conservación de procedencia por campo, filtrado por zona revisada y atomicidad de exportación. Las regresiones correspondientes están en la suite. El CLI expone entrenamiento y evaluación de detección, atributos y cambios; [los flujos](learning-workflows.md) documentan sus entradas.
 
-El inventario completo incluye 828 adquisiciones desde 2025; cuatro tienen observaciones piloto y 824 siguen sin programar. Faltan etiquetas locales independientes, pesos locales validados, evaluación ≥90% por el protocolo y una proyección de zonas completas. `doctor --check-release` y el gate de backfill siguen cerrados por esa evidencia ausente. La autorización para publicar código está resuelta; no equivale a aprobar métricas no medidas.
+El inventario completo incluye 828 adquisiciones desde 2025; cuatro tienen observaciones piloto y las otras 824 ya están programadas en una campaña reanudable de 4,907 teselas. Sus mediciones de zonas completas, presupuestos, reintentos y excepciones están en [reports/history](../reports/history/). Faltan pesos localmente validados y evaluación ≥90% por el protocolo. `doctor --check-release` conserva ese incumplimiento; no impide la campaña experimental autorizada. La autorización para publicar código no equivale a aprobar métricas no medidas.
 
 El lint estructural pasó antes de ejecutar. Al cerrar, ese lint rechaza las casillas marcadas porque está diseñado para planes sin iniciar; las marcas se conservan como registro de ejecución.
 
@@ -157,4 +157,40 @@ La CI posterior encontró sensibilidad del cálculo de cobertura a bordes sobre 
 
 ## Estado de publicación del paquete portable
 
-El código y la documentación están en el repositorio público. La carga del bundle de 836,751,228 bytes quedó detenida por fallos TCP/TLS repetidos desde macOS y Docker/Linux. Se verificaron 11 de 34 segmentos (275 MB), wheel, sdist y los tres checksums. Faltan 23 segmentos; no se publicó el release incompleto y no quedan transferencias en segundo plano. El archivo completo permanece verificado en `dist/`. `reports/pilot/release-upload-status.json` registra el estado y las condiciones para reanudar, sin credenciales. README y guía de restauración distinguen explícitamente la copia local de la descarga pública pendiente.
+La carga inicial tuvo fallos TCP/TLS y se reanudó sin sustituir el archivo. El [recibo final](../reports/pilot/release-upload-status.json), del 21 de octubre de 2026, confirma el release v0.1.0 publicado: 34/34 segmentos y 39/39 archivos verificados, con 836,751,228 bytes de snapshot y cero bytes pendientes. Este paquete corresponde al piloto inicial; no contiene las revisiones, pesos y campaña posteriores. No se actualizará silenciosamente para representar el estado actual.
+
+## Desarrollo posterior al piloto
+
+Se conservaron las revisiones iniciales y se ampliaron ámbitos temporales de fase 2. La inferencia histórica usa teselas completas con halos, deduplicación entre zonas y evidencias congeladas para replay. Se corrigió el tratamiento de áreas desconocidas en la supervisión ROI/RPN y la geometría parcial de los datasets, manteniendo las mediciones anteriores sin reescribirlas.
+
+El detector óptico se entrenó con 51 referencias y 84 crops TRAIN. La receta original falló; una [enmienda fijada antes de comparar](../reports/local-review/phase2/amendments/s2-train-temporal-v1-results.md) separó enero y febrero dentro de TRAIN, sin usar CAL/TEST para elegir receta. El refit seleccionado obtuvo 48 TP / 3 FP / 3 FN, precisión y recall 94.12% sobre TRAIN. Es ajuste al conjunto usado para aprender; no acredita precisión local del 90%. PBR/STC siguen teniendo soporte insuficiente. Los pesos tienen identidad única y no reemplazan ni validan el modelo público.
+
+El [experimento OSCD](../reports/change/public-data/oscd-bounded-results.md) ejecutó 30 updates reales de decoder propio y seis inferencias TEST, con encoder Satlas congelado, máscaras manuales y splits de ciudades separados. Falló: TP 0 / FP 0 / FN 9,749 píxeles; TEST queda consumido. Las imágenes rectificadas carecen de georreferencia y no se transformaron en supuestos polígonos portuarios. Se aplica la licencia más restrictiva del archivo fuente —CC BY-NC-SA/consulta comercial— frente a la discrepancia del DOI. Datos y pesos derivados se conservan para investigación local, sin publicación o validación portuaria.
+
+El importador de [atributos públicos](public-attributes.md) conserva 48 ventanas fijadas, splits originales, procedencia por campo y generaciones de nueve bandas. Los contextos 128×128 a 10 m se construyen sin usar eslora/manga objetivo. La enmienda I/O4 cambia únicamente concurrencia de descarga; conserva selección, recetas, límites de bytes e intentos y pausa la campaña histórica para no competir por recursos. El entrenamiento/evaluación tiene receta y presupuesto prefijados, campos sin validar y TEST separado.
+
+La revisión independiente del corte técnico pasó 56 pruebas acotadas y Ruff. Cubrió estado/doctor/API, calibración, contexto de atributos, importador, transporte y recuperación; no ejecutó modelos ni certificó exactitud científica. El panel exige `local_validation: passed` explícito para mostrar validación local declarada; un resultado público no basta.
+
+<!-- BEGIN DYNAMIC_STATUS -->
+Al corte **2026-10-23T05:03:55.799342Z**, la campaña está reanudada: **645/824 adquisiciones completas, 173 por resolver y seis excepciones de contexto radar**. El worker conserva plan, reintentos y presupuestos.
+
+La [calibración óptica](../reports/local-review/phase2/candidate-calibration-v1/README.md) terminó: **ninguno de 90 umbrales cumplió los requisitos**. Con umbral 0,50: 73 TP / 34 FP / 40 FN, precisión 68,22% y recall 64,60%; TEST del candidato sigue cerrado. TRAIN 94,12% era ajuste, no validación. CAL contiene 105 ámbitos y 113 referencias IA (PRQ 87 / PBR 16 / STC 10), con 24 observaciones PRQ posteriores aún fuera del corte.
+
+El [experimento público de atributos](../reports/public-attributes/experiment-result-v1.json) terminó: 48 muestras materializadas,34 TRAIN elegibles de 36, cinco CAL sin usar y siete TEST evaluadas una vez. Familias: 3/7 correctas; MAE eslora 71,75 m y manga 11,43 m. Campos y publicación automática continúan deshabilitados. OSCD público también conserva su prueba fallida. Ninguno de estos resultados demuestra precisión local ≥90%.
+<!-- END DYNAMIC_STATUS -->
+
+## Entrega nueva: comandos y condiciones
+
+El exportador cubre catálogo, activos y pesos registrados, no todo el workspace científico. Una copia capaz de continuar la campaña necesita también sus planes, prioridades, ledger consistente, fuentes fijadas y evidencias externas, más los datasets/experimentos que se decida entregar. Esos componentes van en un complemento con checksums, fuera del bundle estricto. Detener escritores y usar snapshots SQLite evita perder WAL; las credenciales y materiales OSCD restringidos se excluyen de la publicación pública.
+
+El [estado de entrega](status.md#preparar-una-entrega-nueva) contiene la secuencia `uv build`, exportación y restauración en destinos nuevos. Se comprobaron sus opciones mediante `--help`, sin construir ni exportar una entrega nueva en esta actualización. El corte ahora declara 0.2.0; las verificaciones reales de software, visor, restauración y continuidad se conservan en `reports/release-v0.2.0/`. Los ejemplos siguientes son instrucciones históricas de preparación, no recibos de publicación.
+
+Para publicar solo después de esas comprobaciones, esta es la plantilla mínima; **no se ejecutó**. Sustituye los marcadores por un tag nuevo ya creado y archivos explícitos del corte. La sintaxis de `gh release create` se verificó localmente:
+
+```sh
+gh release create NUEVO_TAG ARCHIVO_WHEEL ARCHIVO_SDIST ARCHIVO_BUNDLE ARCHIVO_CHECKSUMS \
+  --repo yehosuah/satelite-portuario --verify-tag --draft --prerelease \
+  --title "Satélite Portuario — corte experimental" --notes-file NOTAS_DE_ENTREGA.md
+```
+
+El borrador permite verificar todos los archivos descargados y sus SHA256 antes de hacerlo público. Si el tamaño requiere partes, conserva un manifiesto del archivo completo y otro de cada parte. El paquete no incluye dependencias Python del sistema: una instalación completamente sin red necesita un entorno/contenedor y dependencias preparados además de wheel, fuentes, configuración y datos. Publicar una entrega estable de software no cierra los requisitos científicos pendientes.

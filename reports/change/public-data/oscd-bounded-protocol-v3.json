@@ -1,0 +1,101 @@
+{
+  "schema": "oscd-bounded-pilot-v3",
+  "created_at": "2026-10-23T03:54:26.342983+00:00",
+  "supersedes_selection_only": "oscd-bounded-protocol-v2.json",
+  "reason": "Measured official image transfer 11844595 bytes/300s; budgeted feasibility subset before labels or predictions inspected.",
+  "selection_rule": "four lowest compressed bytes in official train split, two lowest in official test split; nine rectified bands, ZIP directory only",
+  "train": [
+    "bercy",
+    "paris",
+    "rennes",
+    "bordeaux"
+  ],
+  "test": [
+    "norcia",
+    "rio"
+  ],
+  "licenses": {
+    "doi_metadata": "CC BY 4.0",
+    "official_archive_readme": "CC BY-NC-SA, commercial uses contact authors",
+    "effective_scope": "local noncommercial research only; conflict unresolved; no redistribution or commercial deployment"
+  },
+  "download_budget_bytes": 786432000,
+  "derived_disk_budget_bytes": 3221225472,
+  "reserve_free_bytes": 5368709120,
+  "cpu_threads": 4,
+  "heavy_budget_seconds": 900,
+  "fixed_preprocessing": {
+    "bands": [
+      "B04",
+      "B03",
+      "B02",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B11",
+      "B12"
+    ],
+    "radiometry": "L1C pre-2022 DN, no offset; RGB /3000, others /8160 clipped as existing ai2-s2-v1",
+    "source": "authors rectified 10m nominal pixel grid; no CRS/affine",
+    "core_pixels": 256,
+    "halo_pixels": 32,
+    "maximum_input_pixels": 320,
+    "static_area": "finite nonzero numeric pixels in both dates and land in both dates; NDWI=(B03-B08)/(B03+B08) <=0.2",
+    "quality": "gradient_patch_ncc_integer_v1: 4x4 fixed 32px patches, \u00b18px integer search; NCC>=0.6, margin>=0.05 beyond adjacent pixel, >=4 stable patches; uncorrected displacement RMS<=1.5px. No warp, no subpixel certification, no labels used. Numeric nonzero+land support; optical clouds not independently screened."
+  },
+  "training": {
+    "architecture": "satlas_swint_siamese_unet_v1",
+    "encoder_frozen": true,
+    "decoder_channels": 32,
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "optimizer": "AdamW",
+    "seed": 20261022,
+    "sample_order": "manifest fixed city/grid order",
+    "positive_negative": "require both observable changed and all-negative cores; no sampling by change content",
+    "loss": "existing masked binary cross entropy",
+    "no_test_selection": true,
+    "evaluation_threshold": 0.5,
+    "minimum_area_m2": 100,
+    "minimum_observable_fraction": 0.5,
+    "max_alignment_rmse_pixels": 1.5,
+    "class_weight": 20,
+    "positive_weight_rule": "min(20, TRAIN_valid_negative_pixels / TRAIN_valid_positive_pixels)",
+    "train_positive_pixels": 5326,
+    "train_negative_pixels": 318945
+  },
+  "evaluation": {
+    "test_used_once_after_weights_frozen": true,
+    "scope": "fixed public source pixel-coordinate subset feasibility only; no geographic, port or temporal validation",
+    "calibration": null,
+    "publication_approval": false,
+    "persistence_validation": false
+  },
+  "abort_rules": [
+    "inconsistent source pixel shapes, dates, numeric units, labels or hashes",
+    "missing source provenance",
+    "no positive and negative train support",
+    "training time exceeds budget; preserve incomplete record and no test evaluation",
+    "test/train cities or acquisition groups overlap"
+  ],
+  "status": "predeclared before first train or test forward",
+  "amendment_reason": "Before training or evaluation: train-only support shows severe class imbalance; predeclare one weighted BCE candidate, not selected using reserved labels or metrics. Numeric mask encoding verified TIFF1/2 == PNG0/255; no geometry inferred.",
+  "dataset": {
+    "train_manifest_sha256": "79fc667de252abd37db5c40f476e457c2071abfbc5e72997ac14aa1027f58be6",
+    "test_manifest_sha256": "186a4c7a62ff7f41347c4ecb17e2cf5df32ddf1a90918e1f145f69cc2a96f196",
+    "preparation_protocol": "v2 frozen; v3 changes loss only",
+    "train_cities_used": [
+      "paris",
+      "rennes"
+    ],
+    "train_cities_excluded_for_alignment": [
+      "bercy",
+      "bordeaux"
+    ],
+    "test_cities_used": [
+      "norcia",
+      "rio"
+    ]
+  }
+}

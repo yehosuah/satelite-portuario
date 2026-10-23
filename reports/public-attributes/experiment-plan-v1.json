@@ -1,0 +1,53 @@
+{
+  "schema_version": "public-attribute-experiment-v1",
+  "created_at": "2026-10-23T03:30:57.789123+00:00",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "model": "pooled_fpn_mlp_v1",
+  "sensor": "sentinel-2",
+  "feature_context": {
+    "kind": "fixed_center_context_v1",
+    "size_px": 128,
+    "resolution_m": 10.0,
+    "projection": "local_utm",
+    "center": "geometry_centroid",
+    "resampling": "nearest",
+    "pooling": "full_context_mean",
+    "minimum_coverage": 1.0
+  },
+  "encoder_weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+  "encoder_frozen": true,
+  "training": {
+    "epochs": 50,
+    "learning_rate": 0.001,
+    "batch_size": 16,
+    "seed": 0,
+    "device": "cpu",
+    "cpu_threads": 4,
+    "hyperparameter_search": false
+  },
+  "evaluation": {
+    "fit": "TRAIN only; report fit separately",
+    "calibration": "five public examples; no threshold optimization planned",
+    "test": "seven frozen public examples, evaluated once after weights freeze",
+    "family_decision": "fixed argmax without confidence threshold; no calibrated publication claim",
+    "dimension_baseline": "TRAIN medians only",
+    "local_validation": false,
+    "vessel_identity_disjointness": "unknown, source MMSI absent",
+    "pretraining_overlap": "unknown"
+  },
+  "publication": {
+    "automatic_publication": false,
+    "family_validated": false,
+    "length_validated": false,
+    "width_validated": false
+  },
+  "source_sha256": {
+    "src/puertogt/ml/features.py": "6126687de25e33e8ba5607bc6b9d59c071d1058dc85ba4423bb76f108bcebbbf",
+    "src/puertogt/ml/attributes.py": "9e88c4d2387ac7fe0898562460e73de76bf405da67b5f6c7a1db1ab109bfb349",
+    "src/puertogt/ml/public_attributes.py": "8bae0c0a706dfdfa022d1652988d240bf54fb600609f363cab8ebf698b09a16c",
+    "src/puertogt/ml/training.py": "5e5096152f1e3d890fb8ccc1395731ea0d9b1065f67108fa8e71637381b68762",
+    "src/puertogt/ml/detection.py": "1ce99c1e8e70c8ffd0985c2f856e6b938320dd590b2e8aac28f073b5d121bc25",
+    "src/puertogt/preprocess.py": "44ef376009af75555a5350bf4283118f75b80c6d509d1819ec8fc710165984fd"
+  },
+  "status": "prespecified before feature extraction or model fitting"
+}

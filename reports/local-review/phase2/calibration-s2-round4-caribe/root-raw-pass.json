@@ -1,0 +1,86 @@
+{
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "created_at": "2026-10-23T03:39:24.471294+00:00",
+  "stage": "raw_complete_before_target_correspondence",
+  "packet": {
+    "path": "reports/local-review/phase2/calibration-s2-round4-caribe/second-review-packet.json",
+    "sha256": "b681b1ab713812e9b730c622ad54841c79e85c7cf2af8b705efc792a169e0084"
+  },
+  "viewed_renders": [
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/pbr-20251118-raw-contact.png",
+      "sha256": "5a8b4e82bae262d94cf86e2d464941162f7e165770b533117a8c036867262d8c"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/pbr-20251126-raw-contact.png",
+      "sha256": "f1d52973b2a21bcc63b8ebc9218e192fa59aeabc1aa0fdd3d6083449a03a3a83"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-raw-contact.png",
+      "sha256": "98dd42d1e95675b691c9472d26e113b0dd2fc1f28ae781029c63f9abc4e916d5"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251126-raw-contact.png",
+      "sha256": "94f07c42acf59318668ddb7ab5008dac624e179eafbba981f0e945016c7a3aca"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/pbr-20251118-berths-raw-scope.png",
+      "sha256": "3380fa7607074ff78839f61fdb480feabd5574b7f9bebd380ca683cf0e5be39b"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-berths-raw-scope.png",
+      "sha256": "0a104e304a6871871c60e9e72f4e4d4647279abf1eac4d6d2d97c3cf7cbef0f9"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/pbr-20251118-north-hull-detail.png",
+      "sha256": "c2f2c45a13acc42cba672a1a1144f1e919df83e710670a2597f3f41232dd85fa"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-white-hull-detail.png",
+      "sha256": "3a4a7b18e931afe07fe98308f70fb96d9c1d3686d8f4e11e8f809a242e27bdc8"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-channel-streak-detail.png",
+      "sha256": "934e112978e9147112d7caaf97b492ea764a0f26efd98f224c565f35badae41f"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251118-coastal-streak-detail.png",
+      "sha256": "8fc19afcca6cca49658f480fdc5ee3a25b8e3f54ddeb22d7cdf5044139c80d66"
+    },
+    {
+      "path": "tmp/local-review/phase2/calibration-s2-round4-caribe/stc-20251126-clear-gap-detail.png",
+      "sha256": "f8fb95829768589a828b61c87d384ed8ff265a437f9cea36d5e5d9882bbf4c3d"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/pbr_muelles-20251118-scope-zoom.png",
+      "sha256": "e70383f2a096a5772f1998eb22989791525ea354a3ecfd6233cb6b7c58acfac7"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_fondeo-20251118-scope-zoom.png",
+      "sha256": "4f8948b792da7ac41cb185e209fced65ac5a750fc42be963e0353de7f537ec9f"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_muelles-20251118-scope-zoom.png",
+      "sha256": "883f8995dec821c7236f4125a31d1cff203dc32722e3154f651e10c370b4a207"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-round4-caribe/stc_canal-20251126-scope-zoom.png",
+      "sha256": "25d08e36d3761e4023c3823b0d890ced6675d376c5229d10b7e8b3144096dcf4"
+    }
+  ],
+  "checks": {
+    "observations": 16,
+    "reference_objects": 2,
+    "scopes": 9,
+    "abstentions": 7,
+    "assets_verified": 256
+  },
+  "decisions": [
+    "Confirm north-pier PBR hull and white STC berth hull Nov18. No physical dimensions or family labels.",
+    "Keep faint channel/coastal streaks unknown; no automatic proposal or score inspected.",
+    "Nov26 PBR cloud cover abstains. STC canal only the tiny explicit clear gap, not port-wide negative; remaining unusable scenes abstain."
+  ],
+  "exposure": "Root has adjudicated other CAL dates and knows old calibration failed; target round4 proposals not seen."
+}

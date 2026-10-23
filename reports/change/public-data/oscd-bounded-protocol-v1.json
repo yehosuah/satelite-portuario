@@ -1,0 +1,79 @@
+{
+  "schema": "oscd-bounded-pilot-v1",
+  "created_at": "2026-10-23T03:40:07.533291+00:00",
+  "supersedes_selection_only": "oscd-selection-plan-v1.json",
+  "reason": "Measured official image transfer 11844595 bytes/300s; budgeted feasibility subset before labels or predictions inspected.",
+  "selection_rule": "four lowest compressed bytes in official train split, two lowest in official test split; nine rectified bands, ZIP directory only",
+  "train": [
+    "bercy",
+    "paris",
+    "rennes",
+    "bordeaux"
+  ],
+  "test": [
+    "norcia",
+    "rio"
+  ],
+  "licenses": {
+    "doi_metadata": "CC BY 4.0",
+    "official_archive_readme": "CC BY-NC-SA, commercial uses contact authors",
+    "effective_scope": "local noncommercial research only; conflict unresolved; no redistribution or commercial deployment"
+  },
+  "download_budget_bytes": 786432000,
+  "derived_disk_budget_bytes": 3221225472,
+  "reserve_free_bytes": 5368709120,
+  "cpu_threads": 4,
+  "heavy_budget_seconds": 900,
+  "fixed_preprocessing": {
+    "bands": [
+      "B04",
+      "B03",
+      "B02",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B11",
+      "B12"
+    ],
+    "radiometry": "L1C pre-2022 DN, no offset; RGB /3000, others /8160 clipped as existing ai2-s2-v1",
+    "source": "authors imgs_1_rect and imgs_2_rect, native 10m grid",
+    "core_pixels": 256,
+    "halo_pixels": 32,
+    "maximum_input_pixels": 320,
+    "static_area": "finite nonzero numeric pixels in both dates and land in both dates; NDWI=(B03-B08)/(B03+B08) <=0.2",
+    "quality": "OSCD author registered and manually annotated; measure ORB stable match displacement RMSE <=1.5 px, >=20 RANSAC inliers across >=4 of16 cells; no optical cloud model. Observable mask denotes numeric/land availability, cloud screening not independently validated; source optical cloud artifacts remain benchmark limitation."
+  },
+  "training": {
+    "architecture": "satlas_swint_siamese_unet_v1",
+    "encoder_frozen": true,
+    "decoder_channels": 32,
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "optimizer": "AdamW",
+    "seed": 20261022,
+    "sample_order": "manifest fixed city/grid order",
+    "positive_negative": "require both observable changed and all-negative cores; no sampling by change content",
+    "loss": "existing masked binary cross entropy",
+    "no_test_selection": true,
+    "evaluation_threshold": 0.5,
+    "minimum_area_m2": 100,
+    "minimum_observable_fraction": 0.5,
+    "max_alignment_rmse_pixels": 1.5
+  },
+  "evaluation": {
+    "test_used_once_after_weights_frozen": true,
+    "scope": "public subset feasibility segmentation, not full OSCD benchmark or local port validation",
+    "calibration": null,
+    "publication_approval": false,
+    "persistence_validation": false
+  },
+  "abort_rules": [
+    "missing or inconsistent native grid or label grid",
+    "missing source provenance",
+    "no positive and negative train support",
+    "training time exceeds budget; preserve incomplete record and no test evaluation",
+    "test/train cities or acquisition groups overlap"
+  ],
+  "status": "predeclared before opening selected masks or any training"
+}

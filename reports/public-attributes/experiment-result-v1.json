@@ -1,0 +1,132 @@
+{
+  "schema_version": "public-attribute-experiment-result-v1",
+  "created_at": "2026-10-23T04:59:57.986504Z",
+  "status": "complete",
+  "scope": "External public references only; not local port validation or AIS identity validation",
+  "selection_sha256": "a84191e3a86bb883cef816afce4576e8cf9c97fb8ccfb7afeee96347ee79d7df",
+  "experiment_plan_sha256": "18c67b1a1e26681d84d00b2cfc964e150f8b407a6fef2d4ae73169d1cdd64373",
+  "performance_amendment_sha256": "8afe88d06ab24d9cd5d63508d99a391bf04594f8924f7d21c310f2495f243628",
+  "numeric_amendment_sha256": "86edf951bcdf3594f8b0fe67dd748869b87a4a3a60d6451f6a29de9b52de737c",
+  "numeric_eligibility_report_sha256": "fe1af64b9c731443e3567b91f13e01622db71b16ad2a284a34687088fbc31140",
+  "numeric_eligibility": {
+    "train": {
+      "selected": 36,
+      "eligible": 34,
+      "ineligible": 2
+    },
+    "calibration": {
+      "selected": 5,
+      "eligible": 5,
+      "ineligible": 0
+    },
+    "test": {
+      "selected": 7,
+      "eligible": 7,
+      "ineligible": 0
+    }
+  },
+  "materialization": {
+    "states": {
+      "complete": 48
+    },
+    "download_bytes_reserved": 679670450,
+    "limits": {
+      "reserve_bytes": 10737418240,
+      "total_download_bytes": 2147483648,
+      "acquisition_download_bytes": 134217728,
+      "volume_limit_bytes": 4294967296,
+      "max_attempts": 3,
+      "retry_seconds": 60,
+      "io_workers": 4
+    },
+    "original_selection_preserved": true,
+    "repeated_attempts": [
+      {
+        "acquisition_key": "public-ai2-attribute-146990",
+        "attempts": 2
+      },
+      {
+        "acquisition_key": "public-ai2-attribute-135769",
+        "attempts": 2
+      }
+    ],
+    "dataset_manifest_sha256": {
+      "train": "4a07ea9cea1ecc6cb94d0eebf8617831ad5ed5a2d54764e6f0482a5ce6f5dafb",
+      "calibration": "d8edb6a5ff5e5147e47b989afc290d5b695ec8a1b190704c374dd92e8dba0f64",
+      "test": "e09c0911e7c8f38557da46e05114190f3160d756b83b6877af1b1a614c8bf1fc"
+    }
+  },
+  "training": {
+    "epochs": 50,
+    "steps": 150,
+    "label_support": {
+      "family": 34,
+      "length_m": 34,
+      "width_m": 34
+    },
+    "learning_rate": 0.001,
+    "batch_size": 16,
+    "seed": 0,
+    "encoder_frozen": true,
+    "cpu_threads": 4,
+    "experiment_seconds": 11.18261091702152,
+    "training_manifest_sha256": "28b04da7520fe95f482f67bb16221af818515e5a96276b6808999ea7369ef6c0",
+    "source_snapshot_manifest_sha256": "def0001903492b26a3e143b754db3aa6af6d23b559c34f7717731d4c160aa0ff"
+  },
+  "evaluation": {
+    "test_runs": 1,
+    "calibration_used": false,
+    "threshold_optimized_on_test": false,
+    "correct_family_count": 3,
+    "test_reference_count": 7,
+    "family_accuracy": 0.42857142857142855,
+    "family_macro_f1": 0.26666666666666666,
+    "dimensions": {
+      "length_m": {
+        "reference_count": 7,
+        "estimated_count": 7,
+        "coverage": 1.0,
+        "mae_m": 71.75178020341056,
+        "bias_m": -71.75178020341056,
+        "baseline_mae_m": 96.21428571428571,
+        "baseline_comparison": "same reference subset; baseline fixed from training only"
+      },
+      "width_m": {
+        "reference_count": 7,
+        "estimated_count": 7,
+        "coverage": 1.0,
+        "mae_m": 11.431700195584979,
+        "bias_m": -11.431700195584979,
+        "baseline_mae_m": 14.0,
+        "baseline_comparison": "same reference subset; baseline fixed from training only"
+      }
+    },
+    "evaluation_sha256": "c631eb87916071b8e967ea548c5431ef522c57202e14fbdcde681e396652d0c4",
+    "numeric_abstentions_included_in_denominators": true
+  },
+  "artifact": {
+    "model_id": "puertogt-attributes-s2-trained-bce4a6deee4b4deca08322dc39eae613",
+    "model_version": "untrained-v1+trained.bce4a6deee4b4deca08322dc39eae613",
+    "head_sha256": "17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa",
+    "encoder_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+    "portable_manifest_sha256": "e94a64a51ab6f96e0b5e612631e1f7255cef6ed7af5da9f8aeb1f67c60ee7065",
+    "local_path": "data/public-attributes/v1/experiment-v1",
+    "both_portable_weight_hashes_verified": true
+  },
+  "publication_policy": {
+    "status": "experimental",
+    "automatic_publication": false,
+    "local_validation": "not_evaluated",
+    "fields": {}
+  },
+  "limitations": [
+    "Only seven public test objects; no pasajeros or pesquero reference examples in TEST",
+    "No independent local attribute references; no local validation claim",
+    "MMSI absent upstream; physical vessel identity separation unknown",
+    "Encoder pretraining overlap unknown",
+    "Public window center is a location reference, not a vessel outline; dimensions did not define geometry",
+    "No cloud model or human visibility review was used for this public attribute cohort",
+    "No additional model tuning or replacement samples after test readout"
+  ],
+  "next_action": "Independent local family/dimension references are required before any field publication; retain this small public evaluation as experimental evidence."
+}

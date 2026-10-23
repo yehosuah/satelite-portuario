@@ -1,0 +1,44 @@
+{
+  "schema_version": "public-change-data-selection-v1",
+  "created_at": "2026-10-23T03:32:04.288050+00:00",
+  "source": "OSCD - Onera Satellite Change Detection",
+  "source_author_page": "https://rcdaudt.github.io/oscd/",
+  "doi": "10.21227/asqe-7s69",
+  "doi_metadata_sha256": "2c5f54177ccd79e7eb7bbfafc2ac3b50892e76a6edbae0cdbc2fcf665b6af5c2",
+  "license": [
+    {
+      "rights": "Creative Commons Attribution",
+      "rightsUri": "https://creativecommons.org/licenses/by/4.0"
+    }
+  ],
+  "official_split": {
+    "train_pairs": 14,
+    "test_pairs": 10
+  },
+  "task": "manually annotated urban surface changes, such as buildings and roads",
+  "selection_rule": "Use the complete official city splits; no city selected by predictions or test label values. Quality exclusions must follow a fixed protocol before inference.",
+  "archive_images_bytes": 512716711,
+  "download_budget_bytes": 786432000,
+  "derived_disk_budget_bytes": 3221225472,
+  "minimum_free_disk_bytes": 5368709120,
+  "compute_budget": {
+    "cpu_threads": 4,
+    "maximum_heavy_seconds": 900,
+    "models_concurrent": 1,
+    "training_permitted_before_final_protocol": false
+  },
+  "already_local_encoder": {
+    "path": "data/models/satlas-sentinel2-swint-si-ms.pth",
+    "bytes": 225851364,
+    "sha256": "ea15889fd2feb8723def74b6a650d406296940d3b71cfca0ea50933a95bf2a11"
+  },
+  "pending_compatibility": [
+    "native grid/CRS/date metadata",
+    "raw numeric band units and scaling",
+    "alignment residual measurement",
+    "cloud/nodata/static-land exclusions",
+    "explicit human public-reference provenance",
+    "crop identity preserving physical acquisition and city split groups"
+  ],
+  "local_scope": "Read only existing TRAIN patio observations; no public benchmark result will be labeled port validation or temporal persistence."
+}

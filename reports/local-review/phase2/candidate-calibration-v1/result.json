@@ -1,0 +1,114 @@
+{
+  "created_at": "2026-10-23T04:51:27.348315Z",
+  "status": "calibration_failed_do_not_open_test",
+  "dataset_sha256": "e7a5cac71247291d5e66eb889394deb69cf6c5196fee4ec116b361861c018729",
+  "weights_sha256": "45c1a890173fc654d17b91e0391fb52d6fef8c4daa8b9eefdd53c5c9ba5a9cfb",
+  "freeze_sha256": "2b8763ec25fb5f69c80ee5684e8639b6cc29c47289f900dda2fa302aabf24bc8",
+  "threshold_grid_sha256": "d61e14538eac8fff10f211c04fcab1f303aadcb01c9f804ad00cb30be2c34ffb",
+  "reporting_threshold": 0.5,
+  "reporting_threshold_reason": "Predefined TRAIN comparison threshold, shown descriptively; not selected for deployment.",
+  "overall": {
+    "true_positives": 73,
+    "false_positives": 34,
+    "false_negatives": 40,
+    "prediction_count": 107,
+    "reference_count": 113,
+    "scene_count": 29,
+    "precision": 0.6822429906542056,
+    "recall": 0.6460176991150443,
+    "precision_interval": [
+      0.5890181027627126,
+      0.7628358011369958
+    ],
+    "recall_interval": [
+      0.5543755190871066,
+      0.7280584759440755
+    ],
+    "false_positives_per_scene": 1.1724137931034482
+  },
+  "ports": {
+    "pbr": {
+      "true_positives": 5,
+      "false_positives": 6,
+      "false_negatives": 11,
+      "prediction_count": 11,
+      "reference_count": 16,
+      "scene_count": 11,
+      "precision": 0.45454545454545453,
+      "recall": 0.3125,
+      "precision_interval": [
+        0.21271271622459764,
+        0.719908462590678
+      ],
+      "recall_interval": [
+        0.14164643854782039,
+        0.5559564416525933
+      ],
+      "false_positives_per_scene": 0.5454545454545454,
+      "pass_count": 11,
+      "eligible": false,
+      "reasons": [
+        "insufficient_support",
+        "precision_below_target",
+        "recall_below_target"
+      ]
+    },
+    "prq": {
+      "true_positives": 66,
+      "false_positives": 21,
+      "false_negatives": 21,
+      "prediction_count": 87,
+      "reference_count": 87,
+      "scene_count": 5,
+      "precision": 0.7586206896551724,
+      "recall": 0.7586206896551724,
+      "precision_interval": [
+        0.6590101624669179,
+        0.8363583684240542
+      ],
+      "recall_interval": [
+        0.6590101624669179,
+        0.8363583684240542
+      ],
+      "false_positives_per_scene": 4.2,
+      "pass_count": 5,
+      "eligible": false,
+      "reasons": [
+        "precision_below_target",
+        "recall_below_target"
+      ]
+    },
+    "stc": {
+      "true_positives": 2,
+      "false_positives": 7,
+      "false_negatives": 8,
+      "prediction_count": 9,
+      "reference_count": 10,
+      "scene_count": 13,
+      "precision": 0.2222222222222222,
+      "recall": 0.2,
+      "precision_interval": [
+        0.06322510711784671,
+        0.5474110308930111
+      ],
+      "recall_interval": [
+        0.05668215145437519,
+        0.5098375284633583
+      ],
+      "false_positives_per_scene": 0.5384615384615384,
+      "pass_count": 13,
+      "eligible": false,
+      "reasons": [
+        "insufficient_support",
+        "precision_below_target",
+        "recall_below_target"
+      ]
+    }
+  },
+  "reference_limitations": "Attributed AI visual references on explicit reviewed surfaces; some surfaces are detector-conditioned, not whole-port precision.",
+  "selected_threshold": null,
+  "local_validation_demonstrated": false,
+  "test_inference_permitted": false,
+  "experiment": "data/experiments/phase2-s2-candidate-calibration-v1-20261023",
+  "all_calibration_candidates_failed": 90
+}

@@ -1,0 +1,308 @@
+{
+  "schema_version": "fixed-train-crop-raw-predictions-v1",
+  "role": "base",
+  "model_manifest": {
+    "role": "base",
+    "path": "data/experiments/phase2-s2-round1-20261021/base-manifest.json",
+    "sha256": "53b18a3c8063906c06994559d4dad42719b61a1b073ccaae0c9005c7d5e119e9"
+  },
+  "model_id": "ai2-sentinel2-vessels",
+  "weights_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+  "sample_id": "556e10c1-71d5-4003-afc1-a1b1aeef81c8:crop:0:0:512:448",
+  "input_array_shape": [
+    9,
+    448,
+    512
+  ],
+  "input_array_sha256": "2aaa89710698e2e851269cbb130db73728f6ab299b357a04824f61ee682fc0e6",
+  "raw_outputs": {
+    "boxes": [
+      [
+        472.7087707519531,
+        346.8269958496094,
+        502.6867980957031,
+        376.6275939941406
+      ],
+      [
+        360.5407409667969,
+        259.1520080566406,
+        390.4772033691406,
+        288.9896545410156
+      ],
+      [
+        290.344482421875,
+        380.496337890625,
+        320.18939208984375,
+        410.38531494140625
+      ],
+      [
+        186.0048828125,
+        360.16229248046875,
+        216.0400390625,
+        390.034912109375
+      ],
+      [
+        382.1043395996094,
+        354.686767578125,
+        412.1809997558594,
+        384.53656005859375
+      ],
+      [
+        180.4052276611328,
+        238.96432495117188,
+        210.4324493408203,
+        268.798583984375
+      ],
+      [
+        360.8829650878906,
+        201.51702880859375,
+        390.5751647949219,
+        231.20028686523438
+      ],
+      [
+        495.4205627441406,
+        279.4253234863281,
+        512.0,
+        309.4212341308594
+      ],
+      [
+        311.0475769042969,
+        190.2425079345703,
+        340.8459167480469,
+        220.2350311279297
+      ],
+      [
+        469.957275390625,
+        259.8101501464844,
+        500.28863525390625,
+        289.9676818847656
+      ]
+    ],
+    "labels": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "scores": [
+      0.998379111289978,
+      0.9981289505958557,
+      0.9980666041374207,
+      0.9980606436729431,
+      0.9976497292518616,
+      0.9969837069511414,
+      0.9493482112884521,
+      0.6122357249259949,
+      0.30679959058761597,
+      0.06852549314498901
+    ]
+  },
+  "reference_visual_box_unchanged": [
+    437.0,
+    45.0,
+    451.0,
+    74.0
+  ],
+  "comparisons": [
+    {
+      "index": 0,
+      "label": 1,
+      "score": 0.998379111289978,
+      "box": [
+        472.7087707519531,
+        346.8269958496094,
+        502.6867980957031,
+        376.6275939941406
+      ],
+      "center_distance_pixels": 305.3699955125673,
+      "iou": 0.0,
+      "width_pixels": 29.97802734375,
+      "height_pixels": 29.80059814453125,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 1,
+      "label": 1,
+      "score": 0.9981289505958557,
+      "box": [
+        360.5407409667969,
+        259.1520080566406,
+        390.4772033691406,
+        288.9896545410156
+      ],
+      "center_distance_pixels": 225.2369031436861,
+      "iou": 0.0,
+      "width_pixels": 29.93646240234375,
+      "height_pixels": 29.837646484375,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 2,
+      "label": 1,
+      "score": 0.9980666041374207,
+      "box": [
+        290.344482421875,
+        380.496337890625,
+        320.18939208984375,
+        410.38531494140625
+      ],
+      "center_distance_pixels": 363.4599036364881,
+      "iou": 0.0,
+      "width_pixels": 29.84490966796875,
+      "height_pixels": 29.88897705078125,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 3,
+      "label": 1,
+      "score": 0.9980606436729431,
+      "box": [
+        186.0048828125,
+        360.16229248046875,
+        216.0400390625,
+        390.034912109375
+      ],
+      "center_distance_pixels": 398.2970778945999,
+      "iou": 0.0,
+      "width_pixels": 30.03515625,
+      "height_pixels": 29.87261962890625,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 4,
+      "label": 1,
+      "score": 0.9976497292518616,
+      "box": [
+        382.1043395996094,
+        354.686767578125,
+        412.1809997558594,
+        384.53656005859375
+      ],
+      "center_distance_pixels": 313.6317162551024,
+      "iou": 0.0,
+      "width_pixels": 30.07666015625,
+      "height_pixels": 29.84979248046875,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 5,
+      "label": 1,
+      "score": 0.9969837069511414,
+      "box": [
+        180.4052276611328,
+        238.96432495117188,
+        210.4324493408203,
+        268.798583984375
+      ],
+      "center_distance_pixels": 315.5578293961515,
+      "iou": 0.0,
+      "width_pixels": 30.0272216796875,
+      "height_pixels": 29.834259033203125,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 6,
+      "label": 1,
+      "score": 0.9493482112884521,
+      "box": [
+        360.8829650878906,
+        201.51702880859375,
+        390.5751647949219,
+        231.20028686523438
+      ],
+      "center_distance_pixels": 171.0717951977263,
+      "iou": 0.0,
+      "width_pixels": 29.69219970703125,
+      "height_pixels": 29.683258056640625,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 7,
+      "label": 1,
+      "score": 0.6122357249259949,
+      "box": [
+        495.4205627441406,
+        279.4253234863281,
+        512.0,
+        309.4212341308594
+      ],
+      "center_distance_pixels": 242.3927899664346,
+      "iou": 0.0,
+      "width_pixels": 16.579437255859375,
+      "height_pixels": 29.99591064453125,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 8,
+      "label": 1,
+      "score": 0.30679959058761597,
+      "box": [
+        311.0475769042969,
+        190.2425079345703,
+        340.8459167480469,
+        220.2350311279297
+      ],
+      "center_distance_pixels": 187.55361774545102,
+      "iou": 0.0,
+      "width_pixels": 29.79833984375,
+      "height_pixels": 29.992523193359375,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": false
+    },
+    {
+      "index": 9,
+      "label": 1,
+      "score": 0.06852549314498901,
+      "box": [
+        469.957275390625,
+        259.8101501464844,
+        500.28863525390625,
+        289.9676818847656
+      ],
+      "center_distance_pixels": 219.27946232336265,
+      "iou": 0.0,
+      "width_pixels": 30.33135986328125,
+      "height_pixels": 30.15753173828125,
+      "center_inside_crop": true,
+      "center_inside_reviewed_scope": true
+    }
+  ],
+  "nearest_center_prediction": {
+    "index": 6,
+    "label": 1,
+    "score": 0.9493482112884521,
+    "box": [
+      360.8829650878906,
+      201.51702880859375,
+      390.5751647949219,
+      231.20028686523438
+    ],
+    "center_distance_pixels": 171.0717951977263,
+    "iou": 0.0,
+    "width_pixels": 29.69219970703125,
+    "height_pixels": 29.683258056640625,
+    "center_inside_crop": true,
+    "center_inside_reviewed_scope": false
+  },
+  "head_score_floor": 0.05,
+  "secondary_thresholds": [],
+  "load_seconds": 1.6135323329945095,
+  "forward_seconds": 0.29714470900944434,
+  "scope": "TRAIN geometry diagnostic only; no generalization metric or validation",
+  "unreviewed_candidates_are_not_false_positives": true,
+  "official_iou_criterion_unchanged": 0.5
+}

@@ -79,6 +79,59 @@ function date(value, compact = false) {
   }).format(new Date(value)) + " UTC";
 }
 
+async function loadSystemStatus() {
+  const button = $("refresh-system");
+  if (button.disabled) return;
+  button.disabled = true;
+  try {
+    const result = await api("/v1/system");
+    const number = (value) => new Intl.NumberFormat("es-GT").format(value);
+    const reviews = result.reviews.states.reviewed || 0;
+    const validated = result.model_tasks.filter((task) => task.local_validation_declared).length;
+    const campaigns = result.history.filter((campaign) => campaign.readable);
+    const completed = campaigns.reduce((n, campaign) => n + campaign.complete, 0);
+    const total = campaigns.reduce((n, campaign) => n + campaign.total, 0);
+    const unreadable = result.history.length - campaigns.length;
+    const historySummary = total ? `${number(completed)}/${number(total)} procesadas en campañas` : (result.history.length ? "Campañas sin datos consultables" : "Sin campaña histórica");
+    $("system-summary").textContent = `${historySummary}${unreadable ? ` · ${unreadable} sin estado disponible` : ""} · ${validated}/${result.model_tasks.length} tareas con validación local registrada`;
+    $("system-cards").replaceChildren();
+    const cards = [
+      ["Catálogo", number(result.catalog_acquisitions), "Adquisiciones descubiertas, incluido contexto radar"],
+      ["Observaciones", number(result.observations.total), "Cada zona y receta cuenta por separado"],
+      ["Revisadas", number(reviews), `${number(result.reviews.complete_scopes)} con ámbito revisado completo`],
+      ["Validación local", `${validated} / ${result.model_tasks.length}`, "Declarada por el manifiesto; no recalcula precisión"],
+    ];
+    for (const [label, value, note] of cards) {
+      const card = node("div", undefined, "system-card");
+      card.append(node("span", label), node("strong", value), node("p", note));
+      $("system-cards").append(card);
+    }
+    $("history-status").replaceChildren();
+    for (const campaign of result.history) {
+      const row = node("div", undefined, "history-row");
+      row.append(node("strong", campaign.campaign));
+      if (!campaign.readable) {
+        row.append(node("p", "No se pudo consultar esta campaña. Su estado no se considera cero."));
+      } else {
+        row.append(node("p", `${number(campaign.complete)} de ${number(campaign.total)} procesadas · ${number(campaign.outstanding)} por resolver · ${number(campaign.unavailable)} sin fuente compatible`));
+        const progress = node("progress");
+        progress.max = campaign.total || 1; progress.value = campaign.complete;
+        progress.setAttribute("aria-label", `Adquisiciones procesadas de ${campaign.campaign}`);
+        row.append(progress);
+        const activity = campaign.last_activity_at ? `Última actividad registrada: ${date(campaign.last_activity_at)}.` : "Sin actividad registrada.";
+        row.append(node("p", `${campaign.pause_requested ? "Pausa solicitada. " : ""}${activity} ${campaign.counts.failed ? `${campaign.counts.failed} agotaron sus reintentos. ` : ""}El registro no confirma que el trabajador siga ejecutándose.`, "quiet"));
+      }
+      $("history-status").append(row);
+    }
+    $("system-updated").textContent = `Consultado: ${date(result.generated_at)}`;
+    $("system-error").hidden = true;
+  } catch (error) {
+    $("system-summary").textContent = "Estado sin actualizar";
+    $("system-error").textContent = "No se pudo actualizar el estado. Los datos anteriores, si aparecen, pueden estar desactualizados.";
+    $("system-error").hidden = false;
+  } finally { button.disabled = false; }
+}
+
 function filterParams() {
   const params = new URLSearchParams({ limit: "100" });
   for (const [input, key] of [["port-filter", "port_id"], ["sensor-filter", "sensor"], ["start-filter", "start"], ["end-filter", "end"]]) {
@@ -542,6 +595,7 @@ $("auth-form").addEventListener("submit", (event) => {
 $("lock-review").addEventListener("click", () => { state.token = ""; $("token").value = ""; setTool("select"); updateControls(); notify("Acceso de revisión cerrado."); });
 $("filters").addEventListener("submit", (event) => { event.preventDefault(); loadObservations(); });
 $("more-scenes").addEventListener("click", () => loadObservations(true));
+$("refresh-system").addEventListener("click", loadSystemStatus);
 for (const tool of ["select", "add", "move", "redraw"]) $("tool-" + tool).addEventListener("click", () => setTool(tool));
 $("accept").addEventListener("click", () => saveReview({ review_status: "reviewed" }));
 $("reject").addEventListener("click", () => saveReview(state.mode === "changes" ? { review_status: "rejected", status: "rejected" } : { review_status: "rejected" }));
@@ -605,6 +659,7 @@ async function init() {
     $("port-filter").value = previous.port || ""; $("sensor-filter").value = previous.sensor || "";
     $("start-filter").value = previous.start || ""; $("end-filter").value = previous.end || "";
     await loadObservations();
+    await loadSystemStatus();
   } catch (error) { $("connection").textContent = "Servicio no disponible"; notify(explain(error), true); }
 }
 init();

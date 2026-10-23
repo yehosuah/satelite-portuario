@@ -3,6 +3,7 @@
 
 import argparse
 import json
+from contextlib import nullcontext
 from pathlib import Path
 
 from puertogt.cli import read_model
@@ -10,6 +11,7 @@ from puertogt.history import (
     HistoryLedger,
     HistoryLimits,
     create_plan,
+    recover_local_publication,
     repair_history_evidence,
     run_history,
 )
@@ -18,7 +20,7 @@ from puertogt.store import Store, utc_text
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["plan", "run", "status", "repair-evidence"])
+    parser.add_argument("command", choices=["plan", "run", "status", "repair-evidence", "recover-local-publication"])
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
     parser.add_argument("--plan-dir", type=Path, default=Path("data/history/full-v1"))
     parser.add_argument("--config-dir", type=Path, default=Path("config"))
@@ -31,13 +33,18 @@ def main():
     parser.add_argument("--storage-budget-gib", type=float, default=100)
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--io-workers", type=int, default=2, choices=range(1, 5))
+    parser.add_argument("--reuse-connections", action="store_true",
+                        help="Reuse HTTPS connections for the same bounded, pinned public byte ranges")
     parser.add_argument("--materialize-only", action="store_true")
     parser.add_argument("--skip-quality", action="store_true")
     parser.add_argument("--keep-work", action="store_true")
     parser.add_argument("--resume-paused", action="store_true")
+    parser.add_argument("--recovery-reason", help="Document the verified cause for a targeted local publication recovery")
     args = parser.parse_args()
     if args.threads < 1 or args.max_acquisitions < 1:
         parser.error("Threads and acquisitions must be positive")
+    if args.command == "recover-local-publication" and (not args.acquisition or not args.recovery_reason):
+        parser.error("recover-local-publication requires --acquisition and --recovery-reason")
     catalog = Store(args.data_dir / "catalog.sqlite", args.data_dir)
     limits = HistoryLimits(total_download_bytes=int(args.download_budget_gib * 1024**3),
                            acquisition_download_bytes=int(args.acquisition_budget_gib * 1024**3),
@@ -55,6 +62,11 @@ def main():
                   "protected_observations": len(plan["protected_observation_ids"])}
     elif args.command == "status":
         result = ledger.summary()
+    elif args.command == "recover-local-publication":
+        audit = recover_local_publication(catalog, plan, ledger, args.acquisition, reason=args.recovery_reason)
+        result = {"acquisition_key": audit["acquisition_key"], "recovery_status": audit["status"],
+                  "created_at": audit["created_at"], "completed_at": audit["completed_at"],
+                  "job_id": audit["job_before"]["job_id"], "attempts_preserved": audit["job_before"]["attempts"]}
     else:
         import torch
         torch.set_num_threads(args.threads)
@@ -72,11 +84,16 @@ def main():
                 tx.execute("UPDATE history_acquisitions SET status='retry',not_before=? WHERE status='paused'", (utc_text(),))
         models = {sensor: read_model(args.config_dir / "models" / filename, args.data_dir)
                   for sensor, filename in [("sentinel-1", "s1.yaml"), ("sentinel-2", "s2.yaml")]}
-        result = run_history(catalog, plan, ledger, models, max_acquisitions=args.max_acquisitions,
-                             sensor=args.sensor, quality_models=args.data_dir / "models" / "omnicloudmask",
-                             materialize_only=args.materialize_only, quality=not args.skip_quality,
-                             keep_work=args.keep_work, acquisition_key=args.acquisition,
-                             priority_file=args.priority_file)
+        from puertogt.ml.public_attribute_transport import RangeSession
+
+        connection_pool = RangeSession(max_connections=args.io_workers) if args.reuse_connections else nullcontext()
+        with connection_pool as transport:
+            result = run_history(catalog, plan, ledger, models, max_acquisitions=args.max_acquisitions,
+                                 sensor=args.sensor, quality_models=args.data_dir / "models" / "omnicloudmask",
+                                 materialize_only=args.materialize_only, quality=not args.skip_quality,
+                                 keep_work=args.keep_work, acquisition_key=args.acquisition,
+                                 priority_file=args.priority_file,
+                                 range_opener=transport.open if transport else None)
     print(json.dumps(result, indent=2), flush=True)
 
 

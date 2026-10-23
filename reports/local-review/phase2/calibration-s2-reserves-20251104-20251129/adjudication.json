@@ -1,0 +1,56 @@
+{
+  "batch": "phase2-calibration-s2-reserves-20251104-20251129-v1",
+  "created_at": "2026-10-23T03:56:02.955207+00:00",
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "Numeric quality sources were independently rechecked before reserve activation: full masks have zero observable pixels. This adjudication is a quality abstention, not a vessel presence/absence visual label. Administrative correspondence confirms no proposals.",
+  "sources": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251104-20251129/correspondence/pbr-20251104-s2-review.json",
+      "sha256": "a6c0084e9d73570c16402fc0c70b6dee9f3771aae09d07c3277959c113c68b39"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251104-20251129/correspondence/stc-20251104-s2-review.json",
+      "sha256": "8ba9ff0089f0a91f2f9dd21d89e47ea420c164ce1bfe80dff32b05bf1123387c"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251104-20251129/correspondence/pbr-20251129-s2-review.json",
+      "sha256": "01b39d9550b3e345a71e13f312db7800b067365f78a66b630688c85584e45b67"
+    }
+  ],
+  "accepted_observation_ids": [
+    "cf53916f-f5f9-4dc2-8583-38398b66aedb",
+    "762abe49-d3ce-4d16-960e-cb37ed5a69fd",
+    "96ae84eb-fec2-4535-97d8-ff8d06759407",
+    "26e8389c-70ac-4686-89de-32964e2ae1ff",
+    "67bd55d7-9269-45c0-8e60-3a62f623f138",
+    "3cca48fd-3e18-4a26-ad71-3fdb7d9c5b66",
+    "b912bbba-c332-4eb8-b611-979f1f8223a6",
+    "c17f7698-ccd9-4873-abc3-409ffb0e0c15",
+    "bf20702c-f77e-4483-9061-34f86909d0cb",
+    "d20cc75a-3aee-4429-ae2b-2df38c5d08bb",
+    "b72a376b-d049-4135-937d-fba28d849737",
+    "fdc85ec7-f82c-4dd7-b524-d63a446c17af"
+  ],
+  "supporting_evidence": [
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251104-20251129/correspondence/verification.json",
+      "sha256": "73d5b12cfc976e5bef223252f95350495a4543ddb66111e95aec35dbb5a07abc"
+    },
+    {
+      "path": "reports/local-review/phase2/calibration-s2-reserves-20251104-20251129/second-review-packet.json",
+      "sha256": "21f66949742240ba130c56279a84aaca82d0bd6ba43512814492f2685c24af6c"
+    }
+  ],
+  "expected_reviewed_observations": 12,
+  "expected_unique_objects": 0,
+  "expected_existing_acceptances": 0,
+  "expected_additions": 0,
+  "expected_useful_scopes": 0,
+  "expected_abstentions": 12,
+  "decisions": [
+    "All observations abstain without complete scene scope or negative vessel labels. Preserve original observations and evidence."
+  ]
+}

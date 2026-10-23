@@ -1,0 +1,655 @@
+{
+  "evaluation_scope": "attribute_head_on_reference_objects",
+  "detector_performance_included": false,
+  "split": "test",
+  "dataset_version": "public-ai2-attributes-v1-a84191e3a86b",
+  "dataset_manifest_sha256": "eb410eacd00f313af0c5283e56737de5ebce728d20e92f83930edf3449945d99",
+  "model_id": "puertogt-attributes-s2-trained-bce4a6deee4b4deca08322dc39eae613",
+  "model_version": "untrained-v1+trained.bce4a6deee4b4deca08322dc39eae613",
+  "weights_sha256": "17021624bf5af75c0abef1f63fa3a1901d6bf986b233223772bab7d4c08d0dfa",
+  "threshold_source": "none_argmax_only",
+  "fixed_family_threshold": null,
+  "threshold_optimized_on_test": false,
+  "training_overlap_audit": "checked_recorded_ids_and_groups",
+  "dimension_baseline_m": {
+    "length_m": 101.5,
+    "width_m": 18.0
+  },
+  "dimension_baseline_source": "saved_training_labels_only",
+  "overall": {
+    "object_count": 7,
+    "scene_count": 7,
+    "family": {
+      "raw": {
+        "reference_count": 7,
+        "abstention_fraction": 0.0,
+        "confusion_matrix": {
+          "carga": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 2,
+            "indeterminado": 0
+          },
+          "otros": {
+            "carga": 0,
+            "otros": 1,
+            "pesquero": 1,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "pesquero": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "remolcador": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 1,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "tanquero": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 2,
+            "indeterminado": 0
+          }
+        },
+        "per_class": {
+          "carga": {
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "otros": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 2
+          },
+          "pesquero": {
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "support": 0
+          },
+          "remolcador": {
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "tanquero": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 2
+          }
+        },
+        "macro_f1": 0.26666666666666666
+      },
+      "thresholded": {
+        "reference_count": 7,
+        "abstention_fraction": 0.0,
+        "confusion_matrix": {
+          "carga": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 2,
+            "indeterminado": 0
+          },
+          "otros": {
+            "carga": 0,
+            "otros": 1,
+            "pesquero": 1,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "pesquero": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "remolcador": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 1,
+            "remolcador": 0,
+            "tanquero": 0,
+            "indeterminado": 0
+          },
+          "tanquero": {
+            "carga": 0,
+            "otros": 0,
+            "pesquero": 0,
+            "remolcador": 0,
+            "tanquero": 2,
+            "indeterminado": 0
+          }
+        },
+        "per_class": {
+          "carga": {
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "otros": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 2
+          },
+          "pesquero": {
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "support": 0
+          },
+          "remolcador": {
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "tanquero": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 2
+          }
+        },
+        "macro_f1": 0.26666666666666666
+      },
+      "fixed_probability_threshold": null
+    },
+    "dimensions": {
+      "length_m": {
+        "reference_count": 7,
+        "estimated_count": 7,
+        "coverage": 1.0,
+        "mae_m": 71.75178020341056,
+        "bias_m": -71.75178020341056,
+        "baseline_mae_m": 96.21428571428571,
+        "baseline_comparison": "same reference subset; baseline fixed from training only"
+      },
+      "width_m": {
+        "reference_count": 7,
+        "estimated_count": 7,
+        "coverage": 1.0,
+        "mae_m": 11.431700195584979,
+        "bias_m": -11.431700195584979,
+        "baseline_mae_m": 14.0,
+        "baseline_comparison": "same reference subset; baseline fixed from training only"
+      }
+    },
+    "excluded_references": {
+      "family": {
+        "missing_reference": 0,
+        "missing_independent_provenance": 0,
+        "unsupported_reference_family": 0
+      },
+      "length_m": {
+        "missing_reference": 0,
+        "missing_independent_provenance": 0,
+        "unsupported_reference_family": 0
+      },
+      "width_m": {
+        "missing_reference": 0,
+        "missing_independent_provenance": 0,
+        "unsupported_reference_family": 0
+      }
+    }
+  },
+  "strata": {
+    "external_public_dataset|sentinel-2|attribute_context": {
+      "object_count": 7,
+      "scene_count": 7,
+      "family": {
+        "raw": {
+          "reference_count": 7,
+          "abstention_fraction": 0.0,
+          "confusion_matrix": {
+            "carga": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 2,
+              "indeterminado": 0
+            },
+            "otros": {
+              "carga": 0,
+              "otros": 1,
+              "pesquero": 1,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "pesquero": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "remolcador": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 1,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "tanquero": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 2,
+              "indeterminado": 0
+            }
+          },
+          "per_class": {
+            "carga": {
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 2
+            },
+            "otros": {
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.6666666666666666,
+              "support": 2
+            },
+            "pesquero": {
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "support": 0
+            },
+            "remolcador": {
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 1
+            },
+            "tanquero": {
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.6666666666666666,
+              "support": 2
+            }
+          },
+          "macro_f1": 0.26666666666666666
+        },
+        "thresholded": {
+          "reference_count": 7,
+          "abstention_fraction": 0.0,
+          "confusion_matrix": {
+            "carga": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 2,
+              "indeterminado": 0
+            },
+            "otros": {
+              "carga": 0,
+              "otros": 1,
+              "pesquero": 1,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "pesquero": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "remolcador": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 1,
+              "remolcador": 0,
+              "tanquero": 0,
+              "indeterminado": 0
+            },
+            "tanquero": {
+              "carga": 0,
+              "otros": 0,
+              "pesquero": 0,
+              "remolcador": 0,
+              "tanquero": 2,
+              "indeterminado": 0
+            }
+          },
+          "per_class": {
+            "carga": {
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 2
+            },
+            "otros": {
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.6666666666666666,
+              "support": 2
+            },
+            "pesquero": {
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "support": 0
+            },
+            "remolcador": {
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 1
+            },
+            "tanquero": {
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.6666666666666666,
+              "support": 2
+            }
+          },
+          "macro_f1": 0.26666666666666666
+        },
+        "fixed_probability_threshold": null
+      },
+      "dimensions": {
+        "length_m": {
+          "reference_count": 7,
+          "estimated_count": 7,
+          "coverage": 1.0,
+          "mae_m": 71.75178020341056,
+          "bias_m": -71.75178020341056,
+          "baseline_mae_m": 96.21428571428571,
+          "baseline_comparison": "same reference subset; baseline fixed from training only"
+        },
+        "width_m": {
+          "reference_count": 7,
+          "estimated_count": 7,
+          "coverage": 1.0,
+          "mae_m": 11.431700195584979,
+          "bias_m": -11.431700195584979,
+          "baseline_mae_m": 14.0,
+          "baseline_comparison": "same reference subset; baseline fixed from training only"
+        }
+      },
+      "excluded_references": {
+        "family": {
+          "missing_reference": 0,
+          "missing_independent_provenance": 0,
+          "unsupported_reference_family": 0
+        },
+        "length_m": {
+          "missing_reference": 0,
+          "missing_independent_provenance": 0,
+          "unsupported_reference_family": 0
+        },
+        "width_m": {
+          "missing_reference": 0,
+          "missing_independent_provenance": 0,
+          "unsupported_reference_family": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "observation_id": "public-ai2-attribute-148184",
+      "prediction_id": "public-ai2-attribute-148184",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "carga",
+        "length_m": 275,
+        "width_m": 40
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-148184",
+        "family": "tanquero",
+        "family_probability": 0.5755623579025269,
+        "family_probabilities": {
+          "carga": 0.11809886991977692,
+          "tanquero": 0.5755623579025269,
+          "pasajeros": 0.0348048061132431,
+          "remolcador": 0.03085586242377758,
+          "pesquero": 0.16557736694812775,
+          "otros": 0.07510076463222504
+        },
+        "length_m": 89.44569826126099,
+        "width_m": 19.904944896697998
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-149942",
+      "prediction_id": "public-ai2-attribute-149942",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "carga",
+        "length_m": 190,
+        "width_m": 33
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-149942",
+        "family": "tanquero",
+        "family_probability": 0.6010487079620361,
+        "family_probabilities": {
+          "carga": 0.19800998270511627,
+          "tanquero": 0.6010487079620361,
+          "pasajeros": 0.013348854146897793,
+          "remolcador": 0.01903587020933628,
+          "pesquero": 0.1076621562242508,
+          "otros": 0.06089436635375023
+        },
+        "length_m": 147.05835580825806,
+        "width_m": 23.97897720336914
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-134916",
+      "prediction_id": "public-ai2-attribute-134916",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "tanquero",
+        "length_m": 183,
+        "width_m": 32
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-134916",
+        "family": "tanquero",
+        "family_probability": 0.324370414018631,
+        "family_probabilities": {
+          "carga": 0.19572454690933228,
+          "tanquero": 0.324370414018631,
+          "pasajeros": 0.07307145744562149,
+          "remolcador": 0.062118735164403915,
+          "pesquero": 0.13380883634090424,
+          "otros": 0.2109060138463974
+        },
+        "length_m": 88.2780134677887,
+        "width_m": 18.309043645858765
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-142895",
+      "prediction_id": "public-ai2-attribute-142895",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "tanquero",
+        "length_m": 274,
+        "width_m": 50
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-142895",
+        "family": "tanquero",
+        "family_probability": 0.42804574966430664,
+        "family_probabilities": {
+          "carga": 0.35987311601638794,
+          "tanquero": 0.42804574966430664,
+          "pasajeros": 0.026968952268362045,
+          "remolcador": 0.020964493975043297,
+          "pesquero": 0.06743340939283371,
+          "otros": 0.09671418368816376
+        },
+        "length_m": 133.18570852279663,
+        "width_m": 24.120073318481445
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-135956",
+      "prediction_id": "public-ai2-attribute-135956",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "remolcador",
+        "length_m": 32,
+        "width_m": 13
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-135956",
+        "family": "pesquero",
+        "family_probability": 0.3561948239803314,
+        "family_probabilities": {
+          "carga": 0.10057379305362701,
+          "tanquero": 0.013111238367855549,
+          "pasajeros": 0.05057145655155182,
+          "remolcador": 0.28021472692489624,
+          "pesquero": 0.3561948239803314,
+          "otros": 0.1993340253829956
+        },
+        "length_m": 31.88726007938385,
+        "width_m": 8.96494448184967
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-150079",
+      "prediction_id": "public-ai2-attribute-150079",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "otros",
+        "length_m": 38,
+        "width_m": 10
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-150079",
+        "family": "pesquero",
+        "family_probability": 0.4116934537887573,
+        "family_probabilities": {
+          "carga": 0.025812776759266853,
+          "tanquero": 0.008446902967989445,
+          "pasajeros": 0.10726284980773926,
+          "remolcador": 0.17845074832439423,
+          "pesquero": 0.4116934537887573,
+          "otros": 0.26833322644233704
+        },
+        "length_m": 32.33168423175812,
+        "width_m": 9.202983975410461
+      }
+    },
+    {
+      "observation_id": "public-ai2-attribute-135957",
+      "prediction_id": "public-ai2-attribute-135957",
+      "stratum": "external_public_dataset|sentinel-2|attribute_context",
+      "reference": {
+        "family": "otros",
+        "length_m": 77,
+        "width_m": 16
+      },
+      "reference_exclusions": {
+        "family": null,
+        "length_m": null,
+        "width_m": null
+      },
+      "estimate": {
+        "prediction_id": "public-ai2-attribute-135957",
+        "family": "otros",
+        "family_probability": 0.38056814670562744,
+        "family_probabilities": {
+          "carga": 0.02480377070605755,
+          "tanquero": 0.00857054814696312,
+          "pasajeros": 0.2238311469554901,
+          "remolcador": 0.17009186744689941,
+          "pesquero": 0.19213443994522095,
+          "otros": 0.38056814670562744
+        },
+        "length_m": 44.55081820487976,
+        "width_m": 9.497131109237671
+      }
+    }
+  ],
+  "publication_decision": {
+    "automatic_publication": false,
+    "status": "evaluation_only",
+    "reason": "scope_and_field_acceptance_require_separate_review"
+  },
+  "numeric_coverage": {
+    "selected": 7,
+    "eligible": 7,
+    "ineligible": 0
+  },
+  "original_dataset_manifest_sha256": "e09c0911e7c8f38557da46e05114190f3160d756b83b6877af1b1a614c8bf1fc",
+  "numeric_abstentions_included_in_denominators": true,
+  "reference_scope": "public_attribute_contexts; not_local_validation",
+  "identity_disjointness": "unknown; upstream MMSI absent",
+  "pretraining_overlap": "unknown",
+  "calibration_use": "reserved; no thresholds selected",
+  "trained_model_frozen_before_test": true,
+  "test_family_support_limitations": "No pasajeros or pesquero examples; seven objects total"
+}
