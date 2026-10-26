@@ -13,6 +13,10 @@
 /* Review extent is separate from predictions and cannot intercept drawing. */
 .zone-boundary { fill: none; stroke: #f2c85d; stroke-width: 3; stroke-dasharray: 10 6; pointer-events: none; }
 .reviewed-boundary { fill: #53d5b017; stroke: #53d5b0; stroke-width: 3; pointer-events: none; }
+.scope-draft-boundary,.draw-preview.scope-drawing{fill:#c5a6ff26;stroke:#d5b8ff;stroke-width:3;stroke-dasharray:6 4;vector-effect:non-scaling-stroke;pointer-events:none}
+.scope-draft-panel{margin:12px 0;padding:12px 14px;border:1px solid #c8b9e6;border-left:4px solid #8660b5;border-radius:var(--radius);background:#f6f1ff;font-size:12px;line-height:1.6}
+.scope-draft-panel p{margin-top:6px}.scope-draft-actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.scope-draft-actions button{font-size:12px}.scope-draft-help{color:var(--muted);font-size:11px}
+.scope-draft-panel.error{border-color:#d9a39c;border-left-color:var(--red);background:#fff4f1}.scope-draft-panel.error #scope-draft-message{color:#903a32}
 .system-panel{padding:14px 28px;background:white;border-bottom:1px solid var(--line)}
 .coverage-table-wrap{overflow-x:auto;margin:14px 0;max-width:100%}
 .coverage-table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}

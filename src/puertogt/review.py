@@ -13,13 +13,70 @@ from contextlib import closing
 from pathlib import Path
 from typing import Any
 
-from shapely.geometry import shape
+from shapely.errors import GEOSException
+from shapely.geometry import mapping, shape
+from shapely.ops import unary_union
 
 from puertogt.store import Store, confined_path, json_text, sha256_file, utc_text
 
 
 class ReviewConflict(ValueError):
     """The entity changed since the reviewer loaded it."""
+
+
+def _review_zone(observation, ports_path: Path | None = None):
+    from puertogt.catalog import DEFAULT_PORTS_PATH
+
+    config = ports_path or (
+        Path(os.getenv("PUERTOGT_CONFIG_DIR", str(DEFAULT_PORTS_PATH.parent))) / "ports.geojson"
+    )
+    if not config.is_file():
+        raise ValueError("No matching configured zone is available")
+    features = json.loads(config.read_text())["features"]
+    matches = [feature for feature in features
+               if feature["properties"].get("zone_id") == observation["zone_id"]
+               and feature["properties"].get("port_id") == observation["port_id"]]
+    if len(matches) != 1:
+        raise ValueError("Observation requires one matching configured zone")
+    geometry = matches[0]["geometry"]
+    validate_geometry(geometry)
+    zone = shape(geometry)
+    if zone.geom_type not in {"Polygon", "MultiPolygon"}:
+        raise ValueError("The configured zone must be an area")
+    return zone
+
+
+def preview_reviewed_area(
+    store: Store, observation_id: str, geometry: dict, *, ports_path: Path | None = None
+) -> dict:
+    """Clip a review draft to its zone without annotating pixels or writing a revision."""
+    validate_geometry(geometry)
+    candidate = shape(geometry)
+    if candidate.geom_type not in {"Polygon", "MultiPolygon"}:
+        raise ValueError("reviewed_area must be a Polygon or MultiPolygon")
+    observation = store.get_observation(observation_id)
+    if observation is None:
+        raise KeyError(observation_id)
+    if observation["status"] not in {"usable", "partial"}:
+        raise ValueError("Cannot delimit an unobservable scene")
+    zone = _review_zone(observation, ports_path)
+    intersection = candidate.intersection(zone)
+    # A disconnected zone may contribute a polygon and a boundary-only line.
+    def polygons(value):
+        if value.geom_type == "Polygon":
+            return [value]
+        return [part for child in getattr(value, "geoms", []) for part in polygons(child)]
+
+    area = unary_union(polygons(intersection))
+    if area.is_empty or not area.is_valid or area.area <= 0:
+        raise ValueError("The draft must overlap an area of the configured zone")
+    return {
+        "observation_id": observation_id,
+        "zone_id": observation["zone_id"],
+        "reviewed_area": mapping(area),
+        "clipped": not candidate.equals(area),
+        "previous_revision_id": observation.get("latest_revision_id"),
+    }
 
 
 def record_review(
@@ -30,6 +87,7 @@ def record_review(
     *,
     entity_type: str = "detection",
     previous_revision_id: str | None = None,
+    ports_path: Path | None = None,
 ) -> str:
     """Apply one validated correction and retain the original proposal in the same transaction."""
     tables = {
@@ -96,6 +154,9 @@ def record_review(
             validate_geometry(correction["reviewed_area"])
             if shape(correction["reviewed_area"]).geom_type not in {"Polygon", "MultiPolygon"}:
                 raise ValueError("reviewed_area must be a Polygon or MultiPolygon")
+            # A newly delimited scope has not inherited a search for omissions.
+            # Audited imports can explicitly assert completeness in the same revision.
+            correction = {"scene_complete": False, **correction}
         if "status" in correction and correction["status"] != "unusable":
             raise ValueError("review can mark unusable; processing states belong to the worker")
         fraction = correction.get("observable_fraction")
@@ -128,6 +189,10 @@ def record_review(
         ).fetchone()
         if (previous[0] if previous else None) != previous_revision_id:
             raise ReviewConflict("reload the entity before applying a correction")
+        if entity_type == "observation" and "reviewed_area" in correction:
+            area = shape(correction["reviewed_area"])
+            if not _review_zone(row, ports_path).buffer(1e-10).covers(area):
+                raise ValueError("reviewed_area must remain inside the configured zone")
         proposal = dict(row)
         tx.execute(
             "INSERT INTO revisions(revision_id,entity_type,entity_id,previous_revision_id,proposal_json,correction_json,author,created_at) VALUES (?,?,?,?,?,?,?,?)",
@@ -419,7 +484,10 @@ def _export_dataset(store: Store, destination: Path, *, split: str, version: str
 
 
 def validate_geometry(geometry: dict) -> None:
-    candidate = shape(geometry)
+    try:
+        candidate = shape(geometry)
+    except (AttributeError, KeyError, TypeError, ValueError, GEOSException) as exc:
+        raise ValueError("geometry must be valid GeoJSON") from exc
     if candidate.is_empty or not candidate.is_valid:
         raise ValueError("geometry must be non-empty and valid")
     xmin, ymin, xmax, ymax = candidate.bounds

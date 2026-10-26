@@ -16,6 +16,8 @@ La [calibración óptica](../reports/local-review/phase2/candidate-calibration-v
 Los [atributos públicos](../reports/public-attributes/experiment-result-v1.json) y [cambios OSCD](../reports/change/public-data/oscd-bounded-results.md) conservan sus evaluaciones fallidas. Ningún resultado habilita publicación automática ni demuestra precisión local ≥90%.
 <!-- END DYNAMIC_STATUS -->
 
+La versión 0.3.1 permite dibujar y guardar un área parcial de revisión desde el visor, con recorte a la zona, previsualización y protección frente a revisiones concurrentes. Cambiar el ámbito deja pendiente su completitud. Esta mejora de revisión no añade etiquetas ni cambia pesos o particiones científicas. [Uso](labeling-protocol.md) y [siguientes mejoras](improvements.md).
+
 | Parte del plan | Implementado y comprobado | Evidencia pendiente |
 |---|---|---|
 | T1: inventario y geometrías | Inventario inicial de 81 páginas, 1.267 productos y 863 adquisiciones. La actualización añade cinco: 868 en catálogo, 833 del período y 35 de contexto. Doce zonas con procedencia. | Confirmar límites operativos de las zonas provisionales. |
@@ -84,7 +86,7 @@ PYTHONPATH=src .venv/bin/python -m puertogt.cli restore dist/release-new/catalog
 PYTHONPATH=src .venv/bin/python -m puertogt.cli --data-dir data-restored-new doctor --check-release
 ```
 
-El último comando mantiene salida 2 mientras falte evidencia científica; no se altera esa política para producir un paquete. La versión de software actual es 0.3.0. La restauración del corte v0.2.0 verificó 96.494 archivos del catálogo y su continuidad estructural; sus recibos conservan ese estado anterior en `reports/release-v0.2.0/`. No equivale a haber reiniciado el worker en otra máquina. La copia de datos es local; publicar código no implica subir sus imágenes ni sus pesos a GitHub. El release v0.1.0 permanece intacto.
+El último comando mantiene salida 2 mientras falte evidencia científica; no se altera esa política para producir un paquete. La versión de software actual es 0.3.1. La restauración del corte v0.2.0 verificó 96.494 archivos del catálogo y su continuidad estructural; sus recibos conservan ese estado anterior en `reports/release-v0.2.0/`. No equivale a haber reiniciado el worker en otra máquina. La copia de datos es local; publicar código no implica subir sus imágenes ni sus pesos a GitHub. El release v0.1.0 permanece intacto.
 
 ## Archivos de evidencia
 

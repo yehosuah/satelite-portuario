@@ -245,7 +245,10 @@ def apply(store, plan_path, receipt_path):
                                       (action["entity_type"], action["entity_id"])).fetchone()
             if previous and (json.loads(previous[1]) != action["correction"] or previous[2] != author):
                 raise ValueError("A different review already exists; adjudicate the conflict")
-            revision = previous[0] if previous else record_review(store, action["entity_id"], action["correction"], author, entity_type=action["entity_type"])
+            revision = previous[0] if previous else record_review(
+                store, action["entity_id"], action["correction"], author,
+                entity_type=action["entity_type"], ports_path=ROOT / "config/ports.geojson",
+            )
             receipt.append({"entity_type": action["entity_type"], "entity_id": action["entity_id"], "revision_id": revision})
     result = {"batch": plan["batch"], "plan_sha256": sha256_file(plan_path), "applied_at": utc_text(), "revisions": receipt}
     if receipt_path.exists():

@@ -106,10 +106,18 @@ def test_resolved_boundary_object_keeps_centroid_membership(tmp_path, monkeypatc
 
 def test_reviewed_area_cannot_escape_the_configured_zone(tmp_path, monkeypatch):
     store = configured_store(tmp_path, monkeypatch)
-    record_review(store, "obs", {
-        "dataset_split": "train", "scene_complete": True,
-        "reviewed_area": mapping(box(-92, 13, -90.1, 14)),
-    }, "Codex IA", entity_type="observation")
+    with pytest.raises(ValueError, match="configured zone"):
+        record_review(store, "obs", {
+            "dataset_split": "train", "scene_complete": True,
+            "reviewed_area": mapping(box(-92, 13, -90.1, 14)),
+        }, "Codex IA", entity_type="observation")
+    with closing(store.connect()) as tx:
+        assert tx.execute("SELECT COUNT(*) FROM revisions").fetchone()[0] == 0
+    # Older persisted data still needs the independent export guard.
+    with store.transaction() as tx:
+        tx.execute("UPDATE observations SET review_status='reviewed',data_json=? WHERE observation_id='obs'",
+                   (json.dumps({"dataset_split": "train", "scene_complete": True,
+                                "reviewed_area": mapping(box(-92, 13, -90.1, 14))}),))
     with pytest.raises(ValueError, match="configured zone"):
         export_dataset(store, tmp_path / "dataset", split="train", version="v1")
     assert not (tmp_path / "dataset").exists()

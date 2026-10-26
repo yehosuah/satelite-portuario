@@ -19,7 +19,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from puertogt import __version__
 from puertogt.contracts import as_utc
-from puertogt.review import ReviewConflict, add_detection, record_review
+from puertogt.review import ReviewConflict, add_detection, preview_reviewed_area, record_review
 from puertogt.store import Store, confined_path, utc_text
 
 
@@ -46,6 +46,12 @@ class AdditionInput(BaseModel):
     geometry: dict
     author: str = Field(min_length=1, max_length=120)
     provenance: dict = Field(default_factory=dict)
+
+
+class ScopePreviewInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    observation_id: str = Field(min_length=1, max_length=200)
+    geometry: dict
 
 
 def create_app(
@@ -372,6 +378,17 @@ def create_app(
         except ValueError as exc:
             raise HTTPException(422, str(exc)) from exc
 
+    @app.post("/v1/reviews/scope-preview", dependencies=[Depends(authorize)])
+    def scope_preview(body: ScopePreviewInput):
+        try:
+            return preview_reviewed_area(
+                store, body.observation_id, body.geometry, ports_path=ports_path
+            )
+        except KeyError as exc:
+            raise HTTPException(404, "Observation not found") from exc
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+
     @app.post("/v1/reviews", dependencies=[Depends(authorize)])
     def review(body: ReviewInput):
         try:
@@ -382,6 +399,7 @@ def create_app(
                 body.author,
                 entity_type=body.entity_type,
                 previous_revision_id=body.previous_revision_id,
+                ports_path=ports_path,
             )
             return {"revision_id": revision_id}
         except ReviewConflict as exc:

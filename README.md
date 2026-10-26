@@ -57,6 +57,8 @@ Para continuar una instalación existente, conserva su volumen y consulta [la se
 
 El [protocolo de etiquetas](docs/labeling-protocol.md) y las [tarjetas de modelos](docs/model_cards/vessels.md) explican qué referencias hacen falta. El score del modelo nunca se interpreta como precisión medida. La API no inicia inferencia, descargas ni entrenamiento.
 
+El visor permite delimitar un área de revisión sobre la imagen, previsualizar su recorte a la zona y guardarla sin darla por revisada. Los sectores excluidos permanecen desconocidos. Las [mejoras priorizadas](docs/improvements.md) explican el siguiente trabajo para aumentar las etiquetas útiles, corregir geometrías y completar la actualización incremental.
+
 ## Evidencia incluida
 
 El inventario al **21 de octubre de 2026, 01:40:47 UTC** reúne 1,267 productos en 81 páginas, agrupados en 863 adquisiciones: **828 desde enero de 2025 y 35 de contexto anterior**. Los puertos atlánticos comparten algunas adquisiciones; sus conteos no deben sumarse para obtener el total global.

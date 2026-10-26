@@ -11,7 +11,8 @@ const state = {
   ports: new Map(), zones: new Map(), observations: [], observation: null, cursor: null, proposals: [], changes: [],
   selected: null, mode: "detections", tool: "select", token: "", author: "", busy: false,
   asset: null, bounds: null, drag: null, generation: 0, loading: false, reviewerKind: "human_visual_review",
-  coverageGeneration: 0,
+  coverageGeneration: 0, observationLoading: false,
+  scopeDraft: null, scopePreviewing: false, scopeRequest: 0,
 };
 
 function node(tag, text, className) {
@@ -68,7 +69,16 @@ function explain(error) {
   }
   if (error.status === 409) return "Otra revisión modificó esta propuesta. La corrección no se guardó. Actualiza la escena antes de volver a revisar; el formulario actual sigue visible.";
   if (error.status === 503) return "La revisión no está habilitada en este servicio. Configura la credencial local del servidor.";
-  if (error.status === 422) return `No se guardó: ${error.message}`;
+  if (error.status === 422) {
+    const scopeErrors = {
+      "The draft must overlap an area of the configured zone": "El rectángulo debe incluir una superficie dentro de la zona amarilla.",
+      "Cannot delimit an unobservable scene": "Esta escena no es observable. No se puede delimitar un área de revisión.",
+      "No matching configured zone is available": "Falta la zona configurada para esta observación. Actualiza la escena antes de continuar.",
+      "Observation requires one matching configured zone": "La observación no coincide con una única zona configurada. Actualiza la escena antes de continuar.",
+      "reviewed_area must remain inside the configured zone": "El área debe permanecer dentro de la zona amarilla. Vuelve a delimitarla.",
+    };
+    return scopeErrors[error.message] || `No se guardó: ${error.message}`;
+  }
   return error.status ? `No se pudo completar la acción (${error.status}): ${error.message}` : "No se pudo conectar con el servicio local. Comprueba que siga en ejecución y actualiza.";
 }
 
@@ -248,6 +258,7 @@ function renderSceneList() {
 
 function clearObservation() {
   state.generation++;
+  resetScopeDraft(); state.observationLoading = false;
   state.observation = null; state.selected = null; state.proposals = []; state.changes = [];
   state.asset = null; state.bounds = null;
   $("scene-title").textContent = "Sin observaciones en este periodo";
@@ -276,8 +287,10 @@ async function allDetections(observationId) {
 
 async function selectObservation(id, preferredProposal = null) {
   const generation = ++state.generation;
+  resetScopeDraft(); state.observationLoading = true;
   setTool("select");
-  state.selected = null; state.proposals = []; state.bounds = null;
+  state.selected = null; state.proposals = []; state.bounds = null; state.asset = null;
+  updateControls();
   try {
     const [observation, proposals] = await Promise.all([
       api(`/v1/observations/${encodeURIComponent(id)}`), allDetections(id),
@@ -298,9 +311,6 @@ async function selectObservation(id, preferredProposal = null) {
     $("review-label").textContent = observation.review_status === "reviewed" && aiReview ? "Revisado por IA" : labels[observation.review_status] || "Provisional";
     $("scene-review-note").textContent = observation.note || "";
     $("scene-review-note").hidden = !observation.note;
-    $("scope-caption").textContent = observation.reviewed_area
-      ? "Amarillo: zona provisional. Verde: área etiquetada; el resto no se usa como negativo."
-      : "Amarillo: límite de la zona provisional. La imagen puede cubrir solo una parte.";
     renderSceneList();
     if (state.mode === "changes") await loadChanges(generation);
     else {
@@ -311,6 +321,7 @@ async function selectObservation(id, preferredProposal = null) {
     }
     persistSelection(); updateControls();
   } catch (error) { if (generation === state.generation) notify(explain(error), true); }
+  finally { if (generation === state.generation) { state.observationLoading = false; updateControls(); } }
 }
 
 function emptyEvidence(title, description) {
@@ -441,6 +452,7 @@ function drawOverlay() {
   for (const [geometry, className] of [
     [state.zones.get(state.observation?.zone_id), "zone-boundary"],
     [state.observation?.reviewed_area, "reviewed-boundary"],
+    [state.scopeDraft?.reviewedArea || state.scopeDraft?.requestedGeometry, "scope-draft-boundary"],
   ]) {
     if (!geometry) continue;
     const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
@@ -477,17 +489,36 @@ function drawOverlay() {
 }
 
 function updateControls() {
-  const authenticated = Boolean(state.token && state.author) && !state.busy;
+  const authenticated = Boolean(state.token && state.author) && !state.busy && !state.observationLoading;
+  const scopePending = Boolean(state.scopeDraft) || state.scopePreviewing;
   const observable = ["usable", "partial"].includes(state.observation?.status);
   const selected = Boolean(currentProposal());
   const loaded = (id) => $(id).complete && $(id).naturalWidth > 0;
   const hasEvidence = state.mode === "detections"
     ? Boolean(state.asset) && !$("image-wrap").hidden && loaded("evidence-image")
     : !$("comparison").hidden && loaded("before-image") && loaded("after-image");
-  for (const id of ["accept", "reject", "abstain", "save-attributes"]) $(id).disabled = !authenticated || !selected || !hasEvidence;
-  for (const id of ["tool-add", "tool-move", "tool-redraw"]) $(id).disabled = !authenticated || !observable || !state.bounds || !hasEvidence || (id !== "tool-add" && !selected);
-  $("mark-unusable").disabled = !authenticated || !state.observation || state.observation.status === "unusable";
-  $("complete-scene").disabled = !authenticated || !observable || !hasEvidence || state.mode !== "detections";
+  for (const id of ["accept", "reject", "abstain", "save-attributes"]) $(id).disabled = !authenticated || scopePending || !selected || !hasEvidence;
+  for (const id of ["tool-add", "tool-move", "tool-redraw"]) $(id).disabled = !authenticated || scopePending || !observable || !state.bounds || !hasEvidence || (id !== "tool-add" && !selected);
+  $("tool-scope").disabled = !authenticated || state.scopePreviewing || !observable || !state.bounds || !hasEvidence || state.mode !== "detections";
+  $("mark-unusable").disabled = !authenticated || scopePending || !state.observation || state.observation.status === "unusable";
+  $("complete-scene").disabled = !authenticated || scopePending || !observable || !hasEvidence || state.mode !== "detections";
+  $("complete-scene").textContent = state.observation?.reviewed_area ? "Registrar área guardada como revisada" : "Registrar zona completa como revisada";
+  $("completion-scope").textContent = state.observation?.reviewed_area
+    ? "Completa solo el área guardada en verde. Busca omisiones y resuelve las propuestas dentro de ella antes de registrarla como revisada. Lo excluido permanece desconocido."
+    : "Completa toda la zona amarilla. Si solo puedes revisar una parte, delimita y guarda primero esa área. Aceptar propuestas no permite medir omisiones.";
+  $("scope-caption").textContent = !state.observation ? "" : state.observation.reviewed_area
+    ? "Amarillo: zona provisional. Verde: área de revisión guardada; no implica que su revisión esté completa. Lo excluido no se usa como negativo."
+    : "Amarillo: límite de la zona provisional. La imagen puede cubrir solo una parte.";
+  $("scope-draft-panel").hidden = !scopePending || state.mode !== "detections";
+  $("scope-draft-panel").classList.toggle("error", Boolean(state.scopeDraft?.error));
+  $("scope-draft-title").textContent = state.scopeDraft?.saving ? "Guardando el área…" : "Borrador de área · sin guardar";
+  $("scope-draft-message").textContent = state.scopePreviewing
+    ? "Ajustando el rectángulo a la zona amarilla. Todavía no se ha guardado ningún cambio."
+    : state.scopeDraft?.error || (state.scopeDraft?.clipped
+      ? "El contorno violeta se recortó a la zona amarilla. Comprueba que contiene solo los sectores que puedes revisar."
+      : "El contorno violeta es el área propuesta. Comprueba que contiene solo los sectores que puedes revisar.");
+  $("save-scope").disabled = !authenticated || state.scopePreviewing || !state.scopeDraft?.reviewedArea || !hasEvidence;
+  $("discard-scope").disabled = state.busy || !scopePending;
   $("auth-toggle").textContent = state.token ? "Credencial en memoria" : "Acceso a revisión";
   $("drawing-tools").hidden = state.mode !== "detections";
 }
@@ -496,13 +527,13 @@ function setTool(tool) {
   if (state.drag?.original && currentProposal()) currentProposal().geometry = state.drag.original;
   state.tool = tool;
   state.drag = null;
-  for (const name of ["select", "add", "move", "redraw"]) {
+  for (const name of ["select", "add", "move", "redraw", "scope"]) {
     $("tool-" + name).classList.toggle("active", name === tool);
     $("tool-" + name).setAttribute("aria-pressed", String(name === tool));
   }
-  $("overlay").classList.toggle("draw", ["add", "redraw"].includes(tool));
+  $("overlay").classList.toggle("draw", ["add", "redraw", "scope"].includes(tool));
   $("overlay").classList.toggle("move", tool === "move");
-  $("drawing-hint").textContent = ({ select: "Selecciona una propuesta para revisarla.", add: "Arrastra un recuadro alrededor del buque omitido.", redraw: "Dibuja el nuevo recuadro de la propuesta.", move: "Arrastra la propuesta seleccionada." })[tool];
+  $("drawing-hint").textContent = ({ select: "Selecciona una propuesta para revisarla.", add: "Arrastra un recuadro alrededor del buque omitido.", redraw: "Dibuja el nuevo recuadro de la propuesta.", move: "Arrastra la propuesta seleccionada.", scope: "Arrastra sobre el sector que puedes revisar. Se recortará a la zona amarilla y podrás guardarlo después." })[tool];
   drawOverlay();
 }
 
@@ -524,12 +555,12 @@ function translate(geometry, dx, dy) {
 }
 
 $("overlay").addEventListener("pointerdown", (event) => {
-  if (state.tool === "select" || !state.bounds || !state.token || state.busy || event.button !== 0) return;
+  if (state.tool === "select" || !state.bounds || !state.token || !state.author || state.busy || event.button !== 0 || $("tool-" + state.tool).disabled) return;
   const selected = currentProposal();
   if (state.tool === "move" && event.target.dataset.id !== state.selected) return;
-  if (state.tool !== "add" && !selected) return;
+  if (!["add", "scope"].includes(state.tool) && !selected) return;
   event.preventDefault();
-  state.drag = { start: pointer(event), original: selected ? structuredClone(selected.geometry) : null, tool: state.tool };
+  state.drag = { start: pointer(event), original: selected && state.tool !== "scope" ? structuredClone(selected.geometry) : null, tool: state.tool };
   $("overlay").setPointerCapture(event.pointerId);
 });
 $("overlay").addEventListener("pointermove", (event) => {
@@ -541,7 +572,7 @@ $("overlay").addEventListener("pointermove", (event) => {
     drawOverlay();
   } else {
     let preview = $("overlay").querySelector(".draw-preview");
-    if (!preview) { preview = document.createElementNS(NS, "rect"); preview.classList.add("draw-preview"); $("overlay").append(preview); }
+    if (!preview) { preview = document.createElementNS(NS, "rect"); preview.classList.add("draw-preview"); preview.classList.toggle("scope-drawing", drag.tool === "scope"); $("overlay").append(preview); }
     preview.setAttribute("x", Math.min(drag.start[0], current[0])); preview.setAttribute("y", Math.min(drag.start[1], current[1]));
     preview.setAttribute("width", Math.abs(drag.start[0] - current[0])); preview.setAttribute("height", Math.abs(drag.start[1] - current[1]));
   }
@@ -558,20 +589,85 @@ $("overlay").addEventListener("pointerup", async (event) => {
     drawOverlay(); return;
   }
   const geometry = drag.tool === "move" ? currentProposal().geometry : rectangle(drag.start, finish);
-  if (drag.tool === "add") await addOmitted(geometry);
+  const generation = state.generation;
+  const scopeRequest = state.scopeRequest + 1;
+  if (drag.tool === "scope") await previewScope(geometry);
+  else if (drag.tool === "add") await addOmitted(geometry);
   else {
     if (drag.tool === "move") currentProposal().geometry = drag.original;
     await saveReview({ geometry }, "detection");
   }
-  setTool("select");
+  if (generation === state.generation && (drag.tool !== "scope" || scopeRequest === state.scopeRequest)) setTool("select");
 });
 $("overlay").addEventListener("pointercancel", () => {
   if (state.drag?.original && currentProposal()) currentProposal().geometry = state.drag.original;
   state.drag = null; drawOverlay();
 });
 
+function resetScopeDraft() {
+  state.scopeRequest++;
+  state.scopeDraft = null; state.scopePreviewing = false;
+}
+
+async function previewScope(geometry) {
+  const observationId = state.observation?.observation_id, generation = state.generation;
+  if (!observationId || !state.token || !state.author || state.busy || state.mode !== "detections") return;
+  const request = ++state.scopeRequest;
+  const draft = { observationId, generation, requestedGeometry: geometry, reviewedArea: null, previousRevisionId: null, error: null, clipped: false };
+  state.scopeDraft = draft; state.scopePreviewing = true;
+  drawOverlay(); updateControls();
+  try {
+    const result = await api("/v1/reviews/scope-preview", { method: "POST", body: JSON.stringify({ observation_id: observationId, geometry }) });
+    if (request !== state.scopeRequest || generation !== state.generation || state.mode !== "detections") return;
+    if (result.observation_id !== observationId || result.zone_id !== state.observation?.zone_id || !["Polygon", "MultiPolygon"].includes(result.reviewed_area?.type)) {
+      throw new Error("Invalid scope preview response");
+    }
+    draft.reviewedArea = result.reviewed_area;
+    draft.previousRevisionId = result.previous_revision_id;
+    draft.clipped = result.clipped;
+  } catch (error) {
+    if (request !== state.scopeRequest || generation !== state.generation) return;
+    draft.error = `${explain(error)} El área no se guardó. Dibuja otro rectángulo o descarta el borrador.`;
+  } finally {
+    if (request === state.scopeRequest && generation === state.generation) {
+      state.scopePreviewing = false; drawOverlay(); updateControls();
+    }
+  }
+}
+
+async function saveScope() {
+  const draft = state.scopeDraft;
+  if (!draft?.reviewedArea || state.scopePreviewing || state.busy || !state.token || !state.author || state.mode !== "detections" || draft.generation !== state.generation || draft.observationId !== state.observation?.observation_id) return;
+  const author = state.author;
+  const correction = {
+    reviewed_area: draft.reviewedArea, scene_complete: false, review_status: "provisional",
+    note: "Área de revisión delimitada; pendiente de revisar omisiones",
+    provenance: { kind: state.reviewerKind, reviewer: author },
+  };
+  draft.saving = true; draft.error = null; state.busy = true; updateControls();
+  try {
+    await api("/v1/reviews", { method: "POST", body: JSON.stringify({ entity_type: "observation", entity_id: draft.observationId, correction, author, previous_revision_id: draft.previousRevisionId }) });
+    const stillCurrent = draft.generation === state.generation && draft.observationId === state.observation?.observation_id;
+    if (stillCurrent) {
+      resetScopeDraft();
+      await selectObservation(draft.observationId);
+      notify("Área guardada. La revisión queda provisional: busca omisiones y resuelve las propuestas antes de completarla.");
+    } else {
+      notify("Área guardada para la observación anterior. Su revisión queda provisional y pendiente de completar.");
+    }
+  } catch (error) {
+    if (draft.generation === state.generation && state.scopeDraft === draft) {
+      draft.error = error.status ? explain(error) : "No se confirmó el guardado. Actualiza la observación antes de reintentar; el borrador sigue visible.";
+    } else {
+      notify(`No se pudo confirmar el guardado del área de la observación anterior. ${explain(error)}`, true);
+    }
+  } finally {
+    draft.saving = false; state.busy = false; drawOverlay(); updateControls();
+  }
+}
+
 async function saveReview(correction, entityType = state.mode === "changes" ? "change" : "detection") {
-  if (!state.token || !state.author || state.busy) return;
+  if (!state.token || !state.author || state.busy || state.observationLoading || state.scopeDraft || state.scopePreviewing) return;
   const observationId = state.observation?.observation_id;
   const selected = entityType === "observation" ? state.observation : properties(currentProposal());
   const entityId = entityType === "observation" ? observationId : state.selected;
@@ -647,19 +743,25 @@ $("auth-form").addEventListener("submit", (event) => {
   $("token").value = ""; $("auth-panel").hidden = true;
   notify("Credencial guardada en memoria. Se verificará al guardar una corrección."); updateControls();
 });
-$("lock-review").addEventListener("click", () => { state.token = ""; $("token").value = ""; setTool("select"); updateControls(); notify("Acceso de revisión cerrado."); });
+$("lock-review").addEventListener("click", () => { state.token = ""; $("token").value = ""; resetScopeDraft(); setTool("select"); updateControls(); notify("Acceso de revisión cerrado. Los borradores de área sin guardar se descartaron."); });
 $("filters").addEventListener("submit", (event) => { event.preventDefault(); loadObservations(); if ($("coverage-panel").open) loadPassCoverage(); });
 $("more-scenes").addEventListener("click", () => loadObservations(true));
 $("refresh-system").addEventListener("click", loadSystemStatus);
 $("refresh-coverage").addEventListener("click", loadPassCoverage);
 $("coverage-threshold").addEventListener("change", loadPassCoverage);
 $("coverage-panel").addEventListener("toggle", () => { if ($("coverage-panel").open) loadPassCoverage(); });
-for (const tool of ["select", "add", "move", "redraw"]) $("tool-" + tool).addEventListener("click", () => setTool(tool));
+for (const tool of ["select", "add", "move", "redraw", "scope"]) $("tool-" + tool).addEventListener("click", () => setTool(tool));
+$("save-scope").addEventListener("click", saveScope);
+$("discard-scope").addEventListener("click", () => {
+  if (state.busy) return;
+  resetScopeDraft(); setTool("select"); updateControls();
+  notify("Borrador descartado. El área guardada de la observación no cambió.");
+});
 $("accept").addEventListener("click", () => saveReview({ review_status: "reviewed" }));
 $("reject").addEventListener("click", () => saveReview(state.mode === "changes" ? { review_status: "rejected", status: "rejected" } : { review_status: "rejected" }));
 $("abstain").addEventListener("click", () => saveReview({ family: null }));
 $("mark-unusable").addEventListener("click", () => saveReview({ status: "unusable", review_status: "reviewed", note: "No observable según revisión visual" }, "observation"));
-$("complete-scene").addEventListener("click", () => saveReview({ scene_complete: true, review_status: "reviewed", note: "Revisión de escena completa, incluidas posibles omisiones" }, "observation"));
+$("complete-scene").addEventListener("click", () => saveReview({ scene_complete: true, review_status: "reviewed", note: state.observation?.reviewed_area ? "Revisión completa del área guardada, incluidas posibles omisiones" : "Revisión completa de la zona configurada, incluidas posibles omisiones" }, "observation"));
 $("attributes-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const correction = { family: $("family").value || null, length_m: $("length").value ? Number($("length").value) : null, width_m: $("width").value ? Number($("width").value) : null, note: $("review-note").value.trim(), provenance: {} };
@@ -685,7 +787,7 @@ $("show-audit").addEventListener("click", async () => {
   } catch (error) { notify(explain(error), true); }
 });
 for (const mode of ["detections", "changes"]) $("tab-" + mode).addEventListener("click", async () => {
-  state.mode = mode; state.selected = null; setTool("select");
+  resetScopeDraft(); state.mode = mode; state.selected = null; setTool("select");
   for (const other of ["detections", "changes"]) $("tab-" + other).setAttribute("aria-selected", String(other === mode));
   if (state.observation) await selectObservation(state.observation.observation_id);
   else { renderProposals(); updateControls(); }

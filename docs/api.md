@@ -51,6 +51,10 @@ Estos resultados no expresan llegadas, salidas, carga, TEU, identidad de buques 
 
 Los POST requieren `Authorization: Bearer <credencial-local>` y el servidor debe tener `PUERTOGT_REVIEW_TOKEN`. Sin configuración responde 503; una credencial incorrecta produce 401. Las peticiones de navegador deben mantener el mismo origen. La lectura local no requiere token.
 
+`POST /v1/reviews/scope-preview` recibe `observation_id` y `geometry` (Polygon o MultiPolygon WGS84). Aunque usa POST y requiere credencial, es una operación de lectura: devuelve `reviewed_area`, `clipped`, `zone_id`, `observation_id` y `previous_revision_id` sin guardar una revisión. Interseca el dibujo con la zona configurada del puerto; conserva huecos y partes desconectadas, y elimina intersecciones de borde sin superficie. Exige una escena `usable` o `partial` y una intersección válida con área positiva. No consulta píxeles ni decide si el área está libre de nubes o buques.
+
+Para guardar el resultado, envía una revisión de observación con `reviewed_area`, `scene_complete: false`, `review_status: provisional` y el `previous_revision_id` devuelto. El servicio vuelve a comprobar que el área queda dentro de la zona antes de escribir. Una revisión concurrente produce 409. Especificar `reviewed_area` sin `scene_complete` fuerza `false`, y ese valor efectivo queda en la auditoría; no hereda la completitud del ámbito anterior. Las importaciones que revisaron toda el área pueden declarar explícitamente `scene_complete: true` en la misma corrección. La exportación sigue rechazando áreas fuera de zona o propuestas sin resolver.
+
 `POST /v1/reviews` recibe:
 
 ```json
@@ -72,7 +76,7 @@ El ejemplo muestra la forma del mensaje; reemplaza los identificadores por regis
 |---|---|
 | Todas | `review_status` (`reviewed`, `rejected`, `provisional`), `note`, `provenance`. |
 | `detection` | `geometry`, `family`, `length_m`, `width_m`. |
-| `observation` | `status` únicamente para marcar `unusable`, `observable_fraction`, `dataset_split`, `split_groups`, `scene_complete`. |
+| `observation` | `status` únicamente para marcar `unusable`, `observable_fraction`, `dataset_split`, `split_groups`, `scene_complete`, `reviewed_area`. |
 | `change` | `geometry` y `status` únicamente para marcar `rejected`. |
 
 La familia admite `carga`, `tanquero`, `pasajeros`, `remolcador`, `pesquero`, `otros` o `null`. Las dimensiones deben ser metros positivos, finitos y menores que 1,000. Cada atributo no nulo exige procedencia independiente por campo:

@@ -36,7 +36,7 @@ def area_review_batch(tmp_path, monkeypatch, proposed):
     config = tmp_path / "config"
     config.mkdir()
     (config / "ports.geojson").write_text(json.dumps({"features": [{
-        "properties": {"zone_id": "prq_muelles"},
+        "properties": {"zone_id": "prq_muelles", "port_id": "prq"},
         "geometry": mapping(box(-91, 13, -90, 14)),
     }]}))
     report = phase2 / "review.json"
@@ -116,7 +116,7 @@ def test_versioned_execution_order_preserves_original_batch_replay(tmp_path, mon
     config = tmp_path / "config"
     config.mkdir()
     (config / "ports.geojson").write_text(json.dumps({"features": [{
-        "properties": {"zone_id": "prq_muelles"},
+        "properties": {"zone_id": "prq_muelles", "port_id": "prq"},
         "geometry": mapping(box(-91, 13, -90, 14)),
     }]}))
     report = phase2 / "review.json"

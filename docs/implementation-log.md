@@ -208,3 +208,9 @@ La intervención científica compara dos tamaños de ancla con una receta prefij
 El software 0.3.0 pasó 306 pruebas con ML y 289 con 14 omisiones esperadas sin Torch. La wheel se instaló en otro entorno, se comprobaron API y visor, y `doctor --check-release` conserva cinco tareas científicas pendientes. La conciliación histórica sí tiene evidencia suficiente y quedó registrada. No se declara una nueva copia/restauración de todos los datos. [Entrega operativa](../reports/release-v0.3.0/README.md).
 
 Por instrucción del titular, se fijó la identidad local de Git a `yehosuah` y su dirección noreply de GitHub; la cuenta autenticada se verificó. [AGENTS.md](../AGENTS.md) exige comprobar autor, committer y cuenta antes de futuras publicaciones. No se reescribe la atribución de commits anteriores.
+
+## 26 de octubre de 2026 · revisión parcial desde el visor
+
+La versión 0.3.1 añade dibujo, previsualización y guardado de áreas de revisión. La API recorta el borrador a la zona sin escribir, valida la pertenencia antes del guardado y conserva conflictos de revisión. Cambiar el ámbito invalida su completitud anterior con una corrección auditada. La interfaz distingue el borrador del ámbito guardado y bloquea la completitud mientras hay un borrador pendiente.
+
+La suite pasó 319 pruebas con ML y 302 sin Torch (14 omisiones esperadas); el paquete instalado y el flujo de navegador se comprobaron con una base sintética. La activación local conservó el catálogo científico y los 26 manifiestos protegidos. [Evidencia](../reports/improvements/20261026-review-area/README.md) y [siguientes mejoras](improvements.md). No se ejecutó entrenamiento ni se generaron etiquetas nuevas sobre observaciones reales.

@@ -67,7 +67,7 @@
       <div class="review-heading"><div><h2 id="scene-title">Selecciona una observación</h2><p id="scene-meta">Las imágenes y sus propuestas aparecerán aquí.</p></div><span id="scene-status" class="status" hidden></span></div>
       <p id="model-notice" class="model-notice" hidden></p>
       <div class="review-nav"><div class="tabs" role="tablist" aria-label="Tipo de revisión"><button id="tab-detections" type="button" role="tab" aria-selected="true">Buques</button><button id="tab-changes" type="button" role="tab" aria-selected="false">Cambios físicos</button></div><button id="mark-unusable" class="text-button" type="button" disabled>Marcar no observable</button></div>
-      <div id="drawing-tools" class="toolbar" aria-label="Herramientas de anotación"><button id="tool-select" type="button" class="tool active" aria-pressed="true">Seleccionar</button><button id="tool-add" type="button" class="tool" disabled>Añadir omitido</button><button id="tool-move" type="button" class="tool" disabled>Mover</button><button id="tool-redraw" type="button" class="tool" disabled>Redibujar</button><span id="drawing-hint" class="quiet">Selecciona una propuesta para revisarla.</span></div>
+      <div id="drawing-tools" class="toolbar" aria-label="Herramientas de anotación"><button id="tool-select" type="button" class="tool active" aria-pressed="true">Seleccionar</button><button id="tool-add" type="button" class="tool" disabled>Añadir omitido</button><button id="tool-move" type="button" class="tool" disabled>Mover</button><button id="tool-redraw" type="button" class="tool" disabled>Redibujar</button><button id="tool-scope" type="button" class="tool" disabled aria-pressed="false">Delimitar área</button><span id="drawing-hint" class="quiet">Selecciona una propuesta para revisarla.</span></div>
 
       <div id="evidence-stage" class="evidence-stage">
         <div id="empty-evidence" class="empty-evidence"><span class="empty-mark" aria-hidden="true">＋</span><h3>Sin evidencia seleccionada</h3><p>El catálogo y las imágenes procesadas se muestran por separado. Una escena pendiente todavía no tiene resultados para revisar.</p></div>
@@ -76,6 +76,12 @@
       </div>
       <div class="evidence-caption"><span id="asset-caption">Solo se muestra evidencia registrada en el servicio.</span><a id="asset-download" target="_blank" rel="noreferrer" hidden>Abrir imagen ↗</a></div>
       <p id="scope-caption" class="field-help"></p>
+      <div id="scope-draft-panel" class="scope-draft-panel" aria-live="polite" hidden>
+        <strong id="scope-draft-title">Borrador de área · sin guardar</strong>
+        <p id="scope-draft-message"></p>
+        <div class="scope-draft-actions"><button id="save-scope" type="button" disabled>Guardar área</button><button id="discard-scope" type="button" class="secondary" disabled>Descartar</button></div>
+        <p class="scope-draft-help">Guardar sustituye el área anterior y deja la revisión pendiente. Lo excluido permanece desconocido. Cambiar de observación o pestaña descarta este borrador.</p>
+      </div>
       <p id="scene-review-note" class="model-notice" hidden></p>
       <div class="scene-summary"><div><span class="quiet">Conteo del modelo</span><strong id="model-count">—</strong></div><div><span class="quiet">Área observable</span><strong id="observable-fraction">—</strong></div><div><span class="quiet">Revisión</span><strong id="review-label">—</strong></div><p>Un conteo cero expresa el resultado del modelo. No acredita ausencia absoluta de buques.</p></div>
     </section>
@@ -98,7 +104,7 @@
         <div id="change-detail" hidden></div>
         <button id="show-audit" type="button" class="text-button">Ver historial</button><div id="audit-list" class="audit-list" hidden></div>
       </div>
-      <div class="review-note"><strong>Revisión por escena completa</strong><p>Busca también buques que el modelo omitió. Aceptar propuestas no permite medir omisiones.</p><button id="complete-scene" type="button" class="secondary full-width" disabled>Registrar escena revisada</button></div>
+      <div class="review-note"><strong>Completar la revisión del ámbito</strong><p id="completion-scope">Busca también buques que el modelo omitió. Aceptar propuestas no permite medir omisiones.</p><button id="complete-scene" type="button" class="secondary full-width" disabled>Registrar zona completa como revisada</button></div>
     </aside>
   </main>
   <footer class="app-footer"><span><i class="legend-dot provisional"></i> Provisional <i class="legend-dot reviewed"></i> Revisado <i class="legend-dot rejected"></i> Rechazado</span><span><kbd>J</kbd> / <kbd>K</kbd> propuesta siguiente / anterior · <kbd>Esc</kbd> salir de herramienta</span><span>Fechas UTC · Geometrías provisionales</span></footer>
