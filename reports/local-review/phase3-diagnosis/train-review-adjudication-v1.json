@@ -1,0 +1,49 @@
+{
+  "author": "codex-ai-root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "batch": "phase3-s2-caribe-raw-march-april-v1",
+  "created_at": "2026-10-26T03:10:29.913696Z",
+  "sources": [
+    {
+      "path": "reports/local-review/phase3-diagnosis/train-review-proposals-v1.json",
+      "sha256": "7f4c94533c69f2e5ba77b92ab0484848d50f1d6f422f0f62681c6b3c32400daf"
+    }
+  ],
+  "accepted_observation_ids": [
+    "db5b7f1d-f759-495c-94d7-b68bc27bb58e",
+    "e781fcaf-5e67-47ab-87dd-78a2b1104c95",
+    "b12d3920-6656-4352-a0c7-1f5138e43f72",
+    "13a7f339-bcf4-4ca8-a114-67f1e9daeebf",
+    "ae5ef299-8073-4d2d-b5ea-2d7df41f328f",
+    "a906c73d-2f23-44e2-8643-e86d0148e71c",
+    "95db3201-31ed-40f1-8293-91e622546343",
+    "0bf98659-43b5-400c-8c9e-80addf289c26",
+    "1ba07c87-d7e5-4ab3-bb2b-79b11783dead",
+    "7c744de6-4ecb-45a8-be56-7ab56e6336b9",
+    "9fb5956b-371c-404e-ad72-820b44666561",
+    "696364e9-ded6-4832-bf83-d2c10a061dd2",
+    "e6da84fa-816e-4a2b-8a41-69f922c1b9db",
+    "a29da8b8-c901-4aeb-af59-1a8a2ef66958",
+    "7336b63b-58ba-4e11-ab85-61b89c8a355a",
+    "0ebb20b2-3326-49e1-b486-d837d9a40ba5",
+    "5f308127-830b-4a0e-b84a-8cd89229ef32",
+    "0afcd6b5-8abc-42a6-99ca-2434f108cead",
+    "0e973a7e-b60a-4f81-977e-3b2b8c5c2fec",
+    "52eb36fd-6115-4541-985f-7cf19d82d802",
+    "a4389272-d8ea-416a-9673-e87ac9d90b7c",
+    "afa7a4c9-3941-48c5-aafc-b92cd5cedc4c",
+    "17983803-6bde-40ad-88aa-af8c528870bc",
+    "4a9a66ff-2e46-4c85-af93-8019fad83e3b",
+    "62eafb66-44ef-4bfa-9768-9cc281adaabc",
+    "f4fd7c54-85ec-4554-bd99-543e9490faf8",
+    "f70e186f-121f-407f-83a3-4ad3f50997d7",
+    "50d9de8b-e4f1-49a6-ac6b-d212888bb676",
+    "ddbbb273-51cc-4cae-8cd5-30b5221aa37a",
+    "e39cb77d-1687-447b-9997-11ef0a261f8a",
+    "f49a4523-d727-42a9-aebc-a5dbd1219524",
+    "0aad9328-e4d9-4d27-8c71-6c784c821b0e"
+  ],
+  "blind_to_model": false,
+  "exposure": "Both first raw passes and final two scopes/one positive were frozen before reading catalog proposals, scores or counts. The final import is not wholly blinded: the sole overlapping proposal was then matched to the already fixed visual boat and its geometry corrected. No scores were read, no negatives were inferred from proposals, and no scope changed after proposal lookup. Thirty observations retain abstention. AI consensus is not independent human reference or validation."
+}

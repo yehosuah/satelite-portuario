@@ -11,6 +11,7 @@ from puertogt.history import (
     HistoryLedger,
     HistoryLimits,
     create_plan,
+    create_selected_plan,
     recover_local_publication,
     repair_history_evidence,
     run_history,
@@ -20,7 +21,7 @@ from puertogt.store import Store, utc_text
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["plan", "run", "status", "repair-evidence", "recover-local-publication"])
+    parser.add_argument("command", choices=["plan", "plan-selected", "run", "status", "repair-evidence", "recover-local-publication"])
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
     parser.add_argument("--plan-dir", type=Path, default=Path("data/history/full-v1"))
     parser.add_argument("--config-dir", type=Path, default=Path("config"))
@@ -28,6 +29,10 @@ def main():
     parser.add_argument("--sensor", choices=["sentinel-1", "sentinel-2"])
     parser.add_argument("--acquisition", help="Process one exact key already present in the frozen plan")
     parser.add_argument("--priority-file", type=Path, help="Optional acquisition_keys JSON, reread between acquisitions")
+    parser.add_argument("--selection-file", type=Path, help="Exact acquisition_keys JSON for plan-selected")
+    parser.add_argument("--complete-protected", action="store_true",
+                        help="Allow only selected captures protected by --source-plan, preserving their original results")
+    parser.add_argument("--source-plan", type=Path, help="Original frozen plan that protects the selected pilot captures")
     parser.add_argument("--download-budget-gib", type=float, default=200)
     parser.add_argument("--acquisition-budget-gib", type=float, default=1)
     parser.add_argument("--storage-budget-gib", type=float, default=100)
@@ -45,6 +50,10 @@ def main():
         parser.error("Threads and acquisitions must be positive")
     if args.command == "recover-local-publication" and (not args.acquisition or not args.recovery_reason):
         parser.error("recover-local-publication requires --acquisition and --recovery-reason")
+    if args.command == "plan-selected" and not args.selection_file:
+        parser.error("plan-selected requires --selection-file")
+    if args.complete_protected and (args.command != "plan-selected" or not args.source_plan):
+        parser.error("--complete-protected requires plan-selected and --source-plan")
     catalog = Store(args.data_dir / "catalog.sqlite", args.data_dir)
     limits = HistoryLimits(total_download_bytes=int(args.download_budget_gib * 1024**3),
                            acquisition_download_bytes=int(args.acquisition_budget_gib * 1024**3),
@@ -52,10 +61,17 @@ def main():
     if args.command != "run" and (args.plan_dir / "limits.json").exists():
         limits = HistoryLimits(**json.loads((args.plan_dir / "limits.json").read_text()))
     ledger = HistoryLedger(args.plan_dir, limits)
-    plan = create_plan(catalog, json.loads((args.config_dir / "ports.geojson").read_text())["features"],
-                       args.plan_dir)
+    features = json.loads((args.config_dir / "ports.geojson").read_text())["features"]
+    if args.command == "plan-selected":
+        selected = json.loads(args.selection_file.read_text())
+        keys = selected if isinstance(selected, list) else selected["acquisition_keys"]
+        plan = create_selected_plan(catalog, features, args.plan_dir, acquisition_keys=keys,
+                                    allow_protected_keys=keys if args.complete_protected else [],
+                                    protected_source_plan=args.source_plan)
+    else:
+        plan = create_plan(catalog, features, args.plan_dir)
     ledger.initialize_plan(plan)
-    if args.command == "plan":
+    if args.command in {"plan", "plan-selected"}:
         result = {"plan_id": plan["plan_id"], "acquisitions": len(plan["acquisitions"]),
                   "tiles": sum(len(item["tiles"]) for item in plan["acquisitions"]),
                   "zone_observations": sum(len(item["zones"]) for item in plan["acquisitions"]),

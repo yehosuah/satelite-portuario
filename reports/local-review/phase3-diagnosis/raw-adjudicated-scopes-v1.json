@@ -1,0 +1,386 @@
+{
+  "created_at": "2026-10-26T03:08:49.303521Z",
+  "stage": "root_adjudicated_raw_scopes_before_model_correspondence",
+  "author": "codex-ai-root",
+  "second_reviewer": "codex-ai-science-next",
+  "kind": "ai_visual_review",
+  "human_review": false,
+  "split": "train",
+  "cohort_selection": "First four available March-April TRAIN primaries in existing sampling plan; all eight zones, independent of model scores/counts",
+  "scope_selection": "Conservative visual confidence after two AI raw passes; not a probability sample or an independent validation set",
+  "model_predictions_scores_or_counts_used_to_select_scopes": false,
+  "reviewed_observation_ids": [
+    "db5b7f1d-f759-495c-94d7-b68bc27bb58e",
+    "e781fcaf-5e67-47ab-87dd-78a2b1104c95",
+    "b12d3920-6656-4352-a0c7-1f5138e43f72",
+    "13a7f339-bcf4-4ca8-a114-67f1e9daeebf",
+    "ae5ef299-8073-4d2d-b5ea-2d7df41f328f",
+    "a906c73d-2f23-44e2-8643-e86d0148e71c",
+    "95db3201-31ed-40f1-8293-91e622546343",
+    "0bf98659-43b5-400c-8c9e-80addf289c26",
+    "1ba07c87-d7e5-4ab3-bb2b-79b11783dead",
+    "7c744de6-4ecb-45a8-be56-7ab56e6336b9",
+    "9fb5956b-371c-404e-ad72-820b44666561",
+    "696364e9-ded6-4832-bf83-d2c10a061dd2",
+    "e6da84fa-816e-4a2b-8a41-69f922c1b9db",
+    "a29da8b8-c901-4aeb-af59-1a8a2ef66958",
+    "7336b63b-58ba-4e11-ab85-61b89c8a355a",
+    "0ebb20b2-3326-49e1-b486-d837d9a40ba5",
+    "5f308127-830b-4a0e-b84a-8cd89229ef32",
+    "0afcd6b5-8abc-42a6-99ca-2434f108cead",
+    "0e973a7e-b60a-4f81-977e-3b2b8c5c2fec",
+    "52eb36fd-6115-4541-985f-7cf19d82d802",
+    "a4389272-d8ea-416a-9673-e87ac9d90b7c",
+    "afa7a4c9-3941-48c5-aafc-b92cd5cedc4c",
+    "17983803-6bde-40ad-88aa-af8c528870bc",
+    "4a9a66ff-2e46-4c85-af93-8019fad83e3b",
+    "62eafb66-44ef-4bfa-9768-9cc281adaabc",
+    "f4fd7c54-85ec-4554-bd99-543e9490faf8",
+    "f70e186f-121f-407f-83a3-4ad3f50997d7",
+    "50d9de8b-e4f1-49a6-ac6b-d212888bb676",
+    "ddbbb273-51cc-4cae-8cd5-30b5221aa37a",
+    "e39cb77d-1687-447b-9997-11ef0a261f8a",
+    "f49a4523-d727-42a9-aebc-a5dbd1219524",
+    "0aad9328-e4d9-4d27-8c71-6c784c821b0e"
+  ],
+  "complete_scopes": [
+    {
+      "observation_id": "7c744de6-4ecb-45a8-be56-7ab56e6336b9",
+      "zone_id": "pbr_fondeo",
+      "acquisition_key": "S2B:MSIL1C:20250316T160919:R140:T16PCC",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.607,
+              15.748
+            ],
+            [
+              -88.599,
+              15.748
+            ],
+            [
+              -88.599,
+              15.766
+            ],
+            [
+              -88.607,
+              15.766
+            ],
+            [
+              -88.607,
+              15.748
+            ]
+          ]
+        ]
+      },
+      "reviewed_area_rule": "Entire configured zone",
+      "positives": [],
+      "complete_for_visually_discernible_vessels": true,
+      "mask_checks": {
+        "valid": {
+          "included_pixel_centers": 17082,
+          "nonzero_pixel_centers": 17082,
+          "source": {
+            "path": "data/assets/7c744de6-4ecb-45a8-be56-7ab56e6336b9/valid.tif",
+            "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+          }
+        },
+        "observable": {
+          "included_pixel_centers": 17082,
+          "nonzero_pixel_centers": 17082,
+          "source": {
+            "path": "data/assets/7c744de6-4ecb-45a8-be56-7ab56e6336b9/observable.tif",
+            "sha256": "c0f0533f88f4b254ffa3e5b7b08cd52e4b99774a48841ae7d644b10ff7416bfb"
+          }
+        },
+        "cloud": {
+          "included_pixel_centers": 17082,
+          "nonzero_pixel_centers": 0,
+          "source": {
+            "path": "data/assets/7c744de6-4ecb-45a8-be56-7ab56e6336b9/cloud.tif",
+            "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+          }
+        },
+        "shadow": {
+          "included_pixel_centers": 17082,
+          "nonzero_pixel_centers": 0,
+          "source": {
+            "path": "data/assets/7c744de6-4ecb-45a8-be56-7ab56e6336b9/shadow.tif",
+            "sha256": "d573438db26e3ccd221142eadbed2bafb100cda76c68beb7aa92a71c966aa7a9"
+          }
+        }
+      }
+    },
+    {
+      "observation_id": "a29da8b8-c901-4aeb-af59-1a8a2ef66958",
+      "zone_id": "stc_fondeo",
+      "acquisition_key": "S2B:MSIL1C:20250316T160919:R140:T16PCC",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "reviewed_area_wgs84": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.62357763758679,
+              15.754056181077601
+            ],
+            [
+              -88.62824334558479,
+              15.754021357937908
+            ],
+            [
+              -88.62826495329399,
+              15.756732441381965
+            ],
+            [
+              -88.62359918344582,
+              15.756767270815912
+            ],
+            [
+              -88.62357763758679,
+              15.754056181077601
+            ]
+          ]
+        ]
+      },
+      "reviewed_area_rule": "Global raw pixel rectangle [300,450,350,480] intersected with the original configured AOI",
+      "positives": [
+        {
+          "geometry_wgs84": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.62554083137888,
+                  15.754493415416135
+                ],
+                [
+                  -88.62553795535754,
+                  15.754131937099086
+                ],
+                [
+                  -88.62591121219965,
+                  15.754129151550568
+                ],
+                [
+                  -88.62591408888069,
+                  15.754490629800493
+                ],
+                [
+                  -88.62554083137888,
+                  15.754493415416135
+                ]
+              ]
+            ]
+          },
+          "visual_box_px": [
+            325,
+            475,
+            329,
+            479
+          ],
+          "unique_physical_object_key": "raw-nw-water-vessel-327-477",
+          "reason": "Compact body and independent wake visible in corrected raw imagery; two AI reviewers agree on vessel presence.",
+          "reviewer_box_uncertainty_px": {
+            "science_next": [
+              324,
+              475,
+              330,
+              480
+            ],
+            "root_accepted": [
+              325,
+              475,
+              329,
+              479
+            ]
+          },
+          "geometry_role": "visual_box_not_physical_dimensions",
+          "family": null,
+          "length_m": null,
+          "width_m": null
+        }
+      ],
+      "complete_for_visually_discernible_vessels": true,
+      "mask_checks": {
+        "valid": {
+          "included_pixel_centers": 1500,
+          "nonzero_pixel_centers": 1500,
+          "source": {
+            "path": "data/assets/a29da8b8-c901-4aeb-af59-1a8a2ef66958/valid.tif",
+            "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823"
+          }
+        },
+        "observable": {
+          "included_pixel_centers": 1500,
+          "nonzero_pixel_centers": 1500,
+          "source": {
+            "path": "data/assets/a29da8b8-c901-4aeb-af59-1a8a2ef66958/observable.tif",
+            "sha256": "a0d9d5d7e788cc611d643b10be3919d20a770312ed3ef48e5b6edf309e28c823"
+          }
+        },
+        "cloud": {
+          "included_pixel_centers": 1500,
+          "nonzero_pixel_centers": 0,
+          "source": {
+            "path": "data/assets/a29da8b8-c901-4aeb-af59-1a8a2ef66958/cloud.tif",
+            "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec"
+          }
+        },
+        "shadow": {
+          "included_pixel_centers": 1500,
+          "nonzero_pixel_centers": 0,
+          "source": {
+            "path": "data/assets/a29da8b8-c901-4aeb-af59-1a8a2ef66958/shadow.tif",
+            "sha256": "a41f52e61238870a819467be24d24c8f9837bd8f57c606edd5ec8b0e8b4ed9ec"
+          }
+        }
+      }
+    }
+  ],
+  "abstained_observation_ids": [
+    "db5b7f1d-f759-495c-94d7-b68bc27bb58e",
+    "e781fcaf-5e67-47ab-87dd-78a2b1104c95",
+    "b12d3920-6656-4352-a0c7-1f5138e43f72",
+    "13a7f339-bcf4-4ca8-a114-67f1e9daeebf",
+    "ae5ef299-8073-4d2d-b5ea-2d7df41f328f",
+    "a906c73d-2f23-44e2-8643-e86d0148e71c",
+    "95db3201-31ed-40f1-8293-91e622546343",
+    "0bf98659-43b5-400c-8c9e-80addf289c26",
+    "1ba07c87-d7e5-4ab3-bb2b-79b11783dead",
+    "9fb5956b-371c-404e-ad72-820b44666561",
+    "696364e9-ded6-4832-bf83-d2c10a061dd2",
+    "e6da84fa-816e-4a2b-8a41-69f922c1b9db",
+    "7336b63b-58ba-4e11-ab85-61b89c8a355a",
+    "0ebb20b2-3326-49e1-b486-d837d9a40ba5",
+    "5f308127-830b-4a0e-b84a-8cd89229ef32",
+    "0afcd6b5-8abc-42a6-99ca-2434f108cead",
+    "0e973a7e-b60a-4f81-977e-3b2b8c5c2fec",
+    "52eb36fd-6115-4541-985f-7cf19d82d802",
+    "a4389272-d8ea-416a-9673-e87ac9d90b7c",
+    "afa7a4c9-3941-48c5-aafc-b92cd5cedc4c",
+    "17983803-6bde-40ad-88aa-af8c528870bc",
+    "4a9a66ff-2e46-4c85-af93-8019fad83e3b",
+    "62eafb66-44ef-4bfa-9768-9cc281adaabc",
+    "f4fd7c54-85ec-4554-bd99-543e9490faf8",
+    "f70e186f-121f-407f-83a3-4ad3f50997d7",
+    "50d9de8b-e4f1-49a6-ac6b-d212888bb676",
+    "ddbbb273-51cc-4cae-8cd5-30b5221aa37a",
+    "e39cb77d-1687-447b-9997-11ef0a261f8a",
+    "f49a4523-d727-42a9-aebc-a5dbd1219524",
+    "0aad9328-e4d9-4d27-8c71-6c784c821b0e"
+  ],
+  "unknowns": [
+    {
+      "dates": [
+        "20250316",
+        "20250403",
+        "20250418"
+      ],
+      "visual_box_px": [
+        494,
+        688,
+        537,
+        704
+      ],
+      "reason": "PBR pier: ships versus fixed infrastructure unresolved; no positives or hard negatives"
+    },
+    {
+      "date": "20250403",
+      "visual_box_px": [
+        455,
+        1093,
+        469,
+        1102
+      ],
+      "reason": "STC quay: probable body but insufficient independent visual confidence"
+    },
+    {
+      "date": "20250301",
+      "reason": "Cloud obscures all eight zones"
+    },
+    {
+      "date": "20250418",
+      "reason": "Cloud, shadow or glint; no complete scope accepted"
+    },
+    {
+      "dates": [
+        "20250316",
+        "20250403"
+      ],
+      "zones": [
+        "pbr_canal",
+        "stc_canal"
+      ],
+      "reason": "No complete canal review certified; potential ambiguous pier and outside-center overlaps remain unknown"
+    }
+  ],
+  "contextual_positive_candidates_not_training": [
+    {
+      "date": "20250316",
+      "visual_box_px": [
+        466,
+        731,
+        474,
+        736
+      ],
+      "reason": "Moving vessel, center outside every AOI v1; no training label"
+    },
+    {
+      "date": "20250403",
+      "visual_box_px": [
+        491,
+        426,
+        499,
+        445
+      ],
+      "reason": "Moving vessel, center outside every AOI v1; no training label"
+    },
+    {
+      "date": "20250316",
+      "visual_box_px": [
+        486,
+        1072,
+        503,
+        1085
+      ],
+      "reason": "NE jetty change compatible with a real vessel, outside every AOI v1; contextual only"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "reports/local-review/phase3-diagnosis/train-s2-mar-apr-raw/evidence.json",
+      "sha256": "180410c52a3c135fe4ac8aaf72cda116c8e8ebb261e638de7609c6c8cc86dfd6"
+    },
+    {
+      "path": "reports/local-review/phase3-diagnosis/train-s2-mar-apr-raw/selection.json",
+      "sha256": "d94912cb752338fc608045972c5881b840b990c7694fd2150a6b18bb59c59942"
+    },
+    {
+      "path": "reports/local-review/phase3-diagnosis/raw-independent-first-passes.json",
+      "sha256": "a7b46a866bb39a5dc6f57dc6b3dc9d92418dec5a0d8f88cb91c6771f47d79298"
+    },
+    {
+      "path": "reports/local-review/phase3-diagnosis/raw-focus/manifest.json",
+      "sha256": "e61e0ea110765e89c100928845a882a61b20c27a137496a3c3591ae5c388dce0"
+    },
+    {
+      "path": "reports/local-review/phase3-diagnosis/raw-candidate-zone-membership.json",
+      "sha256": "5a94fbaf88a3495c7042865bdd6f803dac76268c196e98a46d381ae2fba6ce52"
+    },
+    {
+      "path": "config/ports.geojson",
+      "sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589"
+    },
+    {
+      "path": "reports/local-review/phase3-diagnosis/freeze_reviewed_scopes.py",
+      "sha256": "6a4cb111095190b5bfdf7282bae3498e2e744f8b818b6bd3ad456197101a659f"
+    }
+  ],
+  "local_validation_demonstrated": false
+}

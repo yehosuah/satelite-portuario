@@ -39,6 +39,21 @@
     <button type="submit" class="secondary">Actualizar</button>
   </form>
 
+  <details id="coverage-panel" class="system-panel coverage-panel">
+    <summary>Cobertura de las pasadas <span id="coverage-summary" class="quiet">Área observada y frecuencia real</span></summary>
+    <div class="system-heading">
+      <p>Usa los filtros de puerto, sensor y fechas de arriba.</p>
+      <label>Área mínima por zona<select id="coverage-threshold"><option value="0.9">90% del área</option><option value="0.5">50% del área</option><option value="1">100% del área</option></select></label>
+      <button id="refresh-coverage" type="button" class="secondary">Actualizar cobertura</button>
+    </div>
+    <p id="coverage-period" class="quiet"></p>
+    <p id="coverage-error" role="status" hidden></p>
+    <div id="coverage-table" class="coverage-table-wrap"></div>
+    <details class="coverage-zones"><summary>Ver cobertura por zona</summary><div id="coverage-zone-table" class="coverage-table-wrap"></div></details>
+    <p class="system-note">Una pasada cumple el área mínima del puerto cuando todas sus zonas configuradas la alcanzan en esa misma pasada. Radar y óptico reúne oportunidades de observación; no suma barcos ni mezcla imágenes de fechas distintas. El porcentaje de área no mide la precisión del detector. Los límites de las zonas siguen siendo provisionales.</p>
+    <p id="coverage-method" class="system-note"></p>
+  </details>
+
   <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
   <main id="workspace" class="workspace">
     <aside class="scene-rail" aria-label="Lista de observaciones">

@@ -241,12 +241,30 @@ class Detector:
         }
 
 
+def detector_anchor_sizes(model: ModelManifest) -> list[list[int]]:
+    """Read the detector geometry recipe while preserving legacy checkpoints.
+
+    Four feature levels and one scale per level retain the pretrained RPN's
+    three aspect-ratio outputs. Anchor geometry is not a weight tensor, so it
+    must travel in the manifest used by both training and inference.
+    """
+    sizes = model.metadata.get("anchor_sizes", [[32], [64], [128], [256]])
+    if (not isinstance(sizes, list) or len(sizes) != 4
+            or any(not isinstance(level, list) or len(level) != 1
+                   or type(level[0]) is not int or not 1 <= level[0] <= 512
+                   for level in sizes)
+            or any(left[0] >= right[0] for left, right in zip(sizes, sizes[1:]))):
+        raise ValueError("Anchor recipe requires four increasing integer scales, one per level, in 1..512")
+    return [list(level) for level in sizes]
+
+
 def load_detector(model: ModelManifest, *, device: str = "cpu") -> Detector:
     """Load strictly matching weights only after validating their SHA256."""
     if model.task != "detection":
         raise ValueError("a detection manifest is required")
     if not model.weights_path or not model.weights_sha256 or not model.code_commit:
         raise ValueError("checkpoint path, SHA256 and code commit must be pinned")
+    anchor_sizes = detector_anchor_sizes(model)
     path = Path(model.weights_path)
     if file_hash(path) != model.weights_sha256:
         raise ValueError("checkpoint SHA256 mismatch")
@@ -277,7 +295,7 @@ def load_detector(model: ModelManifest, *, device: str = "cpu") -> Detector:
     network = MultiTaskModel(
         encoder=[encoder, fpn], decoders={"detect": [FasterRCNN(
             downsample_factors=[4, 8, 16, 32], num_channels=channels, num_classes=2,
-            anchor_sizes=[[32], [64], [128], [256]],
+            anchor_sizes=anchor_sizes,
         )]},
     )
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)

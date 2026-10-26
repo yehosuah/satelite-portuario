@@ -194,3 +194,17 @@ gh release create NUEVO_TAG ARCHIVO_WHEEL ARCHIVO_SDIST ARCHIVO_BUNDLE ARCHIVO_C
 ```
 
 El borrador permite verificar todos los archivos descargados y sus SHA256 antes de hacerlo público. Si el tamaño requiere partes, conserva un manifiesto del archivo completo y otro de cada parte. El paquete no incluye dependencias Python del sistema: una instalación completamente sin red necesita un entorno/contenedor y dependencias preparados además de wheel, fuentes, configuración y datos. Publicar una entrega estable de software no cierra los requisitos científicos pendientes.
+
+## Cierre operativo y cobertura, 25 de octubre de 2026
+
+La conciliación final del 26 de octubre UTC cerró las tres campañas: 827 adquisiciones procesadas y seis excepciones de contexto radar, sin pendientes. El catálogo conserva 5.018 observaciones y 4.996 pares adquisición/zona; las versiones del piloto no son visitas adicionales. Los 122.894 archivos registrados se verificaron por SHA256. Se repararon tres conjuntos de márgenes desde fuentes fijadas, comprobando 144 mosaicos con igualdad exacta de píxeles. Las 22 observaciones originales, sus 264 archivos y 26 manifiestos previamente congelados permanecen intactos. [Recibos del histórico](../reports/history/README.md).
+
+Se añadió un plan suplementario con lista exacta de adquisiciones y receta propia, para completar los pilotos y procesar cinco capturas nuevas sin sustituir evidencia anterior ni reprogramar las seis excepciones conocidas. El control de volumen usa `scandir` y mantiene una lectura nueva antes de cada escritura; el benchmark de 3,81 veces corresponde a ese control, no a toda la inferencia.
+
+El visor y `/v1/coverage/passes` reúnen segmentos compatibles de una misma pasada, verifican sus máscaras y distinguen área, días e intervalos entre capturas útiles. El archivo guardado se invalida cuando cambian las fuentes o se rechazan observaciones. Se comprobó el periodo sin capturas para que no anunciara una frecuencia inexistente. Las propuestas geográficas de 250/500 m permanecen inactivas; el contraste independiente con costa OSM identificó tierra dentro del fondeo provisional de Santo Tomás. [Método y alternativas](coverage.md).
+
+La intervención científica compara dos tamaños de ancla con una receta prefijada sobre TRAIN. El resultado interno pasó de 16 TP / 4 FP / 4 FN a 17 TP / 3 FP / 3 FN, principalmente por una referencia de Barrios. La revisión adicional conserva dos ámbitos completos, una referencia IA nueva y 30 abstenciones. Se separan explícitamente diagnóstico, desarrollo, ajuste e independencia; los detalles y recibos de entrenamiento están en [fase 3](../reports/local-review/phase3-diagnosis/README.md). No se abrieron CAL/TEST en esta ronda ni se habilitó publicación automática.
+
+El software 0.3.0 pasó 306 pruebas con ML y 289 con 14 omisiones esperadas sin Torch. La wheel se instaló en otro entorno, se comprobaron API y visor, y `doctor --check-release` conserva cinco tareas científicas pendientes. La conciliación histórica sí tiene evidencia suficiente y quedó registrada. No se declara una nueva copia/restauración de todos los datos. [Entrega operativa](../reports/release-v0.3.0/README.md).
+
+Por instrucción del titular, se fijó la identidad local de Git a `yehosuah` y su dirección noreply de GitHub; la cuenta autenticada se verificó. [AGENTS.md](../AGENTS.md) exige comprobar autor, committer y cuenta antes de futuras publicaciones. No se reescribe la atribución de commits anteriores.

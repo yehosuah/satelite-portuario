@@ -1,0 +1,32 @@
+{
+  "scope": "Entire live data directory after pilot worker stopped at acquisition boundary",
+  "measurements": [
+    {
+      "method": "pathlib_rglob",
+      "seconds": 4.931307833001483,
+      "bytes": 44344941184
+    },
+    {
+      "method": "scandir",
+      "seconds": 1.2158134159981273,
+      "bytes": 44344941184
+    },
+    {
+      "method": "pathlib_rglob",
+      "seconds": 3.6566714579821564,
+      "bytes": 44344941184
+    },
+    {
+      "method": "scandir",
+      "seconds": 1.0377914999844506,
+      "bytes": 44344941184
+    }
+  ],
+  "byte_totals_equal": true,
+  "limit_policy": "No cached total; every write still measures current regular files and rejects over-budget writes; symlinks excluded",
+  "mean_seconds": {
+    "pathlib_rglob": 4.29398964549182,
+    "scandir": 1.126802457991289
+  },
+  "measured_ratio": 3.8107741202007706
+}

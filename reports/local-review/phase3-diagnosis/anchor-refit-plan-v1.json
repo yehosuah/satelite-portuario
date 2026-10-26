@@ -1,0 +1,64 @@
+{
+  "schema_version": "selected-anchor-refit-v1",
+  "created_at": "2026-10-26T03:29:04.088682Z",
+  "comparison": "data/experiments/train-anchor-comparison-v3-20261026",
+  "comparison_evidence": {
+    "data/experiments/train-anchor-comparison-v3-20261026/completed.json": "a501b1710a5d5b98a6d0f8bfddd19adb00c15842e8ac9973d8f24ec1bcdeb5ca",
+    "data/experiments/train-anchor-comparison-v3-20261026/selection.json": "6910b848e9c431e6e6cde683e28a4553256002e3b31332f48e2b0e735ea55681",
+    "data/experiments/train-anchor-comparison-v3-20261026/freeze.json": "340483bfb129d40362e611a6ec4815f1266531a71ad263c2b62a88be93bdc3c2",
+    "data/experiments/train-anchor-comparison-v3-20261026/plan.json": "0bd4d81311c5545532108dfaaa90cb6d1f9325300f0e4c8f3ee3eb8869c3ef5c",
+    "data/experiments/train-anchor-comparison-v3-20261026/baseline_anchors/completed.json": "1af8b80f73117bb989a7c566cad2897c30d58fc4a4b85b8e0f14d48e097a7e10",
+    "data/experiments/train-anchor-comparison-v3-20261026/baseline_anchors/trained/manifest.json": "364194721e13c694474706a032953fc450d74868a7ea3803db2f05cbd2adc1b7",
+    "data/experiments/train-anchor-comparison-v3-20261026/baseline_anchors/development/report.json": "16ef156b96e5bc85a00140e93ba536696c4939ee206f583eb38f30b994d1b861",
+    "data/experiments/train-anchor-comparison-v3-20261026/baseline_anchors/development/predictions.json": "9065c203ce9bdc9a8319daaee5624ff3f72336c4d68e3c00248309ce608aff78",
+    "data/experiments/train-anchor-comparison-v3-20261026/small_anchors/completed.json": "607bfa30ad427cf4eba095d27d57b2346c42a3fa4d71306b29bf02eb9bec3290",
+    "data/experiments/train-anchor-comparison-v3-20261026/small_anchors/trained/manifest.json": "337cc6cd647d75234b588a2286a7ad79ee19b72936266cf00d8e5de846f50865",
+    "data/experiments/train-anchor-comparison-v3-20261026/small_anchors/development/report.json": "f7c6d1d6b227753ec87d0153b871868b1ae85453ec1c03079780347bb0d7b2f7",
+    "data/experiments/train-anchor-comparison-v3-20261026/small_anchors/development/predictions.json": "30c688df0a22ecf067425f8328606c031e75557a39cea07a25c493bc7f0ba213"
+  },
+  "selected_recipe": {
+    "name": "small_anchors",
+    "anchor_sizes": [
+      [
+        8
+      ],
+      [
+        16
+      ],
+      [
+        32
+      ],
+      [
+        64
+      ]
+    ],
+    "epochs": 12,
+    "learning_rate": 0.0001,
+    "sample_order": "shuffle"
+  },
+  "dataset": {
+    "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+    "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc",
+    "split": "train",
+    "source_path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+    "source_sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204"
+  },
+  "planned_steps": 1008,
+  "seed": 20261021,
+  "cpu_threads": 4,
+  "encoder_frozen": true,
+  "budget": {
+    "total_heavy_seconds": 1200,
+    "comparison_heavy_seconds": 323.335223165981,
+    "refit_heavy_seconds": 876.664776834019,
+    "training_ceiling_seconds": 696.664776834019,
+    "fit_and_io_reserved_seconds": 180
+  },
+  "fit_score_threshold": 0.5,
+  "fit_iou_threshold": 0.5,
+  "new_march_labels_included": false,
+  "calibration_or_test_permitted": false,
+  "automatic_publication": false,
+  "local_validation_demonstrated": false,
+  "interpretation": "Refit from the same public initialization on the original 51 TRAIN references. Fit is not independent validation. February has already been used for development and failed CAL remains exposed diagnostic only."
+}

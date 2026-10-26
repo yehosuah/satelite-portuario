@@ -1,0 +1,67 @@
+{
+  "created_at": "2026-10-26T02:50:20.300164Z",
+  "stage": "independent_raw_first_pass_before_proposals_or_consensus",
+  "split": "train",
+  "input_directory": "train-s2-mar-apr-raw",
+  "evidence_correction": "First display used STCcanal mosaic, missing NW fondeo tile; no negative labels or final scopes accepted there. Corrected full mosaic will be reviewed separately. Global pixel transform unchanged.",
+  "model_predictions_scores_or_counts_opened": false,
+  "source_kind": "ai_visual_review",
+  "human_review": false,
+  "reviewers": {
+    "codex-ai-root": {
+      "20250301": "Cloud; abstain.",
+      "20250316": {
+        "clear_visual_boxes_px": [
+          [
+            466,
+            731,
+            474,
+            736
+          ]
+        ],
+        "notes": "Clear moving vessel near(470,734), exclude wake. Another vessel at jettyNEofSTC near(493,1078), outside stc_muelles crop. PBRthreeforms in[495,688,537,704]ambiguousstructure/vessels; probable north/southships but no hardlabels. PBRfondeo no clearboats. Canal no clear objects in crop, not complete scopeyet."
+      },
+      "20250403": {
+        "clear_visual_boxes_px": [
+          [
+            491,
+            426,
+            499,
+            445
+          ]
+        ],
+        "notes": "Clear moving ship+wake at(494,436). PBRbrightforms ambiguouspier; STCNE[459,1093,469,1100]probableship insufficient."
+      },
+      "20250418": "Cloud/shadow/glintmuelles;abstain; no unambiguous boxes."
+    },
+    "codex-ai-science-next": {
+      "20250301": "Cloudabstentionallzones; no negatives.",
+      "20250316": {
+        "clear_visual_centers_px": [
+          [
+            470,
+            733
+          ],
+          [
+            324,
+            475
+          ]
+        ],
+        "notes": "Moving ship+wake near(470,733)probablyoutsideAOIv1. NWcoast(324,475)withwake; second(361,601)probablyoutside. PBRdistinct northbody[512,689,534,696]andsouth[515,697,535,703];westernred[494,694,513,700]doubtful. Need crossdate/rawcrop before accepting. STCmainfront no unambiguouscontact."
+      },
+      "20250403": {
+        "clear_visual_centers_px": [
+          [
+            494,
+            435
+          ]
+        ],
+        "notes": "Moving ship likely in STCcanal. PBRnorth[513,691,534,695]colorchanges vsMarch but structure uncertain. STC[455,1093,469,1102]probablevessel insufficient."
+      },
+      "20250418": "Abstaincloud/glint. Smallbright[393,1129,396,1133]uncertain, not positive."
+    }
+  },
+  "labels_accepted": false,
+  "scene_complete": false,
+  "local_validation_demonstrated": false
+}

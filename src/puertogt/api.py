@@ -17,6 +17,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
+from puertogt import __version__
 from puertogt.contracts import as_utc
 from puertogt.review import ReviewConflict, add_detection, record_review
 from puertogt.store import Store, confined_path, utc_text
@@ -57,7 +58,7 @@ def create_app(
     ports_path = ports_path or config_path() / "ports.geojson"
     app = FastAPI(
         title="Satélite Portuario",
-        version="0.1.0",
+        version=__version__,
         description="Observaciones por adquisición. Ningún conteo implica llegadas, TEU ni ausencia absoluta de buques.",
     )
     app.state.store = store
@@ -346,6 +347,30 @@ def create_app(
         report = coverage_report(store, ports_path, port_id=port_id, recipe_version=recipe_version)
         report.pop("exceptions")
         return report
+
+    @app.get("/v1/coverage/passes")
+    def pass_coverage(
+        port_id: str | None = None,
+        sensor: Literal["sentinel-1", "sentinel-2"] | None = None,
+        start: datetime | None = None,
+        end: datetime | None = None,
+        recipe_version: str | None = None,
+        min_observable_fraction: Annotated[float, Query(gt=0, le=1)] = 0.9,
+    ):
+        from puertogt.pass_coverage import pass_coverage_report
+
+        try:
+            start = as_utc(start) if start else None
+            end = as_utc(end) if end else None
+            if start and end and start >= end:
+                raise ValueError("start must precede end")
+            return pass_coverage_report(
+                store, ports_path, port_id=port_id, sensor=sensor, start=start, end=end,
+                recipe_version=recipe_version, min_observable_fraction=min_observable_fraction,
+                mask_union_cache=store.data_dir / "coverage" / "pass-unions-v1.json",
+            )
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
 
     @app.post("/v1/reviews", dependencies=[Depends(authorize)])
     def review(body: ReviewInput):

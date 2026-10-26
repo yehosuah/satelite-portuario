@@ -11,6 +11,7 @@ const state = {
   ports: new Map(), zones: new Map(), observations: [], observation: null, cursor: null, proposals: [], changes: [],
   selected: null, mode: "detections", tool: "select", token: "", author: "", busy: false,
   asset: null, bounds: null, drag: null, generation: 0, loading: false, reviewerKind: "human_visual_review",
+  coverageGeneration: 0,
 };
 
 function node(tag, text, className) {
@@ -139,6 +140,60 @@ function filterParams() {
     if (value) params.set(key, input.includes("start") || input.includes("end") ? `${value}T00:00:00Z` : value);
   }
   return params;
+}
+
+function coverageTable(items, byZone = false) {
+  const table = node("table", undefined, "coverage-table");
+  const caption = node("caption", byZone ? "Cobertura por zona y sensor" : "Pasadas únicas por puerto y sensor");
+  const head = node("thead"), header = node("tr");
+  for (const text of [byZone ? "Zona" : "Puerto", "Sensor", "Pasadas", "Con área mínima", "Días útiles", "Intervalo mediano", "Mayor intervalo"]) {
+    const th = node("th", text); th.scope = "col"; header.append(th);
+  }
+  head.append(header);
+  const body = node("tbody"), number = new Intl.NumberFormat("es-GT", { maximumFractionDigits: 1 });
+  const days = (value) => value == null ? "Sin suficientes datos" : `${number.format(value)} días`;
+  const sensorNames = { "sentinel-1": "Radar", "sentinel-2": "Óptico", combined: "Radar y óptico" };
+  for (const item of items) {
+    const row = node("tr");
+    row.classList.toggle("combined-pass", item.sensor === "combined");
+    const label = byZone ? item.zone_id.replace(/^[^_]+_/, "").replaceAll("_", " ") : (state.ports.get(item.port_id) || item.port_name || item.port_id);
+    const name = node("th", byZone ? `${state.ports.get(item.port_id) || item.port_id} · ${label}` : label); name.scope = "row";
+    const gaps = item.sufficiently_observed_intervals_days;
+    row.append(name, node("td", sensorNames[item.sensor] || item.sensor), node("td", number.format(item.catalogued_passes)),
+      node("td", number.format(item.sufficiently_observed_passes)), node("td", number.format(item.sufficiently_observed_days)),
+      node("td", days(gaps.median)), node("td", days(gaps.max)));
+    body.append(row);
+  }
+  table.append(caption, head, body);
+  return table;
+}
+
+async function loadPassCoverage() {
+  const generation = ++state.coverageGeneration;
+  const button = $("refresh-coverage"); button.disabled = true;
+  $("coverage-error").hidden = true;
+  try {
+    const params = filterParams(); params.delete("limit");
+    params.set("min_observable_fraction", $("coverage-threshold").value);
+    const result = await api(`/v1/coverage/passes?${params}`);
+    if (generation !== state.coverageGeneration) return;
+    const minimum = Math.round(result.filters.min_observable_fraction * 100);
+    const hasPasses = result.items.some((item) => item.catalogued_passes > 0);
+    $("coverage-summary").textContent = `Área mínima ${minimum}% por zona · ${hasPasses ? "frecuencia medida" : "sin pasadas en este periodo"}`;
+    $("coverage-period").textContent = `${date(result.period.start)} a ${date(result.period.end)} (fin exclusivo). Los intervalos se miden entre pasadas útiles; no incluyen los extremos del periodo.`;
+    $("coverage-table").replaceChildren(hasPasses ? coverageTable(result.items) : node("p", "No hay pasadas en este periodo."));
+    $("coverage-zone-table").replaceChildren(result.zones.length ? coverageTable(result.zones, true) : node("p", "Sin zonas para estos filtros."));
+    $("coverage-method").textContent = result.source.mask_union_entries_applied > 0
+      ? "Las áreas observables de partes compatibles de una misma pasada se unen sin contar dos veces el solapamiento. En las demás se conserva la mayor fracción observada. Sin datos suficientes, el intervalo queda sin estimar."
+      : "Estimación conservadora: usa la mayor fracción observada de cada zona dentro de la pasada. Las partes de una escena no cuentan como visitas adicionales y sus porcentajes no se suman. Sin datos suficientes, el intervalo queda sin estimar.";
+  } catch (error) {
+    if (generation !== state.coverageGeneration) return;
+    $("coverage-summary").textContent = "Cobertura sin actualizar";
+    $("coverage-table").replaceChildren(); $("coverage-zone-table").replaceChildren();
+    $("coverage-period").textContent = "";
+    $("coverage-error").textContent = error.status === 422 ? `Revisa los filtros: ${error.message}` : "No se pudo consultar la cobertura. Actualiza para volver a intentarlo.";
+    $("coverage-error").hidden = false;
+  } finally { if (generation === state.coverageGeneration) button.disabled = false; }
 }
 
 async function loadObservations(append = false) {
@@ -593,9 +648,12 @@ $("auth-form").addEventListener("submit", (event) => {
   notify("Credencial guardada en memoria. Se verificará al guardar una corrección."); updateControls();
 });
 $("lock-review").addEventListener("click", () => { state.token = ""; $("token").value = ""; setTool("select"); updateControls(); notify("Acceso de revisión cerrado."); });
-$("filters").addEventListener("submit", (event) => { event.preventDefault(); loadObservations(); });
+$("filters").addEventListener("submit", (event) => { event.preventDefault(); loadObservations(); if ($("coverage-panel").open) loadPassCoverage(); });
 $("more-scenes").addEventListener("click", () => loadObservations(true));
 $("refresh-system").addEventListener("click", loadSystemStatus);
+$("refresh-coverage").addEventListener("click", loadPassCoverage);
+$("coverage-threshold").addEventListener("change", loadPassCoverage);
+$("coverage-panel").addEventListener("toggle", () => { if ($("coverage-panel").open) loadPassCoverage(); });
 for (const tool of ["select", "add", "move", "redraw"]) $("tool-" + tool).addEventListener("click", () => setTool(tool));
 $("accept").addEventListener("click", () => saveReview({ review_status: "reviewed" }));
 $("reject").addEventListener("click", () => saveReview(state.mode === "changes" ? { review_status: "rejected", status: "rejected" } : { review_status: "rejected" }));

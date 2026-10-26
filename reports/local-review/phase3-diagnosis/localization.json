@@ -1,0 +1,3109 @@
+{
+  "schema_version": "phase2-frozen-localization-diagnostic-v1",
+  "created_at": "2026-10-26T02:41:02.334676Z",
+  "input_pins": {
+    "train": {
+      "path": "data/experiments/phase2-s2-train-temporal-v1-20261022/final-training-fit/predictions.json",
+      "sha256": "2c135d7e5f22262c99f5dcec6c572896640d91c2b7174b69c5536bd6dc61f0c3"
+    },
+    "calibration": {
+      "path": "data/experiments/phase2-s2-candidate-calibration-v1-20261023/calibration/predictions.json",
+      "sha256": "511e92cba30f8cc9c383a2a24e4b9171f896b12af3b6d0229d26a2403938236c"
+    }
+  },
+  "script_sha256": "bbd85555db0255d7ea9e998a44586f710cdf08bf42b02d68a6e32ed946f4049a",
+  "results": {
+    "train": {
+      "split": "train",
+      "score_threshold": 0.5,
+      "iou_threshold": 0.5,
+      "strict_metrics": {
+        "overall": {
+          "true_positives": 48,
+          "false_positives": 3,
+          "false_negatives": 3,
+          "prediction_count": 51,
+          "reference_count": 51,
+          "scene_count": 10,
+          "precision": 0.9411764705882353,
+          "recall": 0.9411764705882353,
+          "precision_interval": [
+            0.8407537395119957,
+            0.9797933605775353
+          ],
+          "recall_interval": [
+            0.8407537395119957,
+            0.9797933605775353
+          ],
+          "false_positives_per_scene": 0.3
+        },
+        "ports": {
+          "pbr": {
+            "true_positives": 1,
+            "false_positives": 1,
+            "false_negatives": 1,
+            "prediction_count": 2,
+            "reference_count": 2,
+            "scene_count": 3,
+            "precision": 0.5,
+            "recall": 0.5,
+            "precision_interval": [
+              0.09453120573423074,
+              0.9054687942657693
+            ],
+            "recall_interval": [
+              0.09453120573423074,
+              0.9054687942657693
+            ],
+            "false_positives_per_scene": 0.3333333333333333,
+            "pass_count": 3,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target"
+            ]
+          },
+          "prq": {
+            "true_positives": 47,
+            "false_positives": 2,
+            "false_negatives": 1,
+            "prediction_count": 49,
+            "reference_count": 48,
+            "scene_count": 4,
+            "precision": 0.9591836734693877,
+            "recall": 0.9791666666666666,
+            "precision_interval": [
+              0.8628696769391992,
+              0.9887343666338142
+            ],
+            "recall_interval": [
+              0.8910078200474814,
+              0.9963128890224893
+            ],
+            "false_positives_per_scene": 0.5,
+            "pass_count": 4,
+            "eligible": true,
+            "reasons": []
+          },
+          "stc": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 1,
+            "prediction_count": 0,
+            "reference_count": 1,
+            "scene_count": 3,
+            "precision": null,
+            "recall": 0.0,
+            "precision_interval": null,
+            "recall_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "false_positives_per_scene": 0.0,
+            "pass_count": 3,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target"
+            ]
+          }
+        }
+      },
+      "counts": {
+        "overall": {
+          "true_positives": 48,
+          "false_positives": 3,
+          "false_negatives": 3,
+          "references": 51,
+          "predictions": 51,
+          "port_acquisitions": 10,
+          "false_positive_without_reference_overlap": 1,
+          "false_positive_with_reference_overlap": 2,
+          "false_negative_with_prediction_overlap": 2,
+          "false_negative_without_prediction_overlap": 1
+        },
+        "ports": {
+          "prq": {
+            "true_positives": 47,
+            "false_positives": 2,
+            "false_negatives": 1,
+            "references": 48,
+            "predictions": 49,
+            "port_acquisitions": 4,
+            "false_positive_without_reference_overlap": 1,
+            "false_positive_with_reference_overlap": 1,
+            "false_negative_with_prediction_overlap": 1
+          },
+          "stc": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 1,
+            "references": 1,
+            "predictions": 0,
+            "port_acquisitions": 3,
+            "false_negative_without_prediction_overlap": 1
+          },
+          "pbr": {
+            "true_positives": 1,
+            "false_positives": 1,
+            "false_negatives": 1,
+            "references": 2,
+            "predictions": 2,
+            "port_acquisitions": 3,
+            "false_positive_with_reference_overlap": 1,
+            "false_negative_with_prediction_overlap": 1
+          }
+        }
+      },
+      "geometry_distributions": {
+        "pbr": {
+          "overlapping_fp_best_iou": {
+            "count": 1,
+            "minimum": 0.40554226099325247,
+            "median": 0.40554226099325247,
+            "maximum": 0.40554226099325247
+          },
+          "overlapping_fp_centroid_distance_m": {
+            "count": 1,
+            "minimum": 25.2602398720991,
+            "median": 25.2602398720991,
+            "maximum": 25.2602398720991
+          },
+          "overlapping_fp_area_ratio": {
+            "count": 1,
+            "minimum": 1.5923314075192025,
+            "median": 1.5923314075192025,
+            "maximum": 1.5923314075192025
+          }
+        },
+        "prq": {
+          "overlapping_fp_best_iou": {
+            "count": 1,
+            "minimum": 0.45882808189483065,
+            "median": 0.45882808189483065,
+            "maximum": 0.45882808189483065
+          },
+          "overlapping_fp_centroid_distance_m": {
+            "count": 1,
+            "minimum": 2.2083064295117905,
+            "median": 2.2083064295117905,
+            "maximum": 2.2083064295117905
+          },
+          "overlapping_fp_area_ratio": {
+            "count": 1,
+            "minimum": 2.179465554658908,
+            "median": 2.179465554658908,
+            "maximum": 2.179465554658908
+          }
+        }
+      },
+      "errors": [
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T16PCC|stc-20250118-white-berthed-vessel",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "prediction_id": "7b25c31dc0196074f2d91705",
+          "score": 0.7891281843185425,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T16PCC",
+          "prediction_id": "2485646a8d82b4ba70c3f469",
+          "score": 0.9263405799865723,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.40554226099325247,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20250217T162239:R040:T16PCC|S2B:MSIL1C:20250217T162239:R040:T16PCC:raw-feb-round2:V01",
+          "centroid_distance_m": 25.2602398720991,
+          "predicted_to_reference_area_ratio": 1.5923314075192025,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T16PCC|S2B:MSIL1C:20250217T162239:R040:T16PCC:raw-feb-round2:V01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.40554226099325247
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "prediction_id": "00d22b0a16a289fea13ce0db",
+          "score": 0.8861307501792908,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.45882808189483065,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V06",
+          "centroid_distance_m": 2.2083064295117905,
+          "predicted_to_reference_area_ratio": 2.179465554658908,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V06",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.45882808189483065
+        }
+      ],
+      "reference_geometry": [
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v15-east-red-berthed-vessel",
+          "zone_ids": [
+            "prq_canal",
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 145.3943142881617,
+          "visual_wgs84_envelope_utm_height_m": 292.60415172344074,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.96338311489671,
+          "visual_wgs84_envelope_utm_height_m": 163.148594556842,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.75597358657978,
+          "visual_wgs84_envelope_utm_height_m": 153.30716830049641,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.02770075050648,
+          "visual_wgs84_envelope_utm_height_m": 113.13371933996677,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 162.04879940208048,
+          "visual_wgs84_envelope_utm_height_m": 112.98007185687311,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 221.4811177039519,
+          "visual_wgs84_envelope_utm_height_m": 84.07307367864996,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.19994103570934,
+          "visual_wgs84_envelope_utm_height_m": 123.48323997063562,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.23166771105025,
+          "visual_wgs84_envelope_utm_height_m": 123.34750156407245,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 162.5831719917478,
+          "visual_wgs84_envelope_utm_height_m": 142.95219655847177,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 152.94139758183155,
+          "visual_wgs84_envelope_utm_height_m": 162.75756023242138,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 152.77891871146858,
+          "visual_wgs84_envelope_utm_height_m": 152.7789187093731,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.78979869524483,
+          "visual_wgs84_envelope_utm_height_m": 153.16177185275592,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.2317827101797,
+          "visual_wgs84_envelope_utm_height_m": 123.53365595522337,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 312.79458239418454,
+          "visual_wgs84_envelope_utm_height_m": 155.77547027170658,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20250103T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20250103T162701:R040:T15PYR|prq-20250103-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.47400572919287,
+          "visual_wgs84_envelope_utm_height_m": 83.50076360418461,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 133.34842758451123,
+          "visual_wgs84_envelope_utm_height_m": 182.41830880893394,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 113.13286311470438,
+          "visual_wgs84_envelope_utm_height_m": 172.02714672125876,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 73.72120774257928,
+          "visual_wgs84_envelope_utm_height_m": 201.30242270953022,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 63.52002366259694,
+          "visual_wgs84_envelope_utm_height_m": 191.11158641963266,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.70436439150944,
+          "visual_wgs84_envelope_utm_height_m": 201.48174575599842,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 153.12202832626645,
+          "visual_wgs84_envelope_utm_height_m": 172.7547308728099,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 64.09688785660546,
+          "visual_wgs84_envelope_utm_height_m": 221.11733305081725,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 74.62282484583557,
+          "visual_wgs84_envelope_utm_height_m": 251.29439095640555,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v16",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.87454982672352,
+          "visual_wgs84_envelope_utm_height_m": 211.47601898084395,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.90764014632441,
+          "visual_wgs84_envelope_utm_height_m": 211.67470291955397,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 73.52478697919287,
+          "visual_wgs84_envelope_utm_height_m": 191.29860572889447,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 73.49464502022602,
+          "visual_wgs84_envelope_utm_height_m": 191.28750079660676,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v15",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.48428417439573,
+          "visual_wgs84_envelope_utm_height_m": 191.8338337757159,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T15PYR|prq-20250118-s2-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 73.32179932727013,
+          "visual_wgs84_envelope_utm_height_m": 181.2918108496815,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T16PCC|stc-20250118-white-berthed-vessel",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.98163451242726,
+          "visual_wgs84_envelope_utm_height_m": 133.20110190217383,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20250118T162519:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20250118T162519:R040:T16PCC|pbr-20250118-red-berthed-vessel",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 221.06520663405536,
+          "visual_wgs84_envelope_utm_height_m": 73.34779227571562,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V18",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.30310649098828,
+          "visual_wgs84_envelope_utm_height_m": 73.53700333135203,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 142.41275522799697,
+          "visual_wgs84_envelope_utm_height_m": 132.5983517828863,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.47112611378543,
+          "visual_wgs84_envelope_utm_height_m": 83.86170604638755,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.11713421833701,
+          "visual_wgs84_envelope_utm_height_m": 63.53759169112891,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 152.5874284247402,
+          "visual_wgs84_envelope_utm_height_m": 142.77224473957904,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.84639032091945,
+          "visual_wgs84_envelope_utm_height_m": 103.87741966941394,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 121.85402666777372,
+          "visual_wgs84_envelope_utm_height_m": 102.22483199997805,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V19",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 152.20643735385966,
+          "visual_wgs84_envelope_utm_height_m": 122.75804669363424,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.84769689990208,
+          "visual_wgs84_envelope_utm_height_m": 103.51062410860322,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V17",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.8546462394297,
+          "visual_wgs84_envelope_utm_height_m": 103.89475710596889,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.11704653920606,
+          "visual_wgs84_envelope_utm_height_m": 63.90966288233176,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 151.66903409454972,
+          "visual_wgs84_envelope_utm_height_m": 92.7817234871909,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 113.16870901396032,
+          "visual_wgs84_envelope_utm_height_m": 172.05034112604335,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V20",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.39913779788185,
+          "visual_wgs84_envelope_utm_height_m": 133.3218831019476,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20250202T162531:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20250202T162531:R040:T15PYR|S2C:MSIL1C:20250202T162531:R040:T15PYR:raw-feb-round2:V23",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.29764724872075,
+          "visual_wgs84_envelope_utm_height_m": 73.52218539081514,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T16PCC|S2B:MSIL1C:20250217T162239:R040:T16PCC:raw-feb-round2:V01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 251.0653058005264,
+          "visual_wgs84_envelope_utm_height_m": 73.80466357036494,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V14",
+          "zone_ids": [
+            "prq_canal",
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 72.97630964254495,
+          "visual_wgs84_envelope_utm_height_m": 161.3021354682278,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 43.348964530043304,
+          "visual_wgs84_envelope_utm_height_m": 180.74421434057876,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 63.33484985528048,
+          "visual_wgs84_envelope_utm_height_m": 181.11161661799997,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20250217T162239:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20250217T162239:R040:T15PYR|S2B:MSIL1C:20250217T162239:R040:T15PYR:raw-feb-round2:V02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 122.96828115649987,
+          "visual_wgs84_envelope_utm_height_m": 162.22621086682193,
+          "physical_vessel_dimensions": false
+        }
+      ],
+      "counts_reconciled": true,
+      "local_validation_demonstrated": false
+    },
+    "calibration": {
+      "split": "calibration",
+      "score_threshold": 0.5,
+      "iou_threshold": 0.5,
+      "strict_metrics": {
+        "overall": {
+          "true_positives": 73,
+          "false_positives": 34,
+          "false_negatives": 40,
+          "prediction_count": 107,
+          "reference_count": 113,
+          "scene_count": 29,
+          "precision": 0.6822429906542056,
+          "recall": 0.6460176991150443,
+          "precision_interval": [
+            0.5890181027627126,
+            0.7628358011369958
+          ],
+          "recall_interval": [
+            0.5543755190871066,
+            0.7280584759440755
+          ],
+          "false_positives_per_scene": 1.1724137931034482
+        },
+        "ports": {
+          "pbr": {
+            "true_positives": 5,
+            "false_positives": 6,
+            "false_negatives": 11,
+            "prediction_count": 11,
+            "reference_count": 16,
+            "scene_count": 11,
+            "precision": 0.45454545454545453,
+            "recall": 0.3125,
+            "precision_interval": [
+              0.21271271622459764,
+              0.719908462590678
+            ],
+            "recall_interval": [
+              0.14164643854782039,
+              0.5559564416525933
+            ],
+            "false_positives_per_scene": 0.5454545454545454,
+            "pass_count": 11,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target"
+            ]
+          },
+          "prq": {
+            "true_positives": 66,
+            "false_positives": 21,
+            "false_negatives": 21,
+            "prediction_count": 87,
+            "reference_count": 87,
+            "scene_count": 5,
+            "precision": 0.7586206896551724,
+            "recall": 0.7586206896551724,
+            "precision_interval": [
+              0.6590101624669179,
+              0.8363583684240542
+            ],
+            "recall_interval": [
+              0.6590101624669179,
+              0.8363583684240542
+            ],
+            "false_positives_per_scene": 4.2,
+            "pass_count": 5,
+            "eligible": false,
+            "reasons": [
+              "precision_below_target",
+              "recall_below_target"
+            ]
+          },
+          "stc": {
+            "true_positives": 2,
+            "false_positives": 7,
+            "false_negatives": 8,
+            "prediction_count": 9,
+            "reference_count": 10,
+            "scene_count": 13,
+            "precision": 0.2222222222222222,
+            "recall": 0.2,
+            "precision_interval": [
+              0.06322510711784671,
+              0.5474110308930111
+            ],
+            "recall_interval": [
+              0.05668215145437519,
+              0.5098375284633583
+            ],
+            "false_positives_per_scene": 0.5384615384615384,
+            "pass_count": 13,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target"
+            ]
+          }
+        }
+      },
+      "counts": {
+        "overall": {
+          "true_positives": 73,
+          "false_positives": 34,
+          "false_negatives": 40,
+          "references": 113,
+          "predictions": 107,
+          "port_acquisitions": 29,
+          "false_positive_with_reference_overlap": 26,
+          "false_negative_with_prediction_overlap": 29,
+          "false_negative_without_prediction_overlap": 11,
+          "false_positive_without_reference_overlap": 8
+        },
+        "ports": {
+          "stc": {
+            "true_positives": 2,
+            "false_positives": 7,
+            "false_negatives": 8,
+            "references": 10,
+            "predictions": 9,
+            "port_acquisitions": 13,
+            "false_positive_with_reference_overlap": 3,
+            "false_negative_with_prediction_overlap": 3,
+            "false_negative_without_prediction_overlap": 5,
+            "false_positive_without_reference_overlap": 4
+          },
+          "pbr": {
+            "true_positives": 5,
+            "false_positives": 6,
+            "false_negatives": 11,
+            "references": 16,
+            "predictions": 11,
+            "port_acquisitions": 11,
+            "false_negative_without_prediction_overlap": 3,
+            "false_positive_with_reference_overlap": 5,
+            "false_negative_with_prediction_overlap": 8,
+            "false_positive_without_reference_overlap": 1
+          },
+          "prq": {
+            "true_positives": 66,
+            "false_positives": 21,
+            "false_negatives": 21,
+            "references": 87,
+            "predictions": 87,
+            "port_acquisitions": 5,
+            "false_positive_without_reference_overlap": 3,
+            "false_positive_with_reference_overlap": 18,
+            "false_negative_with_prediction_overlap": 18,
+            "false_negative_without_prediction_overlap": 3
+          }
+        }
+      },
+      "geometry_distributions": {
+        "stc": {
+          "overlapping_fp_best_iou": {
+            "count": 3,
+            "minimum": 0.2082654251160324,
+            "median": 0.3118234726497188,
+            "maximum": 0.4866575430703658
+          },
+          "overlapping_fp_centroid_distance_m": {
+            "count": 3,
+            "minimum": 13.32523410411044,
+            "median": 42.568679347228276,
+            "maximum": 74.90808693090754
+          },
+          "overlapping_fp_area_ratio": {
+            "count": 3,
+            "minimum": 0.6343299538784982,
+            "median": 1.1482398320106948,
+            "maximum": 4.801565115490787
+          }
+        },
+        "prq": {
+          "overlapping_fp_best_iou": {
+            "count": 18,
+            "minimum": 0.26560465819421014,
+            "median": 0.3964614223470903,
+            "maximum": 0.49385279738169574
+          },
+          "overlapping_fp_centroid_distance_m": {
+            "count": 18,
+            "minimum": 1.3780979568538962,
+            "median": 11.275603874370299,
+            "maximum": 53.63824589552857
+          },
+          "overlapping_fp_area_ratio": {
+            "count": 18,
+            "minimum": 1.6745310933396973,
+            "median": 2.4657942774016166,
+            "maximum": 3.7649942090578845
+          }
+        },
+        "pbr": {
+          "overlapping_fp_best_iou": {
+            "count": 5,
+            "minimum": 0.23341395496704037,
+            "median": 0.33293023122940085,
+            "maximum": 0.45399222475836426
+          },
+          "overlapping_fp_centroid_distance_m": {
+            "count": 5,
+            "minimum": 10.497401930531572,
+            "median": 55.96033897567494,
+            "maximum": 63.750704147003155
+          },
+          "overlapping_fp_area_ratio": {
+            "count": 5,
+            "minimum": 0.9371370606296687,
+            "median": 1.232685557331562,
+            "maximum": 2.0035971342079075
+          }
+        }
+      },
+      "errors": [
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "prediction_id": "4fb9d17dccf4bbdaf21a2e4f",
+          "score": 0.8557259440422058,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.3118234726497188,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v02",
+          "centroid_distance_m": 74.90808693090754,
+          "predicted_to_reference_area_ratio": 0.6343299538784982,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v02",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.3118234726497188
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v03",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v02",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v01",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v03",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "prediction_id": "22409eb15b702fe4b6acda41",
+          "score": 0.764370322227478,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "prediction_id": "35b89610ccc0d4796939fa8b",
+          "score": 0.7440199851989746,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "prediction_id": "770238a9d10d5f39a8a485d1",
+          "score": 0.8619442582130432,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.43423536342861957,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v27",
+          "centroid_distance_m": 34.191896675688874,
+          "predicted_to_reference_area_ratio": 1.975772289878583,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "prediction_id": "adc01d60ec93a091ee4cf6eb",
+          "score": 0.5752897262573242,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v27",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.43423536342861957
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "prediction_id": "85a9f30da8363346776538ef",
+          "score": 0.8552280068397522,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "prediction_id": "65f144290bad60b39637be38",
+          "score": 0.6929610967636108,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "prediction_id": "9e5084503c97b33eb02fa258",
+          "score": 0.8712019324302673,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.2082654251160324,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T16PCC|stc-20251020-s2-v01",
+          "centroid_distance_m": 13.32523410411044,
+          "predicted_to_reference_area_ratio": 4.801565115490787,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T16PCC|stc-20251020-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.2082654251160324
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "cb28000a34590cdcc13d9224",
+          "score": 0.8862098455429077,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.3239874969344078,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v15",
+          "centroid_distance_m": 53.63824589552857,
+          "predicted_to_reference_area_ratio": 2.807986641823202,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "2de26c1496d130826dd79083",
+          "score": 0.9325724840164185,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.4649591786685945,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v11",
+          "centroid_distance_m": 6.0909870180009635,
+          "predicted_to_reference_area_ratio": 2.1507264419717207,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "3f14a81cf3228ee06a6ad58c",
+          "score": 0.9217702746391296,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.3951305828058604,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v09",
+          "centroid_distance_m": 4.861208929654977,
+          "predicted_to_reference_area_ratio": 2.5308089110665732,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "c3a734d53b72eb66aeb06de4",
+          "score": 0.9194694757461548,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.27930464023310064,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v14",
+          "centroid_distance_m": 3.4576803340805995,
+          "predicted_to_reference_area_ratio": 3.5803200375239923,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "0bf5ed7c5c50de692288c92c",
+          "score": 0.9193522930145264,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.39376474243253157,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v07",
+          "centroid_distance_m": 1.810281820110087,
+          "predicted_to_reference_area_ratio": 2.539587454738515,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "9eebb73d476374c77c758719",
+          "score": 0.9192435145378113,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.3570758509184625,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v06",
+          "centroid_distance_m": 4.536443467798974,
+          "predicted_to_reference_area_ratio": 2.800525427378587,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "f1e6304c22d4c885bca02b3c",
+          "score": 0.9179414510726929,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.36670252315158675,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v05",
+          "centroid_distance_m": 15.535564683482203,
+          "predicted_to_reference_area_ratio": 2.7270060522234854,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "ac2b6c3cb7bcbf5bda8b6085",
+          "score": 0.916715145111084,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.4592054101820423,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v10",
+          "centroid_distance_m": 1.3780979568538962,
+          "predicted_to_reference_area_ratio": 2.177674691601676,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "9fd5a1892cfbaa0ecb9f4dae",
+          "score": 0.9167144298553467,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.37206135877846325,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v04",
+          "centroid_distance_m": 5.720062434157129,
+          "predicted_to_reference_area_ratio": 2.687728721099013,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "061dff5ddef899a13748f1aa",
+          "score": 0.9122333526611328,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.39779226188832023,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v01",
+          "centroid_distance_m": 7.794775870118689,
+          "predicted_to_reference_area_ratio": 2.4182628513640534,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "debbf255b60991bb0511383b",
+          "score": 0.8777507543563843,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.49385279738169574,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v13",
+          "centroid_distance_m": 4.537462374550893,
+          "predicted_to_reference_area_ratio": 2.0248948781940506,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "prediction_id": "3629cff91320b2cc356d225d",
+          "score": 0.8407836556434631,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.40197465351364337,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v03",
+          "centroid_distance_m": 15.076285596758051,
+          "predicted_to_reference_area_ratio": 2.487581152163802,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v15",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.3239874969344078
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v13",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.49385279738169574
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.39779226188832023
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v03",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.40197465351364337
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v07",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.39376474243253157
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v05",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.36670252315158675
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v09",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.3951305828058604
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v11",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.4649591786685945
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v04",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.37206135877846325
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v10",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.4592054101820423
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v14",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.27930464023310064
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v06",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.3570758509184625
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|stc-20251025-s2-v01",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "prediction_id": "47cd067f653900af675c9d97",
+          "score": 0.8611972332000732,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.47681362637388597,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v18",
+          "centroid_distance_m": 29.301824369764457,
+          "predicted_to_reference_area_ratio": 2.025996626937136,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "prediction_id": "b354d21f8d61dd5da7585cd8",
+          "score": 0.704916775226593,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.4832714570474701,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v17",
+          "centroid_distance_m": 29.606285086725688,
+          "predicted_to_reference_area_ratio": 1.6745310933396973,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v18",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.47681362637388597
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v17",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.4832714570474701
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "prediction_id": "25793b6b54c1a84434ef7a1f",
+          "score": 0.909421443939209,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 2,
+          "best_reference_iou": 0.39739703546207056,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v01",
+          "centroid_distance_m": 61.28819479263206,
+          "predicted_to_reference_area_ratio": 1.232685557331562,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "prediction_id": "3630e2a6daae561d7f82c321",
+          "score": 0.6298433542251587,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 2,
+          "best_reference_iou": 0.33293023122940085,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v02",
+          "centroid_distance_m": 55.96033897567494,
+          "predicted_to_reference_area_ratio": 0.9371370606296687,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.39739703546207056
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v02",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.33293023122940085
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "prediction_id": "2c423f93b28236ea9cbe8765",
+          "score": 0.8238940834999084,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.26560465819421014,
+          "nearest_overlapping_reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v17",
+          "centroid_distance_m": 14.756431878621909,
+          "predicted_to_reference_area_ratio": 3.7649942090578845,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v16",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v12",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v17",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.26560465819421014
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v18",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251106T162101:R140:T16PCC|stc-20251106-s2-v01",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "prediction_id": "32097a2915c9946bb56efdc6",
+          "score": 0.866918683052063,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.47070316487471964,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v17",
+          "centroid_distance_m": 19.952707824383694,
+          "predicted_to_reference_area_ratio": 1.882900016262149,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "prediction_id": "4a871c6cf8ffc112a87c3ba7",
+          "score": 0.8473919034004211,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.3881127428254485,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v18",
+          "centroid_distance_m": 15.003152996701495,
+          "predicted_to_reference_area_ratio": 2.444007402639431,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v17",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.47070316487471964
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v18",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.3881127428254485
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T16PCC|pbr-20251109-s2-v02",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.034781356285760824
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+          "prediction_id": "1c0e3e944b20304f11ea46b9",
+          "score": 0.8670299053192139,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+          "prediction_id": "97d9c635f155466594fc0a5d",
+          "score": 0.9629951119422913,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.45399222475836426,
+          "nearest_overlapping_reference_id": "S2B:MSIL1C:20251201T161539:R140:T16PCC|pbr-20251201-s2-v01",
+          "centroid_distance_m": 10.497401930531572,
+          "predicted_to_reference_area_ratio": 2.0035971342079075,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+          "prediction_id": "238ac9ed1e3c2d5776e8fec1",
+          "score": 0.6446717381477356,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251201T161539:R140:T16PCC|pbr-20251201-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.45399222475836426
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251211T161559:R140:T16PCC|stc-20251211-s2-v02",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251211T161559:R140:T16PCC|stc-20251211-s2-v01",
+          "category": "false_negative_without_prediction_overlap",
+          "best_prediction_iou": 0.0
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "prediction_id": "02e258cbf89b05aef97a2303",
+          "score": 0.7819061875343323,
+          "category": "false_positive_without_reference_overlap",
+          "overlapping_references": 0,
+          "best_reference_iou": 0.0,
+          "nearest_overlapping_reference_id": null,
+          "centroid_distance_m": null,
+          "predicted_to_reference_area_ratio": null
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "prediction_id": "755969409c54b49d0c77826e",
+          "score": 0.8929415345191956,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 1,
+          "best_reference_iou": 0.4866575430703658,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|stc-20251219-s2-v01",
+          "centroid_distance_m": 42.568679347228276,
+          "predicted_to_reference_area_ratio": 1.1482398320106948,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|stc-20251219-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.4866575430703658
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "prediction_id": "5e5252f7d564de009345a1fe",
+          "score": 0.8567391633987427,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 2,
+          "best_reference_iou": 0.23341395496704037,
+          "nearest_overlapping_reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|pbr-20251219-s2-v01",
+          "centroid_distance_m": 63.750704147003155,
+          "predicted_to_reference_area_ratio": 1.5126045936144668,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|pbr-20251219-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.23341395496704037
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|pbr-20251219-s2-v02",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.14722888864653283
+        },
+        {
+          "kind": "false_positive",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "prediction_id": "bacbaec2db02d807fbd22c59",
+          "score": 0.8839649558067322,
+          "category": "false_positive_with_reference_overlap",
+          "overlapping_references": 2,
+          "best_reference_iou": 0.32185810066433845,
+          "nearest_overlapping_reference_id": "S2A:MSIL1C:20251228T161721:R140:T16PCC|pbr-20251228-s2-v01",
+          "centroid_distance_m": 42.00067283616754,
+          "predicted_to_reference_area_ratio": 1.191272858793518,
+          "nearest_overlapping_reference_is_unmatched": true
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251228T161721:R140:T16PCC|pbr-20251228-s2-v01",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.32185810066433845
+        },
+        {
+          "kind": "false_negative",
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251228T161721:R140:T16PCC|pbr-20251228-s2-v02",
+          "category": "false_negative_with_prediction_overlap",
+          "best_prediction_iou": 0.24381565327125077
+        }
+      ],
+      "reference_geometry": [
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v01",
+          "zone_ids": [
+            "stc_canal"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.2213435373269,
+          "visual_wgs84_envelope_utm_height_m": 82.74802295607515,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v02",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 252.4468882275978,
+          "visual_wgs84_envelope_utm_height_m": 163.82326284772716,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|stc-20251005-s2-v03",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 212.28881071007345,
+          "visual_wgs84_envelope_utm_height_m": 153.2043349898886,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251005T162039:R040:T16PCC|pbr-20251005-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 241.06508942274377,
+          "visual_wgs84_envelope_utm_height_m": 73.65173516166396,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v02",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 170.914042720804,
+          "visual_wgs84_envelope_utm_height_m": 62.58978770347312,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 221.2174533419893,
+          "visual_wgs84_envelope_utm_height_m": 83.34799668262713,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251009T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251009T161701:R140:T16PCC|pbr-20251009-s2-v03",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 240.91283393808408,
+          "visual_wgs84_envelope_utm_height_m": 63.65133575024083,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v26",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 301.48329007963184,
+          "visual_wgs84_envelope_utm_height_m": 85.56233779736795,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v27",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.16127979627345,
+          "visual_wgs84_envelope_utm_height_m": 171.67361871548928,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v18",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 123.51608498196583,
+          "visual_wgs84_envelope_utm_height_m": 192.22068525012583,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 74.04129445622675,
+          "visual_wgs84_envelope_utm_height_m": 221.28586641768925,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.89298344263807,
+          "visual_wgs84_envelope_utm_height_m": 211.8538016374223,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v19",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 123.15919052716345,
+          "visual_wgs84_envelope_utm_height_m": 172.23001684062183,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 74.04448152764235,
+          "visual_wgs84_envelope_utm_height_m": 221.2868804859463,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 63.87301569245756,
+          "visual_wgs84_envelope_utm_height_m": 211.10657591139898,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.50565387075767,
+          "visual_wgs84_envelope_utm_height_m": 191.84508098405786,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.51637609768659,
+          "visual_wgs84_envelope_utm_height_m": 191.6656518355012,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 133.4911273358157,
+          "visual_wgs84_envelope_utm_height_m": 192.38866606983356,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.53248598508071,
+          "visual_wgs84_envelope_utm_height_m": 191.8592031490989,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v16",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 104.03735977504402,
+          "visual_wgs84_envelope_utm_height_m": 221.83516353322193,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 113.17019931948744,
+          "visual_wgs84_envelope_utm_height_m": 172.05130544211715,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.7140038954094,
+          "visual_wgs84_envelope_utm_height_m": 201.67130175232887,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v17",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.50386524677742,
+          "visual_wgs84_envelope_utm_height_m": 191.8441396029666,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 113.320390054374,
+          "visual_wgs84_envelope_utm_height_m": 182.0291272541508,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 64.09908552095294,
+          "visual_wgs84_envelope_utm_height_m": 221.11793241440319,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251010T162221:R040:T15PYR|prq-20251010-s2-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 123.33488745696377,
+          "visual_wgs84_envelope_utm_height_m": 182.2232583037112,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T16PCC|stc-20251020-s2-v01",
+          "zone_ids": [
+            "stc_canal"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 41.527738891832996,
+          "visual_wgs84_envelope_utm_height_m": 100.61109555675648,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v15",
+          "zone_ids": [
+            "prq_canal",
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 92.97592526720837,
+          "visual_wgs84_envelope_utm_height_m": 161.67395796324126,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 180.92090470541734,
+          "visual_wgs84_envelope_utm_height_m": 53.31525693414733,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 180.7370604282478,
+          "visual_wgs84_envelope_utm_height_m": 43.316771938232705,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 170.92743409099057,
+          "visual_wgs84_envelope_utm_height_m": 53.153275911696255,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 160.93114693951793,
+          "visual_wgs84_envelope_utm_height_m": 52.97967021050863,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.10182850027923,
+          "visual_wgs84_envelope_utm_height_m": 63.30548550095409,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 180.73706578696147,
+          "visual_wgs84_envelope_utm_height_m": 43.31679604691453,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 190.9210714607034,
+          "visual_wgs84_envelope_utm_height_m": 53.50007155747153,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 160.7427254706854,
+          "visual_wgs84_envelope_utm_height_m": 42.970901888096705,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 160.9311213584151,
+          "visual_wgs84_envelope_utm_height_m": 52.97958834422752,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 170.74004564841744,
+          "visual_wgs84_envelope_utm_height_m": 43.145194003824145,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 170.74244026571978,
+          "visual_wgs84_envelope_utm_height_m": 43.155371132073924,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T15PYR|prq-20251020-s2-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 190.74055517313536,
+          "visual_wgs84_envelope_utm_height_m": 43.51763707422651,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251020T162331:R040:T16PCC|pbr-20251020-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 221.21731203387026,
+          "visual_wgs84_envelope_utm_height_m": 83.34760808758438,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|stc-20251025-s2-v01",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 252.44233300565975,
+          "visual_wgs84_envelope_utm_height_m": 163.81614531599917,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.32016498059966,
+          "visual_wgs84_envelope_utm_height_m": 181.66008248995058,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 82.95123173412867,
+          "visual_wgs84_envelope_utm_height_m": 161.47561586718075,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v16",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.1584879095899,
+          "visual_wgs84_envelope_utm_height_m": 171.6721406574361,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.1338335769251,
+          "visual_wgs84_envelope_utm_height_m": 171.6590883631725,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.34204908134416,
+          "visual_wgs84_envelope_utm_height_m": 181.6710245399736,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 82.98259055847302,
+          "visual_wgs84_envelope_utm_height_m": 161.49129527853802,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.12168152036611,
+          "visual_wgs84_envelope_utm_height_m": 171.83628324605525,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 82.98211483168416,
+          "visual_wgs84_envelope_utm_height_m": 161.49105741502717,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.33394200354815,
+          "visual_wgs84_envelope_utm_height_m": 181.85219000000507,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.66960824094713,
+          "visual_wgs84_envelope_utm_height_m": 201.46784329600632,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.31897902057972,
+          "visual_wgs84_envelope_utm_height_m": 181.4751017864328,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.4926577792503,
+          "visual_wgs84_envelope_utm_height_m": 191.83824093500152,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v15",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.33147979935165,
+          "visual_wgs84_envelope_utm_height_m": 181.4806576881092,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 143.15166639629751,
+          "visual_wgs84_envelope_utm_height_m": 172.59548997180536,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 132.98112007032614,
+          "visual_wgs84_envelope_utm_height_m": 162.4221600566525,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.14616963302251,
+          "visual_wgs84_envelope_utm_height_m": 171.85068801883608,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v18",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.29698274761904,
+          "visual_wgs84_envelope_utm_height_m": 73.52038174401969,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T15PYR",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T15PYR|prq-20251025-s2-v17",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 83.1612137441989,
+          "visual_wgs84_envelope_utm_height_m": 171.4876299968455,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 261.0651576774544,
+          "visual_wgs84_envelope_utm_height_m": 73.95629994384944,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251025T162249:R040:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251025T162249:R040:T16PCC|pbr-20251025-s2-v02",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.2187515909318,
+          "visual_wgs84_envelope_utm_height_m": 83.04687897441909,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.76564214890823,
+          "visual_wgs84_envelope_utm_height_m": 153.31877057417296,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v16",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.85703076329082,
+          "visual_wgs84_envelope_utm_height_m": 103.714061524719,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 202.5798637450207,
+          "visual_wgs84_envelope_utm_height_m": 143.68551963521168,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.96266923705116,
+          "visual_wgs84_envelope_utm_height_m": 163.1478360623587,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 212.0173352198908,
+          "visual_wgs84_envelope_utm_height_m": 113.85127632739022,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 173.16739703598432,
+          "visual_wgs84_envelope_utm_height_m": 173.16739703225903,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 202.77911084040534,
+          "visual_wgs84_envelope_utm_height_m": 153.70548111526296,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.60825381823815,
+          "visual_wgs84_envelope_utm_height_m": 143.53977303719148,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.85107469465584,
+          "visual_wgs84_envelope_utm_height_m": 103.70214939117432,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.76457551587373,
+          "visual_wgs84_envelope_utm_height_m": 153.50179564976133,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.79082581202965,
+          "visual_wgs84_envelope_utm_height_m": 153.1629359172657,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.2116933168145,
+          "visual_wgs84_envelope_utm_height_m": 123.50184775143862,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.85541862482205,
+          "visual_wgs84_envelope_utm_height_m": 103.71083724265918,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v15",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.84966186678503,
+          "visual_wgs84_envelope_utm_height_m": 103.88428991753608,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 202.02029009489343,
+          "visual_wgs84_envelope_utm_height_m": 113.67325471318327,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.75565184350125,
+          "visual_wgs84_envelope_utm_height_m": 153.49049233295955,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v19",
+          "zone_ids": [
+            "prq_canal",
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 93.16190993075725,
+          "visual_wgs84_envelope_utm_height_m": 171.67395231546834,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v17",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 110.74145807046443,
+          "visual_wgs84_envelope_utm_height_m": 42.039009696338326,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T15PYR",
+          "reference_id": "S2A:MSIL1C:20251101T162701:R040:T15PYR|prq-20251101-s2-v18",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 103.53326889267191,
+          "visual_wgs84_envelope_utm_height_m": 191.85961520532146,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251106T162101:R140:T16PCC|pbr-20251106-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.21745334088337,
+          "visual_wgs84_envelope_utm_height_m": 82.73927001282573,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251106T162101:R140:T16PCC|stc-20251106-s2-v01",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 221.8342064290191,
+          "visual_wgs84_envelope_utm_height_m": 123.36271178280003,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v05",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.3879080992192,
+          "visual_wgs84_envelope_utm_height_m": 133.49001952726394,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v16",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.67088041768875,
+          "visual_wgs84_envelope_utm_height_m": 93.52741421363316,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v10",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.84244793478865,
+          "visual_wgs84_envelope_utm_height_m": 103.68489586934447,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v09",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 121.83646482857876,
+          "visual_wgs84_envelope_utm_height_m": 102.20375779271126,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v07",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 232.22239465510938,
+          "visual_wgs84_envelope_utm_height_m": 124.2595897524152,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v02",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 212.2205134211108,
+          "visual_wgs84_envelope_utm_height_m": 123.88589848740958,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v12",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.41840966744348,
+          "visual_wgs84_envelope_utm_height_m": 133.34856722853146,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v03",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.4843048065668,
+          "visual_wgs84_envelope_utm_height_m": 83.7107620141469,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v06",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.84302989719436,
+          "visual_wgs84_envelope_utm_height_m": 103.68605979625136,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v14",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 232.3949902729364,
+          "visual_wgs84_envelope_utm_height_m": 134.23729047947563,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v01",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 172.39580748206936,
+          "visual_wgs84_envelope_utm_height_m": 133.13297901302576,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v04",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.49013049562927,
+          "visual_wgs84_envelope_utm_height_m": 83.91159255569801,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v13",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 192.38383378996514,
+          "visual_wgs84_envelope_utm_height_m": 133.48406476783566,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v15",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 232.4039971921593,
+          "visual_wgs84_envelope_utm_height_m": 134.25322579825297,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v11",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 212.22086851857603,
+          "visual_wgs84_envelope_utm_height_m": 123.88651990424842,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v08",
+          "zone_ids": [
+            "prq_fondeo"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 182.04879294417333,
+          "visual_wgs84_envelope_utm_height_m": 113.35257027461194,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v17",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 190.92680695152376,
+          "visual_wgs84_envelope_utm_height_m": 53.521866417489946,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "prq",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T15PYR",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T15PYR|prq-20251109-s2-v18",
+          "zone_ids": [
+            "prq_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 210.92644257994834,
+          "visual_wgs84_envelope_utm_height_m": 53.89105883426964,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T16PCC|pbr-20251109-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.0651203339221,
+          "visual_wgs84_envelope_utm_height_m": 73.19536099932157,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251109T162521:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251109T162521:R040:T16PCC|pbr-20251109-s2-v02",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 200.91288692632224,
+          "visual_wgs84_envelope_utm_height_m": 63.04295641812496,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251118T161701:R140:T16PCC|pbr-20251118-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 211.0652439761907,
+          "visual_wgs84_envelope_utm_height_m": 73.19573193276301,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2A:MSIL1C:20251118T161701:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251118T161701:R140:T16PCC|stc-20251118-s2-v01",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 171.6809249575017,
+          "visual_wgs84_envelope_utm_height_m": 112.59779311227612,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2B:MSIL1C:20251201T161539:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251201T161539:R140:T16PCC|pbr-20251201-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 191.06523754500085,
+          "visual_wgs84_envelope_utm_height_m": 72.89135904819705,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251211T161559:R140:T16PCC|stc-20251211-s2-v02",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 141.83348870591726,
+          "visual_wgs84_envelope_utm_height_m": 122.13907015579753,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+          "reference_id": "S2B:MSIL1C:20251211T161559:R140:T16PCC|stc-20251211-s2-v01",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 151.68265390652232,
+          "visual_wgs84_envelope_utm_height_m": 112.29452805244364,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "stc",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|stc-20251219-s2-v01",
+          "zone_ids": [
+            "stc_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.6826156465686,
+          "visual_wgs84_envelope_utm_height_m": 112.75337105756626,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|pbr-20251219-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.06520663411357,
+          "visual_wgs84_envelope_utm_height_m": 72.73910277150571,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2C:MSIL1C:20251219T162721:R040:T16PCC",
+          "reference_id": "S2C:MSIL1C:20251219T162721:R040:T16PCC|pbr-20251219-s2-v02",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 190.912907904014,
+          "visual_wgs84_envelope_utm_height_m": 62.89087503449991,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251228T161721:R140:T16PCC|pbr-20251228-s2-v01",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 201.06520663382253,
+          "visual_wgs84_envelope_utm_height_m": 73.0434475238435,
+          "physical_vessel_dimensions": false
+        },
+        {
+          "port_id": "pbr",
+          "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+          "reference_id": "S2A:MSIL1C:20251228T161721:R140:T16PCC|pbr-20251228-s2-v02",
+          "zone_ids": [
+            "pbr_muelles"
+          ],
+          "visual_wgs84_envelope_utm_width_m": 181.06503152876394,
+          "visual_wgs84_envelope_utm_height_m": 72.73865250474773,
+          "physical_vessel_dimensions": false
+        }
+      ],
+      "counts_reconciled": true,
+      "local_validation_demonstrated": false
+    }
+  },
+  "scope": "Post-hoc geometric diagnosis of completed TRAIN/CAL, not validation",
+  "limits": [
+    "No model forward, optimizer, threshold search or TEST access.",
+    "Overlap is a geometric association, not proof of vessel identity.",
+    "Near-miss boxes remain false positives and false negatives at IoU0.50.",
+    "One prediction can overlap several references; categories are not paired counts.",
+    "Visual boxes do not provide physical vessel dimensions.",
+    "Labels remain attributed AI references on explicit, partly detector-conditioned areas.",
+    "A development decision informed by CAL needs a new frozen calibration cohort."
+  ],
+  "test_opened": false,
+  "local_validation_demonstrated": false,
+  "automatic_publication": false
+}

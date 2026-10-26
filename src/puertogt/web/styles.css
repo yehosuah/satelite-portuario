@@ -14,6 +14,15 @@
 .zone-boundary { fill: none; stroke: #f2c85d; stroke-width: 3; stroke-dasharray: 10 6; pointer-events: none; }
 .reviewed-boundary { fill: #53d5b017; stroke: #53d5b0; stroke-width: 3; pointer-events: none; }
 .system-panel{padding:14px 28px;background:white;border-bottom:1px solid var(--line)}
+.coverage-table-wrap{overflow-x:auto;margin:14px 0;max-width:100%}
+.coverage-table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.coverage-table caption{text-align:left;font-size:13px;font-weight:600;margin-bottom:8px}
+.coverage-table th,.coverage-table td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.coverage-table thead th{font-size:11px;color:var(--muted);font-weight:600}
+.coverage-table tbody th{font-weight:500;min-width:130px}
+.coverage-table .combined-pass{background:var(--teal-light)}
+.coverage-zones{margin-top:14px}.coverage-panel .system-heading{flex-wrap:wrap}
+#coverage-period,#coverage-error{font-size:12px}#coverage-error{color:#903a32;margin:10px 0}
 .system-panel summary{cursor:pointer;font-size:13px;font-weight:600;line-height:1.7}
 .system-panel summary span{margin-left:15px;font-weight:400}
 .system-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0;font-size:12px;color:var(--muted)}

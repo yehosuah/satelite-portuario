@@ -1,0 +1,372 @@
+{
+  "status": "completed_internal_train_development_only",
+  "plan_sha256": "0bd4d81311c5545532108dfaaa90cb6d1f9325300f0e4c8f3ee3eb8869c3ef5c",
+  "freeze_sha256": "340483bfb129d40362e611a6ec4815f1266531a71ad263c2b62a88be93bdc3c2",
+  "heavy_seconds": 323.335223165981,
+  "peak_rss_bytes": 1421672448,
+  "decision": {
+    "candidates": [
+      {
+        "name": "baseline_anchors",
+        "anchor_sizes": [
+          [
+            32
+          ],
+          [
+            64
+          ],
+          [
+            128
+          ],
+          [
+            256
+          ]
+        ],
+        "epochs": 12,
+        "learning_rate": 0.0001,
+        "sample_order": "shuffle",
+        "weights_sha256": "3a544c11ed20732a8298d72ec6e6e9eb86806ac743fc1a9eb2cae7a67d05cc7c",
+        "overall": {
+          "true_positives": 16,
+          "false_positives": 4,
+          "false_negatives": 4,
+          "prediction_count": 20,
+          "reference_count": 20,
+          "scene_count": 6,
+          "precision": 0.8,
+          "recall": 0.8,
+          "precision_interval": [
+            0.5839825677481064,
+            0.919342337420202
+          ],
+          "recall_interval": [
+            0.5839825677481064,
+            0.919342337420202
+          ],
+          "false_positives_per_scene": 0.6666666666666666
+        },
+        "ports": {
+          "pbr": {
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 1,
+            "prediction_count": 1,
+            "reference_count": 1,
+            "scene_count": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "precision_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "recall_interval": [
+              0,
+              0.7934506856227626
+            ],
+            "false_positives_per_scene": 0.5,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "precision_below_target",
+              "recall_below_target",
+              "training_fit_is_not_validation"
+            ]
+          },
+          "prq": {
+            "true_positives": 16,
+            "false_positives": 3,
+            "false_negatives": 3,
+            "prediction_count": 19,
+            "reference_count": 19,
+            "scene_count": 2,
+            "precision": 0.8421052631578947,
+            "recall": 0.8421052631578947,
+            "precision_interval": [
+              0.6243452472967093,
+              0.9447952836146585
+            ],
+            "recall_interval": [
+              0.6243452472967093,
+              0.9447952836146585
+            ],
+            "false_positives_per_scene": 1.5,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "precision_below_target",
+              "training_fit_is_not_validation"
+            ]
+          },
+          "stc": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 2,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target",
+              "training_fit_is_not_validation"
+            ]
+          }
+        },
+        "declaration_order": 0,
+        "f1": 0.8,
+        "precision": 0.8,
+        "recall": 0.8
+      },
+      {
+        "name": "small_anchors",
+        "anchor_sizes": [
+          [
+            8
+          ],
+          [
+            16
+          ],
+          [
+            32
+          ],
+          [
+            64
+          ]
+        ],
+        "epochs": 12,
+        "learning_rate": 0.0001,
+        "sample_order": "shuffle",
+        "weights_sha256": "2d62fb8b36c0b7644cc660373e678ae3bf2cde2c5b285d3d7db04142d599ff9f",
+        "overall": {
+          "true_positives": 17,
+          "false_positives": 3,
+          "false_negatives": 3,
+          "prediction_count": 20,
+          "reference_count": 20,
+          "scene_count": 6,
+          "precision": 0.85,
+          "recall": 0.85,
+          "precision_interval": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "recall_interval": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positives_per_scene": 0.5
+        },
+        "ports": {
+          "pbr": {
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 1,
+            "reference_count": 1,
+            "scene_count": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "precision_interval": [
+              0.20654931437723745,
+              1
+            ],
+            "recall_interval": [
+              0.20654931437723745,
+              1
+            ],
+            "false_positives_per_scene": 0.0,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "training_fit_is_not_validation"
+            ]
+          },
+          "prq": {
+            "true_positives": 16,
+            "false_positives": 3,
+            "false_negatives": 3,
+            "prediction_count": 19,
+            "reference_count": 19,
+            "scene_count": 2,
+            "precision": 0.8421052631578947,
+            "recall": 0.8421052631578947,
+            "precision_interval": [
+              0.6243452472967093,
+              0.9447952836146585
+            ],
+            "recall_interval": [
+              0.6243452472967093,
+              0.9447952836146585
+            ],
+            "false_positives_per_scene": 1.5,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "precision_below_target",
+              "training_fit_is_not_validation"
+            ]
+          },
+          "stc": {
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "prediction_count": 0,
+            "reference_count": 0,
+            "scene_count": 2,
+            "precision": null,
+            "recall": null,
+            "precision_interval": null,
+            "recall_interval": null,
+            "false_positives_per_scene": 0.0,
+            "pass_count": 2,
+            "eligible": false,
+            "reasons": [
+              "insufficient_support",
+              "precision_below_target",
+              "recall_below_target",
+              "training_fit_is_not_validation"
+            ]
+          }
+        },
+        "declaration_order": 1,
+        "f1": 0.85,
+        "precision": 0.85,
+        "recall": 0.85
+      }
+    ],
+    "selected": {
+      "name": "small_anchors",
+      "anchor_sizes": [
+        [
+          8
+        ],
+        [
+          16
+        ],
+        [
+          32
+        ],
+        [
+          64
+        ]
+      ],
+      "epochs": 12,
+      "learning_rate": 0.0001,
+      "sample_order": "shuffle",
+      "weights_sha256": "2d62fb8b36c0b7644cc660373e678ae3bf2cde2c5b285d3d7db04142d599ff9f",
+      "overall": {
+        "true_positives": 17,
+        "false_positives": 3,
+        "false_negatives": 3,
+        "prediction_count": 20,
+        "reference_count": 20,
+        "scene_count": 6,
+        "precision": 0.85,
+        "recall": 0.85,
+        "precision_interval": [
+          0.6395811352592431,
+          0.9476312541037835
+        ],
+        "recall_interval": [
+          0.6395811352592431,
+          0.9476312541037835
+        ],
+        "false_positives_per_scene": 0.5
+      },
+      "ports": {
+        "pbr": {
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "prediction_count": 1,
+          "reference_count": 1,
+          "scene_count": 2,
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_interval": [
+            0.20654931437723745,
+            1
+          ],
+          "recall_interval": [
+            0.20654931437723745,
+            1
+          ],
+          "false_positives_per_scene": 0.0,
+          "pass_count": 2,
+          "eligible": false,
+          "reasons": [
+            "training_fit_is_not_validation"
+          ]
+        },
+        "prq": {
+          "true_positives": 16,
+          "false_positives": 3,
+          "false_negatives": 3,
+          "prediction_count": 19,
+          "reference_count": 19,
+          "scene_count": 2,
+          "precision": 0.8421052631578947,
+          "recall": 0.8421052631578947,
+          "precision_interval": [
+            0.6243452472967093,
+            0.9447952836146585
+          ],
+          "recall_interval": [
+            0.6243452472967093,
+            0.9447952836146585
+          ],
+          "false_positives_per_scene": 1.5,
+          "pass_count": 2,
+          "eligible": false,
+          "reasons": [
+            "precision_below_target",
+            "training_fit_is_not_validation"
+          ]
+        },
+        "stc": {
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "prediction_count": 0,
+          "reference_count": 0,
+          "scene_count": 2,
+          "precision": null,
+          "recall": null,
+          "precision_interval": null,
+          "recall_interval": null,
+          "false_positives_per_scene": 0.0,
+          "pass_count": 2,
+          "eligible": false,
+          "reasons": [
+            "insufficient_support",
+            "precision_below_target",
+            "recall_below_target",
+            "training_fit_is_not_validation"
+          ]
+        }
+      },
+      "declaration_order": 1,
+      "f1": 0.85,
+      "precision": 0.85,
+      "recall": 0.85
+    },
+    "selection_scope": "internal TRAIN temporal development only; February previously seen in aggregate fit",
+    "fixed_score_threshold": 0.5,
+    "fixed_iou_threshold": 0.5,
+    "minimum_absolute_f1_gain": 0.05,
+    "recall_must_not_decrease": true,
+    "validation_eligible": false,
+    "automatic_publication": false
+  },
+  "refit": null,
+  "calibration_or_test_opened": false,
+  "local_validation_demonstrated": false,
+  "automatic_publication": false
+}

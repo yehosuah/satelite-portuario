@@ -1,0 +1,332 @@
+{
+  "status": "completed_train_refit_only",
+  "plan_sha256": "1d7a38f054c34fb0ae9c77b6eb04f0390913eda18d20baa5a526e047f74ab372",
+  "freeze_sha256": "ced3b2e1b3cadf23b8e450bb06a37ca512f6a9ec385d040b269b7859dd9e31df",
+  "selected_recipe": {
+    "name": "small_anchors",
+    "anchor_sizes": [
+      [
+        8
+      ],
+      [
+        16
+      ],
+      [
+        32
+      ],
+      [
+        64
+      ]
+    ],
+    "epochs": 12,
+    "learning_rate": 0.0001,
+    "sample_order": "shuffle"
+  },
+  "weights_sha256": "e0990d7d69750650a5f5175361fc901de882ad0be35ef8fcfd62a3c4b8e73c68",
+  "planned_steps": 1008,
+  "refit_heavy_seconds": 463.61260150000453,
+  "aggregate_comparison_and_refit_seconds": 786.9478246659855,
+  "peak_rss_bytes": 1458814976,
+  "training_fit": {
+    "split": "train",
+    "threshold": 0.5,
+    "iou_threshold": 0.5,
+    "ports": {
+      "pbr": {
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "recall_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "false_positives_per_scene": 0.0,
+        "pass_count": 3,
+        "eligible": false,
+        "reasons": [
+          "training_fit_is_not_validation"
+        ]
+      },
+      "prq": {
+        "true_positives": 47,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "prediction_count": 48,
+        "reference_count": 48,
+        "scene_count": 4,
+        "precision": 0.9791666666666666,
+        "recall": 0.9791666666666666,
+        "precision_interval": [
+          0.8910078200474814,
+          0.9963128890224893
+        ],
+        "recall_interval": [
+          0.8910078200474814,
+          0.9963128890224893
+        ],
+        "false_positives_per_scene": 0.25,
+        "pass_count": 4,
+        "eligible": false,
+        "reasons": [
+          "training_fit_is_not_validation"
+        ]
+      },
+      "stc": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "prediction_count": 0,
+        "reference_count": 1,
+        "scene_count": 3,
+        "precision": null,
+        "recall": 0.0,
+        "precision_interval": null,
+        "recall_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "false_positives_per_scene": 0.0,
+        "pass_count": 3,
+        "eligible": false,
+        "reasons": [
+          "insufficient_support",
+          "precision_below_target",
+          "recall_below_target",
+          "training_fit_is_not_validation"
+        ]
+      }
+    },
+    "required_ports": [
+      "prq",
+      "stc",
+      "pbr"
+    ],
+    "eligible": false,
+    "overall": {
+      "true_positives": 49,
+      "false_positives": 1,
+      "false_negatives": 2,
+      "prediction_count": 50,
+      "reference_count": 51,
+      "scene_count": 10,
+      "precision": 0.98,
+      "recall": 0.9607843137254902,
+      "precision_interval": [
+        0.8950455641036219,
+        0.9964607407283539
+      ],
+      "recall_interval": [
+        0.8678369434463774,
+        0.9891789166471329
+      ],
+      "false_positives_per_scene": 0.1
+    },
+    "zone_metrics": {
+      "pbr|sentinel-2|pbr_canal": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 3,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "pbr|sentinel-2|pbr_fondeo": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 2,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "pbr|sentinel-2|pbr_muelles": {
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 2,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "recall_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "pbr|sentinel-2|pbr_patios": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 2,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "prq|sentinel-2|prq_canal": {
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 2,
+        "reference_count": 2,
+        "scene_count": 4,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "recall_interval": [
+          0.34238022750665303,
+          1
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "prq|sentinel-2|prq_fondeo": {
+        "true_positives": 44,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "prediction_count": 45,
+        "reference_count": 45,
+        "scene_count": 4,
+        "precision": 0.9777777777777777,
+        "recall": 0.9777777777777777,
+        "precision_interval": [
+          0.8843331823158513,
+          0.9960664011171667
+        ],
+        "recall_interval": [
+          0.8843331823158513,
+          0.9960664011171667
+        ],
+        "false_positives_per_scene": 0.25
+      },
+      "prq|sentinel-2|prq_muelles": {
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 3,
+        "reference_count": 3,
+        "scene_count": 4,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_interval": [
+          0.4385029682449546,
+          1
+        ],
+        "recall_interval": [
+          0.4385029682449546,
+          1
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "prq|sentinel-2|prq_patios": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 3,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "stc|sentinel-2|stc_canal": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 3,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "stc|sentinel-2|stc_fondeo": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 3,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      },
+      "stc|sentinel-2|stc_muelles": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "prediction_count": 0,
+        "reference_count": 1,
+        "scene_count": 1,
+        "precision": null,
+        "recall": 0.0,
+        "precision_interval": null,
+        "recall_interval": [
+          0,
+          0.7934506856227626
+        ],
+        "false_positives_per_scene": 0.0
+      },
+      "stc|sentinel-2|stc_patios": {
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "prediction_count": 0,
+        "reference_count": 0,
+        "scene_count": 1,
+        "precision": null,
+        "recall": null,
+        "precision_interval": null,
+        "recall_interval": null,
+        "false_positives_per_scene": 0.0
+      }
+    },
+    "counting_scope": "Unique objects per port/acquisition; overlapping zones are not independent. Overall sums ports.",
+    "interval_method": "Wilson95% by object; pass dependence not modeled by that interval",
+    "min_support": 1,
+    "min_passes": 0,
+    "target_precision": 0.9,
+    "minimum_recall": 0.8,
+    "automatic_publication": false,
+    "reference_scope": "Agreement with frozen reference provenance; not automatically human validation",
+    "status": "training_diagnostic_not_validation",
+    "threshold_selection_performed": false
+  },
+  "calibration_or_test_opened": false,
+  "local_validation_demonstrated": false,
+  "automatic_publication": false
+}

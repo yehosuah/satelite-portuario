@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-10-26T03:13:25.071049Z",
+  "dataset": "data/datasets/phase3-reviews/s2-caribe-march-april-v1/source",
+  "manifest_sha256": "dea3522dd27c402442170cda1bbbb264e88e10553f8d990422a676e9a499ff92",
+  "integrity_and_history_evidence_verified": true,
+  "split": "train",
+  "observations": 2,
+  "physical_passes": 1,
+  "reference_support": {
+    "prq": {
+      "references": 0,
+      "passes": 0
+    },
+    "stc": {
+      "references": 1,
+      "passes": 1
+    },
+    "pbr": {
+      "references": 0,
+      "passes": 1
+    }
+  },
+  "all_three_ports_represented": false,
+  "minimum_positive_each_port_met": false,
+  "standalone_three_port_training_eligible": false,
+  "fit_or_inference_executed": false,
+  "human_review": false,
+  "independent_validation_eligible": false,
+  "reason": "Only two scopes from one S2 pass; PBR is a reviewed negative and STC has one AI visual positive. PRQ absent. This is a supplemental TRAIN snapshot, never a standalone calibration or test set. The 51-reference comparator is unchanged.",
+  "revisions_receipt": {
+    "path": "reports/local-review/phase3-diagnosis/train-review-import-receipt-v1.json",
+    "sha256": "bc4b421a15d755f36d46dc2038d0beeb94576e4b74d0d688cd25c9ce4845269f"
+  }
+}

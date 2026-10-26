@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-10-26T03:19:05.348201Z",
+  "preregistered_plan_unchanged": true,
+  "attempts": [
+    {
+      "experiment": "data/experiments/train-anchor-comparison-v1-20261026",
+      "freeze_sha256": "6c3f0d7ff95042375c3f3f475f85a74cbad318d01360ee523602705d8063e026",
+      "plan_file_sha256": "6fbed6da4db476e6d496cddbef40f6531323c67d759c77359b9283f0bb5f23c8",
+      "training_started_at_audit": false,
+      "reason": "Preflight failed before training: JSON reserialization changed plan bytes; source plan unchanged."
+    },
+    {
+      "experiment": "data/experiments/train-anchor-comparison-v2-20261026",
+      "freeze_sha256": "d5ce501a3aa60767ddc3f9b1013f990f114416d765170e96ff6544ee1aae9b7f",
+      "plan_file_sha256": "0bd4d81311c5545532108dfaaa90cb6d1f9325300f0e4c8f3ee3eb8869c3ef5c",
+      "training_started_at_audit": false,
+      "reason": "Preflight passed, but no training executed. Superseded by explicit early rerun guard and removal of unreachable refit code."
+    },
+    {
+      "experiment": "data/experiments/train-anchor-comparison-v3-20261026",
+      "freeze_sha256": "340483bfb129d40362e611a6ec4815f1266531a71ad263c2b62a88be93bdc3c2",
+      "plan_file_sha256": "0bd4d81311c5545532108dfaaa90cb6d1f9325300f0e4c8f3ee3eb8869c3ef5c",
+      "training_started_at_audit": false,
+      "reason": "Preflight passed from archived source; only attempt designated for execution after the shared heavy worker is released."
+    }
+  ],
+  "scores_opened": false,
+  "test_opened": false
+}

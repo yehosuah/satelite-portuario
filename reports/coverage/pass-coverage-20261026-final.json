@@ -1,0 +1,2904 @@
+{
+  "generated_at": "2026-10-26T03:20:25.243767Z",
+  "period": {
+    "start": "2025-01-01T00:00:00Z",
+    "end": "2026-10-26T03:20:25.243767Z",
+    "end_exclusive": true
+  },
+  "filters": {
+    "port_id": null,
+    "sensor": null,
+    "recipe_version": null,
+    "min_observable_fraction": 0.9
+  },
+  "source": {
+    "snapshot_sha256": "2fcfbe376429e81b68c73a015bf1c90cb2ccdd03a2e572435ea7f7e6cdd0f4e7",
+    "ports_sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+    "acquisition_rows": 833,
+    "observation_rows": 5018,
+    "mask_union_cache_status": "loaded",
+    "mask_union_cache_sha256": "297ee10cacd8cf9000b21eccd951fb11973e25a3f4e52c3e66c165c01bc28af6",
+    "mask_union_entries_applied": 118
+  },
+  "items": [
+    {
+      "port_id": "pbr",
+      "port_name": "Puerto Barrios",
+      "sensor": "sentinel-1",
+      "configured_zones": [
+        "pbr_canal",
+        "pbr_fondeo",
+        "pbr_muelles",
+        "pbr_patios"
+      ],
+      "catalogued_acquisitions": 169,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 113,
+      "conservative_sufficiently_observed_passes": 81,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 113,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 112,
+        "median": 5.999244,
+        "p90": 10.486218,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 112,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_catalogued_area_fraction": 0.99917,
+      "sufficient_footprint_passes": 125
+    },
+    {
+      "port_id": "pbr",
+      "port_name": "Puerto Barrios",
+      "sensor": "sentinel-2",
+      "configured_zones": [
+        "pbr_canal",
+        "pbr_fondeo",
+        "pbr_muelles",
+        "pbr_patios"
+      ],
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 110,
+      "conservative_sufficiently_observed_passes": 110,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 103,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 109,
+        "median": 3.998981,
+        "p90": 14.987731,
+        "max": 32.994074
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 102,
+        "median": 5.0,
+        "p90": 15.0,
+        "max": 33.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 1.0,
+      "sufficient_footprint_passes": 310
+    },
+    {
+      "port_id": "pbr",
+      "port_name": "Puerto Barrios",
+      "sensor": "combined",
+      "configured_zones": [
+        "pbr_canal",
+        "pbr_fondeo",
+        "pbr_muelles",
+        "pbr_patios"
+      ],
+      "catalogued_acquisitions": 479,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 223,
+      "conservative_sufficiently_observed_passes": 191,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 194,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 222,
+        "median": 2.0989,
+        "p90": 6.000534,
+        "max": 18.000051
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 193,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 0.999762,
+      "sufficient_footprint_passes": 435
+    },
+    {
+      "port_id": "prq",
+      "port_name": "Puerto Quetzal",
+      "sensor": "sentinel-1",
+      "configured_zones": [
+        "prq_canal",
+        "prq_fondeo",
+        "prq_muelles",
+        "prq_patios"
+      ],
+      "catalogued_acquisitions": 196,
+      "catalogued_passes": 196,
+      "processed_passes": 196,
+      "sufficiently_observed_passes": 196,
+      "conservative_sufficiently_observed_passes": 196,
+      "catalogued_capture_days": 196,
+      "sufficiently_observed_days": 196,
+      "catalogue_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 195,
+        "median": 4.0,
+        "p90": 6.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-23T11:53:58.687155Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        136,
+        26
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2"
+      ],
+      "mean_catalogued_area_fraction": 1.0,
+      "sufficient_footprint_passes": 196
+    },
+    {
+      "port_id": "prq",
+      "port_name": "Puerto Quetzal",
+      "sensor": "sentinel-2",
+      "configured_zones": [
+        "prq_canal",
+        "prq_fondeo",
+        "prq_muelles",
+        "prq_patios"
+      ],
+      "catalogued_acquisitions": 158,
+      "catalogued_passes": 158,
+      "processed_passes": 158,
+      "sufficiently_observed_passes": 93,
+      "conservative_sufficiently_observed_passes": 93,
+      "catalogued_capture_days": 158,
+      "sufficiently_observed_days": 93,
+      "catalogue_intervals_days": {
+        "count": 157,
+        "median": 4.999745,
+        "p90": 5.000602,
+        "max": 9.99919
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 92,
+        "median": 5.000602,
+        "p90": 12.997083,
+        "max": 20.0
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 92,
+        "median": 5.0,
+        "p90": 13.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 7.684595,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 1.0,
+      "sufficient_footprint_passes": 158
+    },
+    {
+      "port_id": "prq",
+      "port_name": "Puerto Quetzal",
+      "sensor": "combined",
+      "configured_zones": [
+        "prq_canal",
+        "prq_fondeo",
+        "prq_muelles",
+        "prq_patios"
+      ],
+      "catalogued_acquisitions": 354,
+      "catalogued_passes": 354,
+      "processed_passes": 354,
+      "sufficiently_observed_passes": 289,
+      "conservative_sufficiently_observed_passes": 289,
+      "catalogued_capture_days": 312,
+      "sufficiently_observed_days": 269,
+      "catalogue_intervals_days": {
+        "count": 353,
+        "median": 1.514564,
+        "p90": 3.815906,
+        "max": 5.000718
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 288,
+        "median": 1.670924,
+        "p90": 4.486419,
+        "max": 7.51351
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 268,
+        "median": 2.0,
+        "p90": 4.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        136,
+        26,
+        40
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 1.0,
+      "sufficient_footprint_passes": 354
+    },
+    {
+      "port_id": "stc",
+      "port_name": "Santo Tom\u00e1s de Castilla",
+      "sensor": "sentinel-1",
+      "configured_zones": [
+        "stc_canal",
+        "stc_fondeo",
+        "stc_muelles",
+        "stc_patios"
+      ],
+      "catalogued_acquisitions": 169,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 115,
+      "conservative_sufficiently_observed_passes": 81,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 115,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 114,
+        "median": 5.999222,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 114,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_catalogued_area_fraction": 0.999812,
+      "sufficient_footprint_passes": 125
+    },
+    {
+      "port_id": "stc",
+      "port_name": "Santo Tom\u00e1s de Castilla",
+      "sensor": "sentinel-2",
+      "configured_zones": [
+        "stc_canal",
+        "stc_fondeo",
+        "stc_muelles",
+        "stc_patios"
+      ],
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 78,
+      "conservative_sufficiently_observed_passes": 78,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 73,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 77,
+        "median": 4.999514,
+        "p90": 20.000694,
+        "max": 52.995694
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 72,
+        "median": 5.0,
+        "p90": 20.0,
+        "max": 53.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 20.457572
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 1.0,
+      "sufficient_footprint_passes": 310
+    },
+    {
+      "port_id": "stc",
+      "port_name": "Santo Tom\u00e1s de Castilla",
+      "sensor": "combined",
+      "configured_zones": [
+        "stc_canal",
+        "stc_fondeo",
+        "stc_muelles",
+        "stc_patios"
+      ],
+      "catalogued_acquisitions": 479,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 193,
+      "conservative_sufficiently_observed_passes": 159,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 173,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 192,
+        "median": 2.67567,
+        "p90": 6.000794,
+        "max": 18.000051
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 172,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_catalogued_area_fraction": 0.999946,
+      "sufficient_footprint_passes": 435
+    }
+  ],
+  "zones": [
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 125,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 118,
+      "conservative_sufficiently_observed_passes": 118,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 118,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 117,
+        "median": 5.000351,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 117,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.944
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 163,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 113,
+      "conservative_sufficiently_observed_passes": 113,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 113,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 112,
+        "median": 5.999244,
+        "p90": 10.486218,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 112,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.924672
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 169,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 115,
+      "conservative_sufficiently_observed_passes": 81,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 115,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 114,
+        "median": 5.999222,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 114,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.947807
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 125,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 118,
+      "conservative_sufficiently_observed_passes": 118,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 118,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 117,
+        "median": 5.000351,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 117,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.944
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 141,
+      "conservative_sufficiently_observed_passes": 141,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 131,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 140,
+        "median": 3.006944,
+        "p90": 10.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 130,
+        "median": 3.0,
+        "p90": 10.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.497894
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 124,
+      "conservative_sufficiently_observed_passes": 124,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 115,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 123,
+        "median": 3.006944,
+        "p90": 11.993773,
+        "max": 32.994074
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 114,
+        "median": 3.0,
+        "p90": 13.0,
+        "max": 33.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.502763
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 121,
+      "conservative_sufficiently_observed_passes": 121,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 112,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 120,
+        "median": 3.007465,
+        "p90": 12.994074,
+        "max": 27.001181
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 111,
+        "median": 5.0,
+        "p90": 13.0,
+        "max": 27.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.5028
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 152,
+      "conservative_sufficiently_observed_passes": 152,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 142,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 151,
+        "median": 3.006944,
+        "p90": 8.995602,
+        "max": 20.0
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 141,
+        "median": 3.0,
+        "p90": 10.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.525254
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_muelles",
+      "sensor": "combined",
+      "catalogued_acquisitions": 435,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 259,
+      "conservative_sufficiently_observed_passes": 259,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 224,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 258,
+        "median": 1.992917,
+        "p90": 5.325295,
+        "max": 16.324522
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 223,
+        "median": 2.0,
+        "p90": 5.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.626086
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_fondeo",
+      "sensor": "combined",
+      "catalogued_acquisitions": 473,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 237,
+      "conservative_sufficiently_observed_passes": 237,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 203,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 236,
+        "median": 1.993137,
+        "p90": 6.000499,
+        "max": 18.000051
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 202,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.624001
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "combined",
+      "catalogued_acquisitions": 479,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 236,
+      "conservative_sufficiently_observed_passes": 202,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 204,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 235,
+        "median": 1.993657,
+        "p90": 6.000506,
+        "max": 13.324426
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 203,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 14.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.630675
+    },
+    {
+      "port_id": "pbr",
+      "zone_id": "pbr_patios",
+      "sensor": "combined",
+      "catalogued_acquisitions": 435,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 270,
+      "conservative_sufficiently_observed_passes": 270,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 235,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 269,
+        "median": 1.992917,
+        "p90": 4.99963,
+        "max": 16.324522
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 234,
+        "median": 2.0,
+        "p90": 5.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.645583
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 196,
+      "catalogued_passes": 196,
+      "processed_passes": 196,
+      "sufficiently_observed_passes": 196,
+      "conservative_sufficiently_observed_passes": 196,
+      "catalogued_capture_days": 196,
+      "sufficiently_observed_days": 196,
+      "catalogue_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 195,
+        "median": 4.0,
+        "p90": 6.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-23T11:53:58.687155Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        136,
+        26
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2"
+      ],
+      "mean_known_observable_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 196,
+      "catalogued_passes": 196,
+      "processed_passes": 196,
+      "sufficiently_observed_passes": 196,
+      "conservative_sufficiently_observed_passes": 196,
+      "catalogued_capture_days": 196,
+      "sufficiently_observed_days": 196,
+      "catalogue_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 195,
+        "median": 4.0,
+        "p90": 6.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-23T11:53:58.687155Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        136,
+        26
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2"
+      ],
+      "mean_known_observable_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_canal",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 196,
+      "catalogued_passes": 196,
+      "processed_passes": 196,
+      "sufficiently_observed_passes": 196,
+      "conservative_sufficiently_observed_passes": 196,
+      "catalogued_capture_days": 196,
+      "sufficiently_observed_days": 196,
+      "catalogue_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 195,
+        "median": 4.0,
+        "p90": 6.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-23T11:53:58.687155Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        136,
+        26
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2"
+      ],
+      "mean_known_observable_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_patios",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 196,
+      "catalogued_passes": 196,
+      "processed_passes": 196,
+      "sufficiently_observed_passes": 196,
+      "conservative_sufficiently_observed_passes": 196,
+      "catalogued_capture_days": 196,
+      "sufficiently_observed_days": 196,
+      "catalogue_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 195,
+        "median": 4.486222,
+        "p90": 5.99933,
+        "max": 7.513782
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 195,
+        "median": 4.0,
+        "p90": 6.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 2.643363
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-23T11:53:58.687155Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        136,
+        26
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2"
+      ],
+      "mean_known_observable_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 158,
+      "catalogued_passes": 158,
+      "processed_passes": 158,
+      "sufficiently_observed_passes": 103,
+      "conservative_sufficiently_observed_passes": 103,
+      "catalogued_capture_days": 158,
+      "sufficiently_observed_days": 103,
+      "catalogue_intervals_days": {
+        "count": 157,
+        "median": 4.999745,
+        "p90": 5.000602,
+        "max": 9.99919
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 102,
+        "median": 5.000486,
+        "p90": 10.0,
+        "max": 17.994676
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 102,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 7.684595,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.70489
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 158,
+      "catalogued_passes": 158,
+      "processed_passes": 158,
+      "sufficiently_observed_passes": 100,
+      "conservative_sufficiently_observed_passes": 100,
+      "catalogued_capture_days": 158,
+      "sufficiently_observed_days": 100,
+      "catalogue_intervals_days": {
+        "count": 157,
+        "median": 4.999745,
+        "p90": 5.000602,
+        "max": 9.99919
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 99,
+        "median": 5.000486,
+        "p90": 12.000347,
+        "max": 20.0
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 99,
+        "median": 5.0,
+        "p90": 12.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.693019
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_canal",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 158,
+      "catalogued_passes": 158,
+      "processed_passes": 158,
+      "sufficiently_observed_passes": 100,
+      "conservative_sufficiently_observed_passes": 100,
+      "catalogued_capture_days": 158,
+      "sufficiently_observed_days": 100,
+      "catalogue_intervals_days": {
+        "count": 157,
+        "median": 4.999745,
+        "p90": 5.000602,
+        "max": 9.99919
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 99,
+        "median": 5.000486,
+        "p90": 12.001157,
+        "max": 17.994676
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 99,
+        "median": 5.0,
+        "p90": 12.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 7.684595,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.685422
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_patios",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 158,
+      "catalogued_passes": 158,
+      "processed_passes": 158,
+      "sufficiently_observed_passes": 107,
+      "conservative_sufficiently_observed_passes": 107,
+      "catalogued_capture_days": 158,
+      "sufficiently_observed_days": 107,
+      "catalogue_intervals_days": {
+        "count": 157,
+        "median": 4.999745,
+        "p90": 5.000602,
+        "max": 9.99919
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 106,
+        "median": 5.00037,
+        "p90": 10.0,
+        "max": 17.994676
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 106,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 18.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 7.684595,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.695872
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "combined",
+      "catalogued_acquisitions": 354,
+      "catalogued_passes": 354,
+      "processed_passes": 354,
+      "sufficiently_observed_passes": 299,
+      "conservative_sufficiently_observed_passes": 299,
+      "catalogued_capture_days": 312,
+      "sufficiently_observed_days": 274,
+      "catalogue_intervals_days": {
+        "count": 353,
+        "median": 1.514564,
+        "p90": 3.815906,
+        "max": 5.000718
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 298,
+        "median": 1.670111,
+        "p90": 4.486303,
+        "max": 7.51351
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 273,
+        "median": 2.0,
+        "p90": 4.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        136,
+        26,
+        40
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.868284
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "combined",
+      "catalogued_acquisitions": 354,
+      "catalogued_passes": 354,
+      "processed_passes": 354,
+      "sufficiently_observed_passes": 296,
+      "conservative_sufficiently_observed_passes": 296,
+      "catalogued_capture_days": 312,
+      "sufficiently_observed_days": 274,
+      "catalogue_intervals_days": {
+        "count": 353,
+        "median": 1.514564,
+        "p90": 3.815906,
+        "max": 5.000718
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 295,
+        "median": 1.67064,
+        "p90": 4.486302,
+        "max": 7.51351
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 273,
+        "median": 2.0,
+        "p90": 4.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        136,
+        26,
+        40
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.862986
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_canal",
+      "sensor": "combined",
+      "catalogued_acquisitions": 354,
+      "catalogued_passes": 354,
+      "processed_passes": 354,
+      "sufficiently_observed_passes": 296,
+      "conservative_sufficiently_observed_passes": 296,
+      "catalogued_capture_days": 312,
+      "sufficiently_observed_days": 275,
+      "catalogue_intervals_days": {
+        "count": 353,
+        "median": 1.514564,
+        "p90": 3.815906,
+        "max": 5.000718
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 295,
+        "median": 1.670236,
+        "p90": 4.486302,
+        "max": 7.51351
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 274,
+        "median": 2.0,
+        "p90": 4.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        136,
+        26,
+        40
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.859595
+    },
+    {
+      "port_id": "prq",
+      "zone_id": "prq_patios",
+      "sensor": "combined",
+      "catalogued_acquisitions": 354,
+      "catalogued_passes": 354,
+      "processed_passes": 354,
+      "sufficiently_observed_passes": 303,
+      "conservative_sufficiently_observed_passes": 303,
+      "catalogued_capture_days": 312,
+      "sufficiently_observed_days": 277,
+      "catalogue_intervals_days": {
+        "count": 353,
+        "median": 1.514564,
+        "p90": 3.815906,
+        "max": 5.000718
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 302,
+        "median": 1.670111,
+        "p90": 4.486302,
+        "max": 7.51351
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 276,
+        "median": 2.0,
+        "p90": 4.0,
+        "max": 8.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 1.009936,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-02T00:14:18.460250Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        136,
+        26,
+        40
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s1-v1:fddd465e58a07fd2",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.864259
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 125,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 118,
+      "conservative_sufficiently_observed_passes": 118,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 118,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 117,
+        "median": 5.000351,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 117,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.944
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 132,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 115,
+      "conservative_sufficiently_observed_passes": 113,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 115,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 114,
+        "median": 5.999222,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 114,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.935809
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 169,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 115,
+      "conservative_sufficiently_observed_passes": 81,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 115,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 114,
+        "median": 5.999222,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 114,
+        "median": 6.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.945275
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "sensor": "sentinel-1",
+      "catalogued_acquisitions": 125,
+      "catalogued_passes": 125,
+      "processed_passes": 122,
+      "sufficiently_observed_passes": 118,
+      "conservative_sufficiently_observed_passes": 118,
+      "catalogued_capture_days": 125,
+      "sufficiently_observed_days": 118,
+      "catalogue_intervals_days": {
+        "count": 124,
+        "median": 4.485678,
+        "p90": 7.514513,
+        "max": 24.000013
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 117,
+        "median": 5.000351,
+        "p90": 10.486168,
+        "max": 24.000013
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 117,
+        "median": 5.0,
+        "p90": 10.0,
+        "max": 24.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 7.649582
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-18T11:45:01.358452Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D"
+      ],
+      "relative_orbits": [
+        128,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0"
+      ],
+      "mean_known_observable_fraction": 0.944
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 130,
+      "conservative_sufficiently_observed_passes": 130,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 119,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 129,
+        "median": 3.006944,
+        "p90": 13.006134,
+        "max": 28.000231
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 118,
+        "median": 3.0,
+        "p90": 13.0,
+        "max": 28.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.488454
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 112,
+      "conservative_sufficiently_observed_passes": 112,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 104,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 111,
+        "median": 3.00706,
+        "p90": 13.006134,
+        "max": 36.990972
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 103,
+        "median": 4.0,
+        "p90": 13.0,
+        "max": 37.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 15.457132
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.506049
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 104,
+      "conservative_sufficiently_observed_passes": 104,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 96,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 103,
+        "median": 4.999051,
+        "p90": 13.00706,
+        "max": 28.000231
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 95,
+        "median": 5.0,
+        "p90": 15.0,
+        "max": 28.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.498612
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "sensor": "sentinel-2",
+      "catalogued_acquisitions": 310,
+      "catalogued_passes": 310,
+      "processed_passes": 310,
+      "sufficiently_observed_passes": 140,
+      "conservative_sufficiently_observed_passes": 140,
+      "catalogued_capture_days": 284,
+      "sufficiently_observed_days": 130,
+      "catalogue_intervals_days": {
+        "count": 309,
+        "median": 1.993657,
+        "p90": 3.00706,
+        "max": 5.000949
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 139,
+        "median": 3.006944,
+        "p90": 10.000231,
+        "max": 20.0
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 129,
+        "median": 3.0,
+        "p90": 10.0,
+        "max": 20.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 9.678137,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 2.685429,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-03T16:27:01.024000Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        140,
+        40
+      ],
+      "orbit_directions": [],
+      "recipe_versions": [
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.527353
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "combined",
+      "catalogued_acquisitions": 435,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 248,
+      "conservative_sufficiently_observed_passes": 248,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 214,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 247,
+        "median": 1.993032,
+        "p90": 5.674842,
+        "max": 16.324522
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 213,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.619358
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "combined",
+      "catalogued_acquisitions": 442,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 227,
+      "conservative_sufficiently_observed_passes": 225,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 199,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 226,
+        "median": 1.993831,
+        "p90": 6.000503,
+        "max": 17.66849
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 198,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 12.135259
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.629543
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_canal",
+      "sensor": "combined",
+      "catalogued_acquisitions": 479,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 219,
+      "conservative_sufficiently_observed_passes": 185,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 191,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 218,
+        "median": 2.326524,
+        "p90": 6.000735,
+        "max": 16.324522
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 190,
+        "median": 3.0,
+        "p90": 6.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.626964
+    },
+    {
+      "port_id": "stc",
+      "zone_id": "stc_patios",
+      "sensor": "combined",
+      "catalogued_acquisitions": 435,
+      "catalogued_passes": 435,
+      "processed_passes": 432,
+      "sufficiently_observed_passes": 258,
+      "conservative_sufficiently_observed_passes": 258,
+      "catalogued_capture_days": 360,
+      "sufficiently_observed_days": 221,
+      "catalogue_intervals_days": {
+        "count": 434,
+        "median": 1.673599,
+        "p90": 2.994074,
+        "max": 4.18436
+      },
+      "sufficiently_observed_intervals_days": {
+        "count": 257,
+        "median": 1.992963,
+        "p90": 5.324375,
+        "max": 16.324522
+      },
+      "sufficiently_observed_day_intervals_days": {
+        "count": 220,
+        "median": 2.0,
+        "p90": 6.0,
+        "max": 17.0
+      },
+      "sufficiently_observed_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 1.460697
+      },
+      "catalogue_boundary_gaps_days": {
+        "leading": 0.490209,
+        "trailing": 0.456067
+      },
+      "window_days_without_sufficient_observation": null,
+      "first_capture": "2025-01-01T11:45:54.054271Z",
+      "last_capture": "2026-10-25T16:23:41.025000Z",
+      "platforms": [
+        "S1A",
+        "S1C",
+        "S1D",
+        "S2A",
+        "S2B",
+        "S2C"
+      ],
+      "relative_orbits": [
+        128,
+        140,
+        40,
+        63
+      ],
+      "orbit_directions": [
+        "ASCENDING",
+        "DESCENDING"
+      ],
+      "recipe_versions": [
+        "ai2-s1-v1:00907358ce3e1747",
+        "ai2-s1-v1:24e000760a8ffec7",
+        "ai2-s1-v1:e8dcd09b631a0af0",
+        "ai2-s2-v1:07ecebb841a960fb",
+        "ai2-s2-v1:6ee39b3b5719c348",
+        "ai2-s2-v1:700095c8026cf588",
+        "ai2-s2-v1:e364214d4d6ee741"
+      ],
+      "mean_known_observable_fraction": 0.647079
+    }
+  ],
+  "notes": [
+    "A sufficient port pass requires every configured zone to meet the observable-fraction threshold.",
+    "S2 granules share a satellite/sensing-time/relative-orbit pass; S1 slices share a satellite/absolute-orbit pass.",
+    "The maximum observed fraction per zone is a conservative union lower bound; fractions and vessel counts are never added across passes.",
+    "A matching mask-union cache can recover complementary pixels within the same pass and recipe; the conservative count remains available for comparison.",
+    "Unknown or unprocessed areas contribute zero known coverage, not zero vessels. Context-only acquisitions are excluded.",
+    "Combined cadence pools capture opportunities from both sensors; it does not fuse measurements or validate detector accuracy.",
+    "Interval statistics exclude window boundaries; leading/trailing gaps are reported separately. Day intervals use distinct UTC dates."
+  ]
+}

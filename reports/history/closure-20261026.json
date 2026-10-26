@@ -1,0 +1,144 @@
+{
+  "schema_version": "history-closure-audit-v1",
+  "checked_at_utc": "2026-10-26T02:44:12.917474+00:00",
+  "plan_id": "history-full-v1-3e4733ed6e0e7481",
+  "plan_sha256": "28095b6d61477bff3147ac5ec3a72d9397f97b1c117beab480c78113ae3a56ae",
+  "catalog_scope": "Only frozen-plan observations are reconciled; asset integrity covers the entire catalog snapshot.",
+  "ledger_logical_sha256": "667ee276df3c9f45647b96bfef63eaf0a614abe74d40136b0cd0d08f3a299bcf",
+  "catalog_observations_logical_sha256": "a59e31d3b28d6e48ac4fee19bf789146040d8ef05f88d8acde0d69d3e6b48b4c",
+  "all_registered_assets_logical_sha256": "fccc6692a32441c10634fa1920155dbc4613536a5f29ca4827dba0650dfa1132",
+  "acquisitions": {
+    "planned": 824,
+    "states": {
+      "complete": 818,
+      "unavailable": 6
+    },
+    "completed_fraction": 0.9927184466019418,
+    "unavailable": 6,
+    "outstanding": 0
+  },
+  "zone_observations": {
+    "planned": 4973,
+    "by_acquisition_state": {
+      "complete": 4940,
+      "unavailable": 33
+    },
+    "published": 4940,
+    "states": {
+      "usable": 2824,
+      "unusable": 1055,
+      "partial": 1061
+    },
+    "protected_pilot": 22,
+    "catalog_total": 4962
+  },
+  "evidence": {
+    "complete_acquisitions_with_replay": 818,
+    "missing_replay": [],
+    "files_checked": 121451,
+    "bytes_checked": 30706079393,
+    "sha256_verified": true,
+    "protected_asset_catalog_matches_baseline": true
+  },
+  "resources": {
+    "download_bytes_reserved": 24464828251,
+    "last_successful_attempt_seconds_sum": 118389.22315461577,
+    "attempts_total": 1021,
+    "last_completed_at": "2026-10-23T18:01:38.891977Z",
+    "timing_limit": "Sum excludes failed/interrupted attempts, earlier materialization and pauses; it is not total compute or wall time."
+  },
+  "exceptions": [
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114459:20260819T114524:004194:007AF7",
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260819T114524:20260819T114549:004194:007AF7",
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114500:20260831T114525:004369:008126",
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260831T114525:20260831T114550:004369:008126",
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114501:20260912T114526:004544:00873E",
+      "zone_ids": [
+        "stc_fondeo",
+        "stc_canal",
+        "pbr_fondeo",
+        "pbr_canal"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    },
+    {
+      "acquisition_key": "S1D:IW:GRDH:1SDV:20260912T114526:20260912T114551:004544:00873E",
+      "zone_ids": [
+        "stc_muelles",
+        "stc_fondeo",
+        "stc_canal",
+        "stc_patios",
+        "pbr_muelles",
+        "pbr_canal",
+        "pbr_patios"
+      ],
+      "reason": "No same-track public context 30\u201390 days before acquisition",
+      "error_code": "FileNotFoundError"
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "scientific_validation": "Not evaluated; processed observations remain experimental proposals.",
+  "pilot_completion": {
+    "separate_acquisitions": [
+      "S1D:IW:GRDH:1SDV:20261018T114526:20261018T114551:005069:009972",
+      "S1D:IW:GRDH:1SDV:20261019T001342:20261019T001407:005077:0099B2",
+      "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "S2B:MSIL1C:20260930T162059:R040:T16PCC"
+    ],
+    "status": "Excluded from this frozen campaign; original partial crops remain protected."
+  },
+  "limits": [
+    "Unavailable context is not a zero-vessel observation.",
+    "Complete processing does not imply full satellite footprint or cloud-free coverage.",
+    "Protected identity/asset checks do not assert that authorized later reviews never changed observation rows."
+  ]
+}

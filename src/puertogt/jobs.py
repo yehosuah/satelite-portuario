@@ -39,6 +39,26 @@ class ResourceLimit(RuntimeError):
     pass
 
 
+def _directory_size_bytes(root: Path) -> int:
+    """Measure current regular files, reusing each scan entry's stat result.
+
+    No cached total survives a call: every write still observes external growth.
+    Symbolic files and directories are excluded, matching the previous traversal.
+    """
+    size = 0
+    directories = [root]
+    while directories:
+        with os.scandir(directories.pop()) as entries:
+            for entry in entries:
+                if entry.is_symlink():
+                    continue
+                if entry.is_dir(follow_symlinks=False):
+                    directories.append(entry.path)
+                elif entry.is_file(follow_symlinks=False):
+                    size += entry.stat(follow_symlinks=False).st_size
+    return size
+
+
 @dataclass(frozen=True)
 class RuntimeLimits:
     reserve_bytes: int = 5 * 1024**3
@@ -214,11 +234,7 @@ class JobQueue:
         if self.free_bytes(self.store.data_dir) < self.runtime.reserve_bytes + required_bytes:
             return "insufficient_disk"
         if self.runtime.volume_limit_bytes is not None:
-            size = sum(
-                path.stat().st_size
-                for path in self.store.data_dir.rglob("*")
-                if path.is_file() and not path.is_symlink()
-            )
+            size = _directory_size_bytes(self.store.data_dir)
             if size + required_bytes > self.runtime.volume_limit_bytes:
                 return "volume_limit"
         return None

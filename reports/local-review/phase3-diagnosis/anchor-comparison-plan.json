@@ -1,0 +1,113 @@
+{
+  "schema_version": "train-anchor-comparison-v1",
+  "created_at": "2026-10-26T03:01:34.598565Z",
+  "author": "codex-ai-science-next; scope authorized by root",
+  "purpose": "Two fixed TRAIN-only anchor recipes motivated by train-target geometry, not a new calibration test",
+  "training": {
+    "path": "data/datasets/phase2-reviews/s2-january-v1/train-crops",
+    "sha256": "f0334c9d341f57624794d370a44091308a8f08ae31624f69a7c057ad4e0f8686",
+    "source_path": "data/datasets/phase2-reviews/s2-january-v1/source",
+    "source_sha256": "e5d94fa2c59d786b4630f070a867dd62742cf93b13430448ffd7ded4047e7d5c",
+    "window": [
+      "2025-01-01",
+      "2025-02-01"
+    ],
+    "crops": 40,
+    "references_by_port": {
+      "prq": 29,
+      "pbr": 1,
+      "stc": 1
+    },
+    "split": "train"
+  },
+  "development": {
+    "path": "data/experiments/phase2-s2-train-temporal-v1-20261022/internal-february",
+    "sha256": "c04a4e874610f003130901347f1416bc0460b36636b45d80ca894530462be680",
+    "split": "train"
+  },
+  "refit": {
+    "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+    "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc",
+    "split": "train",
+    "source_path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+    "source_sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204"
+  },
+  "candidates": [
+    {
+      "name": "baseline_anchors",
+      "anchor_sizes": [
+        [
+          32
+        ],
+        [
+          64
+        ],
+        [
+          128
+        ],
+        [
+          256
+        ]
+      ],
+      "epochs": 12,
+      "learning_rate": 0.0001,
+      "sample_order": "shuffle"
+    },
+    {
+      "name": "small_anchors",
+      "anchor_sizes": [
+        [
+          8
+        ],
+        [
+          16
+        ],
+        [
+          32
+        ],
+        [
+          64
+        ]
+      ],
+      "epochs": 12,
+      "learning_rate": 0.0001,
+      "sample_order": "shuffle"
+    }
+  ],
+  "fixed": {
+    "seed": 20261021,
+    "score_threshold": 0.5,
+    "iou_threshold": 0.5,
+    "cpu_threads": 4,
+    "encoder_frozen": true,
+    "public_initialization_sha256": "99f9006a8f0d3ca1e5426567713ef03533d9378d1f70ecdb4990b8a98a69e9fe",
+    "inference_floor": 0.1,
+    "additional_descriptive_thresholds": [
+      0.1,
+      0.8
+    ],
+    "radiometry": "unchanged",
+    "supervision": "unchanged explicit reviewed masks; visual boxes"
+  },
+  "selection": {
+    "minimum_absolute_f1_gain": 0.05,
+    "recall_must_not_decrease": true,
+    "rule": "Compare only at score0.50 and IoU0.50; choose small anchors only if pooled F1 gains at least0.05 and recall does not fall; per-port results mandatory; otherwise no new recipe/refit. No adaptive candidates, extra epochs or threshold changes."
+  },
+  "budget": {
+    "maximum_steps_per_inner_recipe": 480,
+    "maximum_refit_steps": 1008,
+    "maximum_heavy_seconds": 1200,
+    "minimum_free_disk_bytes": 5368709120,
+    "maximum_models_concurrent": 1
+  },
+  "prior_exposure": "February has already been inspected during prior TRAIN development. The failed October\u2013December CAL has been inspected diagnostically; it cannot validate this intervention. No new calibration or TEST is opened. Existing references remain AI, with partly conditioned scopes.",
+  "calibration_or_test_permitted": false,
+  "refit_permitted": false,
+  "refit_rule": "Not executed by this comparison. A successful internal result supports a separate decision to refit with its own frozen plan. Fresh independent evaluation remains required.",
+  "hypothesis_source": {
+    "path": "reports/local-review/phase3-diagnosis/train-anchor-geometry.json",
+    "sha256": "0a806342d2d3c92e98c9a96704701bb2f4dcd491bcbf661106efa06f1e2456cf"
+  },
+  "automatic_publication": false
+}

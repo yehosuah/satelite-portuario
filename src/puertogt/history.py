@@ -43,6 +43,7 @@ from .preprocess import S1_BANDS, S2_BANDS, add_cloud_shadow_masks, prepare
 from .store import Store, confined_path, json_text, sha256_file, utc_now, utc_text
 
 HISTORY_VERSION = "history-full-v1"
+SELECTED_HISTORY_VERSION = "history-selected-v1"
 
 
 class PublicSourceUnavailable(FileNotFoundError):
@@ -181,6 +182,164 @@ def create_plan(catalog: Store, features: list[dict], directory: Path) -> dict:
         "publication": "experimental; no local validation; no automatic acceptance"}
     _atomic_json(destination, plan)
     return plan
+
+
+def _protected_snapshot(catalog: Store, observation_ids: list[str]) -> dict:
+    """Pin existing results and reviews, without copying private source metadata."""
+    ids = sorted(set(observation_ids))
+    placeholders = ",".join("?" for _ in ids)
+    snapshot = {"observation_ids": ids, "tables": {}}
+    with closing(catalog.connect()) as tx:
+        tx.execute("BEGIN")
+        for table, key in [("observations", "observation_id"), ("jobs", "job_id"),
+                           ("assets", "asset_id"), ("detections", "detection_id")]:
+            rows = [dict(row) for row in tx.execute(
+                f"SELECT * FROM {table} WHERE observation_id IN ({placeholders}) ORDER BY {key}", ids)]
+            if table == "observations" and len(rows) != len(ids):
+                raise ValueError("Protected snapshot references missing observations")
+            if table == "detections":
+                detection_ids = [row["detection_id"] for row in rows]
+            snapshot["tables"][table] = {"rows": len(rows),
+                                         "sha256": hashlib.sha256(json_text(rows).encode()).hexdigest()}
+        entities = sorted(ids + detection_ids)
+        rows = [dict(row) for row in tx.execute(
+            "SELECT * FROM revisions WHERE entity_id IN (" + ",".join("?" for _ in entities)
+            + ") ORDER BY revision_id", entities)]
+        snapshot["tables"]["revisions"] = {"rows": len(rows),
+                                           "sha256": hashlib.sha256(json_text(rows).encode()).hexdigest()}
+        tx.rollback()
+    return snapshot
+
+
+def _selected_identity(plan: dict) -> str:
+    fields = ("version", "acquisitions", "protected_observation_ids", "protected_observations",
+              "zones_sha256", "selected_acquisition_keys", "supplemental_authorization")
+    return SELECTED_HISTORY_VERSION + "-" + hashlib.sha256(
+        json_text({field: plan[field] for field in fields}).encode()).hexdigest()[:16]
+
+
+def _validate_selected_plan(plan: dict) -> None:
+    if plan.get("version") != SELECTED_HISTORY_VERSION or plan.get("plan_id") != _selected_identity(plan):
+        raise ValueError("Selected history plan identity differs from its frozen contents")
+    keys = [item["scene"]["acquisition_key"] for item in plan["acquisitions"]]
+    if sorted(keys) != plan["selected_acquisition_keys"] or len(keys) != len(set(keys)):
+        raise ValueError("Selected history plan acquisitions differ from frozen selection")
+
+
+def create_selected_plan(catalog: Store, features: list[dict], directory: Path, *,
+                         acquisition_keys: list[str], allow_protected_keys: list[str] = (),
+                         protected_source_plan: Path | None = None) -> dict:
+    """Freeze an exact incremental selection, with explicit pilot-only completion.
+
+    Completion preserves every existing observation ID. Only captures protected
+    by the supplied original plan may opt in; their result/review rows are pinned
+    and checked again before publication. A plan-specific model/recipe creates
+    additional observations instead of replacing those original partial crops.
+    """
+    features = json.loads(json_text(features))
+    keys, allowed = sorted(set(acquisition_keys)), sorted(set(allow_protected_keys))
+    if not keys or len(keys) != len(acquisition_keys) or not set(allowed).issubset(keys):
+        raise ValueError("Selected acquisitions must be unique and contain the protected allowlist")
+    directory = Path(directory)
+    destination = directory / "plan.json"
+    zones_hash = hashlib.sha256(json_text(features).encode()).hexdigest()
+    source = None
+    if allowed:
+        if protected_source_plan is None:
+            raise ValueError("Completing protected captures requires the original source plan")
+        source = json.loads(Path(protected_source_plan).read_text())
+        source_keys = {row["acquisition_key"] for row in source["protected_observations"]}
+        if not set(allowed).issubset(source_keys):
+            raise ValueError("Protected capture was not protected by the source plan")
+    if destination.exists():
+        existing = json.loads(destination.read_text())
+        _validate_selected_plan(existing)
+        auth = existing.get("supplemental_authorization") or {}
+        if (existing["selected_acquisition_keys"] != keys or auth.get("acquisition_keys", []) != allowed
+                or existing["zones_sha256"] != zones_hash):
+            raise ValueError("Frozen selected plan differs from requested selection or geometries")
+        if allowed and auth["source_plan_sha256"] != sha256_file(protected_source_plan):
+            raise ValueError("Protected source plan changed")
+        return existing
+    with closing(catalog.connect()) as tx:
+        tx.execute("BEGIN")
+        scenes = [Scene.model_validate_json(row[0]) for row in tx.execute(
+            "SELECT data_json FROM acquisitions ORDER BY captured_at,acquisition_key")]
+        protected = [dict(row) for row in tx.execute(
+            "SELECT observation_id,acquisition_key,zone_id,recipe_version FROM observations ORDER BY observation_id")]
+        tx.rollback()
+    existing_keys = {row["acquisition_key"] for row in protected}
+    if set(keys).intersection(existing_keys) != set(allowed):
+        raise ValueError("Selected captures already have protected observations; explicit completion is required")
+    selected = {scene.acquisition_key: scene for scene in scenes if scene.acquisition_key in keys}
+    if set(selected) != set(keys):
+        raise ValueError("Selected acquisition is absent from the catalog")
+    acquisitions = []
+    for key in keys:
+        scene = selected[key]
+        if scene.metadata.get("purpose") != "public_history":
+            raise ValueError("Selected acquisition is not public history")
+        zones = [feature for feature in features
+                 if feature["properties"]["port_id"] in scene.port_ids
+                 and shape(feature["geometry"]).intersection(shape(scene.footprint)).area > 0]
+        if not zones:
+            raise ValueError("Selected acquisition intersects no configured zones")
+        item = {"scene": scene.model_dump(mode="json"), "zones": zones, "tiles": build_tiles(zones)}
+        if scene.sensor == "sentinel-1":
+            try:
+                item["context"] = choose_context(scene, scenes).model_dump(mode="json")
+            except ValueError as exc:
+                item["planning_error"] = str(exc)
+        acquisitions.append(item)
+    authorization = None
+    if allowed:
+        authorization = {"acquisition_keys": allowed, "source_plan_id": source["plan_id"],
+                         "source_plan_sha256": sha256_file(protected_source_plan),
+                         "protected_snapshot": _protected_snapshot(catalog, source["protected_observation_ids"])}
+    plan = {"version": SELECTED_HISTORY_VERSION, "acquisitions": acquisitions,
+            "protected_observation_ids": [row["observation_id"] for row in protected],
+            "protected_observations": protected, "zones_sha256": zones_hash,
+            "selected_acquisition_keys": keys, "supplemental_authorization": authorization}
+    plan.update(plan_id=_selected_identity(plan), created_at=utc_text(), source_database=str(catalog.db_path),
+                publication="experimental; no local validation; no automatic acceptance")
+    _atomic_json(destination, plan)
+    return plan
+
+
+def _validate_selected_publication(catalog, item, model, protected_ids, plan):
+    _validate_selected_plan(plan)
+    key = item["scene"]["acquisition_key"]
+    expected = next((entry for entry in plan["acquisitions"] if entry["scene"]["acquisition_key"] == key), None)
+    if expected is None or {k: v for k, v in item.items() if k != "history_inference"} != expected:
+        raise ValueError("Acquisition or geometry is outside the frozen selection")
+    if protected_ids != set(plan["protected_observation_ids"]):
+        raise ValueError("Selected plan protected IDs cannot be removed or changed")
+    if (not model.model_id.endswith("-" + plan["plan_id"])
+            or model.metadata.get("history_version") != plan["plan_id"]):
+        raise ValueError("Selected plan requires its own model identity")
+    auth = plan.get("supplemental_authorization")
+    with closing(catalog.connect()) as tx:
+        rows = [dict(row) for row in tx.execute(
+            "SELECT o.observation_id,o.recipe_version,j.data_json FROM observations o "
+            "LEFT JOIN jobs j USING(observation_id) WHERE o.acquisition_key=?", (key,))]
+    original_ids = {row["observation_id"] for row in rows}.intersection(protected_ids)
+    if original_ids:
+        if not auth or key not in auth["acquisition_keys"]:
+            raise ValueError("Refusing an acquisition outside the protected completion allowlist")
+        snapshot = auth["protected_snapshot"]
+        if not original_ids.issubset(snapshot["observation_ids"]):
+            raise ValueError("Protected capture has observations outside the source plan")
+        if _protected_snapshot(catalog, snapshot["observation_ids"]) != snapshot:
+            raise ValueError("Protected snapshot changed; do not overwrite or silently rebase completion")
+    recipe = processing_recipe(model)
+    for row in rows:
+        if row["observation_id"] in original_ids:
+            if row["recipe_version"] == recipe:
+                raise ValueError("Protected observation recipe collision")
+            continue
+        marker = json.loads(row["data_json"] or "{}").get("input_scene", {}).get("metadata", {})
+        if row["recipe_version"] != recipe or marker.get("history_selected_plan_id") != plan["plan_id"]:
+            raise ValueError("Selected history recipe collision with an unrelated observation")
 
 
 class HistoryLedger:
@@ -820,14 +979,14 @@ def mosaic_zone(tiles: list[tuple[dict, RasterBundle]], zone_id: str, directory:
     return result
 
 
-def history_model(base: ModelManifest) -> ModelManifest:
+def history_model(base: ModelManifest, *, version: str = HISTORY_VERSION) -> ModelManifest:
     """A distinct processing identity never overwrites the pilot model or observations."""
     return base.model_copy(update={
-        "model_id": base.model_id + "-" + HISTORY_VERSION,
-        "version": base.version + "+" + HISTORY_VERSION,
+        "model_id": base.model_id + "-" + version,
+        "version": base.version + "+" + version,
         "publication_policy": {**base.publication_policy, "status": "experimental",
                                "automatic_publication": False, "local_validation": "absent"},
-        "metadata": {**base.metadata, "history_version": HISTORY_VERSION,
+        "metadata": {**base.metadata, "history_version": version,
                      "materialization": "complete configured zones;512px tiles;32px margins;10m UTM"},
     })
 
@@ -973,7 +1132,7 @@ def infer_tiles(tiles, model, detector, *, device="cpu"):
 
 
 def publish_acquisition(catalog, item, tiles, predictions, model, *, protected_ids,
-                        runtime=None):
+                        runtime=None, selected_plan=None):
     """Publish through the existing fenced worker while retaining immutable inputs."""
     from .worker import process_once
 
@@ -982,7 +1141,11 @@ def publish_acquisition(catalog, item, tiles, predictions, model, *, protected_i
         existing_ids = {row[0] for row in tx.execute(
             "SELECT observation_id FROM observations WHERE acquisition_key=?",
             (scene.acquisition_key,))}
-    if existing_ids.intersection(protected_ids):
+    if selected_plan is not None:
+        _validate_selected_publication(catalog, item, model, protected_ids, selected_plan)
+        scene = scene.model_copy(update={"metadata": {**scene.metadata,
+                                                     "history_selected_plan_id": selected_plan["plan_id"]}})
+    elif existing_ids.intersection(protected_ids):
         raise ValueError("Refusing to reprocess a protected pilot acquisition")
     recipe = processing_recipe(model)
     runtime = runtime or RuntimeLimits(reserve_bytes=5 * 1024**3)
@@ -1001,6 +1164,9 @@ def publish_acquisition(catalog, item, tiles, predictions, model, *, protected_i
             results.append({"observation_id": existing["observation_id"], "resumed": True})
             continue
         bundle = mosaic_zone(tiles, zone, work / zone)
+        if selected_plan is not None:
+            bundle.metadata["history_selected_plan_id"] = selected_plan["plan_id"]
+            bundle.metadata["history_version"] = selected_plan["plan_id"]
         if item.get("history_inference"):
             bundle.metadata["history_inference"] = item["history_inference"]
         # Register only the original catalogue scene. Prepared metadata belongs to
@@ -1013,7 +1179,7 @@ def publish_acquisition(catalog, item, tiles, predictions, model, *, protected_i
             if row["status"] in {"pending", "retry", "paused"}:
                 value = json.loads(row["data_json"])
                 value["input_scene"]["metadata"]["prepared_bundle"] = bundle.model_dump(mode="json")
-                value["input_scene"]["metadata"]["history_version"] = HISTORY_VERSION
+                value["input_scene"]["metadata"]["history_version"] = model.metadata.get("history_version", HISTORY_VERSION)
                 tx.execute("UPDATE jobs SET data_json=? WHERE job_id=?", (json_text(value), job_id))
 
         def predictor(input_bundle, manifest):
@@ -1057,6 +1223,9 @@ def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[
     """Execute one campaign serially, resuming completed numeric/published work."""
     detectors = {}
     processed = 0
+    selected_plan = plan if plan.get("version") == SELECTED_HISTORY_VERSION else None
+    if selected_plan:
+        _validate_selected_plan(plan)
     with file_lock(ledger.directory / "campaign.lock"):
         _atomic_json(ledger.directory / "limits.json", asdict(ledger.limits))
         ledger.recover_interrupted()
@@ -1103,7 +1272,8 @@ def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[
                         reserve_bytes=ledger.limits.reserve_bytes,
                         volume_limit_bytes=ledger.limits.volume_limit_bytes)
                     report["history_inference"] = item["history_inference"]
-                    model = history_model(models[selected_sensor])
+                    model = history_model(models[selected_sensor],
+                                          version=plan["plan_id"] if selected_plan else HISTORY_VERSION)
                     if selected_sensor not in detectors:
                         from .ml.detection import load_detector
                         # Release the other sensor's weights; one heavy model at a time.
@@ -1112,6 +1282,7 @@ def run_history(catalog: Store, plan: dict, ledger: HistoryLedger, models: dict[
                     predictions = infer_tiles(tiles, model, detectors[selected_sensor], device=device)
                 results = publish_acquisition(catalog, item, tiles, predictions, model,
                                               protected_ids=set(plan["protected_observation_ids"]),
+                                              selected_plan=selected_plan,
                                               runtime=RuntimeLimits(reserve_bytes=ledger.limits.reserve_bytes,
                                                                     volume_limit_bytes=ledger.limits.volume_limit_bytes))
                 report.update(observations=results, experimental_proposals=len(predictions),

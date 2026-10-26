@@ -18,11 +18,20 @@ La API sirve resultados del catálogo local. No inicia descargas, inferencia, en
 | `GET /v1/assets/{asset_id}` | Archivo registrado disponible dentro del volumen, con ETag SHA256. |
 | `GET /v1/assets/{asset_id}?metadata=true` | Metadatos y enlace del activo, sin ruta local del archivo. |
 | `GET /v1/coverage` | Conciliación entre catálogo y procesamiento, por periodo y ámbito. |
+| `GET /v1/coverage/passes` | Pasadas únicas, área observable e intervalos reales por puerto, zona y sensor. |
 | `GET /v1/reviews/{entity_type}/{entity_id}` | Historial ordenado de revisiones de una entidad. |
 
 Los identificadores de puerto son `prq`, `stc` y `pbr`; los sensores son `sentinel-1` y `sentinel-2`. Observaciones y detecciones aceptan `port_id`, `sensor`, `start`, `end`, `recipe_version` e `include_rejected`. Detecciones también acepta `observation_id`; observaciones acepta `status`. Cambios acepta `port_id`, `start`, `end` e `include_rejected`. Cobertura acepta `port_id` y `recipe_version`.
 
 Las fechas son ISO8601 con zona horaria. `start` es inclusivo y `end` exclusivo. Un intervalo inválido o una fecha sin zona produce 422. El servidor normaliza a UTC.
+
+`/v1/coverage/passes` acepta `port_id`, `sensor`, `start`, `end`, `recipe_version` y `min_observable_fraction` (mayor que cero y hasta uno; 0,9 por defecto). Devuelve `items` por puerto/sensor, `zones` por zona/sensor, filtros, periodo y huellas de las fuentes. El inicio predeterminado es 2025-01-01 UTC y el fin es la consulta actual. No incluye adquisiciones auxiliares de contexto.
+
+Una pasada suficiente para el puerto debe superar la fracción pedida en **cada zona configurada de esa misma pasada**. Se agrupan los granules ópticos por satélite, instante y órbita relativa; las partes radar por satélite y órbita absoluta. El grupo `combined` reúne oportunidades de ambos sensores y conserva sus instantes individuales. No suma detecciones ni fusiona imágenes de fechas distintas.
+
+La consulta usa uniones de máscaras previamente calculadas y verificadas en `data/coverage/pass-unions-v1.json` cuando coinciden geometría, observaciones, receta y activos registrados. Una revisión que rechace o marque no observable una fuente invalida su uso. Sin una unión vigente, usa el máximo individual como cota conservadora; `conservative_sufficiently_observed_passes` conserva esa comparación. La API no lee rasters ni inicia procesamiento para regenerar el archivo. [Método y comando](coverage.md).
+
+Los intervalos son diferencias entre capturas útiles reales, no pronósticos. Los intervalos entre días UTC distintos y los huecos inicial/final del periodo se entregan por separado. Menos de dos capturas produce intervalo nulo. El porcentaje de área y las métricas de frecuencia no evalúan precisión de detección.
 
 Observaciones, detecciones, cambios y trabajos aceptan `limit` entre 1 y 500, y `cursor`. Repite los mismos filtros al seguir `next_cursor`; cambiar filtros con un cursor anterior produce 422. El orden es ascendente por fecha y un identificador estable. La última página devuelve `next_cursor: null`. Modelos, puertos, cobertura e historial no usan este cursor.
 

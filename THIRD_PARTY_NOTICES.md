@@ -29,6 +29,10 @@ Las adquisiciones S1 y S2 proceden del programa Copernicus. El [aviso oficial de
 
 Para datos originales, conserva `Copernicus Sentinel data [Year]`. Para recortes, reproyecciones, combinaciones RGB y otros datos modificados, conserva `Contains modified Copernicus Sentinel data [Year]`, sustituyendo el año por el de adquisición. Los previews locales de 2026 requieren ese año. La fuente de descarga, producto, fecha y transformaciones permanecen en los metadatos; la disponibilidad de un espejo no elimina la atribución de Copernicus.
 
+Los RGB y comparaciones temporales publicados en `reports/local-review/phase3-diagnosis/`
+contienen datos de 2025: **Contains modified Copernicus Sentinel data 2025**.
+Sus fuentes y transformaciones están fijadas en los recibos de esa carpeta.
+
 El inventario público contiene metadatos y huellas de productos, no una copia del portal ni de su contenido editorial. El uso de Sentinel no implica respaldo de ESA, la Unión Europea o los proveedores a las conclusiones del proyecto.
 
 ## Geometrías basadas en OpenStreetMap
@@ -36,6 +40,12 @@ El inventario público contiene metadatos y huellas de productos, no una copia d
 `config/ports.geojson` contiene geometrías basadas en datos de **© OpenStreetMap contributors**, disponibles bajo [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/). La [página oficial de copyright de OpenStreetMap](https://www.openstreetmap.org/copyright) describe la atribución y las condiciones de reutilización y distribución de bases derivadas.
 
 Los identificadores de objetos, fuentes consultadas y ajustes están registrados en cada geometría y en [el informe de geometrías](reports/pilot/geometries.md). Conserva esos créditos y la referencia a ODbL al distribuir esta capa o una base derivada de ella. Esta atribución no asigna ODbL al código de la aplicación.
+
+Las fuentes de costa, geometrías candidatas y mapa de
+`reports/coverage/geography-v2-candidates/` también derivan de **© OpenStreetMap
+contributors, ODbL 1.0**. La carpeta conserva las consultas del 25 de octubre de
+2026, versiones de objetos, hashes y construcción de las áreas. Las alternativas
+están inactivas y no establecen jurisdicción ni límites de navegación.
 
 También se consultaron referencias portuarias oficiales para orientación y coordenadas. Su publicación en una web no se interpreta como una licencia abierta de toda la carta o documento. No se distribuyen copias de esas cartas en este repositorio. Las geometrías son provisionales, requieren validación y no son aptas para navegación.
 

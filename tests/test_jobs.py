@@ -6,6 +6,36 @@ from puertogt.jobs import JobQueue, LeaseLost, RuntimeLimits
 from puertogt.store import Store
 
 
+def test_directory_measurement_matches_real_files_and_excludes_symlinks(tmp_path):
+    from puertogt.jobs import _directory_size_bytes
+
+    root = tmp_path / "volume"
+    (root / "nested").mkdir(parents=True)
+    (root / "first").write_bytes(b"123")
+    (root / "nested/second").write_bytes(b"45678")
+    (tmp_path / "outside").write_bytes(b"outside must not be counted")
+    (root / "file-link").symlink_to(tmp_path / "outside")
+    (root / "directory-link").symlink_to(tmp_path, target_is_directory=True)
+    (root / "dangling-link").symlink_to(tmp_path / "absent")
+    original = sum(path.stat().st_size for path in root.rglob("*") if path.is_file() and not path.is_symlink())
+    assert _directory_size_bytes(root) == original == 8
+
+
+def test_volume_cap_rechecks_external_growth_and_exact_boundary(tmp_path):
+    from types import SimpleNamespace
+
+    root = tmp_path / "volume"
+    root.mkdir()
+    (root / "bytes").write_bytes(b"12345")
+    queue = JobQueue(SimpleNamespace(data_dir=root), runtime=RuntimeLimits(reserve_bytes=0, volume_limit_bytes=10),
+                     free_bytes=lambda _: 100)
+    assert queue._storage_reason(5) is None
+    assert queue._storage_reason(6) == "volume_limit"
+    (root / "external-write").write_bytes(b"1")
+    assert queue._storage_reason(5) == "volume_limit"
+    assert queue._storage_reason(4) is None
+
+
 @pytest.fixture
 def scene():
     return {

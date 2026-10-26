@@ -1,0 +1,155 @@
+{
+  "schema_version": "history-global-closure-v1",
+  "campaigns": [
+    {
+      "campaign": "full-v1",
+      "plan_id": "history-full-v1-3e4733ed6e0e7481",
+      "plan_sha256": "28095b6d61477bff3147ac5ec3a72d9397f97b1c117beab480c78113ae3a56ae",
+      "states": {
+        "complete": 818,
+        "unavailable": 6
+      },
+      "planned_zone_observations": 4973,
+      "download_bytes_reserved": 24464828251
+    },
+    {
+      "campaign": "pilot-completion-v1",
+      "plan_id": "history-selected-v1-ff07e6eb4c144311",
+      "plan_sha256": "bfe20ed371b1f938d5f772fef2cfc4a3d30dea4ff4d2a2d71968fd725759d5fd",
+      "states": {
+        "complete": 4
+      },
+      "planned_zone_observations": 24,
+      "download_bytes_reserved": 106645678
+    },
+    {
+      "campaign": "incremental-20261025",
+      "plan_id": "history-selected-v1-a74a7223edd17318",
+      "plan_sha256": "dd9d7c59721e595bdaeeebbdf2d15068aa503b4a6f2dffd388db5a15014caff3",
+      "states": {
+        "complete": 5
+      },
+      "planned_zone_observations": 32,
+      "download_bytes_reserved": 108093248
+    }
+  ],
+  "planned_unique_acquisitions": 833,
+  "processed_unique_acquisitions": 827,
+  "unavailable_unique_acquisitions": 6,
+  "outstanding": 0,
+  "catalog_acquisitions": 868,
+  "observations_total": 5018,
+  "observed_unique_acquisition_zone_pairs": 4996,
+  "observation_states": {
+    "partial": 1081,
+    "unusable": 1070,
+    "usable": 2867
+  },
+  "job_states": {
+    "succeeded": 5018
+  },
+  "review_states": {
+    "provisional": 4679,
+    "reviewed": 339
+  },
+  "protected_rows": {
+    "observation_ids": [
+      "1a6ee725-f774-4c11-bfaf-57e78768dcc2",
+      "2113236d-2246-4978-ad84-43ae106d5dca",
+      "2afa8a82-4058-47f9-a8de-eddab7e46f68",
+      "2fc24ae3-2ae7-4ce3-9396-df6b29ad81a0",
+      "4c5bbd87-2a54-444b-98a8-c175544d71df",
+      "5a5e50a2-a28c-4c85-833a-37d9e1a403e8",
+      "62934562-4195-415d-9d35-c8385e4ef12d",
+      "6dbea85d-b1b0-46fc-9931-4d0dc0e174b0",
+      "74129106-de30-4a34-9986-acb5648c1f0b",
+      "7d0a5e64-0fdd-46a4-8189-80f1016b7601",
+      "91fcbf04-58e8-43a7-9ac3-d3dec584e948",
+      "af873b8e-e92e-485c-9720-302724dc9f5c",
+      "b428b3ec-2673-4825-a99c-b00e9f21269a",
+      "c3fde225-cb18-443d-b85b-3224a26609a2",
+      "c8202fcf-5909-41f7-9627-3e9c40c8942b",
+      "d55276ea-b804-4133-80a2-1c5244a92e54",
+      "d6e2fe5b-458e-414f-8dd4-532484e6570d",
+      "de61e69b-c89a-411e-92fd-3e507aa66ad9",
+      "dfab801c-54cc-4e67-8e26-2d1146c46560",
+      "e8d0be39-b8eb-455f-b88b-2713e38a491f",
+      "fb8950f3-af93-45b3-92cb-4b7e1288df63",
+      "fda5b83e-5c57-469f-b3cb-752453a87023"
+    ],
+    "tables": {
+      "observations": {
+        "rows": 22,
+        "sha256": "d25ae3c249318ad4e11c9ded26289a0b3ccca2d7623d20257a56329e9dfbc167"
+      },
+      "jobs": {
+        "rows": 22,
+        "sha256": "ac464817b3b2cb97e043f924c2c76b76565bb94680c14685b44b49843bef08ee"
+      },
+      "assets": {
+        "rows": 264,
+        "sha256": "7c1ce0b42ed010cdc5709905e71fb49c835a81390d62760c5aa1b587c12cc98f"
+      },
+      "detections": {
+        "rows": 5,
+        "sha256": "a0ac74e6ec6cfc9c95f0fd855efd0f44fd2422a5acebd53fa397fd4d87c49e09"
+      },
+      "revisions": {
+        "rows": 27,
+        "sha256": "68f05ecc6d43021776f4eaa728219feee5bc7cace6cb02b45a242618d2e2dc25"
+      }
+    }
+  },
+  "protected_assets_checked": 264,
+  "frozen_manifests_checked": 26,
+  "checks": {
+    "protected_rows_unchanged": true,
+    "original_plan_unchanged": true,
+    "26_frozen_manifests_unchanged": true,
+    "264_protected_asset_bytes_verified": true,
+    "campaign_keys_disjoint": true,
+    "catalog_acquisition_keys_reconcile": true,
+    "catalog_acquisition_zone_pairs_reconcile": true
+  },
+  "last_history_commit": "923c79616aa6988a67f8748a639ede6ec76b7a7a",
+  "scientific_validation": "Not established; these receipts close processing/reconciliation, not precision, recall, attributes or physical-change validation.",
+  "limits": [
+    "22 older pilot observations remain alongside their24full-zone successors; unique acquisition-zone counts avoid counting versions as additional visits.",
+    "Six original missing-context captures remain documented unavailable and have no fabricated observations."
+  ],
+  "checked_at_utc": "2026-10-26T03:20:38.960358+00:00",
+  "input_receipts": [
+    {
+      "path": "reports/history/closure-20261026.json",
+      "sha256": "3db1a3b295dacc6ce98141095caa8e1cf4febeef0096dd997b5874e3cdef915a"
+    },
+    {
+      "path": "reports/history/pilot-completion-20261026.json",
+      "sha256": "cdba90be437dbd3716fd45911459ab20d4ad77028b3e324e8206323700d73c10"
+    },
+    {
+      "path": "reports/history/incremental-20261025-closure.json",
+      "sha256": "94570889445163003f2b4dbe4d2cf98b5639d717a79110b1ab695bd53cf4892b"
+    },
+    {
+      "path": "reports/history/pilot-completion-comparison-20261026.json",
+      "sha256": "b2e069f4ec9622aef683c8348e55f5b56c1adace74b4fc7563f20df8be65f52d"
+    }
+  ],
+  "global_asset_verification": {
+    "complete_acquisitions_with_replay": 5,
+    "missing_replay": [],
+    "files_checked": 122894,
+    "bytes_checked": 31062920947,
+    "sha256_verified": true,
+    "protected_asset_catalog_matches_baseline": null
+  },
+  "all_campaign_audits_passed": true,
+  "passed": true,
+  "execution_source_sha256": {
+    "src/puertogt/history.py": "c8eb345bc731141f6123e149ebf6a1142b3d2879f03899ff40e4da8604b91d67",
+    "src/puertogt/jobs.py": "a32e96e1c7a1d304a16bd7a7534534281cf75f43eb5cc97412ccc69e5caebb24",
+    "scripts/process_history.py": "525d519551069a5b8dfbf99d688ca45fe5691ced7bd69c850d3757aa732f06b8",
+    "scripts/audit_history_closure.py": "818cc63fc55e39475e93df2ad6b834019f9a3297f18dc38edec48fc575b26efa"
+  }
+}

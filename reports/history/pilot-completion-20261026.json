@@ -1,0 +1,65 @@
+{
+  "schema_version": "history-closure-audit-v1",
+  "checked_at_utc": "2026-10-26T03:06:30.116743+00:00",
+  "plan_id": "history-selected-v1-ff07e6eb4c144311",
+  "plan_sha256": "bfe20ed371b1f938d5f772fef2cfc4a3d30dea4ff4d2a2d71968fd725759d5fd",
+  "catalog_scope": "Only frozen-plan observations are reconciled; asset integrity covers the entire catalog snapshot.",
+  "ledger_logical_sha256": "60ef8d4843ab696830edb29a8d8a843c180ee72ecdc9b59840b56ef8f2849f1f",
+  "catalog_observations_logical_sha256": "62e56fc6e8a658502b72ece76018ac8504ad6874470f9cc763be6a1d4c0c9756",
+  "all_registered_assets_logical_sha256": "1a9cc4326eb403f2106600240d4f2b0a248de9aebc01c02ba96edaa98b730d23",
+  "acquisitions": {
+    "planned": 4,
+    "states": {
+      "complete": 4
+    },
+    "completed_fraction": 1.0,
+    "unavailable": 0,
+    "outstanding": 0
+  },
+  "zone_observations": {
+    "planned": 24,
+    "by_acquisition_state": {
+      "complete": 24
+    },
+    "published": 24,
+    "states": {
+      "usable": 19,
+      "partial": 5
+    },
+    "protected_observations": 4962,
+    "catalog_total": 4986
+  },
+  "evidence": {
+    "complete_acquisitions_with_replay": 4,
+    "missing_replay": [],
+    "files_checked": 122007,
+    "bytes_checked": 30842947756,
+    "sha256_verified": false,
+    "protected_asset_catalog_matches_baseline": null
+  },
+  "resources": {
+    "download_bytes_reserved": 106645678,
+    "last_successful_attempt_seconds_sum": 924.8775162929669,
+    "attempts_total": 4,
+    "last_completed_at": "2026-10-26T03:05:18.036646Z",
+    "timing_limit": "Sum excludes failed/interrupted attempts, earlier materialization and pauses; it is not total compute or wall time."
+  },
+  "exceptions": [],
+  "errors": [],
+  "passed": true,
+  "scientific_validation": "Not evaluated; processed observations remain experimental proposals.",
+  "pilot_completion": {
+    "selected_protected_acquisitions": [
+      "S1D:IW:GRDH:1SDV:20261018T114526:20261018T114551:005069:009972",
+      "S1D:IW:GRDH:1SDV:20261019T001342:20261019T001407:005077:0099B2",
+      "S2B:MSIL1C:20260910T161859:R040:T15PYR",
+      "S2B:MSIL1C:20260930T162059:R040:T16PCC"
+    ],
+    "status": "Separate recipe; prior observations remain protected."
+  },
+  "limits": [
+    "Unavailable context is not a zero-vessel observation.",
+    "Complete processing does not imply full satellite footprint or cloud-free coverage.",
+    "Protected identity/asset checks do not assert that authorized later reviews never changed observation rows."
+  ]
+}
