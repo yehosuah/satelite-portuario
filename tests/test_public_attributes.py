@@ -135,10 +135,14 @@ def test_import_resume_and_portable_export_keep_context_and_field_provenance(tmp
 
 def test_io_amendment_changes_only_concurrency_and_preserves_attempts_and_budget(tmp_path, monkeypatch):
     from dataclasses import asdict
+    from types import SimpleNamespace
 
     from puertogt.history import HistoryLedger
     from puertogt.ml.public_attributes import PUBLIC_LIMITS
 
+    # Exercise amendment accounting independently of the runner's free disk space.
+    monkeypatch.setattr("puertogt.history.shutil.disk_usage",
+                        lambda _: SimpleNamespace(free=PUBLIC_LIMITS.reserve_bytes * 2))
     selection = write_selection(tmp_path, [public_sample()])
     digest = sha256_file(selection)
     root = tmp_path / "import"

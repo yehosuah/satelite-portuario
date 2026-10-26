@@ -8,7 +8,7 @@
       "passed": 306,
       "skipped": 0,
       "warnings": 1329,
-      "seconds": 13.18,
+      "seconds": 7.02,
       "command": "PYTHONPATH=src .venv/bin/python -m pytest -q --disable-warnings"
     },
     "base_environment": {
@@ -16,7 +16,7 @@
       "skipped": 14,
       "skip_reason": "optional torch dependency absent",
       "warnings": 1294,
-      "seconds": 10.84,
+      "seconds": 4.74,
       "command": "PYTHONPATH=src tmp/venv-release-v0.2.0/bin/python -m pytest -q --disable-warnings"
     }
   },
@@ -151,7 +151,7 @@
     "tests/test_public_attribute_eligibility.py": "3be248e8f500dc281097167cfd29f03774669c4a37ce7ef3f301059278a45ad8",
     "tests/test_public_attribute_experiment.py": "ad5d2159eeae1545238a113040b52127cdc69df0f3d69c091b1511ccc927f337",
     "tests/test_public_attribute_transport.py": "0b5cff8024d496674ac58f1972d926859f8282941f559d1736660628684e99e1",
-    "tests/test_public_attributes.py": "a8f7c02c1c95d841f9052d1e65b0923db0090bef0e914cab2f8ec84392337e12",
+    "tests/test_public_attributes.py": "12be41a61be4d05368466bf9a4d7b99be1c6a1c25b8d4ede803e35de47088c59",
     "tests/test_public_change.py": "dac49bf51e6212914887f7a5722da392e892a37616c4967d1c361160779e4e43",
     "tests/test_refit_anchor_selection.py": "9d4c7a7c9fe50f149802d13c8b23487b477e66aff8a69d45494d419f83db88df",
     "tests/test_restore.py": "df3250e2846f3c74735519ba9bceacd3f379be5ff085de0dbaab6793d8f686da",
@@ -168,13 +168,22 @@
     "uv.lock": "ed5c627e58fce577c35953a3c43027c7c60d264d063dc214f2f5bdf4ee2b3d55"
   },
   "log_sha256": {
-    "tests_full": "353df3250eaa12e69b0454bf2bceff3eb428cf03b064a24f0196bf5df294c17c",
-    "tests_base": "9a9297c22cafcf65ad529cb2be7a45b630c5d5cd2f1ea9309e6c3cf3dcedbe39"
+    "tests_full": "6a30bc69b9c76c98ef8c3bcbd1070cabe95f905f07373800058cfe7be2d44244",
+    "tests_base": "2bb5d808847856f8dd81e2921379daa0b878b97b76a4a77b5c47cec392e52978"
   },
   "limits": [
     "Tests establish software behavior, not detection precision.",
     "The installed wheel smoke test is separate from source tests in the base environment.",
     "No new full data snapshot or restore is claimed for v0.3.0.",
     "Remote CI is verified separately after publishing the final commit."
-  ]
+  ],
+  "ci_correction": {
+    "initial_commit": "5426f62e8eee737472992d4b3e7483a4ab879183",
+    "initial_run": "https://github.com/yehosuah/satelite-portuario/actions/runs/40265326489",
+    "failed_test": "test_io_amendment_changes_only_concurrency_and_preserves_attempts_and_budget",
+    "cause": "The unit test used the host free disk space. The Linux runner triggered the real 5 GiB reserve while reserving 16 fixture bytes.",
+    "change": "Mock free disk space explicitly only inside the amendment accounting test.",
+    "production_code_or_limits_changed": false,
+    "local_suites_repeated": true
+  }
 }

@@ -13,7 +13,7 @@ El histórico quedó conciliado y el visor mide área y frecuencia por pasada. *
 
 ## Verificación
 
-El [recibo de software](software-validation.json) registra pruebas con y sin extras ML, lint, sintaxis JavaScript y comprobación de diferencias. La [wheel instalada](wheel-smoke.json) responde desde un entorno separado a HTML, JavaScript, API y cobertura; la versión OpenAPI coincide con el paquete.
+El [recibo de software](software-validation.json) registra pruebas con y sin extras ML, lint, sintaxis JavaScript y comprobación de diferencias. El primer CI de Linux detectó que una prueba de enmiendas usaba el disco real del runner; la prueba ahora fija explícitamente ese recurso, sin cambiar la reserva de producción. Ambas suites locales se repitieron tras la corrección. La [wheel instalada](wheel-smoke.json) responde desde un entorno separado a HTML, JavaScript, API y cobertura; la versión OpenAPI coincide con el paquete.
 
 El visor se comprobó en un navegador de escritorio a 1280 × 720: filtros por puerto y fechas, periodo sin capturas, cambio del umbral y detalle por zona. La consola no reportó errores. La captura siguiente conserva la tabla actual.
 
