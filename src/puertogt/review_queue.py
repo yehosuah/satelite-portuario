@@ -11,8 +11,10 @@ from datetime import datetime
 from pathlib import Path
 from uuid import UUID
 
-from pyproj import CRS
+from pyproj import CRS, Transformer
 from pyproj.exceptions import CRSError
+from shapely.geometry import box, shape
+from shapely.ops import transform
 
 from puertogt.ml.history_evidence import _pass_id
 from puertogt.pass_coverage import pass_key
@@ -38,6 +40,96 @@ def valid_preview_georeference(asset):
 
 def digest(value):
     return hashlib.sha256(json_text(value).encode()).hexdigest()
+
+
+def _polygon_geometry(value):
+    """Require finite, two-dimensional WGS84 polygons before using GEOS."""
+    if not isinstance(value, dict) or value.get("type") not in {"Polygon", "MultiPolygon"}:
+        raise ValueError("Search scope and reference zone must be polygonal")
+    polygons = value.get("coordinates")
+    if value["type"] == "Polygon":
+        polygons = [polygons]
+    if not isinstance(polygons, (list, tuple)) or not polygons:
+        raise ValueError("Search scope has no polygon coordinates")
+    for polygon in polygons:
+        if not isinstance(polygon, (list, tuple)) or not polygon:
+            raise ValueError("Search scope has no polygon rings")
+        for ring in polygon:
+            if not isinstance(ring, (list, tuple)) or len(ring) < 4 or ring[0] != ring[-1]:
+                raise ValueError("Search scope rings must be closed")
+            for point in ring:
+                if (not isinstance(point, (list, tuple)) or len(point) != 2
+                        or not all(type(n) in (int, float) and math.isfinite(n) for n in point)
+                        or not -180 <= point[0] <= 180 or not -90 <= point[1] <= 90):
+                    raise ValueError("Search scope coordinates must be finite WGS84 positions")
+    geometry = shape(value)
+    if geometry.is_empty or not geometry.is_valid or geometry.area <= 0:
+        raise ValueError("Search scope must have valid positive area")
+    return geometry
+
+
+def validate_search_scope(entry):
+    """Check the claimed extent independently of its content hashes.
+
+    The proposal's SHA records provenance; the queue builder remains responsible
+    for deriving water geometry from that pinned source, not from detections.
+    """
+    if "search_scope" not in entry:
+        return
+    scope = entry["search_scope"]
+    fields = {"schema_version", "radius_m", "geometry", "geometry_sha256",
+              "reference_zone_sha256", "source_sha256", "frame_clipped", "observability"}
+    if (not isinstance(scope, dict) or set(scope) != fields
+            or scope["schema_version"] != "water-search-scope-v1"
+            or type(scope["radius_m"]) not in (int, float) or scope["radius_m"] != 500
+            or type(scope["frame_clipped"]) is not bool or scope["observability"] != "not_measured"):
+        raise ValueError("Invalid water search scope contract")
+    if (not isinstance(scope["source_sha256"], str)
+            or not re.fullmatch(r"[a-f0-9]{64}", scope["source_sha256"])
+            or scope["geometry_sha256"] != digest(scope["geometry"])
+            or scope["reference_zone_sha256"] != digest(entry["zone_geometry"])):
+        raise ValueError("Search scope source or geometry checksum mismatch")
+    geometry = _polygon_geometry(scope["geometry"])
+    reference = _polygon_geometry(entry["zone_geometry"])
+    center = reference.centroid
+    utm_zone = min(60, max(1, int((center.x + 180) // 6) + 1))
+    metric = Transformer.from_crs(4326, (32600 if center.y >= 0 else 32700) + utm_zone, always_xy=True)
+    projected_reference = transform(metric.transform, reference)
+    projected_scope = transform(metric.transform, geometry)
+    # One centimetre allows projection round-off, not a further search margin.
+    if (not projected_scope.is_valid or not projected_reference.is_valid
+            or not projected_reference.buffer(scope["radius_m"] + .01, quad_segs=64).covers(projected_scope)):
+        raise ValueError("Search scope exceeds its declared radius around the reference zone")
+    if not entry.get("assets"):
+        raise ValueError("Search scope requires georeferenced preview evidence")
+    for asset in entry["assets"]:
+        bounds = asset.get("bounds")
+        if (asset.get("mime_type") != "image/png" or not asset.get("crs")
+                or not isinstance(bounds, (list, tuple)) or len(bounds) != 4
+                or not all(type(n) in (int, float) and math.isfinite(n) for n in bounds)
+                or bounds[0] >= bounds[2] or bounds[1] >= bounds[3]):
+            raise ValueError("Search scope requires finite georeferenced preview bounds")
+        try:
+            projection = Transformer.from_crs(4326, asset["crs"], always_xy=True)
+            native = transform(projection.transform, geometry)
+        except (CRSError, TypeError, ValueError) as exc:
+            raise ValueError("Search scope preview projection is invalid") from exc
+        tolerance = max(1.0, *(abs(n) for n in bounds)) * 1e-9
+        if not native.is_valid or not box(*bounds).buffer(tolerance).covers(native):
+            raise ValueError("Search scope extends outside the available preview")
+
+
+def effective_search_geometry(entry):
+    """Return the declared inspection extent without changing zone attribution."""
+    validate_search_scope(entry)
+    return entry["search_scope"]["geometry"] if "search_scope" in entry else entry["zone_geometry"]
+
+
+def _validate_queue_scopes(manifest):
+    for entry in manifest["entries"]:
+        if "search_scope" in entry and manifest["schema_version"] != "blind-train-queue-v2":
+            raise ValueError("Search scopes require a V2 review queue")
+        validate_search_scope(entry)
 
 
 def first_pass_exposure(data_dir):
@@ -251,6 +343,7 @@ def build_review_queue(store, sampling_path: Path, order_path: Path, ports_path:
 
 def freeze_queue(manifest, path: Path):
     """Exclusive create. Identical metadata/parameters produce identical bytes."""
+    _validate_queue_scopes(manifest)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("x") as handle:
         handle.write(json_text({"sha256": digest(manifest), "manifest": manifest}) + "\n")
@@ -264,8 +357,10 @@ def read_queue(path: Path, expected_sha256: str | None = None):
     manifest = envelope["manifest"]
     payload = {k: v for k, v in manifest.items() if k != "queue_id"}
     if (envelope["sha256"] != digest(manifest) or manifest["queue_id"] != "train-" + digest(payload)[:20]
-            or manifest["schema_version"] != "blind-train-queue-v1" or manifest["split"] != "train"):
+            or manifest["schema_version"] not in {"blind-train-queue-v1", "blind-train-queue-v2"}
+            or manifest["split"] != "train"):
         raise ValueError("Invalid frozen TRAIN queue")
+    _validate_queue_scopes(manifest)
     return manifest
 
 
@@ -273,8 +368,13 @@ def blind_entry(manifest, observation_id):
     row = next((r for r in manifest["entries"] if r["observation_id"] == observation_id), None)
     if row is None:
         raise KeyError(observation_id)
+    if "search_scope" in row and manifest["schema_version"] != "blind-train-queue-v2":
+        raise ValueError("Search scopes require a V2 review queue")
+    validate_search_scope(row)
     keys = ("observation_id", "acquisition_key", "pass_id", "port_id", "sensor", "zone_id", "captured_at", "status", "observable_fraction", "reason", "zone_geometry")
-    return {**{k: row[k] for k in keys}, "assets": [{k: a.get(k) for k in ("asset_id", "sha256", "mime_type", "wgs84_bounds", "crs", "bounds")} for a in row["assets"]]}
+    return {**{k: row[k] for k in keys},
+            **({"search_scope": row["search_scope"]} if "search_scope" in row else {}),
+            "assets": [{k: a.get(k) for k in ("asset_id", "sha256", "mime_type", "wgs84_bounds", "crs", "bounds")} for a in row["assets"]]}
 
 
 def blind_asset(store, manifest, observation_id, asset_id):

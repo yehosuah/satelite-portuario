@@ -38,6 +38,7 @@ Se usa instalación no editable para que el paquete funcione también en workspa
 | `PUERTOGT_CONFIG_DIR` | Directorio que contiene geometrías, recetas y límites de ejecución. |
 | `PUERTOGT_REVIEW_TOKEN` | Credencial Bearer para guardar revisiones. Sin ella, los POST de revisión responden 503. |
 | `PUERTOGT_REVIEW_QUEUE` | Manifest congelado de la cola TRAIN; por defecto `<data-dir>/review-queue.json`. |
+| `PUERTOGT_REVIEW_QUEUE_ARCHIVE_DIR` | Manifests anteriores, nombrados `<queue_id>.json`; por defecto `<data-dir>/review-queues`. Permiten terminar revisiones abiertas antes de cambiar la cola activa. |
 | `PUERTOGT_GEOGRAPHY_PROPOSAL_DIR` | Directorio opcional del piloto V2; se consulta separado de las zonas activas. |
 | `PUERTOGT_CONTAINER` | Marca interna del contenedor para permitir su enlace de red. |
 
@@ -155,7 +156,7 @@ La importación del inventario, `init`, `doctor`, `history-report`, exportación
 
 ## Cola de primera inspección y propuesta V2
 
-La interfaz `/review-queue.html` (también `/review-queue`) utiliza `PUERTOGT_REVIEW_QUEUE`, cuyo valor predeterminado es `<data-dir>/review-queue.json`. Debe apuntar a un manifest creado por `scripts/build_review_queue.py`. El lote y sus previews se verifican por hash; copiar solo el JSON sin los activos correspondientes no permite revisar. Los recibos de primera inspección se conservan en `<data-dir>/review-intake/`. Incluye ambos en una copia complementaria del volumen, junto con `refresh/` y los ledgers de `history/`; no forman parte automáticamente de un bundle de catálogo.
+La interfaz `/review-queue.html` (también `/review-queue`) utiliza `PUERTOGT_REVIEW_QUEUE`, cuyo valor predeterminado es `<data-dir>/review-queue.json`. Debe apuntar a un manifest creado por `scripts/build_review_queue.py` o su derivación mediante `scripts/extend_review_search.py`. El lote y sus previews se verifican por hash; copiar solo el JSON sin los activos correspondientes no permite revisar. Conserva los manifests anteriores por ID en `PUERTOGT_REVIEW_QUEUE_ARCHIVE_DIR` antes de cambiar la cola activa. Los recibos de primera inspección se conservan en `<data-dir>/review-intake/`. Incluye los archivos de cola y los recibos en una copia complementaria del volumen, junto con `refresh/` y los ledgers de `history/`; no forman parte automáticamente de un bundle de catálogo.
 
 `PUERTOGT_GEOGRAPHY_PROPOSAL_DIR` puede apuntar a `reports/coverage/geography-v2-pilot`. El servidor exige que sus hashes V1/V2 coincidan con `ports.geojson` y `ports-v2.geojson` del directorio de configuración. Sin esa variable el panel informa que no hay propuesta configurada. Nunca sustituyas la configuración V1 del volumen histórico por V2: el [piloto](geography-v2-pilot.md) utiliza una configuración y un volumen separados antes de cualquier procesamiento nuevo.
 

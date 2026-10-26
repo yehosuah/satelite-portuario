@@ -59,8 +59,17 @@ function matchesReceipt(receipt, body) {
     && typeof receipt?.sha256 === "string" && /^[a-f0-9]{64}$/.test(receipt.sha256);
 }
 
+function matchesEntrySource(entry, expected, queueId) {
+  return entry.queue_id === queueId
+    && ["observation_id", "port_id", "sensor", "zone_id", "captured_at", "observable_fraction"]
+      .every(key => entry[key] === expected[key])
+    && JSON.stringify(entry.zone_geometry) === JSON.stringify(expected.zone_geometry)
+    && JSON.stringify(entry.search_scope ?? null) === JSON.stringify(expected.search_scope ?? null);
+}
+
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = {normalizedPoint, normalizedRectangle, polygonPath, newInspection, freezeSubmission, matchesReceipt};
+  module.exports = {normalizedPoint, normalizedRectangle, polygonPath, newInspection, freezeSubmission,
+    matchesReceipt, matchesEntrySource};
 }
 
 if (typeof document !== "undefined") startBlindReview();
@@ -69,6 +78,7 @@ function startBlindReview() {
   const $ = id => document.getElementById(id);
   const ports = {prq: "Puerto Quetzal", pbr: "Puerto Barrios", stc: "Santo Tomás"};
   const state = {queue: null, entry: null, asset: null, imageSize: null, objectURL: null,
+    boundQueueId: new URLSearchParams(window.location.search).get("queue"),
     generation: 0, controller: null, loadingQueue: false, geometryBusy: false, saving: false,
     tool: "explore", drag: null, zoom: 1, drafts: new Map(), author: "", reviewerKind: "human_visual_review", token: ""};
 
@@ -136,6 +146,14 @@ function startBlindReview() {
   function isCurrent(generation, observationId) {
     return state.generation === generation && state.entry?.observation_id === observationId;
   }
+  function renderSearchContext() {
+    const scope = state.entry?.search_scope;
+    $("search-legend").hidden = !scope;
+    $("search-legend").textContent = scope ? `Azul: búsqueda ${scope.radius_m} m` : "";
+    $("search-context").textContent = scope
+      ? `El contorno azul delimita la búsqueda hasta ${scope.radius_m} m alrededor de la zona de referencia amarilla.${scope.frame_clipped ? " El área queda limitada por el encuadre disponible." : ""} La observabilidad indicada corresponde a la zona de referencia; no mide el área ampliada. La ubicación de un candidato no determina su actividad.`
+      : "La zona de referencia amarilla delimita el área de búsqueda de esta cola. La observabilidad indicada corresponde a esa zona.";
+  }
   function renderList() {
     const nodes = (state.queue?.items || []).map(item => {
       const button = document.createElement("button");
@@ -164,12 +182,19 @@ function startBlindReview() {
     $("note").value = current?.note || "";
     $("decision").disabled = $("note").disabled = !state.imageSize || immutable;
     $("clear-area").disabled = !current?.area || immutable;
-    $("scope-status").textContent = current?.area ? "Área delimitada dentro de la zona" : "Sin área delimitada";
+    $("scope-status").textContent = current?.area ? "Área delimitada dentro del área de búsqueda" : "Sin área delimitada";
+    renderSearchContext();
     const children = (current?.candidates || []).map((candidate, index) => {
       const row = document.createElement("div");
       row.className = "q-candidate-row";
       const label = document.createElement("span");
       label.textContent = `Candidato local ${index + 1}`;
+      if (candidate.location === "search_margin") {
+        const location = document.createElement("span");
+        location.className = "q-location-badge";
+        location.textContent = "Fuera de la zona de referencia";
+        label.append(location);
+      }
       const remove = document.createElement("button");
       remove.type = "button";
       remove.className = "text-button danger";
@@ -223,6 +248,9 @@ function startBlindReview() {
   }
   function renderOverlay() {
     const nodes = [];
+    if (state.entry?.search_scope && state.asset?.metadata?.search_pixel_geometry) {
+      nodes.push(pathNode(state.asset.metadata.search_pixel_geometry, "q-search"));
+    }
     if (state.asset?.metadata?.zone_pixel_geometry) nodes.push(pathNode(state.asset.metadata.zone_pixel_geometry, "q-zone"));
     if (draft()?.area) nodes.push(pathNode(draft().area.pixel_geometry, "q-area"));
     for (const candidate of draft()?.candidates || []) nodes.push(pathNode(candidate.pixel_geometry, "q-candidate"));
@@ -263,12 +291,21 @@ function startBlindReview() {
     feedback("");
     $("queue-summary").textContent = "Cargando cola congelada…";
     try {
-      const queue = await (await request("/v1/review-queue", {signal: state.controller.signal})).json();
+      if (state.boundQueueId !== null && !/^train-[a-f0-9]{20}$/.test(state.boundQueueId)) {
+        throw new Error("El enlace no identifica una cola TRAIN congelada válida.");
+      }
+      const path = "/v1/review-queue" + (state.boundQueueId === null ? ""
+        : `?queue_id=${encodeURIComponent(state.boundQueueId)}`);
+      const queue = await (await request(path, {signal: state.controller.signal})).json();
       if (generation !== state.generation) return;
       if (queue.available && (queue.split !== "train" || !/^train-[a-f0-9]{20}$/.test(queue.queue_id) || !Array.isArray(queue.items))) {
         throw new Error("La respuesta no identifica una cola TRAIN congelada.");
       }
+      if (queue.available && state.boundQueueId !== null && queue.queue_id !== state.boundQueueId) {
+        throw new Error("La respuesta pertenece a otra cola. Se conserva el identificador solicitado.");
+      }
       state.queue = queue.available ? queue : null;
+      if (state.queue) state.boundQueueId = state.queue.queue_id;
       $("queue-identity").textContent = state.queue?.queue_id || "";
       const deficit = Object.values(queue.distribution || {}).reduce((sum, stratum) => sum + (stratum.deficit || 0), 0);
       $("queue-summary").textContent = queue.available
@@ -296,27 +333,36 @@ function startBlindReview() {
     if (state.saving || state.loadingQueue || !state.queue?.items.includes(item)) return;
     clearImage();
     state.entry = item;
-    const generation = state.generation, observationId = item.observation_id;
+    const generation = state.generation, observationId = item.observation_id, queueId = state.queue.queue_id;
     const signal = state.controller.signal;
     if (!state.drafts.has(draftKey())) state.drafts.set(draftKey(), newInspection(crypto.randomUUID()));
     $("scene-title").textContent = `${ports[item.port_id] || item.port_id} · ${item.zone_id.split("_").slice(1).join(" ")}`;
-    $("scene-metadata").textContent = `${item.captured_at.slice(0, 10)} UTC · ${item.sensor} · Observabilidad local ${(item.observable_fraction * 100).toFixed(0)}%`;
+    $("scene-metadata").textContent = `${item.captured_at.slice(0, 10)} UTC · ${item.sensor} · Observabilidad en zona de referencia ${(item.observable_fraction * 100).toFixed(0)}%`;
     $("image-placeholder").textContent = "Cargando evidencia cruda verificada…";
     $("load-status").textContent = "Cargando…";
     feedback(""); renderDraft(); fitImage();
     let url;
     try {
-      const entry = await (await request(`/v1/review-queue/observations/${encodeURIComponent(observationId)}`, {signal})).json();
+      const binding = `?queue_id=${encodeURIComponent(queueId)}`;
+      const entry = await (await request(`/v1/review-queue/observations/${encodeURIComponent(observationId)}${binding}`, {signal})).json();
       if (!isCurrent(generation, observationId)) return;
       const asset = entry.assets?.find(candidate => item.assets?.some(expected => expected.asset_id === candidate.asset_id
         && expected.sha256 === candidate.sha256 && expected.crs === candidate.crs
         && JSON.stringify(expected.bounds) === JSON.stringify(candidate.bounds)));
-      if (entry.observation_id !== observationId || !asset || asset.mime_type !== "image/png"
-          || JSON.stringify(entry.zone_geometry) !== JSON.stringify(item.zone_geometry)) {
+      if (!matchesEntrySource(entry, item, queueId) || !asset || asset.mime_type !== "image/png") {
         throw new Error("La evidencia no coincide con la cola congelada. Actualiza la cola.");
       }
       polygonPath(asset.metadata?.zone_pixel_geometry);
-      const response = await request(`/v1/review-queue/assets/${encodeURIComponent(observationId)}/${encodeURIComponent(asset.asset_id)}`, {signal});
+      if (entry.search_scope) {
+        if (entry.search_scope.radius_m !== 500) throw new Error("El margen de búsqueda no coincide con los 500 m previstos.");
+        polygonPath(entry.search_scope.geometry);
+        polygonPath(asset.metadata?.search_pixel_geometry);
+      }
+      const assetPath = `/v1/review-queue/assets/${encodeURIComponent(observationId)}/${encodeURIComponent(asset.asset_id)}${binding}`;
+      if (asset.href !== undefined && asset.href !== assetPath) {
+        throw new Error("El enlace de la imagen no pertenece a esta observación y cola congelada.");
+      }
+      const response = await request(asset.href || assetPath, {signal});
       const blob = await response.blob();
       if (!isCurrent(generation, observationId)) return;
       url = URL.createObjectURL(blob);
@@ -356,9 +402,14 @@ function startBlindReview() {
           asset_id: state.asset.asset_id, rectangle, kind})})).json();
       if (!isCurrent(generation, observationId)) return;
       polygonPath(result.pixel_geometry); polygonPath(result.geometry);
+      if (kind === "candidate" && ((state.entry.search_scope
+          && !["reference_zone", "search_margin"].includes(result.location))
+          || (!state.entry.search_scope && result.location === "search_margin"))) {
+        throw new Error("La ubicación del candidato no coincide con el área de búsqueda.");
+      }
       if (kind === "area") draft().area = result;
       else draft().candidates.push(result);
-      feedback(kind === "area" ? "Área delimitada y recortada a la zona. Revisa el contorno violeta."
+      feedback(kind === "area" ? "Área delimitada y recortada al área de búsqueda. Revisa el contorno violeta."
         : "Candidato local añadido. Su centro debe quedar dentro del área revisada al guardar.");
       renderOverlay();
     } catch (error) {
@@ -395,6 +446,7 @@ function startBlindReview() {
       current.rejectedValidation = error.status === 422 && [
         "Candidate centers must lie inside the inspected area",
         "Inspected area must remain inside the configured zone",
+        "Inspected area must remain inside the configured search scope",
         "Mark at least one candidate", "An empty area cannot include candidates",
         "Describe why the image is uncertain", "Delimit the inspected area before recording findings"
       ].includes(error.message);

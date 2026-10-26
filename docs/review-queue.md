@@ -40,7 +40,7 @@ El lote final se guarda en `reports/review-queue/train-primaries-final-v2/queue.
 
 La pantalla `/review-queue` carga únicamente `/v1/review-queue/*`. Presenta la imagen cruda, la zona fija, el área delimitada y los candidatos dibujados durante esa sesión. No consulta las propuestas del detector. El aumento permite arrastrar rectángulos con precisión; también hay controles de porcentaje para dibujar con teclado.
 
-`POST /v1/review-queue/geometry` transforma los rectángulos normalizados desde el CRS nativo del preview a WGS84 y devuelve también la geometría normalizada del contorno. El área se recorta a la zona configurada; al guardar, la API exige que los centros de candidatos queden dentro del área inspeccionada. Los porcentajes no se interpolan sobre una caja WGS84.
+`POST /v1/review-queue/geometry` transforma los rectángulos normalizados desde el CRS nativo del preview a WGS84 y devuelve también la geometría normalizada del contorno. El área se recorta al ámbito de búsqueda congelado, o a la zona de referencia cuando no existe un ámbito adicional; al guardar, la API exige que los centros de candidatos queden dentro del área inspeccionada. Los porcentajes no se interpolan sobre una caja WGS84.
 
 El resultado puede ser candidatos, área sin embarcaciones visibles o incertidumbre con explicación. El autor, tipo de revisor, duración declarada y hallazgos se fijan mediante `POST /v1/review-queue/first-pass`. La credencial permanece solo en memoria. Los reintentos conservan exactamente el mismo UUID y cuerpo, incluido el tiempo; una respuesta perdida no crea otro registro. Las respuestas asíncronas de escenas anteriores se descartan. Tras recibir el recibo correspondiente se habilita la continuación explícita al visor de esa observación. Un recibo no crea etiquetas ni demuestra precisión; una revisión de IA conserva esa procedencia.
 
@@ -55,4 +55,17 @@ Existe una opción pública para explorar: Global Fishing Watch ofrece [clave AP
 
 ## Primera inspección realizada
 
-El lote inicial ya conserva doce recibos IA, con 41 candidatos, dos áreas sin embarcaciones visibles y cinco abstenciones. No se modificaron las revisiones SQL ni se importaron etiquetas al entrenamiento. [Hallazgos, tiempos y alcance](../reports/improvements/20261026-increment/README.md). La cola activa conserva sus doce entradas congeladas; reconstruir una nueva cola excluye esas primeras inspecciones. Mantener la cola original permite otra revisión explícita de sus imágenes, sin revelar sus hallazgos anteriores en esta pantalla.
+El lote inicial ya conserva doce recibos IA, con 41 candidatos, dos áreas sin embarcaciones visibles y cinco abstenciones. No se modificaron las revisiones SQL ni se importaron etiquetas al entrenamiento. [Hallazgos, tiempos y alcance](../reports/improvements/20261026-increment/README.md). Reconstruir una nueva cola excluye esas primeras inspecciones. Mantener la cola original permite otra revisión explícita de sus imágenes, sin revelar sus hallazgos anteriores en esta pantalla.
+
+## Margen de búsqueda en Puerto Quetzal
+
+La cola derivada V2 conserva las doce entradas, su orden, previews y zonas V1. Añade un ámbito de búsqueda de 500 m, limitado al agua de la propuesta geográfica fijada, en las tres entradas `prq_fondeo`. No modifica la zona operativa del catálogo. El contorno amarillo muestra la referencia; el azul, el ámbito ampliado. Un candidato cuyo centro está fuera de la referencia se señala como «Fuera de la zona de referencia». Esto no determina si el buque está fondeado o en tránsito. La observabilidad publicada sigue correspondiendo a la zona original; la del margen aún no está medida.
+
+```sh
+PYTHONPATH=src .venv/bin/python scripts/extend_review_search.py \
+  --output reports/review-queue/train-prq-search-500m/queue.json
+```
+
+El script fija los SHA del padre, de la propuesta y del propio constructor; no activa la cola. Se deriva de TRAIN ya revisado y no constituye una nueva muestra ciega ni validación. Cada `search_scope` fija geometría, radio, fuente, referencia y posible recorte al preview. Los recibos nuevos añaden estos datos y la ubicación calculada de cada candidato, conservando el esquema de primera inspección y su separación de las etiquetas científicas.
+
+Antes de cambiar el archivo activo, conservar sus bytes en `PUERTOGT_REVIEW_QUEUE_ARCHIVE_DIR/<queue_id>.json`; archivar también el nuevo manifest y sustituir el archivo activo de forma atómica. Nunca sobrescribir un archivo histórico. El visor acepta `/review-queue?queue=<queue_id>` y fija las peticiones posteriores a esa identidad. Los GET de cola, observación y preview aceptan `queue_id`; ambos POST usan el identificador del cuerpo. Así, una pestaña anterior puede terminar su revisión con el ámbito original después de activar otra cola. Los identificadores y hashes se verifican en cada lectura; una cola desconocida o alterada devuelve 409.

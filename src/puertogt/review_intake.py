@@ -16,7 +16,7 @@ from shapely.geometry import box, mapping, shape
 from shapely.ops import transform
 
 from puertogt.review import ReviewConflict, validate_geometry
-from puertogt.review_queue import blind_asset, blind_entry
+from puertogt.review_queue import blind_asset, blind_entry, effective_search_geometry
 from puertogt.store import Store, json_text, sha256_file, utc_text
 
 
@@ -43,6 +43,11 @@ def projected_zone(entry: dict, asset: dict) -> dict:
     return mapping(transform(to_pixel, shape(entry["zone_geometry"])))
 
 
+def projected_search_scope(entry: dict, asset: dict) -> dict:
+    to_pixel, _ = preview_projection(entry, asset)
+    return mapping(transform(to_pixel, shape(effective_search_geometry(entry))))
+
+
 def preview_rectangle(store: Store, manifest: dict, submission: dict) -> dict:
     if submission["queue_id"] != manifest["queue_id"]:
         raise ReviewConflict("The active review queue changed; reload it")
@@ -57,11 +62,20 @@ def preview_rectangle(store: Store, manifest: dict, submission: dict) -> dict:
         raise ValueError("Rectangle must have positive area within the preview")
     to_pixel, to_world = preview_projection(entry, asset)
     geometry = transform(to_world, box(left, top, right, bottom))
+    search_geometry = shape(effective_search_geometry(entry))
+    extra = {}
     if submission["kind"] == "area":
-        geometry = geometry.intersection(shape(entry["zone_geometry"]))
+        geometry = geometry.intersection(search_geometry)
         if geometry.is_empty or geometry.area <= 0 or geometry.geom_type not in {"Polygon", "MultiPolygon"}:
-            raise ValueError("Rectangle must overlap an area of the zone")
-    return {"geometry": mapping(geometry), "pixel_geometry": mapping(transform(to_pixel, geometry))}
+            suffix = "search scope" if "search_scope" in entry else "zone"
+            raise ValueError(f"Rectangle must overlap an area of the {suffix}")
+    elif submission["kind"] == "candidate":
+        if "search_scope" in entry and not search_geometry.covers(geometry.centroid):
+            raise ValueError("Candidate centers must lie inside the configured search scope")
+        extra["location"] = "reference_zone" if shape(entry["zone_geometry"]).covers(geometry.centroid) else "search_margin"
+    else:
+        raise ValueError("Unknown rectangle kind")
+    return {"geometry": mapping(geometry), "pixel_geometry": mapping(transform(to_pixel, geometry)), **extra}
 
 
 def record_first_pass(store: Store, manifest: dict, submission: dict) -> dict:
@@ -94,20 +108,24 @@ def record_first_pass(store: Store, manifest: dict, submission: dict) -> dict:
     if decision != "uncertain" and area is None:
         raise ValueError("Delimit the inspected area before recording findings")
     zone = shape(entry["zone_geometry"])
+    search_geometry = shape(effective_search_geometry(entry))
     if area is not None:
         validate_geometry(area)
         scope = shape(area)
-        if scope.geom_type not in {"Polygon", "MultiPolygon"} or not zone.buffer(1e-10).covers(scope):
-            raise ValueError("Inspected area must remain inside the configured zone")
+        if scope.geom_type not in {"Polygon", "MultiPolygon"} or not search_geometry.buffer(1e-10).covers(scope):
+            suffix = "search scope" if "search_scope" in entry else "zone"
+            raise ValueError(f"Inspected area must remain inside the configured {suffix}")
     else:
-        scope = zone
+        scope = search_geometry
     if len(candidates) > 100:
         raise ValueError("Too many first-pass candidates")
+    candidate_locations = []
     for candidate in candidates:
         validate_geometry(candidate)
         geometry = shape(candidate)
         if geometry.geom_type not in {"Polygon", "MultiPolygon"} or not scope.covers(geometry.centroid):
             raise ValueError("Candidate centers must lie inside the inspected area")
+        candidate_locations.append("reference_zone" if zone.covers(geometry.centroid) else "search_margin")
     if not 0 <= submission["elapsed_seconds"] <= 86400:
         raise ValueError("Invalid inspection duration")
     request_hash = hashlib.sha256(json_text(submission).encode()).hexdigest()
@@ -128,6 +146,8 @@ def record_first_pass(store: Store, manifest: dict, submission: dict) -> dict:
         "exposure": "UI first inspection without model proposals; prior exposure outside this workflow is unknown",
         "duration_source": "reviewer_client_elapsed_seconds",
     }
+    if "search_scope" in entry:
+        result.update(scope=json.loads(json_text(entry["search_scope"])), candidate_locations=candidate_locations)
     descriptor, temporary = tempfile.mkstemp(prefix=".inspection-", dir=directory)
     try:
         with os.fdopen(descriptor, "w") as handle:
@@ -153,4 +173,5 @@ def _receipt(record: dict, path: Path) -> dict:
         "observation_id": submission["observation_id"], "recorded_at": record["recorded_at"],
         "sha256": sha256_file(path), "decision": submission["decision"],
         "is_training_label": False, "is_independent_validation": False,
+        **{key: record[key] for key in ("scope", "candidate_locations") if key in record},
     }
