@@ -1,0 +1,2235 @@
+{
+  "schema": "puertogt-increment-adjudicated-geometry-v1",
+  "frozen_at": "2026-10-26T15:24:46.487082+00:00",
+  "author": "Codex /root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "split": "train",
+  "sources": [
+    {
+      "path": "reports/improvements/20261026-increment/first-pass-findings.json",
+      "sha256": "4595a7699571b68fea8cf6484ecf5011c507b6c582b4df05acb85a2ece177b7f"
+    },
+    {
+      "path": "tmp/scientific-closure-20261026/second-pass.json",
+      "sha256": "b70bfc9ecaf0d671ef6b9fd68aa788129e10b6d888debad69862aea91a474d9f"
+    },
+    {
+      "path": "reports/review-queue/train-primaries-final-v2/queue.json",
+      "sha256": "35c92bca87c79d64833edde6db1870f0b00fd2cc54a0177857e150a84a33d5bc"
+    },
+    {
+      "path": "tmp/scientific-closure-20261026/freeze-adjudication.py",
+      "sha256": "da2bb26abeda35808b2328ce75c2b7decb3fd967dfe0c93bd1178091b2a1ddbc"
+    }
+  ],
+  "blind_to_model": false,
+  "exposure": "First and second inspections frozen before comparing upstream public-model proposals. Root previously saw that upstream comparison; second reviewer did not. Final decisions use raw-derived image crops and review geometry. No incremental e099 refit predictions, CAL or TEST read for adjudication. GFW visits are not label evidence.",
+  "geometry_role": "visual boxes at native 10m resolution, not physical dimensions",
+  "certifies_absence": false,
+  "independent_validation": false,
+  "observations": [
+    {
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250207T001416:20250207T001441:057783:071FFA",
+      "pass_id": "S1A:absolute-orbit:057783",
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-02-07T00:14:16.275856Z",
+      "queue_index": 1,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.77703404990497,
+              13.892439413640606
+            ],
+            [
+              -90.77883515566602,
+              13.892455806077393
+            ],
+            [
+              -90.77886874180881,
+              13.888932060900265
+            ],
+            [
+              -90.77706766414401,
+              13.888915672790862
+            ],
+            [
+              -90.77720105559996,
+              13.87492269440454
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.908966527799999
+            ],
+            [
+              -90.77687925,
+              13.908654222199987
+            ],
+            [
+              -90.77703404990497,
+              13.892439413640606
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.9945493208128242,
+      "candidates": [
+        {
+          "candidate_id": "second-pass-01-01",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80485098579717,
+                  13.909498363534697
+                ],
+                [
+                  -90.80486888287928,
+                  13.90760093164431
+                ],
+                [
+                  -90.80616381772418,
+                  13.907612582498581
+                ],
+                [
+                  -90.80614593117915,
+                  13.909510016040302
+                ],
+                [
+                  -90.80485098579717,
+                  13.909498363534697
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-02",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77886414717733,
+                  13.908811268291435
+                ],
+                [
+                  -90.77888570391598,
+                  13.906552460379668
+                ],
+                [
+                  -90.78018061015918,
+                  13.906564248245179
+                ],
+                [
+                  -90.78015906596292,
+                  13.908823058146051
+                ],
+                [
+                  -90.77886414717733,
+                  13.908811268291435
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-03",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78832262401922,
+                  13.90636712757649
+                ],
+                [
+                  -90.78833635954133,
+                  13.904921480984354
+                ],
+                [
+                  -90.7898162516257,
+                  13.904934893419837
+                ],
+                [
+                  -90.78980252527619,
+                  13.906380541460601
+                ],
+                [
+                  -90.78832262401922,
+                  13.90636712757649
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-04",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79462676771381,
+                  13.90488806864789
+                ],
+                [
+                  -90.79464645360348,
+                  13.902809942491851
+                ],
+                [
+                  -90.79631132432642,
+                  13.902824985570748
+                ],
+                [
+                  -90.79629165326872,
+                  13.904903114062714
+                ],
+                [
+                  -90.79462676771381,
+                  13.90488806864789
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-05",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80050764815532,
+                  13.89924839610212
+                ],
+                [
+                  -90.80052642009397,
+                  13.897260614455707
+                ],
+                [
+                  -90.80219125777059,
+                  13.897275611566968
+                ],
+                [
+                  -90.80217250001297,
+                  13.899263395441755
+                ],
+                [
+                  -90.80050764815532,
+                  13.89924839610212
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-06",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79090739670447,
+                  13.89717374254635
+                ],
+                [
+                  -90.79092967473063,
+                  13.894824560861233
+                ],
+                [
+                  -90.7925944842123,
+                  13.894839620815707
+                ],
+                [
+                  -90.79257222294214,
+                  13.897188805145804
+                ],
+                [
+                  -90.79090739670447,
+                  13.89717374254635
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-07",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77952510781347,
+                  13.897702978465725
+                ],
+                [
+                  -90.7795500850713,
+                  13.895082757689075
+                ],
+                [
+                  -90.78112239468211,
+                  13.895097054797093
+                ],
+                [
+                  -90.78109743507538,
+                  13.897717278374406
+                ],
+                [
+                  -90.77952510781347,
+                  13.897702978465725
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-08",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80650284930422,
+                  13.891260161123244
+                ],
+                [
+                  -90.80652666102,
+                  13.8887302452849
+                ],
+                [
+                  -90.80791398044916,
+                  13.88874270208286
+                ],
+                [
+                  -90.80789018376433,
+                  13.89127262027826
+                ],
+                [
+                  -90.80650284930422,
+                  13.891260161123244
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-09",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79503170541332,
+                  13.89142792437218
+                ],
+                [
+                  -90.79505393230585,
+                  13.889078735028912
+                ],
+                [
+                  -90.79653373051401,
+                  13.889092091814549
+                ],
+                [
+                  -90.7965115185091,
+                  13.89144128350457
+                ],
+                [
+                  -90.79503170541332,
+                  13.89142792437218
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-10",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78717966226462,
+                  13.890362921429482
+                ],
+                [
+                  -90.78721054393601,
+                  13.88711021460794
+                ],
+                [
+                  -90.78841286332688,
+                  13.887121104764521
+                ],
+                [
+                  -90.78838199840169,
+                  13.89037381423569
+                ],
+                [
+                  -90.78717966226462,
+                  13.890362921429482
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-11",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7793952481628,
+                  13.891918739183534
+                ],
+                [
+                  -90.77942193780223,
+                  13.889117812428129
+                ],
+                [
+                  -90.78090172057058,
+                  13.889131263929437
+                ],
+                [
+                  -90.78087504868141,
+                  13.8919321935027
+                ],
+                [
+                  -90.7793952481628,
+                  13.891918739183534
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-12",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80562730015608,
+                  13.886011313329917
+                ],
+                [
+                  -90.80565451331545,
+                  13.883119981361329
+                ],
+                [
+                  -90.80713428429209,
+                  13.883133268357478
+                ],
+                [
+                  -90.80710708944822,
+                  13.886024603200458
+                ],
+                [
+                  -90.80562730015608,
+                  13.886011313329917
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-13",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78659659755354,
+                  13.883580583002043
+                ],
+                [
+                  -90.78661975388822,
+                  13.881141052588003
+                ],
+                [
+                  -90.78791452577691,
+                  13.881152778397373
+                ],
+                [
+                  -90.78789138296118,
+                  13.883592310951967
+                ],
+                [
+                  -90.78659659755354,
+                  13.883580583002043
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-14",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77718559097963,
+                  13.881145767396404
+                ],
+                [
+                  -90.77721486865609,
+                  13.878073785099273
+                ],
+                [
+                  -90.77860209719238,
+                  13.87808639884704
+                ],
+                [
+                  -90.77857283775133,
+                  13.88115838404438
+                ],
+                [
+                  -90.77718559097963,
+                  13.881145767396404
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-15",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80522184872291,
+                  13.879953433140821
+                ],
+                [
+                  -90.80523885310097,
+                  13.878146350346338
+                ],
+                [
+                  -90.80662610838671,
+                  13.878158805155856
+                ],
+                [
+                  -90.80660911473569,
+                  13.879965889634862
+                ],
+                [
+                  -90.80522184872291,
+                  13.879953433140821
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        },
+        {
+          "candidate_id": "second-pass-01-16",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79654371079961,
+                  13.878248828476048
+                ],
+                [
+                  -90.79657358064712,
+                  13.87508645146083
+                ],
+                [
+                  -90.79805329162554,
+                  13.875099785875117
+                ],
+                [
+                  -90.7980234417976,
+                  13.878262166047088
+                ],
+                [
+                  -90.79654371079961,
+                  13.878248828476048
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Dieciséis retornos brillantes, alargados, compactos y separados sobre agua oscura, visualmente compatibles con buques. La primera caja cruza el límite norte; su centro queda dentro de la zona. Las extensiones difusas y lóbulos no se interpretan como eslora ni como buques adicionales."
+        }
+      ],
+      "evidence_assets": [
+        {
+          "path": "data/assets/096198a8-e91c-4444-b07c-1370aa4570ac/preview.png",
+          "sha256": "cb5439ebafea569765b8c40148eaef4ac35e9bfa7b3f85c7af7c2b5d12589561"
+        }
+      ],
+      "decision": "positive_and_complete_within_explicit_scope",
+      "rationale": "16 isolated bright SAR returns agreed by both AI inspections; faint ambiguous region stays unknown.",
+      "human_review": false
+    },
+    {
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "acquisition_key": "S1A:IW:GRDH:1SDV:20250303T001415:20250303T001440:058133:072E2A",
+      "pass_id": "S1A:absolute-orbit:058133",
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-1",
+      "captured_at": "2025-03-03T00:14:15.620118Z",
+      "queue_index": 2,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.908966527799999
+            ],
+            [
+              -90.77687925,
+              13.908654222199997
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ]
+          ],
+          [
+            [
+              -90.80290817270034,
+              13.899721827414988
+            ],
+            [
+              -90.80288003898306,
+              13.902703503941016
+            ],
+            [
+              -90.80482239825292,
+              13.902720987449909
+            ],
+            [
+              -90.80485050714738,
+              13.899739307028646
+            ],
+            [
+              -90.80290817270034,
+              13.899721827414988
+            ]
+          ],
+          [
+            [
+              -90.77711236562054,
+              13.888825719502048
+            ],
+            [
+              -90.77707961517399,
+              13.89225910817393
+            ],
+            [
+              -90.7788368782602,
+              13.892275101223133
+            ],
+            [
+              -90.7788696028688,
+              13.888841708445437
+            ],
+            [
+              -90.77711236562054,
+              13.888825719502048
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.9898476120398153,
+      "candidates": [
+        {
+          "candidate_id": "second-pass-02-01",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.8072119095832,
+                  13.904368985752074
+                ],
+                [
+                  -90.80722637677849,
+                  13.902832966401082
+                ],
+                [
+                  -90.80944622388635,
+                  13.90285290695073
+                ],
+                [
+                  -90.8094317713083,
+                  13.904388928590388
+                ],
+                [
+                  -90.8072119095832,
+                  13.904368985752074
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-02",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79489483354992,
+                  13.90588446347878
+                ],
+                [
+                  -90.79491109527514,
+                  13.904167750423241
+                ],
+                [
+                  -90.79731592362589,
+                  13.904189475145273
+                ],
+                [
+                  -90.79729967960041,
+                  13.905906190987332
+                ],
+                [
+                  -90.79489483354992,
+                  13.90588446347878
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-03",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7793429981017,
+                  13.907098785229675
+                ],
+                [
+                  -90.77935851400993,
+                  13.905472442820674
+                ],
+                [
+                  -90.78167083745402,
+                  13.905493481687277
+                ],
+                [
+                  -90.78165533766996,
+                  13.90711982665255
+                ],
+                [
+                  -90.7793429981017,
+                  13.907098785229675
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-04",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80041430306747,
+                  13.899337916170388
+                ],
+                [
+                  -90.80043563563498,
+                  13.897079073522121
+                ],
+                [
+                  -90.80247043579827,
+                  13.897097402307553
+                ],
+                [
+                  -90.80244912292662,
+                  13.899356248050644
+                ],
+                [
+                  -90.80041430306747,
+                  13.899337916170388
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-05",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77879294441266,
+                  13.896883074107507
+                ],
+                [
+                  -90.77880845230584,
+                  13.895256730950294
+                ],
+                [
+                  -90.78102818457458,
+                  13.895276919152918
+                ],
+                [
+                  -90.7810126921481,
+                  13.896903264764711
+                ],
+                [
+                  -90.77879294441266,
+                  13.896883074107507
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-06",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.8059496173278,
+                  13.89107446707011
+                ],
+                [
+                  -90.80597088308045,
+                  13.888815614476222
+                ],
+                [
+                  -90.80800561869599,
+                  13.888833886492932
+                ],
+                [
+                  -90.80798437262663,
+                  13.89109274217377
+                ],
+                [
+                  -90.8059496173278,
+                  13.89107446707011
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-07",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79623063540684,
+                  13.89180019334448
+                ],
+                [
+                  -90.79624943334882,
+                  13.889812416227697
+                ],
+                [
+                  -90.79837665217615,
+                  13.88983160437633
+                ],
+                [
+                  -90.79835787234353,
+                  13.891819384345617
+                ],
+                [
+                  -90.79623063540684,
+                  13.89180019334448
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-08",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77786345305292,
+                  13.887657872061775
+                ],
+                [
+                  -90.77787981797833,
+                  13.885941176293988
+                ],
+                [
+                  -90.78009946015621,
+                  13.885961359678891
+                ],
+                [
+                  -90.78008311154471,
+                  13.887678058038617
+                ],
+                [
+                  -90.77786345305292,
+                  13.887657872061775
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-09",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78567604190617,
+                  13.883120437132712
+                ],
+                [
+                  -90.7856949175612,
+                  13.881132672817078
+                ],
+                [
+                  -90.78782204203071,
+                  13.881151941066669
+                ],
+                [
+                  -90.78780318447211,
+                  13.883139708248354
+                ],
+                [
+                  -90.78567604190617,
+                  13.883120437132712
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        },
+        {
+          "candidate_id": "second-pass-02-10",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79507252209156,
+                  13.877331946664293
+                ],
+                [
+                  -90.79509130953726,
+                  13.875344168756437
+                ],
+                [
+                  -90.79740335886581,
+                  13.875365014242712
+                ],
+                [
+                  -90.79738459108161,
+                  13.877352795252436
+                ],
+                [
+                  -90.79507252209156,
+                  13.877331946664293
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Diez retornos brillantes y compactos con eje alargado sobre agua, separados de la costa y entre sí. Morfología compatible con buques; identidad y dimensiones físicas sin resolver."
+        }
+      ],
+      "evidence_assets": [
+        {
+          "path": "data/assets/ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8/preview.png",
+          "sha256": "103817602f0d355137286391418660553a356b6d9bbd3558e463b84613d86ce1"
+        }
+      ],
+      "decision": "positive_and_complete_within_explicit_scope",
+      "rationale": "10 isolated bright SAR returns agreed by both AI inspections; faint returns and outside-zone objects excluded.",
+      "human_review": false
+    },
+    {
+      "observation_id": "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+      "acquisition_key": "S2C:MSIL1C:20250304T162211:R040:T15PYR",
+      "pass_id": "S2C:MSIL1C:20250304T162211:R040",
+      "port_id": "prq",
+      "zone_id": "prq_muelles",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-03-04T16:22:11.025000Z",
+      "queue_index": 3,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.78632957761103,
+              13.921398899269766
+            ],
+            [
+              -90.78633447910094,
+              13.92139870316576
+            ],
+            [
+              -90.78633933778563,
+              13.921398027707962
+            ],
+            [
+              -90.78634410689918,
+              13.921396879397804
+            ],
+            [
+              -90.78634874053778,
+              13.921395269288027
+            ],
+            [
+              -90.78635319410164,
+              13.921393212876302
+            ],
+            [
+              -90.78635742472419,
+              13.921390729956046
+            ],
+            [
+              -90.78636139168475,
+              13.921387844425931
+            ],
+            [
+              -90.78636505680045,
+              13.921384584059824
+            ],
+            [
+              -90.7863683847937,
+              13.921380980239483
+            ],
+            [
+              -90.78637134363184,
+              13.921377067652486
+            ],
+            [
+              -90.7863739048354,
+              13.921372883958359
+            ],
+            [
+              -90.7863760437522,
+              13.921368469426096
+            ],
+            [
+              -90.78637773979469,
+              13.921363866546558
+            ],
+            [
+              -90.78637897663809,
+              13.921359119623494
+            ],
+            [
+              -90.7863797423775,
+              13.921354274347099
+            ],
+            [
+              -90.78638002964252,
+              13.921349377354247
+            ],
+            [
+              -90.78638089011484,
+              13.921258999608229
+            ],
+            [
+              -90.78857845555338,
+              13.921278955183176
+            ],
+            [
+              -90.79539587972208,
+              13.921340728084122
+            ],
+            [
+              -90.79536246247419,
+              13.924864503439748
+            ],
+            [
+              -90.79531995879132,
+              13.924864118217048
+            ],
+            [
+              -90.79532424361757,
+              13.924412374604913
+            ],
+            [
+              -90.79532404922749,
+              13.92440747033323
+            ],
+            [
+              -90.79532337493882,
+              13.924402608748812
+            ],
+            [
+              -90.79532222724893,
+              13.924397836697244
+            ],
+            [
+              -90.79532061721682,
+              13.92439320016138
+            ],
+            [
+              -90.79531856035652,
+              13.924388743818263
+            ],
+            [
+              -90.79531607648768,
+              13.924384510608625
+            ],
+            [
+              -90.79531318954453,
+              13.924380541323114
+            ],
+            [
+              -90.79530992734526,
+              13.924376874209237
+            ],
+            [
+              -90.795306321324,
+              13.924373544602815
+            ],
+            [
+              -90.79530240622789,
+              13.924370584587496
+            ],
+            [
+              -90.79529821978228,
+              13.924368022685595
+            ],
+            [
+              -90.7952938023272,
+              13.924365883583258
+            ],
+            [
+              -90.79528919642864,
+              13.92436418789259
+            ],
+            [
+              -90.79528444646847,
+              13.924362951953043
+            ],
+            [
+              -90.79527959821664,
+              13.924362187673966
+            ],
+            [
+              -90.79527469839029,
+              13.924361902419848
+            ],
+            [
+              -90.79453468749023,
+              13.924355204696258
+            ],
+            [
+              -90.79452978601631,
+              13.924355400973349
+            ],
+            [
+              -90.79452492736438,
+              13.924356076600949
+            ],
+            [
+              -90.79452015829987,
+              13.924357225076017
+            ],
+            [
+              -90.79451552472592,
+              13.924358835344265
+            ],
+            [
+              -90.79451107124159,
+              13.924360891906554
+            ],
+            [
+              -90.79450684071246,
+              13.924363374968088
+            ],
+            [
+              -90.79450287385819,
+              13.92436626062893
+            ],
+            [
+              -90.7944992088605,
+              13.924369521114048
+            ],
+            [
+              -90.7944958809957,
+              13.924373125040663
+            ],
+            [
+              -90.79449292229508,
+              13.9243770377203
+            ],
+            [
+              -90.79449036123671,
+              13.924381221492679
+            ],
+            [
+              -90.79448822247127,
+              13.924385636088202
+            ],
+            [
+              -90.79448652658476,
+              13.924390239015557
+            ],
+            [
+              -90.79448528990044,
+              13.924394985970698
+            ],
+            [
+              -90.79448452432158,
+              13.924399831263289
+            ],
+            [
+              -90.79448423721706,
+              13.924404728256475
+            ],
+            [
+              -90.79447995063907,
+              13.924856504989522
+            ],
+            [
+              -90.78879486610876,
+              13.924804979487165
+            ],
+            [
+              -90.78876907790792,
+              13.927515566871833
+            ],
+            [
+              -90.78784405607215,
+              13.927507167847919
+            ],
+            [
+              -90.78666045875951,
+              13.925508485464876
+            ],
+            [
+              -90.7869465651951,
+              13.924607479698299
+            ],
+            [
+              -90.7885190818958,
+              13.924621757935492
+            ],
+            [
+              -90.78853713154918,
+              13.922724349966353
+            ],
+            [
+              -90.7872421291635,
+              13.922712593335918
+            ],
+            [
+              -90.78687728906203,
+              13.922167116771103
+            ],
+            [
+              -90.78567478999476,
+              13.922156192130666
+            ],
+            [
+              -90.78568205859162,
+              13.921393015701588
+            ],
+            [
+              -90.78632957761103,
+              13.921398899269766
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.19556415024744528,
+      "candidates": [
+        {
+          "candidate_id": "second-pass-03-01",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79296342884044,
+                  13.924210256421405
+                ],
+                [
+                  -90.7929711493499,
+                  13.92339707886623
+                ],
+                [
+                  -90.79500616929515,
+                  13.923415503951496
+                ],
+                [
+                  -90.79499845589042,
+                  13.924228682624689
+                ],
+                [
+                  -90.79296342884044,
+                  13.924210256421405
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Cuerpo claro alargado aislado en el agua de la dársena oeste."
+        },
+        {
+          "candidate_id": "second-pass-03-02",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78664324964939,
+                  13.927315538579537
+                ],
+                [
+                  -90.78666131915055,
+                  13.925418132801575
+                ],
+                [
+                  -90.78786383588852,
+                  13.92542905508086
+                ],
+                [
+                  -90.78784577618507,
+                  13.927326462405048
+                ],
+                [
+                  -90.78664324964939,
+                  13.927315538579537
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Cuerpo rojizo y claro alargado junto al costado oeste del muelle este."
+        },
+        {
+          "candidate_id": "second-pass-03-03",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7855822901095,
+                  13.922155351528376
+                ],
+                [
+                  -90.78559003523752,
+                  13.921342177904718
+                ],
+                [
+                  -90.78744002765191,
+                  13.921358982271679
+                ],
+                [
+                  -90.78743228898156,
+                  13.922172156915147
+                ],
+                [
+                  -90.7855822901095,
+                  13.922155351528376
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Cuerpo rojizo y claro horizontal junto al extremo sur del muelle este."
+        }
+      ],
+      "evidence_assets": [
+        {
+          "path": "data/assets/c2aaad3d-b82c-4b50-bdd8-91715124ce5c/preview.png",
+          "sha256": "e3638bbe988bbab0260adc025987886e95e623d15658db05f31ee07b696c8149"
+        }
+      ],
+      "decision": "positive_and_complete_within_explicit_scope",
+      "rationale": "Root inspected raw-derived west/east crops: three distinct elongated hull-like bodies accepted. Two docked bodies are supported by second inspection and root. Three smaller ambiguous dockside objects remain unknown. Two explicitly inspected water patches extend the original clear-water scope.",
+      "human_review": false
+    },
+    {
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "acquisition_key": "S2C:MSIL1C:20250403T161851:R040:T15PYR",
+      "pass_id": "S2C:MSIL1C:20250403T161851:R040",
+      "port_id": "prq",
+      "zone_id": "prq_fondeo",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-04-03T16:18:51.025000Z",
+      "queue_index": 4,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.79098608015904,
+              13.908379201015391
+            ],
+            [
+              -90.78987614365226,
+              13.908369145410457
+            ],
+            [
+              -90.78987232038786,
+              13.908771732549777
+            ],
+            [
+              -90.77687925002915,
+              13.908654222200262
+            ],
+            [
+              -90.77687925,
+              13.908654222199997
+            ],
+            [
+              -90.7772010556,
+              13.8749226944
+            ],
+            [
+              -90.8117275833,
+              13.87523425
+            ],
+            [
+              -90.81141075,
+              13.908966527799999
+            ],
+            [
+              -90.81141074993853,
+              13.908966527799445
+            ],
+            [
+              -90.80603900469312,
+              13.908917945313252
+            ],
+            [
+              -90.79572439840112,
+              13.908824659203272
+            ],
+            [
+              -90.79098225897732,
+              13.908781770921616
+            ],
+            [
+              -90.79098608015904,
+              13.908379201015391
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.9996163596187665,
+      "candidates": [
+        {
+          "candidate_id": "second-pass-04-01",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79693312356744,
+                  13.905541436084265
+                ],
+                [
+                  -90.79694167451827,
+                  13.904637901659669
+                ],
+                [
+                  -90.79934651102134,
+                  13.904659607093592
+                ],
+                [
+                  -90.79933796938627,
+                  13.905563142983427
+                ],
+                [
+                  -90.79693312356744,
+                  13.905541436084265
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-02",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78055575276775,
+                  13.906025500367008
+                ],
+                [
+                  -90.78056609045207,
+                  13.904941271130172
+                ],
+                [
+                  -90.78287841052193,
+                  13.90496229776911
+                ],
+                [
+                  -90.78286808358644,
+                  13.906046528709199
+                ],
+                [
+                  -90.78055575276775,
+                  13.906025500367008
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-03",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80832354126241,
+                  13.904198251408612
+                ],
+                [
+                  -90.80833544936182,
+                  13.902933293348367
+                ],
+                [
+                  -90.81055529907964,
+                  13.902953223952904
+                ],
+                [
+                  -90.81054340301796,
+                  13.904218183896981
+                ],
+                [
+                  -90.80832354126241,
+                  13.904198251408612
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-04",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80996392450089,
+                  13.89698403104121
+                ],
+                [
+                  -90.80997496782689,
+                  13.895809425146316
+                ],
+                [
+                  -90.81210226103565,
+                  13.895828501846948
+                ],
+                [
+                  -90.81209122841578,
+                  13.897003109416966
+                ],
+                [
+                  -90.80996392450089,
+                  13.89698403104121
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-05",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80283187652206,
+                  13.898004271570965
+                ],
+                [
+                  -90.80284295664028,
+                  13.896829671408026
+                ],
+                [
+                  -90.80524772211255,
+                  13.896851306793712
+                ],
+                [
+                  -90.80523665409768,
+                  13.898025908856313
+                ],
+                [
+                  -90.80283187652206,
+                  13.898004271570965
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-06",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79236754439229,
+                  13.899265256017925
+                ],
+                [
+                  -90.79238467306189,
+                  13.897458191748575
+                ],
+                [
+                  -90.79441946547308,
+                  13.897476588111994
+                ],
+                [
+                  -90.79440235256006,
+                  13.899283654866252
+                ],
+                [
+                  -90.79236754439229,
+                  13.899265256017925
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-07",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78753159676063,
+                  13.892263686049404
+                ],
+                [
+                  -90.78754703833273,
+                  13.890637332619201
+                ],
+                [
+                  -90.78985922742885,
+                  13.890658272006815
+                ],
+                [
+                  -90.78984380196236,
+                  13.89228462798373
+                ],
+                [
+                  -90.78753159676063,
+                  13.892263686049404
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-08",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80745239045983,
+                  13.888648196487297
+                ],
+                [
+                  -90.80746513931611,
+                  13.887292883346793
+                ],
+                [
+                  -90.80977732633097,
+                  13.887313629322659
+                ],
+                [
+                  -90.80976459089308,
+                  13.888668944566316
+                ],
+                [
+                  -90.80745239045983,
+                  13.888648196487297
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-09",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79773350639265,
+                  13.889373998436875
+                ],
+                [
+                  -90.79774716611622,
+                  13.887928340632639
+                ],
+                [
+                  -90.8002443187216,
+                  13.88795084566426
+                ],
+                [
+                  -90.80023067445642,
+                  13.889396505901956
+                ],
+                [
+                  -90.79773350639265,
+                  13.889373998436875
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-10",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78165365196912,
+                  13.887873049525025
+                ],
+                [
+                  -90.78166740983416,
+                  13.886427407296566
+                ],
+                [
+                  -90.78397954795804,
+                  13.88644839610228
+                ],
+                [
+                  -90.78396580440402,
+                  13.887894040600447
+                ],
+                [
+                  -90.78165365196912,
+                  13.887873049525025
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-11",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.77883995999807,
+                  13.882245136506475
+                ],
+                [
+                  -90.77885372949955,
+                  13.880799496382323
+                ],
+                [
+                  -90.78098084104201,
+                  13.88081882370719
+                ],
+                [
+                  -90.78096708470069,
+                  13.88226446592216
+                ],
+                [
+                  -90.77883995999807,
+                  13.882245136506475
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-12",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7991153365961,
+                  13.880169592457284
+                ],
+                [
+                  -90.7991306834542,
+                  13.878543224676026
+                ],
+                [
+                  -90.80153525435048,
+                  13.878564868694987
+                ],
+                [
+                  -90.80151992422672,
+                  13.880191239110797
+                ],
+                [
+                  -90.7991153365961,
+                  13.880169592457284
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        },
+        {
+          "candidate_id": "second-pass-04-13",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.80901710760438,
+                  13.8796260448125
+                ],
+                [
+                  -90.8090340821758,
+                  13.87781895735877
+                ],
+                [
+                  -90.81143866163264,
+                  13.877840502876953
+                ],
+                [
+                  -90.81142170565448,
+                  13.87964759324481
+                ],
+                [
+                  -90.80901710760438,
+                  13.8796260448125
+                ]
+              ]
+            ]
+          },
+          "confidence": "high_candidate_plausibility",
+          "note": "Trece cuerpos alargados de contraste claro, rojizo o gris sobre agua uniforme, todos con centros dentro de la zona. La caja occidental cruza el límite de zona; el objeto sigue siendo visible y su centro queda dentro."
+        }
+      ],
+      "evidence_assets": [
+        {
+          "path": "data/assets/09b37fd3-c189-4bae-aa85-06da102c023b/preview.png",
+          "sha256": "29c6e07e3b33671be7fbf51e9c7689dc9db626206669b1cef0513037421934bb"
+        }
+      ],
+      "decision": "positive_and_complete_within_explicit_scope",
+      "rationale": "13 distinct elongated hulls on open water agreed by both AI inspections and root; outside-zone and north-border ambiguity excluded.",
+      "human_review": false
+    },
+    {
+      "observation_id": "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+      "acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+      "pass_id": "S2A:MSIL1C:20250110T161631:R140",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-10T16:16:31.024000Z",
+      "queue_index": 7,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.601,
+              15.789999999999997
+            ],
+            [
+              -88.608,
+              15.7361
+            ],
+            [
+              -88.6105,
+              15.7361
+            ],
+            [
+              -88.60875,
+              15.749575
+            ],
+            [
+              -88.6035,
+              15.79
+            ],
+            [
+              -88.601625,
+              15.79
+            ],
+            [
+              -88.601,
+              15.789999999999997
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 1.000000000000042,
+      "candidates": [],
+      "evidence_assets": [
+        {
+          "path": "data/assets/4796c120-bd2d-42c8-9bbf-7bcfe8f467a0/preview.png",
+          "sha256": "528254a8ec18f9fc739b630127bdbd07e44d91c0a6746888c550f83d25b594df"
+        }
+      ],
+      "decision": "visually_empty_within_explicit_scope",
+      "rationale": "No visually discernible vessel in canal at this resolution; both inspections and root scanned north/south clear water.",
+      "human_review": false
+    },
+    {
+      "observation_id": "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+      "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+      "pass_id": "S2B:MSIL1C:20250518T161829:R040",
+      "port_id": "pbr",
+      "zone_id": "pbr_canal",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-05-18T16:18:29.024000Z",
+      "queue_index": 8,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.601,
+              15.789999999999997
+            ],
+            [
+              -88.60100000000305,
+              15.789999999976493
+            ],
+            [
+              -88.60100000001508,
+              15.78999999988395
+            ],
+            [
+              -88.60735438132562,
+              15.741072012742135
+            ],
+            [
+              -88.60985668194711,
+              15.741053549007233
+            ],
+            [
+              -88.6035,
+              15.79
+            ],
+            [
+              -88.601625,
+              15.79
+            ],
+            [
+              -88.601,
+              15.789999999999997
+            ]
+          ],
+          [
+            [
+              -88.60868867672372,
+              15.74756921880755
+            ],
+            [
+              -88.60867943107661,
+              15.746394403675021
+            ],
+            [
+              -88.60765300465631,
+              15.746401977601899
+            ],
+            [
+              -88.60766224441039,
+              15.747576793327912
+            ],
+            [
+              -88.60868867672372,
+              15.74756921880755
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.8989590525639078,
+      "candidates": [],
+      "evidence_assets": [
+        {
+          "path": "data/assets/3b7ff03b-5224-410b-86f7-18829eeb9a95/preview.png",
+          "sha256": "c69c22d9f021ee7ee95b92f3a4dd9c03895d320dbb89baeab4c43228ab62bf47"
+        }
+      ],
+      "decision": "visually_empty_within_explicit_scope",
+      "rationale": "No visually discernible vessel in common clear water; southern disturbance and isolated dark spot stay unknown.",
+      "human_review": false
+    },
+    {
+      "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+      "acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+      "pass_id": "S2A:MSIL1C:20250110T161631:R140",
+      "port_id": "stc",
+      "zone_id": "stc_fondeo",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-01-10T16:16:31.024000Z",
+      "queue_index": 11,
+      "reviewed_area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.63744252186886,
+              15.757567384927292
+            ],
+            [
+              -88.6404031573617,
+              15.757545106425798
+            ],
+            [
+              -88.64041141289755,
+              15.758573052388595
+            ],
+            [
+              -88.64087935218751,
+              15.75873897898944
+            ],
+            [
+              -88.64088715589602,
+              15.759710349266172
+            ],
+            [
+              -88.63482160165209,
+              15.759755837924272
+            ],
+            [
+              -88.63480424385538,
+              15.757587203813545
+            ],
+            [
+              -88.63744244962298,
+              15.757567364716156
+            ],
+            [
+              -88.63744252186886,
+              15.757567384927292
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.017549786542536944,
+      "candidates": [
+        {
+          "candidate_id": "second-pass-11-01",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6391047227357,
+                  15.758549000297728
+                ],
+                [
+                  -88.63910037156637,
+                  15.758006786697983
+                ],
+                [
+                  -88.63975357894516,
+                  15.75800186973628
+                ],
+                [
+                  -88.6397579318466,
+                  15.758544083158318
+                ],
+                [
+                  -88.6391047227357,
+                  15.758549000297728
+                ]
+              ]
+            ]
+          },
+          "confidence": "medium_candidate_plausibility",
+          "note": "Cabeza clara compacta en torno a x=180,y=432 y estela hacia el este/sureste; aspecto de embarcación en movimiento."
+        }
+      ],
+      "evidence_assets": [
+        {
+          "path": "data/assets/d9f3dfe4-892b-49cc-80a6-58fe99fda67a/preview.png",
+          "sha256": "dc344fbc45fec2779c2d706dedbc3cfdd2701941ea44d8f8fb42833257f6c426"
+        }
+      ],
+      "decision": "positive_and_complete_within_explicit_scope",
+      "rationale": "Only compact bright head with east/southeast wake accepted. Near-coast candidate remains uncertain. Retain tiny common clear-water scope from first review; no land negatives.",
+      "human_review": false
+    },
+    {
+      "observation_id": "05208f24-0534-4107-9bf1-700c46c84632",
+      "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+      "pass_id": "S2B:MSIL1C:20250518T161829:R040",
+      "port_id": "stc",
+      "zone_id": "stc_muelles",
+      "sensor": "sentinel-2",
+      "captured_at": "2025-05-18T16:18:29.024000Z",
+      "queue_index": 12,
+      "reviewed_area": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ],
+              [
+                -88.61716565314757,
+                15.69843257979378
+              ],
+              [
+                -88.61715100760641,
+                15.696575229741754
+              ],
+              [
+                -88.62031035433156,
+                15.694975014293838
+              ],
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -88.6166080548932,
+                15.698707832428312
+              ],
+              [
+                -88.61382003957218,
+                15.700084076263312
+              ],
+              [
+                -88.61331548576389,
+                15.698732164535528
+              ],
+              [
+                -88.6166080548932,
+                15.698707832428312
+              ]
+            ]
+          ]
+        ]
+      },
+      "reviewed_fraction_of_v1_zone": 0.47737782887028085,
+      "candidates": [],
+      "evidence_assets": [
+        {
+          "path": "data/assets/05208f24-0534-4107-9bf1-700c46c84632/preview.png",
+          "sha256": "bb6852052e2437ad7958da4de776eeb9d87a117b099f14ecc97e5dcd1d2e220b"
+        }
+      ],
+      "decision": "visually_empty_within_explicit_scope",
+      "rationale": "Root confirms empty clear water away from dock. Use second scope minus full abstention locator (47.7% nominal zone); excluded shoreline stays unknown.",
+      "human_review": false
+    }
+  ],
+  "withheld_queue_indices": [
+    5,
+    6,
+    9,
+    10
+  ],
+  "withheld_reason": "Caribbean SAR ambiguity remains unresolved; partial empty scopes not accepted as negatives.",
+  "candidate_count": 43,
+  "model_selection": "Fixed e099 probe on six S2 TRAIN entries at score 0.5 and IoU 0.5 before retraining; no threshold selection or automatic activation."
+}

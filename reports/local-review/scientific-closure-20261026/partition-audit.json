@@ -1,0 +1,1881 @@
+{
+  "schema_version": "puertogt-partition-metadata-audit-v1",
+  "created_at": "2026-10-26T15:00:43.396258+00:00",
+  "author": "codex-ai-validation-partition-audit",
+  "scope": "Metadata audit only; historical scientific partitions and artifacts are unchanged.",
+  "constraints": {
+    "test_labels_opened": false,
+    "test_pixels_opened": false,
+    "test_predictions_opened": false,
+    "test_metrics_opened": false,
+    "calibration_labels_or_predictions_opened": false,
+    "training_or_inference_executed": false,
+    "splits_reassigned": false,
+    "calibration_activated": false,
+    "commits_created": false
+  },
+  "source_sha256": {
+    "reports/local-review/phase2/sampling-plan.json": "b2a3e5a71267dd9d54c8b6cc041dd65fad480ff4b912e35e9e607d7661c07dd8",
+    "reports/local-review/phase2/execution-order-v11.json": "a86bacc5a642bc9f4ab4c7049c5a8e4016d088c2311222f21238a5ca253d8f63",
+    "reports/review-queue/train-primaries-final-v2/queue.json": "35c92bca87c79d64833edde6db1870f0b00fd2cc54a0177857e150a84a33d5bc",
+    "data/experiments/train-anchor-refit-v1-20261026/plan.json": "1d7a38f054c34fb0ae9c77b6eb04f0390913eda18d20baa5a526e047f74ab372",
+    "data/experiments/train-anchor-refit-v1-20261026/freeze.json": "ced3b2e1b3cadf23b8e450bb06a37ca512f6a9ec385d040b269b7859dd9e31df",
+    "data/datasets/phase2-reviews/s2-january-february-v1/source/manifest.json": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204",
+    "docs/labeling-protocol.md": "064a47c5b98e0e9f5b680cfc8bafd140a4972923b7457a6843f0b91d042f635f",
+    "docs/improvements.md": "198f2594b5e5e7442b5f7c376b36a00838610efb3a9b7cbd1610bddd148892d8",
+    "reports/local-review/phase2/protocol.md": "2ad73a716d7f2e8118c79286d23e506f3a6ee2e3de888a1fb8035dd070ba427c",
+    "src/puertogt/review_queue.py": "20b3e44cb35c3c6b4491244df70eda53b5fa563b4df76b97f463a0bf70129676",
+    "scripts/build_review_queue.py": "311eaa11caaa0d988e32f3abcb06dac7110eda452de15d44106d445ee31d9081",
+    "reports/local-review/phase2/s1-january-march-frozen.json": "25e1a0b24dd8fe44387e711b6c273e7bc8cfaa72c2db20b4fea2eddfb7e955d3",
+    "reports/local-review/phase2/s2-january-february-frozen.json": "af4fc68bd5d6635867b119662d5be03b6f41f1f1055b1ba8cec2dd3eb69cd9ae",
+    "reports/local-review/phase3-diagnosis/new-train-eligibility-v1.json": "d9658161a54f6373ac4c19ef46a9a3fa40055a2f47b171068b4f2226d2e0c344",
+    "reports/local-review/phase2/train-s1-april/README.md": "b02f341718ce48fe2976d18b2eee41250b389a6a8e3552bf56e091de8696ce75",
+    "reports/local-review/phase2/train-s1-may-june/README.md": "0ae14480826dcc0ea2b18560d9c8483bcd227c6f76df4d72349f806957344651",
+    "data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json": "e7a5cac71247291d5e66eb889394deb69cf6c5196fee4ec116b361861c018729",
+    "data/datasets/phase2-reviews/s2-calibration-round1-v1/source/manifest.json": "b0808f43132c868406fda649103c86a828c90e7f1430c4e11489b7e65fa2c652",
+    "data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json": "e73b528b7c662e3035c55556df75a8f179a081d48835db8f509971d4c1e6ace6"
+  },
+  "catalog_metadata_snapshot": {
+    "database": "data/catalog.sqlite",
+    "mode": "read_only",
+    "query": "SELECT observation_id,acquisition_key,port_id,sensor,captured_at,status,zone_id,observable_fraction,review_status,json_extract(data_json,'$.scene_complete') AS scene_complete,EXISTS(SELECT 1 FROM revisions r WHERE r.entity_type='observation' AND r.entity_id=observation_id) AS prior_review FROM observations WHERE captured_at>='2025-10-01' AND captured_at<'2026-01-01' AND sensor='sentinel-2' ORDER BY observation_id",
+    "row_count": 468,
+    "projected_rows_sha256": "791b45fd03b948c55e73d302f709f4b3f3141b3174fc8e36f1b859e0e0f92496",
+    "excluded_columns": [
+      "detection_count",
+      "quality_flags_json",
+      "metadata_json",
+      "data_json except scene_complete",
+      "revision contents"
+    ],
+    "note": "No full database hash was taken. Only explicitly projected metadata was read."
+  },
+  "current_gate": {
+    "required_next_action": "Adjudicate the six S2 TRAIN first-pass scopes, then run a frozen e099 development probe on those same scopes. Do not open CAL before declaring the result and next gate.",
+    "calibration_enabled": false,
+    "s1_calibration_enabled": false,
+    "s1_blocker": "TRAIN has zero adjudicated positive objects for PBR and STC.",
+    "automatic_publication": false
+  },
+  "e099_probe": {
+    "plan": "data/experiments/train-anchor-refit-v1-20261026/plan.json",
+    "freeze": "data/experiments/train-anchor-refit-v1-20261026/freeze.json",
+    "dataset": {
+      "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+      "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc",
+      "split": "train",
+      "source_path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+      "source_sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204"
+    },
+    "source_hash_verified": true,
+    "trained_target_physical_passes": [
+      "S2A:MSIL1C:20250103T162701:R040",
+      "S2B:MSIL1C:20250118T162519:R040",
+      "S2B:MSIL1C:20250217T162239:R040",
+      "S2C:MSIL1C:20250202T162531:R040"
+    ],
+    "trained_context_physical_passes": [],
+    "new_s2_entries": [
+      {
+        "observation_id": "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+        "acquisition_key": "S2C:MSIL1C:20250304T162211:R040:T15PYR",
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "zone_id": "prq_muelles",
+        "captured_at": "2025-03-04T16:22:11.025000Z",
+        "physical_pass_id": "S2C:MSIL1C:20250304T162211:R040",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      },
+      {
+        "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+        "acquisition_key": "S2C:MSIL1C:20250403T161851:R040:T15PYR",
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "zone_id": "prq_fondeo",
+        "captured_at": "2025-04-03T16:18:51.025000Z",
+        "physical_pass_id": "S2C:MSIL1C:20250403T161851:R040",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      },
+      {
+        "observation_id": "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+        "acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "zone_id": "pbr_canal",
+        "captured_at": "2025-01-10T16:16:31.024000Z",
+        "physical_pass_id": "S2A:MSIL1C:20250110T161631:R140",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      },
+      {
+        "observation_id": "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+        "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "zone_id": "pbr_canal",
+        "captured_at": "2025-05-18T16:18:29.024000Z",
+        "physical_pass_id": "S2B:MSIL1C:20250518T161829:R040",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      },
+      {
+        "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+        "acquisition_key": "S2A:MSIL1C:20250110T161631:R140:T16PCC",
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "zone_id": "stc_fondeo",
+        "captured_at": "2025-01-10T16:16:31.024000Z",
+        "physical_pass_id": "S2A:MSIL1C:20250110T161631:R140",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      },
+      {
+        "observation_id": "05208f24-0534-4107-9bf1-700c46c84632",
+        "acquisition_key": "S2B:MSIL1C:20250518T161829:R040:T16PCC",
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "zone_id": "stc_muelles",
+        "captured_at": "2025-05-18T16:18:29.024000Z",
+        "physical_pass_id": "S2B:MSIL1C:20250518T161829:R040",
+        "target_pass_used_by_refit": false,
+        "context_pass_used_by_refit": false,
+        "classification": "new_train_pass_for_e099_development_probe",
+        "split": "train",
+        "human_reference": false
+      }
+    ],
+    "new_s2_physical_pass_count": 4,
+    "entries_sharing_a_target_or_context_pass_with_refit": 0,
+    "s1_entries_not_applicable": [
+      {
+        "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250207T001416:20250207T001441:057783:071FFA",
+        "port_id": "prq",
+        "sensor": "sentinel-1",
+        "zone_id": "prq_fondeo",
+        "captured_at": "2025-02-07T00:14:16.275856Z",
+        "physical_pass_id": "S1A:absolute-orbit:057783",
+        "classification": "S1_not_applicable_to_S2_refit"
+      },
+      {
+        "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250303T001415:20250303T001440:058133:072E2A",
+        "port_id": "prq",
+        "sensor": "sentinel-1",
+        "zone_id": "prq_fondeo",
+        "captured_at": "2025-03-03T00:14:15.620118Z",
+        "physical_pass_id": "S1A:absolute-orbit:058133",
+        "classification": "S1_not_applicable_to_S2_refit"
+      },
+      {
+        "observation_id": "1d86f54e-70f7-4e2b-bcca-d8949ac00271",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "zone_id": "pbr_canal",
+        "captured_at": "2025-04-03T00:06:46.502996Z",
+        "physical_pass_id": "S1A:absolute-orbit:058585",
+        "classification": "S1_not_applicable_to_S2_refit"
+      },
+      {
+        "observation_id": "26c41fa8-08e3-4257-8c9c-c446f8cab360",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E",
+        "port_id": "pbr",
+        "sensor": "sentinel-1",
+        "zone_id": "pbr_canal",
+        "captured_at": "2025-05-21T00:06:45.815081Z",
+        "physical_pass_id": "S1A:absolute-orbit:059285",
+        "classification": "S1_not_applicable_to_S2_refit"
+      },
+      {
+        "observation_id": "db36e4f9-e8aa-4419-be3b-972b46bdcbd1",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250403T000646:20250403T000711:058585:074048",
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "zone_id": "stc_fondeo",
+        "captured_at": "2025-04-03T00:06:46.502996Z",
+        "physical_pass_id": "S1A:absolute-orbit:058585",
+        "classification": "S1_not_applicable_to_S2_refit"
+      },
+      {
+        "observation_id": "e771fad3-7813-4297-913f-2cd1538058b5",
+        "acquisition_key": "S1A:IW:GRDH:1SDV:20250521T000645:20250521T000710:059285:075B7E",
+        "port_id": "stc",
+        "sensor": "sentinel-1",
+        "zone_id": "stc_fondeo",
+        "captured_at": "2025-05-21T00:06:45.815081Z",
+        "physical_pass_id": "S1A:absolute-orbit:059285",
+        "classification": "S1_not_applicable_to_S2_refit"
+      }
+    ],
+    "interpretation": "TRAIN development on target passes unused by e099. Clarity-selected scopes and AI references do not constitute independent final validation. PBR/STC share January 10 and May 18 passes; six areas are four physical passes."
+  },
+  "existing_train_support": [
+    {
+      "receipt": "reports/local-review/phase2/s1-january-march-frozen.json",
+      "sensor": "sentinel-1",
+      "provenance": "ai_visual_review",
+      "human_review": false,
+      "source": {
+        "path": "data/datasets/phase2-reviews/s1-january-march-v1/source",
+        "sha256": "7a0c36fd618cfdd8871f5d085d919efbf9c39e19cfebbaa83ac9b40993717553",
+        "samples": 38
+      },
+      "train_crops": {
+        "path": "data/datasets/phase2-reviews/s1-january-march-v1/train-crops",
+        "sha256": "3bfbea2f6971cfcf203eae97be3ed9ead2b141836983b2839ded6e3f62be201c",
+        "samples": 82
+      },
+      "unique_objects": 30,
+      "zone_label_instances": 31,
+      "unique_objects_by_port": {
+        "prq": 30,
+        "pbr": 0,
+        "stc": 0
+      },
+      "target_acquisitions": 8
+    },
+    {
+      "receipt": "reports/local-review/phase2/s2-january-february-frozen.json",
+      "sensor": "sentinel-2",
+      "provenance": "ai_visual_review",
+      "human_review": false,
+      "source": {
+        "path": "data/datasets/phase2-reviews/s2-january-february-v1/source",
+        "sha256": "c3a372d5b06039ac5e1b2ad68284254741616ae17ae30f440507a183ed286204",
+        "samples": 32
+      },
+      "train_crops": {
+        "path": "data/datasets/phase2-reviews/s2-january-february-v1/train-crops",
+        "sha256": "c5a9b7e542d6a61b09ab5b926aa9cb9f10ee5cb1ac0de172144155b2a5099adc",
+        "samples": 84
+      },
+      "unique_objects": 51,
+      "zone_label_instances": 53,
+      "unique_objects_by_port": {
+        "prq": 48,
+        "pbr": 2,
+        "stc": 1
+      },
+      "target_acquisitions": 7
+    },
+    {
+      "receipt": "reports/local-review/phase3-diagnosis/new-train-eligibility-v1.json",
+      "sensor": "sentinel-2",
+      "provenance": "ai_visual_review",
+      "human_review": false,
+      "source": "data/datasets/phase3-reviews/s2-caribe-march-april-v1/source",
+      "source_manifest_sha256": "dea3522dd27c402442170cda1bbbb264e88e10553f8d990422a676e9a499ff92",
+      "source_observations": 2,
+      "physical_passes": 1,
+      "reference_support": {
+        "prq": {
+          "references": 0,
+          "passes": 0
+        },
+        "stc": {
+          "references": 1,
+          "passes": 1
+        },
+        "pbr": {
+          "references": 0,
+          "passes": 1
+        }
+      },
+      "included_in_e099_refit": false
+    }
+  ],
+  "independent_reference": {
+    "human_reviewed_references_in_audited_train_sources": 0,
+    "ais_references_in_audited_train_sources": 0,
+    "user_confirmed_no_GFW_or_AIS_access": true,
+    "availability_source": "Coordinator relayed explicit user confirmation in this session; no external connection was attempted by this audit.",
+    "remaining_need": "Independent human adjudication or dated external evidence is needed for ambiguous Caribbean docks/small craft and an independent real-world accuracy claim. AIS would need spatial/temporal correspondence and coverage; absence of AIS cannot label a negative.",
+    "all_audited_train_reference_provenance": "ai_visual_review"
+  },
+  "temporal_protocol": {
+    "windows": {
+      "train": {
+        "start": "2025-01-01",
+        "end_exclusive": "2025-07-01",
+        "anchor_days": [
+          1,
+          16
+        ]
+      },
+      "calibration": {
+        "start": "2025-10-01",
+        "end_exclusive": "2026-01-01",
+        "anchor_days": [
+          1,
+          9,
+          17,
+          25
+        ]
+      },
+      "test": {
+        "start": "2026-04-02",
+        "end_exclusive": "2026-09-01",
+        "anchor_days": [
+          2,
+          12,
+          22
+        ],
+        "first_slot_day_rule": "April 2026 begins on day 2; later test months begin on day 1; subsequent anchors are day 12 and day 22."
+      }
+    },
+    "minimum_target_gap_days": {
+      "train_to_calibration": 92,
+      "calibration_to_test": 91
+    },
+    "radar_context_days_before": [
+      30,
+      90
+    ],
+    "preserve_targets_contexts_physical_passes_and_correlated_events": true,
+    "unused_gap_windows_not_eligible_under_current_full_train_test_boundaries": [
+      "2025-07-01..2025-10-01 violates TRAIN-to-CAL 92-day embargo if January-June TRAIN is retained",
+      "2026-01-01..2026-04-02 violates CAL-to-TEST 91-day embargo"
+    ],
+    "future_frame_in_original_CAL_window": true,
+    "caveat": "Acquisition/pass disjointness is verified from metadata. Correlated vessel events and human/external reference independence are not established by metadata."
+  },
+  "cal_s2_availability": {
+    "status": "candidate_frame_for_future_preregistered_amendment_only_not_activated",
+    "selection_rule": "Conservatively exclude every recorded exposed/activated S2 CAL physical pass globally across ports, every previous S2 CAL primary pass even without exposure receipt, and every UTC calendar day containing such a pass. Preserve original reserve ordering. Include cloudy/unusable dates in the frame; observability is descriptive, never the selection criterion.",
+    "recorded_exposure_physical_pass_count": 21,
+    "previous_primary_physical_pass_count": 20,
+    "conservative_excluded_physical_pass_count": 24,
+    "conservative_excluded_UTC_days": [
+      "2025-10-02",
+      "2025-10-05",
+      "2025-10-09",
+      "2025-10-10",
+      "2025-10-17",
+      "2025-10-20",
+      "2025-10-25",
+      "2025-11-01",
+      "2025-11-04",
+      "2025-11-06",
+      "2025-11-09",
+      "2025-11-18",
+      "2025-11-19",
+      "2025-11-26",
+      "2025-11-29",
+      "2025-12-01",
+      "2025-12-04",
+      "2025-12-09",
+      "2025-12-11",
+      "2025-12-19",
+      "2025-12-26",
+      "2025-12-28",
+      "2025-12-29"
+    ],
+    "exposed_or_conservatively_excluded_passes": [
+      {
+        "physical_pass_id": "S2A:MSIL1C:20251009T161701:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-round1-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2A:MSIL1C:20251101T162701:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2A:MSIL1C:20251118T161701:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2A:MSIL1C:20251228T161721:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": false,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251002T161019:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251005T162039:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251025T162249:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251101T161329:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251104T162349:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": false,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251201T161539:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251204T162549:R040",
+        "exposure_sources": [],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": false
+      },
+      {
+        "physical_pass_id": "S2B:MSIL1C:20251211T161559:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": false,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251010T162221:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-round1-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251017T161301:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251020T162331:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-rounds1-2-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251106T162101:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": false,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251109T162521:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251119T162611:R040",
+        "exposure_sources": [],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": false
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251126T161631:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251129T162641:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "previously_activated_calibration_reserve"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251209T162701:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251219T162721:R040",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional",
+          "catalog_scene_complete",
+          "historical_calibration_source_manifest:data/datasets/phase2-reviews/s2-calibration-reviewed-v1/source/manifest.json"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251226T161711:R140",
+        "exposure_sources": [
+          "catalog_observation_revision_exists",
+          "catalog_review_status_not_provisional"
+        ],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": true
+      },
+      {
+        "physical_pass_id": "S2C:MSIL1C:20251229T162941:R040",
+        "exposure_sources": [],
+        "previous_primary": true,
+        "recorded_exposure_or_activation": false
+      }
+    ],
+    "counts_by_port": {
+      "prq": {
+        "reserves_without_recorded_global_pass_exposure": {
+          "acquisition_keys": 10,
+          "physical_passes": 10,
+          "calendar_days": 10,
+          "passes_with_any_observable_marine_area": 10,
+          "calendar_days_with_any_observable_marine_area": 10,
+          "at_least_half_one_marine_zone": 9
+        },
+        "conservative_future_amendment_frame": {
+          "acquisition_keys": 9,
+          "physical_passes": 9,
+          "calendar_days": 9,
+          "passes_with_any_observable_marine_area": 9,
+          "calendar_days_with_any_observable_marine_area": 9,
+          "at_least_half_one_marine_zone": 8
+        }
+      },
+      "pbr": {
+        "reserves_without_recorded_global_pass_exposure": {
+          "acquisition_keys": 26,
+          "physical_passes": 26,
+          "calendar_days": 23,
+          "passes_with_any_observable_marine_area": 10,
+          "calendar_days_with_any_observable_marine_area": 9,
+          "at_least_half_one_marine_zone": 7
+        },
+        "conservative_future_amendment_frame": {
+          "acquisition_keys": 22,
+          "physical_passes": 22,
+          "calendar_days": 19,
+          "passes_with_any_observable_marine_area": 7,
+          "calendar_days_with_any_observable_marine_area": 6,
+          "at_least_half_one_marine_zone": 6
+        }
+      },
+      "stc": {
+        "reserves_without_recorded_global_pass_exposure": {
+          "acquisition_keys": 26,
+          "physical_passes": 26,
+          "calendar_days": 23,
+          "passes_with_any_observable_marine_area": 13,
+          "calendar_days_with_any_observable_marine_area": 12,
+          "at_least_half_one_marine_zone": 7
+        },
+        "conservative_future_amendment_frame": {
+          "acquisition_keys": 22,
+          "physical_passes": 22,
+          "calendar_days": 19,
+          "passes_with_any_observable_marine_area": 10,
+          "calendar_days_with_any_observable_marine_area": 9,
+          "at_least_half_one_marine_zone": 6
+        }
+      }
+    },
+    "unused_primaries_excluded_conservatively": [
+      {
+        "port_id": "prq",
+        "acquisition_key": "S2C:MSIL1C:20251119T162611:R040:T15PYR",
+        "captured_at": "2025-11-19T16:26:11.025000Z",
+        "physical_pass_id": "S2C:MSIL1C:20251119T162611:R040",
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "conservative_candidate": false,
+        "reason": "all_previous_primaries_excluded_even_without_recorded_exposure"
+      },
+      {
+        "port_id": "prq",
+        "acquisition_key": "S2B:MSIL1C:20251204T162549:R040:T15PYR",
+        "captured_at": "2025-12-04T16:25:49.024000Z",
+        "physical_pass_id": "S2B:MSIL1C:20251204T162549:R040",
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "conservative_candidate": false,
+        "reason": "all_previous_primaries_excluded_even_without_recorded_exposure"
+      },
+      {
+        "port_id": "prq",
+        "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T15PYR",
+        "captured_at": "2025-12-29T16:29:41.025000Z",
+        "physical_pass_id": "S2C:MSIL1C:20251229T162941:R040",
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "conservative_candidate": false,
+        "reason": "all_previous_primaries_excluded_even_without_recorded_exposure"
+      }
+    ],
+    "future_amendment_candidate_acquisitions": [
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251007T161201:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251007T161201:R140",
+        "captured_at": "2025-10-07T16:12:01.025000Z",
+        "slot_start": "2025-10-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-09T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251012T161129:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251012T161129:R140",
+        "captured_at": "2025-10-12T16:11:29.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251012T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251012T162701:R040",
+        "captured_at": "2025-10-12T16:27:01.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251015T162149:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251015T162149:R040",
+        "captured_at": "2025-10-15T16:21:49.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251022T161229:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251022T161229:R140",
+        "captured_at": "2025-10-22T16:12:29.024000Z",
+        "slot_start": "2025-10-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251027T161411:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251027T161411:R140",
+        "captured_at": "2025-10-27T16:14:11.025000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251029T161711:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251029T161711:R140",
+        "captured_at": "2025-10-29T16:17:11.024000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251030T162431:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251030T162431:R040",
+        "captured_at": "2025-10-30T16:24:31.025000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251111T161419:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251111T161419:R140",
+        "captured_at": "2025-11-11T16:14:19.024000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251114T162439:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251114T162439:R040",
+        "captured_at": "2025-11-14T16:24:39.024000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251116T161551:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251116T161551:R140",
+        "captured_at": "2025-11-16T16:15:51.025000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251121T161459:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251121T161459:R140",
+        "captured_at": "2025-11-21T16:14:59.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251121T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251121T162701:R040",
+        "captured_at": "2025-11-21T16:27:01.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251124T162519:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251124T162519:R040",
+        "captured_at": "2025-11-24T16:25:19.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251206T161651:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251206T161651:R140",
+        "captured_at": "2025-12-06T16:16:51.025000Z",
+        "slot_start": "2025-12-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-09T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251208T161701:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251208T161701:R140",
+        "captured_at": "2025-12-08T16:17:01.024000Z",
+        "slot_start": "2025-12-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-09T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251214T162609:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251214T162609:R040",
+        "captured_at": "2025-12-14T16:26:09.024000Z",
+        "slot_start": "2025-12-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251216T161711:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251216T161711:R140",
+        "captured_at": "2025-12-16T16:17:11.025000Z",
+        "slot_start": "2025-12-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251221T161609:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251221T161609:R140",
+        "captured_at": "2025-12-21T16:16:09.024000Z",
+        "slot_start": "2025-12-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-25T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251224T162609:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251224T162609:R040",
+        "captured_at": "2025-12-24T16:26:09.024000Z",
+        "slot_start": "2025-12-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251231T161559:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251231T161559:R140",
+        "captured_at": "2025-12-31T16:15:59.024000Z",
+        "slot_start": "2025-12-25T00:00:00+00:00",
+        "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "pbr",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251231T162721:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251231T162721:R040",
+        "captured_at": "2025-12-31T16:27:21.024000Z",
+        "slot_start": "2025-12-25T00:00:00+00:00",
+        "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251012T162701:R040:T15PYR",
+        "physical_pass_id": "S2A:MSIL1C:20251012T162701:R040",
+        "captured_at": "2025-10-12T16:27:01.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251015T162149:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251015T162149:R040",
+        "captured_at": "2025-10-15T16:21:49.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251030T162431:R040:T15PYR",
+        "physical_pass_id": "S2C:MSIL1C:20251030T162431:R040",
+        "captured_at": "2025-10-30T16:24:31.025000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251114T162439:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251114T162439:R040",
+        "captured_at": "2025-11-14T16:24:39.024000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251121T162701:R040:T15PYR",
+        "physical_pass_id": "S2A:MSIL1C:20251121T162701:R040",
+        "captured_at": "2025-11-21T16:27:01.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251124T162519:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251124T162519:R040",
+        "captured_at": "2025-11-24T16:25:19.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251214T162609:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251214T162609:R040",
+        "captured_at": "2025-12-14T16:26:09.024000Z",
+        "slot_start": "2025-12-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251224T162609:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251224T162609:R040",
+        "captured_at": "2025-12-24T16:26:09.024000Z",
+        "slot_start": "2025-12-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-25T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "prq",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251231T162721:R040:T15PYR",
+        "physical_pass_id": "S2A:MSIL1C:20251231T162721:R040",
+        "captured_at": "2025-12-31T16:27:21.024000Z",
+        "slot_start": "2025-12-25T00:00:00+00:00",
+        "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251007T161201:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251007T161201:R140",
+        "captured_at": "2025-10-07T16:12:01.025000Z",
+        "slot_start": "2025-10-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-09T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251012T161129:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251012T161129:R140",
+        "captured_at": "2025-10-12T16:11:29.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251012T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251012T162701:R040",
+        "captured_at": "2025-10-12T16:27:01.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251015T162149:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251015T162149:R040",
+        "captured_at": "2025-10-15T16:21:49.024000Z",
+        "slot_start": "2025-10-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-17T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251022T161229:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251022T161229:R140",
+        "captured_at": "2025-10-22T16:12:29.024000Z",
+        "slot_start": "2025-10-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-10-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251027T161411:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251027T161411:R140",
+        "captured_at": "2025-10-27T16:14:11.025000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251029T161711:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251029T161711:R140",
+        "captured_at": "2025-10-29T16:17:11.024000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251030T162431:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251030T162431:R040",
+        "captured_at": "2025-10-30T16:24:31.025000Z",
+        "slot_start": "2025-10-25T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-01T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251111T161419:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251111T161419:R140",
+        "captured_at": "2025-11-11T16:14:19.024000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251114T162439:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251114T162439:R040",
+        "captured_at": "2025-11-14T16:24:39.024000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251116T161551:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251116T161551:R140",
+        "captured_at": "2025-11-16T16:15:51.025000Z",
+        "slot_start": "2025-11-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251121T161459:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251121T161459:R140",
+        "captured_at": "2025-11-21T16:14:59.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251121T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251121T162701:R040",
+        "captured_at": "2025-11-21T16:27:01.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251124T162519:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251124T162519:R040",
+        "captured_at": "2025-11-24T16:25:19.024000Z",
+        "slot_start": "2025-11-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-11-25T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251206T161651:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251206T161651:R140",
+        "captured_at": "2025-12-06T16:16:51.025000Z",
+        "slot_start": "2025-12-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-09T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": true,
+        "at_least_half_of_one_marine_zone_observable": true,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251208T161701:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251208T161701:R140",
+        "captured_at": "2025-12-08T16:17:01.024000Z",
+        "slot_start": "2025-12-01T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-09T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251214T162609:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251214T162609:R040",
+        "captured_at": "2025-12-14T16:26:09.024000Z",
+        "slot_start": "2025-12-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2C:MSIL1C:20251216T161711:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251216T161711:R140",
+        "captured_at": "2025-12-16T16:17:11.025000Z",
+        "slot_start": "2025-12-09T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-17T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251221T161609:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251221T161609:R140",
+        "captured_at": "2025-12-21T16:16:09.024000Z",
+        "slot_start": "2025-12-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-25T00:00:00+00:00",
+        "original_reserve_rank": 2,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251224T162609:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251224T162609:R040",
+        "captured_at": "2025-12-24T16:26:09.024000Z",
+        "slot_start": "2025-12-17T00:00:00+00:00",
+        "slot_end_exclusive": "2025-12-25T00:00:00+00:00",
+        "original_reserve_rank": 3,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2B:MSIL1C:20251231T161559:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251231T161559:R140",
+        "captured_at": "2025-12-31T16:15:59.024000Z",
+        "slot_start": "2025-12-25T00:00:00+00:00",
+        "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+        "original_reserve_rank": 4,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      },
+      {
+        "port_id": "stc",
+        "sensor": "sentinel-2",
+        "dataset_split": "calibration",
+        "acquisition_key": "S2A:MSIL1C:20251231T162721:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251231T162721:R040",
+        "captured_at": "2025-12-31T16:27:21.024000Z",
+        "slot_start": "2025-12-25T00:00:00+00:00",
+        "slot_end_exclusive": "2026-01-01T00:00:00+00:00",
+        "original_reserve_rank": 5,
+        "materialized": true,
+        "any_marine_area_observable": false,
+        "at_least_half_of_one_marine_zone_observable": false,
+        "cross_split_target_or_context_collision": false
+      }
+    ],
+    "excluded_reserve_assignments": [
+      {
+        "port_id": "prq",
+        "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T15PYR",
+        "physical_pass_id": "S2B:MSIL1C:20251104T162349:R040",
+        "captured_at": "2025-11-04T16:23:49.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "prq",
+        "acquisition_key": "S2A:MSIL1C:20251211T162711:R040:T15PYR",
+        "physical_pass_id": "S2A:MSIL1C:20251211T162711:R040",
+        "captured_at": "2025-12-11T16:27:11.024000Z",
+        "reasons": [
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251005T162039:R040",
+        "captured_at": "2025-10-05T16:20:39.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251010T162221:R040",
+        "captured_at": "2025-10-10T16:22:21.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251020T162331:R040",
+        "captured_at": "2025-10-20T16:23:31.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251101T162701:R040",
+        "captured_at": "2025-11-01T16:27:01.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251104T162349:R040",
+        "captured_at": "2025-11-04T16:23:49.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251106T162101:R140",
+        "captured_at": "2025-11-06T16:21:01.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251119T162611:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251119T162611:R040",
+        "captured_at": "2025-11-19T16:26:11.025000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251129T162641:R040",
+        "captured_at": "2025-11-29T16:26:41.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2B:MSIL1C:20251204T162549:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251204T162549:R040",
+        "captured_at": "2025-12-04T16:25:49.024000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251211T161559:R140",
+        "captured_at": "2025-12-11T16:15:59.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2A:MSIL1C:20251211T162711:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251211T162711:R040",
+        "captured_at": "2025-12-11T16:27:11.024000Z",
+        "reasons": [
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251228T161721:R140",
+        "captured_at": "2025-12-28T16:17:21.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "pbr",
+        "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251229T162941:R040",
+        "captured_at": "2025-12-29T16:29:41.025000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2B:MSIL1C:20251005T162039:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251005T162039:R040",
+        "captured_at": "2025-10-05T16:20:39.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251010T162221:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251010T162221:R040",
+        "captured_at": "2025-10-10T16:22:21.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251020T162331:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251020T162331:R040",
+        "captured_at": "2025-10-20T16:23:31.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2A:MSIL1C:20251101T162701:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251101T162701:R040",
+        "captured_at": "2025-11-01T16:27:01.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2B:MSIL1C:20251104T162349:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251104T162349:R040",
+        "captured_at": "2025-11-04T16:23:49.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251106T162101:R140:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251106T162101:R140",
+        "captured_at": "2025-11-06T16:21:01.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251119T162611:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251119T162611:R040",
+        "captured_at": "2025-11-19T16:26:11.025000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251129T162641:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251129T162641:R040",
+        "captured_at": "2025-11-29T16:26:41.025000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2B:MSIL1C:20251204T162549:R040:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251204T162549:R040",
+        "captured_at": "2025-12-04T16:25:49.024000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2B:MSIL1C:20251211T161559:R140:T16PCC",
+        "physical_pass_id": "S2B:MSIL1C:20251211T161559:R140",
+        "captured_at": "2025-12-11T16:15:59.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2A:MSIL1C:20251211T162711:R040:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251211T162711:R040",
+        "captured_at": "2025-12-11T16:27:11.024000Z",
+        "reasons": [
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2A:MSIL1C:20251228T161721:R140:T16PCC",
+        "physical_pass_id": "S2A:MSIL1C:20251228T161721:R140",
+        "captured_at": "2025-12-28T16:17:21.024000Z",
+        "reasons": [
+          "recorded_exposure_or_previously_activated_reserve_any_port",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      },
+      {
+        "port_id": "stc",
+        "acquisition_key": "S2C:MSIL1C:20251229T162941:R040:T16PCC",
+        "physical_pass_id": "S2C:MSIL1C:20251229T162941:R040",
+        "captured_at": "2025-12-29T16:29:41.025000Z",
+        "reasons": [
+          "previous_primary_any_port_conservative_exclusion",
+          "same_UTC_calendar_day_as_excluded_pass_conservative_exclusion"
+        ]
+      }
+    ],
+    "no_cross_split_target_or_context_collisions_in_candidate_frame": true,
+    "support_30_references_and_30_predictions_per_port": "unknown_not_inferred_from_observability",
+    "current_protocol_limit": "Current reserve activation is for access/bands/context/mask/zero reviewable marine area, not adverse model performance. Any new CAL cycle requires its own frozen amendment and representative sampling before labels/predictions; existing failed CAL remains unchanged."
+  },
+  "additional_train": {
+    "metadata_only_candidates_observable_at_least_half_zone": 76,
+    "conservative_candidates_on_target_passes_without_known_prior_review_or_first_pass": 52,
+    "source": "Read-only projection of original TRAIN primaries and explicitly activated reserves, catalog review identity, and data/review-intake receipt identity; no detector output used.",
+    "new_target_dates_by_stratum": {
+      "prq|sentinel-1": [
+        "2025-02-19",
+        "2025-03-19",
+        "2025-04-02",
+        "2025-04-18",
+        "2025-05-02",
+        "2025-05-18",
+        "2025-06-01",
+        "2025-06-17"
+      ],
+      "prq|sentinel-2": [
+        "2025-03-19",
+        "2025-04-18",
+        "2025-05-03",
+        "2025-06-02"
+      ],
+      "pbr|sentinel-1": [
+        "2025-06-02"
+      ],
+      "stc|sentinel-1": [
+        "2025-06-02"
+      ],
+      "pbr|sentinel-2": [
+        "2025-06-02",
+        "2025-06-17"
+      ],
+      "stc|sentinel-2": [
+        "2025-06-02",
+        "2025-06-17"
+      ]
+    },
+    "registered_raw_asset_metadata_present": true,
+    "raw_asset_bytes_or_pixels_verified_in_this_audit": false,
+    "known_selector_exposure_gap": {
+      "reason": "Unimported RAW first-pass reports are not covered by catalog revisions or first-pass intake receipts. April 3 S1 Caribbean scopes can be re-proposed as fresh by the selector.",
+      "report_sources": [
+        "reports/local-review/phase2/train-s1-april/README.md",
+        "reports/local-review/phase2/train-s1-may-june/README.md"
+      ],
+      "affected_observation_ids": [
+        "5bccfe2a-8658-40c1-9766-c519801ee85d",
+        "9c0eb432-89f5-4e0e-8be1-94721707f906",
+        "d5eea70b-8d3b-47b6-8a1f-63ff376e38ba",
+        "d6eb6f3e-efbd-454e-b25c-7b59e48304dd"
+      ],
+      "conservative_exclusion": "Exclude all Caribbean S1 target passes on April 3, April 19, May 1, plus all prior catalog/intake exposures."
+    },
+    "june18_s1_caribbean": "Original selected slice has marine fractions below 0.5; another already materialized slice in the same physical orbit covers more of the ports but is outside the currently activated target list. Do not count it as another visit or silently activate it."
+  },
+  "recommendation": "Complete the new TRAIN adjudication and e099 probe now. Keep S1 CAL and all TEST data closed. Preserve CAL candidate metadata for a future preregistered cycle; do not imply that unused dates or additional patches provide enough independent reference support."
+}

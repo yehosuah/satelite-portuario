@@ -1,10 +1,11 @@
 import sys
 from types import SimpleNamespace
 
+import numpy as np
 import pytest
 
 from puertogt.contracts import ModelManifest
-from puertogt.ml.detection import detector_anchor_sizes, load_detector
+from puertogt.ml.detection import detect, detector_anchor_sizes, load_detector
 from puertogt.store import sha256_file
 
 
@@ -31,6 +32,39 @@ def test_legacy_recipe_unchanged_and_custom_geometry_explicit():
 def test_incompatible_or_ambiguous_anchor_recipes_fail_closed(sizes):
     with pytest.raises(ValueError, match="Anchor recipe"):
         detector_anchor_sizes(manifest(metadata={"anchor_sizes": sizes}))
+
+
+@pytest.mark.parametrize("loaded_sizes, requested_sizes, compatible", [
+    (None, [[8], [16], [32], [64]], False),
+    ([[8], [16], [32], [64]], None, False),
+    ([[8], [16], [32], [64]], [[4], [8], [16], [32]], False),
+    (None, [[32], [64], [128], [256]], True),
+    ([[32], [64], [128], [256]], None, True),
+    ([[8], [16], [32], [64]], [[8], [16], [32], [64]], True),
+])
+def test_preloaded_detector_requires_matching_effective_anchor_geometry(
+    monkeypatch, loaded_sizes, requested_sizes, compatible
+):
+    loaded = manifest(metadata={} if loaded_sizes is None else {"anchor_sizes": loaded_sizes})
+    requested = manifest(
+        metadata={} if requested_sizes is None else {"anchor_sizes": requested_sizes}
+    )
+    monkeypatch.setattr("puertogt.ml.detection.read_model_input",
+                        lambda bundle, model: np.zeros((9, 32, 32), dtype=np.float32))
+    detector = SimpleNamespace(manifest=loaded, raw_predict=lambda image: {
+        "boxes": np.asarray([[4, 4, 12, 12]], dtype=float),
+        "scores": np.asarray([.9]), "labels": np.asarray([1]),
+    })
+    bundle = SimpleNamespace(mask_paths={}, crs="EPSG:32616", transform=(10, 0, 500000, 0, -10, 0),
+                             observation_id="synthetic", metadata={})
+
+    if not compatible:
+        with pytest.raises(ValueError, match="loaded detector does not match"):
+            detect(bundle, requested, detector=detector)
+    else:
+        predictions = detect(bundle, requested, detector=detector)
+        assert len(predictions) == 1
+        assert predictions[0].metadata["pixel_box"] == [4.0, 4.0, 12.0, 12.0]
 
 
 def test_exported_train_recipe_reaches_inference_constructor_unchanged(tmp_path, monkeypatch):

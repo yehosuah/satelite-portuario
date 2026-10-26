@@ -1,0 +1,33 @@
+{
+  "datasets": [
+    {
+      "sensor": "sentinel-2",
+      "path": "data/datasets/scientific-closure-20261026/s2-increment-v1/source",
+      "manifest_sha256": "91abcd9007bc69f07a69ca94abdcf7d835cb28ddc9dedc8c439ac15e0b10f4f7",
+      "samples": 6,
+      "references_by_port": {
+        "pbr": 0,
+        "stc": 1,
+        "prq": 16
+      },
+      "passes": 4
+    },
+    {
+      "sensor": "sentinel-1",
+      "path": "data/datasets/scientific-closure-20261026/s1-increment-v1/source",
+      "manifest_sha256": "ecfab79994d930a8a9207f6e541349cc9e6d17652f5d23b576d79556f31aef8e",
+      "samples": 2,
+      "references_by_port": {
+        "prq": 26
+      },
+      "passes": 2
+    }
+  ],
+  "catalog_counts": {
+    "observations": 5026,
+    "detections": 4430,
+    "revisions": 623
+  },
+  "calibration_or_test_opened": false,
+  "independent_validation": false
+}

@@ -1,0 +1,206 @@
+{
+  "schema": "gfw-sar-train-corroboration-v1",
+  "created_at": "2026-10-26T15:46:40.812253+00:00",
+  "status": "complete",
+  "scope": {
+    "split": "train",
+    "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+    "port_id": "prq",
+    "sensor": "sentinel-1",
+    "queue_index": 1,
+    "captured_at": "2025-02-07T00:14:16.275856Z",
+    "same_scene_prefix_required": true,
+    "other_observations_examined": false
+  },
+  "sources": {
+    "plan": {
+      "path": "data/references/gfw/sar-train-202502/plan.json",
+      "sha256": "0774860b3d4dfc4f2b6e2decad8b1da3052a68a08df29c262ec978d8fe15a99a",
+      "bytes": 2050
+    },
+    "download_receipt": {
+      "path": "data/references/gfw/sar-train-202502/download-receipt.json",
+      "sha256": "435767c3bee16a740db7d30b1b522af64239cfca6d4cda05bc7b14dea0a844f0",
+      "bytes": 685
+    },
+    "csv": {
+      "path": "data/references/gfw/sar-train-202502/sar_vessel_detections_pipev3_202502.csv",
+      "sha256": "3085c2a4b72c08d69d9d586096b408bf9489da0851dd13ed55082206d75f3e51",
+      "bytes": 37671173
+    },
+    "geometry": {
+      "path": "reports/local-review/scientific-closure-20261026/adjudicated-geometry.json",
+      "sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565",
+      "bytes": 69833
+    }
+  },
+  "private_correspondence_receipt": {
+    "path": "data/references/gfw/sar-train-202502/correspondences-prq-s1-20250207.json",
+    "sha256": "b817b04004f56acc57c1805b2dcfff2d1d68c07e4f545fbd5fcd6ef03e190206",
+    "contains_private_vessel_identifiers": true
+  },
+  "protocol": {
+    "plan_frozen_before_download": true,
+    "crs": "EPSG:32615",
+    "center_definition": "centroid of full candidate polygon after projecting to EPSG:32615; GFW coordinate projected with always_xy=True",
+    "maximum_center_distance_m": 50,
+    "gfw_presence_score_min": 0.7,
+    "gfw_ais_matching_score_min": 0.01,
+    "ais_link_requires_nonempty_mmsi": true,
+    "one_to_one": true,
+    "assignment": "all eligible edges; degree<=1 in both partitions, so the one-to-one solution is unambiguous",
+    "input_hashes_verified": true,
+    "thresholds_changed_after_observation": false
+  },
+  "counts": {
+    "frozen_reference_candidates_all_observations": 43,
+    "local_candidates_in_scope": 16,
+    "other_local_candidates_not_examined": 27,
+    "exact_scene_csv_rows": 55,
+    "unique_scene_ids": 1,
+    "exact_duplicate_scene_rows": 0,
+    "same_scene_presence_eligible": 55,
+    "eligible_gfw_points_in_reviewed_area": 10,
+    "one_to_one_matches": 4,
+    "matches_with_ais_link": 4,
+    "matches_without_confirmed_ais_link": 0,
+    "local_candidates_without_match": 12,
+    "eligible_gfw_points_in_reviewed_area_without_local_match": 6,
+    "matches_outside_reviewed_area": 0,
+    "ambiguous_candidate_nodes": 0,
+    "ambiguous_gfw_nodes": 0,
+    "invalid_scene_presence_scores": 0
+  },
+  "distance_summary_m": {
+    "min": 33.995584,
+    "median": 43.122873,
+    "max": 46.270271
+  },
+  "scene_timestamps_utc": [
+    "2025-02-07 00:14:29 UTC"
+  ],
+  "score_quality": {
+    "same_scene_matching_scores_above_one": 34,
+    "matching_score_is_calibrated_probability": false
+  },
+  "local_candidate_results": [
+    {
+      "candidate_id": "second-pass-01-01",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-02",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-03",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-04",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-05",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-06",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-07",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-08",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-09",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-10",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-11",
+      "status": "sar_corroborated_with_ais_link",
+      "distance_m": 45.419869,
+      "gfw_ais_link_passes_frozen_rule": true
+    },
+    {
+      "candidate_id": "second-pass-01-12",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    },
+    {
+      "candidate_id": "second-pass-01-13",
+      "status": "sar_corroborated_with_ais_link",
+      "distance_m": 33.995584,
+      "gfw_ais_link_passes_frozen_rule": true
+    },
+    {
+      "candidate_id": "second-pass-01-14",
+      "status": "sar_corroborated_with_ais_link",
+      "distance_m": 40.825876,
+      "gfw_ais_link_passes_frozen_rule": true
+    },
+    {
+      "candidate_id": "second-pass-01-15",
+      "status": "sar_corroborated_with_ais_link",
+      "distance_m": 46.270271,
+      "gfw_ais_link_passes_frozen_rule": true
+    },
+    {
+      "candidate_id": "second-pass-01-16",
+      "status": "not_corroborated_by_frozen_gfw_match",
+      "distance_m": null,
+      "gfw_ais_link_passes_frozen_rule": null
+    }
+  ],
+  "limitations": [
+    "TRAIN corroboration only; not an independent precision/recall validation.",
+    "Local geometry is AI-adjudicated, not a human reference; no label changes.",
+    "A missing GFW match is not a negative and cannot establish a false positive.",
+    "GFW detects objects from the same Sentinel-1 scene; AIS matching is additional corroboration, not a direct independent observation of the local bounding box.",
+    "The fixed 50 m rule compares candidate polygon centroid in EPSG:32615 with a GFW point; it does not validate vessel dimensions or bounding boxes.",
+    "GFW length_m is a model estimate, not independent true vessel length.",
+    "matching_score is not assumed to be a calibrated probability; observed values can exceed 1.",
+    "Portal caveats relayed by the parent from the authenticated schema: objects within 1 km of shore are excluded; SAR resolution is about 20 m; small vessels around/below 15 m may be missed. No shoreline test was performed in this analysis."
+  ],
+  "validation_claims": {
+    "human_review": false,
+    "independent_precision_validation": false,
+    "estimates_precision": false,
+    "estimates_recall": false,
+    "automatic_label_changes": false,
+    "calibration_or_test_accessed": false
+  },
+  "runtime": {
+    "pyproj": "3.7.2",
+    "shapely": "2.2.0"
+  }
+}

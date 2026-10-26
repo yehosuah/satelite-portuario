@@ -1,0 +1,5397 @@
+{
+  "schema": "puertogt-two-ai-reviewer-geometry-comparison-v1",
+  "queue_id": "train-bb18008ec1d937776f35",
+  "split": "train",
+  "created_at": "2026-10-26T15:25:20Z",
+  "comparison_started_after_second_freeze": true,
+  "second_pass_frozen_at": "2026-10-26T15:06:27Z",
+  "first_source": {
+    "path": "reports/improvements/20261026-increment/first-pass-findings.json",
+    "sha256": "4595a7699571b68fea8cf6484ecf5011c507b6c582b4df05acb85a2ece177b7f"
+  },
+  "second_source": {
+    "path": "tmp/scientific-closure-20261026/second-pass.json",
+    "sha256": "b70bfc9ecaf0d671ef6b9fd68aa788129e10b6d888debad69862aea91a474d9f"
+  },
+  "frozen_sources_unchanged_verified": true,
+  "source_image_sha256_matches_both_reviewers_all_12": true,
+  "is_independent_validation": false,
+  "consensus_is_independent_ground_truth": false,
+  "model_predictions_accessed": false,
+  "cal_test_accessed": false,
+  "imports_or_training_performed": false,
+  "method": {
+    "coordinates": "First-review WGS84 polygons projected to each raw asset native CRS and native pixel grid. Second polygons use their frozen native pixels. IoU and center distances computed in the native grid, without stretching WGS84 bounding boxes.",
+    "primary_match": "One-to-one descending IoU matching at IoU>=0.25. Every eligible first/second node has exactly one eligible edge, so no assignment ambiguity occurred. Report center distances and mutual centroid containment separately.",
+    "scope_boundary_rule": "A center within 0.5 native pixels of the first reviewed-area boundary is a boundary case; not a clear interior omission.",
+    "clear_area_rule": "Intersect the first declared reviewed area only when its decision is candidates or empty, with the second area excluding recorded abstention locator boxes. A first-pass uncertain decision contributes no agreed clear evidence; its declared geometry is still retained for scope comparison.",
+    "uncertainty_rule": "No candidate in an uncertain area is not an agreed negative. No inter-review agreement is human truth or independent validation.",
+    "box_dimensions": "Box dimensions are not interpreted as vessel length.",
+    "postfreeze_sources": "Only the two review JSON files and raw PNG SHA checks. No detector/model outputs. Root supplied separate raw-image S2 adjudication steering, kept as a proposal pending its final geometry freeze."
+  },
+  "summary": {
+    "proposed_positive_candidates": 43,
+    "proposed_nonuncertain_observation_areas": 8,
+    "first_candidates": 41,
+    "second_candidates": 48,
+    "matched_candidates": 41,
+    "first_only_candidates": 0,
+    "second_only_candidates": 7,
+    "both_explicitly_empty_scenes": 2,
+    "second_only_outside_original_scope": 5,
+    "second_only_original_scope_boundary": 1,
+    "second_only_inside_original_scope": 1,
+    "first_uncertain_second_partial_empty": 4
+  },
+  "geometric_match_statistics": {
+    "iou_min": 0.4166666666637313,
+    "iou_median": 0.766734279914309,
+    "iou_max": 0.9230769230685866,
+    "center_distance_pixels_min": 0.49999999995907274,
+    "center_distance_pixels_median": 1.118033988759326,
+    "center_distance_pixels_max": 3.5355339059013056,
+    "mutual_centroid_containment_count": 41,
+    "matching_count_by_iou_threshold": {
+      "0.1": 41,
+      "0.25": 41,
+      "0.5": 40,
+      "0.75": 23
+    }
+  },
+  "interpretation": [
+    "All 41 first-pass candidate boxes have a geometric partner. There are no first-only candidates.",
+    "Of seven second-only boxes, five are outside the original reviewed area, one is exactly on its boundary with half the box inside, and one formalizes the faint PBR SAR return explicitly described as uncertain in the first note.",
+    "Scenes 6,9,10,12 change from uncertain to partial empty. This is a scope/evidence-policy difference, not a positive-vs-negative disagreement.",
+    "Only PBR S2 scenes 7 and 8 are explicitly empty in both passes; their common clear extents are respectively 100% and about 89.9% of the manifest zone.",
+    "Root subsequently froze 43 AI visual positives across eight observation areas; STC12 uses the conservative 47.7% area. This comparison itself creates no labels or import."
+  ],
+  "entries": [
+    {
+      "queue_index": 1,
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "zone_id": "prq_fondeo",
+      "source_asset_sha256": "cb5439ebafea569765b8c40148eaef4ac35e9bfa7b3f85c7af7c2b5d12589561",
+      "native_crs": "EPSG:32615",
+      "first_decision": "candidates",
+      "second_decision": "candidates",
+      "first_note": "Dieciséis retornos radar compactos y alargados separados de costa dentro del fondeo. Son candidatos visuales IA; sin referencia independiente ni identificación de buque. Se conserva incertidumbre sobre sidelobes y retornos radar pequeños.",
+      "counts": {
+        "first": 16,
+        "second": 16,
+        "matched": 16,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 1.0,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9945508724269088,
+        "declared_scope_intersection_fraction_of_first": 1.0,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.994550872426909,
+        "conservative_clear_intersection_fraction_of_zone": 0.994550872426909,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77706766414401,
+                13.888915672790862
+              ],
+              [
+                -90.77886874180881,
+                13.888932060900265
+              ],
+              [
+                -90.77883515566602,
+                13.892455806077393
+              ],
+              [
+                -90.77703404990497,
+                13.892439413640606
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                177.14083576444534,
+                237.53807153718077
+              ],
+              [
+                177.1405605757842,
+                610.8709414427169
+              ],
+              [
+                550.4739747404703,
+                610.871132517769
+              ],
+              [
+                550.47401409022,
+                456.0
+              ],
+              [
+                531.0,
+                456.0
+              ],
+              [
+                531.0,
+                417.0
+              ],
+              [
+                550.4740239993631,
+                417.0
+              ],
+              [
+                550.4740695972113,
+                237.53785703445317
+              ],
+              [
+                177.14083576444534,
+                237.53807153718077
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": null,
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [
+        {
+          "first_candidate_number": 1,
+          "second_candidate_id": "second-pass-01-01",
+          "second_candidate_number": 1,
+          "iou_native_grid": 0.8531250000044996,
+          "center_distance_native_pixels": 1.1180339887347692,
+          "first_center_native_pixels": [
+            241.49999999993122,
+            242.50000000001748
+          ],
+          "second_center_native_pixels": [
+            241.0,
+            241.5
+          ],
+          "first_box_native_pixel_bounds": [
+            234.99999999981372,
+            231.0,
+            248.00000000004655,
+            254.00000000002328
+          ],
+          "second_box_native_pixel_bounds": [
+            234.0,
+            231.0,
+            248.0,
+            252.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 2,
+          "second_candidate_id": "second-pass-01-02",
+          "second_candidate_number": 2,
+          "iou_native_grid": 0.7056451612903187,
+          "center_distance_native_pixels": 1.4142135623537013,
+          "first_center_native_pixels": [
+            521.0000000000389,
+            249.50000000001145
+          ],
+          "second_center_native_pixels": [
+            522.0,
+            248.5
+          ],
+          "first_box_native_pixel_bounds": [
+            513.000000000035,
+            233.99999999997675,
+            529.0000000000465,
+            265.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            515.0,
+            236.0,
+            529.0,
+            261.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 3,
+          "second_candidate_id": "second-pass-01-03",
+          "second_candidate_number": 3,
+          "iou_native_grid": 0.6844919786085061,
+          "center_distance_native_pixels": 0.49999999995907274,
+          "first_center_native_pixels": [
+            418.99999999993304,
+            271.5000000000409
+          ],
+          "second_center_native_pixels": [
+            419.0,
+            272.0
+          ],
+          "first_box_native_pixel_bounds": [
+            407.99999999980207,
+            263.0,
+            430.0000000000349,
+            280.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            411.0,
+            264.0,
+            427.0,
+            280.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 4,
+          "second_candidate_id": "second-pass-01-04",
+          "second_candidate_number": 4,
+          "iou_native_grid": 0.6428571428591412,
+          "center_distance_native_pixels": 2.1213203435526085,
+          "first_center_native_pixels": [
+            351.4999999999796,
+            294.00000000001046
+          ],
+          "second_center_native_pixels": [
+            350.0,
+            292.5
+          ],
+          "first_box_native_pixel_bounds": [
+            340.0,
+            280.0000000000233,
+            362.99999999995345,
+            308.0
+          ],
+          "second_box_native_pixel_bounds": [
+            341.0,
+            281.0,
+            359.0,
+            304.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 5,
+          "second_candidate_id": "second-pass-01-05",
+          "second_candidate_number": 5,
+          "iou_native_grid": 0.7199999999975679,
+          "center_distance_native_pixels": 2.49999999997591,
+          "first_center_native_pixels": [
+            288.99999999997794,
+            356.49999999998926
+          ],
+          "second_center_native_pixels": [
+            287.0,
+            355.0
+          ],
+          "first_box_native_pixel_bounds": [
+            277.9999999998952,
+            344.0,
+            300.0000000000466,
+            369.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            278.0,
+            344.0,
+            296.0,
+            366.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 6,
+          "second_candidate_id": "second-pass-01-06",
+          "second_candidate_number": 6,
+          "iou_native_grid": 0.7425742574250345,
+          "center_distance_native_pixels": 2.499999999991735,
+          "first_center_native_pixels": [
+            392.4999999999956,
+            380.99999999999295
+          ],
+          "second_center_native_pixels": [
+            391.0,
+            379.0
+          ],
+          "first_box_native_pixel_bounds": [
+            381.9999999999767,
+            367.0000000000233,
+            403.0000000000466,
+            395.0
+          ],
+          "second_box_native_pixel_bounds": [
+            382.0,
+            366.0,
+            400.0,
+            392.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 7,
+          "second_candidate_id": "second-pass-01-07",
+          "second_candidate_number": 7,
+          "iou_native_grid": 0.6790633608845992,
+          "center_distance_native_pixels": 1.1180339887544706,
+          "first_center_native_pixels": [
+            514.9999999999666,
+            374.5000000000218
+          ],
+          "second_center_native_pixels": [
+            514.5,
+            373.5
+          ],
+          "first_box_native_pixel_bounds": [
+            503.9999999999767,
+            358.0000000000233,
+            526.0000000000232,
+            391.0
+          ],
+          "second_box_native_pixel_bounds": [
+            506.0,
+            359.0,
+            523.0,
+            388.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 8,
+          "second_candidate_id": "second-pass-01-08",
+          "second_candidate_number": 8,
+          "iou_native_grid": 0.6562499999969443,
+          "center_distance_native_pixels": 0.5000000000547686,
+          "first_center_native_pixels": [
+            223.99999999994523,
+            446.99999999998363
+          ],
+          "second_center_native_pixels": [
+            224.5,
+            447.0
+          ],
+          "first_box_native_pixel_bounds": [
+            213.9999999998603,
+            431.0,
+            234.0000000000582,
+            463.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            217.0,
+            433.0,
+            232.0,
+            461.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 9,
+          "second_candidate_id": "second-pass-01-09",
+          "second_candidate_number": 9,
+          "iou_native_grid": 0.7393715341916582,
+          "center_distance_native_pixels": 0.7071067811243669,
+          "first_center_native_pixels": [
+            348.49999999991553,
+            443.49999999999653
+          ],
+          "second_center_native_pixels": [
+            348.0,
+            443.0
+          ],
+          "first_box_native_pixel_bounds": [
+            337.9999999998486,
+            430.9999999999767,
+            359.0,
+            456.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            340.0,
+            430.0,
+            356.0,
+            456.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 10,
+          "second_candidate_id": "second-pass-01-10",
+          "second_candidate_number": 10,
+          "iou_native_grid": 0.6557863501465322,
+          "center_distance_native_pixels": 2.0615528127643685,
+          "first_center_native_pixels": [
+            434.9999999999331,
+            460.9999999999709
+          ],
+          "second_center_native_pixels": [
+            434.5,
+            459.0
+          ],
+          "first_box_native_pixel_bounds": [
+            425.9999999998138,
+            443.0,
+            443.99999999997675,
+            479.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            428.0,
+            441.0,
+            441.0,
+            477.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 11,
+          "second_candidate_id": "second-pass-01-11",
+          "second_candidate_number": 11,
+          "iou_native_grid": 0.6590909090915412,
+          "center_distance_native_pixels": 3.5355339059013056,
+          "first_center_native_pixels": [
+            519.4999999999851,
+            440.99999999997044
+          ],
+          "second_center_native_pixels": [
+            517.0,
+            438.5
+          ],
+          "first_box_native_pixel_bounds": [
+            508.9999999999767,
+            424.99999999997675,
+            530.0000000000582,
+            457.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            509.0,
+            423.0,
+            525.0,
+            454.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 12,
+          "second_candidate_id": "second-pass-01-12",
+          "second_candidate_number": 12,
+          "iou_native_grid": 0.7106017191979029,
+          "center_distance_native_pixels": 0.49999999999351985,
+          "first_center_native_pixels": [
+            233.99999999998693,
+            506.5000000000065
+          ],
+          "second_center_native_pixels": [
+            234.0,
+            507.0
+          ],
+          "first_box_native_pixel_bounds": [
+            222.99999999993014,
+            491.0,
+            245.0,
+            522.0000000000465
+          ],
+          "second_box_native_pixel_bounds": [
+            226.0,
+            491.0,
+            242.0,
+            523.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 13,
+          "second_candidate_id": "second-pass-01-13",
+          "second_candidate_number": 13,
+          "iou_native_grid": 0.766734279914309,
+          "center_distance_native_pixels": 1.4999999999156444,
+          "first_center_native_pixels": [
+            442.49999999991564,
+            529.5000000000282
+          ],
+          "second_center_native_pixels": [
+            441.0,
+            529.5
+          ],
+          "first_box_native_pixel_bounds": [
+            433.99999999980207,
+            514.9999999999767,
+            450.9999999999884,
+            544.0000000000232
+          ],
+          "second_box_native_pixel_bounds": [
+            434.0,
+            516.0,
+            448.0,
+            543.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 14,
+          "second_candidate_id": "second-pass-01-15",
+          "second_candidate_number": 15,
+          "iou_native_grid": 0.571428571429521,
+          "center_distance_native_pixels": 1.1180339887230502,
+          "first_center_native_pixels": [
+            240.49999999997345,
+            567.5000000000069
+          ],
+          "second_center_native_pixels": [
+            239.5,
+            568.0
+          ],
+          "first_box_native_pixel_bounds": [
+            229.9999999999418,
+            555.0,
+            250.9999999999767,
+            580.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            232.0,
+            558.0,
+            247.0,
+            578.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 15,
+          "second_candidate_id": "second-pass-01-16",
+          "second_candidate_number": 16,
+          "iou_native_grid": 0.7282758620684863,
+          "center_distance_native_pixels": 1.11803398874176,
+          "first_center_native_pixels": [
+            333.4999999999609,
+            594.5000000000105
+          ],
+          "second_center_native_pixels": [
+            333.0,
+            593.5
+          ],
+          "first_box_native_pixel_bounds": [
+            322.9999999999534,
+            578.0,
+            343.99999999996504,
+            611.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            325.0,
+            576.0,
+            341.0,
+            611.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 16,
+          "second_candidate_id": "second-pass-01-14",
+          "second_candidate_number": 14,
+          "iou_native_grid": 0.8347386172008596,
+          "center_distance_native_pixels": 1.4142135623819378,
+          "first_center_native_pixels": [
+            541.5000000000089,
+            560.0000000000214
+          ],
+          "second_center_native_pixels": [
+            542.5,
+            559.0
+          ],
+          "first_box_native_pixel_bounds": [
+            533.0000000000232,
+            542.9999999999767,
+            550.0000000000233,
+            577.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            535.0,
+            542.0,
+            550.0,
+            576.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        }
+      ],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "same_candidate_set_or_same_visual_empty_decision",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "candidates",
+        "accept_as_ai_visual_candidate_second_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "common_clear_scope",
+        "rationale": "Mantener los 16 candidatos coincidentes de plausibilidad alta. Excluir las abstenciones SAR de cualquier uso negativo.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77706766414401,
+                13.888915672790862
+              ],
+              [
+                -90.77886874180881,
+                13.888932060900265
+              ],
+              [
+                -90.77883515566602,
+                13.892455806077393
+              ],
+              [
+                -90.77703404990497,
+                13.892439413640606
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "positive_and_complete_within_explicit_scope",
+        "candidate_ids": [
+          "second-pass-01-01",
+          "second-pass-01-02",
+          "second-pass-01-03",
+          "second-pass-01-04",
+          "second-pass-01-05",
+          "second-pass-01-06",
+          "second-pass-01-07",
+          "second-pass-01-08",
+          "second-pass-01-09",
+          "second-pass-01-10",
+          "second-pass-01-11",
+          "second-pass-01-12",
+          "second-pass-01-13",
+          "second-pass-01-14",
+          "second-pass-01-15",
+          "second-pass-01-16"
+        ],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.77703404990497,
+                13.892439413640606
+              ],
+              [
+                -90.77883515566602,
+                13.892455806077393
+              ],
+              [
+                -90.77886874180881,
+                13.888932060900265
+              ],
+              [
+                -90.77706766414401,
+                13.888915672790862
+              ],
+              [
+                -90.77720105559996,
+                13.87492269440454
+              ],
+              [
+                -90.8117275833,
+                13.87523425
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.77687925,
+                13.908654222199987
+              ],
+              [
+                -90.77703404990497,
+                13.892439413640606
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.9945493208128242,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 2,
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "zone_id": "prq_fondeo",
+      "source_asset_sha256": "103817602f0d355137286391418660553a356b6d9bbd3558e463b84613d86ce1",
+      "native_crs": "EPSG:32615",
+      "first_decision": "candidates",
+      "second_decision": "candidates",
+      "first_note": "Diez retornos radar compactos y alargados dentro del fondeo. Dos retornos de la franja inferior quedan fuera del límite y no se cuentan. Candidatos visuales IA sin verificación independiente de identidad; no hay certificación de precisión.",
+      "counts": {
+        "first": 10,
+        "second": 10,
+        "matched": 10,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 1.0,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9898477286278401,
+        "declared_scope_intersection_fraction_of_first": 1.0,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.9898477286278403,
+        "conservative_clear_intersection_fraction_of_zone": 0.9898477286278403,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ],
+            [
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ],
+              [
+                -90.80485050714738,
+                13.899739307028646
+              ],
+              [
+                -90.80482239825292,
+                13.902720987449909
+              ],
+              [
+                -90.80288003898306,
+                13.902703503941016
+              ],
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ]
+            ],
+            [
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ],
+              [
+                -90.7788696028688,
+                13.888841708445437
+              ],
+              [
+                -90.7788368782602,
+                13.892275101223133
+              ],
+              [
+                -90.77707961517399,
+                13.89225910817393
+              ],
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                177.14083576444534,
+                237.53807153718077
+              ],
+              [
+                177.1405605757842,
+                610.8709414427169
+              ],
+              [
+                550.4739747404703,
+                610.871132517769
+              ],
+              [
+                550.4740695972113,
+                237.53785703445317
+              ],
+              [
+                177.14083576444534,
+                237.53807153718077
+              ]
+            ],
+            [
+              [
+                270.0,
+                339.0
+              ],
+              [
+                249.0,
+                339.0
+              ],
+              [
+                249.0,
+                306.0
+              ],
+              [
+                270.0,
+                306.0
+              ],
+              [
+                270.0,
+                339.0
+              ]
+            ],
+            [
+              [
+                550.0,
+                457.0
+              ],
+              [
+                531.0,
+                457.0
+              ],
+              [
+                531.0,
+                419.0
+              ],
+              [
+                550.0,
+                419.0
+              ],
+              [
+                550.0,
+                457.0
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": null,
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [
+        {
+          "first_candidate_number": 1,
+          "second_candidate_id": "second-pass-02-01",
+          "second_candidate_number": 1,
+          "iou_native_grid": 0.8266384778007427,
+          "center_distance_native_pixels": 1.414213562373497,
+          "first_center_native_pixels": [
+            212.0000000000029,
+            295.50000000000233
+          ],
+          "second_center_native_pixels": [
+            211.0,
+            296.5
+          ],
+          "first_box_native_pixel_bounds": [
+            199.9999999999767,
+            286.0,
+            224.00000000004655,
+            305.0
+          ],
+          "second_box_native_pixel_bounds": [
+            199.0,
+            288.0,
+            223.0,
+            305.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 2,
+          "second_candidate_id": "second-pass-02-02",
+          "second_candidate_number": 2,
+          "iou_native_grid": 0.8380566801585951,
+          "center_distance_native_pixels": 1.5811388300496407,
+          "first_center_native_pixels": [
+            344.49999999996754,
+            279.0000000000119
+          ],
+          "second_center_native_pixels": [
+            343.0,
+            279.5
+          ],
+          "first_box_native_pixel_bounds": [
+            333.0000000000116,
+            269.9999999999767,
+            355.99999999996504,
+            288.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            330.0,
+            270.0,
+            356.0,
+            289.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 3,
+          "second_candidate_id": "second-pass-02-03",
+          "second_candidate_number": 3,
+          "iou_native_grid": 0.7666666666714412,
+          "center_distance_native_pixels": 1.5811388300176985,
+          "first_center_native_pixels": [
+            512.9999999999396,
+            263.50000000002916
+          ],
+          "second_center_native_pixels": [
+            511.5,
+            264.0
+          ],
+          "first_box_native_pixel_bounds": [
+            500.99999999993014,
+            253.00000000004658,
+            524.9999999999534,
+            274.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            499.0,
+            255.0,
+            524.0,
+            273.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 4,
+          "second_candidate_id": "second-pass-02-04",
+          "second_candidate_number": 4,
+          "iou_native_grid": 0.8800000000008108,
+          "center_distance_native_pixels": 1.4999999999776605,
+          "first_center_native_pixels": [
+            287.49999999997766,
+            355.5000000000145
+          ],
+          "second_center_native_pixels": [
+            286.0,
+            355.5
+          ],
+          "first_box_native_pixel_bounds": [
+            274.99999999998835,
+            343.0,
+            299.9999999999767,
+            368.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            275.0,
+            343.0,
+            297.0,
+            368.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 5,
+          "second_candidate_id": "second-pass-02-05",
+          "second_candidate_number": 5,
+          "iou_native_grid": 0.7325581395331876,
+          "center_distance_native_pixels": 1.8027756377676563,
+          "first_center_native_pixels": [
+            520.5000000000193,
+            378.0000000000353
+          ],
+          "second_center_native_pixels": [
+            519.0,
+            377.0
+          ],
+          "first_box_native_pixel_bounds": [
+            509.9999999999535,
+            367.0000000000233,
+            531.0000000000466,
+            389.0000000000466
+          ],
+          "second_box_native_pixel_bounds": [
+            507.0,
+            368.0,
+            531.0,
+            386.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 6,
+          "second_candidate_id": "second-pass-02-06",
+          "second_candidate_number": 6,
+          "iou_native_grid": 0.8076923076978733,
+          "center_distance_native_pixels": 1.1180339886830373,
+          "first_center_native_pixels": [
+            227.9999999999107,
+            448.0000000000291
+          ],
+          "second_center_native_pixels": [
+            227.0,
+            447.5
+          ],
+          "first_box_native_pixel_bounds": [
+            216.99999999993014,
+            437.0,
+            238.99999999996504,
+            459.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            216.0,
+            435.0,
+            238.0,
+            460.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 7,
+          "second_candidate_id": "second-pass-02-07",
+          "second_candidate_number": 7,
+          "iou_native_grid": 0.8765880217774076,
+          "center_distance_native_pixels": 1.118033988759326,
+          "first_center_native_pixels": [
+            331.99999999997016,
+            438.00000000002547
+          ],
+          "second_center_native_pixels": [
+            331.5,
+            437.0
+          ],
+          "first_box_native_pixel_bounds": [
+            319.9999999999418,
+            427.0000000000233,
+            343.9999999999884,
+            449.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            320.0,
+            426.0,
+            343.0,
+            448.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 8,
+          "second_candidate_id": "second-pass-02-08",
+          "second_candidate_number": 8,
+          "iou_native_grid": 0.7674418604643731,
+          "center_distance_native_pixels": 2.2360679775087124,
+          "first_center_native_pixels": [
+            532.0000000000107,
+            480.4999999999986
+          ],
+          "second_center_native_pixels": [
+            530.0,
+            479.5
+          ],
+          "first_box_native_pixel_bounds": [
+            519.9999999999768,
+            471.00000000000006,
+            544.0000000000466,
+            489.9999999999767
+          ],
+          "second_box_native_pixel_bounds": [
+            518.0,
+            470.0,
+            542.0,
+            489.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 9,
+          "second_candidate_id": "second-pass-02-09",
+          "second_candidate_number": 9,
+          "iou_native_grid": 0.8096000000007936,
+          "center_distance_native_pixels": 1.1180339887406416,
+          "first_center_native_pixels": [
+            447.49999999998533,
+            532.5000000000086
+          ],
+          "second_center_native_pixels": [
+            446.5,
+            532.0
+          ],
+          "first_box_native_pixel_bounds": [
+            434.99999999993014,
+            520.0000000000233,
+            459.99999999999994,
+            544.9999999999768
+          ],
+          "second_box_native_pixel_bounds": [
+            435.0,
+            521.0,
+            458.0,
+            543.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 10,
+          "second_candidate_id": "second-pass-02-10",
+          "second_candidate_number": 10,
+          "iou_native_grid": 0.8481421647792544,
+          "center_distance_native_pixels": 1.4142135623985381,
+          "first_center_native_pixels": [
+            345.5000000000244,
+            598.0000000000116
+          ],
+          "second_center_native_pixels": [
+            344.5,
+            597.0
+          ],
+          "first_box_native_pixel_bounds": [
+            331.9999999999884,
+            587.0000000000233,
+            359.0000000000698,
+            609.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            332.0,
+            586.0,
+            357.0,
+            608.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        }
+      ],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "same_candidate_set_or_same_visual_empty_decision",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "candidates",
+        "accept_as_ai_visual_candidate_second_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "common_clear_scope",
+        "rationale": "Mantener los 10 candidatos coincidentes de plausibilidad alta. Excluir las abstenciones SAR de cualquier uso negativo.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ],
+            [
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ],
+              [
+                -90.80485050714738,
+                13.899739307028646
+              ],
+              [
+                -90.80482239825292,
+                13.902720987449909
+              ],
+              [
+                -90.80288003898306,
+                13.902703503941016
+              ],
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ]
+            ],
+            [
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ],
+              [
+                -90.7788696028688,
+                13.888841708445437
+              ],
+              [
+                -90.7788368782602,
+                13.892275101223133
+              ],
+              [
+                -90.77707961517399,
+                13.89225910817393
+              ],
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "positive_and_complete_within_explicit_scope",
+        "candidate_ids": [
+          "second-pass-02-01",
+          "second-pass-02-02",
+          "second-pass-02-03",
+          "second-pass-02-04",
+          "second-pass-02-05",
+          "second-pass-02-06",
+          "second-pass-02-07",
+          "second-pass-02-08",
+          "second-pass-02-09",
+          "second-pass-02-10"
+        ],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.8117275833,
+                13.87523425
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.7772010556,
+                13.8749226944
+              ],
+              [
+                -90.8117275833,
+                13.87523425
+              ]
+            ],
+            [
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ],
+              [
+                -90.80288003898306,
+                13.902703503941016
+              ],
+              [
+                -90.80482239825292,
+                13.902720987449909
+              ],
+              [
+                -90.80485050714738,
+                13.899739307028646
+              ],
+              [
+                -90.80290817270034,
+                13.899721827414988
+              ]
+            ],
+            [
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ],
+              [
+                -90.77707961517399,
+                13.89225910817393
+              ],
+              [
+                -90.7788368782602,
+                13.892275101223133
+              ],
+              [
+                -90.7788696028688,
+                13.888841708445437
+              ],
+              [
+                -90.77711236562054,
+                13.888825719502048
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.9898476120398153,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 3,
+      "observation_id": "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "zone_id": "prq_muelles",
+      "source_asset_sha256": "e3638bbe988bbab0260adc025987886e95e623d15658db05f31ee07b696c8149",
+      "native_crs": "EPSG:32615",
+      "first_decision": "candidates",
+      "second_decision": "candidates",
+      "first_note": "Sector de agua abierto al sur del muelle occidental: un objeto alargado claro, con contorno separado del muelle, compatible visualmente con buque. Los atraques laterales ambiguos quedan fuera del ámbito; no se certifica ausencia en ellos. Vista original de10m y zoom nearest sin agregar detalle; revisión IA, sin referencia independiente.",
+      "counts": {
+        "first": 1,
+        "second": 6,
+        "matched": 1,
+        "first_only": 0,
+        "second_only": 5
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 0.14844757446747492,
+        "second_declared_scope_fraction_of_zone": 1.0,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9918793919477893,
+        "declared_scope_intersection_fraction_of_first": 1.0,
+        "declared_scope_intersection_fraction_of_second": 0.14844757446747495,
+        "conservative_clear_intersection_fraction_of_first": 1.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.14844757446747495,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.78851736287223,
+                13.924802464398148
+              ],
+              [
+                -90.79536246247419,
+                13.924864503439748
+              ],
+              [
+                -90.79539587972208,
+                13.921340728084122
+              ],
+              [
+                -90.78855088367028,
+                13.921278705353451
+              ],
+              [
+                -90.78851736287223,
+                13.924802464398148
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.78851736287223,
+                13.924802464398148
+              ],
+              [
+                -90.79536246247419,
+                13.924864503439748
+              ],
+              [
+                -90.79539587972208,
+                13.921340728084122
+              ],
+              [
+                -90.78855088367028,
+                13.921278705353451
+              ],
+              [
+                -90.78851736287223,
+                13.924802464398148
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                422.9999999999185,
+                508.0
+              ],
+              [
+                348.99999999995345,
+                508.0
+              ],
+              [
+                348.99999999983703,
+                547.0000000000232
+              ],
+              [
+                422.9999999999651,
+                547.0
+              ],
+              [
+                422.9999999999185,
+                508.0
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.783,
+                13.920499999999999
+              ],
+              [
+                -90.783,
+                13.932999999999998
+              ],
+              [
+                -90.796,
+                13.933000000000002
+              ],
+              [
+                -90.796,
+                13.920499999999999
+              ],
+              [
+                -90.783,
+                13.920499999999999
+              ]
+            ],
+            [
+              [
+                -90.79539587972208,
+                13.921340728084122
+              ],
+              [
+                -90.79536246247419,
+                13.924864503439748
+              ],
+              [
+                -90.78851736287223,
+                13.924802464398148
+              ],
+              [
+                -90.78855088367028,
+                13.921278705353451
+              ],
+              [
+                -90.79539587972208,
+                13.921340728084122
+              ]
+            ]
+          ]
+        },
+        "first_declared_coverage_not_repeated_by_second_geometry": null,
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [
+        {
+          "first_candidate_number": 1,
+          "second_candidate_id": "second-pass-03-01",
+          "second_candidate_number": 1,
+          "iou_native_grid": 0.7590361445813897,
+          "center_distance_native_pixels": 2.061552812771579,
+          "first_center_native_pixels": [
+            365.9999999999627,
+            519.0000000000044
+          ],
+          "second_center_native_pixels": [
+            364.0,
+            519.5
+          ],
+          "first_box_native_pixel_bounds": [
+            353.9999999998254,
+            514.0000000000233,
+            377.9999999999767,
+            524.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            353.0,
+            515.0,
+            375.0,
+            524.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        }
+      ],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [
+        {
+          "second_candidate_id": "second-pass-03-02",
+          "second_candidate_number": 2,
+          "second_confidence": "high_candidate_plausibility",
+          "rectangle_native_pixels": [
+            430,
+            480,
+            443,
+            501
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78664324964939,
+                  13.927315538579537
+                ],
+                [
+                  -90.78666131915055,
+                  13.925418132801575
+                ],
+                [
+                  -90.78786383588852,
+                  13.92542905508086
+                ],
+                [
+                  -90.78784577618507,
+                  13.927326462405048
+                ],
+                [
+                  -90.78664324964939,
+                  13.927315538579537
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "outside_original_scope",
+          "center_inside_original_scope_including_boundary": false,
+          "center_distance_to_original_boundary_pixels": 22.102036105350134,
+          "candidate_box_fraction_inside_original_scope": 0.0,
+          "semantic_discrepancy_type": "new_candidate_in_expanded_scope",
+          "explanation": "El centro no estaba dentro del área original revisada; no se trata como omisión del primer revisor."
+        },
+        {
+          "second_candidate_id": "second-pass-03-03",
+          "second_candidate_number": 3,
+          "second_confidence": "high_candidate_plausibility",
+          "rectangle_native_pixels": [
+            435,
+            537,
+            455,
+            546
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.7855822901095,
+                  13.922155351528376
+                ],
+                [
+                  -90.78559003523752,
+                  13.921342177904718
+                ],
+                [
+                  -90.78744002765191,
+                  13.921358982271679
+                ],
+                [
+                  -90.78743228898156,
+                  13.922172156915147
+                ],
+                [
+                  -90.7855822901095,
+                  13.922155351528376
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "outside_original_scope",
+          "center_inside_original_scope_including_boundary": false,
+          "center_distance_to_original_boundary_pixels": 22.000000000041474,
+          "candidate_box_fraction_inside_original_scope": 0.0,
+          "semantic_discrepancy_type": "new_candidate_in_expanded_scope",
+          "explanation": "El centro no estaba dentro del área original revisada; no se trata como omisión del primer revisor."
+        },
+        {
+          "second_candidate_id": "second-pass-03-04",
+          "second_candidate_number": 4,
+          "second_confidence": "medium_candidate_plausibility",
+          "rectangle_native_pixels": [
+            447,
+            546,
+            458,
+            553
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.78531253658726,
+                  13.921339656040615
+                ],
+                [
+                  -90.78531856098503,
+                  13.920707187745336
+                ],
+                [
+                  -90.78633605354402,
+                  13.920716432602003
+                ],
+                [
+                  -90.78633003190852,
+                  13.92134890133367
+                ],
+                [
+                  -90.78531253658726,
+                  13.921339656040615
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "outside_original_scope",
+          "center_inside_original_scope_including_boundary": false,
+          "center_distance_to_original_boundary_pixels": 29.6057426862097,
+          "candidate_box_fraction_inside_original_scope": 0.0,
+          "semantic_discrepancy_type": "new_candidate_in_expanded_scope",
+          "explanation": "El centro no estaba dentro del área original revisada; no se trata como omisión del primer revisor."
+        },
+        {
+          "second_candidate_id": "second-pass-03-05",
+          "second_candidate_number": 5,
+          "second_confidence": "medium_candidate_plausibility",
+          "rectangle_native_pixels": [
+            341,
+            499,
+            348,
+            513
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79544725137899,
+                  13.925678519314033
+                ],
+                [
+                  -90.79545924865278,
+                  13.924413574452391
+                ],
+                [
+                  -90.79610675859709,
+                  13.924419432629442
+                ],
+                [
+                  -90.79609476484015,
+                  13.925684378044005
+                ],
+                [
+                  -90.79544725137899,
+                  13.925678519314033
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "outside_original_scope",
+          "center_inside_original_scope_including_boundary": false,
+          "center_distance_to_original_boundary_pixels": 4.92442890085551,
+          "candidate_box_fraction_inside_original_scope": 0.0,
+          "semantic_discrepancy_type": "new_candidate_in_expanded_scope",
+          "explanation": "El centro no estaba dentro del área original revisada; no se trata como omisión del primer revisor."
+        },
+        {
+          "second_candidate_id": "second-pass-03-06",
+          "second_candidate_number": 6,
+          "second_confidence": "medium_candidate_plausibility",
+          "rectangle_native_pixels": [
+            350,
+            503,
+            358,
+            513
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -90.79452566201903,
+                  13.925308734142476
+                ],
+                [
+                  -90.79453423496653,
+                  13.92440520264844
+                ],
+                [
+                  -90.7952742458666,
+                  13.92441190037203
+                ],
+                [
+                  -90.79526567578992,
+                  13.925315432317609
+                ],
+                [
+                  -90.79452566201903,
+                  13.925308734142476
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "original_scope_boundary",
+          "center_inside_original_scope_including_boundary": true,
+          "center_distance_to_original_boundary_pixels": 0.0,
+          "candidate_box_fraction_inside_original_scope": 0.5,
+          "semantic_discrepancy_type": "boundary_case_not_a_clear_within_scope_omission",
+          "explanation": "Centro sobre el límite original y aproximadamente la mitad de la caja dentro. Conservar incertidumbre de borde; no contabilizar como omisión interior clara."
+        }
+      ],
+      "difference_interpretation": "additional_candidates_mostly_outside_original_scope",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "candidates",
+        "accept_as_ai_visual_candidate_second_numbers": [
+          1,
+          2,
+          3
+        ],
+        "abstain_second_candidate_numbers": [
+          4,
+          5,
+          6
+        ],
+        "area_rule": "first_open_water_area_plus_two_small_berth_water_areas_pending_root_final_geometry",
+        "rationale": "Propuesta de root tras revisar raw: conservar el candidato coincidente y los dos cuerpos atracados adicionales de plausibilidad alta. Los tres candidatos de plausibilidad media permanecen inciertos. Los nuevos cuerpos atracados amplían el alcance original.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false
+      },
+      "root_frozen_adjudication": {
+        "decision": "positive_and_complete_within_explicit_scope",
+        "candidate_ids": [
+          "second-pass-03-01",
+          "second-pass-03-02",
+          "second-pass-03-03"
+        ],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.78632957761103,
+                13.921398899269766
+              ],
+              [
+                -90.78633447910094,
+                13.92139870316576
+              ],
+              [
+                -90.78633933778563,
+                13.921398027707962
+              ],
+              [
+                -90.78634410689918,
+                13.921396879397804
+              ],
+              [
+                -90.78634874053778,
+                13.921395269288027
+              ],
+              [
+                -90.78635319410164,
+                13.921393212876302
+              ],
+              [
+                -90.78635742472419,
+                13.921390729956046
+              ],
+              [
+                -90.78636139168475,
+                13.921387844425931
+              ],
+              [
+                -90.78636505680045,
+                13.921384584059824
+              ],
+              [
+                -90.7863683847937,
+                13.921380980239483
+              ],
+              [
+                -90.78637134363184,
+                13.921377067652486
+              ],
+              [
+                -90.7863739048354,
+                13.921372883958359
+              ],
+              [
+                -90.7863760437522,
+                13.921368469426096
+              ],
+              [
+                -90.78637773979469,
+                13.921363866546558
+              ],
+              [
+                -90.78637897663809,
+                13.921359119623494
+              ],
+              [
+                -90.7863797423775,
+                13.921354274347099
+              ],
+              [
+                -90.78638002964252,
+                13.921349377354247
+              ],
+              [
+                -90.78638089011484,
+                13.921258999608229
+              ],
+              [
+                -90.78857845555338,
+                13.921278955183176
+              ],
+              [
+                -90.79539587972208,
+                13.921340728084122
+              ],
+              [
+                -90.79536246247419,
+                13.924864503439748
+              ],
+              [
+                -90.79531995879132,
+                13.924864118217048
+              ],
+              [
+                -90.79532424361757,
+                13.924412374604913
+              ],
+              [
+                -90.79532404922749,
+                13.92440747033323
+              ],
+              [
+                -90.79532337493882,
+                13.924402608748812
+              ],
+              [
+                -90.79532222724893,
+                13.924397836697244
+              ],
+              [
+                -90.79532061721682,
+                13.92439320016138
+              ],
+              [
+                -90.79531856035652,
+                13.924388743818263
+              ],
+              [
+                -90.79531607648768,
+                13.924384510608625
+              ],
+              [
+                -90.79531318954453,
+                13.924380541323114
+              ],
+              [
+                -90.79530992734526,
+                13.924376874209237
+              ],
+              [
+                -90.795306321324,
+                13.924373544602815
+              ],
+              [
+                -90.79530240622789,
+                13.924370584587496
+              ],
+              [
+                -90.79529821978228,
+                13.924368022685595
+              ],
+              [
+                -90.7952938023272,
+                13.924365883583258
+              ],
+              [
+                -90.79528919642864,
+                13.92436418789259
+              ],
+              [
+                -90.79528444646847,
+                13.924362951953043
+              ],
+              [
+                -90.79527959821664,
+                13.924362187673966
+              ],
+              [
+                -90.79527469839029,
+                13.924361902419848
+              ],
+              [
+                -90.79453468749023,
+                13.924355204696258
+              ],
+              [
+                -90.79452978601631,
+                13.924355400973349
+              ],
+              [
+                -90.79452492736438,
+                13.924356076600949
+              ],
+              [
+                -90.79452015829987,
+                13.924357225076017
+              ],
+              [
+                -90.79451552472592,
+                13.924358835344265
+              ],
+              [
+                -90.79451107124159,
+                13.924360891906554
+              ],
+              [
+                -90.79450684071246,
+                13.924363374968088
+              ],
+              [
+                -90.79450287385819,
+                13.92436626062893
+              ],
+              [
+                -90.7944992088605,
+                13.924369521114048
+              ],
+              [
+                -90.7944958809957,
+                13.924373125040663
+              ],
+              [
+                -90.79449292229508,
+                13.9243770377203
+              ],
+              [
+                -90.79449036123671,
+                13.924381221492679
+              ],
+              [
+                -90.79448822247127,
+                13.924385636088202
+              ],
+              [
+                -90.79448652658476,
+                13.924390239015557
+              ],
+              [
+                -90.79448528990044,
+                13.924394985970698
+              ],
+              [
+                -90.79448452432158,
+                13.924399831263289
+              ],
+              [
+                -90.79448423721706,
+                13.924404728256475
+              ],
+              [
+                -90.79447995063907,
+                13.924856504989522
+              ],
+              [
+                -90.78879486610876,
+                13.924804979487165
+              ],
+              [
+                -90.78876907790792,
+                13.927515566871833
+              ],
+              [
+                -90.78784405607215,
+                13.927507167847919
+              ],
+              [
+                -90.78666045875951,
+                13.925508485464876
+              ],
+              [
+                -90.7869465651951,
+                13.924607479698299
+              ],
+              [
+                -90.7885190818958,
+                13.924621757935492
+              ],
+              [
+                -90.78853713154918,
+                13.922724349966353
+              ],
+              [
+                -90.7872421291635,
+                13.922712593335918
+              ],
+              [
+                -90.78687728906203,
+                13.922167116771103
+              ],
+              [
+                -90.78567478999476,
+                13.922156192130666
+              ],
+              [
+                -90.78568205859162,
+                13.921393015701588
+              ],
+              [
+                -90.78632957761103,
+                13.921398899269766
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.19556415024744528,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 4,
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "zone_id": "prq_fondeo",
+      "source_asset_sha256": "29c6e07e3b33671be7fbf51e9c7689dc9db626206669b1cef0513037421934bb",
+      "native_crs": "EPSG:32615",
+      "first_decision": "candidates",
+      "second_decision": "candidates",
+      "first_note": "Trece objetos alargados de colores/estructuras compatibles visualmente con buques en agua abierta dentro del fondeo. La caja del borde occidental conserva el centro dentro de la zona. Objetos con centro fuera de zona quedan excluidos. Primera inspección IA de imagen óptica sin propuestas; sin identidad, familia ni dimensiones certificadas.",
+      "counts": {
+        "first": 13,
+        "second": 13,
+        "matched": 13,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 1.0,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9996158301182492,
+        "declared_scope_intersection_fraction_of_first": 1.0,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.9996158301182492,
+        "conservative_clear_intersection_fraction_of_zone": 0.9996158301182492,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.78987231494143,
+                13.908772306054447
+              ],
+              [
+                -90.78987614365226,
+                13.908369145410457
+              ],
+              [
+                -90.79098608015904,
+                13.908379201015391
+              ],
+              [
+                -90.7909822533731,
+                13.908782361339236
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                177.14083576444534,
+                237.53807153718077
+              ],
+              [
+                177.1405605757842,
+                610.8709414427169
+              ],
+              [
+                550.4739747404703,
+                610.871132517769
+              ],
+              [
+                550.4740695972113,
+                237.53785703445317
+              ],
+              [
+                410.0,
+                237.53793774537937
+              ],
+              [
+                410.0,
+                242.0
+              ],
+              [
+                398.0,
+                242.0
+              ],
+              [
+                398.0,
+                237.53794464011173
+              ],
+              [
+                177.14083576444534,
+                237.53807153718077
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": null,
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [
+        {
+          "first_candidate_number": 1,
+          "second_candidate_id": "second-pass-04-03",
+          "second_candidate_number": 3,
+          "iou_native_grid": 0.8124999999990976,
+          "center_distance_native_pixels": 0.7071067812013391,
+          "first_center_native_pixels": [
+            199.5000000000349,
+            296.500000000014
+          ],
+          "second_center_native_pixels": [
+            199.0,
+            297.0
+          ],
+          "first_box_native_pixel_bounds": [
+            189.00000000004655,
+            290.0,
+            210.00000000004655,
+            303.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            187.0,
+            290.0,
+            211.0,
+            304.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 2,
+          "second_candidate_id": "second-pass-04-01",
+          "second_candidate_number": 1,
+          "iou_native_grid": 0.6534090909090999,
+          "center_distance_native_pixels": 0.500000000055536,
+          "first_center_native_pixels": [
+            321.50000000005554,
+            279.0000000000035
+          ],
+          "second_center_native_pixels": [
+            321.0,
+            279.0
+          ],
+          "first_box_native_pixel_bounds": [
+            310.0000000000582,
+            272.0,
+            333.0000000000582,
+            286.0
+          ],
+          "second_box_native_pixel_bounds": [
+            308.0,
+            274.0,
+            334.0,
+            284.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 3,
+          "second_candidate_id": "second-pass-04-02",
+          "second_candidate_number": 2,
+          "iou_native_grid": 0.7976878612722506,
+          "center_distance_native_pixels": 0.9999999999679403,
+          "first_center_native_pixels": [
+            499.49999999996794,
+            273.00000000000165
+          ],
+          "second_center_native_pixels": [
+            498.5,
+            273.0
+          ],
+          "first_box_native_pixel_bounds": [
+            487.9999999997905,
+            266.0,
+            511.0000000000582,
+            280.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            486.0,
+            267.0,
+            511.0,
+            279.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 4,
+          "second_candidate_id": "second-pass-04-05",
+          "second_candidate_number": 5,
+          "iou_native_grid": 0.9230769230685866,
+          "center_distance_native_pixels": 0.9999999999853912,
+          "first_center_native_pixels": [
+            258.9999999999854,
+            364.4999999999996
+          ],
+          "second_center_native_pixels": [
+            258.0,
+            364.5
+          ],
+          "first_box_native_pixel_bounds": [
+            247.0000000000349,
+            358.0000000000233,
+            271.00000000004655,
+            371.0
+          ],
+          "second_box_native_pixel_bounds": [
+            245.0,
+            358.0,
+            271.0,
+            371.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 5,
+          "second_candidate_id": "second-pass-04-06",
+          "second_candidate_number": 6,
+          "iou_native_grid": 0.6909090909080337,
+          "center_distance_native_pixels": 1.1180339887616395,
+          "first_center_native_pixels": [
+            372.4999999999751,
+            351.9999999999993
+          ],
+          "second_center_native_pixels": [
+            373.0,
+            353.0
+          ],
+          "first_box_native_pixel_bounds": [
+            362.99999999998835,
+            344.0,
+            382.0000000000466,
+            360.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            362.0,
+            343.0,
+            384.0,
+            363.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 6,
+          "second_candidate_id": "second-pass-04-04",
+          "second_candidate_number": 4,
+          "iou_native_grid": 0.79041916167321,
+          "center_distance_native_pixels": 1.414213562402658,
+          "first_center_native_pixels": [
+            181.49999999997092,
+            375.49999999998727
+          ],
+          "second_center_native_pixels": [
+            182.5,
+            376.5
+          ],
+          "first_box_native_pixel_bounds": [
+            169.99999999996507,
+            368.99999999997675,
+            192.99999999998835,
+            382.0
+          ],
+          "second_box_native_pixel_bounds": [
+            171.0,
+            370.0,
+            194.0,
+            383.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 7,
+          "second_candidate_id": "second-pass-04-07",
+          "second_candidate_number": 7,
+          "iou_native_grid": 0.8688888888890234,
+          "center_distance_native_pixels": 1.1180339887462596,
+          "first_center_native_pixels": [
+            425.49999999997937,
+            429.50000000003314
+          ],
+          "second_center_native_pixels": [
+            424.5,
+            429.0
+          ],
+          "first_box_native_pixel_bounds": [
+            413.99999999983703,
+            421.0,
+            437.00000000004655,
+            438.00000000002325
+          ],
+          "second_box_native_pixel_bounds": [
+            412.0,
+            420.0,
+            437.0,
+            438.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 8,
+          "second_candidate_id": "second-pass-04-08",
+          "second_candidate_number": 8,
+          "iou_native_grid": 0.8637532133715379,
+          "center_distance_native_pixels": 1.118033988715373,
+          "first_center_native_pixels": [
+            210.4999999999651,
+            469.0000000000074
+          ],
+          "second_center_native_pixels": [
+            209.5,
+            469.5
+          ],
+          "first_box_native_pixel_bounds": [
+            197.9999999998603,
+            462.0,
+            223.00000000002328,
+            476.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            197.0,
+            462.0,
+            222.0,
+            477.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 9,
+          "second_candidate_id": "second-pass-04-09",
+          "second_candidate_number": 9,
+          "iou_native_grid": 0.8680555555523637,
+          "center_distance_native_pixels": 1.1180339887530217,
+          "first_center_native_pixels": [
+            314.5,
+            461.500000000007
+          ],
+          "second_center_native_pixels": [
+            313.5,
+            461.0
+          ],
+          "first_box_native_pixel_bounds": [
+            302.0,
+            454.0,
+            326.99999999998835,
+            469.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            300.0,
+            453.0,
+            327.0,
+            469.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 10,
+          "second_candidate_id": "second-pass-04-10",
+          "second_candidate_number": 10,
+          "iou_native_grid": 0.8399999999989585,
+          "center_distance_native_pixels": 1.118033988749895,
+          "first_center_native_pixels": [
+            487.9999999999809,
+            475.00000000000955
+          ],
+          "second_center_native_pixels": [
+            488.5,
+            476.0
+          ],
+          "first_box_native_pixel_bounds": [
+            475.999999999872,
+            468.0,
+            500.00000000001165,
+            482.0000000000466
+          ],
+          "second_box_native_pixel_bounds": [
+            476.0,
+            468.0,
+            501.0,
+            484.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 11,
+          "second_candidate_id": "second-pass-04-11",
+          "second_candidate_number": 11,
+          "iou_native_grid": 0.8695652173845791,
+          "center_distance_native_pixels": 1.5000000000810587,
+          "first_center_native_pixels": [
+            518.9999999999189,
+            537.9999999999864
+          ],
+          "second_center_native_pixels": [
+            520.5,
+            538.0
+          ],
+          "first_box_native_pixel_bounds": [
+            508.9999999998137,
+            530.0,
+            529.0000000000349,
+            546.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            509.0,
+            530.0,
+            532.0,
+            546.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 12,
+          "second_candidate_id": "second-pass-04-12",
+          "second_candidate_number": 12,
+          "iou_native_grid": 0.8264462809915296,
+          "center_distance_native_pixels": 1.0000000000113687,
+          "first_center_native_pixels": [
+            298.99999999998863,
+            564.000000000016
+          ],
+          "second_center_native_pixels": [
+            300.0,
+            564.0
+          ],
+          "first_box_native_pixel_bounds": [
+            285.99999999993014,
+            556.0,
+            312.0000000000466,
+            572.0000000000232
+          ],
+          "second_box_native_pixel_bounds": [
+            287.0,
+            555.0,
+            313.0,
+            573.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        },
+        {
+          "first_candidate_number": 13,
+          "second_candidate_id": "second-pass-04-13",
+          "second_candidate_number": 13,
+          "iou_native_grid": 0.6461538461544728,
+          "center_distance_native_pixels": 0.9999999999827196,
+          "first_center_native_pixels": [
+            192.9999999999759,
+            571.0000000000173
+          ],
+          "second_center_native_pixels": [
+            193.0,
+            572.0
+          ],
+          "first_box_native_pixel_bounds": [
+            180.99999999993014,
+            564.0,
+            205.00000000001162,
+            578.0000000000233
+          ],
+          "second_box_native_pixel_bounds": [
+            180.0,
+            562.0,
+            206.0,
+            582.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "high_candidate_plausibility"
+        }
+      ],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "same_candidate_set_or_same_visual_empty_decision",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "candidates",
+        "accept_as_ai_visual_candidate_second_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "common_clear_scope",
+        "rationale": "Mantener los 13 candidatos coincidentes; la pequeña ambigüedad del límite norte queda excluida de negativos.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.8117275833,
+                13.875234249999997
+              ],
+              [
+                -90.7772010556,
+                13.874922694399997
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.78987231494143,
+                13.908772306054447
+              ],
+              [
+                -90.78987614365226,
+                13.908369145410457
+              ],
+              [
+                -90.79098608015904,
+                13.908379201015391
+              ],
+              [
+                -90.7909822533731,
+                13.908782361339236
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "positive_and_complete_within_explicit_scope",
+        "candidate_ids": [
+          "second-pass-04-01",
+          "second-pass-04-02",
+          "second-pass-04-03",
+          "second-pass-04-04",
+          "second-pass-04-05",
+          "second-pass-04-06",
+          "second-pass-04-07",
+          "second-pass-04-08",
+          "second-pass-04-09",
+          "second-pass-04-10",
+          "second-pass-04-11",
+          "second-pass-04-12",
+          "second-pass-04-13"
+        ],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.79098608015904,
+                13.908379201015391
+              ],
+              [
+                -90.78987614365226,
+                13.908369145410457
+              ],
+              [
+                -90.78987232038786,
+                13.908771732549777
+              ],
+              [
+                -90.77687925002915,
+                13.908654222200262
+              ],
+              [
+                -90.77687925,
+                13.908654222199997
+              ],
+              [
+                -90.7772010556,
+                13.8749226944
+              ],
+              [
+                -90.8117275833,
+                13.87523425
+              ],
+              [
+                -90.81141075,
+                13.908966527799999
+              ],
+              [
+                -90.81141074993853,
+                13.908966527799445
+              ],
+              [
+                -90.80603900469312,
+                13.908917945313252
+              ],
+              [
+                -90.79572439840112,
+                13.908824659203272
+              ],
+              [
+                -90.79098225897732,
+                13.908781770921616
+              ],
+              [
+                -90.79098608015904,
+                13.908379201015391
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.9996163596187665,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 5,
+      "observation_id": "1d86f54e-70f7-4e2b-bcca-d8949ac00271",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "zone_id": "pbr_canal",
+      "source_asset_sha256": "8c5e20849fe5a5aeb82baefbcf4e0c9b525f7499d6a6e14fd23b61f61da3d0c1",
+      "native_crs": "EPSG:32616",
+      "first_decision": "uncertain",
+      "second_decision": "uncertain",
+      "first_note": "Canal delineado y visible en radar. Hay un retorno tenue y alargado aproximadamente en (75,530) px, dentro del canal, que no permite distinguir con seguridad buque de ruido o artefacto a esta resolución. Los retornos intensos del muelle en el extremo inferior quedan fuera del polígono. No certifico ausencia de buques.",
+      "counts": {
+        "first": 0,
+        "second": 1,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 1
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 0.9498782540198798,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9498782540198798,
+        "declared_scope_intersection_fraction_of_first": 0.9498782540198794,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.0,
+        "first_uncertain_scope_is_clear_evidence": false,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.61015044616593,
+                15.738791988459571
+              ],
+              [
+                -88.60764804846708,
+                15.73881045390519
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": null,
+        "conservative_clear_intersection_native_pixels": null,
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6105,
+                15.736099999999999
+              ],
+              [
+                -88.608,
+                15.736099999999997
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.60764804846708,
+                15.73881045390519
+              ],
+              [
+                -88.61015044616593,
+                15.738791988459571
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.6105,
+                15.736099999999999
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [
+        {
+          "second_candidate_id": "second-pass-05-01",
+          "second_candidate_number": 1,
+          "second_confidence": "low_candidate_plausibility",
+          "rectangle_native_pixels": [
+            69,
+            518,
+            80,
+            536
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.60694061642036,
+                  15.75074526495938
+                ],
+                [
+                  -88.6069278261568,
+                  15.749118596889701
+                ],
+                [
+                  -88.60795426658237,
+                  15.749111025106115
+                ],
+                [
+                  -88.60796706500726,
+                  15.75073769235441
+                ],
+                [
+                  -88.60694061642036,
+                  15.75074526495938
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "inside_original_scope",
+          "center_inside_original_scope_including_boundary": true,
+          "center_distance_to_original_boundary_pixels": 13.2171475664623,
+          "candidate_box_fraction_inside_original_scope": 1.0,
+          "semantic_discrepancy_type": "same_uncertainty_already_described_in_first_pass_note",
+          "explanation": "La primera nota menciona expresamente un retorno tenue cerca de (75,530). La segunda caja lo localiza; ambas decisiones son uncertain."
+        }
+      ],
+      "difference_interpretation": "shared_uncertainty_with_new_box_formalization",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "uncertain",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [
+          1
+        ],
+        "area_rule": "no_negative_area_proposed",
+        "rationale": "Conservar abstención: ambas revisiones reconocen la misma señal tenue del canal. La caja de la segunda formaliza una incertidumbre ya descrita; no convertirla en positivo ni negativo.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false
+      },
+      "root_frozen_adjudication": {
+        "decision": "withheld_uncertain",
+        "candidate_ids": [],
+        "reviewed_area": null,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 6,
+      "observation_id": "26c41fa8-08e3-4257-8c9c-c446f8cab360",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "zone_id": "pbr_canal",
+      "source_asset_sha256": "2381758e45dc65b8f08ecb8bfee28133b9a21551f78daa9300ec5b69c0b410ea",
+      "native_crs": "EPSG:32616",
+      "first_decision": "uncertain",
+      "second_decision": "empty",
+      "first_note": "La franja del canal muestra agua oscura con moteado radar sin una forma naval inequívoca. El punto brillante cerca de (30,489) px y los retornos del muelle quedan fuera del polígono. La ausencia de retornos intensos dentro no permite certificar un negativo.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 0.9498782540198798,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.9498782540198798,
+        "declared_scope_intersection_fraction_of_first": 0.9498782540198794,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.0,
+        "first_uncertain_scope_is_clear_evidence": false,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.61015044616593,
+                15.738791988459571
+              ],
+              [
+                -88.60764804846708,
+                15.73881045390519
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": null,
+        "conservative_clear_intersection_native_pixels": null,
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6105,
+                15.736099999999999
+              ],
+              [
+                -88.608,
+                15.736099999999997
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.60764804846708,
+                15.73881045390519
+              ],
+              [
+                -88.61015044616593,
+                15.738791988459571
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.6105,
+                15.736099999999999
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "scope_and_evidence_policy_difference_no_positive_vs_negative_conflict",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "uncertain",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "no_negative_area_proposed",
+        "rationale": "Conservar abstención SAR. Ambas revisiones carecen de candidato inequívoco; el vacío parcial de la segunda no resuelve la reserva de la primera sobre sensibilidad.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false
+      },
+      "root_frozen_adjudication": {
+        "decision": "withheld_uncertain",
+        "candidate_ids": [],
+        "reviewed_area": null,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 7,
+      "observation_id": "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "zone_id": "pbr_canal",
+      "source_asset_sha256": "528254a8ec18f9fc739b630127bdbd07e44d91c0a6746888c550f83d25b594df",
+      "native_crs": "EPSG:32616",
+      "first_decision": "empty",
+      "second_decision": "empty",
+      "first_note": "El polígono del canal se ve en agua óptica despejada, sin nubes sobre la franja. Recorriendo toda la franja a resolución nativa no identifico cascos ni objetos navales resolubles. El objeto alargado claro alrededor de (73,263) px y otro pequeño cerca de (38,251) px están al oeste, fuera de la zona. Negativo visual de IA únicamente dentro de la intersección del rectángulo con la zona; no establece ausencia de embarcaciones subpíxel ni validación independiente.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 1.0,
+        "second_scope_without_abstention_locators_fraction_of_zone": 1.0,
+        "declared_scope_intersection_fraction_of_first": 1.0,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 1.0,
+        "conservative_clear_intersection_fraction_of_zone": 1.0,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.6105,
+                15.736099999999999
+              ],
+              [
+                -88.608,
+                15.736099999999997
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.6105,
+                15.736099999999999
+              ],
+              [
+                -88.608,
+                15.736099999999997
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                120.17404340429928,
+                83.92974208572413
+              ],
+              [
+                40.621611567953366,
+                679.7580911959055
+              ],
+              [
+                67.41340322541073,
+                679.9622272277484
+              ],
+              [
+                146.95867656000192,
+                84.13361368556507
+              ],
+              [
+                120.17404340429928,
+                83.92974208572413
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": null,
+        "both_explicitly_empty_on_common_clear_area": true
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "same_candidate_set_or_same_visual_empty_decision",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "empty",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "common_clear_scope",
+        "rationale": "Vacío visual coincidente en toda la franja, limitado a objetos resolubles en el preview.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.6105,
+                15.736099999999999
+              ],
+              [
+                -88.608,
+                15.736099999999997
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "visually_empty_within_explicit_scope",
+        "candidate_ids": [],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.608,
+                15.7361
+              ],
+              [
+                -88.6105,
+                15.7361
+              ],
+              [
+                -88.60875,
+                15.749575
+              ],
+              [
+                -88.6035,
+                15.79
+              ],
+              [
+                -88.601625,
+                15.79
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 1.000000000000042,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 8,
+      "observation_id": "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "zone_id": "pbr_canal",
+      "source_asset_sha256": "c69c22d9f021ee7ee95b92f3a4dd9c03895d320dbb89baeab4c43228ab62bf47",
+      "native_crs": "EPSG:32616",
+      "first_decision": "empty",
+      "second_decision": "empty",
+      "first_note": "La franja del canal es visible, sin nubes, sobre agua turbia con textura superficial. No identifico un casco o blanco naval discreto dentro al recorrerla a resolución nativa. La estela curvada del centro-derecha, con vértice aproximado (302,447) px, está fuera de la zona; no la atribuyo al canal. Negativo visual de IA limitado al polígono recortado y a objetos resolubles en este preview, sin certeza humana o independiente.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 0.8989649050423999,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.8989649050424,
+        "declared_scope_intersection_fraction_of_first": 0.8989649050423995,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.8989649050423995,
+        "conservative_clear_intersection_fraction_of_zone": 0.8989649050423999,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.60985677888837,
+                15.741053548291932
+              ],
+              [
+                -88.60735438132562,
+                15.741072012742135
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ],
+            [
+              [
+                -88.60867943107661,
+                15.746394403675021
+              ],
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ],
+              [
+                -88.60766224441039,
+                15.747576793327912
+              ],
+              [
+                -88.60765300465631,
+                15.746401977601899
+              ],
+              [
+                -88.60867943107661,
+                15.746394403675021
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.60985677888837,
+                15.741053548291932
+              ],
+              [
+                -88.60735438132562,
+                15.741072012742135
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ],
+            [
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ],
+              [
+                -88.60766224441039,
+                15.747576793327912
+              ],
+              [
+                -88.60765300465631,
+                15.746401977601899
+              ],
+              [
+                -88.60867943107661,
+                15.746394403675021
+              ],
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                120.17404340429928,
+                83.92974208572413
+              ],
+              [
+                47.93267577605325,
+                625.0
+              ],
+              [
+                74.7510592032226,
+                625.0
+              ],
+              [
+                146.95867656000192,
+                84.13361368556507
+              ],
+              [
+                120.17404340429928,
+                83.92974208572413
+              ]
+            ],
+            [
+              [
+                61.0,
+                553.0
+              ],
+              [
+                72.0,
+                553.0
+              ],
+              [
+                72.0,
+                566.0
+              ],
+              [
+                61.0,
+                566.0
+              ],
+              [
+                61.0,
+                553.0
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.6105,
+                  15.736099999999999
+                ],
+                [
+                  -88.608,
+                  15.736099999999997
+                ],
+                [
+                  -88.60735438132562,
+                  15.741072012742135
+                ],
+                [
+                  -88.60985677888837,
+                  15.741053548291932
+                ],
+                [
+                  -88.6035,
+                  15.790000000000004
+                ],
+                [
+                  -88.6105,
+                  15.736099999999999
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.60766224441039,
+                  15.747576793327912
+                ],
+                [
+                  -88.60868867672372,
+                  15.74756921880755
+                ],
+                [
+                  -88.60867943107661,
+                  15.746394403675021
+                ],
+                [
+                  -88.60765300465631,
+                  15.746401977601899
+                ],
+                [
+                  -88.60766224441039,
+                  15.747576793327912
+                ]
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": true
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "same_candidate_set_or_same_visual_empty_decision",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "empty",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "common_clear_scope",
+        "rationale": "Vacío visual limitado a la intersección clara, con exclusión de la mancha y del agua revuelta del extremo sur.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.6035,
+                15.790000000000004
+              ],
+              [
+                -88.60985677888837,
+                15.741053548291932
+              ],
+              [
+                -88.60735438132562,
+                15.741072012742135
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.6035,
+                15.790000000000004
+              ]
+            ],
+            [
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ],
+              [
+                -88.60766224441039,
+                15.747576793327912
+              ],
+              [
+                -88.60765300465631,
+                15.746401977601899
+              ],
+              [
+                -88.60867943107661,
+                15.746394403675021
+              ],
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "visually_empty_within_explicit_scope",
+        "candidate_ids": [],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.601,
+                15.789999999999997
+              ],
+              [
+                -88.60100000000305,
+                15.789999999976493
+              ],
+              [
+                -88.60100000001508,
+                15.78999999988395
+              ],
+              [
+                -88.60735438132562,
+                15.741072012742135
+              ],
+              [
+                -88.60985668194711,
+                15.741053549007233
+              ],
+              [
+                -88.6035,
+                15.79
+              ],
+              [
+                -88.601625,
+                15.79
+              ],
+              [
+                -88.601,
+                15.789999999999997
+              ]
+            ],
+            [
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ],
+              [
+                -88.60867943107661,
+                15.746394403675021
+              ],
+              [
+                -88.60765300465631,
+                15.746401977601899
+              ],
+              [
+                -88.60766224441039,
+                15.747576793327912
+              ],
+              [
+                -88.60868867672372,
+                15.74756921880755
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.8989590525639078,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 9,
+      "observation_id": "db36e4f9-e8aa-4419-be3b-972b46bdcbd1",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "zone_id": "stc_fondeo",
+      "source_asset_sha256": "1782d9aeff9a9bcaf518e452346e68d836b421e0f32d121effc00979dde89e20",
+      "native_crs": "EPSG:32616",
+      "first_decision": "uncertain",
+      "second_decision": "empty",
+      "first_note": "El fondeo V1 contiene gran parte de tierra y dos entrantes costeros; los retornos de costa dentro del polígono no se separan con seguridad de instalaciones. Los blancos alargados en agua más evidentes, alrededor de (334,135), (397,401) y (418,604) px, están fuera de esta zona. Los puntos cerca de (335,598) px están pegados al borde terrestre y son ambiguos. Abstención; no inferir negativo del agua oscura restante.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 0.14355125227824356,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.14355125227824356,
+        "declared_scope_intersection_fraction_of_first": 0.14355125227824353,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.0,
+        "first_uncertain_scope_is_clear_evidence": false,
+        "declared_scope_intersection_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.62647397499369,
+                  15.754486450179058
+                ],
+                [
+                  -88.625255856081,
+                  15.753862917057461
+                ],
+                [
+                  -88.62310963031756,
+                  15.753878918518312
+                ],
+                [
+                  -88.62315702250973,
+                  15.759843316501032
+                ],
+                [
+                  -88.64322005645471,
+                  15.759692853665335
+                ],
+                [
+                  -88.64106652762415,
+                  15.758805349530721
+                ],
+                [
+                  -88.63807172820317,
+                  15.757743402448027
+                ],
+                [
+                  -88.63461110470345,
+                  15.756775282271136
+                ],
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ],
+                [
+                  -88.63171928774214,
+                  15.745228999817003
+                ],
+                [
+                  -88.63170991123143,
+                  15.744054197867117
+                ],
+                [
+                  -88.63077321359253,
+                  15.743609333874554
+                ],
+                [
+                  -88.62797393629515,
+                  15.743630258771939
+                ],
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62623256601708,
+                  15.73587100510257
+                ],
+                [
+                  -88.62482579981422,
+                  15.734977740224332
+                ],
+                [
+                  -88.62332717433159,
+                  15.734265899246681
+                ],
+                [
+                  -88.62338024995881,
+                  15.740953265614737
+                ],
+                [
+                  -88.6246829759036,
+                  15.740491685614469
+                ],
+                [
+                  -88.62663669312056,
+                  15.739754117191918
+                ],
+                [
+                  -88.62888183273803,
+                  15.740460354260447
+                ],
+                [
+                  -88.62896290364321,
+                  15.7389233748141
+                ],
+                [
+                  -88.62848485541247,
+                  15.73748094663442
+                ],
+                [
+                  -88.62754388066419,
+                  15.736493847203837
+                ],
+                [
+                  -88.62623256601708,
+                  15.73587100510257
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62974794963503,
+                  15.732049013782303
+                ],
+                [
+                  -88.632263550075,
+                  15.731578328679605
+                ],
+                [
+                  -88.63225345816952,
+                  15.730313156107515
+                ],
+                [
+                  -88.62693517727357,
+                  15.73035288613588
+                ],
+                [
+                  -88.62796942181322,
+                  15.731339295329034
+                ],
+                [
+                  -88.62974794963503,
+                  15.732049013782303
+                ]
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": null,
+        "conservative_clear_intersection_native_pixels": null,
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.647,
+                15.729999999999999
+              ],
+              [
+                -88.623,
+                15.73
+              ],
+              [
+                -88.623,
+                15.759999999999996
+              ],
+              [
+                -88.647,
+                15.76
+              ],
+              [
+                -88.647,
+                15.729999999999999
+              ]
+            ],
+            [
+              [
+                -88.63807172820317,
+                15.757743402448027
+              ],
+              [
+                -88.64106652762415,
+                15.758805349530721
+              ],
+              [
+                -88.64322005645471,
+                15.759692853665335
+              ],
+              [
+                -88.62315702250973,
+                15.759843316501032
+              ],
+              [
+                -88.62310963031756,
+                15.753878918518312
+              ],
+              [
+                -88.625255856081,
+                15.753862917057461
+              ],
+              [
+                -88.62647397499369,
+                15.754486450179058
+              ],
+              [
+                -88.62872000170539,
+                15.755283042200576
+              ],
+              [
+                -88.63152593297526,
+                15.756075416327064
+              ],
+              [
+                -88.63461110470345,
+                15.756775282271136
+              ],
+              [
+                -88.63807172820317,
+                15.757743402448027
+              ]
+            ],
+            [
+              [
+                -88.63077321359253,
+                15.743609333874554
+              ],
+              [
+                -88.63170991123143,
+                15.744054197867117
+              ],
+              [
+                -88.63171928774214,
+                15.745228999817003
+              ],
+              [
+                -88.62798688928135,
+                15.745256910689111
+              ],
+              [
+                -88.62797393629515,
+                15.743630258771939
+              ],
+              [
+                -88.63077321359253,
+                15.743609333874554
+              ]
+            ],
+            [
+              [
+                -88.62848485541247,
+                15.73748094663442
+              ],
+              [
+                -88.62896290364321,
+                15.7389233748141
+              ],
+              [
+                -88.62888183273803,
+                15.740460354260447
+              ],
+              [
+                -88.62663669312056,
+                15.739754117191918
+              ],
+              [
+                -88.6246829759036,
+                15.740491685614469
+              ],
+              [
+                -88.62338024995881,
+                15.740953265614737
+              ],
+              [
+                -88.62332717433159,
+                15.734265899246681
+              ],
+              [
+                -88.62482579981422,
+                15.734977740224332
+              ],
+              [
+                -88.62623256601708,
+                15.73587100510257
+              ],
+              [
+                -88.62754388066419,
+                15.736493847203837
+              ],
+              [
+                -88.62848485541247,
+                15.73748094663442
+              ]
+            ],
+            [
+              [
+                -88.62693517727357,
+                15.73035288613588
+              ],
+              [
+                -88.63225345816952,
+                15.730313156107515
+              ],
+              [
+                -88.632263550075,
+                15.731578328679605
+              ],
+              [
+                -88.62974794963503,
+                15.732049013782303
+              ],
+              [
+                -88.62796942181322,
+                15.731339295329034
+              ],
+              [
+                -88.62693517727357,
+                15.73035288613588
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "scope_and_evidence_policy_difference_no_positive_vs_negative_conflict",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "uncertain",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "no_negative_area_proposed",
+        "rationale": "Conservar abstención SAR, con tierra y costa fuera de toda máscara negativa; las subáreas de agua sin candidato de la segunda no son un negativo acordado.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false
+      },
+      "root_frozen_adjudication": {
+        "decision": "withheld_uncertain",
+        "candidate_ids": [],
+        "reviewed_area": null,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 10,
+      "observation_id": "e771fad3-7813-4297-913f-2cd1538058b5",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "zone_id": "stc_fondeo",
+      "source_asset_sha256": "1a891b43f4aacfc6dfd86de07f93cb86b3d72e6b1bf410a45a43ae6b6cf12833",
+      "native_crs": "EPSG:32616",
+      "first_decision": "uncertain",
+      "second_decision": "empty",
+      "first_note": "El ámbito V1 mezcla ladera/vegetación, costa y pequeñas superficies de agua. El punto intenso aproximadamente en (334,598) px está sobre el saliente costero y no es un buque inequívoco; no hay otro candidato resoluble y separado de tierra dentro de la zona. El contraste bajo del agua radar impide convertir esa falta de candidato en negativo completo.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 1.0,
+        "second_declared_scope_fraction_of_zone": 0.14355125227824356,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.14355125227824356,
+        "declared_scope_intersection_fraction_of_first": 0.14355125227824353,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.0,
+        "first_uncertain_scope_is_clear_evidence": false,
+        "declared_scope_intersection_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.62647397499369,
+                  15.754486450179058
+                ],
+                [
+                  -88.625255856081,
+                  15.753862917057461
+                ],
+                [
+                  -88.62310963031756,
+                  15.753878918518312
+                ],
+                [
+                  -88.62315702250973,
+                  15.759843316501032
+                ],
+                [
+                  -88.64322005645471,
+                  15.759692853665335
+                ],
+                [
+                  -88.64106652762415,
+                  15.758805349530721
+                ],
+                [
+                  -88.63807172820317,
+                  15.757743402448027
+                ],
+                [
+                  -88.63461110470345,
+                  15.756775282271136
+                ],
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ],
+                [
+                  -88.63171928774214,
+                  15.745228999817003
+                ],
+                [
+                  -88.63170991123143,
+                  15.744054197867117
+                ],
+                [
+                  -88.63077321359253,
+                  15.743609333874554
+                ],
+                [
+                  -88.62797393629515,
+                  15.743630258771939
+                ],
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62623256601708,
+                  15.73587100510257
+                ],
+                [
+                  -88.62482579981422,
+                  15.734977740224332
+                ],
+                [
+                  -88.62332717433159,
+                  15.734265899246681
+                ],
+                [
+                  -88.62338024995881,
+                  15.740953265614737
+                ],
+                [
+                  -88.6246829759036,
+                  15.740491685614469
+                ],
+                [
+                  -88.62663669312056,
+                  15.739754117191918
+                ],
+                [
+                  -88.62888183273803,
+                  15.740460354260447
+                ],
+                [
+                  -88.62896290364321,
+                  15.7389233748141
+                ],
+                [
+                  -88.62848485541247,
+                  15.73748094663442
+                ],
+                [
+                  -88.62754388066419,
+                  15.736493847203837
+                ],
+                [
+                  -88.62623256601708,
+                  15.73587100510257
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62974794963503,
+                  15.732049013782303
+                ],
+                [
+                  -88.632263550075,
+                  15.731578328679605
+                ],
+                [
+                  -88.63225345816952,
+                  15.730313156107515
+                ],
+                [
+                  -88.62693517727357,
+                  15.73035288613588
+                ],
+                [
+                  -88.62796942181322,
+                  15.731339295329034
+                ],
+                [
+                  -88.62974794963503,
+                  15.732049013782303
+                ]
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": null,
+        "conservative_clear_intersection_native_pixels": null,
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.647,
+                15.729999999999999
+              ],
+              [
+                -88.623,
+                15.73
+              ],
+              [
+                -88.623,
+                15.759999999999996
+              ],
+              [
+                -88.647,
+                15.76
+              ],
+              [
+                -88.647,
+                15.729999999999999
+              ]
+            ],
+            [
+              [
+                -88.63807172820317,
+                15.757743402448027
+              ],
+              [
+                -88.64106652762415,
+                15.758805349530721
+              ],
+              [
+                -88.64322005645471,
+                15.759692853665335
+              ],
+              [
+                -88.62315702250973,
+                15.759843316501032
+              ],
+              [
+                -88.62310963031756,
+                15.753878918518312
+              ],
+              [
+                -88.625255856081,
+                15.753862917057461
+              ],
+              [
+                -88.62647397499369,
+                15.754486450179058
+              ],
+              [
+                -88.62872000170539,
+                15.755283042200576
+              ],
+              [
+                -88.63152593297526,
+                15.756075416327064
+              ],
+              [
+                -88.63461110470345,
+                15.756775282271136
+              ],
+              [
+                -88.63807172820317,
+                15.757743402448027
+              ]
+            ],
+            [
+              [
+                -88.63077321359253,
+                15.743609333874554
+              ],
+              [
+                -88.63170991123143,
+                15.744054197867117
+              ],
+              [
+                -88.63171928774214,
+                15.745228999817003
+              ],
+              [
+                -88.62798688928135,
+                15.745256910689111
+              ],
+              [
+                -88.62797393629515,
+                15.743630258771939
+              ],
+              [
+                -88.63077321359253,
+                15.743609333874554
+              ]
+            ],
+            [
+              [
+                -88.62848485541247,
+                15.73748094663442
+              ],
+              [
+                -88.62896290364321,
+                15.7389233748141
+              ],
+              [
+                -88.62888183273803,
+                15.740460354260447
+              ],
+              [
+                -88.62663669312056,
+                15.739754117191918
+              ],
+              [
+                -88.6246829759036,
+                15.740491685614469
+              ],
+              [
+                -88.62338024995881,
+                15.740953265614737
+              ],
+              [
+                -88.62332717433159,
+                15.734265899246681
+              ],
+              [
+                -88.62482579981422,
+                15.734977740224332
+              ],
+              [
+                -88.62623256601708,
+                15.73587100510257
+              ],
+              [
+                -88.62754388066419,
+                15.736493847203837
+              ],
+              [
+                -88.62848485541247,
+                15.73748094663442
+              ]
+            ],
+            [
+              [
+                -88.62693517727357,
+                15.73035288613588
+              ],
+              [
+                -88.63225345816952,
+                15.730313156107515
+              ],
+              [
+                -88.632263550075,
+                15.731578328679605
+              ],
+              [
+                -88.62974794963503,
+                15.732049013782303
+              ],
+              [
+                -88.62796942181322,
+                15.731339295329034
+              ],
+              [
+                -88.62693517727357,
+                15.73035288613588
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "scope_and_evidence_policy_difference_no_positive_vs_negative_conflict",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "uncertain",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "no_negative_area_proposed",
+        "rationale": "Conservar abstención SAR, con tierra y costa fuera de toda máscara negativa; las subáreas de agua sin candidato de la segunda no son un negativo acordado.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false
+      },
+      "root_frozen_adjudication": {
+        "decision": "withheld_uncertain",
+        "candidate_ids": [],
+        "reviewed_area": null,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 11,
+      "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "zone_id": "stc_fondeo",
+      "source_asset_sha256": "dc344fbc45fec2779c2d706dedbc3cfdd2701941ea44d8f8fb42833257f6c426",
+      "native_crs": "EPSG:32616",
+      "first_decision": "candidates",
+      "second_decision": "candidates",
+      "first_note": "Un candidato alargado claro alrededor de (182,433) px está en agua, separado de la costa y dentro del fondeo V1; presenta cuerpo compacto y una estela tenue conectada hacia el este/sureste. Contrastado además en recorte nativo (140,405)-(235,470), sin reescalar. El rectángulo candidato cubre el cuerpo brillante, no la estela larga. Completo únicamente el pequeño rectángulo de agua indicado; no certifico el resto de la zona mixta de tierra/costa. Propuesta visual de IA, no identidad confirmada ni referencia independiente.",
+      "counts": {
+        "first": 1,
+        "second": 2,
+        "matched": 1,
+        "first_only": 0,
+        "second_only": 1
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 0.01827111765626795,
+        "second_declared_scope_fraction_of_zone": 0.15036678643107754,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.15036678643107754,
+        "declared_scope_intersection_fraction_of_first": 0.9605368589737079,
+        "declared_scope_intersection_fraction_of_second": 0.11671514953559886,
+        "conservative_clear_intersection_fraction_of_first": 0.9605368589737079,
+        "conservative_clear_intersection_fraction_of_zone": 0.01755008196349067,
+        "first_uncertain_scope_is_clear_evidence": null,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ],
+              [
+                -88.63482160345201,
+                15.759756062801571
+              ],
+              [
+                -88.63785067950914,
+                15.759733302453924
+              ],
+              [
+                -88.6408871566588,
+                15.75971044421398
+              ],
+              [
+                -88.64087935185351,
+                15.75873897913482
+              ],
+              [
+                -88.64041141289755,
+                15.758573052388595
+              ],
+              [
+                -88.6404031573617,
+                15.757545106425798
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ],
+              [
+                -88.63482160345201,
+                15.759756062801571
+              ],
+              [
+                -88.63785067950914,
+                15.759733302453924
+              ],
+              [
+                -88.6408871566588,
+                15.75971044421398
+              ],
+              [
+                -88.64087935185351,
+                15.75873897913482
+              ],
+              [
+                -88.64041141289755,
+                15.758573052388595
+              ],
+              [
+                -88.6404031573617,
+                15.757545106425798
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_native_pixels": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                229.9999999999418,
+                439.9999999999767
+              ],
+              [
+                230.00000000004658,
+                416.0
+              ],
+              [
+                197.53968253972332,
+                416.0
+              ],
+              [
+                165.00000000003493,
+                416.0000000000233
+              ],
+              [
+                165.0000000000297,
+                426.75000000001114
+              ],
+              [
+                170.0,
+                428.625
+              ],
+              [
+                170.0,
+                440.0
+              ],
+              [
+                201.72727272727272,
+                440.0
+              ],
+              [
+                201.72727272729662,
+                440.0000000000071
+              ],
+              [
+                229.9999999999418,
+                439.9999999999767
+              ]
+            ]
+          ]
+        },
+        "second_additional_declared_coverage_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ],
+                [
+                  -88.62872000170539,
+                  15.755283042200576
+                ],
+                [
+                  -88.62647397499369,
+                  15.754486450179058
+                ],
+                [
+                  -88.625255856081,
+                  15.753862917057461
+                ],
+                [
+                  -88.62310963031756,
+                  15.753878918518312
+                ],
+                [
+                  -88.62315702250973,
+                  15.759843316501032
+                ],
+                [
+                  -88.63482160345201,
+                  15.759756062801571
+                ],
+                [
+                  -88.63480424385538,
+                  15.757587203813545
+                ],
+                [
+                  -88.63744252186886,
+                  15.757567384927292
+                ],
+                [
+                  -88.63461110470345,
+                  15.756775282271136
+                ],
+                [
+                  -88.63152593297526,
+                  15.756075416327064
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.64322005645471,
+                  15.759692853665335
+                ],
+                [
+                  -88.64106652762415,
+                  15.758805349530721
+                ],
+                [
+                  -88.64087935185351,
+                  15.75873897913482
+                ],
+                [
+                  -88.6408871566588,
+                  15.75971044421398
+                ],
+                [
+                  -88.63785067950914,
+                  15.759733302453924
+                ],
+                [
+                  -88.64322005645471,
+                  15.759692853665335
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62492633211512,
+                  15.747629500570223
+                ],
+                [
+                  -88.62334003968432,
+                  15.747641322820268
+                ],
+                [
+                  -88.62335726613503,
+                  15.74981019619768
+                ],
+                [
+                  -88.62494357538108,
+                  15.749798372237514
+                ],
+                [
+                  -88.62492633211512,
+                  15.747629500570223
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ],
+                [
+                  -88.63171928774214,
+                  15.745228999817003
+                ],
+                [
+                  -88.63170991123143,
+                  15.744054197867117
+                ],
+                [
+                  -88.63077321359253,
+                  15.743609333874554
+                ],
+                [
+                  -88.62797393629515,
+                  15.743630258771939
+                ],
+                [
+                  -88.62798688928135,
+                  15.745256910689111
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.62482579981422,
+                  15.734977740224332
+                ],
+                [
+                  -88.62332717433159,
+                  15.734265899246681
+                ],
+                [
+                  -88.62338024995881,
+                  15.740953265614737
+                ],
+                [
+                  -88.6246829759036,
+                  15.740491685614469
+                ],
+                [
+                  -88.62663669312056,
+                  15.739754117191918
+                ],
+                [
+                  -88.62888183273803,
+                  15.740460354260447
+                ],
+                [
+                  -88.62896290364321,
+                  15.7389233748141
+                ],
+                [
+                  -88.62848485541247,
+                  15.73748094663442
+                ],
+                [
+                  -88.62754388066419,
+                  15.736493847203837
+                ],
+                [
+                  -88.62623256601708,
+                  15.73587100510257
+                ],
+                [
+                  -88.62482579981422,
+                  15.734977740224332
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.632263550075,
+                  15.731578328679605
+                ],
+                [
+                  -88.63225345816952,
+                  15.730313156107515
+                ],
+                [
+                  -88.62693517727357,
+                  15.73035288613588
+                ],
+                [
+                  -88.62796942181322,
+                  15.731339295329034
+                ],
+                [
+                  -88.62974794963503,
+                  15.732049013782303
+                ],
+                [
+                  -88.632263550075,
+                  15.731578328679605
+                ]
+              ]
+            ]
+          ]
+        },
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.64086973272451,
+                  15.75754159182002
+                ],
+                [
+                  -88.63744252186886,
+                  15.757567384927292
+                ],
+                [
+                  -88.63744252186886,
+                  15.757567384927292
+                ],
+                [
+                  -88.6404031573617,
+                  15.757545106425798
+                ],
+                [
+                  -88.64041141289755,
+                  15.758573052388595
+                ],
+                [
+                  -88.64087935185351,
+                  15.75873897913482
+                ],
+                [
+                  -88.64086973272451,
+                  15.75754159182002
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.63482160345201,
+                  15.759756062801573
+                ],
+                [
+                  -88.63785067950914,
+                  15.759733302453924
+                ],
+                [
+                  -88.63482160345201,
+                  15.759756062801571
+                ],
+                [
+                  -88.63482160345201,
+                  15.759756062801573
+                ]
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [
+        {
+          "first_candidate_number": 1,
+          "second_candidate_id": "second-pass-11-01",
+          "second_candidate_number": 1,
+          "iou_native_grid": 0.4166666666637313,
+          "center_distance_native_pixels": 2.6925824035928123,
+          "first_center_native_pixels": [
+            183.00000000002441,
+            433.0000000000078
+          ],
+          "second_center_native_pixels": [
+            180.5,
+            432.0
+          ],
+          "first_box_native_pixel_bounds": [
+            178.00000000001165,
+            430.0,
+            188.00000000004073,
+            436.0
+          ],
+          "second_box_native_pixel_bounds": [
+            177.0,
+            429.0,
+            184.0,
+            435.0
+          ],
+          "mutual_centroid_containment": true,
+          "both_centers_in_clear_intersection": true,
+          "second_confidence": "medium_candidate_plausibility"
+        }
+      ],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [
+        {
+          "second_candidate_id": "second-pass-11-02",
+          "second_candidate_number": 2,
+          "second_confidence": "medium_candidate_plausibility",
+          "rectangle_native_pixels": [
+            337,
+            533,
+            343,
+            542
+          ],
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -88.6241927679904,
+                  15.749261719815232
+                ],
+                [
+                  -88.62418630467026,
+                  15.748448392648665
+                ],
+                [
+                  -88.62474617471479,
+                  15.748444219025245
+                ],
+                [
+                  -88.62475264026048,
+                  15.74925754596543
+                ],
+                [
+                  -88.6241927679904,
+                  15.749261719815232
+                ]
+              ]
+            ]
+          },
+          "relation_to_original_reviewed_area": "outside_original_scope",
+          "center_inside_original_scope_including_boundary": false,
+          "center_distance_to_original_boundary_pixels": 146.99064596095002,
+          "candidate_box_fraction_inside_original_scope": 0.0,
+          "semantic_discrepancy_type": "new_candidate_in_expanded_scope",
+          "explanation": "El centro no estaba dentro del área original revisada; no se trata como omisión del primer revisor."
+        }
+      ],
+      "difference_interpretation": "additional_candidates_mostly_outside_original_scope",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "candidates",
+        "accept_as_ai_visual_candidate_second_numbers": [
+          1
+        ],
+        "abstain_second_candidate_numbers": [
+          2
+        ],
+        "area_rule": "common_clear_scope",
+        "rationale": "Mantener sólo el pequeño cuerpo con estela coincidente. El candidato costero adicional queda fuera del alcance original y permanece ambiguo tras la revisión de root.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ],
+              [
+                -88.63482160345201,
+                15.759756062801571
+              ],
+              [
+                -88.63785067950914,
+                15.759733302453924
+              ],
+              [
+                -88.6408871566588,
+                15.75971044421398
+              ],
+              [
+                -88.64087935185351,
+                15.75873897913482
+              ],
+              [
+                -88.64041141289755,
+                15.758573052388595
+              ],
+              [
+                -88.6404031573617,
+                15.757545106425798
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ]
+            ]
+          ]
+        }
+      },
+      "root_frozen_adjudication": {
+        "decision": "positive_and_complete_within_explicit_scope",
+        "candidate_ids": [
+          "second-pass-11-01"
+        ],
+        "reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ],
+              [
+                -88.6404031573617,
+                15.757545106425798
+              ],
+              [
+                -88.64041141289755,
+                15.758573052388595
+              ],
+              [
+                -88.64087935218751,
+                15.75873897898944
+              ],
+              [
+                -88.64088715589602,
+                15.759710349266172
+              ],
+              [
+                -88.63482160165209,
+                15.759755837924272
+              ],
+              [
+                -88.63480424385538,
+                15.757587203813545
+              ],
+              [
+                -88.63744244962298,
+                15.757567364716156
+              ],
+              [
+                -88.63744252186886,
+                15.757567384927292
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.017549786542536944,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    },
+    {
+      "queue_index": 12,
+      "observation_id": "05208f24-0534-4107-9bf1-700c46c84632",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "zone_id": "stc_muelles",
+      "source_asset_sha256": "bb6852052e2437ad7958da4de776eeb9d87a117b099f14ecc97e5dcd1d2e220b",
+      "native_crs": "EPSG:32616",
+      "first_decision": "uncertain",
+      "second_decision": "empty",
+      "first_note": "La banda de muelles V1 es visible y sin nube encima, pero la orilla del muelle y los píxeles contiguos de instalaciones no permiten separar de forma inequívoca un casco atracado. En el recorte nativo (355,170)-(475,255) se confirma que las superficies claras grandes pertenecen al lado terrestre; no las convierto en buques. Abstención por ambigüedad de borde y resolución, no negativo completo.",
+      "counts": {
+        "first": 0,
+        "second": 0,
+        "matched": 0,
+        "first_only": 0,
+        "second_only": 0
+      },
+      "area_comparison": {
+        "first_declared_scope_fraction_of_zone": 0.9999999999999998,
+        "second_declared_scope_fraction_of_zone": 0.711122173021626,
+        "second_scope_without_abstention_locators_fraction_of_zone": 0.4773792955158445,
+        "declared_scope_intersection_fraction_of_first": 0.7111221730216261,
+        "declared_scope_intersection_fraction_of_second": 1.0,
+        "conservative_clear_intersection_fraction_of_first": 0.0,
+        "conservative_clear_intersection_fraction_of_zone": 0.0,
+        "first_uncertain_scope_is_clear_evidence": false,
+        "declared_scope_intersection_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.61324821248431,
+                15.69855190949106
+              ],
+              [
+                -88.61382003957218,
+                15.700084076263312
+              ],
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ],
+              [
+                -88.62031035433156,
+                15.694975014293838
+              ],
+              [
+                -88.61324821248431,
+                15.69855190949106
+              ]
+            ]
+          ]
+        },
+        "conservative_clear_intersection_geometry": null,
+        "conservative_clear_intersection_native_pixels": null,
+        "second_additional_declared_coverage_geometry": null,
+        "first_declared_coverage_not_repeated_by_second_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.620394,
+                15.694444599999999
+              ],
+              [
+                -88.6127773,
+                15.698216300000004
+              ],
+              [
+                -88.6137773,
+                15.700216300000001
+              ],
+              [
+                -88.621394,
+                15.696444599999998
+              ],
+              [
+                -88.620394,
+                15.694444599999999
+              ]
+            ],
+            [
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ],
+              [
+                -88.61382003957218,
+                15.700084076263312
+              ],
+              [
+                -88.61324821248431,
+                15.69855190949106
+              ],
+              [
+                -88.62031035433156,
+                15.694975014293838
+              ],
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ]
+            ]
+          ]
+        },
+        "both_explicitly_empty_on_common_clear_area": false
+      },
+      "matches": [],
+      "first_only_candidate_numbers": [],
+      "second_only_candidates": [],
+      "difference_interpretation": "scope_and_evidence_policy_difference_no_positive_vs_negative_conflict",
+      "historical_adjudication_proposal": {
+        "status": "historical_proposal_superseded_by_root_frozen_adjudication",
+        "source": "Root steering after its raw S2 inspection, with conservative S1 retention; no model evidence.",
+        "decision": "empty",
+        "accept_as_ai_visual_candidate_second_numbers": [],
+        "abstain_second_candidate_numbers": [],
+        "area_rule": "second_declared_reviewed_water_polygon_root_to_freeze",
+        "rationale": "Propuesta de root tras revisar raw: vacío visual sólo en el polígono interior de agua de la segunda (aprox. 71.1%). La banda del muelle sigue incierta. Esto es adjudicación posterior, no acuerdo vacío entre las dos pasadas.",
+        "is_training_label": false,
+        "is_independent_ground_truth": false,
+        "proposed_reviewed_area": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ],
+              [
+                -88.61382003957218,
+                15.700084076263312
+              ],
+              [
+                -88.61324821248431,
+                15.69855190949106
+              ],
+              [
+                -88.62031035433156,
+                15.694975014293838
+              ],
+              [
+                -88.62125465802221,
+                15.696414021093057
+              ]
+            ]
+          ]
+        },
+        "abstention_locator_caution": "The broad rectangular abstention locator overlaps some clear interior water. Raw-confirmed interior polygon is 71.1122% of zone; mechanical subtraction of locator yields only 47.7379%. Root must freeze the precise shoreline exclusion, rather than equate the whole locator rectangle with unresolved pixels."
+      },
+      "root_frozen_adjudication": {
+        "decision": "visually_empty_within_explicit_scope",
+        "candidate_ids": [],
+        "reviewed_area": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -88.62125465802221,
+                  15.696414021093057
+                ],
+                [
+                  -88.61716565314757,
+                  15.69843257979378
+                ],
+                [
+                  -88.61715100760641,
+                  15.696575229741754
+                ],
+                [
+                  -88.62031035433156,
+                  15.694975014293838
+                ],
+                [
+                  -88.62125465802221,
+                  15.696414021093057
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -88.6166080548932,
+                  15.698707832428312
+                ],
+                [
+                  -88.61382003957218,
+                  15.700084076263312
+                ],
+                [
+                  -88.61331548576389,
+                  15.698732164535528
+                ],
+                [
+                  -88.6166080548932,
+                  15.698707832428312
+                ]
+              ]
+            ]
+          ]
+        },
+        "reviewed_fraction_of_v1_zone": 0.47737782887028085,
+        "source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+      }
+    }
+  ],
+  "root_final_adjudication_reference": {
+    "path": "reports/local-review/scientific-closure-20261026/adjudicated-geometry.json",
+    "sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565",
+    "frozen_at": "2026-10-26T15:24:46.487082+00:00",
+    "positive_candidates": 43,
+    "reviewed_observation_areas": 8,
+    "withheld_queue_indices": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "is_independent_ground_truth": false,
+    "note": "Final root adjudication supersedes the earlier proposal. STC12 final area is 47.7%, the conservative exclusion geometry."
+  }
+}

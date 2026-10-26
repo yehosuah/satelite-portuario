@@ -1,0 +1,209 @@
+{
+  "split": "train",
+  "threshold": 0.5,
+  "iou_threshold": 0.5,
+  "ports": {
+    "pbr": {
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "prediction_count": 0,
+      "reference_count": 0,
+      "scene_count": 2,
+      "precision": null,
+      "recall": null,
+      "precision_interval": null,
+      "recall_interval": null,
+      "false_positives_per_scene": 0.0,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "insufficient_support",
+        "precision_below_target",
+        "recall_below_target",
+        "training_fit_is_not_validation"
+      ]
+    },
+    "prq": {
+      "true_positives": 13,
+      "false_positives": 2,
+      "false_negatives": 3,
+      "prediction_count": 15,
+      "reference_count": 16,
+      "scene_count": 2,
+      "precision": 0.8666666666666667,
+      "recall": 0.8125,
+      "precision_interval": [
+        0.6211801716767764,
+        0.9626387408969346
+      ],
+      "recall_interval": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "false_positives_per_scene": 1.0,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "precision_below_target",
+        "training_fit_is_not_validation"
+      ]
+    },
+    "stc": {
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "prediction_count": 1,
+      "reference_count": 1,
+      "scene_count": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "recall_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "false_positives_per_scene": 0.5,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "precision_below_target",
+        "recall_below_target",
+        "training_fit_is_not_validation"
+      ]
+    }
+  },
+  "required_ports": [
+    "prq",
+    "stc",
+    "pbr"
+  ],
+  "eligible": false,
+  "overall": {
+    "true_positives": 13,
+    "false_positives": 3,
+    "false_negatives": 4,
+    "prediction_count": 16,
+    "reference_count": 17,
+    "scene_count": 6,
+    "precision": 0.8125,
+    "recall": 0.7647058823529411,
+    "precision_interval": [
+      0.5699111903802586,
+      0.9340840092857187
+    ],
+    "recall_interval": [
+      0.5273820188043501,
+      0.9044495567791988
+    ],
+    "false_positives_per_scene": 0.5
+  },
+  "zone_metrics": {
+    "pbr|sentinel-2|pbr_canal": {
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "prediction_count": 0,
+      "reference_count": 0,
+      "scene_count": 2,
+      "precision": null,
+      "recall": null,
+      "precision_interval": null,
+      "recall_interval": null,
+      "false_positives_per_scene": 0.0
+    },
+    "prq|sentinel-2|prq_fondeo": {
+      "true_positives": 12,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "prediction_count": 13,
+      "reference_count": 13,
+      "scene_count": 1,
+      "precision": 0.9230769230769231,
+      "recall": 0.9230769230769231,
+      "precision_interval": [
+        0.6668604907890041,
+        0.9862895787574435
+      ],
+      "recall_interval": [
+        0.6668604907890041,
+        0.9862895787574435
+      ],
+      "false_positives_per_scene": 1.0
+    },
+    "prq|sentinel-2|prq_muelles": {
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 2,
+      "prediction_count": 2,
+      "reference_count": 3,
+      "scene_count": 1,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "precision_interval": [
+        0.09453120573423074,
+        0.9054687942657693
+      ],
+      "recall_interval": [
+        0.06149194472039621,
+        0.7923403991979522
+      ],
+      "false_positives_per_scene": 1.0
+    },
+    "stc|sentinel-2|stc_fondeo": {
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "prediction_count": 1,
+      "reference_count": 1,
+      "scene_count": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "recall_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "false_positives_per_scene": 1.0
+    },
+    "stc|sentinel-2|stc_muelles": {
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "prediction_count": 0,
+      "reference_count": 0,
+      "scene_count": 1,
+      "precision": null,
+      "recall": null,
+      "precision_interval": null,
+      "recall_interval": null,
+      "false_positives_per_scene": 0.0
+    }
+  },
+  "counting_scope": "Unique objects per port/acquisition; overlapping zones are not independent. Overall sums ports.",
+  "interval_method": "Wilson95% by object; pass dependence not modeled by that interval",
+  "min_support": 1,
+  "min_passes": 0,
+  "target_precision": 0.9,
+  "minimum_recall": 0.8,
+  "automatic_publication": false,
+  "reference_scope": "Agreement with frozen reference provenance; not automatically human validation",
+  "status": "training_diagnostic_not_validation",
+  "threshold_selection_performed": false,
+  "development_purpose": "unseen_refit_passes_internal_train_development",
+  "interpretation": "Internal TRAIN development on passes absent from this refit's training. AI-adjudicated references were exposed to the old public model; this is not independent validation, calibration, threshold selection, training or model activation.",
+  "independent_validation": false,
+  "unseen_by_refit_training": true,
+  "new_pass_ids": [
+    "S2A:20250110T161631:R140",
+    "S2B:20250518T161829:R040",
+    "S2C:20250304T162211:R040",
+    "S2C:20250403T161851:R040"
+  ]
+}

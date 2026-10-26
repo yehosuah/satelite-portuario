@@ -1,0 +1,34 @@
+{
+  "schema": "puertogt-ai-review-import-adjudication-v1",
+  "batch": "scientific-closure-train-increment-20261026",
+  "author": "Codex /root",
+  "kind": "ai_visual_review",
+  "is_human_review": false,
+  "blind_to_model": false,
+  "exposure": "First and second inspections frozen before comparing upstream public-model proposals. Root previously saw that upstream comparison; second reviewer did not. Final decisions use raw-derived image crops and review geometry. No incremental e099 refit predictions, CAL or TEST read for adjudication. GFW visits are not label evidence. Import translation consulted only upstream public-model proposal geometry for the eight frozen TRAIN observation IDs, after all geometry and scope decisions were frozen. No scores, incremental refit predictions, CAL or TEST imagery used.",
+  "sources": [
+    {
+      "path": "reports/local-review/scientific-closure-20261026/adjudicated-geometry.json",
+      "sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565"
+    },
+    {
+      "path": "reports/local-review/scientific-closure-20261026/proposals.json",
+      "sha256": "5619cf5be5799d07cf09d979e491356be461be73d9c92731d2e46e451fd463b6"
+    }
+  ],
+  "accepted_observation_ids": [
+    "096198a8-e91c-4444-b07c-1370aa4570ac",
+    "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+    "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+    "09b37fd3-c189-4bae-aa85-06da102c023b",
+    "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+    "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+    "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+    "05208f24-0534-4107-9bf1-700c46c84632"
+  ],
+  "frozen_geometry_source_sha256": "fb757ae6f09a3f3e95ce873359d81d833293afa8d07e672d3f80f5d23c92f565",
+  "geometry_and_scopes_must_equal_frozen_source": true,
+  "is_independent_validation": false,
+  "physical_dimensions_or_families_created": false,
+  "gfw_used_as_truth": false
+}

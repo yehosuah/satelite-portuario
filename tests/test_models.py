@@ -120,6 +120,37 @@ def test_new_model_or_attribute_policy_gets_distinct_processing_identity():
     assert processing_recipe(detector, head) != processing_recipe(detector, changed)
 
 
+@pytest.mark.parametrize("sensor, recipe, legacy_identity", [
+    ("sentinel-1", "ai2-s1-v1", "ai2-s1-v1:fbcc03d0d291a7a3"),
+    ("sentinel-2", "ai2-s2-v1", "ai2-s2-v1:b3435cb5d64a2a65"),
+])
+def test_custom_detector_anchors_get_distinct_identity_without_changing_legacy_keys(
+    sensor, recipe, legacy_identity
+):
+    detector = ModelManifest(model_id="anchor-fixture", version="1", sensor=sensor,
+                             task="detection", recipe_version=recipe)
+    explicit_default = detector.model_copy(
+        update={"metadata": {"anchor_sizes": [[32], [64], [128], [256]]}}
+    )
+    small = detector.model_copy(update={"metadata": {"anchor_sizes": [[8], [16], [32], [64]]}})
+    smaller = detector.model_copy(update={"metadata": {"anchor_sizes": [[4], [8], [16], [32]]}})
+
+    assert processing_recipe(detector) == legacy_identity
+    assert processing_recipe(explicit_default) == legacy_identity
+    assert processing_recipe(small) != legacy_identity
+    assert processing_recipe(smaller) != processing_recipe(small)
+
+
+@pytest.mark.parametrize("task, recipe", [
+    ("attributes", "ai2-s2-v1"), ("change", "ai2-s2-v1"), ("detection", "other-adapter-v1"),
+])
+def test_detector_anchor_metadata_does_not_change_other_adapter_identities(task, recipe):
+    model = ModelManifest(model_id="other-fixture", version="1", sensor="sentinel-2",
+                          task=task, recipe_version=recipe)
+    unrelated_metadata = model.model_copy(update={"metadata": {"anchor_sizes": None}})
+    assert processing_recipe(unrelated_metadata) == processing_recipe(model)
+
+
 def test_validation_does_not_spread_to_unmeasured_port_or_zone():
     model = ModelManifest(
         model_id="d",

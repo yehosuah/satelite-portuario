@@ -25,6 +25,15 @@ def processing_recipe(model: ModelManifest, attributes: ModelManifest | None = N
             "publication_policy",
         )
     }
+    if model.task == "detection" and (model.sensor, model.recipe_version) in {
+        ("sentinel-1", "ai2-s1-v1"), ("sentinel-2", "ai2-s2-v1")
+    }:
+        from puertogt.ml.detection import DEFAULT_DETECTOR_ANCHOR_SIZES, detector_anchor_sizes
+
+        anchors = detector_anchor_sizes(model)
+        # Omitted and explicit legacy geometry retain existing cache/ledger keys.
+        if anchors != [list(level) for level in DEFAULT_DETECTOR_ANCHOR_SIZES]:
+            identity["anchor_sizes"] = anchors
     if attributes:
         identity["attributes"] = processing_recipe(attributes)
     digest = hashlib.sha256(json_text(identity).encode()).hexdigest()[:16]

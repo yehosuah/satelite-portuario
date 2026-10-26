@@ -1,0 +1,118 @@
+{
+  "status": "completed_internal_train_development_only",
+  "freeze_sha256": "645969356a4c560b0fa3b218d2fd9f057c724396466048aad107daffc9354b42",
+  "weights_sha256": "e0990d7d69750650a5f5175361fc901de882ad0be35ef8fcfd62a3c4b8e73c68",
+  "seconds": 12.21041433303617,
+  "peak_rss_bytes": 1324597248,
+  "settings": {
+    "score_threshold": 0.5,
+    "iou_threshold": 0.5,
+    "cpu_threads": 4,
+    "maximum_seconds": 180,
+    "maximum_peak_rss_bytes": 4294967296,
+    "memory_enforcement": "peak RSS checked between stages; no portable OS hard cap"
+  },
+  "report_sha256": "a6765f4a67708a14936a7753423ddaa16abf6563f4256cf6496755f6facd03ac",
+  "predictions_sha256": "1ccb4931e375995033f02f72cf353df433a6fb9e0e0917f67ac142047320e005",
+  "overall": {
+    "true_positives": 13,
+    "false_positives": 3,
+    "false_negatives": 4,
+    "prediction_count": 16,
+    "reference_count": 17,
+    "scene_count": 6,
+    "precision": 0.8125,
+    "recall": 0.7647058823529411,
+    "precision_interval": [
+      0.5699111903802586,
+      0.9340840092857187
+    ],
+    "recall_interval": [
+      0.5273820188043501,
+      0.9044495567791988
+    ],
+    "false_positives_per_scene": 0.5
+  },
+  "ports": {
+    "pbr": {
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "prediction_count": 0,
+      "reference_count": 0,
+      "scene_count": 2,
+      "precision": null,
+      "recall": null,
+      "precision_interval": null,
+      "recall_interval": null,
+      "false_positives_per_scene": 0.0,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "insufficient_support",
+        "precision_below_target",
+        "recall_below_target",
+        "training_fit_is_not_validation"
+      ]
+    },
+    "prq": {
+      "true_positives": 13,
+      "false_positives": 2,
+      "false_negatives": 3,
+      "prediction_count": 15,
+      "reference_count": 16,
+      "scene_count": 2,
+      "precision": 0.8666666666666667,
+      "recall": 0.8125,
+      "precision_interval": [
+        0.6211801716767764,
+        0.9626387408969346
+      ],
+      "recall_interval": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "false_positives_per_scene": 1.0,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "precision_below_target",
+        "training_fit_is_not_validation"
+      ]
+    },
+    "stc": {
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "prediction_count": 1,
+      "reference_count": 1,
+      "scene_count": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "recall_interval": [
+        0,
+        0.7934506856227626
+      ],
+      "false_positives_per_scene": 0.5,
+      "pass_count": 2,
+      "eligible": false,
+      "reasons": [
+        "precision_below_target",
+        "recall_below_target",
+        "training_fit_is_not_validation"
+      ]
+    }
+  },
+  "interpretation": "Internal TRAIN development on passes absent from this refit's training. AI-adjudicated references were exposed to the old public model; this is not independent validation, calibration, threshold selection, training or model activation.",
+  "unseen_by_refit_training": true,
+  "calibration_or_test_opened": false,
+  "training_performed": false,
+  "threshold_selection_performed": false,
+  "automatic_publication": false,
+  "independent_validation": false,
+  "model_activation_performed": false
+}

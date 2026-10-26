@@ -15,6 +15,8 @@ from puertogt.assets import file_hash
 from puertogt.contracts import ModelManifest, Prediction, RasterBundle
 from puertogt.preprocess import read_model_input
 
+DEFAULT_DETECTOR_ANCHOR_SIZES = ((32,), (64,), (128,), (256,))
+
 
 def load_manifest(path: Path) -> ModelManifest:
     return ModelManifest.model_validate(yaml.safe_load(Path(path).read_text()))
@@ -248,7 +250,7 @@ def detector_anchor_sizes(model: ModelManifest) -> list[list[int]]:
     three aspect-ratio outputs. Anchor geometry is not a weight tensor, so it
     must travel in the manifest used by both training and inference.
     """
-    sizes = model.metadata.get("anchor_sizes", [[32], [64], [128], [256]])
+    sizes = model.metadata.get("anchor_sizes", [list(level) for level in DEFAULT_DETECTOR_ANCHOR_SIZES])
     if (not isinstance(sizes, list) or len(sizes) != 4
             or any(not isinstance(level, list) or len(level) != 1
                    or type(level[0]) is not int or not 1 <= level[0] <= 512
@@ -318,7 +320,8 @@ def detect(
     image = read_model_input(bundle, model)
     detector = detector or load_detector(model, device=device)
     if (detector.manifest.model_id != model.model_id or detector.manifest.version != model.version
-            or detector.manifest.weights_sha256 != model.weights_sha256):
+            or detector.manifest.weights_sha256 != model.weights_sha256
+            or detector_anchor_sizes(detector.manifest) != detector_anchor_sizes(model)):
         raise ValueError("loaded detector does not match the requested manifest")
     size = 512
     height, width = image.shape[-2:]
