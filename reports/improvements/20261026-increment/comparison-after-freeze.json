@@ -1,0 +1,2435 @@
+{
+  "schema": "train-post-first-pass-geometry-comparison-v1",
+  "created_at": "2026-10-26T14:23:09.470966Z",
+  "queue_id": "train-bb18008ec1d937776f35",
+  "exposure_event": "proposals opened after first-pass receipt",
+  "proposals_opened_at": "2026-10-26T14:16:42.739047Z",
+  "authorized_observation_ids": [
+    "096198a8-e91c-4444-b07c-1370aa4570ac",
+    "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+    "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+    "09b37fd3-c189-4bae-aa85-06da102c023b",
+    "1d86f54e-70f7-4e2b-bcca-d8949ac00271",
+    "26c41fa8-08e3-4257-8c9c-c446f8cab360",
+    "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+    "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+    "db36e4f9-e8aa-4419-be3b-972b46bdcbd1",
+    "e771fad3-7813-4297-913f-2cd1538058b5",
+    "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+    "05208f24-0534-4107-9bf1-700c46c84632"
+  ],
+  "proposals_queried_observation_ids": [
+    "096198a8-e91c-4444-b07c-1370aa4570ac",
+    "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+    "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+    "09b37fd3-c189-4bae-aa85-06da102c023b",
+    "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+    "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+    "d9f3dfe4-892b-49cc-80a6-58fe99fda67a"
+  ],
+  "compared_observations": 7,
+  "excluded_abstentions": 5,
+  "protocol": {
+    "iou_threshold": 0.5,
+    "scope_eligibility": "Projected centroid covered by reviewed_area; numerical tolerance 0.000001 m.",
+    "geometry": "Full original polygons projected to native metric CRS; no clipping for IoU.",
+    "matching": "Maximum-cardinality bipartite one-to-one matching at IoU >= 0.5; deterministic visual-index traversal and descending-IoU/model-id adjacency.",
+    "optimality_check": "Koenig vertex-cover certificate with cardinality equal to the matching, covering every threshold-qualified edge.",
+    "proposal_filter": "Existing provisional model proposals only. No manual entries or detection revisions in the seven queried observations.",
+    "abstentions": "Excluded, with no proposals read. Empty scopes remain eligible for model-proposal disagreement counts.",
+    "scores_used": false,
+    "proposals_rescored_or_inferred": false,
+    "weights_or_training_changed": false,
+    "calibration_or_test_opened": false,
+    "prior_train_corpus_opened": false
+  },
+  "is_independent_validation": false,
+  "training_labels_created": 0,
+  "source_sha256_before": {
+    "reports/improvements/20261026-increment/first-pass-findings.json": "4595a7699571b68fea8cf6484ecf5011c507b6c582b4df05acb85a2ece177b7f",
+    "reports/review-queue/train-primaries-final-v2/queue.json": "35c92bca87c79d64833edde6db1870f0b00fd2cc54a0177857e150a84a33d5bc",
+    "data/review-intake/train-bb18008ec1d937776f35/ee620abf-497e-5870-8c09-b9bf247765d2.json": "709d2ddbd6a4a06c94bba37faa4398496989fa4181cfc42e04703f01082b5c5f",
+    "data/review-intake/train-bb18008ec1d937776f35/bb12195e-54ed-5375-bd0a-d8d84f8950d4.json": "0088db9475dfa83b5b0caa4d6cc025ad52c595f78cb9c6697495f6f73202c463",
+    "data/review-intake/train-bb18008ec1d937776f35/2eb00ffc-8e1b-5ff5-9999-1f0335a96004.json": "51e3c54640dcb0b2724f28a8a49bcf9f0089d21b5089f4595d5f3a01f4e1b283",
+    "data/review-intake/train-bb18008ec1d937776f35/696fa84f-768c-5374-921e-898f528c3320.json": "af2921617e5ac27ed9a97977fe6f307f6331bcdf9dc2558441e529e5e5a40fda",
+    "data/review-intake/train-bb18008ec1d937776f35/c5c5aab2-4e26-5d2a-bdaa-1e60d50a2c04.json": "029e477b11c9f2a94f34139cbb44c5bc955491d860a429d5236eb0ede95101be",
+    "data/review-intake/train-bb18008ec1d937776f35/b2de878a-c972-56a5-be22-b25a4ab3c485.json": "8a19978b663921363b58a7f9fcb97725c1becbdcf5fa11a6e0e278fc52baab01",
+    "data/review-intake/train-bb18008ec1d937776f35/4feb9484-6c97-52b6-a204-3fe9f6c9191d.json": "ca8bd7fa62f870bc52735d918bd8340c27e0ba7ee55d09b1455e2d7535144b95",
+    "data/review-intake/train-bb18008ec1d937776f35/307cdc61-2d00-5d05-a60b-55d241d547dd.json": "2e786b0f461fcaa569753dbd72fd8b39b797cb200ab0e24115db5f6b10c931b3",
+    "data/review-intake/train-bb18008ec1d937776f35/095c8cad-4c9e-5de4-abaa-44bbd01a8395.json": "ad8d89e5933e3e2fc7b7251f5ead6f2e8be79755afc31d07deb54d52dcb894d4",
+    "data/review-intake/train-bb18008ec1d937776f35/8ac927e6-2752-525d-8395-722c941783cd.json": "790de331046598fe745a1aa31e803b598747d3deb8b724608af07c0444f616f6",
+    "data/review-intake/train-bb18008ec1d937776f35/8c360640-f3be-59a9-aeb4-d6c05a2051ed.json": "b5d0d0772c4152a8fb01f336ae2de9c801526005939a91034fc96f3548b754bb",
+    "data/review-intake/train-bb18008ec1d937776f35/ccc6a12a-de17-569e-825c-36e7bdfcf7fc.json": "a0a87becd0b5524d290767a8e784ee230205b18437836efc8a2344e8d0a90d20"
+  },
+  "source_sha256_after": {
+    "reports/improvements/20261026-increment/first-pass-findings.json": "4595a7699571b68fea8cf6484ecf5011c507b6c582b4df05acb85a2ece177b7f",
+    "reports/review-queue/train-primaries-final-v2/queue.json": "35c92bca87c79d64833edde6db1870f0b00fd2cc54a0177857e150a84a33d5bc",
+    "data/review-intake/train-bb18008ec1d937776f35/ee620abf-497e-5870-8c09-b9bf247765d2.json": "709d2ddbd6a4a06c94bba37faa4398496989fa4181cfc42e04703f01082b5c5f",
+    "data/review-intake/train-bb18008ec1d937776f35/bb12195e-54ed-5375-bd0a-d8d84f8950d4.json": "0088db9475dfa83b5b0caa4d6cc025ad52c595f78cb9c6697495f6f73202c463",
+    "data/review-intake/train-bb18008ec1d937776f35/2eb00ffc-8e1b-5ff5-9999-1f0335a96004.json": "51e3c54640dcb0b2724f28a8a49bcf9f0089d21b5089f4595d5f3a01f4e1b283",
+    "data/review-intake/train-bb18008ec1d937776f35/696fa84f-768c-5374-921e-898f528c3320.json": "af2921617e5ac27ed9a97977fe6f307f6331bcdf9dc2558441e529e5e5a40fda",
+    "data/review-intake/train-bb18008ec1d937776f35/c5c5aab2-4e26-5d2a-bdaa-1e60d50a2c04.json": "029e477b11c9f2a94f34139cbb44c5bc955491d860a429d5236eb0ede95101be",
+    "data/review-intake/train-bb18008ec1d937776f35/b2de878a-c972-56a5-be22-b25a4ab3c485.json": "8a19978b663921363b58a7f9fcb97725c1becbdcf5fa11a6e0e278fc52baab01",
+    "data/review-intake/train-bb18008ec1d937776f35/4feb9484-6c97-52b6-a204-3fe9f6c9191d.json": "ca8bd7fa62f870bc52735d918bd8340c27e0ba7ee55d09b1455e2d7535144b95",
+    "data/review-intake/train-bb18008ec1d937776f35/307cdc61-2d00-5d05-a60b-55d241d547dd.json": "2e786b0f461fcaa569753dbd72fd8b39b797cb200ab0e24115db5f6b10c931b3",
+    "data/review-intake/train-bb18008ec1d937776f35/095c8cad-4c9e-5de4-abaa-44bbd01a8395.json": "ad8d89e5933e3e2fc7b7251f5ead6f2e8be79755afc31d07deb54d52dcb894d4",
+    "data/review-intake/train-bb18008ec1d937776f35/8ac927e6-2752-525d-8395-722c941783cd.json": "790de331046598fe745a1aa31e803b598747d3deb8b724608af07c0444f616f6",
+    "data/review-intake/train-bb18008ec1d937776f35/8c360640-f3be-59a9-aeb4-d6c05a2051ed.json": "b5d0d0772c4152a8fb01f336ae2de9c801526005939a91034fc96f3548b754bb",
+    "data/review-intake/train-bb18008ec1d937776f35/ccc6a12a-de17-569e-825c-36e7bdfcf7fc.json": "a0a87becd0b5524d290767a8e784ee230205b18437836efc8a2344e8d0a90d20"
+  },
+  "first_pass_sources_unchanged": true,
+  "model_snapshot_sha256": "270ad2df98da899fa202edb50ec520ce6624356cdf09581fd19415170eaf1062",
+  "model_snapshot": [
+    {
+      "detection_id": "12c5880776154e5a539bf0b9",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80693647439615,
+              13.909807249956808
+            ],
+            [
+              -90.80417064328421,
+              13.909782361902028
+            ],
+            [
+              -90.80419619612617,
+              13.907074084382257
+            ],
+            [
+              -90.8069619951151,
+              13.907098967402897
+            ],
+            [
+              -90.80693647439615,
+              13.909807249956808
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "1329a725167ca04135d01a30",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79041790566716,
+              13.90694455953456
+            ],
+            [
+              -90.78765361850499,
+              13.906919502696429
+            ],
+            [
+              -90.78767938635518,
+              13.904208265802342
+            ],
+            [
+              -90.79044364138478,
+              13.90423331756569
+            ],
+            [
+              -90.79041790566716,
+              13.90694455953456
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "1aad0af55f0a0c94e71b2bbd",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.7810699896756,
+              13.908950447467756
+            ],
+            [
+              -90.7783023104283,
+              13.908925250344165
+            ],
+            [
+              -90.77832811722864,
+              13.906221762690077
+            ],
+            [
+              -90.78109576439147,
+              13.906246954725734
+            ],
+            [
+              -90.7810699896756,
+              13.908950447467756
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "1cdc879d611ae141d42214f3",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78172097601185,
+              13.897846353739583
+            ],
+            [
+              -90.77896880198436,
+              13.897821323605145
+            ],
+            [
+              -90.77899466837461,
+              13.895108523501765
+            ],
+            [
+              -90.78174681041408,
+              13.89513354856084
+            ],
+            [
+              -90.78172097601185,
+              13.897846353739583
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "1d89a4aaef2e446220d7ccd0",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80766998833508,
+              13.88596184619346
+            ],
+            [
+              -90.80491663053132,
+              13.885937117783339
+            ],
+            [
+              -90.80494214382131,
+              13.883227275704936
+            ],
+            [
+              -90.80769546968553,
+              13.883251999102386
+            ],
+            [
+              -90.80766998833508,
+              13.88596184619346
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "47b7bf431d12b420823726db",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.7986648763814,
+              13.877861641055794
+            ],
+            [
+              -90.79590840916289,
+              13.877836796312893
+            ],
+            [
+              -90.79593399788767,
+              13.87512841652645
+            ],
+            [
+              -90.7986904331676,
+              13.875153256233103
+            ],
+            [
+              -90.7986648763814,
+              13.877861641055794
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "73901ea881334bcc68bf8728",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79725307139184,
+              13.891551271762964
+            ],
+            [
+              -90.79449130239423,
+              13.891526340636775
+            ],
+            [
+              -90.79451695334772,
+              13.888815903959461
+            ],
+            [
+              -90.7972786902882,
+              13.888840830032656
+            ],
+            [
+              -90.79725307139184,
+              13.891551271762964
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "81b03084da7326f7e4544207",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79684296459902,
+              13.905040657236645
+            ],
+            [
+              -90.7940817477994,
+              13.90501570419592
+            ],
+            [
+              -90.79410743924727,
+              13.902304234486815
+            ],
+            [
+              -90.79686862395157,
+              13.902329182472704
+            ],
+            [
+              -90.79684296459902,
+              13.905040657236645
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "8338332d867d9cc32431bd49",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80861370849983,
+              13.891301162086801
+            ],
+            [
+              -90.80585312795073,
+              13.89127637068029
+            ],
+            [
+              -90.8058786306174,
+              13.888567584155176
+            ],
+            [
+              -90.80863917914282,
+              13.888592370539985
+            ],
+            [
+              -90.80861370849983,
+              13.891301162086801
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "8733e53edd8851fdc7cebe2c",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80275342920224,
+              13.899531162539109
+            ],
+            [
+              -90.79999510625275,
+              13.899506311620472
+            ],
+            [
+              -90.80002073085726,
+              13.896793500806343
+            ],
+            [
+              -90.80277902174218,
+              13.896818346686501
+            ],
+            [
+              -90.80275342920224,
+              13.899531162539109
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "8cca49509bd0fd36e8cb36dd",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78913634054688,
+              13.890101576484309
+            ],
+            [
+              -90.78637707639537,
+              13.890076578564788
+            ],
+            [
+              -90.78640281894572,
+              13.887366149572145
+            ],
+            [
+              -90.78916205107309,
+              13.887391142424658
+            ],
+            [
+              -90.78913634054688,
+              13.890101576484309
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "98ad6712e8fddc4e8ab4fefb",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80724735156238,
+              13.880481233938617
+            ],
+            [
+              -90.80447702461215,
+              13.880456357264558
+            ],
+            [
+              -90.80450253570105,
+              13.877746178374702
+            ],
+            [
+              -90.80727283052413,
+              13.877771050003572
+            ],
+            [
+              -90.80724735156238,
+              13.880481233938617
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "a667960105547018eb85cee9",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78157575223781,
+              13.891782887436833
+            ],
+            [
+              -90.7788139971593,
+              13.891757778544454
+            ],
+            [
+              -90.77883981614123,
+              13.889048909347881
+            ],
+            [
+              -90.78160153918142,
+              13.889074013154254
+            ],
+            [
+              -90.78157575223781,
+              13.891782887436833
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "a9ceedcb956082463d36b8cd",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.77928509123488,
+              13.880916851714893
+            ],
+            [
+              -90.77653309053964,
+              13.88089182373321
+            ],
+            [
+              -90.7765589143672,
+              13.878183022520412
+            ],
+            [
+              -90.77931088316419,
+              13.878208045428943
+            ],
+            [
+              -90.77928509123488,
+              13.880916851714893
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "ae0e2d5c7f13449f93bea6c8",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78857961880183,
+              13.883638168024296
+            ],
+            [
+              -90.7858180161824,
+              13.883613153312954
+            ],
+            [
+              -90.7858437624895,
+              13.880901700251792
+            ],
+            [
+              -90.78860533306111,
+              13.880926709888628
+            ],
+            [
+              -90.78857961880183,
+              13.883638168024296
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "c406c4f3fb28f7a5fa0e2dae",
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:39:37.581565Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79311052461627,
+              13.897463181459706
+            ],
+            [
+              -90.79035079330868,
+              13.897438212102646
+            ],
+            [
+              -90.79037648525295,
+              13.89472973653916
+            ],
+            [
+              -90.79313618453625,
+              13.894754700841123
+            ],
+            [
+              -90.79311052461627,
+              13.897463181459706
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "151edc6666646a8e486bd9df",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.81006065544344,
+              13.889340039521406
+            ],
+            [
+              -90.80729605499802,
+              13.889315231611928
+            ],
+            [
+              -90.80732145325148,
+              13.886615362531504
+            ],
+            [
+              -90.81008602173677,
+              13.886640165431833
+            ],
+            [
+              -90.81006065544344,
+              13.889340039521406
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "1a59bb1a45fe00ee3021737c",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.81237543715488,
+              13.897822643607366
+            ],
+            [
+              -90.80960262240997,
+              13.897797774291664
+            ],
+            [
+              -90.8096280043479,
+              13.895098511936373
+            ],
+            [
+              -90.81240078702444,
+              13.895123376234476
+            ],
+            [
+              -90.81237543715488,
+              13.897822643607366
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "243c6acc2406dbce878ef79d",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79951925420312,
+              13.906456456413201
+            ],
+            [
+              -90.79675093628602,
+              13.906431467221555
+            ],
+            [
+              -90.79677653262918,
+              13.90372704628231
+            ],
+            [
+              -90.79954481844854,
+              13.903752030425432
+            ],
+            [
+              -90.79951925420312,
+              13.906456456413201
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "295806af66f607a973bc7bcd",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80179711723774,
+              13.880713906309092
+            ],
+            [
+              -90.79902158190797,
+              13.880688920478997
+            ],
+            [
+              -90.79904711090688,
+              13.877983615620494
+            ],
+            [
+              -90.80182261410667,
+              13.878008596392453
+            ],
+            [
+              -90.80179711723774,
+              13.880713906309092
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "54aa85c6c1745d3fae8d057b",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78992724623598,
+              13.892806847262309
+            ],
+            [
+              -90.7871466046953,
+              13.892781660054935
+            ],
+            [
+              -90.78717227951218,
+              13.890077970595915
+            ],
+            [
+              -90.78995288885432,
+              13.890103152711525
+            ],
+            [
+              -90.78992724623598,
+              13.892806847262309
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "55a848489a5fa70a6b0724eb",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80026732537165,
+              13.889936269152013
+            ],
+            [
+              -90.79747402557426,
+              13.8899110904203
+            ],
+            [
+              -90.79749944927966,
+              13.887220700920057
+            ],
+            [
+              -90.80029271689749,
+              13.887245874585792
+            ],
+            [
+              -90.80026732537165,
+              13.889936269152013
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "55fcb2146ca178fd5699950d",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78296672554733,
+              13.906825162258619
+            ],
+            [
+              -90.78019026547457,
+              13.906799910307239
+            ],
+            [
+              -90.78021597080108,
+              13.904104332266142
+            ],
+            [
+              -90.78299239878677,
+              13.904129579132718
+            ],
+            [
+              -90.78296672554733,
+              13.906825162258619
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "57446829589c54caed5650b8",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80534479355325,
+              13.898758204621469
+            ],
+            [
+              -90.80255718742491,
+              13.898733120624092
+            ],
+            [
+              -90.80258269915078,
+              13.896028952099433
+            ],
+            [
+              -90.80537027297912,
+              13.896054031027013
+            ],
+            [
+              -90.80534479355325,
+              13.898758204621469
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "66bcf97ed55ef307903b712b",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79481857251517,
+              13.899795363695077
+            ],
+            [
+              -90.7920494393191,
+              13.89977032475423
+            ],
+            [
+              -90.79207516341614,
+              13.897056844738216
+            ],
+            [
+              -90.79484426441373,
+              13.8970818786013
+            ],
+            [
+              -90.79481857251517,
+              13.899795363695077
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "b1ceeee9e39def6a105363fc",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78424924466401,
+              13.888564188437142
+            ],
+            [
+              -90.78147853210396,
+              13.888539033786358
+            ],
+            [
+              -90.78150427936593,
+              13.885833789353297
+            ],
+            [
+              -90.78427495983442,
+              13.885858938914534
+            ],
+            [
+              -90.78424924466401,
+              13.888564188437142
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "c3ff96c2394fddc5d7c8663e",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.8117044494297,
+              13.880197271556842
+            ],
+            [
+              -90.80892408106911,
+              13.880172355892865
+            ],
+            [
+              -90.80894942577669,
+              13.877474326198067
+            ],
+            [
+              -90.81172976203868,
+              13.877499236831502
+            ],
+            [
+              -90.8117044494297,
+              13.880197271556842
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "cfe37ec1c9f31f64390b4fae",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.81075743329974,
+              13.905002349579084
+            ],
+            [
+              -90.80798399132803,
+              13.90497744440527
+            ],
+            [
+              -90.80800948836627,
+              13.90226940152558
+            ],
+            [
+              -90.81078289814077,
+              13.902294301660618
+            ],
+            [
+              -90.81075743329974,
+              13.905002349579084
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "d7606505c53b3750f0c24cd4",
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:24:07.935702Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78138669482738,
+              13.88290790148466
+            ],
+            [
+              -90.7786118011704,
+              13.882882685739789
+            ],
+            [
+              -90.77863747909251,
+              13.880187070174987
+            ],
+            [
+              -90.78141234073756,
+              13.8802122808342
+            ],
+            [
+              -90.78138669482738,
+              13.88290790148466
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "13b801d1d6b7bf4fc48b46c5",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.7880740388942,
+              13.883425466258231
+            ],
+            [
+              -90.78531480491326,
+              13.8834004676515
+            ],
+            [
+              -90.78534054459386,
+              13.880690285919604
+            ],
+            [
+              -90.78809974657,
+              13.880715279457409
+            ],
+            [
+              -90.7880740388942,
+              13.883425466258231
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "25df8a90721258e69ada6176",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79751893315007,
+              13.877547027662628
+            ],
+            [
+              -90.7947592091457,
+              13.877522141112495
+            ],
+            [
+              -90.79478483155582,
+              13.87481154643404
+            ],
+            [
+              -90.79754452355856,
+              13.874836427935216
+            ],
+            [
+              -90.79751893315007,
+              13.877547027662628
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "319e5a85002035012bfb0971",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79866943238463,
+              13.892089234916227
+            ],
+            [
+              -90.79591179219658,
+              13.892064356211812
+            ],
+            [
+              -90.79593740305346,
+              13.889356520008167
+            ],
+            [
+              -90.79869501126167,
+              13.889381393675231
+            ],
+            [
+              -90.79866943238463,
+              13.892089234916227
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "82096bf8998db3ada18f6351",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80295983532898,
+              13.899613380542585
+            ],
+            [
+              -90.80019558915161,
+              13.899588478430394
+            ],
+            [
+              -90.80022117106056,
+              13.89687995774502
+            ],
+            [
+              -90.8029853851551,
+              13.89690485481636
+            ],
+            [
+              -90.80295983532898,
+              13.899613380542585
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "8518506eb520541a6ae9f8f2",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78129037128939,
+              13.897348286852475
+            ],
+            [
+              -90.77853011732282,
+              13.89732317914038
+            ],
+            [
+              -90.77855592123004,
+              13.89461736682708
+            ],
+            [
+              -90.78131614319854,
+              13.894642469461024
+            ],
+            [
+              -90.78129037128939,
+              13.897348286852475
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "85a32a05fda03f30c4a29aad",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80965988719537,
+              13.904944319052914
+            ],
+            [
+              -90.8068954410946,
+              13.904919482357364
+            ],
+            [
+              -90.80692097394854,
+              13.90220897082728
+            ],
+            [
+              -90.80968538792746,
+              13.902233802493312
+            ],
+            [
+              -90.80965988719537,
+              13.904944319052914
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "94dfe52a4155316ca814f288",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79743436036577,
+              13.90633596091605
+            ],
+            [
+              -90.79466730670246,
+              13.906310959668374
+            ],
+            [
+              -90.79469297825531,
+              13.903601132561779
+            ],
+            [
+              -90.7974599997718,
+              13.903626128748357
+            ],
+            [
+              -90.79743436036577,
+              13.90633596091605
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "b2e84c2e93da12af5fc6e289",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78188856218077,
+              13.90748469336707
+            ],
+            [
+              -90.77911997297427,
+              13.907459499697286
+            ],
+            [
+              -90.77914582016993,
+              13.904750484514462
+            ],
+            [
+              -90.78191437721928,
+              13.904775673086116
+            ],
+            [
+              -90.78188856218077,
+              13.90748469336707
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "be8a89266c92c2bab6192957",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.80835020186618,
+              13.891289616876541
+            ],
+            [
+              -90.8055918475126,
+              13.891264842514135
+            ],
+            [
+              -90.80561737250731,
+              13.88855400496586
+            ],
+            [
+              -90.80837569483883,
+              13.888578774306211
+            ],
+            [
+              -90.80835020186618,
+              13.891289616876541
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "e9fa5c4729468f3202bb69af",
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "model_id": "ai2-sentinel1-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:58:13.872354Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.78065020571164,
+              13.887931549744088
+            ],
+            [
+              -90.77788661824371,
+              13.887906420103803
+            ],
+            [
+              -90.77791234404371,
+              13.885207677053355
+            ],
+            [
+              -90.78067589958117,
+              13.885232801621164
+            ],
+            [
+              -90.78065020571164,
+              13.887931549744088
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "d864408d30e6c7eadbf3bf9f",
+      "observation_id": "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T16:01:03.041925Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -90.79526977070797,
+              13.925106353190403
+            ],
+            [
+              -90.79249828610048,
+              13.925081256161695
+            ],
+            [
+              -90.79252399070502,
+              13.922374413756232
+            ],
+            [
+              -90.79529544310456,
+              13.922399505716358
+            ],
+            [
+              -90.79526977070797,
+              13.925106353190403
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "038154bc1d7dfd7260bea899",
+      "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:59:25.242230Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -88.62588158308249,
+              15.750260137332752
+            ],
+            [
+              -88.6230997666581,
+              15.750280877206759
+            ],
+            [
+              -88.62307845394777,
+              15.747597137697108
+            ],
+            [
+              -88.62586023388369,
+              15.7475764015347
+            ],
+            [
+              -88.62588158308249,
+              15.750260137332752
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "detection_id": "95a2991559e23b7836034e1a",
+      "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+      "model_id": "ai2-sentinel2-vessels-history-full-v1",
+      "created_at": "2026-10-21T15:59:25.242230Z",
+      "review_status": "provisional",
+      "origin": null,
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -88.64058292018436,
+              15.75951229557195
+            ],
+            [
+              -88.63780331066106,
+              15.759533217660827
+            ],
+            [
+              -88.63778154214035,
+              15.756818380640015
+            ],
+            [
+              -88.64056111475941,
+              15.756797462336726
+            ],
+            [
+              -88.64058292018436,
+              15.75951229557195
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    }
+  ],
+  "totals": {
+    "visual_candidates": 41,
+    "model_proposals": 41,
+    "matched_geometry": 22,
+    "unmatched_visual": 19,
+    "unmatched_model": 19
+  },
+  "strata": [
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "compared_observations": 2,
+      "abstentions": 0,
+      "visual_candidates": 26,
+      "model_proposals": 26,
+      "matched_geometry": 22,
+      "unmatched_visual": 4,
+      "unmatched_model": 4
+    },
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "compared_observations": 2,
+      "abstentions": 0,
+      "visual_candidates": 14,
+      "model_proposals": 14,
+      "matched_geometry": 0,
+      "unmatched_visual": 14,
+      "unmatched_model": 14
+    },
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "compared_observations": 0,
+      "abstentions": 2,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "compared_observations": 2,
+      "abstentions": 0,
+      "visual_candidates": 0,
+      "model_proposals": 0,
+      "matched_geometry": 0,
+      "unmatched_visual": 0,
+      "unmatched_model": 0
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "compared_observations": 0,
+      "abstentions": 2,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "compared_observations": 1,
+      "abstentions": 1,
+      "visual_candidates": 1,
+      "model_proposals": 1,
+      "matched_geometry": 0,
+      "unmatched_visual": 1,
+      "unmatched_model": 1
+    }
+  ],
+  "entries": [
+    {
+      "observation_id": "096198a8-e91c-4444-b07c-1370aa4570ac",
+      "inspection_id": "ee620abf-497e-5870-8c09-b9bf247765d2",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "zone_id": "prq_fondeo",
+      "captured_at": "2025-02-07T00:14:16.275856Z",
+      "first_pass_decision": "candidates",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32615",
+      "reviewed_area_sha256": "5c127e0d6f49c2201900e2e4c31e970d77aced1f2287736b7fe986b1d5801d8a",
+      "visual_candidates": 16,
+      "model_proposals": 16,
+      "matched_geometry": 14,
+      "unmatched_visual": 2,
+      "unmatched_model": 2,
+      "outside_scope_model_ids": [],
+      "matches": [
+        {
+          "visual_candidate_index": 2,
+          "detection_id": "1aad0af55f0a0c94e71b2bbd",
+          "iou": 0.5246013303390822
+        },
+        {
+          "visual_candidate_index": 4,
+          "detection_id": "81b03084da7326f7e4544207",
+          "iou": 0.7188473094466318
+        },
+        {
+          "visual_candidate_index": 5,
+          "detection_id": "8733e53edd8851fdc7cebe2c",
+          "iou": 0.6142533145658305
+        },
+        {
+          "visual_candidate_index": 6,
+          "detection_id": "c406c4f3fb28f7a5fa0e2dae",
+          "iou": 0.5828451907814023
+        },
+        {
+          "visual_candidate_index": 7,
+          "detection_id": "1cdc879d611ae141d42214f3",
+          "iou": 0.6748114432137601
+        },
+        {
+          "visual_candidate_index": 8,
+          "detection_id": "8338332d867d9cc32431bd49",
+          "iou": 0.6411187724529238
+        },
+        {
+          "visual_candidate_index": 9,
+          "detection_id": "73901ea881334bcc68bf8728",
+          "iou": 0.5860900033729429
+        },
+        {
+          "visual_candidate_index": 10,
+          "detection_id": "8cca49509bd0fd36e8cb36dd",
+          "iou": 0.5383540168873077
+        },
+        {
+          "visual_candidate_index": 11,
+          "detection_id": "a667960105547018eb85cee9",
+          "iou": 0.6611515072125483
+        },
+        {
+          "visual_candidate_index": 12,
+          "detection_id": "1d89a4aaef2e446220d7ccd0",
+          "iou": 0.7210713071895857
+        },
+        {
+          "visual_candidate_index": 13,
+          "detection_id": "ae0e2d5c7f13449f93bea6c8",
+          "iou": 0.5338303830984302
+        },
+        {
+          "visual_candidate_index": 14,
+          "detection_id": "98ad6712e8fddc4e8ab4fefb",
+          "iou": 0.5843157258207473
+        },
+        {
+          "visual_candidate_index": 15,
+          "detection_id": "47b7bf431d12b420823726db",
+          "iou": 0.6578098896426212
+        },
+        {
+          "visual_candidate_index": 16,
+          "detection_id": "a9ceedcb956082463d36b8cd",
+          "iou": 0.5306517205473741
+        }
+      ],
+      "unmatched_visual_diagnostics": [
+        {
+          "visual_candidate_index": 1,
+          "best_geometric_overlap": {
+            "detection_id": "12c5880776154e5a539bf0b9",
+            "iou": 0.33359769941660455,
+            "centroid_distance_m": 11.58715615874815,
+            "intersection_area_m2": 29900.00000028289,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 29900.00000028289,
+            "model_geometry_area_m2": 89628.9154648608,
+            "visual_native_bbox_width_m": 130.0000000023283,
+            "visual_native_bbox_height_m": 230.00000000023283,
+            "model_native_bbox_width_m": 299.0209960944485,
+            "model_native_bbox_height_m": 299.7412109375,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 3,
+          "best_geometric_overlap": {
+            "detection_id": "1329a725167ca04135d01a30",
+            "iou": 0.41703905794888363,
+            "centroid_distance_m": 13.437306161819695,
+            "intersection_area_m2": 37400.00000006112,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 37400.00000006112,
+            "model_geometry_area_m2": 89679.8496140983,
+            "visual_native_bbox_width_m": 220.0000000023283,
+            "visual_native_bbox_height_m": 170.00000000023283,
+            "model_native_bbox_width_m": 298.8610839849571,
+            "model_native_bbox_height_m": 300.072021484375,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        }
+      ],
+      "unmatched_model_ids": [
+        "12c5880776154e5a539bf0b9",
+        "1329a725167ca04135d01a30"
+      ],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "ab7d3fb2-e7a2-42d7-a5c4-47da00d5c2d8",
+      "inspection_id": "bb12195e-54ed-5375-bd0a-d8d84f8950d4",
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "zone_id": "prq_fondeo",
+      "captured_at": "2025-03-03T00:14:15.620118Z",
+      "first_pass_decision": "candidates",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32615",
+      "reviewed_area_sha256": "5c127e0d6f49c2201900e2e4c31e970d77aced1f2287736b7fe986b1d5801d8a",
+      "visual_candidates": 10,
+      "model_proposals": 10,
+      "matched_geometry": 8,
+      "unmatched_visual": 2,
+      "unmatched_model": 2,
+      "outside_scope_model_ids": [],
+      "matches": [
+        {
+          "visual_candidate_index": 1,
+          "detection_id": "85a32a05fda03f30c4a29aad",
+          "iou": 0.5085911896434564
+        },
+        {
+          "visual_candidate_index": 3,
+          "detection_id": "b2e84c2e93da12af5fc6e289",
+          "iou": 0.561580837262976
+        },
+        {
+          "visual_candidate_index": 4,
+          "detection_id": "82096bf8998db3ada18f6351",
+          "iou": 0.6668726164804996
+        },
+        {
+          "visual_candidate_index": 5,
+          "detection_id": "8518506eb520541a6ae9f8f2",
+          "iou": 0.5169256469060468
+        },
+        {
+          "visual_candidate_index": 6,
+          "detection_id": "be8a89266c92c2bab6192957",
+          "iou": 0.5409155427693773
+        },
+        {
+          "visual_candidate_index": 7,
+          "detection_id": "319e5a85002035012bfb0971",
+          "iou": 0.5908909996022836
+        },
+        {
+          "visual_candidate_index": 9,
+          "detection_id": "13b801d1d6b7bf4fc48b46c5",
+          "iou": 0.6984003621726516
+        },
+        {
+          "visual_candidate_index": 10,
+          "detection_id": "25df8a90721258e69ada6176",
+          "iou": 0.6635328335875157
+        }
+      ],
+      "unmatched_visual_diagnostics": [
+        {
+          "visual_candidate_index": 2,
+          "best_geometric_overlap": {
+            "detection_id": "94dfe52a4155316ca814f288",
+            "iou": 0.46142374439142636,
+            "centroid_distance_m": 16.2966954611746,
+            "intersection_area_m2": 41399.99999985914,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 41399.99999985914,
+            "model_geometry_area_m2": 89722.30082017509,
+            "visual_native_bbox_width_m": 229.99999999953434,
+            "visual_native_bbox_height_m": 180.00000000046566,
+            "model_native_bbox_width_m": 299.1595458999509,
+            "model_native_bbox_height_m": 299.91455078101717,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 8,
+          "best_geometric_overlap": {
+            "detection_id": "e9fa5c4729468f3202bb69af",
+            "iou": 0.44108629005319444,
+            "centroid_distance_m": 54.82419788390515,
+            "intersection_area_m2": 41275.46768173936,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 45599.99999986612,
+            "model_geometry_area_m2": 89252.32239835284,
+            "visual_native_bbox_width_m": 240.0000000006985,
+            "visual_native_bbox_height_m": 189.99999999976717,
+            "model_native_bbox_width_m": 298.81179809605237,
+            "model_native_bbox_height_m": 298.6907577516977,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        }
+      ],
+      "unmatched_model_ids": [
+        "94dfe52a4155316ca814f288",
+        "e9fa5c4729468f3202bb69af"
+      ],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10
+        ],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "c2aaad3d-b82c-4b50-bdd8-91715124ce5c",
+      "inspection_id": "2eb00ffc-8e1b-5ff5-9999-1f0335a96004",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "zone_id": "prq_muelles",
+      "captured_at": "2025-03-04T16:22:11.025000Z",
+      "first_pass_decision": "candidates",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32615",
+      "reviewed_area_sha256": "2c6b00fa0deb75588000e95bb20fe73094df36e249f040abbfc3222c892ca5ca",
+      "visual_candidates": 1,
+      "model_proposals": 1,
+      "matched_geometry": 0,
+      "unmatched_visual": 1,
+      "unmatched_model": 1,
+      "outside_scope_model_ids": [],
+      "matches": [],
+      "unmatched_visual_diagnostics": [
+        {
+          "visual_candidate_index": 1,
+          "best_geometric_overlap": {
+            "detection_id": "d864408d30e6c7eadbf3bf9f",
+            "iou": 0.2673792195327328,
+            "centroid_distance_m": 16.610383983346576,
+            "intersection_area_m2": 23999.999999990687,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 23999.999999990687,
+            "model_geometry_area_m2": 89760.1542929651,
+            "visual_native_bbox_width_m": 240.0000000015134,
+            "visual_native_bbox_height_m": 100.0,
+            "model_native_bbox_width_m": 299.6148681655759,
+            "model_native_bbox_height_m": 299.5851135251578,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        }
+      ],
+      "unmatched_model_ids": [
+        "d864408d30e6c7eadbf3bf9f"
+      ],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "09b37fd3-c189-4bae-aa85-06da102c023b",
+      "inspection_id": "696fa84f-768c-5374-921e-898f528c3320",
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "zone_id": "prq_fondeo",
+      "captured_at": "2025-04-03T16:18:51.025000Z",
+      "first_pass_decision": "candidates",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32615",
+      "reviewed_area_sha256": "5c127e0d6f49c2201900e2e4c31e970d77aced1f2287736b7fe986b1d5801d8a",
+      "visual_candidates": 13,
+      "model_proposals": 13,
+      "matched_geometry": 0,
+      "unmatched_visual": 13,
+      "unmatched_model": 13,
+      "outside_scope_model_ids": [],
+      "matches": [],
+      "unmatched_visual_diagnostics": [
+        {
+          "visual_candidate_index": 1,
+          "best_geometric_overlap": {
+            "detection_id": "cfe37ec1c9f31f64390b4fae",
+            "iou": 0.30377508085267313,
+            "centroid_distance_m": 1.9763764682992346,
+            "intersection_area_m2": 27299.999999969732,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 27299.999999969732,
+            "model_geometry_area_m2": 89869.12265265717,
+            "visual_native_bbox_width_m": 210.0,
+            "visual_native_bbox_height_m": 130.00000000023283,
+            "model_native_bbox_width_m": 299.8492431646446,
+            "model_native_bbox_height_m": 299.71435546898283,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 2,
+          "best_geometric_overlap": {
+            "detection_id": "243c6acc2406dbce878ef79d",
+            "iou": 0.3594395186925721,
+            "centroid_distance_m": 5.94416145145309,
+            "intersection_area_m2": 32199.99999994063,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 32199.99999994063,
+            "model_geometry_area_m2": 89583.91697458626,
+            "visual_native_bbox_width_m": 230.0,
+            "visual_native_bbox_height_m": 140.0,
+            "model_native_bbox_width_m": 299.29565429652575,
+            "model_native_bbox_height_m": 299.31579589867033,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 3,
+          "best_geometric_overlap": {
+            "detection_id": "55fcb2146ca178fd5699950d",
+            "iou": 0.359553615680645,
+            "centroid_distance_m": 4.7686428072021645,
+            "intersection_area_m2": 32200.000000289874,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 32200.000000289874,
+            "model_geometry_area_m2": 89555.48935124566,
+            "visual_native_bbox_width_m": 230.00000000267755,
+            "visual_native_bbox_height_m": 140.00000000023283,
+            "model_native_bbox_width_m": 300.17883300804533,
+            "model_native_bbox_height_m": 298.34045410179533,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 4,
+          "best_geometric_overlap": {
+            "detection_id": "57446829589c54caed5650b8",
+            "iou": 0.34589075968219024,
+            "centroid_distance_m": 4.098889387979609,
+            "intersection_area_m2": 31199.999999729334,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 31199.999999729334,
+            "model_geometry_area_m2": 90201.88925658602,
+            "visual_native_bbox_width_m": 240.00000000011642,
+            "visual_native_bbox_height_m": 129.99999999976717,
+            "model_native_bbox_width_m": 301.3897705078125,
+            "model_native_bbox_height_m": 299.2864990234375,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 5,
+          "best_geometric_overlap": {
+            "detection_id": "66bcf97ed55ef307903b712b",
+            "iou": 0.3381024926874342,
+            "centroid_distance_m": 4.0316946176037405,
+            "intersection_area_m2": 30399.999999953434,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 30399.999999953434,
+            "model_geometry_area_m2": 89913.56366028728,
+            "visual_native_bbox_width_m": 190.00000000058208,
+            "visual_native_bbox_height_m": 160.00000000023283,
+            "model_native_bbox_width_m": 299.393310546875,
+            "model_native_bbox_height_m": 300.31921386742033,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 6,
+          "best_geometric_overlap": {
+            "detection_id": "1a59bb1a45fe00ee3021737c",
+            "iou": 0.33385444911203455,
+            "centroid_distance_m": 13.912569125416,
+            "intersection_area_m2": 29899.999999984866,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 29899.999999984866,
+            "model_geometry_area_m2": 89559.98663342975,
+            "visual_native_bbox_width_m": 230.00000000023283,
+            "visual_native_bbox_height_m": 130.00000000023283,
+            "model_native_bbox_width_m": 299.79034423839767,
+            "model_native_bbox_height_m": 298.7420654296875,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 7,
+          "best_geometric_overlap": {
+            "detection_id": "54aa85c6c1745d3fae8d057b",
+            "iou": 0.4346148351982312,
+            "centroid_distance_m": 6.542964429893653,
+            "intersection_area_m2": 39100.00000016531,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 39100.00000016531,
+            "model_geometry_area_m2": 89964.71549879677,
+            "visual_native_bbox_width_m": 230.00000000209548,
+            "visual_native_bbox_height_m": 170.00000000023283,
+            "model_native_bbox_width_m": 300.647583008511,
+            "model_native_bbox_height_m": 299.23645019507967,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 8,
+          "best_geometric_overlap": {
+            "detection_id": "151edc6666646a8e486bd9df",
+            "iou": 0.3918573957694438,
+            "centroid_distance_m": 19.02503745222847,
+            "intersection_area_m2": 35000.000000172295,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 35000.000000172295,
+            "model_geometry_area_m2": 89318.20702642847,
+            "visual_native_bbox_width_m": 250.00000000162981,
+            "visual_native_bbox_height_m": 140.00000000023283,
+            "model_native_bbox_width_m": 298.9135742208455,
+            "model_native_bbox_height_m": 298.80947113083676,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 9,
+          "best_geometric_overlap": {
+            "detection_id": "55a848489a5fa70a6b0724eb",
+            "iou": 0.41699321418511576,
+            "centroid_distance_m": 4.443185887068561,
+            "intersection_area_m2": 37499.999999970896,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 37499.999999970896,
+            "model_geometry_area_m2": 89929.52097134975,
+            "visual_native_bbox_width_m": 249.99999999988358,
+            "visual_native_bbox_height_m": 150.00000000023283,
+            "model_native_bbox_width_m": 302.01782226760406,
+            "model_native_bbox_height_m": 297.7622985842172,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 10,
+          "best_geometric_overlap": {
+            "detection_id": "b1ceeee9e39def6a105363fc",
+            "iou": 0.37459312132382566,
+            "centroid_distance_m": 6.0264394690726535,
+            "intersection_area_m2": 33600.00000010943,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 33600.00000010943,
+            "model_geometry_area_m2": 89697.32247449129,
+            "visual_native_bbox_width_m": 240.00000000139698,
+            "visual_native_bbox_height_m": 140.00000000046566,
+            "model_native_bbox_width_m": 299.5806503315689,
+            "model_native_bbox_height_m": 299.4095993039664,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 11,
+          "best_geometric_overlap": {
+            "detection_id": "d7606505c53b3750f0c24cd4",
+            "iou": 0.35748033757057196,
+            "centroid_distance_m": 4.304987727616735,
+            "intersection_area_m2": 32000.000000144355,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 32000.000000144355,
+            "model_geometry_area_m2": 89515.41284092885,
+            "visual_native_bbox_width_m": 200.0000000022119,
+            "visual_native_bbox_height_m": 160.00000000023283,
+            "model_native_bbox_width_m": 300.04058837902267,
+            "model_native_bbox_height_m": 298.3443450925406,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 12,
+          "best_geometric_overlap": {
+            "detection_id": "295806af66f607a973bc7bcd",
+            "iou": 0.4629614691382271,
+            "centroid_distance_m": 2.186819997196476,
+            "intersection_area_m2": 41600.00000005821,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 41600.00000005821,
+            "model_geometry_area_m2": 89856.28993595067,
+            "visual_native_bbox_width_m": 260.00000000116415,
+            "visual_native_bbox_height_m": 160.00000000023283,
+            "model_native_bbox_width_m": 300.1086425780086,
+            "model_native_bbox_height_m": 299.41253662109375,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        },
+        {
+          "visual_candidate_index": 13,
+          "best_geometric_overlap": {
+            "detection_id": "c3ff96c2394fddc5d7c8663e",
+            "iou": 0.37429114279033737,
+            "centroid_distance_m": 10.8838274709995,
+            "intersection_area_m2": 33600.000000032596,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 33600.000000032596,
+            "model_geometry_area_m2": 89769.6903793792,
+            "visual_native_bbox_width_m": 240.0000000008149,
+            "visual_native_bbox_height_m": 140.00000000023283,
+            "model_native_bbox_width_m": 300.62988281215075,
+            "model_native_bbox_height_m": 298.60534667992033,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        }
+      ],
+      "unmatched_model_ids": [
+        "151edc6666646a8e486bd9df",
+        "1a59bb1a45fe00ee3021737c",
+        "243c6acc2406dbce878ef79d",
+        "295806af66f607a973bc7bcd",
+        "54aa85c6c1745d3fae8d057b",
+        "55a848489a5fa70a6b0724eb",
+        "55fcb2146ca178fd5699950d",
+        "57446829589c54caed5650b8",
+        "66bcf97ed55ef307903b712b",
+        "b1ceeee9e39def6a105363fc",
+        "c3ff96c2394fddc5d7c8663e",
+        "cfe37ec1c9f31f64390b4fae",
+        "d7606505c53b3750f0c24cd4"
+      ],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "1d86f54e-70f7-4e2b-bcca-d8949ac00271",
+      "inspection_id": "c5c5aab2-4e26-5d2a-bdaa-1e60d50a2c04",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-04-03T00:06:46.502996Z",
+      "first_pass_decision": "uncertain",
+      "comparison_status": "excluded_abstention",
+      "proposals_opened": false,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "observation_id": "26c41fa8-08e3-4257-8c9c-c446f8cab360",
+      "inspection_id": "b2de878a-c972-56a5-be22-b25a4ab3c485",
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-05-21T00:06:45.815081Z",
+      "first_pass_decision": "uncertain",
+      "comparison_status": "excluded_abstention",
+      "proposals_opened": false,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "observation_id": "4796c120-bd2d-42c8-9bbf-7bcfe8f467a0",
+      "inspection_id": "4feb9484-6c97-52b6-a204-3fe9f6c9191d",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-01-10T16:16:31.024000Z",
+      "first_pass_decision": "empty",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32616",
+      "reviewed_area_sha256": "236b1edc89f25845fc8f0275d09b30f1cb4024e7bdb822d2c6e103a404e354bb",
+      "visual_candidates": 0,
+      "model_proposals": 0,
+      "matched_geometry": 0,
+      "unmatched_visual": 0,
+      "unmatched_model": 0,
+      "outside_scope_model_ids": [],
+      "matches": [],
+      "unmatched_visual_diagnostics": [],
+      "unmatched_model_ids": [],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "3b7ff03b-5224-410b-86f7-18829eeb9a95",
+      "inspection_id": "307cdc61-2d00-5d05-a60b-55d241d547dd",
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "zone_id": "pbr_canal",
+      "captured_at": "2025-05-18T16:18:29.024000Z",
+      "first_pass_decision": "empty",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32616",
+      "reviewed_area_sha256": "236b1edc89f25845fc8f0275d09b30f1cb4024e7bdb822d2c6e103a404e354bb",
+      "visual_candidates": 0,
+      "model_proposals": 0,
+      "matched_geometry": 0,
+      "unmatched_visual": 0,
+      "unmatched_model": 0,
+      "outside_scope_model_ids": [],
+      "matches": [],
+      "unmatched_visual_diagnostics": [],
+      "unmatched_model_ids": [],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "db36e4f9-e8aa-4419-be3b-972b46bdcbd1",
+      "inspection_id": "095c8cad-4c9e-5de4-abaa-44bbd01a8395",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "zone_id": "stc_fondeo",
+      "captured_at": "2025-04-03T00:06:46.502996Z",
+      "first_pass_decision": "uncertain",
+      "comparison_status": "excluded_abstention",
+      "proposals_opened": false,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "observation_id": "e771fad3-7813-4297-913f-2cd1538058b5",
+      "inspection_id": "8ac927e6-2752-525d-8395-722c941783cd",
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "zone_id": "stc_fondeo",
+      "captured_at": "2025-05-21T00:06:45.815081Z",
+      "first_pass_decision": "uncertain",
+      "comparison_status": "excluded_abstention",
+      "proposals_opened": false,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    },
+    {
+      "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+      "inspection_id": "8c360640-f3be-59a9-aeb4-d6c05a2051ed",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "zone_id": "stc_fondeo",
+      "captured_at": "2025-01-10T16:16:31.024000Z",
+      "first_pass_decision": "candidates",
+      "comparison_status": "compared",
+      "proposals_opened": true,
+      "projected_crs": "EPSG:32616",
+      "reviewed_area_sha256": "e3fee0fa245aa885f7a2a4364cda58490b88daf446bced054c61fa1bfe430c12",
+      "visual_candidates": 1,
+      "model_proposals": 1,
+      "matched_geometry": 0,
+      "unmatched_visual": 1,
+      "unmatched_model": 1,
+      "outside_scope_model_ids": [
+        "038154bc1d7dfd7260bea899"
+      ],
+      "matches": [],
+      "unmatched_visual_diagnostics": [
+        {
+          "visual_candidate_index": 1,
+          "best_geometric_overlap": {
+            "detection_id": "95a2991559e23b7836034e1a",
+            "iou": 0.06705010511710542,
+            "centroid_distance_m": 2.7503175420808885,
+            "intersection_area_m2": 5999.999999993597,
+            "model_centroid_within_visual": true,
+            "visual_geometry_area_m2": 5999.999999993597,
+            "model_geometry_area_m2": 89485.31832298223,
+            "visual_native_bbox_width_m": 100.00000000029104,
+            "visual_native_bbox_height_m": 60.0,
+            "model_native_bbox_width_m": 297.87048339896137,
+            "model_native_bbox_height_m": 300.41687011765316,
+            "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+          }
+        }
+      ],
+      "unmatched_model_ids": [
+        "95a2991559e23b7836034e1a"
+      ],
+      "maximum_matching_certificate": {
+        "covered_visual_indices": [],
+        "covered_model_ids": [],
+        "cover_size_equals_matching_size": true
+      }
+    },
+    {
+      "observation_id": "05208f24-0534-4107-9bf1-700c46c84632",
+      "inspection_id": "ccc6a12a-de17-569e-825c-36e7bdfcf7fc",
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "zone_id": "stc_muelles",
+      "captured_at": "2025-05-18T16:18:29.024000Z",
+      "first_pass_decision": "uncertain",
+      "comparison_status": "excluded_abstention",
+      "proposals_opened": false,
+      "visual_candidates": null,
+      "model_proposals": null,
+      "matched_geometry": null,
+      "unmatched_visual": null,
+      "unmatched_model": null
+    }
+  ],
+  "stc_candidate": {
+    "observation_id": "d9f3dfe4-892b-49cc-80a6-58fe99fda67a",
+    "status": "An existing proposal overlaps the STC visual candidate but fails IoU >= 0.5. Geometric disagreement requires adjudication; this is not yet an omission finding.",
+    "novelty": "unknown; existing TRAIN reference corpus was not opened",
+    "matches": [],
+    "unmatched_visual_diagnostics": [
+      {
+        "visual_candidate_index": 1,
+        "best_geometric_overlap": {
+          "detection_id": "95a2991559e23b7836034e1a",
+          "iou": 0.06705010511710542,
+          "centroid_distance_m": 2.7503175420808885,
+          "intersection_area_m2": 5999.999999993597,
+          "model_centroid_within_visual": true,
+          "visual_geometry_area_m2": 5999.999999993597,
+          "model_geometry_area_m2": 89485.31832298223,
+          "visual_native_bbox_width_m": 100.00000000029104,
+          "visual_native_bbox_height_m": 60.0,
+          "model_native_bbox_width_m": 297.87048339896137,
+          "model_native_bbox_height_m": 300.41687011765316,
+          "geometry_extent_notice": "These are annotation/proposal extents, not measured vessel dimensions."
+        }
+      }
+    ]
+  },
+  "interpretation": "Counts measure agreement between provisional AI visual candidates and existing model geometry. Neither source is an adjudicated reference; disagreements need review and are not accuracy metrics.",
+  "optical_geometric_disagreement_summary": {
+    "visual_candidates": 15,
+    "existing_overlapping_proposals_with_centroid_inside_visual": 15,
+    "model_geometry_area_range_m2": [
+      89318.20702642847,
+      90201.88925658602
+    ],
+    "visual_geometry_area_range_m2": [
+      5999.999999993597,
+      41600.00000005821
+    ],
+    "observed_iou_range": [
+      0.06705010511710542,
+      0.4629614691382271
+    ],
+    "interpretation": "All 15 optical visual candidates overlap an existing proposal with its centroid inside the visual candidate. Broad proposal extents cause low polygon agreement; this does not establish object omission or validate either boundary."
+  },
+  "summary_es": "En siete \u00e1mbitos TRAIN se compararon 41 candidatos visuales IA con 41 propuestas existentes: 22 coincidencias geom\u00e9tricas a IoU \u22650,5 y 19 candidatos y 19 propuestas sin emparejar. Las cinco abstenciones quedaron fuera y sus propuestas no se abrieron. Los 15 candidatos \u00f3pticos tienen una propuesta solapada con centro dentro del candidato visual; las \u00e1reas de las propuestas son mucho mayores y ninguna cumple IoU \u22650,5. El \u00fanico candidato STC tiene propuesta a 2,75m de su centro, con IoU 0,0671; requiere adjudicar el contorno, sin afirmar una omisi\u00f3n. Su novedad frente a TRAIN previo es desconocida. Los recibos originales permanecen id\u00e9nticos.",
+  "summary_table_markdown": "| Estrato | \u00c1mbitos comparados | Abstenciones | Candidatos visuales | Propuestas | Coincidencias geom\u00e9tricas | Visuales sin pareja | Propuestas sin pareja |\n| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n| PRQ radar | 2 | 0 | 26 | 26 | 22 | 4 | 4 |\n| PRQ \u00f3ptico | 2 | 0 | 14 | 14 | 0 | 14 | 14 |\n| PBR radar | 0 | 2 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| PBR \u00f3ptico | 2 | 0 | 0 | 0 | 0 | 0 | 0 |\n| STC radar | 0 | 2 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| STC \u00f3ptico | 1 | 1 | 1 | 1 | 0 | 1 | 1 |"
+}

@@ -16,7 +16,9 @@ Los [atributos públicos](reports/public-attributes/experiment-result-v1.json) y
 
 ## Paquete experimental
 
-La versión de software **0.3.0** incorpora cobertura por pasada, recortes completos de los pilotos y campañas incrementales explícitas. Su [verificación y alcance](reports/release-v0.3.0/README.md) documentan 306 pruebas con ML, instalación aislada y visor. La [entrega anterior](reports/release-v0.2.0/README.md) conserva su copia local restaurada; el repositorio publica código y recibos. Las imágenes numéricas y los pesos posteriores al piloto público permanecen locales.
+La versión de software **0.4.0** incorpora una cola TRAIN con primera inspección sin propuestas, geometría exacta para sus recuadros, actualización incremental reanudable y frescura por puerto/sensor. La propuesta de zonas V2 tiene un panel separado y sigue inactiva. [Resultados y verificación](reports/improvements/20261026-increment/README.md). Las imágenes numéricas y los pesos posteriores al piloto público permanecen locales.
+
+El primer ciclo incremental añadió una adquisición radar del 26 de octubre y ocho observaciones: el volumen llega a **828 adquisiciones procesadas, seis excepciones y 5.026 observaciones**. Repetirlo no duplicó trabajo. La inspección inicial de doce escenas TRAIN conservó 41 candidatos de IA, dos áreas sin embarcaciones visibles y cinco abstenciones; son hallazgos pendientes de adjudicación, no etiquetas independientes ni una nueva medición de precisión.
 
 El código y el [piloto portable v0.1.0](https://github.com/yehosuah/satelite-portuario/releases/tag/v0.1.0) están publicados. **Ese paquete es el piloto inicial, no una copia del estado actual.** Contiene imágenes, catálogo y cuatro modelos iniciales: sus 270 archivos fueron restaurados y verificados. Los 39 archivos públicos, incluidas las 34 partes del snapshot, se comprobaron. Las revisiones, pesos y campaña posteriores requieren una nueva entrega. Consulta la [verificación de publicación](reports/pilot/release-upload-status.json) y las [instrucciones de restauración](docs/restore-pilot.md).
 
@@ -57,7 +59,7 @@ Para continuar una instalación existente, conserva su volumen y consulta [la se
 
 El [protocolo de etiquetas](docs/labeling-protocol.md) y las [tarjetas de modelos](docs/model_cards/vessels.md) explican qué referencias hacen falta. El score del modelo nunca se interpreta como precisión medida. La API no inicia inferencia, descargas ni entrenamiento.
 
-El visor permite delimitar un área de revisión sobre la imagen, previsualizar su recorte a la zona y guardarla sin darla por revisada. Los sectores excluidos permanecen desconocidos. Las [mejoras priorizadas](docs/improvements.md) explican el siguiente trabajo para aumentar las etiquetas útiles, corregir geometrías y completar la actualización incremental.
+El visor permite delimitar un área de revisión sobre la imagen, previsualizar su recorte a la zona y guardarla sin darla por revisada. Los sectores excluidos permanecen desconocidos. La [cola TRAIN](docs/review-queue.md) registra hallazgos antes de mostrar propuestas del detector. La [actualización incremental](docs/refresh.md), el [piloto geográfico V2](docs/geography-v2-pilot.md) y las [mejoras priorizadas](docs/improvements.md) documentan sus límites y el trabajo científico pendiente.
 
 ## Evidencia incluida
 

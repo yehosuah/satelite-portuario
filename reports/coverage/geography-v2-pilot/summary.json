@@ -1,0 +1,393 @@
+{
+  "schema": "geography-v2-pilot-summary-v1",
+  "geometry_version": "2026-10-26-geography-v2-train-pilot",
+  "status": "inactive_train_pilot",
+  "active": false,
+  "v1_sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+  "v2_sha256": "1113eca2c1dcd2c450af6bd6b4c21031e5b6fe2a62b649af3977a36a8fedd1ef",
+  "pilot_sha256": "309c953852d8a9cce44990d87d046e805d8ad8317e882d80ef7836abe4766792",
+  "generated_at": "2026-10-26T14:23:38.600769Z",
+  "zone_count": 12,
+  "ports": [
+    {
+      "port_id": "pbr",
+      "crs": "EPSG:32616",
+      "v1_union_area_m2": 3299934.2248962224,
+      "v2_union_area_m2": 3677976.493337101,
+      "v1_water_union_area_m2": 3099875.414714904,
+      "v2_water_union_area_m2": 3477917.76921813,
+      "additional_water_m2": 378042.3775216806,
+      "approved_candidate_water_m2": 378042.3760217864,
+      "v1_within_port_overlap_m2": 359134.0655166982,
+      "v2_within_port_overlap_m2": 359134.20062373066,
+      "cross_port_overlap_m2": 0.0,
+      "v1_quay_canal_gap_m": 0.0,
+      "v2_quay_canal_gap_m": 0.0,
+      "v1_connector_covered_by_v2_fraction": 1.0,
+      "v1_tile_ids": [
+        "32616-73-388-512-32",
+        "32616-73-389-512-32"
+      ],
+      "v2_tile_ids": [
+        "32616-73-388-512-32",
+        "32616-73-389-512-32"
+      ]
+    },
+    {
+      "port_id": "prq",
+      "crs": "EPSG:32615",
+      "v1_union_area_m2": 16599597.933447441,
+      "v2_union_area_m2": 16847579.05933486,
+      "v1_water_union_area_m2": 15333442.830021795,
+      "v2_water_union_area_m2": 15581423.93017784,
+      "additional_water_m2": 247981.11340671423,
+      "approved_candidate_water_m2": 247981.245940388,
+      "v1_within_port_overlap_m2": 664029.0569768716,
+      "v2_within_port_overlap_m2": 664029.0488189086,
+      "cross_port_overlap_m2": 0.0,
+      "v1_quay_canal_gap_m": 0.0,
+      "v2_quay_canal_gap_m": 0.0,
+      "v1_connector_covered_by_v2_fraction": 1.0,
+      "v1_tile_ids": [
+        "32615-164-342-512-32",
+        "32615-164-343-512-32",
+        "32615-164-344-512-32",
+        "32615-165-342-512-32",
+        "32615-165-343-512-32",
+        "32615-165-344-512-32"
+      ],
+      "v2_tile_ids": [
+        "32615-164-342-512-32",
+        "32615-164-343-512-32",
+        "32615-164-344-512-32",
+        "32615-165-342-512-32",
+        "32615-165-343-512-32",
+        "32615-165-344-512-32"
+      ]
+    },
+    {
+      "port_id": "stc",
+      "crs": "EPSG:32616",
+      "v1_union_area_m2": 11345793.985939292,
+      "v2_union_area_m2": 6047431.0136835715,
+      "v1_water_union_area_m2": 5464117.260498878,
+      "v2_water_union_area_m2": 5718135.129064948,
+      "additional_water_m2": 422402.4189472583,
+      "approved_candidate_water_m2": 422400.8141052176,
+      "v1_within_port_overlap_m2": 0.0,
+      "v2_within_port_overlap_m2": 0.03468978684395552,
+      "cross_port_overlap_m2": 0.0,
+      "v1_quay_canal_gap_m": 136.86707279723845,
+      "v2_quay_canal_gap_m": 0.0,
+      "v1_connector_covered_by_v2_fraction": 1.0,
+      "v1_tile_ids": [
+        "32616-72-387-512-32",
+        "32616-72-388-512-32",
+        "32616-72-389-512-32",
+        "32616-73-387-512-32",
+        "32616-73-388-512-32",
+        "32616-73-389-512-32"
+      ],
+      "v2_tile_ids": [
+        "32616-72-387-512-32",
+        "32616-72-388-512-32",
+        "32616-72-389-512-32",
+        "32616-73-387-512-32",
+        "32616-73-388-512-32",
+        "32616-73-389-512-32"
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "zone_id": "prq_muelles",
+      "port_id": "prq",
+      "change": "add_exclusive_250m_near_quay_water",
+      "v1_area_m2": 1944120.683921986,
+      "v2_area_m2": 2192101.801651443,
+      "added_area_m2": 247981.53525191417,
+      "removed_area_m2": 0.41752243349516005,
+      "v1_mapped_water_m2": 697660.4843736823,
+      "v2_mapped_water_m2": 945641.6513713975,
+      "v1_mapped_land_m2": 1246460.1995483022,
+      "v2_mapped_land_m2": 1246460.1502800449,
+      "topology_normalization_symmetric_difference_m2": 1.2354925655489324
+    },
+    {
+      "zone_id": "prq_fondeo",
+      "port_id": "prq",
+      "change": "unchanged_shape",
+      "v1_area_m2": 13937767.698766585,
+      "v2_area_m2": 13937767.698766585,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 13937767.698766587,
+      "v2_mapped_water_m2": 13937767.698766587,
+      "v1_mapped_land_m2": 0.0,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "prq_canal",
+      "port_id": "prq",
+      "change": "unchanged_shape",
+      "v1_area_m2": 1286177.834852859,
+      "v2_area_m2": 1286177.834852859,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 1154509.8280130788,
+      "v2_mapped_water_m2": 1154509.8280130788,
+      "v1_mapped_land_m2": 131668.00683978945,
+      "v2_mapped_land_m2": 131668.00683978945,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "prq_patios",
+      "port_id": "prq",
+      "change": "unchanged_shape",
+      "v1_area_m2": 95560.77288288376,
+      "v2_area_m2": 95560.77288288376,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 0.0,
+      "v2_mapped_water_m2": 0.0,
+      "v1_mapped_land_m2": 95560.77288288376,
+      "v2_mapped_land_m2": 95560.77288288376,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "stc_muelles",
+      "port_id": "stc",
+      "change": "add_exclusive_250m_near_quay_water",
+      "v1_area_m2": 225418.36843431566,
+      "v2_area_m2": 647818.8827230603,
+      "added_area_m2": 422400.81491936045,
+      "removed_area_m2": 0.30063064391952704,
+      "v1_mapped_water_m2": 225418.36843431566,
+      "v2_mapped_water_m2": 647818.8827230606,
+      "v1_mapped_land_m2": 0.0,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 0.7448187549383726
+    },
+    {
+      "zone_id": "stc_fondeo",
+      "port_id": "stc",
+      "change": "exclude_OSM_land_unknown_and_20m_coast_margin",
+      "v1_area_m2": 8538065.537905151,
+      "v2_area_m2": 2817302.086050474,
+      "added_area_m2": 1.6387174154968491,
+      "removed_area_m2": 5720765.090571972,
+      "v1_mapped_water_m2": 2985684.697083366,
+      "v2_mapped_water_m2": 2817302.0860504713,
+      "v1_mapped_land_m2": 5552380.840821834,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 3.442374468456215
+    },
+    {
+      "zone_id": "stc_canal",
+      "port_id": "stc",
+      "change": "unchanged_shape",
+      "v1_area_m2": 2253014.194981198,
+      "v2_area_m2": 2253014.194981198,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 2253014.194981197,
+      "v2_mapped_water_m2": 2253014.194981197,
+      "v1_mapped_land_m2": 0.0,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "stc_patios",
+      "port_id": "stc",
+      "change": "unchanged_shape",
+      "v1_area_m2": 329295.88461862615,
+      "v2_area_m2": 329295.88461862615,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 0.0,
+      "v2_mapped_water_m2": 0.0,
+      "v1_mapped_land_m2": 329295.88461862615,
+      "v2_mapped_land_m2": 329295.88461862615,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "pbr_muelles",
+      "port_id": "pbr",
+      "change": "add_exclusive_250m_near_quay_water",
+      "v1_area_m2": 175983.3268611815,
+      "v2_area_m2": 554025.7304090924,
+      "added_area_m2": 378042.51399350946,
+      "removed_area_m2": 0.11044558902589187,
+      "v1_mapped_water_m2": 152299.83645389814,
+      "v2_mapped_water_m2": 530342.3260641457,
+      "v1_mapped_land_m2": 23683.490407309004,
+      "v2_mapped_land_m2": 23683.40434495004,
+      "topology_normalization_symmetric_difference_m2": 0.9877348050943044
+    },
+    {
+      "zone_id": "pbr_fondeo",
+      "port_id": "pbr",
+      "change": "unchanged_shape",
+      "v1_area_m2": 1707464.3446660598,
+      "v2_area_m2": 1707464.3446660598,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 1707464.3446660598,
+      "v2_mapped_water_m2": 1707464.3446660598,
+      "v1_mapped_land_m2": 0.0,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "pbr_canal",
+      "port_id": "pbr",
+      "change": "unchanged_shape",
+      "v1_area_m2": 1597740.8185129026,
+      "v2_area_m2": 1597740.8185129026,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 1597740.8185129028,
+      "v2_mapped_water_m2": 1597740.8185129028,
+      "v1_mapped_land_m2": 0.0,
+      "v2_mapped_land_m2": 0.0,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    },
+    {
+      "zone_id": "pbr_patios",
+      "port_id": "pbr",
+      "change": "unchanged_shape",
+      "v1_area_m2": 177879.8003727765,
+      "v2_area_m2": 177879.8003727765,
+      "added_area_m2": 0.0,
+      "removed_area_m2": 0.0,
+      "v1_mapped_water_m2": 1504.4805987435711,
+      "v2_mapped_water_m2": 1504.4805987435711,
+      "v1_mapped_land_m2": 176375.31977404887,
+      "v2_mapped_land_m2": 176375.31977404887,
+      "topology_normalization_symmetric_difference_m2": 0.0
+    }
+  ],
+  "train_coverage": [
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "train_passes": 6,
+      "additional_water_observable_m2_per_pass": {
+        "min": 0,
+        "median": 188900.0,
+        "max": 377800
+      },
+      "passes_with_added_water_ge90pct_observable": 3,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 0,
+      "maximum_v2_water_outside_frame_m2": 0,
+      "minimum_added_water_frame_fraction": 1.0
+    },
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "train_passes": 3,
+      "additional_water_observable_m2_per_pass": {
+        "min": 12400,
+        "median": 374800.0,
+        "max": 377800
+      },
+      "passes_with_added_water_ge90pct_observable": 2,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 0,
+      "maximum_v2_water_outside_frame_m2": 0,
+      "minimum_added_water_frame_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "train_passes": 2,
+      "additional_water_observable_m2_per_pass": {
+        "min": 248200,
+        "median": 248200.0,
+        "max": 248200
+      },
+      "passes_with_added_water_ge90pct_observable": 2,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 0,
+      "maximum_v2_water_outside_frame_m2": 0,
+      "minimum_added_water_frame_fraction": 1.0
+    },
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "train_passes": 4,
+      "additional_water_observable_m2_per_pass": {
+        "min": 500,
+        "median": 127750.0,
+        "max": 248200
+      },
+      "passes_with_added_water_ge90pct_observable": 2,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 0,
+      "maximum_v2_water_outside_frame_m2": 0,
+      "minimum_added_water_frame_fraction": 1.0
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "train_passes": 6,
+      "additional_water_observable_m2_per_pass": {
+        "min": 0,
+        "median": 211150.0,
+        "max": 422300
+      },
+      "passes_with_added_water_ge90pct_observable": 3,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 3,
+      "maximum_v2_water_outside_frame_m2": 794800,
+      "minimum_added_water_frame_fraction": 1.0
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "train_passes": 3,
+      "additional_water_observable_m2_per_pass": {
+        "min": 0,
+        "median": 15100.0,
+        "max": 422300
+      },
+      "passes_with_added_water_ge90pct_observable": 1,
+      "passes_with_added_water_outside_frame": 0,
+      "passes_with_v2_water_outside_frame": 0,
+      "maximum_v2_water_outside_frame_m2": 0,
+      "minimum_added_water_frame_fraction": 1.0
+    }
+  ],
+  "train_acquisitions": 15,
+  "train_physical_passes": 12,
+  "verified_mask_files": 174,
+  "calibration_or_test_opened": false,
+  "inference_run": false,
+  "labels_or_predictions_read": false,
+  "active_configuration_changed": false,
+  "source_attribution": "© OpenStreetMap contributors, ODbL-1.0; Contains modified Copernicus Sentinel data 2025",
+  "geography_image": "comparison.png",
+  "pilot_image": "pilot.png",
+  "assets": {
+    "comparison.png": {
+      "sha256": "3eb630adda8d60c457b3bfdc7647628c2f63f1fd12522cee200c3ddb8de6f533",
+      "size_bytes": 226295,
+      "mime_type": "image/png"
+    },
+    "pilot.png": {
+      "sha256": "d4592657deae50e65814f88bcee6e5e86468afe3edff3f9e6865930f746a1466",
+      "size_bytes": 156029,
+      "mime_type": "image/png"
+    }
+  },
+  "limits": [
+    "Selected development sample, not a representative temporal coverage or accuracy validation.",
+    "OSM coastline is a dated geographic reference, not port authority, bathymetry or navigation limits.",
+    "Existing model-derived quality masks are not independently validated here.",
+    "Frame means retained core bounds; valid and observable masks expose missing/unsuitable pixels inside them.",
+    "Area sums across dates would be repeated area-observations, not distinct square kilometres or new visits.",
+    "V1 observations and frozen labels retain their original geographic meaning."
+  ]
+}

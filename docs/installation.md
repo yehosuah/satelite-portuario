@@ -37,6 +37,8 @@ Se usa instalación no editable para que el paquete funcione también en workspa
 | `PUERTOGT_DATA_DIR` | Directorio persistente del catálogo, activos, pesos y trabajos. `--data-dir` lo puede sustituir. |
 | `PUERTOGT_CONFIG_DIR` | Directorio que contiene geometrías, recetas y límites de ejecución. |
 | `PUERTOGT_REVIEW_TOKEN` | Credencial Bearer para guardar revisiones. Sin ella, los POST de revisión responden 503. |
+| `PUERTOGT_REVIEW_QUEUE` | Manifest congelado de la cola TRAIN; por defecto `<data-dir>/review-queue.json`. |
+| `PUERTOGT_GEOGRAPHY_PROPOSAL_DIR` | Directorio opcional del piloto V2; se consulta separado de las zonas activas. |
 | `PUERTOGT_CONTAINER` | Marca interna del contenedor para permitir su enlace de red. |
 
 La aplicación lee el entorno del proceso; no carga `.env` automáticamente. `.env.example` documenta los nombres. Define la credencial fuera del repositorio antes de iniciar el servicio y no la incluyas en capturas, reportes o argumentos públicos. En la interfaz se introduce como contraseña y permanece únicamente en memoria hasta recargar o cerrar el acceso.
@@ -149,3 +151,12 @@ docker run --rm --network none --platform linux/arm64 \
 ## Verificación realizada
 
 La importación del inventario, `init`, `doctor`, `history-report`, exportación GeoJSON/Parquet, bundle y restauración se ejecutaron en un volumen temporal. La restauración recuperó las 863 adquisiciones. La API y la interfaz se probaron con evidencia S2 real copiada a otro volumen temporal; aceptar, rechazar, añadir, mover, historial y recuperación de selección funcionaron. Las imágenes base y ML de Docker fueron comprobadas en ARM64, incluyendo inferencia CPU sin red. La validación local de modelos y el histórico procesado completo siguen siendo requisitos independientes.
+
+
+## Cola de primera inspección y propuesta V2
+
+La interfaz `/review-queue.html` (también `/review-queue`) utiliza `PUERTOGT_REVIEW_QUEUE`, cuyo valor predeterminado es `<data-dir>/review-queue.json`. Debe apuntar a un manifest creado por `scripts/build_review_queue.py`. El lote y sus previews se verifican por hash; copiar solo el JSON sin los activos correspondientes no permite revisar. Los recibos de primera inspección se conservan en `<data-dir>/review-intake/`. Incluye ambos en una copia complementaria del volumen, junto con `refresh/` y los ledgers de `history/`; no forman parte automáticamente de un bundle de catálogo.
+
+`PUERTOGT_GEOGRAPHY_PROPOSAL_DIR` puede apuntar a `reports/coverage/geography-v2-pilot`. El servidor exige que sus hashes V1/V2 coincidan con `ports.geojson` y `ports-v2.geojson` del directorio de configuración. Sin esa variable el panel informa que no hay propuesta configurada. Nunca sustituyas la configuración V1 del volumen histórico por V2: el [piloto](geography-v2-pilot.md) utiliza una configuración y un volumen separados antes de cualquier procesamiento nuevo.
+
+El [ciclo incremental](refresh.md) se ejecuta explícitamente desde el repositorio. No se ha instalado un temporizador ni un servicio de actualización automática.

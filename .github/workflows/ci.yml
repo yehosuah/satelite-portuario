@@ -10,10 +10,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
       - run: uv sync --frozen --no-editable --python 3.11
       - run: uv run --no-sync ruff check src tests scripts
       - run: uv run --no-sync pytest -q
+      - run: node --test tests/review-queue.test.cjs
       - run: uv build

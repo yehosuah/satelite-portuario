@@ -8,11 +8,6 @@ import sqlite3
 from collections import Counter
 from pathlib import Path
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
 from pyproj import Transformer
 from shapely.geometry import LineString, Point, box, mapping, shape
 from shapely.ops import nearest_points, polygonize, transform, unary_union
@@ -192,6 +187,12 @@ def draw_geometry(axis, geometry, *, color, alpha=1, linewidth=1, fill=False, li
 
 
 def generate(config, output):
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Patch
+
     output.mkdir(parents=True, exist_ok=True)
     original = read_json(config)
     regions = {

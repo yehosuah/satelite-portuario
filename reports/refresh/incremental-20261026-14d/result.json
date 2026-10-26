@@ -1,0 +1,135 @@
+{
+  "schema": "catalog-refresh-v1",
+  "run_id": "incremental-20261026-14d",
+  "dry_run": false,
+  "request_sha256": "6e219cfc9218135c5c95298726875ab3579052d5ee9a1e0b75f3cd7ffa3ef412",
+  "discovery_sha256": "e5499e66fb54275b9addc52456715e986e9cd941e430af61e63b867deb1a1e35",
+  "capture_start": "2026-10-12T13:51:02.441553Z",
+  "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+  "port_ids": [
+    "pbr",
+    "prq",
+    "stc"
+  ],
+  "sensors": [
+    "sentinel-1",
+    "sentinel-2"
+  ],
+  "limits": {
+    "reserve_bytes": 5368709120,
+    "total_download_bytes": 2147483648,
+    "acquisition_download_bytes": 536870912,
+    "volume_limit_bytes": 107374182400,
+    "max_attempts": 3,
+    "retry_seconds": 60,
+    "io_workers": 4
+  },
+  "threads": 4,
+  "max_acquisitions": 2,
+  "queries": [
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-1",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 8,
+      "reported_count": 8,
+      "pages": 1,
+      "page_evidence_sha256": "1fd5e97c1e6f06c06732c4b342c4777a389b757ad0ff542bb607ebf7fe6e23a1",
+      "completed_at": "2026-10-26T13:51:05.651523Z"
+    },
+    {
+      "port_id": "pbr",
+      "sensor": "sentinel-2",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 7,
+      "reported_count": 7,
+      "pages": 1,
+      "page_evidence_sha256": "1044d5c22c80cbcae054b167185fc7e748ada77dc049a953fdda0ea06c94c9c8",
+      "completed_at": "2026-10-26T13:51:12.587749Z"
+    },
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-1",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 6,
+      "reported_count": 6,
+      "pages": 1,
+      "page_evidence_sha256": "8390afec00862360d781bd293ebafc2b6cdbeb1f71d65ac3020f31159ac4cdee",
+      "completed_at": "2026-10-26T13:51:17.606659Z"
+    },
+    {
+      "port_id": "prq",
+      "sensor": "sentinel-2",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 3,
+      "reported_count": 3,
+      "pages": 1,
+      "page_evidence_sha256": "fb41d9743faf7ddf92dd1220e96b16c975163d4942ff8fc8e05c1896d831ba78",
+      "completed_at": "2026-10-26T13:51:28.022075Z"
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-1",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 8,
+      "reported_count": 8,
+      "pages": 1,
+      "page_evidence_sha256": "3f565a81327376f6562ccab5c16dc55eac8b7965824f567790732630a696d4c3",
+      "completed_at": "2026-10-26T13:51:30.822490Z"
+    },
+    {
+      "port_id": "stc",
+      "sensor": "sentinel-2",
+      "complete": true,
+      "capture_start": "2026-10-12T13:51:02.441553Z",
+      "capture_end_exclusive": "2026-10-26T13:51:02.441553Z",
+      "products": 7,
+      "reported_count": 7,
+      "pages": 1,
+      "page_evidence_sha256": "4387ca0b8a8e313ed8b41841e87467c34fa16fe051d729598c1386a9dafbc940",
+      "completed_at": "2026-10-26T13:51:41.388313Z"
+    }
+  ],
+  "created_at": "2026-10-26T13:51:02.441553Z",
+  "selected_acquisition_keys": [
+    "S1D:IW:GRDH:1SDV:20261026T000538:20261026T000603:005179:009D43"
+  ],
+  "discovered_acquisitions": 17,
+  "eligible_acquisitions": 1,
+  "deferred_acquisitions": 0,
+  "excluded": {
+    "owned_by_existing_campaign": 16
+  },
+  "selection_sha256": "9aadba1f07634627a6171539233b9d82b5f47daa958076b98659aafa60467974",
+  "registered_acquisitions": 1,
+  "plan_id": "history-selected-v1-1389bdf61d2682b0",
+  "plan_sha256": "fac7dbe865e3411df3064a6de4d6526ca984dc85559807d74c2d7829213b3cbf",
+  "status": "complete",
+  "planned_zone_observations": 8,
+  "processing": {
+    "states": {
+      "complete": 1
+    },
+    "download_bytes_reserved": 25215992
+  },
+  "coverage": {
+    "report_sha256": "855a1569b37c37c468904fe5324eaa48cca55ecd6a5e85b683ad306b2b2474dd",
+    "mask_cache_sha256": "467f88a7a92b716654a938f13be3e4064866efe8b3503719bfa503cf304fe5d4",
+    "mask_union_entries": 118,
+    "mask_union_errors": 0,
+    "source_snapshot_sha256": "c834bd49fa00c4e1792bf2ee430f9642a69c0eebbf6faa3bd5277626cbbd5cac",
+    "rebuilt_at": "2026-10-26T13:53:52.617554Z"
+  },
+  "updated_at": "2026-10-26T13:53:52.918680Z",
+  "finished_at": "2026-10-26T13:53:52.918680Z"
+}

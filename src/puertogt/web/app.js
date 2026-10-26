@@ -13,6 +13,7 @@ const state = {
   asset: null, bounds: null, drag: null, generation: 0, loading: false, reviewerKind: "human_visual_review",
   coverageGeneration: 0, observationLoading: false,
   scopeDraft: null, scopePreviewing: false, scopeRequest: 0,
+  requestedObservation: new URLSearchParams(location.search).get("observation"),
 };
 
 function node(tag, text, className) {
@@ -135,12 +136,69 @@ async function loadSystemStatus() {
       $("history-status").append(row);
     }
     $("system-updated").textContent = `Consultado: ${date(result.generated_at)}`;
+    renderFreshness(result.freshness);
     $("system-error").hidden = true;
   } catch (error) {
     $("system-summary").textContent = "Estado sin actualizar";
     $("system-error").textContent = "No se pudo actualizar el estado. Los datos anteriores, si aparecen, pueden estar desactualizados.";
     $("system-error").hidden = false;
   } finally { button.disabled = false; }
+}
+
+function renderFreshness(freshness) {
+  const target = $("freshness-status"); target.replaceChildren();
+  if (!freshness?.items?.length) {
+    target.append(node("p", "Todavía no hay recibos de actualización incremental.")); return;
+  }
+  const table = node("table", undefined, "coverage-table");
+  const head = node("thead"), header = node("tr"), body = node("tbody");
+  for (const title of ["Puerto / sensor", "Búsqueda completa", "Captura en catálogo", "Captura procesada", "Captura útil", "Pendientes / sin fuente"]) {
+    const cell = node("th", title); cell.scope = "col"; header.append(cell);
+  }
+  head.append(header);
+  const show = (value) => value ? date(value) : "Sin registro";
+  for (const item of freshness.items) {
+    const row = node("tr"), label = node("th", `${state.ports.get(item.port_id) || item.port_id} · ${item.sensor === "sentinel-1" ? "Radar" : "Óptico"}`);
+    label.scope = "row";
+    row.append(label, node("td", show(item.last_complete_search_at)), node("td", show(item.last_catalog_capture_at)),
+      node("td", show(item.last_processed_capture_at)), node("td", show(item.last_useful_capture_at)),
+      node("td", `${item.pending_acquisitions} / ${item.unavailable_acquisitions}`));
+    body.append(row);
+  }
+  table.append(node("caption", "Frescura por puerto y sensor · fechas UTC"), head, body); target.append(table);
+  target.append(node("p", "Búsqueda completa acredita el intervalo del recibo, no cobertura continua. Una captura útil tiene al menos una zona con ≥90% observable; no certifica barcos ni toda el área del puerto.", "system-note"));
+  if (freshness.errors?.length) target.append(node("p", "No se pudieron leer todos los recibos. Las cifras pueden estar incompletas; revisa el estado de la actualización.", "model-notice"));
+}
+
+async function loadGeographyProposal() {
+  const target = $("geography-content");
+  try {
+    const result = await api("/v1/geography-proposal"); target.replaceChildren();
+    if (!result.available) { target.append(node("p", "No hay una propuesta geográfica configurada en este volumen.")); return; }
+    const km = (n) => new Intl.NumberFormat("es-GT", { maximumFractionDigits: 3 }).format(n / 1e6);
+    const net = result.ports.reduce((sum, item) => sum + item.v2_water_union_area_m2 - item.v1_water_union_area_m2, 0);
+    $("geography-summary").textContent = `+${km(net)} km² netos de agua · sin activar`;
+    target.append(node("p", `Piloto TRAIN de ${result.train_acquisitions} adquisiciones y ${result.train_physical_passes} pasadas físicas. La ampliación de 250 m y el recorte del fondeo STC siguen separados de las observaciones V1.`));
+    const cards = node("div", undefined, "system-cards");
+    for (const port of result.ports) {
+      const card = node("div", undefined, "system-card");
+      card.append(node("span", state.ports.get(port.port_id) || port.port_id),
+        node("strong", `+${km(port.v2_water_union_area_m2 - port.v1_water_union_area_m2)} km²`), node("p", "Cambio neto de agua según cartografía OSM"));
+      cards.append(card);
+    }
+    target.append(cards);
+    for (const [name, caption] of [["comparison.png", "Comparación de límites V1 y propuesta V2"], ["pilot.png", "Cobertura de una pasada óptica TRAIN con las zonas propuestas"]]) {
+      const figure = node("figure", undefined, "geography-figure"), img = node("img");
+      img.src = `/v1/geography-proposal/images/${name}`; img.alt = caption; img.loading = "lazy";
+      figure.append(img, node("figcaption", caption)); target.append(figure);
+    }
+    const missing = result.train_coverage.filter((row) => row.passes_with_v2_water_outside_frame > 0);
+    for (const row of missing) target.append(node("p", `${state.ports.get(row.port_id) || row.port_id}: ${row.passes_with_v2_water_outside_frame} pasadas ${row.sensor === "sentinel-1" ? "radar" : "ópticas"} conservan hasta ${km(row.maximum_v2_water_outside_frame_m2)} km² de agua V2 fuera del encuadre. El área añadida sí está dentro del encuadre en este piloto.`, "model-notice"));
+    target.append(node("p", "La costa OSM es una referencia fechada y usa un margen analítico de 20 m. Estas zonas no son límites oficiales de navegación. El piloto mide cobertura, no precisión del detector. " + result.source_attribution, "system-note"));
+  } catch (error) {
+    $("geography-summary").textContent = "Propuesta sin verificar";
+    target.replaceChildren(node("p", "No se pudo verificar la propuesta y sus geometrías. La configuración activa conserva sus límites."));
+  }
 }
 
 function filterParams() {
@@ -220,7 +278,13 @@ async function loadObservations(append = false) {
     state.cursor = result.next_cursor;
     renderSceneList();
     if (!append) {
-      const previous = state.observation?.observation_id || savedState().observationId;
+      const requested = state.requestedObservation;
+      state.requestedObservation = null;
+      if (requested && !state.observations.some((item) => item.observation_id === requested)) {
+        state.observations.unshift(await api(`/v1/observations/${encodeURIComponent(requested)}`));
+        renderSceneList();
+      }
+      const previous = requested || state.observation?.observation_id || savedState().observationId;
       const selected = state.observations.find((o) => o.observation_id === previous) || state.observations[0];
       if (selected) await selectObservation(selected.observation_id);
       else clearObservation();
@@ -750,6 +814,7 @@ $("refresh-system").addEventListener("click", loadSystemStatus);
 $("refresh-coverage").addEventListener("click", loadPassCoverage);
 $("coverage-threshold").addEventListener("change", loadPassCoverage);
 $("coverage-panel").addEventListener("toggle", () => { if ($("coverage-panel").open) loadPassCoverage(); });
+$("geography-panel").addEventListener("toggle", () => { if ($("geography-panel").open) loadGeographyProposal(); });
 for (const tool of ["select", "add", "move", "redraw", "scope"]) $("tool-" + tool).addEventListener("click", () => setTool(tool));
 $("save-scope").addEventListener("click", saveScope);
 $("discard-scope").addEventListener("click", () => {
@@ -816,8 +881,8 @@ async function init() {
     }
     for (const [id, name] of state.ports) { const option = node("option", name); option.value = id; $("port-filter").append(option); }
     const previous = savedState();
-    $("port-filter").value = previous.port || ""; $("sensor-filter").value = previous.sensor || "";
-    $("start-filter").value = previous.start || ""; $("end-filter").value = previous.end || "";
+    $("port-filter").value = state.requestedObservation ? "" : previous.port || ""; $("sensor-filter").value = state.requestedObservation ? "" : previous.sensor || "";
+    $("start-filter").value = state.requestedObservation ? "" : previous.start || ""; $("end-filter").value = state.requestedObservation ? "" : previous.end || "";
     await loadObservations();
     await loadSystemStatus();
   } catch (error) { $("connection").textContent = "Servicio no disponible"; notify(explain(error), true); }

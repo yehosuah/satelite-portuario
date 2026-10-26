@@ -20,7 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from puertogt import __version__
 from puertogt.contracts import as_utc
 from puertogt.review import ReviewConflict, add_detection, preview_reviewed_area, record_review
-from puertogt.store import Store, confined_path, utc_text
+from puertogt.store import Store, confined_path, sha256_file, utc_text
 
 
 def config_path() -> Path:
@@ -54,8 +54,33 @@ class ScopePreviewInput(BaseModel):
     geometry: dict
 
 
+class FirstPassInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    queue_id: str = Field(pattern=r"^train-[a-f0-9]{20}$")
+    inspection_id: str
+    observation_id: str = Field(min_length=1, max_length=200)
+    author: str = Field(min_length=1, max_length=120)
+    reviewer_kind: Literal["human_visual_review", "ai_visual_review"]
+    decision: Literal["candidates", "empty", "uncertain"]
+    candidates: list[dict] = Field(default_factory=list, max_length=100)
+    reviewed_area: dict | None = None
+    note: str = Field(default="", max_length=5000)
+    elapsed_seconds: int = Field(ge=0, le=86400)
+
+
+class QueueGeometryInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    queue_id: str = Field(pattern=r"^train-[a-f0-9]{20}$")
+    observation_id: str = Field(min_length=1, max_length=200)
+    asset_id: str = Field(min_length=1, max_length=200)
+    rectangle: tuple[float, float, float, float]
+    kind: Literal["area", "candidate"]
+
+
 def create_app(
-    store: Store | None = None, *, review_token: str | None = None, ports_path: Path | None = None
+    store: Store | None = None, *, review_token: str | None = None, ports_path: Path | None = None,
+    review_queue_path: Path | None = None,
+    geography_proposal_dir: Path | None = None,
 ) -> FastAPI:
     if store is None:
         data_dir = Path(os.getenv("PUERTOGT_DATA_DIR", "data")).expanduser()
@@ -68,6 +93,21 @@ def create_app(
         description="Observaciones por adquisición. Ningún conteo implica llegadas, TEU ni ausencia absoluta de buques.",
     )
     app.state.store = store
+    review_queue_path = review_queue_path or Path(os.getenv(
+        "PUERTOGT_REVIEW_QUEUE", str(store.data_dir / "review-queue.json")
+    ))
+    if geography_proposal_dir is None and os.getenv("PUERTOGT_GEOGRAPHY_PROPOSAL_DIR"):
+        geography_proposal_dir = Path(os.environ["PUERTOGT_GEOGRAPHY_PROPOSAL_DIR"])
+
+    def active_queue():
+        from puertogt.review_queue import read_queue
+
+        if not review_queue_path.is_file():
+            raise HTTPException(404, "No active TRAIN review queue")
+        try:
+            return read_queue(review_queue_path)
+        except (ValueError, KeyError, OSError) as exc:
+            raise HTTPException(409, "The frozen review queue could not be verified") from exc
 
     def ports():
         return (
@@ -75,6 +115,19 @@ def create_app(
             if ports_path.is_file()
             else {"type": "FeatureCollection", "features": []}
         )
+
+    def geography_proposal():
+        if geography_proposal_dir is None:
+            return {"available": False, "active": False}
+        try:
+            summary = json.loads((geography_proposal_dir / "summary.json").read_text())
+            if (summary["schema"] != "geography-v2-pilot-summary-v1" or summary["active"] is not False
+                    or summary["v1_sha256"] != sha256_file(ports_path)
+                    or summary["v2_sha256"] != sha256_file(ports_path.parent / "ports-v2.geojson")):
+                raise ValueError("Proposal differs from its frozen geometries")
+            return {**summary, "available": True}
+        except (ValueError, KeyError, OSError) as exc:
+            raise HTTPException(409, "Geography proposal could not be verified") from exc
 
     def authorize(request: Request):
         if not review_token:
@@ -193,11 +246,94 @@ def create_app(
     def get_ports():
         return ports()
 
+    @app.get("/v1/review-queue")
+    def get_review_queue():
+        from puertogt.review_queue import blind_entry
+
+        if not review_queue_path.is_file():
+            return {"available": False, "items": [], "distribution": {}}
+        manifest = active_queue()
+        return {"available": True, "queue_id": manifest["queue_id"], "split": "train",
+                "items": [blind_entry(manifest, row["observation_id"]) for row in manifest["entries"]],
+                "distribution": manifest["distribution"]}
+
+    @app.get("/v1/review-queue/observations/{observation_id}")
+    def get_blind_observation(observation_id: str):
+        from puertogt.review_intake import projected_zone
+        from puertogt.review_queue import blind_entry
+
+        try:
+            result = blind_entry(active_queue(), observation_id)
+            result["assets"] = [{**asset, "href": f"/v1/review-queue/assets/{observation_id}/{asset['asset_id']}",
+                                 "metadata": {"wgs84_bounds": asset["wgs84_bounds"], "role": "preview",
+                                              "zone_pixel_geometry": projected_zone(result, asset)},
+                                 "attribution": "Contains modified Copernicus Sentinel data"}
+                                for asset in result["assets"]]
+            return result
+        except KeyError as exc:
+            raise HTTPException(404, "Observation is outside the frozen TRAIN queue") from exc
+
+    @app.post("/v1/review-queue/geometry", dependencies=[Depends(authorize)])
+    def queue_geometry(body: QueueGeometryInput):
+        from puertogt.review_intake import preview_rectangle
+
+        try:
+            return preview_rectangle(store, active_queue(), body.model_dump())
+        except ReviewConflict as exc:
+            raise HTTPException(409, str(exc)) from exc
+        except KeyError as exc:
+            raise HTTPException(404, "Asset is outside the frozen TRAIN queue") from exc
+        except (ValueError, OSError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+    @app.get("/v1/review-queue/assets/{observation_id}/{asset_id}")
+    def get_blind_asset(observation_id: str, asset_id: str):
+        from puertogt.review_queue import blind_asset
+
+        try:
+            path = blind_asset(store, active_queue(), observation_id, asset_id)
+            return FileResponse(path, media_type="image/png")
+        except KeyError as exc:
+            raise HTTPException(404, "Asset is outside the frozen TRAIN queue") from exc
+        except (ValueError, OSError) as exc:
+            raise HTTPException(409, "Frozen raw preview is missing or changed") from exc
+
+    @app.post("/v1/review-queue/first-pass", dependencies=[Depends(authorize)])
+    def first_pass(body: FirstPassInput):
+        from puertogt.review_intake import record_first_pass
+
+        try:
+            return record_first_pass(store, active_queue(), body.model_dump())
+        except ReviewConflict as exc:
+            raise HTTPException(409, str(exc)) from exc
+        except KeyError as exc:
+            raise HTTPException(404, "Observation is outside the frozen TRAIN queue") from exc
+        except (ValueError, OSError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
     @app.get("/v1/system")
     def system():
         from puertogt.status import system_status
 
         return system_status(store)
+
+    @app.get("/v1/geography-proposal")
+    def get_geography_proposal():
+        return geography_proposal()
+
+    @app.get("/v1/geography-proposal/images/{name}")
+    def geography_image(name: Literal["comparison.png", "pilot.png"]):
+        summary = geography_proposal()
+        if not summary["available"]:
+            raise HTTPException(404, "No geography proposal configured")
+        try:
+            asset = summary["assets"][name]
+            path = confined_path(geography_proposal_dir, name)
+            if path.stat().st_size != asset["size_bytes"] or sha256_file(path) != asset["sha256"]:
+                raise ValueError("Proposal image changed")
+            return FileResponse(path, media_type="image/png")
+        except (ValueError, KeyError, OSError) as exc:
+            raise HTTPException(409, "Geography proposal image could not be verified") from exc
 
     @app.get("/v1/observations")
     def observations(
@@ -433,5 +569,9 @@ def create_app(
 
     web = Path(__file__).parent / "web"
     if web.is_dir():
+        @app.get("/review-queue", include_in_schema=False)
+        def review_queue_page():
+            return FileResponse(web / "review-queue.html", media_type="text/html")
+
         app.mount("/", StaticFiles(directory=web, html=True), name="review-ui")
     return app

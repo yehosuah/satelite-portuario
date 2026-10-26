@@ -20,6 +20,11 @@ La API sirve resultados del catálogo local. No inicia descargas, inferencia, en
 | `GET /v1/coverage` | Conciliación entre catálogo y procesamiento, por periodo y ámbito. |
 | `GET /v1/coverage/passes` | Pasadas únicas, área observable e intervalos reales por puerto, zona y sensor. |
 | `GET /v1/reviews/{entity_type}/{entity_id}` | Historial ordenado de revisiones de una entidad. |
+| `GET /v1/review-queue` | Cola TRAIN congelada con campos seguros, sin predicciones ni revisiones anteriores. |
+| `GET /v1/review-queue/observations/{observation_id}` | Evidencia cruda y zona proyectada en coordenadas normalizadas del preview. |
+| `GET /v1/review-queue/assets/{observation_id}/{asset_id}` | Preview perteneciente al lote, con SHA verificado antes de servirlo. |
+| `GET /v1/geography-proposal` | Resumen del piloto V2 independiente e inactivo, o `available: false`. |
+| `GET /v1/geography-proposal/images/{name}` | `comparison.png` o `pilot.png`, previa verificación de hashes y geometrías. |
 
 Los identificadores de puerto son `prq`, `stc` y `pbr`; los sensores son `sentinel-1` y `sentinel-2`. Observaciones y detecciones aceptan `port_id`, `sensor`, `start`, `end`, `recipe_version` e `include_rejected`. Detecciones también acepta `observation_id`; observaciones acepta `status`. Cambios acepta `port_id`, `start`, `end` e `include_rejected`. Cobertura acepta `port_id` y `recipe_version`.
 
@@ -50,6 +55,12 @@ Estos resultados no expresan llegadas, salidas, carga, TEU, identidad de buques 
 ## Revisiones autenticadas
 
 Los POST requieren `Authorization: Bearer <credencial-local>` y el servidor debe tener `PUERTOGT_REVIEW_TOKEN`. Sin configuración responde 503; una credencial incorrecta produce 401. Las peticiones de navegador deben mantener el mismo origen. La lectura local no requiere token.
+
+`POST /v1/review-queue/geometry` recibe `queue_id`, `observation_id`, `asset_id`, `kind` (`area` o `candidate`) y `rectangle: [left, top, right, bottom]`, normalizado entre 0 y 1 respecto de la imagen. Convierte con el CRS y bounds nativos congelados; para un área interseca la zona. Devuelve `geometry` WGS84 y `pixel_geometry`, sin persistir hallazgos.
+
+`POST /v1/review-queue/first-pass` recibe identidad de cola/observación, `inspection_id` UUID, `author`, `reviewer_kind`, `decision` (`candidates`, `empty`, `uncertain`), `candidates`, `reviewed_area`, `note` y `elapsed_seconds`. Un candidato requiere un área explícita y su centro debe quedar dentro; incertidumbre requiere una nota. Escribe un recibo inmutable en `review-intake/`, separado de etiquetas y revisiones SQL. Repetir el mismo UUID y cuerpo devuelve el mismo recibo; cambiar el contenido produce 409. La interfaz reutiliza exactamente el cuerpo tras un resultado de red ambiguo. Los indicadores `is_training_label` e `is_independent_validation` permanecen falsos. [Flujo de revisión](review-queue.md).
+
+`/v1/system` añade `freshness.items`, con búsqueda completa verificable, capturas catalogadas/procesadas/útiles y pendientes por puerto/sensor. Sus definiciones están en [actualización incremental](refresh.md). El panel V2 nunca sustituye `/v1/ports` ni reinterpreta observaciones V1.
 
 `POST /v1/reviews/scope-preview` recibe `observation_id` y `geometry` (Polygon o MultiPolygon WGS84). Aunque usa POST y requiere credencial, es una operación de lectura: devuelve `reviewed_area`, `clipped`, `zone_id`, `observation_id` y `previous_revision_id` sin guardar una revisión. Interseca el dibujo con la zona configurada del puerto; conserva huecos y partes desconectadas, y elimina intersecciones de borde sin superficie. Exige una escena `usable` o `partial` y una intersección válida con área positiva. No consulta píxeles ni decide si el área está libre de nubes o buques.
 

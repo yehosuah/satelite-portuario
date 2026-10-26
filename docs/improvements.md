@@ -4,6 +4,8 @@
 
 ## Prioridad y resultado comprobable
 
+La tabla describe el diagnóstico que motivó el incremento. Los resultados ejecutados del 26 de octubre se registran más abajo.
+
 | Orden | Mejora | Evidencia del problema | Cómo comprobar que mejora el sistema |
 | --- | --- | --- | --- |
 | 1 | Obtener más etiquetas utilizables del Caribe, con revisión independiente | El TRAIN comparado tiene 51 referencias: 48 de Quetzal, dos de Barrios y una de Santo Tomás. El refit sigue omitiendo la única referencia STC. La revisión posterior de 32 observaciones produjo una referencia nueva y 30 abstenciones. | Registrar positivos, negativos completos, omisiones, abstenciones y tiempo de revisión por puerto/sensor/pasada. Resolver casos claros y conservar desconocidos; la IA no sustituye la referencia humana o externa. |
@@ -20,11 +22,13 @@ El visor permite **Delimitar área**, previsualizar el recorte a la zona y guard
 
 Esta mejora permite aprovechar un sector claro de una imagen parcialmente dudosa. No crea etiquetas automáticamente, no certifica calidad de píxeles ni altera límites, modelos o particiones congeladas. La verificación de interfaz utiliza una base sintética aislada; sus anotaciones no entran al catálogo científico.
 
-## Siguiente incremento recomendado
+## Cola TRAIN y primer incremento ejecutado
 
-Construir una cola reproducible **solo TRAIN**, con balance por puerto/sensor y diversidad de pasadas, priorizando claridad local para reducir revisiones que terminan en abstención. Debe mostrar las razones de selección y ofrecer una primera inspección sin predicciones ni scores. La selección no puede consultar conteos del modelo ni abrir CAL/TEST. El muestreo de validación necesita su propio diseño representativo: no debe heredar silenciosamente el filtro de escenas claras utilizado para conseguir etiquetas TRAIN.
+Se construyó una cola reproducible **solo TRAIN**, con balance por puerto/sensor y diversidad de pasadas, priorizando claridad local para reducir revisiones que terminan en abstención. Debe mostrar las razones de selección y ofrecer una primera inspección sin predicciones ni scores. La selección no puede consultar conteos del modelo ni abrir CAL/TEST. El muestreo de validación necesita su propio diseño representativo: no debe heredar silenciosamente el filtro de escenas claras utilizado para conseguir etiquetas TRAIN.
 
-El primer lote medirá rendimiento de etiquetado y desacuerdos antes de decidir otra ejecución de entrenamiento. El editor de áreas ya está disponible; la cola y la inspección sin propuestas siguen pendientes.
+El primer lote de doce observaciones ya tiene una inspección IA registrada sin propuestas: 41 candidatos (40 PRQ y uno STC), dos áreas ópticas PBR sin embarcaciones visibles y cinco abstenciones. Los recibos no son etiquetas de entrenamiento ni validación independiente. No se volvió a entrenar: todavía falta adjudicar estos hallazgos y ampliar el soporte del Caribe. [Recibos y límites](../reports/improvements/20261026-increment/README.md).
+
+La actualización incremental también se ejecutó: descubrió una adquisición nueva, añadió ocho observaciones, reconstruyó cobertura y repitió sin duplicados. El panel muestra frescura verificable. La V2 se conserva separada e inactiva, con un piloto de 15 adquisiciones y 0,880 km² netos de agua adicionales. Estos cambios operativos no acreditan la precisión del detector.
 
 ## Alcance de las pasadas y referencias
 

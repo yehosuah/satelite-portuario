@@ -1,0 +1,63 @@
+{
+  "schema": "improvement-verification-v1",
+  "verified_at": "2026-10-26T14:28:22.053199+00:00",
+  "software_version": "0.4.0",
+  "base_git_commit": "1f6064f7b4fa7bd7219b3131f0604215a92e41a2",
+  "counts_before": {
+    "acquisitions": 868,
+    "observations": 5018,
+    "detections": 4428,
+    "revisions": 572,
+    "assets": 122894,
+    "models": 10
+  },
+  "counts_after": {
+    "acquisitions": 869,
+    "observations": 5026,
+    "detections": 4428,
+    "revisions": 572,
+    "assets": 123001,
+    "models": 11
+  },
+  "processed_acquisitions": 828,
+  "unavailable_acquisitions": 6,
+  "context_acquisitions": 35,
+  "pending_acquisitions": 0,
+  "prior_models_logical_sha256": "8dc6069e7356ce783f6a32fa81385c3de7081d3566d90b7af76bec92963cbd14",
+  "revisions_logical_sha256": "3f82e0b1b96a04e13f5f79e034373d17f27a519ca79e1b9eeaf09645c105023e",
+  "prior_models_and_revisions_unchanged": true,
+  "logical_digest_encoding": "SHA256(JSON array of SQL row arrays ordered by model_id/revision_id; Python json.dumps defaults; no trailing newline). Models exclude only new campaign manifest.",
+  "frozen_manifests_unchanged": 26,
+  "v1_sha256": "8eec2e8048be87361bd5c615f18cc585e450c2938bd70ab37afac40692891589",
+  "v2_sha256": "1113eca2c1dcd2c450af6bd6b4c21031e5b6fe2a62b649af3977a36a8fedd1ef",
+  "v2_active": false,
+  "queue_sha256": "35c92bca87c79d64833edde6db1870f0b00fd2cc54a0177857e150a84a33d5bc",
+  "inspection_sources_unchanged_after_comparison": true,
+  "refresh_repeat_byte_identical": true,
+  "freshness_verified_rows": 6,
+  "tests": {
+    "python_with_ml": 402,
+    "python_base_passed": 385,
+    "python_base_skipped_for_optional_torch": 14,
+    "node_frontend": 6,
+    "ruff": "passed",
+    "git_diff_check": "passed",
+    "python_full_log_sha256": "50b947ed939af8959ac9b8d10fa7a055fdca132b7ea8de892ab926d85da9585e",
+    "python_base_log_sha256": "41fb86eb36ce2e5fdd3a4b24ca69eae83a55a7786dd18c1952fb7da8b5d4488f"
+  },
+  "independent_code_review": {
+    "areas": [
+      "review_queue",
+      "refresh"
+    ],
+    "reproduced_defects_fixed": 4,
+    "final_review": "no remaining actionable findings in reviewed scope"
+  },
+  "scientific": {
+    "training_labels_created": 0,
+    "new_training_run": false,
+    "local_precision_ge90_demonstrated": false,
+    "test_opened": false,
+    "doctor_check_release_exit_code": 2
+  }
+}

@@ -18,9 +18,11 @@ Los [atributos públicos](../reports/public-attributes/experiment-result-v1.json
 
 La versión 0.3.1 permite dibujar y guardar un área parcial de revisión desde el visor, con recorte a la zona, previsualización y protección frente a revisiones concurrentes. Cambiar el ámbito deja pendiente su completitud. Esta mejora de revisión no añade etiquetas ni cambia pesos o particiones científicas. [Uso](labeling-protocol.md) y [siguientes mejoras](improvements.md).
 
+El incremento **0.4.0** añadió una adquisición radar del 26 de octubre: **828 procesadas + seis excepciones, cero pendientes y 5.026 observaciones**, con 123.001 activos registrados. La repetición produjo un recibo idéntico; los diez manifiestos de modelos anteriores y las 572 revisiones se conservaron. El undécimo manifiesto identifica la receta de esta campaña y reutiliza los mismos pesos. La nueva inspección TRAIN conserva 41 candidatos IA en cinco escenas, dos áreas sin embarcaciones visibles y cinco abstenciones, sin crear etiquetas de entrenamiento. La V2, separada e inactiva, propone 0,880 km² netos adicionales de agua. [Evidencia del incremento](../reports/improvements/20261026-increment/README.md).
+
 | Parte del plan | Implementado y comprobado | Evidencia pendiente |
 |---|---|---|
-| T1: inventario y geometrías | Inventario inicial de 81 páginas, 1.267 productos y 863 adquisiciones. La actualización añade cinco: 868 en catálogo, 833 del período y 35 de contexto. Doce zonas con procedencia. | Confirmar límites operativos de las zonas provisionales. |
+| T1: inventario y geometrías | Inventario inicial de 81 páginas, 1.267 productos y 863 adquisiciones. Las actualizaciones añaden seis: 869 en catálogo, 834 del período y 35 de contexto. Doce zonas V1 con procedencia; V2 separada e inactiva. | Confirmar límites operativos de las zonas provisionales. |
 | T2: pilotos y recetas | Inferencia real S1/S2 en los tres puertos, nubes/sombras ópticas, contexto radar compatible, pasos supervisados públicos, pesos/hashes fijados, CPU y MPS. | Calidad representativa por tamaño, muelle/fondeo, nubosidad y geometría radar. |
 | T3: persistencia | SQLite, cola idempotente por adquisición/zona/modelos, leases, reintentos, pausas y archivos atómicos. | Operación prolongada en el equipo de destino. |
 | T4: revisión | Piloto inicial auditado y rondas posteriores de fase 2; scopes explícitos, omisiones, incertidumbres, procedencia IA y teselas completas con halos conservados para replay. | Revisión humana independiente y soporte suficiente de CAL/TEST por puerto. |
@@ -69,7 +71,7 @@ PYTHONPATH=src .venv/bin/python scripts/process_history.py status \
   --plan-dir data/history/full-v1
 ```
 
-Para fechas nuevas, crea un plan separado con `plan-selected` y una lista exacta de adquisiciones. El [procedimiento y los suplementos ejecutados](../reports/history/closure-20261026.md) explican la protección de evidencias anteriores. Mantén un solo proceso pesado y sus límites de descarga/CPU. `--resume-paused` corresponde únicamente a estados pausados por recursos después de corregir su causa; no elimina `PAUSE`. Las [seis excepciones radar](../reports/history/missing-context-investigation.json) permanecen documentadas, sin volver a programarlas en cada actualización.
+Para fechas nuevas, usa el [ciclo incremental](refresh.md), que descubre novedades, congela una selección exacta, procesa dentro de límites y reconstruye cobertura. También puedes crear un plan separado con `plan-selected` y una lista exacta de adquisiciones. El [procedimiento y los suplementos ejecutados](../reports/history/closure-20261026.md) explican la protección de evidencias anteriores. Mantén un solo proceso pesado y sus límites de descarga/CPU. `--resume-paused` corresponde únicamente a estados pausados por recursos después de corregir su causa; no elimina `PAUSE`. Las [seis excepciones radar](../reports/history/missing-context-investigation.json) permanecen documentadas, sin volver a programarlas en cada actualización.
 
 ## Preparar una entrega nueva
 
@@ -86,7 +88,7 @@ PYTHONPATH=src .venv/bin/python -m puertogt.cli restore dist/release-new/catalog
 PYTHONPATH=src .venv/bin/python -m puertogt.cli --data-dir data-restored-new doctor --check-release
 ```
 
-El último comando mantiene salida 2 mientras falte evidencia científica; no se altera esa política para producir un paquete. La versión de software actual es 0.3.1. La restauración del corte v0.2.0 verificó 96.494 archivos del catálogo y su continuidad estructural; sus recibos conservan ese estado anterior en `reports/release-v0.2.0/`. No equivale a haber reiniciado el worker en otra máquina. La copia de datos es local; publicar código no implica subir sus imágenes ni sus pesos a GitHub. El release v0.1.0 permanece intacto.
+El último comando mantiene salida 2 mientras falte evidencia científica; no se altera esa política para producir un paquete. La versión de software actual es 0.4.0. La restauración del corte v0.2.0 verificó 96.494 archivos del catálogo y su continuidad estructural; sus recibos conservan ese estado anterior en `reports/release-v0.2.0/`. No equivale a haber reiniciado el worker en otra máquina. La copia de datos es local; publicar código no implica subir sus imágenes ni sus pesos a GitHub. El release v0.1.0 permanece intacto.
 
 ## Archivos de evidencia
 

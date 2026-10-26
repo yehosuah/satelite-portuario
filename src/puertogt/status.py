@@ -7,6 +7,7 @@ import sqlite3
 from contextlib import closing
 from pathlib import Path
 
+from puertogt.refresh import freshness_report
 from puertogt.store import Store, confined_path, utc_text
 
 REQUIRED_TASKS = (
@@ -88,6 +89,7 @@ def system_status(store: Store) -> dict:
         "jobs": job_states,
         "reviews": {"states": review_states, "complete_scopes": reviewed_scopes},
         "history": _campaigns(store.data_dir),
+        "freshness": freshness_report(store),
         "model_tasks": tasks,
         "limits": [
             "Processed acquisitions may contain unusable observations.",

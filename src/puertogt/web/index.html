@@ -12,7 +12,7 @@
   <a class="skip-link" href="#workspace">Ir a la revisión</a>
   <header class="app-header">
     <div class="identity"><span class="brand-mark" aria-hidden="true">◈</span><div><h1>Satélite Portuario</h1><p>Observatorio de los puertos de Guatemala</p></div></div>
-    <div class="header-actions"><span id="connection" class="connection">Conectando…</span><button id="auth-toggle" class="secondary" type="button">Acceso a revisión</button><a class="api-link" href="/docs" target="_blank" rel="noreferrer">API ↗</a></div>
+    <div class="header-actions"><span id="connection" class="connection">Conectando…</span><a class="api-link" href="/review-queue.html">Revisar lote TRAIN →</a><button id="auth-toggle" class="secondary" type="button">Acceso a revisión</button><a class="api-link" href="/docs" target="_blank" rel="noreferrer">API ↗</a></div>
   </header>
 
   <section id="auth-panel" class="auth-panel" aria-label="Credencial local" hidden>
@@ -27,6 +27,7 @@
     <p id="system-error" role="status" hidden></p>
     <div id="system-cards" class="system-cards"></div>
     <div id="history-status" class="history-status"></div>
+    <div id="freshness-status" class="coverage-table-wrap"></div>
     <p id="system-updated" class="quiet"></p>
     <p class="system-note">Una adquisición procesada puede contener zonas no observables. La revisión incluye anotaciones de IA y abstenciones. La validación registrada proviene de los manifiestos de modelos; este panel no calcula precisión.</p>
   </details>
@@ -52,6 +53,11 @@
     <details class="coverage-zones"><summary>Ver cobertura por zona</summary><div id="coverage-zone-table" class="coverage-table-wrap"></div></details>
     <p class="system-note">Una pasada cumple el área mínima del puerto cuando todas sus zonas configuradas la alcanzan en esa misma pasada. Radar y óptico reúne oportunidades de observación; no suma barcos ni mezcla imágenes de fechas distintas. El porcentaje de área no mide la precisión del detector. Los límites de las zonas siguen siendo provisionales.</p>
     <p id="coverage-method" class="system-note"></p>
+  </details>
+
+  <details id="geography-panel" class="system-panel">
+    <summary>Propuesta de zonas V2 <span id="geography-summary" class="quiet">Piloto separado · sin activar</span></summary>
+    <div id="geography-content"></div>
   </details>
 
   <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
